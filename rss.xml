@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Sun, 12 Nov 2017 14:22:53 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>docker as my dev environment</title><link>http://tamlt2704.github.io/posts/docker-as-my-dev-environment/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div&gt;&lt;p&gt;Since I want to keep my laptop 'clean' I use docker for the dev environment.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Sun, 12 Nov 2017 14:23:44 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>docker as my dev environment</title><link>http://tamlt2704.github.io/posts/docker-as-my-dev-environment/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div&gt;&lt;p&gt;Since I want to keep my laptop 'clean' I use docker for the dev environment.&lt;/p&gt;
 &lt;p&gt;Below are the steps that I use to setup my dev environment.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;pull docker image&lt;/li&gt;
 &lt;/ol&gt;
+&lt;blockquote&gt;
 &lt;div class="system-message"&gt;
 &lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 8)&lt;/p&gt;
 &lt;p&gt;Content block expected for the "code-block" directive; none found.&lt;/p&gt;
@@ -11,9 +12,10 @@
 .. code-block:: shell
 &lt;/pre&gt;
 &lt;/div&gt;
+&lt;/blockquote&gt;
 &lt;div class="system-message"&gt;
 &lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 9)&lt;/p&gt;
-Explicit markup ends without a blank line; unexpected unindent.&lt;/div&gt;
+Block quote ends without a blank line; unexpected unindent.&lt;/div&gt;
 &lt;table class="docutils field-list" frame="void" rules="none"&gt;
 &lt;col class="field-name"&gt;
 &lt;col class="field-body"&gt;
@@ -29,17 +31,17 @@ Field list ends without a blank line; unexpected unindent.&lt;/div&gt;
 &lt;ol class="arabic" start="2"&gt;
 &lt;li&gt;&lt;p class="first"&gt;create container&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/#rest_code_b517b10f69a74a4bbcbf1f5a5650759c-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code shell"&gt;&lt;a name="rest_code_b517b10f69a74a4bbcbf1f5a5650759c-1"&gt;&lt;/a&gt;docker run -it --name&lt;span class="o"&gt;=&lt;/span&gt;ubuntu -p &lt;span class="m"&gt;8080&lt;/span&gt;:80 -p &lt;span class="m"&gt;2222&lt;/span&gt;:22 -v c:&lt;span class="se"&gt;\d&lt;/span&gt;evtools&lt;span class="se"&gt;\h&lt;/span&gt;ome:/mnt/data --hostname&lt;span class="o"&gt;=&lt;/span&gt;ubuntu ubuntu
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/#rest_code_53c213100c854cbb94c112a8c407f0da-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code shell"&gt;&lt;a name="rest_code_53c213100c854cbb94c112a8c407f0da-1"&gt;&lt;/a&gt;docker run -it --name&lt;span class="o"&gt;=&lt;/span&gt;ubuntu -p &lt;span class="m"&gt;8080&lt;/span&gt;:80 -p &lt;span class="m"&gt;2222&lt;/span&gt;:22 -v c:&lt;span class="se"&gt;\d&lt;/span&gt;evtools&lt;span class="se"&gt;\h&lt;/span&gt;ome:/mnt/data --hostname&lt;span class="o"&gt;=&lt;/span&gt;ubuntu ubuntu
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;start container&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/#rest_code_9631d4af0899465b940457ee88c3e269-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code shell"&gt;&lt;a name="rest_code_9631d4af0899465b940457ee88c3e269-1"&gt;&lt;/a&gt;doker start ubuntu
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/#rest_code_5fdc92a11b0943bcb6bbf2560c3b6e7d-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code shell"&gt;&lt;a name="rest_code_5fdc92a11b0943bcb6bbf2560c3b6e7d-1"&gt;&lt;/a&gt;doker start ubuntu
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;attach container (run it after 3)&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/#rest_code_e1b8c74068f0428d9ee116978f19ab39-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code shell"&gt;&lt;a name="rest_code_e1b8c74068f0428d9ee116978f19ab39-1"&gt;&lt;/a&gt;doker attach ubuntu
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/#rest_code_87bb125e1c2d4c5f852c408919586f65-1"&gt;1&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code shell"&gt;&lt;a name="rest_code_87bb125e1c2d4c5f852c408919586f65-1"&gt;&lt;/a&gt;doker attach ubuntu
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;Other docker commands&lt;/p&gt;
