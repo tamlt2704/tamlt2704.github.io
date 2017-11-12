@@ -12,34 +12,31 @@ Since I want to keep my laptop 'clean' I use docker for the dev environment.
 Below are the steps that I use to setup my dev environment.
 
 
-1. pull docker image
+1. **pull docker image**
 	
  .. code-block:: shell
-:number-lines:
-docker pull ubuntu
 
-2. create container
+		docker pull ubuntu
+
+2. **create container**
 
 	.. code-block:: shell
-		:number-lines:
 		
 		docker run -it --name=ubuntu -p 8080:80 -p 2222:22 -v c:\devtools\home:/mnt/data --hostname=ubuntu ubuntu
 
-3. start container
+3. **start container**
 
 	.. code-block:: shell
-		:number-lines:
 
 		doker start ubuntu
 
-4. attach container (run it after 3)
+4. **attach container (run it after 3)**
 
 	.. code-block:: shell
-		:number-lines:
 
 		doker attach ubuntu
 
-5. Other docker commands
+5. **Other docker commands**
 
 	docker images --> list all images
 

@@ -83,65 +83,36 @@
 <p>Since I want to keep my laptop 'clean' I use docker for the dev environment.</p>
 <p>Below are the steps that I use to setup my dev environment.</p>
 <ol class="arabic simple">
-<li>pull docker image</li>
+<li><strong>pull docker image</strong></li>
 </ol>
 <blockquote>
-<div class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 8)</p>
-<p>Content block expected for the "code-block" directive; none found.</p>
-<pre class="literal-block">
-.. code-block:: shell
+<pre class="code shell"><a name="rest_code_a993775811764563baf6efb49d662ca5-1"></a>docker pull ubuntu
 </pre>
-</div>
 </blockquote>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 9)</p>
-Block quote ends without a blank line; unexpected unindent.</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name">
-<col class="field-body">
-<tbody valign="top"><tr class="field">
-<th class="field-name">number-lines:</th>
-<td class="field-body"></td>
-</tr></tbody>
-</table>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 10)</p>
-Field list ends without a blank line; unexpected unindent.</div>
-<p>docker pull ubuntu</p>
 <ol class="arabic" start="2">
 <li>
-<p class="first">create container</p>
+<p class="first"><strong>create container</strong></p>
 <blockquote>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="../posts/docker-as-my-dev-environment/#rest_code_53c213100c854cbb94c112a8c407f0da-1">1</a></pre></div></td>
-<td class="code"><pre class="code shell"><a name="rest_code_53c213100c854cbb94c112a8c407f0da-1"></a>docker run -it --name<span class="o">=</span>ubuntu -p <span class="m">8080</span>:80 -p <span class="m">2222</span>:22 -v c:<span class="se">\d</span>evtools<span class="se">\h</span>ome:/mnt/data --hostname<span class="o">=</span>ubuntu ubuntu
-</pre></td>
-</tr></table>
+<pre class="code shell"><a name="rest_code_17de3d942e65408da02717119591bb4a-1"></a>docker run -it --name<span class="o">=</span>ubuntu -p <span class="m">8080</span>:80 -p <span class="m">2222</span>:22 -v c:<span class="se">\d</span>evtools<span class="se">\h</span>ome:/mnt/data --hostname<span class="o">=</span>ubuntu ubuntu
+</pre>
 </blockquote>
 </li>
 <li>
-<p class="first">start container</p>
+<p class="first"><strong>start container</strong></p>
 <blockquote>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="../posts/docker-as-my-dev-environment/#rest_code_5fdc92a11b0943bcb6bbf2560c3b6e7d-1">1</a></pre></div></td>
-<td class="code"><pre class="code shell"><a name="rest_code_5fdc92a11b0943bcb6bbf2560c3b6e7d-1"></a>doker start ubuntu
-</pre></td>
-</tr></table>
+<pre class="code shell"><a name="rest_code_de59cd5390534490aa69d577f137c451-1"></a>doker start ubuntu
+</pre>
 </blockquote>
 </li>
 <li>
-<p class="first">attach container (run it after 3)</p>
+<p class="first"><strong>attach container (run it after 3)</strong></p>
 <blockquote>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="../posts/docker-as-my-dev-environment/#rest_code_87bb125e1c2d4c5f852c408919586f65-1">1</a></pre></div></td>
-<td class="code"><pre class="code shell"><a name="rest_code_87bb125e1c2d4c5f852c408919586f65-1"></a>doker attach ubuntu
-</pre></td>
-</tr></table>
+<pre class="code shell"><a name="rest_code_f76476564df94ba2a4d169ac17b6d537-1"></a>doker attach ubuntu
+</pre>
 </blockquote>
 </li>
 <li>
-<p class="first">Other docker commands</p>
+<p class="first"><strong>Other docker commands</strong></p>
 <blockquote>
 <p>docker images --&gt; list all images</p>
 <p>docker rmi &lt;image_name&gt; --&gt; remove docker images</p>
