@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Sun, 12 Nov 2017 14:57:38 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>blog with nikola</title><link>http://tamlt2704.github.io/posts/blog-with-nikola/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div&gt;&lt;p&gt;Simple steps to have a github page with nikola&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Sun, 12 Nov 2017 15:00:46 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>blog with nikola</title><link>http://tamlt2704.github.io/posts/blog-with-nikola/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div&gt;&lt;p&gt;Simple steps to have a github page with nikola&lt;/p&gt;
 &lt;ol class="arabic"&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;Setup environmenti&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -16,7 +16,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;nikola new_post&lt;/p&gt;
 &lt;p&gt;edit post in: post/&amp;lt;post-name&amp;gt;&lt;/p&gt;
-&lt;p&gt;learn about restructured text &lt;a class="reference external" href="http://getnikola.com/handbook.html/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;learn about restructured text &lt;a class="reference external" href="http://getnikola.com/handbook.html"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;

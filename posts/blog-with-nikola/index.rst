@@ -28,7 +28,7 @@ Simple steps to have a github page with nikola
 
 	learn about restructured text here_ 
 	
-.. _here: http://getnikola.com/handbook.html/
+.. _here: http://getnikola.com/handbook.html
 
 
 4. **deploy to github**
