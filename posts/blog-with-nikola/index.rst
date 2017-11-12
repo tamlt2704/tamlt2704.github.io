@@ -10,17 +10,17 @@
 Simple steps to have a github page with nikola
 
 
-1. Setup environment
+1. **Setup environmenti**
 
 	virtualenv venv && source venv/bin/active
 
 	pip install nikola
 
-2. create new site 
+2. **create new site**
 
 	nikola init mysite
 
-3. create new post
+3. **create new post**
 
 	nikola new_post
 	
@@ -28,12 +28,14 @@ Simple steps to have a github page with nikola
 
 	learn about restructured text `here http://getnikola.com/handbook.html_`
 
-4. deploy to github
+4. **deploy to github**
 
 	git init .
+
 	git remote add origin https://github.io/<github_name>/<github_name>.github.io
 	
 	# deploy
+
 	nikola github_deploy
 
 Enjoy!
