@@ -7,7 +7,7 @@
 .. description: 
 .. type: text
 
-Since I want to keep my laptop 'clean' I use docker for the dev environment. 
+Since I want to keep my laptop 'clean' docker is a good choice for me. 
 
 Below are the steps that I use to setup my dev environment.
 

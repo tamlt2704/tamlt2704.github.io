@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Happy Blogging">
 <meta property="og:title" content="docker as my dev environment">
 <meta property="og:url" content="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/">
-<meta property="og:description" content="Since I want to keep my laptop 'clean' I use docker for the dev environment.
+<meta property="og:description" content="Since I want to keep my laptop 'clean' docker is a good choice for me.
 Below are the steps that I use to setup my dev environment.
 
 pull docker image
@@ -26,7 +26,7 @@ docker pull ubuntu
 
 create container
 
-dock">
+docker run">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-11-12T22:08:21+08:00">
 </head>
@@ -102,34 +102,34 @@ dock">
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>Since I want to keep my laptop 'clean' I use docker for the dev environment.</p>
+<p>Since I want to keep my laptop 'clean' docker is a good choice for me.</p>
 <p>Below are the steps that I use to setup my dev environment.</p>
 <ol class="arabic">
 <li>
 <p class="first"><strong>pull docker image</strong></p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_e954e1b68d6c42df908c9f7b195112e4-1"></a>docker pull ubuntu
+<pre class="code shell"><a name="rest_code_c0d9d8791c1048daae0eb85ca568b9eb-1"></a>docker pull ubuntu
 </pre>
 </blockquote>
 </li>
 <li>
 <p class="first"><strong>create container</strong></p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_b05220b0d2e742f9979a9bab6e939f11-1"></a>docker run -it --name<span class="o">=</span>ubuntu -p <span class="m">8080</span>:80 -p <span class="m">2222</span>:22 -v c:<span class="se">\d</span>evtools<span class="se">\h</span>ome:/mnt/data --hostname<span class="o">=</span>ubuntu ubuntu
+<pre class="code shell"><a name="rest_code_d92012a735504c47b6b959c257be8fc9-1"></a>docker run -it --name<span class="o">=</span>ubuntu -p <span class="m">8080</span>:80 -p <span class="m">2222</span>:22 -v c:<span class="se">\d</span>evtools<span class="se">\h</span>ome:/mnt/data --hostname<span class="o">=</span>ubuntu ubuntu
 </pre>
 </blockquote>
 </li>
 <li>
 <p class="first"><strong>start container</strong></p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_f413b44ca27c4d7c8845990dc2afc88f-1"></a>doker start ubuntu
+<pre class="code shell"><a name="rest_code_64405ba5861f43b8a1d14ca130b2dfc2-1"></a>doker start ubuntu
 </pre>
 </blockquote>
 </li>
 <li>
 <p class="first"><strong>attach container (run it after 3)</strong></p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_25800823100e41edaa2075c5f7c687c0-1"></a>doker attach ubuntu
+<pre class="code shell"><a name="rest_code_fa01fd6056f94733ba640d28f800f15a-1"></a>doker attach ubuntu
 </pre>
 </blockquote>
 </li>
