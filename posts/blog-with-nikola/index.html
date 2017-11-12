@@ -3,33 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>docker as my dev environment | Happy Blogging</title>
+<title>blog with nikola | Happy Blogging</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
-<link rel="canonical" href="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/">
+<link rel="canonical" href="http://tamlt2704.github.io/posts/blog-with-nikola/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="tamlt2704">
-<link rel="prev" href="../todo-list/" title="todo list" type="text/html">
-<link rel="next" href="../blog-with-nikola/" title="blog with nikola" type="text/html">
+<link rel="prev" href="../docker-as-my-dev-environment/" title="docker as my dev environment" type="text/html">
 <meta property="og:site_name" content="Happy Blogging">
-<meta property="og:title" content="docker as my dev environment">
-<meta property="og:url" content="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/">
-<meta property="og:description" content="Since I want to keep my laptop 'clean' docker is a good choice for me.
-Below are the steps that I use to setup my dev environment.
+<meta property="og:title" content="blog with nikola">
+<meta property="og:url" content="http://tamlt2704.github.io/posts/blog-with-nikola/">
+<meta property="og:description" content="Simple steps to have a github page with nikola
 
-pull docker image
+Setup environment
 
-docker pull ubuntu
+virtualenv venv &amp;&amp; source venv/bin/active
+pip install nikola
 
 
-create container
+create new site
 
-docker run">
+nikola init mysite
+
+
+create new post
+
+nikola new_post">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2017-11-12T22:08:21+08:00">
+<meta property="article:published_time" content="2017-11-12T22:40:30+08:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -82,16 +86,16 @@ docker run">
         <div class="row">
             
             
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">docker as my dev environment</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">blog with nikola</a></h1>
 
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                     tamlt2704
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-11-12T22:08:21+08:00" itemprop="datePublished" title="2017-11-12 22:08">2017-11-12 22:08</time></a></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-11-12T22:40:30+08:00" itemprop="datePublished" title="2017-11-12 22:40">2017-11-12 22:40</time></a></p>
                 <p class="commentline">
         
-    <a href="#disqus_thread" data-disqus-identifier="cache/posts/docker-as-my-dev-environment.html">Comments</a>
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/blog-with-nikola.html">Comments</a>
 
 
             
@@ -103,57 +107,45 @@ docker run">
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>Since I want to keep my laptop 'clean' docker is a good choice for me.</p>
-<p>Below are the steps that I use to setup my dev environment.</p>
+<p>Simple steps to have a github page with nikola</p>
 <ol class="arabic">
 <li>
-<p class="first"><strong>pull docker image</strong></p>
+<p class="first">Setup environment</p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_c0d9d8791c1048daae0eb85ca568b9eb-1"></a>docker pull ubuntu
-</pre>
+<p>virtualenv venv &amp;&amp; source venv/bin/active</p>
+<p>pip install nikola</p>
 </blockquote>
 </li>
 <li>
-<p class="first"><strong>create container</strong></p>
+<p class="first">create new site</p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_d92012a735504c47b6b959c257be8fc9-1"></a>docker run -it --name<span class="o">=</span>ubuntu -p <span class="m">8080</span>:80 -p <span class="m">2222</span>:22 -v c:<span class="se">\d</span>evtools<span class="se">\h</span>ome:/mnt/data --hostname<span class="o">=</span>ubuntu ubuntu
-</pre>
+<p>nikola init mysite</p>
 </blockquote>
 </li>
 <li>
-<p class="first"><strong>start container</strong></p>
+<p class="first">create new post</p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_64405ba5861f43b8a1d14ca130b2dfc2-1"></a>doker start ubuntu
-</pre>
+<p>nikola new_post</p>
+<p>edit post in: post/&lt;post-name&gt;</p>
+<p>learn about restructured text <cite>here http://getnikola.com/handbook.html_</cite></p>
 </blockquote>
 </li>
 <li>
-<p class="first"><strong>attach container (run it after 3)</strong></p>
+<p class="first">deploy to github</p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_fa01fd6056f94733ba640d28f800f15a-1"></a>doker attach ubuntu
-</pre>
-</blockquote>
-</li>
-<li>
-<p class="first"><strong>Other docker commands</strong></p>
-<blockquote>
-<p>docker images --&gt; list all images</p>
-<p>docker rmi &lt;image_name&gt; --&gt; remove docker images</p>
-<p>docker ps --&gt; list all container are running</p>
-<p>docker ps -a  --&gt; list all docker</p>
-<p>docker rm &lt;container_name&gt;</p>
-<p>docker rm -f &lt;container_name&gt;</p>
+<p>git init .
+git remote add origin <a class="reference external" href="https://github.io">https://github.io</a>/&lt;github_name&gt;/&lt;github_name&gt;.github.io</p>
+<p># deploy
+nikola github_deploy</p>
 </blockquote>
 </li>
 </ol>
+<p>Enjoy!</p>
 </div>
     </div>
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
-                <a href="../todo-list/" rel="prev" title="todo list">Previous post</a>
-            </li>
-            <li class="next">
-                <a href="../blog-with-nikola/" rel="next" title="blog with nikola">Next post</a>
+                <a href="../docker-as-my-dev-environment/" rel="prev" title="docker as my dev environment">Previous post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
@@ -161,9 +153,9 @@ docker run">
         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tamlt2704.github.io",
-            disqus_url="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/",
-        disqus_title="docker as my dev environment",
-        disqus_identifier="cache/posts/docker-as-my-dev-environment.html",
+            disqus_url="http://tamlt2704.github.io/posts/blog-with-nikola/",
+        disqus_title="blog with nikola",
+        disqus_identifier="cache/posts/blog-with-nikola.html",
         disqus_config = function () {
             this.language = "en";
         };

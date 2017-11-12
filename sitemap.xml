@@ -15,7 +15,7 @@
  </url>
  <url>
   <loc>http://tamlt2704.github.io/archive.html</loc>
-  <lastmod>2017-11-12T14:21:00Z</lastmod>
+  <lastmod>2017-11-12T14:46:00Z</lastmod>
  </url>
  <url>
   <loc>http://tamlt2704.github.io/categories/</loc>
@@ -32,6 +32,10 @@
  <url>
   <loc>http://tamlt2704.github.io/post/</loc>
   <lastmod>2017-11-12T13:05:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://tamlt2704.github.io/posts/blog-with-nikola/</loc>
+  <lastmod>2017-11-12T14:46:00Z</lastmod>
  </url>
  <url>
   <loc>http://tamlt2704.github.io/posts/docker-as-my-dev-environment/</loc>

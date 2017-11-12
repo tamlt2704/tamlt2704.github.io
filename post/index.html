@@ -65,7 +65,58 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="../posts/docker-as-my-dev-environment/" class="u-url">docker as my dev environment</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="../posts/blog-with-nikola/" class="u-url">blog with nikola</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                tamlt2704
+            </span></p>
+            <p class="dateline"><a href="../posts/blog-with-nikola/" rel="bookmark"><time class="published dt-published" datetime="2017-11-12T22:40:30+08:00" title="2017-11-12 22:40">2017-11-12 22:40</time></a></p>
+                <p class="commentline">
+        
+    <a href="../posts/blog-with-nikola/#disqus_thread" data-disqus-identifier="cache/posts/blog-with-nikola.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>Simple steps to have a github page with nikola</p>
+<ol class="arabic">
+<li>
+<p class="first">Setup environment</p>
+<blockquote>
+<p>virtualenv venv &amp;&amp; source venv/bin/active</p>
+<p>pip install nikola</p>
+</blockquote>
+</li>
+<li>
+<p class="first">create new site</p>
+<blockquote>
+<p>nikola init mysite</p>
+</blockquote>
+</li>
+<li>
+<p class="first">create new post</p>
+<blockquote>
+<p>nikola new_post</p>
+<p>edit post in: post/&lt;post-name&gt;</p>
+<p>learn about restructured text <cite>here http://getnikola.com/handbook.html_</cite></p>
+</blockquote>
+</li>
+<li>
+<p class="first">deploy to github</p>
+<blockquote>
+<p>git init .
+git remote add origin <a class="reference external" href="https://github.io">https://github.io</a>/&lt;github_name&gt;/&lt;github_name&gt;.github.io</p>
+<p># deploy
+nikola github_deploy</p>
+</blockquote>
+</li>
+</ol>
+<p>Enjoy!</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="../posts/docker-as-my-dev-environment/" class="u-url">docker as my dev environment</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 tamlt2704
