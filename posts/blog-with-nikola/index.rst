@@ -26,7 +26,9 @@ Simple steps to have a github page with nikola
 	
 	edit post in: post/<post-name>
 
-	learn about restructured text `here http://getnikola.com/handbook.html_`
+	learn about restructured text here_ 
+	
+.. here_: http://getnikola.com/handbook.html
 
 4. **deploy to github**
 
