@@ -10,7 +10,7 @@
 Simple steps to have a github page with nikola
 
 
-1. **Setup environmenti**
+1. **Setup environment**
 
 	virtualenv venv && source venv/bin/active
 
