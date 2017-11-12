@@ -14,10 +14,10 @@ Below are the steps that I use to setup my dev environment.
 
 1. pull docker image
 	
-	.. codeblock:: shell
-		:number-lines:
+ .. codeblock:: shell
+	:number-lines:
 
-		docker pull ubuntu
+	docker pull ubuntu
 
 2. create container
 
@@ -43,8 +43,13 @@ Below are the steps that I use to setup my dev environment.
 5. Other docker commands
 
 	docker images --> list all images
+
 	docker rmi <image_name> --> remove docker images
+
 	docker ps --> list all container are running
+
 	docker ps -a  --> list all docker 
+
 	docker rm <container_name>
+
 	docker rm -f <container_name>
