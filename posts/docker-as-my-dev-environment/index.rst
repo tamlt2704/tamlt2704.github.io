@@ -14,7 +14,7 @@ Below are the steps that I use to setup my dev environment.
 
 1. **pull docker image**
 	
- .. code-block:: shell
+	.. code-block:: shell
 
 		docker pull ubuntu
 

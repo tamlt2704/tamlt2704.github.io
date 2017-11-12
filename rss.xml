@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Sun, 12 Nov 2017 14:34:47 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>docker as my dev environment</title><link>http://tamlt2704.github.io/posts/docker-as-my-dev-environment/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div&gt;&lt;p&gt;Since I want to keep my laptop 'clean' I use docker for the dev environment.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Sun, 12 Nov 2017 14:37:12 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>docker as my dev environment</title><link>http://tamlt2704.github.io/posts/docker-as-my-dev-environment/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div&gt;&lt;p&gt;Since I want to keep my laptop 'clean' I use docker for the dev environment.&lt;/p&gt;
 &lt;p&gt;Below are the steps that I use to setup my dev environment.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;strong&gt;pull docker image&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;pull docker image&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;pre class="code shell"&gt;&lt;a name="rest_code_a993775811764563baf6efb49d662ca5-1"&gt;&lt;/a&gt;docker pull ubuntu
+&lt;pre class="code shell"&gt;&lt;a name="rest_code_e954e1b68d6c42df908c9f7b195112e4-1"&gt;&lt;/a&gt;docker pull ubuntu
 &lt;/pre&gt;&lt;/blockquote&gt;
-&lt;ol class="arabic" start="2"&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;create container&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;pre class="code shell"&gt;&lt;a name="rest_code_17de3d942e65408da02717119591bb4a-1"&gt;&lt;/a&gt;docker run -it --name&lt;span class="o"&gt;=&lt;/span&gt;ubuntu -p &lt;span class="m"&gt;8080&lt;/span&gt;:80 -p &lt;span class="m"&gt;2222&lt;/span&gt;:22 -v c:&lt;span class="se"&gt;\d&lt;/span&gt;evtools&lt;span class="se"&gt;\h&lt;/span&gt;ome:/mnt/data --hostname&lt;span class="o"&gt;=&lt;/span&gt;ubuntu ubuntu
+&lt;pre class="code shell"&gt;&lt;a name="rest_code_b05220b0d2e742f9979a9bab6e939f11-1"&gt;&lt;/a&gt;docker run -it --name&lt;span class="o"&gt;=&lt;/span&gt;ubuntu -p &lt;span class="m"&gt;8080&lt;/span&gt;:80 -p &lt;span class="m"&gt;2222&lt;/span&gt;:22 -v c:&lt;span class="se"&gt;\d&lt;/span&gt;evtools&lt;span class="se"&gt;\h&lt;/span&gt;ome:/mnt/data --hostname&lt;span class="o"&gt;=&lt;/span&gt;ubuntu ubuntu
 &lt;/pre&gt;&lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;start container&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;pre class="code shell"&gt;&lt;a name="rest_code_de59cd5390534490aa69d577f137c451-1"&gt;&lt;/a&gt;doker start ubuntu
+&lt;pre class="code shell"&gt;&lt;a name="rest_code_f413b44ca27c4d7c8845990dc2afc88f-1"&gt;&lt;/a&gt;doker start ubuntu
 &lt;/pre&gt;&lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;attach container (run it after 3)&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;pre class="code shell"&gt;&lt;a name="rest_code_f76476564df94ba2a4d169ac17b6d537-1"&gt;&lt;/a&gt;doker attach ubuntu
+&lt;pre class="code shell"&gt;&lt;a name="rest_code_25800823100e41edaa2075c5f7c687c0-1"&gt;&lt;/a&gt;doker attach ubuntu
 &lt;/pre&gt;&lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;Other docker commands&lt;/strong&gt;&lt;/p&gt;

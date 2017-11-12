@@ -82,32 +82,32 @@
     <div>
 <p>Since I want to keep my laptop 'clean' I use docker for the dev environment.</p>
 <p>Below are the steps that I use to setup my dev environment.</p>
-<ol class="arabic simple">
-<li><strong>pull docker image</strong></li>
-</ol>
+<ol class="arabic">
+<li>
+<p class="first"><strong>pull docker image</strong></p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_a993775811764563baf6efb49d662ca5-1"></a>docker pull ubuntu
+<pre class="code shell"><a name="rest_code_e954e1b68d6c42df908c9f7b195112e4-1"></a>docker pull ubuntu
 </pre>
 </blockquote>
-<ol class="arabic" start="2">
+</li>
 <li>
 <p class="first"><strong>create container</strong></p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_17de3d942e65408da02717119591bb4a-1"></a>docker run -it --name<span class="o">=</span>ubuntu -p <span class="m">8080</span>:80 -p <span class="m">2222</span>:22 -v c:<span class="se">\d</span>evtools<span class="se">\h</span>ome:/mnt/data --hostname<span class="o">=</span>ubuntu ubuntu
+<pre class="code shell"><a name="rest_code_b05220b0d2e742f9979a9bab6e939f11-1"></a>docker run -it --name<span class="o">=</span>ubuntu -p <span class="m">8080</span>:80 -p <span class="m">2222</span>:22 -v c:<span class="se">\d</span>evtools<span class="se">\h</span>ome:/mnt/data --hostname<span class="o">=</span>ubuntu ubuntu
 </pre>
 </blockquote>
 </li>
 <li>
 <p class="first"><strong>start container</strong></p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_de59cd5390534490aa69d577f137c451-1"></a>doker start ubuntu
+<pre class="code shell"><a name="rest_code_f413b44ca27c4d7c8845990dc2afc88f-1"></a>doker start ubuntu
 </pre>
 </blockquote>
 </li>
 <li>
 <p class="first"><strong>attach container (run it after 3)</strong></p>
 <blockquote>
-<pre class="code shell"><a name="rest_code_f76476564df94ba2a4d169ac17b6d537-1"></a>doker attach ubuntu
+<pre class="code shell"><a name="rest_code_25800823100e41edaa2075c5f7c687c0-1"></a>doker attach ubuntu
 </pre>
 </blockquote>
 </li>
