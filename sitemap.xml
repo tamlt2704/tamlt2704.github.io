@@ -15,7 +15,7 @@
  </url>
  <url>
   <loc>http://tamlt2704.github.io/archive.html</loc>
-  <lastmod>2017-11-12T13:46:00Z</lastmod>
+  <lastmod>2017-11-12T14:03:00Z</lastmod>
  </url>
  <url>
   <loc>http://tamlt2704.github.io/categories/</loc>
@@ -36,5 +36,9 @@
  <url>
   <loc>http://tamlt2704.github.io/posts/restructured-text-demo/</loc>
   <lastmod>2017-11-12T12:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://tamlt2704.github.io/posts/todo-list/</loc>
+  <lastmod>2017-11-12T14:03:00Z</lastmod>
  </url>
 </urlset>
