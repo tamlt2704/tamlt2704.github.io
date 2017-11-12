@@ -14,28 +14,28 @@ Below are the steps that I use to setup my dev environment.
 
 1. pull docker image
 	
- .. codeblock:: shell
+ .. code-block:: shell
 	:number-lines:
 
 	docker pull ubuntu
 
 2. create container
 
-	.. codeblock:: shell
+	.. code-block:: shell
 		:number-lines:
 		
 		docker run -it --name=ubuntu -p 8080:80 -p 2222:22 -v c:\devtools\home:/mnt/data --hostname=ubuntu ubuntu
 
 3. start container
 
-	.. codeblock:: shell
+	.. code-block:: shell
 		:number-lines:
 
 		doker start ubuntu
 
 4. attach container (run it after 3)
 
-	.. codeblock:: shell
+	.. code-block:: shell
 		:number-lines:
 
 		doker attach ubuntu
