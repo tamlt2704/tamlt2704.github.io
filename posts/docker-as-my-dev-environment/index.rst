@@ -14,10 +14,9 @@ Below are the steps that I use to setup my dev environment.
 
 1. pull docker image
 	
- .. code-block:: shell
-	:number-lines:
-
-	docker pull ubuntu
+.. code-block:: shell
+:number-lines:
+docker pull ubuntu
 
 2. create container
 
