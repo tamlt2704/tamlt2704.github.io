@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>todo list | Happy Blogging</title>
+<title>docker as my dev environment | Happy Blogging</title>
 <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/html4css1.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
@@ -15,19 +15,21 @@
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
-<link rel="canonical" href="http://tamlt2704.github.io/posts/todo-list/">
+<link rel="canonical" href="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="tamlt2704">
-<link rel="prev" href="../restructured-text-demo/" title="Restructured Text Demo" type="text/html">
-<link rel="next" href="../docker-as-my-dev-environment/" title="docker as my dev environment" type="text/html">
+<link rel="prev" href="../todo-list/" title="todo list" type="text/html">
 <meta property="og:site_name" content="Happy Blogging">
-<meta property="og:title" content="todo list">
-<meta property="og:url" content="http://tamlt2704.github.io/posts/todo-list/">
-<meta property="og:description" content="Flask
-Django
-Machine Learning - coursera
-Opencv">
+<meta property="og:title" content="docker as my dev environment">
+<meta property="og:url" content="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/">
+<meta property="og:description" content="Since I want to keep my laptop 'clean' I use docker for the dev environment.
+Below are the steps that I use to setup my dev environment.
+
+pull docker image
+
+
+System Message: ERROR/3 (&lt;string&gt;, line 8)">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2017-11-12T22:01:59+08:00">
+<meta property="article:published_time" content="2017-11-12T22:08:21+08:00">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -80,16 +82,16 @@ Opencv">
         <div class="row">
             
             
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">todo list</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">docker as my dev environment</a></h1>
 
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                     tamlt2704
             </span></p>
-            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-11-12T22:01:59+08:00" itemprop="datePublished" title="2017-11-12 22:01">2017-11-12 22:01</time></a></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-11-12T22:08:21+08:00" itemprop="datePublished" title="2017-11-12 22:08">2017-11-12 22:08</time></a></p>
                 <p class="commentline">
         
-    <a href="#disqus_thread" data-disqus-identifier="cache/posts/todo-list.html">Comments</a>
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/docker-as-my-dev-environment.html">Comments</a>
 
 
             
@@ -100,19 +102,91 @@ Opencv">
         
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <ol class="arabic simple">
-<li>Flask</li>
-<li>Django</li>
-<li>Machine Learning - coursera</li>
-<li>Opencv</li>
+    <div>
+<p>Since I want to keep my laptop 'clean' I use docker for the dev environment.</p>
+<p>Below are the steps that I use to setup my dev environment.</p>
+<ol class="arabic">
+<li>
+<p class="first">pull docker image</p>
+<blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 8)</p>
+<p>Unknown directive type "codeblock".</p>
+<pre class="literal-block">
+.. codeblock:: shell
+        :number-lines:
+
+        docker pull ubuntu
+
+</pre>
+</div>
+</blockquote>
+</li>
+<li>
+<p class="first">create container</p>
+<blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 15)</p>
+<p>Unknown directive type "codeblock".</p>
+<pre class="literal-block">
+.. codeblock:: shell
+        :number-lines:
+
+        docker run -it --name=ubuntu -p 8080:80 -p 2222:22 -v c:\devtools\home:/mnt/data --hostname=ubuntu ubuntu
+
+</pre>
+</div>
+</blockquote>
+</li>
+<li>
+<p class="first">start container</p>
+<blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 22)</p>
+<p>Unknown directive type "codeblock".</p>
+<pre class="literal-block">
+.. codeblock:: shell
+        :number-lines:
+
+        doker start ubuntu
+
+</pre>
+</div>
+</blockquote>
+</li>
+<li>
+<p class="first">attach container (run it after 3)</p>
+<blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 29)</p>
+<p>Unknown directive type "codeblock".</p>
+<pre class="literal-block">
+.. codeblock:: shell
+        :number-lines:
+
+        doker attach ubuntu
+
+</pre>
+</div>
+</blockquote>
+</li>
+<li>
+<p class="first">Other docker commands</p>
+<blockquote>
+<p>docker images --&gt; list all images
+docker rmi &lt;image_name&gt; --&gt; remove docker images
+docker ps --&gt; list all container are running
+docker ps -a  --&gt; list all docker
+docker rm &lt;container_name&gt;
+docker rm -f &lt;container_name&gt;</p>
+</blockquote>
+</li>
 </ol>
 </div>
+    </div>
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
-                <a href="../restructured-text-demo/" rel="prev" title="Restructured Text Demo">Previous post</a>
-            </li>
-            <li class="next">
-                <a href="../docker-as-my-dev-environment/" rel="next" title="docker as my dev environment">Next post</a>
+                <a href="../todo-list/" rel="prev" title="todo list">Previous post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
@@ -120,9 +194,9 @@ Opencv">
         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="tamlt2704.github.io",
-            disqus_url="http://tamlt2704.github.io/posts/todo-list/",
-        disqus_title="todo list",
-        disqus_identifier="cache/posts/todo-list.html",
+            disqus_url="http://tamlt2704.github.io/posts/docker-as-my-dev-environment/",
+        disqus_title="docker as my dev environment",
+        disqus_identifier="cache/posts/docker-as-my-dev-environment.html",
         disqus_config = function () {
             this.language = "en";
         };

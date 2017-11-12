@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Sun, 12 Nov 2017 14:03:07 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>todo list</title><link>http://tamlt2704.github.io/posts/todo-list/</link><dc:creator>tamlt2704</dc:creator><description>&lt;ol class="arabic simple"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Sun, 12 Nov 2017 14:18:26 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>docker as my dev environment</title><link>http://tamlt2704.github.io/posts/docker-as-my-dev-environment/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div&gt;&lt;p&gt;Since I want to keep my laptop 'clean' I use docker for the dev environment.&lt;/p&gt;
+&lt;p&gt;Below are the steps that I use to setup my dev environment.&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;pull docker image&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 8)&lt;/p&gt;
+&lt;p&gt;Unknown directive type "codeblock".&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. codeblock:: shell
+        :number-lines:
+
+        docker pull ubuntu
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;create container&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 15)&lt;/p&gt;
+&lt;p&gt;Unknown directive type "codeblock".&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. codeblock:: shell
+        :number-lines:
+
+        docker run -it --name=ubuntu -p 8080:80 -p 2222:22 -v c:\devtools\home:/mnt/data --hostname=ubuntu ubuntu
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;start container&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 22)&lt;/p&gt;
+&lt;p&gt;Unknown directive type "codeblock".&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. codeblock:: shell
+        :number-lines:
+
+        doker start ubuntu
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;attach container (run it after 3)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 29)&lt;/p&gt;
+&lt;p&gt;Unknown directive type "codeblock".&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. codeblock:: shell
+        :number-lines:
+
+        doker attach ubuntu
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Other docker commands&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;docker images --&amp;gt; list all images
+docker rmi &amp;lt;image_name&amp;gt; --&amp;gt; remove docker images
+docker ps --&amp;gt; list all container are running
+docker ps -a  --&amp;gt; list all docker
+docker rm &amp;lt;container_name&amp;gt;
+docker rm -f &amp;lt;container_name&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;&lt;/div&gt;</description><guid>http://tamlt2704.github.io/posts/docker-as-my-dev-environment/</guid><pubDate>Sun, 12 Nov 2017 14:08:21 GMT</pubDate></item><item><title>todo list</title><link>http://tamlt2704.github.io/posts/todo-list/</link><dc:creator>tamlt2704</dc:creator><description>&lt;ol class="arabic simple"&gt;
 &lt;li&gt;Flask&lt;/li&gt;
 &lt;li&gt;Django&lt;/li&gt;
 &lt;li&gt;Machine Learning - coursera&lt;/li&gt;
