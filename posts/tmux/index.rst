@@ -65,17 +65,25 @@
 11. Commmon key bindings
 
 	**tmux new-session**	create new session
+
 	**tmux new -s development** create new session
+
 	**tmux new -s development -n editor** create new session and rename first window
+
 	**tmux attach -t development** attach to session
 
 	Prefix d : detach from session
+
 	Prefix : (double quote): enter command mode 
+
 	Prefix c: create new window
+
 	Prefix w: list all windows
+
 	Prefix ,: rename window
+
 	Prefix q: momentarily display pane number in each panes
+
 	Prefix SPACE: Cycles through the various pane layouts.
 
 To be continue...
-	
