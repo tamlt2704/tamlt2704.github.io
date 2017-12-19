@@ -6,15 +6,11 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
-  <loc>http://tamlt2704.github.io/galleries/rss.xml</loc>
-  <lastmod>2017-11-16T09:11:00Z</lastmod>
- </sitemap>
- <sitemap>
   <loc>http://tamlt2704.github.io/rss.xml</loc>
-  <lastmod>2017-11-16T09:33:00Z</lastmod>
+  <lastmod>2017-12-19T09:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://tamlt2704.github.io/sitemap.xml</loc>
-  <lastmod>2017-11-16T09:33:00Z</lastmod>
+  <lastmod>2017-12-19T09:53:00Z</lastmod>
  </sitemap>
 </sitemapindex>
