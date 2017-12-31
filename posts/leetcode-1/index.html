@@ -18,9 +18,12 @@
 <meta property="og:url" content="http://tamlt2704.github.io/posts/leetcode-1/">
 <meta property="og:description" content="Two Sum IV - Input is a BST
 
-Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their sum is equal to the given target.
 
-System Message: ERROR">
+# link: https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-12-31T19:16:36+08:00">
 </head>
@@ -97,51 +100,179 @@ System Message: ERROR">
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <ol class="arabic simple">
-<li>Two Sum IV - Input is a BST</li>
+<li><strong>Two Sum IV - Input is a BST</strong></li>
 </ol>
-<p>Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their sum is equal to the given target.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 6)</p>
-<p>Content block expected for the "code-block" directive; none found.</p>
+<script src="https://gist.github.com/8f2a282e148c5319504003df84c35dd9.js"></script><noscript>
 <pre class="literal-block">
-.. code-block:: python
-
-</pre>
-</div>
-<p># Definition for a binary tree node.
+# link: https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/
+# Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
-#         self.right = None</p>
-<dl class="docutils">
-<dt>class Solution(object):</dt>
-<dd><dl class="first last docutils">
-<dt>def findTarget(self, root, k):</dt>
-<dd>
-<p class="first">"""
-:type root: TreeNode
-:type k: int
-:rtype: bool
-"""
-if not root: return False
-bfs, s = [root], set()
-for i in bfs:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 25)</p>
-Unexpected indentation.</div>
-<blockquote>
-if k - i.val in s: return True
-s.add(i.val)
-if i.left: bfs.append(i.left)
-if i.right: bfs.append(i.right)</blockquote>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 29)</p>
-Block quote ends without a blank line; unexpected unindent.</div>
-<p class="last">return False</p>
-</dd>
-</dl></dd>
-</dl>
+#         self.right = None
+
+class Solution(object):
+    def findTarget(self, root, k):
+        """
+        :type root: TreeNode
+        :type k: int
+        :rtype: bool
+        """
+        if not root: return False
+        bfs, s = [root], set()
+        for i in bfs:
+            if k - i.val in s: return True
+            s.add(i.val)
+            if i.left: bfs.append(i.left)
+            if i.right: bfs.append(i.right)
+        return False
+</pre>
+</noscript>
+<ol class="arabic simple" start="2">
+<li><strong>Move Zeroes</strong></li>
+</ol>
+<script src="https://gist.github.com/e16b69e8b3f74f14bde3f52c025e6e9c.js"></script><noscript>
+<pre class="literal-block">
+#https://leetcode.com/problems/move-zeroes/description/
+class Solution(object):
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        zero = 0
+        for i in xrange(0, len(nums)):
+            if nums[i] != 0:
+                nums[i], nums[zero] = nums[zero], nums[i]
+                zero += 1       
+</pre>
+</noscript>
+<ol class="arabic simple" start="3">
+<li><strong>Find the Difference</strong></li>
+</ol>
+<script src="https://gist.github.com/71ddfd95705e0de193bac088e05e35a0.js"></script><noscript>
+<pre class="literal-block">
+# https://leetcode.com/problems/find-the-difference/description/
+# aka: remove all duplicated elements
+# idea: a XOR a = 0
+class Solution(object):
+    def findTheDifference(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        return chr(reduce(operator.xor, map(ord, s + t)))
+        
+</pre>
+</noscript>
+<ol class="arabic simple" start="4">
+<li><strong>Sum of Two Integers</strong></li>
+</ol>
+<script src="https://gist.github.com/8993543766b12cde81641345cda6d268.js"></script><noscript>
+<pre class="literal-block">
+# Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
+int getSum(int a, int b) {
+    if (b)
+	    return getSum(a ^ b, (a &amp; b) &lt;&lt; 1);
+	
+	return a;
+}
+</pre>
+</noscript>
+<ol class="arabic simple" start="5">
+<li><strong>Find All Numbers Disappeared in an Array</strong></li>
+</ol>
+<script src="https://gist.github.com/923b377def46d2071a7657fb8218f568.js"></script><noscript>
+<pre class="literal-block">
+#Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+#Find all the elements of [1, n] inclusive that do not appear in this array.
+#Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+#Input:
+#[4,3,2,7,8,2,3,1]
+
+#Output:
+#[5,6]
+
+
+class Solution(object):
+    def findDisappearedNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        for v in nums:
+            index = int(v) - 1
+            nums[index] += 0.4
+        return [i+1 for i in xrange(len(nums)) if nums[i] == int(nums[i])]
+</pre>
+</noscript>
+<ol class="arabic simple" start="6">
+<li><strong>Add Digits</strong></li>
+</ol>
+<script src="https://gist.github.com/0593461715b5de5881bc5a2d91e728a0.js"></script><noscript>
+<pre class="literal-block">
+#Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
+
+#For example:
+
+#Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
+
+#Follow up:
+#Could you do it without any loop/recursion in O(1) runtime? 
+
+class Solution(object):
+    
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        def imod(x, y):
+            s = 1
+            if x &lt; 0:
+                s = -1
+            return s * ((x*s) % y)
+        return 1 + imod(num-1, 9)
+</pre>
+</noscript>
+<ol class="arabic simple" start="7">
+<li><strong>Max Area of Island</strong></li>
+</ol>
+<script src="https://gist.github.com/6a399c5a37f49d7b21e44ea89e08c5b1.js"></script><noscript>
+<pre class="literal-block">
+# https://leetcode.com/problems/max-area-of-island/description/
+# complex number make things simplers
+
+class Solution(object):
+    def maxAreaOfIsland(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        grid = {i + j*1j: val for i, row in enumerate(grid) for j, val in enumerate(row)}
+        def area(z):
+            return grid.pop(z, 0) and 1 + sum(area(z + 1j**k) for k in range(4))
+        return max(map(area, set(grid)))
+</pre>
+</noscript>
+<ol class="arabic simple" start="8">
+<li><strong>Island Perimeter</strong></li>
+</ol>
+<script src="https://gist.github.com/6ab01a35214fee2f75e7659adbc9d2a1.js"></script><noscript>
+<pre class="literal-block">
+#https://leetcode.com/problems/island-perimeter/description/
+class Solution(object):
+    def islandPerimeter(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        return sum(sum(map(operator.ne, [0] + row, row + [0]))
+               for row in grid + map(list, zip(*grid)))
+</pre>
+</noscript>
 </div>
     </div>
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
