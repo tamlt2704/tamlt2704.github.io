@@ -65,7 +65,70 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="../posts/iphone-health-data/" class="u-url">iphone health data</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="../posts/leetcode-1/" class="u-url">leetcode (1)</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                tamlt2704
+            </span></p>
+            <p class="dateline"><a href="../posts/leetcode-1/" rel="bookmark"><time class="published dt-published" datetime="2017-12-31T19:16:36+08:00" title="2017-12-31 19:16">2017-12-31 19:16</time></a></p>
+                <p class="commentline">
+        
+    <a href="../posts/leetcode-1/#disqus_thread" data-disqus-identifier="cache/posts/leetcode-1.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<ol class="arabic simple">
+<li>Two Sum IV - Input is a BST</li>
+</ol>
+<p>Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their sum is equal to the given target.</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 6)</p>
+<p>Content block expected for the "code-block" directive; none found.</p>
+<pre class="literal-block">
+.. code-block:: python
+
+</pre>
+</div>
+<p># Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None</p>
+<dl class="docutils">
+<dt>class Solution(object):</dt>
+<dd><dl class="first last docutils">
+<dt>def findTarget(self, root, k):</dt>
+<dd>
+<p class="first">"""
+:type root: TreeNode
+:type k: int
+:rtype: bool
+"""
+if not root: return False
+bfs, s = [root], set()
+for i in bfs:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 25)</p>
+Unexpected indentation.</div>
+<blockquote>
+if k - i.val in s: return True
+s.add(i.val)
+if i.left: bfs.append(i.left)
+if i.right: bfs.append(i.right)</blockquote>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 29)</p>
+Block quote ends without a blank line; unexpected unindent.</div>
+<p class="last">return False</p>
+</dd>
+</dl></dd>
+</dl>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="../posts/iphone-health-data/" class="u-url">iphone health data</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 tamlt2704

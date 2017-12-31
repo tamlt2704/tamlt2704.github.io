@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Fri, 22 Dec 2017 03:12:59 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>iphone health data</title><link>http://tamlt2704.github.io/posts/iphone-health-data/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Happy Blogging</title><link>http://tamlt2704.github.io/</link><description>Linux, Python, IoT, Data, Machine Learning, Visualisation</description><atom:link href="http://tamlt2704.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:tamlt2704@gmail.com"&gt;tamlt2704&lt;/a&gt; </copyright><lastBuildDate>Sun, 31 Dec 2017 11:19:48 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>leetcode (1)</title><link>http://tamlt2704.github.io/posts/leetcode-1/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div&gt;&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Two Sum IV - Input is a BST&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their sum is equal to the given target.&lt;/p&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 6)&lt;/p&gt;
+&lt;p&gt;Content block expected for the "code-block" directive; none found.&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. code-block:: python
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;class Solution(object):&lt;/dt&gt;
+&lt;dd&gt;&lt;dl class="first last docutils"&gt;
+&lt;dt&gt;def findTarget(self, root, k):&lt;/dt&gt;
+&lt;dd&gt;&lt;p class="first"&gt;"""
+:type root: TreeNode
+:type k: int
+:rtype: bool
+"""
+if not root: return False
+bfs, s = [root], set()
+for i in bfs:&lt;/p&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 25)&lt;/p&gt;
+Unexpected indentation.&lt;/div&gt;
+&lt;blockquote&gt;
+if k - i.val in s: return True
+s.add(i.val)
+if i.left: bfs.append(i.left)
+if i.right: bfs.append(i.right)&lt;/blockquote&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 29)&lt;/p&gt;
+Block quote ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;p class="last"&gt;return False&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;&lt;/div&gt;</description><guid>http://tamlt2704.github.io/posts/leetcode-1/</guid><pubDate>Sun, 31 Dec 2017 11:16:36 GMT</pubDate></item><item><title>iphone health data</title><link>http://tamlt2704.github.io/posts/iphone-health-data/</link><dc:creator>tamlt2704</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
