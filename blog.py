@@ -16,9 +16,34 @@ app.config.from_object(__name__)
 
 
 
+@app.route("/index")
+@app.route("/")
+def index():
+	posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
+	posts.sort(key=lambda x: x['date'], reverse=False)
+	print(posts)
+	return render_template('index.html', posts=posts)
 
 @app.route("/posts/")
 def posts():
+	posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
+	posts.sort(key=lambda x: x['date'], reverse=False)
+	return render_template('posts.html', posts=posts)
+
+@app.route("/projects/")
+def projects():
+	posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
+	posts.sort(key=lambda x: x['date'], reverse=False)
+	return render_template('posts.html', posts=posts)
+
+@app.route("/photos/")
+def photos():
+	posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
+	posts.sort(key=lambda x: x['date'], reverse=False)
+	return render_template('posts.html', posts=posts)
+
+@app.route("/about/")
+def about():
 	posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
 	posts.sort(key=lambda x: x['date'], reverse=False)
 	return render_template('posts.html', posts=posts)

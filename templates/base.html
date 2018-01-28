@@ -1,52 +1,38 @@
 <html>
 	<head>
-			<link rel="stylesheet" type="text/css" href="../static/style.css"/>
-		<title>
-			tam's blog 
-		</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}" />
+		<title> tam new 's blog </title>
 	</head>
+	
 	<body>
 		<div id="container">
-			<!-- HEADER -->
 			<div id="header">
-				Start From Scratch
+				<img id="blog-icon" src="{{url_for('static', filename='images/unicorn-alpha.png')}}" /> 
+				<p id="blog-title"> <a href="{{url_for('index')}}"> START FROM SCRATCH </a> </p>
+				<p id="blog-author"> By tamlt2704 </p>
+				<p id="blog-intro"> Learn by doing.  
+					Learn by making mistakes. Learn from scratch. <br>
+				</p>
+				<div id="main-menu">
+					<p> <a href="{{url_for('posts')}}"> Notes for Life </a> </p>
+					<p> <a href="{{url_for('projects')}}"> Projects </a> </p>
+					<p> <a href="{{url_for('photos')}}"> Photos </a> </p>
+					<p> <a href="{{url_for('about')}}"> About me </a> </p>
+				</div>
 			</div>
 
-			<!-- CONTENT -->
 			<div id="content">
-				<!-- NAVBAR -->
-				<div id="nav"> 
-					<h3> Navbar </h3>
-					<ul>
-						<li> <a class="selected" href="#"> Home </a> </a></li>
-						<li> <a href="#"> Computer Science</a></li>
-						<li> <a href="#"> Daily Life </a></li>
-						<li> <a href="#"> Projects </a></li>
-						<li> <a href="#"> About me </a></li>
-					</ul>
-				</div>	
-
-				<!-- MAIN -->
+				<div id="nav">
+				</div>
+				
 				<div id="main">
-				 	<h2> Home page </h2>
-					<p>  
-						 _______
-						< hello >
-						 -------
-								\   ^__^
-								 \  (oo)\_______
-									(__)\       )\/\
-										||----w |
-										||     ||
-					</p>
-					{% block content%}
+					{%block content %}
 					{% endblock %}
-				</div>	
+				</div>
 			</div>
-			
-			<!-- FOOTER -->
+
 			<div id="footer">
-				Copyright &copy; 2018 tamlt2704@gmail.com
+				<div> Copyright &copy; tamlt2704. 2018 </div>
 			</div>
 		</div>
 	</body>
