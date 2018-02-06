@@ -1,0 +1,71 @@
+<ol>
+<li>
+<p>Install postgresql</p>
+<p><code>apt-get install postgresql postgresql-client</code></p>
+</li>
+<li>
+<p>Start postgresql</p>
+<p><code>/etc/init.d/postgresql start or
+    /usr/sbin/service postgresql start</code></p>
+</li>
+<li>
+<p>Check status</p>
+<p><code>/etc/init.d/postgresql status
+    /usr/sbin/service postgresql status</code></p>
+</li>
+<li>
+<p>Change postgres password</p>
+<p><code>passwd postgres</code></p>
+</li>
+<li>
+<p>Accessing postgresql </p>
+<p><code>su - postgres
+    psql</code></p>
+</li>
+<li>
+<p>Exit psql</p>
+<p><code>\q</code></p>
+</li>
+<li>
+<p>Create new database</p>
+<p>```
+    su - postgres</p>
+<div class="codehilite"><pre><span class="n">createdb</span>
+<span class="n">createdb</span> <span class="n">flaskdb</span>
+
+<span class="n">list</span> <span class="n">all</span> <span class="n">databses</span>
+<span class="n">psql</span>
+<span class="err">\</span><span class="n">l</span>
+</pre></div>
+
+
+<p>```</p>
+</li>
+<li>
+<p>Accessing postgresql and database</p>
+<p><code>su - postgresql
+    psql</code></p>
+<p><code>which database i'm using
+    \connect or \c</code></p>
+<p><code>switch database
+    \c flaskdb</code></p>
+</li>
+<li>
+<p>Create table </p>
+<p><code>CREATE TABLE "user" ( 
+        _id INT Serial,
+        username varchar(40),
+        age INT
+    );</code></p>
+</li>
+<li>
+<p>View table detail</p>
+<p><code>\d+ "user"</code></p>
+</li>
+<li>
+<p>Drop table</p>
+<p><code>DROP TABLE "user";</code></p>
+</li>
+</ol>
+Postgres basic command
+2017-02-05
