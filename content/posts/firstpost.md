@@ -1,12 +1,6 @@
-title: Should it be YYYY-MM-DD or YYYY-DD-MM? My Thoughts
-date: 2013-08-27
+title: Generate static blog with flask, flask_flatpages, markdown
+date: 2017-02-05
 
-American-style dates, I know, I know. Here you can write markdown code, including *italics* and **bold**
+After trying some of blog generator engines like: jekyll, nikola (python) I tried to do everything from minimal dependency. It takes more time to getting things done and more mistakes have been showed up. But I learnt a lot from them.
 
-You can have:
-* Lists
-* More Lists
 
-> And block quotes
-
-    And event highlighted code if you indent :)
