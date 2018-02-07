@@ -92,3 +92,20 @@ date: 2017-02-05
 	``` 
 		DROP TABLE "user";
 	```
+
+12. Where my data is stored
+
+	- Stop sql server
+	/etc/init.d/postgres stop
+	
+	- edit config file
+	vim /etc/postgresql/9.6/main/postgresql.conf
+
+	Chage this value
+	data_directory = '/mnt/data/postgres_datafolder'		# use data in another directory
+
+	- init database folder
+	/usr/lib/postgresql/9.6/bin/initdb -D /mnt/data/postgres_datafolder
+
+	- restart server
+	/etc/init.d/postgres start
