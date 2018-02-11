@@ -66,6 +66,31 @@
 <p>Drop table</p>
 <p><code>DROP TABLE "user";</code></p>
 </li>
+<li>
+<p>Where my data is stored</p>
+<ul>
+<li>
+<p>Stop sql server
+/etc/init.d/postgres stop</p>
+</li>
+<li>
+<p>edit config file
+vim /etc/postgresql/9.6/main/postgresql.conf</p>
+</li>
+</ul>
+<p>Chage this value
+data_directory = '/mnt/data/postgres_datafolder'        # use data in another directory</p>
+<ul>
+<li>
+<p>init database folder
+/usr/lib/postgresql/9.6/bin/initdb -D /mnt/data/postgres_datafolder</p>
+</li>
+<li>
+<p>restart server
+/etc/init.d/postgres start</p>
+</li>
+</ul>
+</li>
 </ol>
 Postgres basic command
 2017-02-05
