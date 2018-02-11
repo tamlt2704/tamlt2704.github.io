@@ -9,7 +9,8 @@ FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
 POST_DIR = 'posts'
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
+
 flatpages = FlatPages(app)
 freezer = Freezer(app)
 app.config.from_object(__name__)
@@ -31,9 +32,7 @@ def posts():
 
 @app.route("/projects/")
 def projects():
-	posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
-	posts.sort(key=lambda x: x['date'], reverse=False)
-	return render_template('posts.html', posts=posts)
+	return render_template('projects.html')
 
 @app.route("/photos/")
 def photos():
@@ -52,6 +51,12 @@ def post(name):
 	path = '{}/{}'.format(POST_DIR, name)
 	post = flatpages.get_or_404(path)
 	return render_template('post.html', post=post)
+
+
+@app.route("/hanoibus")
+def hanoibus():
+	return render_template('hanoibus.html')
+
 
 
 if __name__ == "__main__":

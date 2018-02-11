@@ -1,0 +1,51 @@
+<html>
+
+<head>
+
+  <title>Leaflet</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+
+  <div id="mapid" style="width: 100%; height: 800px;"></div>
+
+    <script>
+        var map = L.map('mapid').setView([1.290270, 103.851959], 12);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+          id: 'mapbox.streets'
+        }).addTo(map);
+
+        var pointList = [
+            new L.LatLng(1.3706069539499999, 103.892668089),
+            new L.LatLng(1.37016500003, 103.89536),
+        ];
+
+        var route2 = [
+            new L.LatLng(1.3706069539499999, 103.892668089),
+            new L.LatLng(1.37016500003, 103.89536),
+            new L.LatLng(1.37239666925, 103.897773625),
+            new L.LatLng(1.37514056376, 103.897248119)
+        ];
+
+        var firstpolyline = new L.Polyline(pointList, {
+            color: 'red',
+            weight: 3,
+            opacity: 0.5,
+            smoothFactor: 3
+        });
+        firstpolyline.addTo(map);
+    </script>
+
+</body>
+
+</html>
