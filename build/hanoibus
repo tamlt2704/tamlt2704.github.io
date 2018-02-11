@@ -1,4 +1,4 @@
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -16,28 +16,57 @@
 
 <body>
 
-  <div id="mapid" style="width: 100%; height: 800px;"></div>
+  <div id="mapid" style="width: 80%; height: 100%;float:left"></div>
+  <div id="main-menu" style="width: 20%; height: 100%; float:left; background-color: #red;">
+    <input id="bus-number"> </input>
+  </div>
 
     <script>
-        var map = L.map('mapid').setView([1.290270, 103.851959], 12);
+        var map = L.map('mapid').setView([21.028511, 105.804817], 12);
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
           id: 'mapbox.streets'
         }).addTo(map);
 
-        var pointList = [
-            new L.LatLng(1.3706069539499999, 103.892668089),
-            new L.LatLng(1.37016500003, 103.89536),
+        var bus_01_r1 = [
+            new L.LatLng(20.949808, 105.74740199999997),
+            new L.LatLng(20.9520666666667, 105.751216666667),
+            new L.LatLng(20.954073, 105.75390100000004),
+            new L.LatLng(20.958085, 105.75917900000002),
+            new L.LatLng(20.96017, 105.761888),
+            new L.LatLng(20.9620333333333, 105.76428333333297),
+            new L.LatLng(20.964783333333333, 105.76778333333334),
+            new L.LatLng(20.96755, 105.771383333333),
+            new L.LatLng(20.969518, 105.77386000000001),
+            new L.LatLng(20.972531, 105.77752499999997),
+            new L.LatLng(20.975483333333333, 105.78154999999992),
+            new L.LatLng(20.979275, 105.78645400000005),
+            new L.LatLng(20.980401, 105.78790000000004),
+            new L.LatLng(20.983446, 105.79166199999997),
+            new L.LatLng(20.985883, 105.794981),
+            new L.LatLng(20.988163, 105.79820700000005),
+            new L.LatLng(20.990466666666666, 105.80138333333332),
+            new L.LatLng(20.993583333333333, 105.80579999999998),
+            new L.LatLng(20.9959333333333, 105.80925000000002),
+            new L.LatLng(20.9999166666667, 105.81523333333303),
+            new L.LatLng(21.0071333333333, 105.82313333333298),
+            new L.LatLng(21.0111, 105.82533333333299),
+            new L.LatLng(21.01581, 105.82827500000008),
+            new L.LatLng(21.019363, 105.83408400000008),
+            new L.LatLng(21.019127, 105.83798200000001),
+            new L.LatLng(21.023285, 105.84142900000006),
+            new L.LatLng(21.025549, 105.84141999999997),
+            new L.LatLng(21.026183, 105.84640200000001),
+            new L.LatLng(21.0266, 105.84761666666702),
+            new L.LatLng(21.0310666666667, 105.84719999999993),
+            new L.LatLng(21.0372, 105.84701666666706),
+            new L.LatLng(21.0411166666667, 105.84961666666698),
+            new L.LatLng(21.042352, 105.87044600000002),
+            new L.LatLng(21.0497, 105.883467),
+            new L.LatLng(21.048159, 105.87849499999993)
         ];
 
-        var route2 = [
-            new L.LatLng(1.3706069539499999, 103.892668089),
-            new L.LatLng(1.37016500003, 103.89536),
-            new L.LatLng(1.37239666925, 103.897773625),
-            new L.LatLng(1.37514056376, 103.897248119)
-        ];
-
-        var firstpolyline = new L.Polyline(pointList, {
+        var firstpolyline = new L.Polyline(bus_01_r1, {
             color: 'red',
             weight: 3,
             opacity: 0.5,
