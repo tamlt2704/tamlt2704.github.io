@@ -34,6 +34,7 @@
           $("button").click(function(){
               $.get("data/01.json", function(data, status){
                   alert("Data: " + data + "\nStatus: " + status);
+                  console.log(data)
               });
           });
       });
