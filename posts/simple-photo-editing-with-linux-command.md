@@ -3,4 +3,4 @@
 
 # resize image
 
-![Origin photo](images/search-icon.png)
+![Origin photo](../images/search-icon.png)
