@@ -16,3 +16,10 @@ Original photo:
 
 Result:
 ![resize photo](../images/search-icon-50x50.png)
+
+**2. Combine photos**
+
+> convert search-icon.png search-icon-50x50.png +append combined-photo.png
+
+use **-append** for **top-to-bottom** combination
+use **+append** for **left-to-right** combination
