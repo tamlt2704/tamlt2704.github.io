@@ -9,9 +9,9 @@ Original photo:
 
 **code** 
 ```shell
-    convert search-icon.png -resize 50x50 search-icon-50x50.png
+    **convert** *search-icon.png* -resize 50x50 *search-icon-50x50.png*
     or
-    convert -resize 50% search-icon.png search-icon-50.png
+    **convert** -resize 50% *search-icon.png* *search-icon-50.png*
 ```
 
 Result:
