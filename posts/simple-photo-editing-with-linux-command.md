@@ -1,13 +1,12 @@
 # simple photo editing with linux commands
 
 
-# resize image
+**1. resize image**
 
 Original photo:
 ![Origin photo](../images/search-icon.png)
 
-
-** Code **
+** code ** 
 ```shell
     convert search-icon.png -resize 21x21 search-icon-21x21.png
 ```
