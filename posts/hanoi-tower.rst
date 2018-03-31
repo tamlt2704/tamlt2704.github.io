@@ -1,7 +1,7 @@
 .. title: hanoi tower
 .. slug: hanoi-tower
 .. date: 2018-03-31 17:24:38 UTC+08:00
-.. tags: 
+.. tags: algorithm
 .. category: 
 .. link: 
 .. description: 
