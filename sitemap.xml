@@ -15,19 +15,19 @@
  </url>
  <url>
   <loc>http://tamlt2704.github.io/archive.html</loc>
-  <lastmod>2018-03-31T09:31:00Z</lastmod>
+  <lastmod>2018-03-31T10:19:00Z</lastmod>
  </url>
  <url>
   <loc>http://tamlt2704.github.io/categories/</loc>
-  <lastmod>2018-03-31T09:58:00Z</lastmod>
+  <lastmod>2018-03-31T10:19:00Z</lastmod>
  </url>
  <url>
   <loc>http://tamlt2704.github.io/categories/algorithm/</loc>
   <lastmod>2018-03-31T09:58:00Z</lastmod>
  </url>
  <url>
-  <loc>http://tamlt2704.github.io/categories/docker/</loc>
-  <lastmod>2018-03-31T06:29:00Z</lastmod>
+  <loc>http://tamlt2704.github.io/categories/cat_python/</loc>
+  <lastmod>2018-03-31T10:19:00Z</lastmod>
  </url>
  <url>
   <loc>http://tamlt2704.github.io/categories/tools/</loc>
@@ -35,11 +35,23 @@
  </url>
  <url>
   <loc>http://tamlt2704.github.io/code/</loc>
-  <lastmod>2018-03-31T09:34:00Z</lastmod>
+  <lastmod>2018-03-31T10:36:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://tamlt2704.github.io/code/functool_wrap_ex1.py.html</loc>
+  <lastmod>2018-03-31T10:36:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://tamlt2704.github.io/code/functool_wrap_ex2.py.html</loc>
+  <lastmod>2018-03-31T10:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://tamlt2704.github.io/code/hanoi_tower.py.html</loc>
   <lastmod>2018-03-31T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://tamlt2704.github.io/code/test.txt.html</loc>
+  <lastmod>2018-03-31T10:19:00Z</lastmod>
  </url>
  <url>
   <loc>http://tamlt2704.github.io/galleries/</loc>
@@ -60,5 +72,9 @@
  <url>
   <loc>http://tamlt2704.github.io/posts/hanoi-tower/</loc>
   <lastmod>2018-03-31T09:31:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://tamlt2704.github.io/posts/python-functiontools/</loc>
+  <lastmod>2018-03-31T10:19:00Z</lastmod>
  </url>
 </urlset>
