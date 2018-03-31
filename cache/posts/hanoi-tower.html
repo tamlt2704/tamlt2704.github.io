@@ -1,0 +1,19 @@
+<blockquote>
+<p><strong>Objective: To move N disks from column one (C1) to colum three (C3).</strong></p>
+<img alt="/galleries/hn_tw_1.PNG" src="/galleries/hn_tw_1.PNG" />
+<p><strong>1. First we have to find a way to move top N-1 disks from C1 to C2 using C3 as a temporary column.</strong></p>
+<img alt="/galleries/hn_tw_2.PNG" src="/galleries/hn_tw_2.PNG" />
+<p><strong>2. Now there are one disk left at C1, move it directly from C1 to C3</strong></p>
+<img alt="/galleries/hn_tw_3.PNG" src="/galleries/hn_tw_3.PNG" />
+<p><strong>3. Next Step is to move N-1 disks from C2 to C3 using C1 as temporary column</strong></p>
+<img alt="/galleries/hn_tw_4.PNG" src="/galleries/hn_tw_4.PNG" />
+</blockquote>
+<p><a class="reference external" href="link://listing/code/hanoi_tower.py">hanoi_tower.py</a>  <a class="reference external" href="link://listing_source/code/hanoi_tower.py">(Source)</a></p>
+<pre class="code python"><a name="rest_code_8974453d1d8c4cec81540c19bcd206da-1"></a><span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="n">nb_disk</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">tmp</span><span class="p">):</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-2"></a>        <span class="k">if</span> <span class="n">nb_disk</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-3"></a>                <span class="n">move</span><span class="p">(</span><span class="n">nb_disk</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-4"></a>                <span class="k">print</span> <span class="s1">&#39;move disk from {} to {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-5"></a>                <span class="n">move</span><span class="p">(</span><span class="n">nb_disk</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">origin</span><span class="p">)</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-6"></a>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-7"></a><span class="n">move</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre>

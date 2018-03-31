@@ -10,7 +10,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="http://tamlt2704.github.io/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/blog-with-nikola/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/hanoi-tower/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -66,7 +66,39 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/blog-with-nikola/" class="u-url">blog with nikola</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/hanoi-tower/" class="u-url">hanoi tower</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                petit vietnam
+            </span></p>
+            <p class="dateline"><a href="posts/hanoi-tower/" rel="bookmark"><time class="published dt-published" datetime="2018-03-31T17:24:38+08:00" title="2018-03-31 17:24">2018-03-31 17:24</time></a></p>
+                <p class="commentline">
+        
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<blockquote>
+<p><strong>Objective: To move N disks from column one (C1) to colum three (C3).</strong></p>
+<img alt="/galleries/hn_tw_1.PNG" src="galleries/hn_tw_1.PNG"><p><strong>1. First we have to find a way to move top N-1 disks from C1 to C2 using C3 as a temporary column.</strong></p>
+<img alt="/galleries/hn_tw_2.PNG" src="galleries/hn_tw_2.PNG"><p><strong>2. Now there are one disk left at C1, move it directly from C1 to C3</strong></p>
+<img alt="/galleries/hn_tw_3.PNG" src="galleries/hn_tw_3.PNG"><p><strong>3. Next Step is to move N-1 disks from C2 to C3 using C1 as temporary column</strong></p>
+<img alt="/galleries/hn_tw_4.PNG" src="galleries/hn_tw_4.PNG">
+</blockquote>
+<p><a class="reference external" href="code/hanoi_tower.py.html">hanoi_tower.py</a>  <a class="reference external" href="code/hanoi_tower.py">(Source)</a></p>
+<pre class="code python"><a name="rest_code_8974453d1d8c4cec81540c19bcd206da-1"></a><span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="n">nb_disk</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">tmp</span><span class="p">):</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-2"></a>        <span class="k">if</span> <span class="n">nb_disk</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-3"></a>                <span class="n">move</span><span class="p">(</span><span class="n">nb_disk</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-4"></a>                <span class="k">print</span> <span class="s1">'move disk from {} to {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">origin</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-5"></a>                <span class="n">move</span><span class="p">(</span><span class="n">nb_disk</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">origin</span><span class="p">)</span>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-6"></a>
+<a name="rest_code_8974453d1d8c4cec81540c19bcd206da-7"></a><span class="n">move</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/blog-with-nikola/" class="u-url">blog with nikola</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 petit vietnam
