@@ -6,6 +6,10 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>http://tamlt2704.github.io/categories/algorithm.xml</loc>
+  <lastmod>2018-03-31T09:58:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>http://tamlt2704.github.io/categories/docker.xml</loc>
   <lastmod>2018-03-31T06:29:00Z</lastmod>
  </sitemap>
@@ -19,10 +23,10 @@
  </sitemap>
  <sitemap>
   <loc>http://tamlt2704.github.io/rss.xml</loc>
-  <lastmod>2018-03-31T09:48:00Z</lastmod>
+  <lastmod>2018-03-31T09:58:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://tamlt2704.github.io/sitemap.xml</loc>
-  <lastmod>2018-03-31T09:48:00Z</lastmod>
+  <lastmod>2018-03-31T09:58:00Z</lastmod>
  </sitemap>
 </sitemapindex>
