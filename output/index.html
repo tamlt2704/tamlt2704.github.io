@@ -5,17 +5,12 @@
 <meta name="description" content="life is learning">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>life is for learning</title>
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/html4css1.css" rel="stylesheet" type="text/css">
-<link href="assets/css/nikola_rst.css" rel="stylesheet" type="text/css">
-<link href="assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="assets/css/colorbox.css" rel="stylesheet" type="text/css">
-<link href="assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="http://tamlt2704.github.io/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/blog-with-nikola/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -40,7 +35,10 @@
         <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
             <ul class="nav navbar-nav">
 <li>
-<a href="archive.html">Archive</a>
+<a href="archive.html">Posts</a>
+                </li>
+<li>
+<a href="pages/about/index.html">About</a>
                 </li>
 <li>
 <a href="categories/">Tags</a>
@@ -68,6 +66,89 @@
 
     
 <div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/blog-with-nikola/" class="u-url">blog with nikola</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                petit vietnam
+            </span></p>
+            <p class="dateline"><a href="posts/blog-with-nikola/" rel="bookmark"><time class="published dt-published" datetime="2018-03-31T14:30:33+08:00" title="2018-03-31 14:30">2018-03-31 14:30</time></a></p>
+                <p class="commentline">
+        
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<ol class="arabic">
+<li>
+<p class="first"><strong>Why nikola</strong></p>
+<blockquote>
+<p>I used to use jekyll for blogging but I always have troubles with installing ruby and their dependencies. Futhermore, modifying the blog in a language that I'm not familiar is not a good idea. Since I already have python in my system, adding nikola is just one line of code. Start with something I know gives me the power to overcome the procastination j.</p>
+</blockquote>
+</li>
+<li>
+<p class="first"><strong>Start blogging with nikola and publish to github</strong></p>
+<blockquote>
+<p><strong>Create a repository on github follow the name convention &lt;username&gt;.github.io</strong></p>
+<p><strong>Clone repository</strong></p>
+<blockquote>
+<pre class="code shell"><a name="rest_code_72a3bd0bf74a48448b5bc6dc0b212ba0-1"></a>git clone http://github.com/&lt;username&gt;/&lt;username&gt;.github.io
+</pre>
+</blockquote>
+<p><strong>Install nikola</strong></p>
+<blockquote>
+<pre class="code shell"><a name="rest_code_654623be500f42c0ad27cc9e9d66c387-1"></a>pip install nikola
+</pre>
+</blockquote>
+<p><strong>Init new blog</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_e7ca9df678534ed6a827e546da5e5e2f-1"></a><span class="n">nikola</span> <span class="n">init</span> <span class="o">.</span>
+</pre>
+</blockquote>
+<p><strong>Create new post</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_6a82596a1eeb4d55b5737c032184ae5a-1"></a><span class="n">nikola</span> <span class="n">new_post</span>
+<a name="rest_code_6a82596a1eeb4d55b5737c032184ae5a-2"></a><span class="o">&lt;</span><span class="n">edit</span> <span class="n">your</span> <span class="n">post</span><span class="o">&gt;</span>
+</pre>
+</blockquote>
+<p><strong>Create new page</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_fba8f511c2f34109972325ed8717a928-1"></a><span class="n">nikola</span> <span class="n">new_page</span>
+</pre>
+</blockquote>
+<p><strong>View your blog</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_1a24d834745b420690347fb3a6789260-1"></a><span class="n">nikola</span> <span class="n">build</span> <span class="o">&amp;&amp;</span> <span class="n">nikola</span> <span class="n">serve</span>
+</pre>
+</blockquote>
+<p><strong>Publish to github</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_df156657561049e298496d3ceb005036-1"></a><span class="n">nikola</span> <span class="n">github_deploy</span>
+</pre>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+<p>Enjoy your blog at <a class="reference external" href="http:/">http:/</a>/&lt;username&gt;.github.io and happy blogging!</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/docker-basic/" class="u-url">docker basic</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                petit vietnam
+            </span></p>
+            <p class="dateline"><a href="posts/docker-basic/" rel="bookmark"><time class="published dt-published" datetime="2018-03-31T14:28:45+08:00" title="2018-03-31 14:28">2018-03-31 14:28</time></a></p>
+                <p class="commentline">
+        
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <p>Write your post here.</p>
+    </div>
+    </article>
 </div>
 
 
@@ -89,7 +170,7 @@
 </div>
 
 
-            <script src="assets/js/jquery.min.js"></script><script src="assets/js/bootstrap.min.js"></script><script src="assets/js/moment-with-locales.min.js"></script><script src="assets/js/fancydates.js"></script><script src="assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->

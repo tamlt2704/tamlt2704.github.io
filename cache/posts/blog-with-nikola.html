@@ -1,0 +1,42 @@
+<ol class="arabic">
+<li><p class="first"><strong>Why nikola</strong></p>
+<blockquote>
+<p>I used to use jekyll for blogging but I always have troubles with installing ruby and their dependencies. Futhermore, modifying the blog in a language that I'm not familiar is not a good idea. Since I already have python in my system, adding nikola is just one line of code. Start with something I know gives me the power to overcome the procastination j.</p>
+</blockquote>
+</li>
+<li><p class="first"><strong>Start blogging with nikola and publish to github</strong></p>
+<blockquote>
+<p><strong>Create a repository on github follow the name convention &lt;username&gt;.github.io</strong></p>
+<p><strong>Clone repository</strong></p>
+<blockquote>
+<pre class="code shell"><a name="rest_code_72a3bd0bf74a48448b5bc6dc0b212ba0-1"></a>git clone http://github.com/&lt;username&gt;/&lt;username&gt;.github.io
+</pre></blockquote>
+<p><strong>Install nikola</strong></p>
+<blockquote>
+<pre class="code shell"><a name="rest_code_654623be500f42c0ad27cc9e9d66c387-1"></a>pip install nikola
+</pre></blockquote>
+<p><strong>Init new blog</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_e7ca9df678534ed6a827e546da5e5e2f-1"></a><span class="n">nikola</span> <span class="n">init</span> <span class="o">.</span>
+</pre></blockquote>
+<p><strong>Create new post</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_6a82596a1eeb4d55b5737c032184ae5a-1"></a><span class="n">nikola</span> <span class="n">new_post</span>
+<a name="rest_code_6a82596a1eeb4d55b5737c032184ae5a-2"></a><span class="o">&lt;</span><span class="n">edit</span> <span class="n">your</span> <span class="n">post</span><span class="o">&gt;</span>
+</pre></blockquote>
+<p><strong>Create new page</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_fba8f511c2f34109972325ed8717a928-1"></a><span class="n">nikola</span> <span class="n">new_page</span>
+</pre></blockquote>
+<p><strong>View your blog</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_1a24d834745b420690347fb3a6789260-1"></a><span class="n">nikola</span> <span class="n">build</span> <span class="o">&amp;&amp;</span> <span class="n">nikola</span> <span class="n">serve</span>
+</pre></blockquote>
+<p><strong>Publish to github</strong></p>
+<blockquote>
+<pre class="code python"><a name="rest_code_df156657561049e298496d3ceb005036-1"></a><span class="n">nikola</span> <span class="n">github_deploy</span>
+</pre></blockquote>
+</blockquote>
+</li>
+</ol>
+<p>Enjoy your blog at <a class="reference external" href="http:/">http:/</a>/&lt;username&gt;.github.io and happy blogging!</p>

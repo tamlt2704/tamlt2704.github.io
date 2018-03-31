@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>life is for learning (Posts about tools)</title><link>http://tamlt2704.github.io/</link><description></description><atom:link href="http://tamlt2704.github.io/categories/tools.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:tamlt2704@gmail.com"&gt;petit vietnam&lt;/a&gt; </copyright><lastBuildDate>Sat, 31 Mar 2018 07:43:50 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>blog with nikola</title><link>http://tamlt2704.github.io/posts/blog-with-nikola/</link><dc:creator>petit vietnam</dc:creator><description>&lt;div&gt;&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;Why nikola&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I used to use jekyll for blogging but I always have troubles with installing ruby and their dependencies. Futhermore, modifying the blog in a language that I'm not familiar is not a good idea. Since I already have python in my system, adding nikola is just one line of code. Start with something I know gives me the power to overcome the procastination j.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;Start blogging with nikola and publish to github&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Create a repository on github follow the name convention &amp;lt;username&amp;gt;.github.io&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Clone repository&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre class="code shell"&gt;&lt;a name="rest_code_72a3bd0bf74a48448b5bc6dc0b212ba0-1"&gt;&lt;/a&gt;git clone http://github.com/&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io
+&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Install nikola&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre class="code shell"&gt;&lt;a name="rest_code_654623be500f42c0ad27cc9e9d66c387-1"&gt;&lt;/a&gt;pip install nikola
+&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Init new blog&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_e7ca9df678534ed6a827e546da5e5e2f-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;nikola&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Create new post&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_6a82596a1eeb4d55b5737c032184ae5a-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;nikola&lt;/span&gt; &lt;span class="n"&gt;new_post&lt;/span&gt;
+&lt;a name="rest_code_6a82596a1eeb4d55b5737c032184ae5a-2"&gt;&lt;/a&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;edit&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Create new page&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_fba8f511c2f34109972325ed8717a928-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;nikola&lt;/span&gt; &lt;span class="n"&gt;new_page&lt;/span&gt;
+&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;View your blog&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_1a24d834745b420690347fb3a6789260-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;nikola&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;nikola&lt;/span&gt; &lt;span class="n"&gt;serve&lt;/span&gt;
+&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Publish to github&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre class="code python"&gt;&lt;a name="rest_code_df156657561049e298496d3ceb005036-1"&gt;&lt;/a&gt;&lt;span class="n"&gt;nikola&lt;/span&gt; &lt;span class="n"&gt;github_deploy&lt;/span&gt;
+&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Enjoy your blog at &lt;a class="reference external" href="http://tamlt2704.github.io/"&gt;http:/&lt;/a&gt;/&amp;lt;username&amp;gt;.github.io and happy blogging!&lt;/p&gt;&lt;/div&gt;</description><category>tools</category><guid>http://tamlt2704.github.io/posts/blog-with-nikola/</guid><pubDate>Sat, 31 Mar 2018 06:30:33 GMT</pubDate></item><item><title>docker basic</title><link>http://tamlt2704.github.io/posts/docker-basic/</link><dc:creator>petit vietnam</dc:creator><description>&lt;p&gt;Write your post here.&lt;/p&gt;</description><category>docker</category><category>tools</category><guid>http://tamlt2704.github.io/posts/docker-basic/</guid><pubDate>Sat, 31 Mar 2018 06:28:45 GMT</pubDate></item></channel></rss>
