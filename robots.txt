@@ -1,0 +1,4 @@
+Sitemap: http://tamlt2704.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: tamlt2704.github.io
