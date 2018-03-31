@@ -1,0 +1,95 @@
+<p>python functiontools provides bunch of usefull tools to work with functions. In this post I will introduce some application of this module to make our life easier.</p>
+<p><strong>1. wrap function</strong></p>
+<p>Example if I want a program to read a file that contains multiple numbers, print True or Fasle if it is a prime number or not</p>
+<p>It can be easily implementation as bellow:</p>
+<p><a class="reference external" href="link://listing/code/functool_wrap_ex1.py">functool_wrap_ex1.py</a>  <a class="reference external" href="link://listing_source/code/functool_wrap_ex1.py">(Source)</a></p>
+<pre class="code python"><a name="rest_code_cc20194a6f41458f926ccc2725230c56-1"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-2"></a>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-3"></a><span class="k">def</span> <span class="nf">is_prime_number</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-4"></a>        <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)]):</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-5"></a>                <span class="k">return</span> <span class="bp">False</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-6"></a>        <span class="k">return</span> <span class="bp">True</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-7"></a>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-8"></a><span class="k">def</span> <span class="nf">find_prime_number</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-9"></a>                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-10"></a>                        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-11"></a>                                <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-12"></a>                                <span class="k">print</span> <span class="n">n</span><span class="p">,</span><span class="n">is_prime_number</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-13"></a>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-14"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-15"></a>        <span class="n">find_prime_number</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-16"></a>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-17"></a><span class="sd">&quot;&quot;&quot;</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-18"></a><span class="sd">INPUT           Output</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-19"></a><span class="sd">        3       3 True</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-20"></a><span class="sd">        10      10 False</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-21"></a><span class="sd">        15      15 False</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-22"></a><span class="sd">        17      17 True</span>
+<a name="rest_code_cc20194a6f41458f926ccc2725230c56-23"></a><span class="sd">&quot;&quot;&quot;</span>
+</pre><p>If the file does not exists, the program will thrown an exception. We can avoid that by adding try catch as bellow</p>
+<pre class="code python"><a name="rest_code_7f51bd2075d84e8cb06d8bfde6a584b6-1"></a><span class="n">find_prime_number</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<a name="rest_code_7f51bd2075d84e8cb06d8bfde6a584b6-2"></a>        <span class="k">try</span><span class="p">:</span>
+<a name="rest_code_7f51bd2075d84e8cb06d8bfde6a584b6-3"></a>                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a name="rest_code_7f51bd2075d84e8cb06d8bfde6a584b6-4"></a>                        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+<a name="rest_code_7f51bd2075d84e8cb06d8bfde6a584b6-5"></a>                                <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<a name="rest_code_7f51bd2075d84e8cb06d8bfde6a584b6-6"></a>                                <span class="k">print</span> <span class="n">n</span><span class="p">,</span><span class="n">is_prime_number</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a name="rest_code_7f51bd2075d84e8cb06d8bfde6a584b6-7"></a>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a name="rest_code_7f51bd2075d84e8cb06d8bfde6a584b6-8"></a>                <span class="k">print</span> <span class="n">e</span>
+<a name="rest_code_7f51bd2075d84e8cb06d8bfde6a584b6-9"></a>                <span class="k">pass</span>
+</pre><ul class="simple">
+<li>The code will print the exception instead of crashing now.</li>
+<li>Imagine if we have to check exception for multiple functions in our code. It will not a good idea to have multiple try / catch. wraps is a nice built-in function to make it less frustruated.</li>
+</ul>
+<p><a class="reference external" href="link://listing/code/functool_wrap_ex2.py">functool_wrap_ex2.py</a>  <a class="reference external" href="link://listing_source/code/functool_wrap_ex2.py">(Source)</a></p>
+<pre class="code python"><a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-1"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-2"></a><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-3"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-4"></a>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-5"></a><span class="k">def</span> <span class="nf">exception_wrapper</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-6"></a>        <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-7"></a>        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-8"></a>                <span class="k">try</span><span class="p">:</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-9"></a>                        <span class="n">f</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-10"></a>                <span class="k">except</span> <span class="n">Exeption</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-11"></a>                        <span class="k">print</span> <span class="n">e</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-12"></a>                        <span class="k">pass</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-13"></a>        <span class="k">return</span> <span class="n">wrapper</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-14"></a>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-15"></a>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-16"></a><span class="k">def</span> <span class="nf">running_time</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-17"></a>        <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-18"></a>        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-19"></a>                <span class="n">t1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-20"></a>                <span class="n">f</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-21"></a>                <span class="k">print</span> <span class="s1">&#39;function&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="vm">__name__</span> <span class="p">,</span> <span class="s1">&#39;ran in &#39;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-22"></a>        <span class="k">return</span> <span class="n">wrapper</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-23"></a>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-24"></a><span class="k">def</span> <span class="nf">is_prime_number</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-25"></a>        <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)]):</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-26"></a>                <span class="k">return</span> <span class="bp">False</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-27"></a>        <span class="k">return</span> <span class="bp">True</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-28"></a>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-29"></a><span class="nd">@running_time</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-30"></a><span class="nd">@exception_wrapper</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-31"></a><span class="k">def</span> <span class="nf">find_prime_number</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-32"></a>        <span class="k">try</span><span class="p">:</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-33"></a>                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-34"></a>                        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-35"></a>                                <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-36"></a>                                <span class="k">print</span> <span class="n">n</span><span class="p">,</span><span class="n">is_prime_number</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-37"></a>        <span class="k">except</span><span class="p">:</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-38"></a>                <span class="k">pass</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-39"></a>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-40"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-41"></a>        <span class="n">find_prime_number</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-42"></a>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-43"></a><span class="sd">&quot;&quot;&quot;</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-44"></a><span class="sd">INPUT           Output</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-45"></a><span class="sd">        3       3 True</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-46"></a><span class="sd">        10      10 False</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-47"></a><span class="sd">        15      15 False</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-48"></a><span class="sd">        17      17 True</span>
+<a name="rest_code_e89905544c7e46d2a910bdd0dc340a41-49"></a><span class="sd">&quot;&quot;&quot;</span>
+</pre><ul class="simple">
+<li>As you can see, we can even monitor the run time of the function without changing it internal code.</li>
+</ul>

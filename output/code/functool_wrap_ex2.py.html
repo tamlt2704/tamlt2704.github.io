@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="functool_wrap_ex2.py">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>functool_wrap_ex2.py | life is for learning</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://tamlt2704.github.io/code/functool_wrap_ex2.py.html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://tamlt2704.github.io/">
+
+                <span id="blog-title">life is for learning</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Posts</a>
+                </li>
+<li>
+<a href="../pages/about/index.html">About</a>
+                </li>
+<li>
+<a href="../categories/">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="functool_wrap_ex2.py" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+<nav class="breadcrumbs"><ul class="breadcrumb">
+<li><a href=".">code</a></li>
+                <li>functool_wrap_ex2.py</li>
+</ul></nav><h1>functool_wrap_ex2.py
+        <small><a href="functool_wrap_ex2.py">(Source)</a></small>
+    </h1>
+    <table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="#codefunctool_wrap_ex2py-1"> 1</a>
+<a href="#codefunctool_wrap_ex2py-2"> 2</a>
+<a href="#codefunctool_wrap_ex2py-3"> 3</a>
+<a href="#codefunctool_wrap_ex2py-4"> 4</a>
+<a href="#codefunctool_wrap_ex2py-5"> 5</a>
+<a href="#codefunctool_wrap_ex2py-6"> 6</a>
+<a href="#codefunctool_wrap_ex2py-7"> 7</a>
+<a href="#codefunctool_wrap_ex2py-8"> 8</a>
+<a href="#codefunctool_wrap_ex2py-9"> 9</a>
+<a href="#codefunctool_wrap_ex2py-10">10</a>
+<a href="#codefunctool_wrap_ex2py-11">11</a>
+<a href="#codefunctool_wrap_ex2py-12">12</a>
+<a href="#codefunctool_wrap_ex2py-13">13</a>
+<a href="#codefunctool_wrap_ex2py-14">14</a>
+<a href="#codefunctool_wrap_ex2py-15">15</a>
+<a href="#codefunctool_wrap_ex2py-16">16</a>
+<a href="#codefunctool_wrap_ex2py-17">17</a>
+<a href="#codefunctool_wrap_ex2py-18">18</a>
+<a href="#codefunctool_wrap_ex2py-19">19</a>
+<a href="#codefunctool_wrap_ex2py-20">20</a>
+<a href="#codefunctool_wrap_ex2py-21">21</a>
+<a href="#codefunctool_wrap_ex2py-22">22</a>
+<a href="#codefunctool_wrap_ex2py-23">23</a>
+<a href="#codefunctool_wrap_ex2py-24">24</a>
+<a href="#codefunctool_wrap_ex2py-25">25</a>
+<a href="#codefunctool_wrap_ex2py-26">26</a>
+<a href="#codefunctool_wrap_ex2py-27">27</a>
+<a href="#codefunctool_wrap_ex2py-28">28</a>
+<a href="#codefunctool_wrap_ex2py-29">29</a>
+<a href="#codefunctool_wrap_ex2py-30">30</a>
+<a href="#codefunctool_wrap_ex2py-31">31</a>
+<a href="#codefunctool_wrap_ex2py-32">32</a>
+<a href="#codefunctool_wrap_ex2py-33">33</a>
+<a href="#codefunctool_wrap_ex2py-34">34</a>
+<a href="#codefunctool_wrap_ex2py-35">35</a>
+<a href="#codefunctool_wrap_ex2py-36">36</a>
+<a href="#codefunctool_wrap_ex2py-37">37</a>
+<a href="#codefunctool_wrap_ex2py-38">38</a>
+<a href="#codefunctool_wrap_ex2py-39">39</a>
+<a href="#codefunctool_wrap_ex2py-40">40</a>
+<a href="#codefunctool_wrap_ex2py-41">41</a>
+<a href="#codefunctool_wrap_ex2py-42">42</a>
+<a href="#codefunctool_wrap_ex2py-43">43</a>
+<a href="#codefunctool_wrap_ex2py-44">44</a>
+<a href="#codefunctool_wrap_ex2py-45">45</a>
+<a href="#codefunctool_wrap_ex2py-46">46</a>
+<a href="#codefunctool_wrap_ex2py-47">47</a>
+<a href="#codefunctool_wrap_ex2py-48">48</a>
+<a href="#codefunctool_wrap_ex2py-49">49</a></pre></div></td>
+<td class="code"><pre class="code literal-block"><a name="codefunctool_wrap_ex2py-1"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a name="codefunctool_wrap_ex2py-2"></a><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<a name="codefunctool_wrap_ex2py-3"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<a name="codefunctool_wrap_ex2py-4"></a>
+<a name="codefunctool_wrap_ex2py-5"></a><span class="k">def</span> <span class="nf">exception_wrapper</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<a name="codefunctool_wrap_ex2py-6"></a>	<span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<a name="codefunctool_wrap_ex2py-7"></a>	<span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a name="codefunctool_wrap_ex2py-8"></a>		<span class="k">try</span><span class="p">:</span>
+<a name="codefunctool_wrap_ex2py-9"></a>			<span class="n">f</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<a name="codefunctool_wrap_ex2py-10"></a>		<span class="k">except</span> <span class="n">Exeption</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a name="codefunctool_wrap_ex2py-11"></a>			<span class="k">print</span> <span class="n">e</span>
+<a name="codefunctool_wrap_ex2py-12"></a>			<span class="k">pass</span>
+<a name="codefunctool_wrap_ex2py-13"></a>	<span class="k">return</span> <span class="n">wrapper</span> 
+<a name="codefunctool_wrap_ex2py-14"></a>
+<a name="codefunctool_wrap_ex2py-15"></a>
+<a name="codefunctool_wrap_ex2py-16"></a><span class="k">def</span> <span class="nf">running_time</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<a name="codefunctool_wrap_ex2py-17"></a>	<span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<a name="codefunctool_wrap_ex2py-18"></a>	<span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a name="codefunctool_wrap_ex2py-19"></a>		<span class="n">t1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<a name="codefunctool_wrap_ex2py-20"></a>		<span class="n">f</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<a name="codefunctool_wrap_ex2py-21"></a>		<span class="k">print</span> <span class="s1">'function'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="vm">__name__</span> <span class="p">,</span> <span class="s1">'ran in '</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">t1</span>
+<a name="codefunctool_wrap_ex2py-22"></a>	<span class="k">return</span> <span class="n">wrapper</span> 
+<a name="codefunctool_wrap_ex2py-23"></a>
+<a name="codefunctool_wrap_ex2py-24"></a><span class="k">def</span> <span class="nf">is_prime_number</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<a name="codefunctool_wrap_ex2py-25"></a>	<span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)]):</span>
+<a name="codefunctool_wrap_ex2py-26"></a>		<span class="k">return</span> <span class="bp">False</span>
+<a name="codefunctool_wrap_ex2py-27"></a>	<span class="k">return</span> <span class="bp">True</span> 
+<a name="codefunctool_wrap_ex2py-28"></a>
+<a name="codefunctool_wrap_ex2py-29"></a><span class="nd">@running_time</span>
+<a name="codefunctool_wrap_ex2py-30"></a><span class="nd">@exception_wrapper</span>
+<a name="codefunctool_wrap_ex2py-31"></a><span class="k">def</span> <span class="nf">find_prime_number</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<a name="codefunctool_wrap_ex2py-32"></a>	<span class="k">try</span><span class="p">:</span>
+<a name="codefunctool_wrap_ex2py-33"></a>		<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a name="codefunctool_wrap_ex2py-34"></a>			<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+<a name="codefunctool_wrap_ex2py-35"></a>				<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<a name="codefunctool_wrap_ex2py-36"></a>				<span class="k">print</span> <span class="n">n</span><span class="p">,</span><span class="n">is_prime_number</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a name="codefunctool_wrap_ex2py-37"></a>	<span class="k">except</span><span class="p">:</span> 
+<a name="codefunctool_wrap_ex2py-38"></a>		<span class="k">pass</span>
+<a name="codefunctool_wrap_ex2py-39"></a>
+<a name="codefunctool_wrap_ex2py-40"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a name="codefunctool_wrap_ex2py-41"></a>	<span class="n">find_prime_number</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a name="codefunctool_wrap_ex2py-42"></a>
+<a name="codefunctool_wrap_ex2py-43"></a><span class="sd">"""</span>
+<a name="codefunctool_wrap_ex2py-44"></a><span class="sd">INPUT		Output	</span>
+<a name="codefunctool_wrap_ex2py-45"></a><span class="sd">	3 	3 True</span>
+<a name="codefunctool_wrap_ex2py-46"></a><span class="sd">	10 	10 False</span>
+<a name="codefunctool_wrap_ex2py-47"></a><span class="sd">	15	15 False</span>
+<a name="codefunctool_wrap_ex2py-48"></a><span class="sd">	17	17 True</span>
+<a name="codefunctool_wrap_ex2py-49"></a><span class="sd">"""</span> 
+</pre></td>
+</tr></table>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2018         <a href="mailto:tamlt2704@gmail.com">petit vietnam</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
