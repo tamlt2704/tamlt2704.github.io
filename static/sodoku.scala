@@ -1,3 +1,5 @@
+import collection.mutable.Map
+
 def cross(A: String, B:String): Array[String] = {
   (for (a <- A; b <- B) yield s"$a$b").toArray
 }
@@ -32,14 +34,11 @@ def test() = {
   assert(peers("C2") == peers_C2)
 }
 
-val grid1  = "003020600900305001001806400008102900700000008006708200002609500800203009005010300"
-val grid2  = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......"
-val hard1  = ".....6....59.....82....8....45........3........6..3.54...325..6.................."
 
 def parse_grid(grid: String): collection.mutable.Map[String, String] = {
   val values = collection.mutable.Map(squares.map(s => s -> digits): _*)
   for ((s, d) <- grid_values(grid)) {
-    if ((digits contains d) && (assign(values, s, d) != null)) {
+    if ((digits contains d) && (assign(values, s, d) == null)) {
       return null
     }
   }
@@ -80,7 +79,6 @@ def eliminate(values: collection.mutable.Map[String, String], s: String, d: Stri
 
   for (u <- units(s)) {
     val dplaces = u.filter(s => values(s).contains(d))
-    println(dplaces)
     if (dplaces.length == 0) {
       return null
     } else if (dplaces.length == 1) {
@@ -97,13 +95,40 @@ def display(values: collection.mutable.Map[String, String]):Unit = {
   val line = "\n" + Range(0, 3).map(_ => ("-" * (width * 3))).mkString("+")
   for (r <- rows) {
     for (c <- cols) {
-      print(values(r.toString + c) + " " + (if ("36" contains c) "|" else ""))
+      val cellValue = values(s"$r$c")
+      print(s"%${width-1}s".format(cellValue) + " " + (if ("36" contains c) "|" else ""))
     }
     if ("CF" contains r) println(line) else println("")
   }
   println("")
 }
-//grid_values(grid2)
-println(grid1)
-display(parse_grid(grid1))
-//test()
+
+def solve(grid:String): Map[String, String] = {
+  println(s"input: $grid")
+  return search(parse_grid(grid))
+}
+
+def search(values: Map[String, String]): Map[String, String] = {
+  if (values == null) {
+    return null
+  }
+  if(squares.map(s => values(s).size).forall(_==1)) {
+    return values
+  }
+  val (s, n) = squares.map(s => s -> values(s).length).toMap.filter(_._2 > 1).minBy(_._2)
+  for (d <- values(s)) {
+    val copy_values = Map() ++ values
+    val result = search(assign(copy_values, s, d.toString))
+    if (result != null) {
+      return result
+    }
+  }
+  return null
+}
+
+test()
+
+val grid1  = "003020600900305001001806400008102900700000008006708200002609500800203009005010300"
+val grid2  = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......"
+val hard1  = ".....6....59.....82....8....45........3........6..3.54...325..6.................."
+display(solve(hard1))
