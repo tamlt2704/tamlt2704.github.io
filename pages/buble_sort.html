@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <script src="d3.v3.min.js"></script>
+        <script src="angular.min.js"></script>
+    </head>
+    <body ng-app="myApp" ng-controller="myCtrl">
+        <div id="graph"> </div>
+        <table>
+            <tr>
+                <td>
+                    <div style="white-space: pre">
+                    function buble_sort(arr) { --> # arr = {{ globalState[step][3] }}
+                        var i, j;
+                        for (i = 0; i < arr.length - 1; i++) {     -----------> # i = {{globalState[step][0]}}
+                            for (j = i + 1; j < arr.length; j++) { -----------> # j = {{globalState[step][1]}}
+                                if (arr[i] > arr[j]) {                      -----------> # {{ globalState[step][2] ? 'true' : 'false'}}
+                                <span style="background-color: {{ globalState[step][2] ? 'steelblue':'white'}}"> swap(arr, i, j); </span>
+                                }
+                            }
+                        }
+                    }
+                    </div>
+                </td>
+                <td>
+                    <table border="1"> 
+                        <tr>
+                            <th> step </th>
+                            <th> current i </th>
+                            <th> current j </th>
+                            <th> a[i] > a[j] </th>
+                            <th> current array </th>
+                        </tr>
+                        <tr ng-repeat="data in globalState | orderBy:'-'">
+                            <td> {{data[4]}} </td>
+                            <td> {{data[0]}} </td>
+                            <td> {{data[1]}} </td>
+                            <td> {{data[2] ? 'true' : 'false'}} </td>
+                            <td> {{data[3]}} </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.globalState = [];
+            $scope.step = 0;
+
+            var arr_data = Array.from({length: 7}, () => Math.floor(Math.random() * 10));
+            //var arr_data = [0, 5, 7, 9, 3, 4, 8, 7, 5, 4];
+            var solTraceBack = [];
+            
+            function buble_sort(arr) {
+                var i, j;
+                var step = 0;
+                for (i = 0; i < arr.length - 1; i++) {
+                    for (j = i + 1; j < arr.length; j++) {
+                        if (arr[i] > arr[j]) {
+                            solTraceBack.push([i, j, 1, arr.slice(), step]);
+                            swap(arr, i, j);
+                        } else {
+                            solTraceBack.push([i, j, 0, arr.slice(), step]);
+                        }
+                        step += 1;
+                    }
+                }
+                console.log(arr);
+            }
+
+            function swap(arr, i, j) {
+                var t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
+
+        
+            var box_width = 100;
+            var box_height = 100;
+
+            var g = d3.select('#graph').append('svg').attr({width: 2000, height: 300}).append('g');
+            function translator(d, i) {
+                var x = i * (box_width + 10);
+                var y = 50;
+                return "translate (" + x + "," + y + ")";
+            }
+            var boxes = g.selectAll('g')
+                .data(arr_data)
+                .enter()
+                .append('g')
+                .attr('transform', translator)
+                .attr('id', function(d, i) {
+                    return "box"+i;
+                });
+            boxes.append('rect')
+                .attr('id', function(d, i) {
+                    return "rect"+i;
+                })
+                .attr({
+                    width: box_width,
+                    height: box_height,
+                    fill: 'steelblue'
+                });
+            boxes.append('text')
+                .text(function(d, i) { return d })
+                .attr({
+                    fill: 'white',
+                    x: box_width / 2 - 8,
+                    y: box_height / 2 + 8
+                })
+                .style('font', '30px sans-serif');
+            
+            buble_sort(arr_data.slice());
+            var state  = 0;
+            function render(state) {
+                var data = solTraceBack[state];
+                var i = data[0];
+                var j = data[1];
+                var isSwap = data[2];
+                var box_x = d3.select('#box'+i);
+                var box_y = d3.select('#box'+j);
+                
+
+                $scope.$apply(function(){
+                    $scope.globalState.push(data);
+                    $scope.step = state;
+                });
+
+                console.log(i, j, isSwap, $scope.globalState['current_i']);
+                
+                box_x.transition()
+                    .duration(500)
+                    .attr('stroke', 'red')
+                    .transition()
+                    .duration(500)
+                    .attr("transform", "translate(" + (isSwap ? j : i ) * (box_width + 10)  + "," + 50 + ")")
+                    .attr('id', 'box'+ (isSwap ? j : i))
+                    .attr('stroke', isSwap || (i != current_position) ? 'white' : 'red');
+
+                box_y.transition()
+                    .duration(500)
+                    .attr('stroke', 'red')
+                    .transition()
+                    .duration(500)
+                    .attr("transform", "translate(" + (isSwap ? i : j ) * (box_width + 10)  + "," + 50 + ")")
+                    .attr('id', 'box'+ (isSwap ? i : j))
+                    .attr('stroke', isSwap || (j != current_position) ? 'white' : 'red');
+
+                current_position = (i > current_position) ? i : current_position;
+            }
+            var interval = 1500;
+            var current_position = 0;
+            var callback = function() {
+                return function() {
+                    var rects = d3.selectAll('g');
+                    rects.attr('stroke', 'white');
+                    if (state < solTraceBack.length) {
+                        render(state);
+                        d3.timer(callback(), interval);
+                    }
+                    state ++;
+                    return true;
+                }
+            }
+            d3.timer(callback(), interval);
+        });
+    </script>
+    </body>
+</html>
