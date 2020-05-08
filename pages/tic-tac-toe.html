@@ -34,7 +34,7 @@
                 return null;
             }
 
-            maxF(state) {
+            maxF(state, alpha, beta) {
                 var maxv = -2;
                 var bestPosition = null;
                 var winner = this.getWinner(state);
@@ -50,19 +50,26 @@
                 for (let i = 0; i < 9; i++) {
                     if (!state[i]) {
                         state[i] = 'O';
-                        var [m, p] = this.minF(state);
+                        var [m, p] = this.minF(state, alpha, beta);
                         if (m > maxv) {
                             maxv = m;
                             bestPosition = i;
                         }
                         state[i] = null;
+
+                        if (maxv >= beta) {
+                            return [maxv, i];
+                        }
+                        if (maxv > alpha) {
+                            alpha = maxv;
+                        }
                     }
                 }
 
                 return [maxv, bestPosition];
             }
 
-            minF(state) {
+            minF(state, alpha, beta) {
                 var minv = 2;
                 var bestPosition = null;
                 var winner = this.getWinner(state);
@@ -78,12 +85,19 @@
                 for (let i = 0; i < 9; i++) {
                     if (!state[i]) {
                         state[i] = 'X';
-                        var [m, p] = this.maxF(state);
+                        var [m, p] = this.maxF(state, alpha, beta);
                         if (m < minv) {
                             minv = m;
                             bestPosition = i;
                         }
                         state[i] = null;
+
+                        if (alpha >= minv) {
+                            return [minv, i];
+                        }
+                        if (minv < beta) {
+                            beta = minv;
+                        }
                     }
                 }
 
@@ -107,7 +121,7 @@
                 if (!this.state.xIsNext) {
                     console.log('computer thinking');
                     const state = this.state.currentGameState.slice();
-                    const nextPosition = this.getNextPosition(state);
+                    const nextPosition = this.getNextPosition(state, -2, 2);
                     state[nextPosition] = 'O';
                     this.setState({
                         currentGameState: state,
@@ -135,7 +149,10 @@
                 const state = this.state.currentGameState.slice();
                 const winner = this.state.computer.getWinner(state);
                 const status = winner ? `winner is ${winner}` : 
+                ( state.every(x => x) ? 
+                    'It\'s a tie' :
                     `Next player is : ${this.state.xIsNext ? 'X' : 'O'}`
+                );
                 return (
                     <div>
                         <h1> {status} </h1>
