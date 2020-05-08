@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> tic tac toe minimax </title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script type='text/babel'>
+        class Computer {
+            getWinner(state) {
+                const lines = [
+                    [0, 1, 2],
+                    [3, 4, 5],
+                    [6, 7, 8],
+                    [0, 3, 6],
+                    [1, 4, 7],
+                    [2, 5, 8],
+                    [0, 4, 8],
+                    [2, 4, 6],
+                ];
+
+                for (var line of lines) {
+                    var [a, b, c] = line;
+                    if (state[a] && 
+                        state[a] === state[b] &&
+                        state[a] === state[c]) {
+                            return state[a];
+                        }
+                }
+                return null;
+            }
+
+            maxF(state) {
+                var maxv = -2;
+                var bestPosition = null;
+                var winner = this.getWinner(state);
+
+                if (winner === 'X') {
+                    return [-1, bestPosition];
+                } else if (winner === 'O') {
+                    return [1, bestPosition];
+                } else if (state.every(x => x)) {
+                    return [0, bestPosition];
+                }
+
+                for (let i = 0; i < 9; i++) {
+                    if (!state[i]) {
+                        state[i] = 'O';
+                        var [m, p] = this.minF(state);
+                        if (m > maxv) {
+                            maxv = m;
+                            bestPosition = i;
+                        }
+                        state[i] = null;
+                    }
+                }
+
+                return [maxv, bestPosition];
+            }
+
+            minF(state) {
+                var minv = 2;
+                var bestPosition = null;
+                var winner = this.getWinner(state);
+
+                if (winner === 'X') {
+                    return [-1, bestPosition];
+                } else if (winner === 'O') {
+                    return [1, bestPosition];
+                } else if (state.every(x => x)) {
+                    return [0, bestPosition];
+                }
+
+                for (let i = 0; i < 9; i++) {
+                    if (!state[i]) {
+                        state[i] = 'X';
+                        var [m, p] = this.maxF(state);
+                        if (m < minv) {
+                            minv = m;
+                            bestPosition = i;
+                        }
+                        state[i] = null;
+                    }
+                }
+
+                return [minv, bestPosition];
+            }
+        }
+    
+        class Game extends React.Component {
+            state = {
+                currentGameState: Array(9).fill(null),
+                xIsNext: true,
+                computer: new Computer(),
+            }
+
+            getNextPosition(state) {
+                var [v, nextPosition] = this.state.computer.maxF(state);
+                return nextPosition;
+            }
+
+            componentDidUpdate(prevProps) {
+                if (!this.state.xIsNext) {
+                    console.log('computer thinking');
+                    const state = this.state.currentGameState.slice();
+                    const nextPosition = this.getNextPosition(state);
+                    state[nextPosition] = 'O';
+                    this.setState({
+                        currentGameState: state,
+                        xIsNext: true,
+                        });
+                }
+            }
+
+            handleClick = (i) => {
+                const state = this.state.currentGameState.slice();
+                const winner = this.state.computer.getWinner(state);
+
+                if (!winner && this.state.xIsNext) {
+                   if (!state[i]) {
+                     state[i] = 'X';
+                     this.setState({
+                        currentGameState: state,
+                        xIsNext: false
+                     });
+                   }
+                }
+            }
+
+            render() {
+                const state = this.state.currentGameState.slice();
+                const winner = this.state.computer.getWinner(state);
+                const status = winner ? `winner is ${winner}` : 
+                    `Next player is : ${this.state.xIsNext ? 'X' : 'O'}`
+                return (
+                    <div>
+                        <h1> {status} </h1>
+                        <GameBoard 
+                            currentGameState={this.state.currentGameState}
+                            onCellClick={this.handleClick}
+                            />
+                    </div>
+                );
+            }
+        }
+
+        class GameBoard extends React.Component {
+            renderCell = (i) => {
+                return (
+                    <Cell 
+                        key={i}
+                        value={this.props.currentGameState[i]}
+                        onCellClick={() => this.props.onCellClick(i)}
+                    />
+                );
+            }
+
+            rowStyle = {
+                clear: 'both'
+            }
+
+            render() {
+                return(
+                   <div>
+                        <div style={this.rowStyle}>
+                            {this.renderCell(0)}
+                            {this.renderCell(1)}
+                            {this.renderCell(2)}
+                        </div>
+                        <div style={this.rowStyle}>
+                            {this.renderCell(3)}
+                            {this.renderCell(4)}
+                            {this.renderCell(5)}
+                        </div>
+                        <div style={this.rowStyle}>
+                            {this.renderCell(6)}
+                            {this.renderCell(7)}
+                            {this.renderCell(8)}
+                        </div>
+                   </div>
+                );
+            }
+        }
+
+        class Cell extends React.Component {
+
+            cellStyle = {
+                float: 'left',
+                width: 50,
+                height: 50,
+                border: '3px solid #f4f4f4',
+                margin: 2,
+                fontWeight: 'bold',
+                fontSize: 40,
+                textAlign: 'center',
+                padding: 10,
+                fontFamily: 'sans-serif',
+            }
+
+            render() {
+                return (
+                    <div
+                        onClick={this.props.onCellClick}
+                        style={this.cellStyle}>
+                        {this.props.value}
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Game />,
+            document.getElementById('container')
+        );
+    </script>
+</body>
+</html>
