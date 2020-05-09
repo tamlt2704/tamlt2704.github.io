@@ -79,14 +79,14 @@ class Sodoku {
      */
     eliminate(values, s, d) {
         if (!values[s].includes(d)) {
-            return false;            // already eliminated
+            return values;            // already eliminated
         }
         values[s] = values[s].replace(d, '');
 
         // (1) if squares s is reduced to one value d2, then eliminate d2 from
         // the peers
         if (values[s].length == 0) {
-            return false;
+            return false;   // contradiction: removed last value
         } else if (values[s].length == 1) {
             var d2 = values[s];
             this.peers[s].forEach(s2 => {
@@ -111,6 +111,31 @@ class Sodoku {
         });
     }
     
+    solve(grid) {
+        return this.search(this.parse_grid(grid));
+    }
+
+    search(values) {
+        this.display_grid(values);
+        if (!values) {
+            return false; // failed earlier
+        } 
+        if (this.squares.every(s => values[s].length == 1)) {
+            return values; // solved
+        }
+
+        // choose the unfilled square s with the fewest possibilities
+        var [s, n] = this.squares.map(s => [s, values[s].length])
+                            .sort((x, y) => x[1] - y[1])[0];
+
+        values[s].split('').forEach(d => {
+            var solution = this.search(this.assign(Object.assign({}, values), s, d));
+            if (solution) {
+                return solution;
+            }
+        })
+        return false;
+    }
     /*
      * Convert grid to a dict of {square: char} with '0' or '.' for empties
      * ex: grid:
@@ -135,9 +160,25 @@ class Sodoku {
         console.assert(chars.length == 81);
         return Object.fromEntries(this.squares.map((s, i) =>  [s, chars[i]]));
     }
+    
+    alignCenter(x, width) {
+        var startPadding = ' '.repeat((width - x.length)/2);
+        return startPadding + x + ' '.repeat(width - startPadding.length - x.length);
 
+    }
     display_grid(values) {
-        console.log(values);
+        var width = 1 + Math.max(...this.squares.map(s => values[s].length));
+        var line = Array(3).fill('-'.repeat(width*3)).join('+');
+        const rows = 'ABCDEFGHI'.split('');
+        const cols = '123456789'.split('');
+        for(let r of rows) {
+            //console.log(cols.map(c => (' '.repeat((width - values[r+c].length) / 2) + values[r+c] + ' '.repeat((width - values[r+c].length) / 2) + ('36'.includes(c)?'|':''))).join(''));
+            console.log(cols.map(c => (this.alignCenter(values[r+c], width) + ('36'.includes(c)?'|':''))).join(''));
+            if ('CF'.includes(r)) {
+                console.log(line);
+            }
+
+        }
     }
 }
 
@@ -148,7 +189,9 @@ var grid = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.
 var grid1 = '003020600900305001001806400008102900700000008006708200002609500800203009005010300'
 var grid2 = '4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......'
 
-s.display_grid(s.parse_grid(grid2.split('')));
+//s.display_grid(s.solve(grid.split('')));
+//s.display_grid(s.solve(grid2.split('')));
+s.display_grid(s.parse_grid(grid1.split('')));
 
 module.exports = {
     s: new Sodoku(),
