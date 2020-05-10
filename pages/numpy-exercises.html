@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="60">
+
+    <title> Numpy Exercise </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="./d3.v5.min.js"></script>
+
+    <style>
+        .blinking {
+             animation:blinkingText 1.2s infinite;
+        }
+        @keyframes blinkingText{
+            0%{     color: #000;    }
+            49%{    color: #000; }
+            60%{    color: transparent; }
+            99%{    color:transparent;  }
+            100%{   color: #000;    }
+        }
+
+        .menu-list {
+            list-style-type: none;
+            text-align: 'left';
+        }
+    </style>
+
+</head>
+<body>
+    <div id="root"></div>
+    <script type='text/babel'>
+        console.clear();
+        const exercise_data = [
+            ['Import the numpy package under the name np', 1],
+            ['Print the numpy version and the configuration', 2],
+        ];
+        const exercise_1 = function(node) {
+            const solution = 'import numpy as';
+            const textId = 'ex1-solution-text';
+            const fontSize = '2em';
+
+            var text = d3.select(node)
+                .append('text')
+                .attr('id', textId)
+                .text('')
+                .attr('x', 20)
+                .attr('y', 20)
+                .attr('font-size', fontSize)
+                .transition()
+                .duration(500)
+                .tween('text', function() {
+                    return function(t) {
+                        var percentage = Math.floor(t * 100);
+                        var nbChars = (percentage * solution.length) / 100;
+                        var displayText = solution.slice(0, nbChars);
+                        d3.select(this).text(displayText);
+
+                        if (percentage == 100) {
+                            var bbox = d3.select(this).node().getBBox();
+                            const textPadding = bbox.width / solution.length;
+                            d3.select(node)
+                              .append('text')
+                              .attr('x', bbox.x + bbox.width + textPadding)
+                              .attr('y', 20)
+                              .attr('fill', 'blue')
+                              .attr('font-weight', 'bold')
+                              .attr('font-size', fontSize)
+                              .text('np');
+                        }
+                    };
+                });
+        }
+
+        class Graph extends React.Component {
+            state = {
+                width: 500,
+                height: 500,
+            }
+
+            componentDidMount() {
+                exercise_1(this.node);
+            }
+
+            render() {
+                return(
+                    <div className='col-9'>
+                        <svg
+                            ref={node => this.node = node}
+                            width={this.state.width}
+                            height={this.state.height}
+                        >
+                        </svg>
+                    </div>
+                );
+            }
+        }
+
+        class Menu extends React.Component {
+            generateMenu(d, i) {
+                return (
+                    <li className='menu-list'
+                        onClick={() => this.props.onGraphChange(i)}
+                        key={i}
+                    >
+                        {i}. {d[0]}. ({d[1]})
+                    </li>
+                );
+            }
+
+            render() {
+                const menuContent = this.props.data.map((d, i) => this.generateMenu(d, i));
+
+                return(
+                    <div className='col-3'>
+                        <ul className='pull-left'>
+                            {menuContent}                
+                        </ul>
+                    </div>
+                );
+            }
+        }
+
+        class App extends React.Component {
+            onGraphChange = (i) => {
+                console.log(`menu ${i} clicked`);
+            }
+
+            render() {
+                return(
+                    <div className='container'>
+                        <div className='row'>
+                            <Menu 
+                                data={exercise_data}
+                                onGraphChange={this.onGraphChange}
+                            />
+                            <Graph />
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+
+        console.log('am done done');
+    </script>
+</body>
+</html>

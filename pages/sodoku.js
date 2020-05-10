@@ -1,3 +1,4 @@
+var counter= 0;
 class Sodoku {
     constructor() {
         const digits = '123456789'.split('');
@@ -5,6 +6,7 @@ class Sodoku {
         const cols = digits;
         const rss = ['ABC', 'DEF', 'GHI'].map(x => x.split(''));
         const css = ['123', '456', '789'].map(x => x.split(''));
+        this.parsingDone = false;
         this.squares = this.cross(rows, cols)
         this.unitlist = [
             ...cols.map(c => this.cross(rows, [c])),
@@ -57,6 +59,7 @@ class Sodoku {
                 return false;
             }
         }
+        this.parsingDone = true;
         return values;
     }
     
@@ -82,7 +85,6 @@ class Sodoku {
             return values;            // already eliminated
         }
         values[s] = values[s].replace(d, '');
-
         // (1) if squares s is reduced to one value d2, then eliminate d2 from
         // the peers
         if (values[s].length == 0) {
@@ -114,9 +116,11 @@ class Sodoku {
     solve(grid) {
         return this.search(this.parse_grid(grid));
     }
-
+    
     search(values) {
+        console.log(`search function ${counter}`);
         this.display_grid(values);
+
         if (!values) {
             return false; // failed earlier
         } 
@@ -125,15 +129,19 @@ class Sodoku {
         }
 
         // choose the unfilled square s with the fewest possibilities
-        var [s, n] = this.squares.map(s => [s, values[s].length])
+        var [s, n] = this.squares
+                            .filter(s => values[s].length > 1)
+                            .map(s => [s, values[s].length])
                             .sort((x, y) => x[1] - y[1])[0];
 
         values[s].split('').forEach(d => {
-            var solution = this.search(this.assign(Object.assign({}, values), s, d));
+            //var solution = this.search(this.assign(Object.assign({}, values), s, d));
+            var solution = this.search(this.assign({...values}, s, d));
             if (solution) {
                 return solution;
             }
         })
+        counter++;
         return false;
     }
     /*
@@ -172,7 +180,6 @@ class Sodoku {
         const rows = 'ABCDEFGHI'.split('');
         const cols = '123456789'.split('');
         for(let r of rows) {
-            //console.log(cols.map(c => (' '.repeat((width - values[r+c].length) / 2) + values[r+c] + ' '.repeat((width - values[r+c].length) / 2) + ('36'.includes(c)?'|':''))).join(''));
             console.log(cols.map(c => (this.alignCenter(values[r+c], width) + ('36'.includes(c)?'|':''))).join(''));
             if ('CF'.includes(r)) {
                 console.log(line);
@@ -185,13 +192,14 @@ class Sodoku {
 
 var s = new Sodoku();
 s.test();
-var grid = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......";
+var grid = "400000805030000000000700000020000060000080400000010000000603070500200000104000000";
 var grid1 = '003020600900305001001806400008102900700000008006708200002609500800203009005010300'
-var grid2 = '4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......'
-
-//s.display_grid(s.solve(grid.split('')));
+var grid2 = '400000805030000000000700000020000060000080400000010000000603070500200000104000000'
+var grid3 = '..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..'
+var grid4 = '48.3............71.2.......7.5....6....2..8.............1.76...3.....4......5....';
+s.solve(grid4.split(''));
 //s.display_grid(s.solve(grid2.split('')));
-s.display_grid(s.parse_grid(grid1.split('')));
+//s.display_grid(s.parse_grid(grid1.split('')));
 
 module.exports = {
     s: new Sodoku(),
