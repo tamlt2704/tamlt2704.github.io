@@ -27,6 +27,16 @@
             font-family: sans-serif;
         }
 
+        .cell-selected {
+            background-color: #3399ff;
+            opacity: 0.6;
+        }
+
+        .cell-peer-selected {
+            background-color: #3399ff;
+            opacity: 0.3;
+        }
+
         .cell-right-border {
             border-right: 2px solid;
         }
@@ -34,6 +44,12 @@
         .cell-bottom-border {
             border-bottom: 2px solid;
         }
+
+        .center {
+            margin: 0 auto;
+            width: 80%;
+        }
+        
     </style>
 </head>
 <body>
@@ -323,6 +339,10 @@
         }
         
         class Cell extends React.Component {
+            handleCellClick = () => {
+                this.props.onCellClick(this.props.id);
+            }
+
             render() {
                 let className = 'cell';
                 let [r, c] = this.props.id.split('');
@@ -331,12 +351,22 @@
                     className += ' cell-right-border';
                 }
 
+                if (this.props.isCellSelected) {
+                    className += ' cell-selected';
+                }
+                if (this.props.isPeerSelected) {
+                    className += ' cell-peer-selected';
+                }
+                
+
                 if ('CF'.includes(r)) {
                     className += ' cell-bottom-border';
                 }
-
+                
                 return (
-                    <div className={className}>
+                    <div 
+                    onClick={this.handleCellClick}
+                    className={className}>
                         {
                             '123456789'.includes(this.props.value) ?
                                 this.props.value :
@@ -351,7 +381,22 @@
         class Game extends React.Component {
             state = {
                 grid: puzzles[0],
-                values: {}
+                values: {},
+                selectedCellId: null,
+            }
+            
+            handleCellClick = (cellId) => {
+                console.log(`clicked ${cellId}`);
+                this.setState({
+                    selectedCellId: cellId,
+                });
+            }
+            
+            getPeerSelectedStatus = (cellId) => {
+                if (this.state.selectedCellId) {
+                    return solver.peers[this.state.selectedCellId].includes(cellId);  
+                } 
+                return false;
             }
 
             renderCells = (values) => {
@@ -367,6 +412,9 @@
                              key={r+c}
                              value={values[r+c]} 
                              id={r+c}
+                             isCellSelected={this.state.selectedCellId == (r+c)}
+                             isPeerSelected={this.getPeerSelectedStatus(r+c)}
+                             onCellClick={this.handleCellClick}
                             />
                         )}
                     </div>
@@ -394,9 +442,29 @@
                 });
             }
 
+            handleControlButtonClick = (v) => {
+                if (this.state.selectedCellId) {
+                   const values = this.state.values;
+                   values[this.state.selectedCellId] = v;
+                   this.setState({
+                        values: values
+                   });
+                }
+            }
+
+            renderButton = (i) => {
+                return (
+                    <CircularProgressButton
+                        key={i}
+                        value={i}
+                        onControlButtonClicked={this.handleControlButtonClick}
+                    />
+                );
+            }
+
             render() {
                 return (
-                    <div>
+                    <div className="container center">
                         <div 
                             className='btn btn-outline-info'
                             onClick={this.getNewPuzzle}
@@ -406,10 +474,77 @@
                             onClick={this.solvePuzzle}
                             > Solve </div>
                         {this.renderCells(this.state.values)}   
+                        <div className='row'>
+                           {this.renderButton(1)}
+                           {this.renderButton(2)}
+                           {this.renderButton(3)}
+                           {this.renderButton(4)}
+                           {this.renderButton(5)}
+                           {this.renderButton(6)}
+                           {this.renderButton(7)}
+                           {this.renderButton(8)}
+                           {this.renderButton(9)}
+                        </div>
                     </div>
                 )
             }
         }
+
+        class CircularProgressButton extends React.Component {
+            handleControlButtonClicked = () => {
+                this.props.onControlButtonClicked(this.props.value);
+            }
+
+            render() {
+                const circleBorder = {
+                    width: 40,
+                    height: 40,
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    fontSize: 25,
+                    borderRadius: 50,
+                    border: '2px solid blue',
+                    margin: 5,
+                    float: 'left',
+                }
+                return (
+                    <div 
+                        onClick={this.handleControlButtonClicked}
+                        style={circleBorder}>
+                        {this.props.value}
+                    </div>
+                )
+            }
+        }
+        class NumberController extends React.Component {
+            renderButton = (i) => {
+                return (
+                    <CircularProgressButton
+                        key={i}
+                        value={i}
+                    />
+                );
+            }
+
+            render() {
+                return (
+                    <div>
+                        <div className='row'>
+                           {this.renderButton(1)}
+                           {this.renderButton(2)}
+                           {this.renderButton(3)}
+                           {this.renderButton(4)}
+                           {this.renderButton(5)}
+                           {this.renderButton(6)}
+                           {this.renderButton(7)}
+                           {this.renderButton(8)}
+                           {this.renderButton(9)}
+                        </div>
+                    </div>
+                );
+            }
+        }
+
         ReactDOM.render(
             <Game />,
             document.getElementById('container')
