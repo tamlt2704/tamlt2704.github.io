@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./faker.js"> </script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id='root'> </div>
+    <script type='text/babel'>
+
+        var faker_types = {
+            'address': [
+                'zipCode', 'city', 'cityPrefix', 'citySuffix'
+            ],
+            'name': [
+                'firstName', 'lastName'
+            ],
+        }
+
+        class DataField extends React.Component {
+            state = {
+                locale: 'en',
+                field_name: 'id',
+                field_type: 'name',
+                sub_type: ['firstName']
+            }
+            
+            handleTypeChange = (event) => {
+                const selectedType = event.target.value;
+                if (event.target.id === 'field_type_opt') {
+                    this.setState({
+                        field_type:  selectedType,
+                        sub_type: faker_types[selectedType][0]
+                    });
+                } else if (event.target.id === 'sub_type_opt') {
+                    this.setState({
+                        sub_type:  selectedType,
+                    });
+                }
+            }
+
+            render() {
+                const exampleText = faker[this.state.field_type][this.state.sub_type]();
+                return (
+                    <div>
+                       <input value={this.state.field_name}/>
+                       <select 
+                         id={'field_type_opt'}
+                         onChange={this.handleTypeChange}
+                        >
+                           {
+                            Object.keys(faker_types).map(t => (
+                                <option 
+                                    value={t} 
+                                    key={t}
+                                >{t}</option>
+                            ))
+                           } 
+                       </select>
+
+                       <select 
+                            id={'sub_type_opt'}
+                            onChange={this.handleTypeChange}
+                            >
+                            {faker_types[this.state.field_type].map(t=> (
+                                <option 
+                                    value={t} 
+                                    key={t}
+                                >{t}</option>
+                            ))}
+                        </select>
+                        Example: {exampleText}
+                    </div>
+                );
+            }
+        }
+
+        class App extends React.Component {
+            state = {
+                dataFields: [],
+            }
+
+            render() {
+                return (
+                    <div> 
+                        <DataField id={1} />
+                        <div 
+                        className='btn'> Add New Field </div>
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
+
+
