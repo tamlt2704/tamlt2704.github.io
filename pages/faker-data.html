@@ -22,32 +22,36 @@
         }
 
         class DataField extends React.Component {
-            state = {
-                locale: 'en',
-                field_name: 'id',
-                field_type: 'name',
-                sub_type: ['firstName']
-            }
-            
             handleTypeChange = (event) => {
                 const selectedType = event.target.value;
                 if (event.target.id === 'field_type_opt') {
-                    this.setState({
-                        field_type:  selectedType,
-                        sub_type: faker_types[selectedType][0]
-                    });
+                    const obj = {...this.props, ...{
+                        'field_type':  selectedType,
+                        'sub_type': faker_types[selectedType][0],
+                        sampleText: faker[selectedType][faker_types[selectedType][0]]()
+                    }};
+                    this.props.onDataFieldChange(obj);
                 } else if (event.target.id === 'sub_type_opt') {
-                    this.setState({
-                        sub_type:  selectedType,
-                    });
+                    const obj = {...this.props, ...{
+                        'sub_type':  selectedType,
+                         sampleText: faker[this.props.field_type][selectedType]()
+                    }};
+                    this.props.onDataFieldChange(obj);
+                } else if (event.target.id === 'field_name_input') {
+                    const obj = {...this.props, ...{
+                        'field_name':  event.target.value
+                        }};
+                    this.props.onDataFieldChange(obj);
                 }
             }
-
+            
             render() {
-                const exampleText = faker[this.state.field_type][this.state.sub_type]();
                 return (
                     <div>
-                       <input value={this.state.field_name}/>
+                       <input id={'field_name_input'}
+                            value={this.props.field_name}
+                            onChange={this.handleTypeChange}
+                            />
                        <select 
                          id={'field_type_opt'}
                          onChange={this.handleTypeChange}
@@ -66,14 +70,14 @@
                             id={'sub_type_opt'}
                             onChange={this.handleTypeChange}
                             >
-                            {faker_types[this.state.field_type].map(t=> (
+                            {faker_types[this.props.field_type].map(t=> (
                                 <option 
                                     value={t} 
                                     key={t}
                                 >{t}</option>
                             ))}
                         </select>
-                        Example: {exampleText}
+                        Example: {this.props.sampleText}
                     </div>
                 );
             }
@@ -81,14 +85,52 @@
 
         class App extends React.Component {
             state = {
-                dataFields: [],
+                dataFields: [
+                {
+                    id:0,
+                    key:0,
+                    locale: 'en',
+                    field_name: 'id',
+                    field_type: 'name',
+                    sub_type: 'firstName',
+                    sampleText: faker['name']['firstName'](),
+                }
+                ],
+            }
+            
+            handleDataFieldChange = (obj) => {
+                const newState = this.state.dataFields.map(x => {
+                    return x.id === obj.id ? obj : x;
+                });
+                this.setState({dataFields: newState});
+            }
+
+            addFieldName = () => {
+                const id = this.state.dataFields.length;
+                const sample = {
+                    id: this.state.dataFields.length,
+                    key: this.state.dataFields.length,
+                    locale: 'en',
+                    field_name: `id_${id}`,
+                    field_type: 'name',
+                    sub_type: 'firstName',
+                    sampleText: faker['name']['firstName']()
+                };
+
+                this.setState({
+                    dataFields: this.state.dataFields.concat(sample)
+                });
             }
 
             render() {
+                const dataFields = this.state.dataFields.map(d => ( < DataField {...d}
+                onDataFieldChange = {this.handleDataFieldChange} />)); 
+                    
                 return (
                     <div> 
-                        <DataField id={1} />
+                        {dataFields}
                         <div 
+                        onClick={this.addFieldName}
                         className='btn'> Add New Field </div>
                     </div>
                 );
