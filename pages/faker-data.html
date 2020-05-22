@@ -20,122 +20,141 @@
                 'firstName', 'lastName'
             ],
         }
+        
+        class DataField extends React.Component { 
+            handleDataFieldInputChange = (evt) => {
+                /*
+                console.log(evt.target.name);
+                console.log(evt.target.value);
+                console.log(this.props.id);
+                */
 
-        class DataField extends React.Component {
-            handleTypeChange = (event) => {
-                const selectedType = event.target.value;
-                if (event.target.id === 'field_type_opt') {
-                    const obj = {...this.props, ...{
-                        'field_type':  selectedType,
-                        'sub_type': faker_types[selectedType][0],
-                        sampleText: faker[selectedType][faker_types[selectedType][0]]()
-                    }};
-                    this.props.onDataFieldChange(obj);
-                } else if (event.target.id === 'sub_type_opt') {
-                    const obj = {...this.props, ...{
-                        'sub_type':  selectedType,
-                         sampleText: faker[this.props.field_type][selectedType]()
-                    }};
-                    this.props.onDataFieldChange(obj);
-                } else if (event.target.id === 'field_name_input') {
-                    const obj = {...this.props, ...{
-                        'field_name':  event.target.value
-                        }};
-                    this.props.onDataFieldChange(obj);
-                }
+                this.props.onDataFieldChanged(this.props.id, evt);
             }
-            
+
             render() {
+                const typeOptions = faker_types[this.props.category].map((opt, i) => (
+                    <option value={opt} key={i}> {opt} </option>
+                ));
+
+                const categoryOptions = Object.keys(faker_types).map((opt, i) => (
+                    <option value={opt} key={i}> {opt} </option>
+                ));
+
+
                 return (
                     <div>
-                       <input id={'field_name_input'}
-                            value={this.props.field_name}
-                            onChange={this.handleTypeChange}
-                            />
-                       <select 
-                         id={'field_type_opt'}
-                         onChange={this.handleTypeChange}
-                        >
-                           {
-                            Object.keys(faker_types).map(t => (
-                                <option 
-                                    value={t} 
-                                    key={t}
-                                >{t}</option>
-                            ))
-                           } 
-                       </select>
+                        <span 
+                            //style={{'margin-left': '20px'}}
+                            id={this.props.id}
+                            onClick={this.props.onDataFieldDeleteClicked}> x </span>
 
-                       <select 
-                            id={'sub_type_opt'}
-                            onChange={this.handleTypeChange}
-                            >
-                            {faker_types[this.props.field_type].map(t=> (
-                                <option 
-                                    value={t} 
-                                    key={t}
-                                >{t}</option>
-                            ))}
+                        <input value={this.props.name} name='name'
+                            onChange={this.handleDataFieldInputChange}/>
+
+                        <select value={this.props.category}
+                            name='category'
+                            onChange={this.handleDataFieldInputChange}
+                        >
+                            {categoryOptions}
                         </select>
-                        Example: {this.props.sampleText}
+
+                        <select value={this.props.type}
+                            name='type'
+                            onChange={this.handleDataFieldInputChange}
+                        >
+                            {typeOptions}
+                        </select>
+                        {this.props.sample_text}
+                        
                     </div>
-                );
+                )
             }
         }
 
         class App extends React.Component {
             state = {
-                dataFields: [
-                {
-                    id:0,
-                    key:0,
-                    locale: 'en',
-                    field_name: 'id',
-                    field_type: 'name',
-                    sub_type: 'firstName',
-                    sampleText: faker['name']['firstName'](),
-                }
-                ],
+                dataFields: [],
             }
-            
-            handleDataFieldChange = (obj) => {
-                const newState = this.state.dataFields.map(x => {
-                    return x.id === obj.id ? obj : x;
+           
+            onDataFieldChanged  = (id, evt) => {
+                const dataFields = this.state.dataFields.map(d => {
+                    if (d.id === id) {
+                        if (evt.target.name === 'category') {
+                            var obj = Object.assign({...d}, {
+                                'category': evt.target.value,
+                                'type': faker_types[evt.target.value][0],
+                            });
+                            obj['sample_text'] = faker[obj.category][obj.type]();
+                            return obj;
+                        } else if (evt.target.name === 'type') {
+                            var obj = Object.assign({...d}, {
+                                'type': evt.target.value
+                            });
+                            obj['sample_text'] = faker[obj.category][obj.type]();
+                            return obj;
+                        } else {
+                            return Object.assign({...d}, {
+                                [evt.target.name]: evt.target.value
+                            });
+                        }
+                    } else {
+                        return d;
+                    }
                 });
-                this.setState({dataFields: newState});
-            }
-
-            addFieldName = () => {
-                const id = this.state.dataFields.length;
-                const sample = {
-                    id: this.state.dataFields.length,
-                    key: this.state.dataFields.length,
-                    locale: 'en',
-                    field_name: `id_${id}`,
-                    field_type: 'name',
-                    sub_type: 'firstName',
-                    sampleText: faker['name']['firstName']()
-                };
 
                 this.setState({
-                    dataFields: this.state.dataFields.concat(sample)
+                    dataFields: dataFields
                 });
+            }
+            
+            onDataFieldDeleteClicked = (evt) => {
+                const deletedId = evt.target.id; 
+                this.setState({
+                    dataFields: this.state.dataFields.filter(d => d.id != deletedId)
+                });
+            }
+
+            createDataFieldModel = () => ({
+                'id': this.state.dataFields.length,
+                'key': this.state.dataFields.length,
+                'name': `id_${this.state.dataFields.length}`,
+                'category': 'name',
+                'type': 'firstName',
+                'sample_text': faker['name']['firstName'](),
+                onDataFieldChanged: this.onDataFieldChanged,
+                onDataFieldDeleteClicked: this.onDataFieldDeleteClicked
+
+            })
+
+            componentDidMount() {
+                this.setState({
+                    dataFields: this.state.dataFields.concat(this.createDataFieldModel())
+                })
+            }
+            
+            addNewFieldHandle = () => {
+                this.setState({
+                    dataFields: this.state.dataFields.concat(this.createDataFieldModel())
+                })
             }
 
             render() {
-                const dataFields = this.state.dataFields.map(d => ( < DataField {...d}
-                onDataFieldChange = {this.handleDataFieldChange} />)); 
-                    
-                return (
-                    <div> 
-                        {dataFields}
-                        <div 
-                        onClick={this.addFieldName}
-                        className='btn'> Add New Field </div>
+                const dataFieldElements = this.state.dataFields.map(d => (
+                        <DataField {...d} />
+                    ));
+
+                return(
+                    <div>
+                        Generate dummy data for test
+                        {dataFieldElements}
+
+                        <button onClick={this.addNewFieldHandle}> Add </button>
                     </div>
                 );
             }
         }
+
         ReactDOM.render(
             <App />,
             document.getElementById('root')
