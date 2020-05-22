@@ -7,28 +7,120 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+                    border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
     <div id='root'> </div>
     <script type='text/babel'>
 
         var faker_types = {
-            'address': [
-                'zipCode', 'city', 'cityPrefix', 'citySuffix'
-            ],
-            'name': [
-                'firstName', 'lastName'
-            ],
-        }
+            'address': ['zipCode', 'city', 'cityPrefix', 'citySuffix', 'streetName', 'streetAddress', 'streetSuffix', 'streetPrefix', 'secondaryAddress', 'county', 'country', 'countryCode', 'state', 'stateAbbr', 'latitude', 'longitude'],
+            'commerce': [ 'color', 'department', 'productName', 'price', 'productAdjective', 'productMaterial', 'product'], 
+            'company': ['suffixes', 'companyName',  'companySuffix', 'catchPhrase', 'bs', 'catchPhraseAdjective', 'catchPhraseDescriptor', 'catchPhraseNoun', 'bsAdjective', 'bsBuzz', 'bsNoun'],
+            'database': [ 'column', 'type', 'collation', 'engine'],
+            'date': [ 'past', 'future', 'between', 'recent', 'month', 'weekday'],
+            'finance': [ 'account', 'accountName', 'mask', 'amount', 'transactionType', 'currencyCode', 'currencyName', 'currencySymbol', 'bitcoinAddress', 'iban', 'bic'],
+            'hacker': [ 'abbreviation', 'adjective', 'noun', 'verb', 'ingverb', 'phrase'],
+            'helpers': [ 'randomize', 'slugify', 'replaceSymbolWithNumber', 'replaceSymbols', 'shuffle', 'mustache', 'createCard', 'contextualCard', 'userCard', 'createTransaction'],
+            'image': [ 'image', 'avatar', 'imageUrl', 'abstract', 'animals', 'business', 'cats', 'city', 'food', 'nightlife', 'fashion', 'people', 'nature', 'sports', 'technics', 'transport', 'dataUri'],
+            'internet': [ 'avatar', 'email', 'exampleEmail', 'userName', 'protocol', 'url', 'domainName', 'domainSuffix', 'domainWord', 'ip', 'ipv6', 'userAgent', 'color', 'mac', 'password'],
+            'lorem': [ 'word', 'words', 'sentence', 'slug', 'sentences', 'paragraph', 'paragraphs', 'text', 'lines'],
+            'name': [ 'firstName', 'lastName', 'findName', 'jobTitle', 'prefix', 'suffix', 'title', 'jobDescriptor', 'jobArea', 'jobType'],
+            'phone': [ 'phoneNumber', 'phoneNumberFormat', 'phoneFormats'],
+            'random': [ 'number', 'arrayElement', 'objectElement', 'uuid', 'boolean', 'word', 'words', 'image', 'locale', 'alphaNumeric'],
+            'system': [ 'fileName', 'commonFileName', 'mimeType', 'commonFileType', 'commonFileExt', 'fileType', 'fileExt', 'directoryPath', 'filePath', 'semver']
+        };
         
+        class TableData extends React.Component {
+           state = {
+            dataFormat: "table",
+            nb_sample: 10,
+           }
+
+           handleDataFormatChange = (evt) => {
+            this.setState({
+                dataFormat: evt.target.value
+            })
+           }
+           
+           generateTableData = () => {
+                const table_header = this.props.dataFields.map(x => (<th>{x.name}</th>));
+                const table_rows = Array.from({length: 10}, () => (
+                <tr>
+                        {this.props.dataFields.map(d => (
+                            <td>
+                                {faker[d.category][d.type]()}
+                            </td>
+                        ))}
+                </tr>
+                ));
+                return( 
+                    <table> 
+                        <thead>
+                            {table_header}
+                        </thead>
+                        {table_rows}
+                    </table>
+                );
+           }
+            
+           generateJsonData = () => {
+            const arr = [];
+            for (let i = 0; i < this.state.nb_sample; i ++) {
+                var obj = {};
+                this.props.dataFields.forEach(d => {
+                    obj[d.name] = faker[d.category][d.type]()
+                })
+                arr.push(obj);
+            }
+            return JSON.stringify(arr);
+           }
+
+		  generateCsvData = () => {
+          	const csv_header = this.props.dataFields.map(x => x.name).join(',');
+			var data = csv_header;
+            for (let i = 0; i < this.state.nb_sample; i ++) {
+                var row = this.props.dataFields.map(d => faker[d.category][d.type]()).join(',');
+				data += '\n' + row;	
+            }
+			return  (<pre> {data} </pre>);
+		  }
+
+           generateData = () => {
+                var data = (<span> Not supportted yet! </span>);
+                switch(this.state.dataFormat) {
+                    case 'table': data = this.generateTableData(); break;
+                    case 'json': data = this.generateJsonData();  break;
+                    case 'csv': data = this.generateCsvData();  break;
+                    default: 
+                }
+                return data;
+           }
+
+           render() {
+            return(
+                <div>
+                    <select value={this.state.dataFormat} 
+                            onChange={this.handleDataFormatChange}>
+                            <option value="table">table</option>
+                            <option value="csv">csv</option>
+                            <option value="json">json</option>
+                            <option value="xml">xml</option>
+                    </select>
+                    {this.generateData()}
+                </div>
+            );
+           }
+        }
+
         class DataField extends React.Component { 
             handleDataFieldInputChange = (evt) => {
-                /*
-                console.log(evt.target.name);
-                console.log(evt.target.value);
-                console.log(this.props.id);
-                */
-
                 this.props.onDataFieldChanged(this.props.id, evt);
             }
 
@@ -150,6 +242,10 @@
                         {dataFieldElements}
 
                         <button onClick={this.addNewFieldHandle}> Add </button>
+
+                        <TableData
+                            dataFields={this.state.dataFields}
+                        />
                     </div>
                 );
             }
