@@ -7,12 +7,14 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
         table, th, td {
             border: 1px solid black;
                     border-collapse: collapse;
         }
+
+
     </style>
 </head>
 <body>
@@ -27,7 +29,7 @@
             'date': [ 'past', 'future', 'between', 'recent', 'month', 'weekday'],
             'finance': [ 'account', 'accountName', 'mask', 'amount', 'transactionType', 'currencyCode', 'currencyName', 'currencySymbol', 'bitcoinAddress', 'iban', 'bic'],
             'hacker': [ 'abbreviation', 'adjective', 'noun', 'verb', 'ingverb', 'phrase'],
-            'helpers': [ 'randomize', 'slugify', 'replaceSymbolWithNumber', 'replaceSymbols', 'shuffle', 'mustache', 'createCard', 'contextualCard', 'userCard', 'createTransaction'],
+            //'helpers': [ 'randomize', 'slugify', 'replaceSymbolWithNumber', 'replaceSymbols', 'shuffle', 'mustache', 'createCard', 'contextualCard', 'userCard', 'createTransaction'],
             'image': [ 'image', 'avatar', 'imageUrl', 'abstract', 'animals', 'business', 'cats', 'city', 'food', 'nightlife', 'fashion', 'people', 'nature', 'sports', 'technics', 'transport', 'dataUri'],
             'internet': [ 'avatar', 'email', 'exampleEmail', 'userName', 'protocol', 'url', 'domainName', 'domainSuffix', 'domainWord', 'ip', 'ipv6', 'userAgent', 'color', 'mac', 'password'],
             'lorem': [ 'word', 'words', 'sentence', 'slug', 'sentences', 'paragraph', 'paragraphs', 'text', 'lines'],
@@ -51,7 +53,7 @@
            
            generateTableData = () => {
                 const table_header = this.props.dataFields.map(x => (<th>{x.name}</th>));
-                const table_rows = Array.from({length: 10}, () => (
+                const table_rows = Array.from({length: this.state.nb_sample}, () => (
                 <tr>
                         {this.props.dataFields.map(d => (
                             <td>
@@ -79,7 +81,7 @@
                 })
                 arr.push(obj);
             }
-            return JSON.stringify(arr);
+            return <pre> {JSON.stringify(arr, null, 2)} </pre>
            }
 
 		  generateCsvData = () => {
@@ -102,17 +104,44 @@
                 }
                 return data;
            }
+            
+           handleNumberSampleChange = (evt) => {
+                this.setState({
+                    nb_sample: (evt.target.value < 100 ? evt.target.value : 100)
+                })
+           }
 
            render() {
             return(
                 <div>
-                    <select value={this.state.dataFormat} 
-                            onChange={this.handleDataFormatChange}>
-                            <option value="table">table</option>
-                            <option value="csv">csv</option>
-                            <option value="json">json</option>
-                            <option value="xml">xml</option>
-                    </select>
+                    <div className="form-inline">
+                        <div className="form-group">
+                            <label>
+                                Output format
+                            </label>
+                            <select
+                                    className="form-control-sm"
+                                    value={this.state.dataFormat} 
+                                    onChange={this.handleDataFormatChange}>
+                                    <option value="table">table</option>
+                                    <option value="csv">csv</option>
+                                    <option value="json">json</option>
+                                    <option value="tab">tab</option>
+                                    <option value="xml">xml</option>
+                                    <option value="sqlite">sqlite</option>
+                                    <option value="mysql">MySQL</option>
+                                    <option value="postgresql">PostgreSQL</option>
+                            </select>
+                        </div>
+                        <div className="form-group">
+                            <label> Number of rows </label>
+                            <input 
+                                type="number"
+                                onChange={this.handleNumberSampleChange}
+                                value={this.state.nb_sample} />
+                        </div>
+                    </div>
+                    <hr />
                     {this.generateData()}
                 </div>
             );
@@ -135,30 +164,43 @@
 
 
                 return (
-                    <div>
-                        <span 
-                            //style={{'margin-left': '20px'}}
-                            id={this.props.id}
-                            onClick={this.props.onDataFieldDeleteClicked}> x </span>
+                    <div className="row">
+                        <div className="form-group">
+                            <input 
+                                className="form-control"
+                                value={this.props.name} 
+                                name='name'
+                                onChange={this.handleDataFieldInputChange}/>
+                        </div>
 
-                        <input value={this.props.name} name='name'
-                            onChange={this.handleDataFieldInputChange}/>
+                        <div className="form-group">
+                            <select 
+                                className="form-control"
+                                value={this.props.category}
+                                name='category'
+                                onChange={this.handleDataFieldInputChange}
+                            >
+                                {categoryOptions}
+                            </select>
+                        </div>
 
-                        <select value={this.props.category}
-                            name='category'
-                            onChange={this.handleDataFieldInputChange}
-                        >
-                            {categoryOptions}
-                        </select>
+                        <div className="form-group">
+                            <select 
+                                className="form-control"
+                                value={this.props.type}
+                                name='type'
+                                onChange={this.handleDataFieldInputChange}
+                            >
+                                {typeOptions}
+                            </select>
+                        </div>
 
-                        <select value={this.props.type}
-                            name='type'
-                            onChange={this.handleDataFieldInputChange}
-                        >
-                            {typeOptions}
-                        </select>
-                        {this.props.sample_text}
-                        
+                        <div className="form-group">
+                            <div
+                                className="btn btn-danger"
+                                id={this.props.id}
+                                onClick={this.props.onDataFieldDeleteClicked}> x </div>
+                        </div>
                     </div>
                 )
             }
@@ -210,7 +252,7 @@
             createDataFieldModel = () => ({
                 'id': this.state.dataFields.length,
                 'key': this.state.dataFields.length,
-                'name': `id_${this.state.dataFields.length}`,
+                'name': `field_${this.state.dataFields.length}`,
                 'category': 'name',
                 'type': 'firstName',
                 'sample_text': faker['name']['firstName'](),
@@ -237,11 +279,19 @@
                     ));
 
                 return(
-                    <div>
-                        Generate dummy data for test
+                    <div className="container">
+                        <div className="jumbotron">
+                            <h1> Dummy data generator </h1>
+                            <p className="lead"> 
+                                An UI wrapper for <a href="https://www.npmjs.com/package/faker"> faker </a>. No server required.
+                            </p>
+                        </div>
                         {dataFieldElements}
 
-                        <button onClick={this.addNewFieldHandle}> Add </button>
+                        <button className="btn btn-primary"
+                            onClick={this.addNewFieldHandle}> New Field</button>
+                        
+                        <hr />
 
                         <TableData
                             dataFields={this.state.dataFields}
@@ -256,6 +306,9 @@
             document.getElementById('root')
         );
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
 
