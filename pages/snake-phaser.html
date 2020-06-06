@@ -72,6 +72,7 @@
         
         var snake;
         var cursors;
+        var food;
 
         var UP = 0,
             DOWN = 1,
@@ -84,11 +85,24 @@
             }
             
             preload() {
-                this.load.image('game_bg', 'assets/snakephaser/snake_bg_800_600.jpg')
                 this.load.image('body', 'assets/snakephaser/snake_16_16.jpg')
+                //conver -size 16x16 xc:red food.jpg
+                this.load.image('food', 'assets/snakephaser/food.jpg')
             }
 
             create() {
+                var Food = new Phaser.Class({
+                    Extends: Phaser.GameObjects.Image,
+                    initialize: function Food(scene, x, y) {
+                        Phaser.GameObjects.Image.call(this, scene)
+
+                        this.setTexture('food')
+                        this.setPosition(x*16, y*16)
+                        this.setOrigin(0)
+                        this.total = 0
+                        scene.children.add(this)
+                    }
+                })
                 var Snake = new Phaser.Class({
                     initialize: function Snake(scene, x, y) {
                         this.headPosition = new Phaser.Geom.Point(x, y)
@@ -157,7 +171,7 @@
                 })
 
                 snake = new Snake(this, 8, 8)
-
+                food = new Food(this, 3, 4)
                 cursors = this.input.keyboard.createCursorKeys()
             }
 
@@ -185,6 +199,7 @@
             type: Phaser.AUTO,
             width: gameWidth,
             height: gameHeight,
+            //backgroundColor: '#bfcc00',
             physics: {
                 default: 'arcade',
                 arcade: {
