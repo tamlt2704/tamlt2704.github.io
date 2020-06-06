@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>snake game phaser</title>
-    <script src="./phaser.min.js"> </script>
+    <script src="phaser.min.js"> </script>
 </head>
 <body>
     <div id="root"> </div>
     <script>
-
+        const gameWidth = 640;
+        const gameHeight = 480;
 
         class Menu extends Phaser.Scene {
             constructor() {
@@ -19,8 +20,8 @@
             }
 
             create() {
-                this.text = this.add.text(0, 0, "Hello phaser",
-                    {font: "40px Impact"});
+                this.text = this.add.text(gameWidth / 2 - 150, gameHeight / 2 , "Phaser.io",
+                    {font: "60px Impact"});
 
                 this.input.keyboard.on('keyup', (e) => {
                     console.log(e.key)
@@ -28,49 +29,172 @@
                         this.scene.start("Game")
                     }
                 })
+
+                this.graphics = this.add.graphics()
+                this.graphics.setDefaultStyles({
+                        lineStyle: {
+                                    width: 1,
+                                    color: 0xffffff,
+                                    alpha: 1
+                                },
+                        fillStyle: {
+                                    color: 0xffffff,
+                                    alpha: 1
+                                }
+                });
+
+                this.stars = [];
+                for (let i = 0; i < 100; i ++) {
+                    this.stars.push({
+                        x: Math.random() * gameWidth,
+                        y: Math.random() * gameHeight,
+                        radius: Math.random() * 10,
+                        alpha: Math.random()
+                    })
+                }
             }
 
             update(delta) {
+                this.graphics.clear()
+                for (let star of this.stars) {
+                    star.radius += 0.001;
+                    if (star.radius >= 5) {
+                        star.radius = Math.random() * 10
+                        star.x = Math.random() * gameWidth
+                        star.y = Math.random() * gameHeight
+                        star.alpha =  Math.random()
+                    }
+                    this.graphics.fillStyle(0xffffff, star.alpha * 0.5)
+                    this.graphics.fillCircle(star.x, star.y, star.radius)
+                }
             }
         }
+        
+        var snake;
+        var cursors;
+
+        var UP = 0,
+            DOWN = 1,
+            LEFT = 2,
+            RIGHT = 3;
 
         class Game extends Phaser.Scene {
             constructor() {
                 super({key: 'Game'})
             }
-
+            
             preload() {
-                console.log('game preload')
+                this.load.image('game_bg', 'assets/snakephaser/snake_bg_800_600.jpg')
+                this.load.image('body', 'assets/snakephaser/snake_16_16.jpg')
             }
 
             create() {
-                var graphics = this.add.graphics(100, 100)
+                var Snake = new Phaser.Class({
+                    initialize: function Snake(scene, x, y) {
+                        this.headPosition = new Phaser.Geom.Point(x, y)
+                        this.body = scene.add.group()
+                        this.head = this.body.create(x*16, y * 16, 'body')
+                        this.head.setOrigin(0)
+                        this.alive = true
+                        this.speed = 100
+                        this.moveTime = 0
+                        this.heading = RIGHT
+                        this.direction = RIGHT
+                    },
+                    update: function(time) {
+                        console.log(`snake update ${time}`)
+                    },
+                    update: function(time) {
+                        if (time >= this.moveTime) {
+                            return this.move(time)
+                        }
+                    },
+                    faceLeft: function() {
+                        if (this.direction === UP || this.direction === DOWN) {
+                            this.heading = LEFT
+                        }
+                    },
+                    faceRight: function() {
+                        if (this.direction === UP || this.direction === DOWN) {
+                            this.heading = RIGHT 
+                        }
+                    },
+                    faceUp: function() {
+                        if (this.direction === LEFT || this.direction === RIGHT) {
+                            this.heading = UP 
+                        }
+                    },
+                    faceDown: function() {
+                        if (this.direction === LEFT || this.direction === RIGHT) {
+                            this.heading = DOWN
+                        }
+                    },
+                    move: function(time) {
+                        switch(this.heading) {
+                            case LEFT:
+                                this.headPosition.x = Phaser.Math.Wrap(this.headPosition.x - 1, 0, 40)
+                                break
+                            case RIGHT:
+                                this.headPosition.x = Phaser.Math.Wrap(this.headPosition.x + 1, 0, 40)
+                                break
+                            case UP:
+                                this.headPosition.y = Phaser.Math.Wrap(this.headPosition.y - 1, 0, 30)
+                                break
+                            case DOWN:
+                                this.headPosition.y = Phaser.Math.Wrap(this.headPosition.y + 1, 0, 30)
+                                break
+                        }
+                        this.direction = this.heading
 
-                graphics.lineStyle(5, 0xFF00FF, 1.0);
-                graphics.beginPath();
-                graphics.moveTo(100, 100);
-                graphics.lineTo(200, 200);
-                graphics.closePath();
-                graphics.strokePath();
+                        //update body segments
+                        Phaser.Actions.ShiftPosition(this.body.getChildren(), this.headPosition.x * 16, this.headPosition.y * 16, 1)
 
+                        this.moveTime = time + this.speed
+
+                        return true
+                    },
+
+                })
+
+                snake = new Snake(this, 8, 8)
+
+                cursors = this.input.keyboard.createCursorKeys()
             }
 
-            update(delta) {
+            update(time) {
+
+                if (!snake.alive) {
+                    return;
+                }
+
+                if (cursors.left.isDown) {
+                    snake.faceLeft()
+                } else if (cursors.right.isDown) {
+                    snake.faceRight()
+                } else if (cursors.up.isDown) {
+                    snake.faceUp()
+                } else if (cursors.down.isDown) {
+                    snake.faceDown()
+                }
+
+                snake.update(time)
             }
         }
 
         const config = {
             type: Phaser.AUTO,
-            width: 800,
-            height: 800,
+            width: gameWidth,
+            height: gameHeight,
             physics: {
                 default: 'arcade',
                 arcade: {
                     gravity: { y : 200 }
                 }
             },
-            scene: [ Menu, Game]
+            scene: [ Game, Menu]
         }
+
+
         const game = new Phaser.Game(config)
     </script>
 </body>
