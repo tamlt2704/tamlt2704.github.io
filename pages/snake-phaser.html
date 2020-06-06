@@ -179,14 +179,18 @@
                         return true
                     },
                     grow: function() {
-                        console.log('grow', this.tail.x, this.tail.y)
                         var newPart = this.body.create(this.tail.x, this.tail.y, 'body')
                         newPart.setOrigin(0)
                     },
-                    collodeWithFood: function(food) {
+                    collideWithFood: function(food) {
                         if (this.head.x === food.x && this.head.y === food.y) {
                             this.grow()
                             food.eat()
+
+                            if (this.speed > 20 && food.total % 5 == 0) {
+                                console.log('increase speed',this.speed)
+                                this.speed -= 5
+                            }
                             return true
                         } else {
                             return false
@@ -216,7 +220,7 @@
                 }
 
                 if (snake.update(time)) {
-                    snake.collodeWithFood(food)
+                    snake.collideWithFood(food)
                 }
             }
         }
