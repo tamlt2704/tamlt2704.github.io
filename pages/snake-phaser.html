@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>snake game phaser</title>
-    <script src="phaser.min.js"> </script>
 </head>
 <body>
     <div id="root"> </div>
+    <script src="phaser.min.js"> </script>
     <script>
         const gameWidth = 640;
         const gameHeight = 480;
@@ -85,7 +85,9 @@
             }
             
             preload() {
-                this.load.image('body', 'assets/snakephaser/snake_16_16.jpg')
+                // add black border to the body
+                //convert snake_16_16.jpg -stroke black -strokewidth 1 -fill none -draw "rectangle 0,0,15,15" body_border.jpg
+                this.load.image('body', 'assets/snakephaser/body_border.jpg')
                 //conver -size 16x16 xc:red food.jpg
                 this.load.image('food', 'assets/snakephaser/food.jpg')
             }
@@ -101,6 +103,13 @@
                         this.setOrigin(0)
                         this.total = 0
                         scene.children.add(this)
+                    },
+                    eat: function() {
+                        this.total++;
+
+                        var x = Phaser.Math.Between(0, 39)
+                        var y = Phaser.Math.Between(0, 29)
+                        this.setPosition(x * 16, y * 16)
                     }
                 })
                 var Snake = new Phaser.Class({
@@ -114,6 +123,8 @@
                         this.moveTime = 0
                         this.heading = RIGHT
                         this.direction = RIGHT
+
+                        this.tail = new Phaser.Geom.Point(x, y)
                     },
                     update: function(time) {
                         console.log(`snake update ${time}`)
@@ -167,7 +178,20 @@
 
                         return true
                     },
-
+                    grow: function() {
+                        console.log('grow', this.tail.x, this.tail.y)
+                        var newPart = this.body.create(this.tail.x, this.tail.y, 'body')
+                        newPart.setOrigin(0)
+                    },
+                    collodeWithFood: function(food) {
+                        if (this.head.x === food.x && this.head.y === food.y) {
+                            this.grow()
+                            food.eat()
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
                 })
 
                 snake = new Snake(this, 8, 8)
@@ -191,7 +215,9 @@
                     snake.faceDown()
                 }
 
-                snake.update(time)
+                if (snake.update(time)) {
+                    snake.collodeWithFood(food)
+                }
             }
         }
 
