@@ -195,10 +195,18 @@
                         } else {
                             return false
                         }
+                    },
+                    updateGrid: function(grid) {
+                        this.body.children.each(function(segment) {
+                            var bx = segment.x / 16
+                            var by = segment.y / 16
+                            grid[by][bx] = false
+                        })
+                        return grid;
                     }
                 })
 
-                snake = new Snake(this, 8, 8)
+                snake = new Snake(this, 0, 4)
                 food = new Food(this, 3, 4)
                 cursors = this.input.keyboard.createCursorKeys()
             }
@@ -220,11 +228,40 @@
                 }
 
                 if (snake.update(time)) {
-                    snake.collideWithFood(food)
+                    if (snake.collideWithFood(food)) {
+                        repositionFood()
+                    }
                 }
             }
         }
+        
+        function repositionFood() {
+            var testGrid = []
+            for (let y = 0; y < 30; y++) {
+                testGrid[y] = []
+                for (let x = 0; x < 40; x++) {
+                    testGrid[y][x] = true
+                }
+            }
 
+            var validLocations = []
+            for (let y = 0; y < 30; y++) {
+                for (let x = 0; x < 40; x++) {
+                    if (testGrid[y][x] == true) {
+                        validLocations.push({x, y})
+                    }
+                }
+            }
+
+            if (validLocations.length > 0) {
+                var pos = Phaser.Math.RND.pick(validLocations)
+                console.log('new food position', pos.x, pos.y)
+                food.setPosition(pos.x * 16, pos.y * 16)
+                return true
+            } else {
+                return false
+            }
+        }
         const config = {
             type: Phaser.AUTO,
             width: gameWidth,
@@ -239,7 +276,7 @@
             scene: [ Game, Menu]
         }
 
-
+        
         const game = new Phaser.Game(config)
     </script>
 </body>
