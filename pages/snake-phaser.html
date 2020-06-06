@@ -77,6 +77,10 @@
         var snake;
         var cursors;
         var food;
+        var soundStart;
+        var soundEating;
+        var soundDie;
+
 
         var UP = 0,
             DOWN = 1,
@@ -94,9 +98,19 @@
                 this.load.image('body', 'assets/snakephaser/body_border.jpg')
                 //conver -size 16x16 xc:red food.jpg
                 this.load.image('food', 'assets/snakephaser/food.jpg')
+
+                this.load.audio('start', 'assets/snakephaser/start.mp3')
+                this.load.audio('eating', 'assets/snakephaser/eating2.mp3')
+                this.load.audio('die', 'assets/snakephaser/die.mp3')
+
             }
 
             create() {
+                soundStart = this.sound.add('start')
+                soundEating = this.sound.add('eating')
+                soundDie = this.sound.add('die')
+                soundStart.play()
+
                 var Food = new Phaser.Class({
                     Extends: Phaser.GameObjects.Image,
                     initialize: function Food(scene, x, y) {
@@ -110,7 +124,7 @@
                     },
                     eat: function() {
                         this.total++;
-                        beep();
+                        soundEating.play();
                         var x = Phaser.Math.Between(0, 39)
                         var y = Phaser.Math.Between(0, 29)
                         this.setPosition(x * 16, y * 16)
@@ -183,6 +197,7 @@
                         if (hitBody) {
                             console.log('dead')
                             this.alive = false
+                            soundDie.play()
                             return false
                         }
                         this.moveTime = time + this.speed
@@ -217,7 +232,7 @@
                     }
                 })
 
-                snake = new Snake(this, 0, 4)
+                snake = new Snake(this, 8, 5)
                 food = new Food(this, 3, 4)
                 cursors = this.input.keyboard.createCursorKeys()
             }
