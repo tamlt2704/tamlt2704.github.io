@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.0029c576.chunk.css",
-    "main.js": "/static/js/main.6875e39c.chunk.js",
-    "main.js.map": "/static/js/main.6875e39c.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.492ad3d4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.492ad3d4.js.map",
-    "static/css/2.af3c1da9.chunk.css": "/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.85cc0473.chunk.js": "/static/js/2.85cc0473.chunk.js",
-    "static/js/2.85cc0473.chunk.js.map": "/static/js/2.85cc0473.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.819e10a361373bf88ff1d91b8de09368.js": "/precache-manifest.819e10a361373bf88ff1d91b8de09368.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.af3c1da9.chunk.css.map": "/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.0029c576.chunk.css.map": "/static/css/main.0029c576.chunk.css.map",
-    "static/js/2.85cc0473.chunk.js.LICENSE.txt": "/static/js/2.85cc0473.chunk.js.LICENSE.txt",
-    "static/media/cybereye.jpg": "/static/media/cybereye.466fa6a0.jpg",
-    "static/media/face-recognition.jpg": "/static/media/face-recognition.34bd6591.jpg",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+    "main.css": "/build/static/css/main.0029c576.chunk.css",
+    "main.js": "/build/static/js/main.f6aaeaa7.chunk.js",
+    "main.js.map": "/build/static/js/main.f6aaeaa7.chunk.js.map",
+    "runtime-main.js": "/build/static/js/runtime-main.cd259af8.js",
+    "runtime-main.js.map": "/build/static/js/runtime-main.cd259af8.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/build/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.85cc0473.chunk.js": "/build/static/js/2.85cc0473.chunk.js",
+    "static/js/2.85cc0473.chunk.js.map": "/build/static/js/2.85cc0473.chunk.js.map",
+    "index.html": "/build/index.html",
+    "precache-manifest.5ab8db819fdbf22eff72ca7792cb2ffc.js": "/build/precache-manifest.5ab8db819fdbf22eff72ca7792cb2ffc.js",
+    "service-worker.js": "/build/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/build/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.0029c576.chunk.css.map": "/build/static/css/main.0029c576.chunk.css.map",
+    "static/js/2.85cc0473.chunk.js.LICENSE.txt": "/build/static/js/2.85cc0473.chunk.js.LICENSE.txt",
+    "static/media/cybereye.jpg": "/build/static/media/cybereye.466fa6a0.jpg",
+    "static/media/face-recognition.jpg": "/build/static/media/face-recognition.34bd6591.jpg",
+    "static/media/logo.svg": "/build/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.492ad3d4.js",
+    "static/js/runtime-main.cd259af8.js",
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.85cc0473.chunk.js",
     "static/css/main.0029c576.chunk.css",
-    "static/js/main.6875e39c.chunk.js"
+    "static/js/main.f6aaeaa7.chunk.js"
   ]
 }
