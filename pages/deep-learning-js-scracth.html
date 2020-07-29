@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://unpkg.com/xp.css" />
+
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            /* background: #c0c0c0; */
+            background: #ece9d8;
+        }
+
+        aside {
+            width: 200px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            padding: 8px;
+            display: flex;
+            align-items: stretch;
+        }
+
+        aside .tree-view {
+            width: 100%;
+            /* TODO: Move scrollbar into the recessed region? */
+            overflow-y: scroll;
+        }
+
+        main {
+            width: 65rem;
+            margin-left: 240px;
+            margin-bottom: 60px;
+        }
+
+        h3, h4 {
+            padding-top: 20px;
+            margin-top: 0;
+            display: block;
+            flex: 0 0 180px;
+        }
+        .example {
+            margin: 16px 0;
+            padding: 12px 24px;
+            border-left: 1px solid #808080;
+            width: 100%;
+        }
+
+        pre {
+            background: #dfdfdf;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        blockquote {
+            margin: 0 0 20px;
+            padding: 20px;
+            background: #dfdfdf;
+        }
+    </style>
+</head>
+<body>
+    
+    <aside>
+        <ul class="tree-view">
+            <li>Table Of Contents</li>
+            <li>Introduction to neural prediction: forward propagation</li>
+            <ul>
+                <li><a href="#1.1">A simple network making a prediction</a></li>
+                <li><a href="#1.2">What is a neural network, and what does it do?</a></li>
+                <li><a href="#1.3">Making a prediction with multiple inputs</a></li>
+                <li><a href="#1.4">Making a prediction with multiple inputs and outputs</a></li>
+                <li><a href="#1.5">Prediction on predictions</a></li>
+            </ul>
+            <li></li>
+        </ul>
+    </aside>
+    <main>
+        Learning deeplearning and javascript
+        <section class="component">
+            <h4 id="1.1">A simple network making a prediction</h4>
+            <blockquote>
+                <pre>
+                <code>
+                //A simple network
+                var weight = 0.1;
+                function neural_network(input, weight) {
+                    const prediction = input * weight;
+                    return prediction;
+                }
+                </code>
+                </pre>
+            </blockquote>    
+
+            <b> So what is a neural network? </b>  <br>
+            For now. it's one or more weights that can
+            multiple by the input data to make a prediction <br><br>
+
+            <b> What is input data? </b> <br>
+            It's a number recorded in the real word somewhere. 
+            ex: temperature, yesterday's stock price ... <br><br>
+
+
+            <b> What is a prediction? </b> <br>
+            Precdiction is what the neural network tells you, given the input data. <br>
+            ex: Given yesterday's stock price, today's stock price will be 101.52 <br><br>
+
+
+            <b> Is this prediction always right?</b> <br>
+            No. Sometimes neural netwok will make mistake, but it can learn from them <br><br>
+
+
+            <b> How does the network learn?</b> <br>
+            Trial and error. <br><br>
+        </section>
+        <section class="component">
+            <h4 id="1.2">What is a neural network, and what does it do?</h4>
+            It multiples the input by a weight. It accepts an input variable as 
+            information and a weight variable as knowledge and outputs a prediction.
+            
+        </section>
+        <section class="component">
+            <h4 id="1.3">Making a prediction with multiple inputs</h4>
+            <blockquote>
+                <pre>
+                <code>
+                var weight = 0.1;
+                function w_sum(a, b) {
+                    console.assert(a.length == b.length);
+                    output = 0;
+                    for (let i = 0; i < a.length; i++) {
+                        output += a[i] * b[i];
+                    }
+                    return output;
+                }
+                function neural_network(input, weight) {
+                    const prediction = w_sum(input, weight);
+                    return prediction;
+                }
+                
+                var inputs = [8.5, 0.65, 1.20];
+                var weights = [0.1, 0.2, 0.0];
+                console.log(neural_network(inputs, weights)); //0.98
+                </code>
+                </pre>
+            </blockquote>    
+        </section>
+        <section class="component">
+            <h4 id="1.4">Making a prediction with multiple inputs and outputs</h4>
+            <blockquote>
+                <pre>
+                <code>
+                function w_sum(a, b) {
+                    console.assert(a.length == b.length);
+                    var output = 0;
+                    for (let i = 0; i &lt a.length; i++) {
+                        output += a[i] * b[i];
+                    }
+                    return output;
+                }
+                function vect_mat_mul(vect, matrix) {
+                    console.assert(vect.length == matrix.length);
+                    var output = [0, 0, 0];
+                    for (let i = 0; i &lt vect.length; i++) {
+                        output[i] = w_sum(vect, matrix[i]);
+                    }
+                    return output;
+                }
+                function neural_network(input, weight) {
+                    const prediction = vect_mat_mul(input, weight);
+                    return prediction;
+                }
+                
+                var input_a = [8.5, 8.5, 8.5];
+                var input_b = [0.65, 0.65, 0.65];
+                var input_c = [1.2, 1.2, 1.2];
+                var weights = [[0.1, 0.1, -0.3],
+                                [0.1, 0.2, 0.0],
+                                [0.0, 1.3, 0.1]
+                ];
+                var input = [input_a[0], input_b[0], input_c[0]];
+                console.log(neural_network(input, weights)); //[0.555, 0.98, 0.965]
+                </code>
+                </pre>
+            </blockquote>    
+        </section>
+        <section class="component">
+            <h4 id="1.5"l>Prediction on predictions</h4>
+            Neural networks can be stacked! <br>
+            Output of one network can be output of another network <br>
+
+            <blockquote>
+                <pre>
+                <code>
+                function w_sum(a, b) {
+                    console.assert(a.length == b.length);
+                    var output = 0;
+                    for (let i = 0; i &lt a.length; i++) {
+                        output += a[i] * b[i];
+                    }
+                    return output;
+                }
+                function vect_mat_mul(vect, matrix) {
+                    console.assert(vect.length == matrix.length);
+                    var output = [0, 0, 0];
+                    for (let i = 0; i &lt vect.length; i++) {
+                        output[i] = w_sum(vect, matrix[i]);
+                    }
+                    return output;
+                }
+                function neural_network(input, weights) {
+                    const hidden = vect_mat_mul(input, weights[0])
+                    console.log(hidden);
+                    const prediction = vect_mat_mul(hidden, weights[1]);
+                    return prediction;
+                }
+                
+                var input_a = [8.5, 8.5, 8.5];
+                var input_b = [0.65, 0.65, 0.65];
+                var input_c = [1.2, 1.2, 1.2];
+                var weights = [
+                                [[0.1, 0.2, -0.1], //hidden
+                                [-0.1, 0.1, 0.9],
+                                [0.0, 0.4, 0.1]],
+
+                                [[0.3, 1.1, -0.3],
+                                [0.1, 0.2, 0.0],
+                                [0.0, 1.3, 0.1]]
+                            ];
+                var input = [input_a[0], input_b[0], input_c[0]];
+                console.log(neural_network(input, weights)); //[0.555, 0.98, 0.965]
+                </code>
+                </pre>
+            </blockquote>    
+
+        </section>
+    </main>
+</body>
+</html>

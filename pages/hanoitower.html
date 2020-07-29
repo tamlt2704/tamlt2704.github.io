@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lan="en">
+<meta charset="utf-8">
+<style>
+
+/* CSS goes here. */
+
+</style>
+<body>
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script>
+        var width = 800, height = 800;
+	    var svg = d3.select("body").append("svg")
+			.attr("width", width)
+			.attr("height", height);
+    
+        var nbDisk = 4;
+        var cols = [];
+        var disks = [];
+        var i = 0;
+        for (i = 0; i < nbDisk; i++){
+            cols[i] = [];
+            cols[0].push(i);
+            disks.push(i);
+        }
+
+        // draw cols
+        var d3colsHeight = 200;
+        var d3colsWidth = 10;
+        var d3cols = svg.selectAll('rect')
+            .data([0,1,2])
+            .enter()
+            .append('rect')
+            .attr('y', height/3)
+            .attr('x', function(d, i){ return (i+1)*(width / (nbDisk+1));})
+            .attr('width', d3colsWidth)
+            .attr('height', d3colsHeight)
+            .attr('fill', 'blue');
+
+        // init cols
+        var diskIsMoving = 0;
+        var maingroup = svg.append('g');
+        var colDistance = width / (nbDisk + 1);
+        var d3diskHeigh = 20;
+        var d3disks = maingroup.selectAll('rect')
+            .data(disks)
+            .enter()
+            .append('rect')
+            .attr('id', function(d, i){return 'rect'+i;})
+            .attr('x', function(d, i){ return +colDistance  - ((nbDisk - d)*40 + d3colsWidth/2)/2;})
+            .attr('y', function(d,i) {return height/3 + d3colsHeight - 20*i - d3diskHeigh;})
+            .attr('width', function(d,i){return (nbDisk - d)*40 + d3colsWidth;})
+            .attr('height', function(d,i){return d3diskHeigh;})
+            .attr('fill', 'green')
+            .text(function(d){return d});
+
+        var lineFunction = d3.svg.line()
+                                    .x(function(d) { return d.x;})
+                                    .y(function(d) { return d.y;})
+                                    .interpolate("linear");
+        function pathTween(path){
+			var length = path.node().getTotalLength(); // Get the length of the path
+			var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
+			return function(t){
+				var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
+				d3.select(this) // Select the circle
+					.attr("x", point.x) // Set the cx
+					.attr("y", point.y) // Set the cy
+			}
+		}
+        
+        function moveDisk(diskId, origin, destination, destination_length) {
+            diskIsMoving = 1;
+            var d = d3.select('#rect' + diskId);
+            var currentX = d.attr('x');
+            var currentY = d.attr('y');
+
+            var lineData = [];
+            lineData.push({x: currentX, y: currentY});
+
+            // move up
+            currentY-=200;
+            lineData.push({x: currentX, y: currentY});
+
+            // left or right
+            currentX = +currentX + (+origin - destination)*(-1)*colDistance;
+            lineData.push({x: currentX, y: currentY});
+
+            // move down
+            currentY = +height/3 + d3colsHeight - destination_length*d3diskHeigh - d3diskHeigh;
+            lineData.push({x: currentX, y: currentY});
+
+            var path = maingroup.append('path').attr('d', lineFunction(lineData))
+                .attr('stroke', 'blue')
+                .attr('fill', 'none');
+
+            d.transition()
+                .duration(2000)
+                .ease("linear")
+                .tween("pathTween", function() {return pathTween(path)});
+
+            path.remove();
+        }
+
+        var solTraceBack = [];    
+        function hanoitower(nbDisk, origin, destination, temp) {
+            if (nbDisk == 1) {
+                var diskId = cols[origin].pop();
+                solTraceBack.push([diskId, origin, destination, cols[destination].length])
+                cols[destination].push(diskId);
+            } else {
+                hanoitower(nbDisk - 1, origin, temp, destination);
+                var diskId = cols[origin].pop();
+                solTraceBack.push([diskId, origin, destination, cols[destination].length])
+                cols[destination].push(diskId);
+                hanoitower(nbDisk - 1, temp, destination, origin);
+            }
+        };
+        hanoitower(nbDisk,0,2,1);
+
+        var state = 0;
+        function render(state){
+            data = solTraceBack[state];
+            console.log('render----------');
+            console.log(data[0] + ':' + data[1] + '->' + data[2]);
+            console.log(data[3]);
+            moveDisk(data[0], data[1], data[2], data[3]);
+        }
+        var interval = 3000;
+        render(state);
+        var callback = function(){
+            return function(){
+                state ++;
+                if (state < solTraceBack.length){
+                    render(state);
+                    d3.timer(callback(), interval);
+                }
+                return true;
+            }
+        }
+        d3.timer(callback(), interval);
+	</script>
+</body>
+</html>

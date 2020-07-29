@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- <script src="./d3.v3.min.js"> </script> -->
+    <!-- Load c3.css -->
+    <link href="./c3.min.css" rel="stylesheet">
+
+    <!-- Load d3.js and c3.js -->
+    <script src="./d3.v5.min.js"> </script>
+    <script src="./c3.min.js"></script>
+</head>
+<body>
+    Today
+    <div id="chart"></div>
+
+    Yesterday 
+    <div id="chart-yesterday"></div>
+
+    <script>
+        var today = new Date()
+        var yesterday = new Date(new Date().setDate(new Date().getDate()-1))
+        var url = `https://raw.githubusercontent.com/tamlt2704/data/master/DTH/${today.getFullYear()}-${1+today.getMonth()}-${today.getDate()}.csv`
+        var urlYesterday = `https://raw.githubusercontent.com/tamlt2704/data/master/DTH/${yesterday.getFullYear()}-${1+yesterday.getMonth()}-${yesterday.getDate()}.csv`
+
+        var dthData = []
+        var dthDataYesterday = []
+
+        function getNightTimes(datetime) {
+            var year = datetime.getFullYear()
+            var month = (1+datetime.getMonth()).toString().padStart(2)
+            var date = datetime.getDate()
+
+            return [
+                {
+                    'start': `${year}-${month}-${date} 00:00:00`, 
+                    'end': `${year}-${month}-${date} 06:00:00`, 
+                },
+                {
+                    'start': `${year}-${month}-${date} 19:00:00`, 
+                    'end': `${year}-${month}-${date} 23:59:59`, 
+                }
+            ]
+        }
+
+
+        d3.csv(url).then((data) => { 
+            data.forEach((d) => {
+                var keys = Object.keys(d)
+                const datetime = d[keys[0]]
+                const temperature = +d[keys[1]]
+                const humidity = +d[keys[2]]
+                dthData.push({datetime, temperature, humidity})
+            })
+            var temperature = dthData.map(d => d.temperature)
+            var humidity = dthData.map(d => d.humidity)
+            var x = dthData.map(d => d.datetime)
+
+
+            var regions = [
+                {start: `${today.getFullYear()}-${today.getMonth()
+                }`}
+            ]
+            var chart = c3.generate({
+                    bindto: '#chart',
+                    data: {
+                        x: 'x',
+                        xFormat: '%Y-%m-%d %H:%M:%S',
+                        columns: [
+                                    ['x', ...x],
+                                    ['temperature', ...temperature],
+                                    ['humidity', ...humidity]
+                                
+                        ],
+                        axes: {
+                                    humidity: 'y2' // ADD
+                                
+                        }
+                            
+                    },
+                    axis: {
+                        y2: {
+                                    show: true // ADD
+                                
+                        },
+                        x: {
+                            type: 'timeseries',
+                            tick: {
+                                format: '%Y-%m-%d %H:%M:%S'
+                            }
+
+                        }
+                            
+                    }, 
+                    zoom: {
+                        enabled: true
+                    },
+                    regions: [
+                        ...getNightTimes(today)
+                    ]
+            });
+        })
+
+        
+        d3.csv(urlYesterday).then((data) => { 
+            data.forEach((d) => {
+                var keys = Object.keys(d)
+                const datetime = d[keys[0]]
+                const temperature = +d[keys[1]]
+                const humidity = +d[keys[2]]
+                dthDataYesterday.push({datetime, temperature, humidity})
+            })
+            var temperature = dthDataYesterday.map(d => d.temperature)
+            var humidity = dthDataYesterday.map(d => d.humidity)
+            var x = dthDataYesterday.map(d => d.datetime)
+
+            var chart = c3.generate({
+                    bindto: '#chart-yesterday',
+                    data: {
+                        x: 'x',
+                        xFormat: '%Y-%m-%d %H:%M:%S',
+                        columns: [
+                                    ['x', ...x],
+                                    ['temperature', ...temperature],
+                                    ['humidity', ...humidity]
+                                
+                        ],
+                        axes: {
+                                    humidity: 'y2' // ADD
+                                
+                        }
+                            
+                    },
+                    axis: {
+                        y2: {
+                                    show: true // ADD
+                                
+                        },
+                        x: {
+                            type: 'timeseries',
+                            tick: {
+                                format: '%Y-%m-%d %H:%M:%S'
+                            }
+
+                        }
+                            
+                    }, 
+                    zoom: {
+                        enabled: true
+                    },
+                    regions: [
+                        ...getNightTimes(yesterday)
+                    ]
+            });
+        })
+    
+    </script>
+</body>
+</html>
