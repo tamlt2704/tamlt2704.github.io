@@ -7,9 +7,6 @@
 <body>
 
 <pre>
-##############################
-basic setup
-##############################
 
 apt-get update
 sudo apt install -y vim tmux htop build-essential w3m w3m-img zsh curl wget git net-tools vlc ffmpeg maven fdisk wicd acpi rcconf build-essential
@@ -24,11 +21,19 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # apt-get source dwm
 sudo apt install -y libx11-dev libxft-dev libxinerama-dev dmenu xterm
 # change config.def.h. MASK1KEY(Alt) -> MASK4KEY (windows)
-# ~.xinitrc
-# exec dwm
+## sample ~.xinitrc ##
 
-# conky
-sudo apt install conky
+xrdb ~/.Xresources
+~/.scripts/setxroot.sh & 
+exec dwm
+
+## sample setxroot with date and battery level
+while true; do
+ xsetroot -name "$DATE $(acpi)"
+ sleep 2
+done
+
+
 
 ##############################
 # nodejs ##
