@@ -12,6 +12,9 @@ apt-get update
 sudo apt install -y vim tmux htop build-essential w3m w3m-img zsh curl wget git net-tools vlc ffmpeg maven fdisk wicd acpi rcconf build-essential
 sudo apt install -y libtool pkg-config autoconf automake
 
+#turn off beep sound
+xset b off
+
 # oh my zsh #
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -22,16 +25,28 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 sudo apt install -y libx11-dev libxft-dev libxinerama-dev dmenu xterm
 # change config.def.h. MASK1KEY(Alt) -> MASK4KEY (windows)
 ## sample ~.xinitrc ##
-
 xrdb ~/.Xresources
-~/.scripts/setxroot.sh & 
-exec dwm
+export _JAVA_AWT_WM_NONREPARENTING=1
+while true
+do
+	VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
+	LOCALTIME=$(date +%Z\=%Y-%m-%dT%H:%M)
+	OTHERTIME=$(TZ=Europe/London date +%Z\=%H:%M)
+	SGTIME=$(TZ=Asia/Singapore date +%Z\=%Y-%m-%dT%H:%M)
+	IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1) # can get confused if you use vmware
+	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
 
-## sample setxroot with date and battery level
-while true; do
- xsetroot -name "$DATE $(acpi)"
- sleep 2
-done
+	if acpi -a | grep off-line > /dev/null
+	then
+		BAT="Bat. $(acpi -b | awk '{ print $4 " " $5 }' | tr -d ',')"
+		xsetroot -name "$IP $BAT $TEMP $SGTIME"
+	else
+		xsetroot -name "$IP $TEMP $LOCALTIME"
+	fi
+	sleep 2s
+done &
+
+exec dwm
 
 
 
@@ -39,6 +54,9 @@ done
 # nodejs ##
 ##############################
 sudo apt install -y nodejs npm
+
+# packages
+sudo npm install -g http-server
 
 ##############################
 # python #
@@ -98,6 +116,10 @@ find /usr/lib/jvm/java-1.x.x-openjdk
 
 # add eclipse to dmenu
 sudo ln -s /home/debian/eclipse/javascript-2020-06/eclipse/eclipse /usr/local/bin
+
+# d3 js 
+sudo apt install gdal-bin
+sudo npm install -g topojson@1
 
 </pre>
 </body>
