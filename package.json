@@ -2,7 +2,7 @@
   "name": "tamlt2704.github.io",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tamlt2704.github.io/tamlt2704.github.io",  
+  "homepage": "https://tamlt2704.github.io",
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@testing-library/jest-dom": "^5.17.0",
