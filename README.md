@@ -69,14 +69,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
 npm i antd
-npm i clsx    # utility costructig className strings conditionally
+npm i clsx # utility costructig className strings conditionally
 npm i formik
-npm i yup   # chema builder for value parsing and validation
+npm i yup # chema builder for value parsing and validation
 npm i axios
 npm install @ant-design/icons --save
+
 # short command
+
 npm i antd clsx formik yup axios redux react-router react-router-dom serve
+
 # dev
+
 npm i -D cypress concurrently json-server json-server-auth
+
+deploy page to github
+npm install -D gh-pages
