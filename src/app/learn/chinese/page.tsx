@@ -43,7 +43,7 @@ export default function LearnChinesPage() {
             <div className={styles.gridContainer}>
                 {
                     Array.from(new Set(["avocado", "banana", "chery", "grape","lemon","strawberry","watermelon"])).map((x, i) => (
-                        <GridItem key={x} src={`/${x}.png`} />
+                        <GridItem key={i} src={`/${x}.png`} />
                     ))
                 }
             </div>
