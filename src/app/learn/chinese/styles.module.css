@@ -1,0 +1,20 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+}
+
+.gridItem {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 100%;
+    border: 1px solid darkblue;
+}
+
+.gridItem img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
