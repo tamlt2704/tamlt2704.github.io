@@ -4,13 +4,13 @@ import Image from "next/image";
 import {useRef} from "react";
 
 //https://www.mdbg.net/chinese/rsc/audio/voice_pinyin_pz/guo3.mp3
-function WordCategory() {
-    return (
-        <div className={styles.gridItem}> Fruit </div>
-    );
-}
+// function WordCategory() {
+//     return (
+//         <div className={styles.gridItem}> Fruit </div>
+//     );
+// }
 
-function GridItem({src}) {
+function GridItem({src} : {src: string}) {
     const imgStyle = {
         width: "100%",
         height: "100%",
@@ -18,8 +18,10 @@ function GridItem({src}) {
     const audioRef = useRef(null);
 
 
-    function playSound() {
+    function playSound(): void {
         if (audioRef.current) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             audioRef.current.play();
         }
     }
@@ -42,7 +44,17 @@ export default function LearnChinesPage() {
         <>
             <div className={styles.gridContainer}>
                 {
-                    Array.from(new Set(["avocado", "banana", "chery", "grape","lemon","strawberry","watermelon"])).map((x, i) => (
+                    Array.from(new Set([
+                        // "avocado", "banana", "chery", "grape","lemon","strawberry","watermelon"
+                        "apple", "banana", "cherry", "date", "fig", "grape", "kiwi", "lemon", "mango",
+                        "orange", "pear", "plum", "quince", "raspberry", "strawberry", "blueberry",
+                        "blackberry", "pineapple", "papaya", "peach", "apricot", "nectarine", "grapefruit",
+                        "pomegranate", "cantaloupe", "watermelon", "honeydew", "lime", "tangerine",
+                        "clementine", "passionfruit", "lychee", "dragonfruit", "jackfruit", "durian",
+                        "persimmon", "guava", "starfruit", "mulberry", "cranberry", "elderberry",
+                        "gooseberry", "boysenberry", "currant", "kumquat", "longan", "rambutan",
+                        "soursop", "tamarind"
+                    ])).map((x, i) => (
                         <GridItem key={i} src={`/${x}.png`} />
                     ))
                 }
