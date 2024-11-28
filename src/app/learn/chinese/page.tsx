@@ -45,17 +45,13 @@ export default function LearnChinesPage() {
             <div className={styles.gridContainer}>
                 {
                     Array.from(new Set([
-                        // "avocado", "banana", "chery", "grape","lemon","strawberry","watermelon"
-                        "apple", "banana", "cherry", "date", "fig", "grape", "kiwi", "lemon", "mango",
+                        "apple", "banana", "chery", "date", "fig", "grape", "kiwi", "lemon", "mango",
                         "orange", "pear", "plum", "quince", "raspberry", "strawberry", "blueberry",
-                        "blackberry", "pineapple", "papaya", "peach", "apricot", "nectarine", "grapefruit",
-                        "pomegranate", "cantaloupe", "watermelon", "honeydew", "lime", "tangerine",
-                        "clementine", "passionfruit", "lychee", "dragonfruit", "jackfruit", "durian",
-                        "persimmon", "guava", "starfruit", "mulberry", "cranberry", "elderberry",
-                        "gooseberry", "boysenberry", "currant", "kumquat", "longan", "rambutan",
-                        "soursop", "tamarind"
+                        "blackberry", "pineapple", "papaya", "peach", "watermelon", "passionfruit",
+                        "lychee", "dragonfruit", "jackfruit", "durian", "persimmon", "guava", "starfruit",
+                        "mulberry", "rambutan",
                     ])).map((x, i) => (
-                        <GridItem key={i} src={`/${x}.png`} />
+                        <GridItem key={i} src={`/fruits/${x}.png`} />
                     ))
                 }
             </div>
