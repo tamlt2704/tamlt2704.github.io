@@ -1,2 +1,2 @@
-interface HanziJsonData {
-}
+// interface HanziJsonData {
+// }
