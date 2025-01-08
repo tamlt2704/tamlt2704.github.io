@@ -118,7 +118,7 @@ export default function HanZiWriter() {
 
             <div ref={hanziRef} />
             <div
-                className="flex flex-row" 
+                className="flex flex-row flex-wrap" 
                 ref={fanoutRef} 
             />
             <button 
