@@ -1,33 +1,41 @@
 'use client'
 
 import HanziWriter from "hanzi-writer";
-import { SetStateAction, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 // https://raw.githubusercontent.com/skishore/makemeahanzi/refs/heads/master/dictionary.txt
 
 export default function HanZiWriter() {
-    const [hanziData,  setHanziData] = useState([]);
-    const [selectedChar, setSelectedChar] = useState();
+    interface Hanzi {
+        character: string;
+        definition: string;
+    }
+
+    const [hanziData,  setHanziData] = useState<Hanzi[]>([]);
+    const [selectedChar, setSelectedChar] = useState<string | undefined>(undefined);
     const hanziRef = useRef<HTMLDivElement | null>(null)
     const fanoutRef = useRef<HTMLDivElement | null>(null)
     const [writer, setWriter] = useState<ReturnType<typeof HanziWriter.create> | null>(null);
 
-    function renderFanningStrokes(target, strokes) {
-        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function renderFanningStrokes(target: HTMLDivElement | null, strokes: any[]) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         svg.style.width = '75px';
         svg.style.height = '75px';
         svg.style.border = '1px solid #EEE'
         svg.style.marginRight = '3px'
-        target.appendChild(svg);
-        var group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        if (target) {
+            target.appendChild(svg);
+        }
+        const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       
         // set the transform property on the g element so the character renders at 75x75
-        var transformData = HanziWriter.getScalingTransform(75, 75);
+        const transformData = HanziWriter.getScalingTransform(75, 75);
         group.setAttributeNS(null, 'transform', transformData.transform);
         svg.appendChild(group);
       
         strokes.forEach(function(strokePath) {
-          var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
           path.setAttributeNS(null, 'd', strokePath);
           // style the character paths
           path.style.fill = '#555';
@@ -61,17 +69,19 @@ export default function HanZiWriter() {
 
                 fanoutRef.current?.replaceChildren();
                 HanziWriter.loadCharacterData(selectedChar).then(function(charData) {
-                    var target = fanoutRef.current;
-                    for (var i = 0; i < charData.strokes.length; i++) {
-                      var strokesPortion = charData.strokes.slice(0, i + 1);
-                      renderFanningStrokes(target, strokesPortion);
+                    if (charData) {
+                        const target = fanoutRef.current;
+                        for (let i = 0; i < charData.strokes.length; i++) {
+                            const strokesPortion = charData.strokes.slice(0, i + 1);
+                            renderFanningStrokes(target, strokesPortion);
+                        }
                     }
-                  });
+                });
             }
         }
     }, [selectedChar])
 
-    function selectedCharacterChange(e: { target: { value: SetStateAction<undefined>; }; }) {
+    function selectedCharacterChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedChar(e.target.value)
     }
 
