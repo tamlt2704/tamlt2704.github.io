@@ -5,8 +5,8 @@ import { useEffect } from "react";
 export default function GameA() {
     useEffect(() => {
         const FLOOR_HEIGHT = 48;
-        const JUMP_FORCE = 800;
-        const SPEED = 480;
+        // const JUMP_FORCE = 800;
+        // const SPEED = 480;
         const {
             setGravity, 
             loadSprite,
