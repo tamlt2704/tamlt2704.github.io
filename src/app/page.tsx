@@ -1,9 +1,18 @@
+
+'use client'
+import { Button, Slider} from "@nextui-org/react";
+
 export default function Home() {
   return (
     <div>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Test
-      </button>
+      <Button> Click me </Button>
+      <Slider className="max-w-md"
+      defaultValue={0.4}
+      label="temperature"
+      maxValue={1}
+      minValue={0}
+      step={0.01}
+      />
     </div>
   );
 }
