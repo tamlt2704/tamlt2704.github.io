@@ -7,7 +7,7 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@heroui/navbar";
-import { Button } from "@heroui/button";
+// import { Button } from "@heroui/button";
 import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
 import { Input } from "@heroui/input";
@@ -18,12 +18,12 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
-  TwitterIcon,
+  // TwitterIcon,
   GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
+  // DiscordIcon,
+  // HeartFilledIcon,
   SearchIcon,
-  Logo,
+  // Logo,
 } from "@/components/icons";
 
 export const Navbar = () => {
