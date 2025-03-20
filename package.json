@@ -1,12 +1,15 @@
 {
   "name": "next-app-template",
   "version": "0.0.1",
+  "homepage": "https://tamlt2704.github.io",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
+    "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@heroui/button": "2.2.16",
@@ -49,6 +52,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "4.1.4",
+    "gh-pages": "^6.3.0",
     "postcss": "8.4.49",
     "prettier": "3.3.3",
     "tailwind-variants": "0.3.0",
