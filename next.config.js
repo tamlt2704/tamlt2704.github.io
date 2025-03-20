@@ -8,7 +8,7 @@ const nextConfig = {
   images: {
     unoptimized: true, // Disable default image optimization
   },
-  assetPrefix: isProd ? 'https://tamlt2704.github.io/' : '',
+  assetPrefix: isProd ? '' : '',
   basePath: isProd ? '' : '',
   output: 'export'
 };
