@@ -1,38 +1,42 @@
 'use client';
 
 import React, {useRef, useEffect} from "react";
-import p5 from "p5";
+import dynamic from "next/dynamic";
 
 const P5Sketch: React.FC = () => {
     const sketchRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const sketch = (p: p5) => {
-            p.setup = () => {
-                p.createCanvas(400, 400);
+        import('p5').then((p5) => {
+            const sketch = (p: any) => {
+                p.setup = () => {
+                    p.createCanvas(400, 400);
+                }
+
+                p.draw = () => {
+                    p.background(220);
+                    p.ellipse(p.width/2, p.height/2, 50, 50);
+                }
             }
 
-            p.draw = () => {
-                p.background(220);
-                p.ellipse(p.width/2, p.height/2, 50, 50);
+            const myp5 = new p5.default(sketch, sketchRef.current!);
+            return () => {
+                myp5.remove();
             }
-        }
-
-        const myp5 = new p5(sketch, sketchRef.current!)
-        return () => {
-            myp5.remove();
-        }
+        });
     }, []);
 
     return <div ref={sketchRef}> </div>
 }
 
-const NatureOfCodePage: React.FC = () => {
+const DynamicP5Sketch = dynamic(() => Promise.resolve(P5Sketch), {
+    ssr: false
+});
 
+const NatureOfCodePage: React.FC = () => {
     return <div>
-        <P5Sketch/>
+        <DynamicP5Sketch/>
     </div>
 }
-
 
 export default NatureOfCodePage;
