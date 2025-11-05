@@ -33,17 +33,19 @@ export default function Home() {
                 </div>
               </Link>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 opacity-75">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  More Projects
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Additional creative coding projects coming soon...
-                </p>
-                <span className="text-gray-400">
-                  Coming Soon
-                </span>
-              </div>
+              <Link href="/gallery" className="group">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                    Photo Gallery
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    A collection of photos displayed in an interactive grid layout.
+                  </p>
+                  <span className="text-blue-600 dark:text-blue-400 font-medium group-hover:underline">
+                    View Gallery →
+                  </span>
+                </div>
+              </Link>
             </div>
           </section>
 
