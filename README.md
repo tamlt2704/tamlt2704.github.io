@@ -29,7 +29,21 @@ images: { unoptimized: true }
 + Your images will work but won't be automatically resized/optimized
 
 
-**3. Add to package.json scripts:
+3. Add to package.json scripts:
 "scripts": {
   "build": "next build"
 }
+
+4. Add a .nojekyll file (prevents GitHub from ignoring files starting with _)
+
+# Install gh-pages
+npm install --save-dev gh-pages
+
+# Add to package.json scripts:
+"scripts": {
+  "build": "next build",
+  "deploy": "next build && touch out/.nojekyll && gh-pages -d out -t true"
+}
+
+# Deploy
+npm run deploy
