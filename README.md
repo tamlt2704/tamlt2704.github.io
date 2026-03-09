@@ -47,3 +47,7 @@ npm install --save-dev gh-pages
 
 # Deploy
 npm run deploy
+
+
+5. installl charka ui 
+npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion
