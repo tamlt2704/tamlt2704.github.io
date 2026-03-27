@@ -252,6 +252,7 @@ export default function HanziWriter() {
 
                 {/* Input */}
                 <Box position="relative">
+                    <HStack>
                     <Input
                         placeholder="Type pinyin or hanzi 🀄"
                         maxW={280}
@@ -286,6 +287,24 @@ export default function HanziWriter() {
                         textAlign="center"
                         _focus={{ borderColor: "#8B5CF6", boxShadow: "0 0 0 2px #C084FC" }}
                     />
+                    <Button
+                        onClick={() => {
+                            const u = new SpeechSynthesisUtterance(value);
+                            u.lang = "zh-CN";
+                            speechSynthesis.speak(u);
+                        }}
+                        bg="#A78BFA"
+                        color="white"
+                        borderRadius="xl"
+                        fontSize="2xl"
+                        minW="48px"
+                        h="48px"
+                        _hover={{ bg: "#8B5CF6", transform: "scale(1.1)" }}
+                        title="Pronounce"
+                    >
+                        🔊
+                    </Button>
+                    </HStack>
                     {showSuggestions && (
                         <HStack
                             position="absolute"
