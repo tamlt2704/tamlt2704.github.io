@@ -74,7 +74,7 @@ export default function MathPage() {
             opacity: [0, 1],
             scale: [0, 1],
             translateY: [30, 0],
-            delay: (_el: Element, i: number) => i * 80,
+            delay: (_el, i) => i * 80,
             duration: 400,
             ease: "outBack",
         });
