@@ -2,7 +2,7 @@
 
 import { Input, Button, HStack, Box, Text, VStack } from "@chakra-ui/react";
 import { useState, useRef, useEffect } from "react";
-import HanziWriterLib from "hanzi-writer";
+import HanziWriterLib, { CharacterJson } from "hanzi-writer";
 import { jsPDF } from "jspdf";
 import { pinyin } from "pinyin-pro";
 import dict from "./dict";
@@ -28,7 +28,8 @@ export default function HanziWriter() {
 
     const downloadPDF = async () => {
         const char = value || "我";
-        const charData = await HanziWriterLib.loadCharacterData(char);
+        const charData = await HanziWriterLib.loadCharacterData(char) as CharacterJson;
+        if (!charData) return;
         const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
         const cellSize = 30;
         const cols = 5;
@@ -156,6 +157,7 @@ export default function HanziWriter() {
         if (!fanTargetRef.current) return;
         fanTargetRef.current.innerHTML = "";
         HanziWriterLib.loadCharacterData(value || "我").then((charData) => {
+            if (!charData) return;
             if (!fanTargetRef.current) return;
             fanTargetRef.current.innerHTML = "";
             for (let i = 0; i < charData.strokes.length; i++) {
