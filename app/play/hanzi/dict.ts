@@ -395,9 +395,7 @@ const dict: Record<string, string> = {
     "被": "by (passive), quilt",
     "跟": "follow, with",
     "很": "very",
-    "太": "too, very",
-    "真": "really, true",
-    "都": "all, both",
+
 };
 
 export default dict;
