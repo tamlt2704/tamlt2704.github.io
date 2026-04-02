@@ -4,6 +4,21 @@ import Link from "next/link";
 const playLinks = [
     { href: "/play/hanzi", label: "✍️ Hanzi Writer" },
     { href: "/play/math", label: "🔢 Math" },
+    { href: "/play/numberbond", label: "🔗 Number Bonds" },
+    { href: "/play/chinese", label: "🗣 Chinese Starters" },
+    { href: "/play/solarsystem", label: "☀️ Solar System" },
+    { href: "/play/daynight", label: "🌍 Day & Night Map" },
+    { href: "/play/projectile", label: "🚀 Projectile Launcher" },
+    { href: "/play/balance", label: "⚖️ Balance Scale" },
+    { href: "/play/circuits", label: "⚡ Simple Circuits" },
+    { href: "/play/pendulum", label: "🕐 Pendulum" },
+    { href: "/play/fractions", label: "🍕 Fraction Pizza" },
+    { href: "/play/timestable", label: "☄️ Times Table Shooter" },
+    { href: "/play/shapes", label: "🔷 Shape Builder" },
+    { href: "/play/turtle", label: "🐢 Turtle Graphics" },
+    { href: "/play/pattern", label: "🧩 Pattern Machine" },
+    { href: "/play/wordbuilder", label: "🔤 Word Builder" },
+    { href: "/play/sentences", label: "📝 Sentence Scramble" },
 ];
 
 export default function Home() {
