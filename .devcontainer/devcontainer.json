@@ -1,0 +1,5 @@
+{
+  "name": "tamlt2704.github.io",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "postCreateCommand": "bash .devcontainer/setup.sh"
+}
