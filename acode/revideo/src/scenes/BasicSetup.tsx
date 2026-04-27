@@ -9,4 +9,6 @@ export const basicsetup = makeScene2D('basicsetup', function* (view) {
 
     yield* ide.show();
     yield* waitFor(1);
+
+    // yield* ide.hideMenubar();
 })

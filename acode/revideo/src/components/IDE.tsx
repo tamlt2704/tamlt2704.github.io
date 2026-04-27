@@ -1,32 +1,43 @@
-import { Rect } from "@revideo/2d";
+import { Rect, Txt } from "@revideo/2d";
 import { createRef } from "@revideo/core";
 import { Theme } from "./theme";
+import { Panel } from "./Panel";
 
 export class IDE {
     public readonly container: Rect;
     private menuBarRect = createRef<Rect>();
-    private bodyRect = createRef<Rect>();
-    private commandLineRect = createRef<Rect>();
-    private instructionRect = createRef<Rect>();
+    private bodyRect = createRef<Panel>();
+    private commandLineRect = createRef<Panel>();
+    private instructionRect = createRef<Panel>();
 
     constructor() {
         this.container = (
             <Rect 
                 width={1600}
                 height={900}
-                radius={12}
                 clip
                 layout
-                fill="white"
-                direction={"column"}
-                opacity={0}
+                fill={Theme.browserBg}
+                direction={"row"}
+                opacity={1}
             >
-                <Rect ref={this.menuBarRect} width="100%" height={40} fill={Theme.headerBg}/>
-                <Rect ref={this.bodyRect} width="100%" height={40} fill={Theme.headerBg}/>
-                <Rect ref={this.commandLineRect} width="100%" height={40} fill={Theme.headerBg}/>
-                <Rect ref={this.instructionRect} width="100%" height={40} fill={Theme.headerBg}/>
+                <Panel ref={this.menuBarRect} grow={1} height={"100%"} width={0} fill={Theme.headerBg} label="explorer 123"/>
+                <Rect
+                    layout
+                    direction={"column"}
+                    grow={3}
+                    height={"100%"}
+                >   
+                    <Panel ref={this.bodyRect} grow={4} width={"100%"} fill={Theme.headerBg} label="body"/>
+                    <Panel ref={this.commandLineRect} grow={1} width={"100%"} fill={Theme.headerBg} label="console"/>
+                </Rect>
+                
             </Rect>
         ) as Rect;
+    }
+
+    public *hideMenubar(duration=0.4) {
+        yield* this.menuBarRect().width(0, duration);
     }
 
     public *show(duration=0.4) {
