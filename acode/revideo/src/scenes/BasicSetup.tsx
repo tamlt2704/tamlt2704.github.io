@@ -8,7 +8,7 @@ export const basicsetup = makeScene2D('basicsetup', function* (view) {
     view.add(ide.container);
 
     yield* ide.show();
+    yield* ide.consoleTypeText('npm run dev', 0.03);
     yield* waitFor(1);
-
     // yield* ide.hideMenubar();
 })

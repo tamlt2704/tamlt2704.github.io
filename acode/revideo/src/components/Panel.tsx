@@ -7,28 +7,27 @@ export interface PanelProps extends RectProps {
 }
 
 export class Panel extends Rect {
-    public constructor(props: PanelProps) {
-        const fills = {
-            panel: Theme.panelBg,
-            header: Theme.headerBg,
-            status: Theme.statusBg,    
-        }
-        const {label, ...rest} = props;
+  public constructor(props: PanelProps) {
+    const fills = {
+      panel: Theme.panelBg,
+      header: Theme.headerBg,
+      status: Theme.statusBg,
+    };
 
-        super({
-            fill: fills[props.variant || 'panel'],
-            clip: true,
-            layout: true,
-            direction: 'column',
-            stroke: 'white',
-            lineWidth: 2,
-            ...props,
-        })
+    const { label, variant, children, ...rest } = props;
 
-        if (label) {
-            this.add(<Txt 
-                text={label}
-            />)
-        }
+    super({
+      fill: fills[variant || 'panel'],
+      clip: true,
+      layout: true,
+      direction: 'column',
+      stroke: 'white',
+      lineWidth: 2,
+      ...rest,
+    });
+
+    if (label) {
+      this.add(<Txt text={label} fill="white" />);
     }
+  }
 }
