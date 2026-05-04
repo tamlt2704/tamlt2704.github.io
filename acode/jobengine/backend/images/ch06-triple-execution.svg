@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" font-family="monospace">
+  <rect width="800" height="220" fill="#1e1e1e" rx="12"/>
+  <text x="400" y="25" text-anchor="middle" fill="#ff5f57" font-size="12" font-weight="bold">THREE INSTANCES, ONE JOB — TRIPLE EXECUTION</text>
+  <!-- 3 instances -->
+  <rect x="40" y="50" width="140" height="50" rx="6" fill="#252526" stroke="#007acc" stroke-width="1.5"/>
+  <text x="110" y="80" text-anchor="middle" fill="#007acc" font-size="11">Instance 1</text>
+  <rect x="40" y="110" width="140" height="50" rx="6" fill="#252526" stroke="#28c840" stroke-width="1.5"/>
+  <text x="110" y="140" text-anchor="middle" fill="#28c840" font-size="11">Instance 2</text>
+  <rect x="40" y="170" width="140" height="40" rx="6" fill="#252526" stroke="#e6a700" stroke-width="1.5"/>
+  <text x="110" y="195" text-anchor="middle" fill="#e6a700" font-size="11">Instance 3</text>
+  <!-- Arrows to job -->
+  <line x1="180" y1="75" x2="310" y2="105" stroke="#007acc" stroke-width="1"/>
+  <line x1="180" y1="135" x2="310" y2="115" stroke="#28c840" stroke-width="1"/>
+  <line x1="180" y1="190" x2="310" y2="125" stroke="#e6a700" stroke-width="1"/>
+  <!-- Job -->
+  <rect x="310" y="85" width="160" height="55" rx="8" fill="#3c1010" stroke="#ff5f57" stroke-width="2"/>
+  <text x="390" y="108" text-anchor="middle" fill="#ff5f57" font-size="11">Job #42</text>
+  <text x="390" y="128" text-anchor="middle" fill="#ff5f57" font-size="10">CLAIMED 3 TIMES 💥</text>
+  <!-- Result -->
+  <rect x="530" y="60" width="240" height="100" rx="8" fill="#252526" stroke="#ff5f57" stroke-width="1"/>
+  <text x="650" y="85" text-anchor="middle" fill="#ff5f57" font-size="11">Karen gets:</text>
+  <text x="650" y="105" text-anchor="middle" fill="#cccccc" font-size="10">3× products</text>
+  <text x="650" y="120" text-anchor="middle" fill="#cccccc" font-size="10">3× invoices</text>
+  <text x="650" y="135" text-anchor="middle" fill="#cccccc" font-size="10">3× confirmation emails</text>
+  <text x="650" y="150" text-anchor="middle" fill="#888888" font-size="9">Silent Bob: 💀</text>
+</svg>

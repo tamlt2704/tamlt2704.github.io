@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" font-family="monospace">
+  <rect width="800" height="220" fill="#1e1e1e" rx="12"/>
+  <text x="400" y="28" text-anchor="middle" fill="#ff5f57" font-size="13" font-weight="bold">TUESDAY 2:47 PM — THE API GOES DOWN</text>
+  <!-- Jobs failing -->
+  <rect x="40" y="50" width="300" height="120" rx="8" fill="#0d0d0d" stroke="#333333" stroke-width="1"/>
+  <text x="60" y="72" fill="#ff5f57" font-size="11">PRICE_CALC #201 → ConnectException ✗</text>
+  <text x="60" y="90" fill="#ff5f57" font-size="11">PRICE_CALC #202 → ConnectException ✗</text>
+  <text x="60" y="108" fill="#ff5f57" font-size="11">PRICE_CALC #203 → ConnectException ✗</text>
+  <text x="60" y="126" fill="#ff5f57" font-size="11">PRICE_CALC #204 → ConnectException ✗</text>
+  <text x="60" y="144" fill="#888888" font-size="11">... 196 more failures ...</text>
+  <text x="60" y="162" fill="#ff5f57" font-size="11">200/200 FAILED in 30 seconds</text>
+  <!-- API server -->
+  <rect x="440" y="60" width="200" height="80" rx="8" fill="#3c1010" stroke="#ff5f57" stroke-width="2"/>
+  <text x="540" y="90" text-anchor="middle" fill="#ff5f57" font-size="14">Exchange Rate API</text>
+  <text x="540" y="115" text-anchor="middle" fill="#ff5f57" font-size="20">☠️ DOWN</text>
+  <!-- Captain -->
+  <rect x="440" y="155" width="200" height="35" rx="6" fill="#333333" stroke="#007acc" stroke-width="1"/>
+  <text x="540" y="177" text-anchor="middle" fill="#007acc" font-size="11">Captain Deadline: "WAR ROOM"</text>
+  <!-- Lesson -->
+  <text x="400" y="205" text-anchor="middle" fill="#4ec9b0" font-size="11">Failure isn't a bug. It's a feature you forgot to handle.</text>
+</svg>

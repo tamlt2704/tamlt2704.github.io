@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" font-family="monospace">
+  <rect width="800" height="280" fill="#1e1e1e" rx="12"/>
+  <text x="400" y="30" text-anchor="middle" fill="#ff5f57" font-size="14" font-weight="bold">🔥 MONDAY 9:03 AM — SLACK IS ON FIRE 🔥</text>
+  <!-- Karen -->
+  <rect x="30" y="50" width="230" height="60" rx="8" fill="#333333" stroke="#ff5f57" stroke-width="1"/>
+  <text x="45" y="72" fill="#ff5f57" font-size="11" font-weight="bold">Karen from Sales</text>
+  <text x="45" y="92" fill="#cccccc" font-size="11">"Why are there DUPLICATE products?!"</text>
+  <!-- Mrs. Jira -->
+  <rect x="285" y="50" width="230" height="60" rx="8" fill="#333333" stroke="#e6a700" stroke-width="1"/>
+  <text x="300" y="72" fill="#e6a700" font-size="11" font-weight="bold">Mrs. Jira</text>
+  <text x="300" y="92" fill="#cccccc" font-size="11">"47 jobs queued. Why so slow?"</text>
+  <!-- Captain -->
+  <rect x="540" y="50" width="230" height="60" rx="8" fill="#333333" stroke="#007acc" stroke-width="1"/>
+  <text x="555" y="72" fill="#007acc" font-size="11" font-weight="bold">Captain Deadline</text>
+  <text x="555" y="92" fill="#cccccc" font-size="11">"WAR ROOM. NOW."</text>
+  <!-- The intern -->
+  <circle cx="400" cy="190" r="45" fill="#4ec9b0"/>
+  <text x="400" y="198" text-anchor="middle" fill="#1e1e1e" font-size="36">😰</text>
+  <text x="400" y="255" text-anchor="middle" fill="#888888" font-size="12">You, holding a coffee that is no longer warm enough</text>
+</svg>

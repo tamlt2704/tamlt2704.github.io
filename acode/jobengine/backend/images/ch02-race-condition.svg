@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" font-family="monospace">
+  <rect width="800" height="320" fill="#1e1e1e" rx="12"/>
+  <text x="400" y="28" text-anchor="middle" fill="#ff5f57" font-size="13" font-weight="bold">THE RACE CONDITION</text>
+  <!-- Timeline -->
+  <line x1="100" y1="60" x2="100" y2="280" stroke="#3c3c3c" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="400" y1="60" x2="400" y2="280" stroke="#3c3c3c" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="700" y1="60" x2="700" y2="280" stroke="#3c3c3c" stroke-width="1" stroke-dasharray="4"/>
+  <text x="100" y="52" text-anchor="middle" fill="#007acc" font-size="12">Thread A</text>
+  <text x="400" y="52" text-anchor="middle" fill="#e6a700" font-size="12">Job #42 (DB)</text>
+  <text x="700" y="52" text-anchor="middle" fill="#28c840" font-size="12">Thread B</text>
+  <!-- Step 1: Both read PENDING -->
+  <rect x="300" y="70" width="200" height="25" rx="4" fill="#252526" stroke="#e6a700" stroke-width="1"/>
+  <text x="400" y="87" text-anchor="middle" fill="#e6a700" font-size="11">status: PENDING</text>
+  <line x1="100" y1="82" x2="300" y2="82" stroke="#007acc" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="200" y="75" text-anchor="middle" fill="#888888" font-size="9">reads PENDING</text>
+  <line x1="700" y1="82" x2="500" y2="82" stroke="#28c840" stroke-width="1.5" marker-end="url(#arr2)"/>
+  <text x="600" y="75" text-anchor="middle" fill="#888888" font-size="9">reads PENDING</text>
+  <!-- Step 2: Both transition -->
+  <rect x="30" y="120" width="140" height="25" rx="4" fill="#252526" stroke="#007acc" stroke-width="1"/>
+  <text x="100" y="137" text-anchor="middle" fill="#007acc" font-size="10">transitionTo(RUNNING)</text>
+  <rect x="630" y="120" width="140" height="25" rx="4" fill="#252526" stroke="#28c840" stroke-width="1"/>
+  <text x="700" y="137" text-anchor="middle" fill="#28c840" font-size="10">transitionTo(RUNNING)</text>
+  <text x="400" y="140" text-anchor="middle" fill="#ff5f57" font-size="11">⚠ BOTH SUCCEED</text>
+  <!-- Step 3: Both run -->
+  <rect x="30" y="170" width="140" height="25" rx="4" fill="#252526" stroke="#007acc" stroke-width="1"/>
+  <text x="100" y="187" text-anchor="middle" fill="#007acc" font-size="10">runs CSV import</text>
+  <rect x="630" y="170" width="140" height="25" rx="4" fill="#252526" stroke="#28c840" stroke-width="1"/>
+  <text x="700" y="187" text-anchor="middle" fill="#28c840" font-size="10">runs CSV import</text>
+  <!-- Result -->
+  <rect x="200" y="220" width="400" height="40" rx="8" fill="#3c1010" stroke="#ff5f57" stroke-width="2"/>
+  <text x="400" y="237" text-anchor="middle" fill="#ff5f57" font-size="12">💥 DUPLICATE PRODUCTS IN DATABASE</text>
+  <text x="400" y="252" text-anchor="middle" fill="#888888" font-size="10">Karen is not happy</text>
+  <!-- Fix hint -->
+  <text x="400" y="295" text-anchor="middle" fill="#4ec9b0" font-size="11">Fix: SELECT ... FOR UPDATE SKIP LOCKED</text>
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="#007acc"/></marker>
+    <marker id="arr2" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto"><polygon points="6 0,0 2,6 4" fill="#28c840"/></marker>
+  </defs>
+</svg>

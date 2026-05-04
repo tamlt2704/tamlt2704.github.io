@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" font-family="monospace">
+  <rect width="800" height="240" fill="#1e1e1e" rx="12"/>
+  <text x="400" y="25" text-anchor="middle" fill="#ff5f57" font-size="13" font-weight="bold">SATURDAY 3:00 AM — 12,000 JOBS CANCELLED</text>
+  <!-- Terminal -->
+  <rect x="40" y="45" width="440" height="130" rx="8" fill="#0d0d0d" stroke="#333333" stroke-width="1"/>
+  <circle cx="58" cy="60" r="5" fill="#ff5f57"/>
+  <circle cx="74" cy="60" r="5" fill="#febc2e"/>
+  <circle cx="90" cy="60" r="5" fill="#28c840"/>
+  <text x="60" y="85" fill="#cccccc" font-size="10">SELECT count(*) FROM jobs WHERE status = 'CANCELLED'</text>
+  <text x="60" y="105" fill="#ff5f57" font-size="14" font-weight="bold">  12,000</text>
+  <text x="60" y="125" fill="#cccccc" font-size="10">SELECT DISTINCT username FROM audit_log WHERE action = 'CANCEL'</text>
+  <text x="60" y="145" fill="#888888" font-size="12">  (no results — no auth, no audit)</text>
+  <text x="60" y="165" fill="#ff5f57" font-size="10">  WHO DID THIS?</text>
+  <!-- Suspects -->
+  <rect x="520" y="45" width="250" height="130" rx="8" fill="#252526" stroke="#e6a700" stroke-width="1"/>
+  <text x="645" y="68" text-anchor="middle" fill="#e6a700" font-size="11">SUSPECTS</text>
+  <text x="540" y="90" fill="#cccccc" font-size="11">Karen:    "It wasn't me" 🤷‍♀️</text>
+  <text x="540" y="110" fill="#cccccc" font-size="11">Old Greg: "It wasn't me" 🧓</text>
+  <text x="540" y="130" fill="#cccccc" font-size="11">Mrs Jira:  *silence*     😶</text>
+  <text x="540" y="155" fill="#888888" font-size="9">IP: 10.0.1.99 (Mrs. Jira's desk)</text>
+  <!-- Bottom -->
+  <text x="400" y="210" text-anchor="middle" fill="#4ec9b0" font-size="11">Fix: JWT auth + role-based access + audit trail on every action</text>
+  <text x="400" y="228" text-anchor="middle" fill="#888888" font-size="10">It was Mrs. Jira. It's always Mrs. Jira.</text>
+</svg>

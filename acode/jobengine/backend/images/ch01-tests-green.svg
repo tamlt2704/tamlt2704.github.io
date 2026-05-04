@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" font-family="monospace">
+  <rect width="800" height="250" fill="#1e1e1e" rx="12"/>
+  <!-- Terminal window -->
+  <rect x="40" y="20" width="500" height="180" rx="8" fill="#0d0d0d" stroke="#333333" stroke-width="1"/>
+  <!-- Terminal dots -->
+  <circle cx="60" cy="38" r="6" fill="#ff5f57"/>
+  <circle cx="78" cy="38" r="6" fill="#febc2e"/>
+  <circle cx="96" cy="38" r="6" fill="#28c840"/>
+  <text x="200" y="40" text-anchor="middle" fill="#888888" font-size="10">Terminal — ./gradlew test</text>
+  <!-- Test output -->
+  <text x="60" y="75" fill="#28c840" font-size="13">✓ shouldCompleteACsvImportJob</text>
+  <text x="60" y="100" fill="#28c840" font-size="13">✓ shouldMarkFailedJobWithErrorMessage</text>
+  <text x="60" y="125" fill="#28c840" font-size="13">✓ shouldNotReprocessACompletedJob</text>
+  <text x="60" y="160" fill="#cccccc" font-size="12">BUILD SUCCESSFUL in 4s</text>
+  <text x="60" y="180" fill="#4ec9b0" font-size="12">3 tests completed, 0 failed</text>
+  <!-- Intern reaction -->
+  <circle cx="650" cy="100" r="50" fill="#4ec9b0"/>
+  <text x="650" y="108" text-anchor="middle" fill="#1e1e1e" font-size="40">😎</text>
+  <text x="650" y="175" text-anchor="middle" fill="#cccccc" font-size="13">You</text>
+  <text x="650" y="195" text-anchor="middle" fill="#888888" font-size="10">(feeling invincible)</text>
+  <!-- Bottom warning -->
+  <text x="400" y="230" text-anchor="middle" fill="#e6a700" font-size="11">⚠ These tests only use one thread. The bugs are hiding.</text>
+</svg>

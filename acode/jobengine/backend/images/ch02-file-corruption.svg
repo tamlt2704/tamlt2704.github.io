@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" font-family="monospace">
+  <rect width="800" height="200" fill="#1e1e1e" rx="12"/>
+  <!-- Thread A -->
+  <rect x="40" y="40" width="160" height="40" rx="6" fill="#252526" stroke="#007acc" stroke-width="1.5"/>
+  <text x="120" y="65" text-anchor="middle" fill="#007acc" font-size="12">Thread A: resize()</text>
+  <!-- Thread B -->
+  <rect x="40" y="110" width="160" height="40" rx="6" fill="#252526" stroke="#28c840" stroke-width="1.5"/>
+  <text x="120" y="135" text-anchor="middle" fill="#28c840" font-size="12">Thread B: resize()</text>
+  <!-- Arrows to file -->
+  <line x1="200" y1="60" x2="380" y2="90" stroke="#007acc" stroke-width="1.5"/>
+  <line x1="200" y1="130" x2="380" y2="100" stroke="#28c840" stroke-width="1.5"/>
+  <text x="300" y="80" text-anchor="middle" fill="#888888" font-size="9">write bytes</text>
+  <text x="300" y="120" text-anchor="middle" fill="#888888" font-size="9">write bytes</text>
+  <!-- File -->
+  <rect x="380" y="65" width="160" height="60" rx="6" fill="#3c1010" stroke="#ff5f57" stroke-width="2"/>
+  <text x="460" y="90" text-anchor="middle" fill="#ff5f57" font-size="12">product_42.jpg</text>
+  <text x="460" y="110" text-anchor="middle" fill="#ff5f57" font-size="10">💥 CORRUPTED</text>
+  <!-- Fix -->
+  <rect x="590" y="65" width="180" height="60" rx="6" fill="#252526" stroke="#4ec9b0" stroke-width="1.5"/>
+  <text x="680" y="88" text-anchor="middle" fill="#4ec9b0" font-size="11">Fix: ReentrantLock</text>
+  <text x="680" y="108" text-anchor="middle" fill="#888888" font-size="10">per filename</text>
+  <!-- Bottom -->
+  <text x="400" y="180" text-anchor="middle" fill="#888888" font-size="10">Two threads writing to the same file = garbage output</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" font-family="monospace">
+  <rect width="800" height="200" fill="#1e1e1e" rx="12"/>
+  <!-- PENDING -->
+  <rect x="40" y="70" width="130" height="50" rx="8" fill="#252526" stroke="#e6a700" stroke-width="2"/>
+  <text x="105" y="100" text-anchor="middle" fill="#e6a700" font-size="14" font-weight="bold">PENDING</text>
+  <!-- Arrow 1 -->
+  <line x1="170" y1="95" x2="250" y2="95" stroke="#4ec9b0" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="210" y="85" text-anchor="middle" fill="#888888" font-size="10">submit()</text>
+  <!-- RUNNING -->
+  <rect x="250" y="70" width="130" height="50" rx="8" fill="#252526" stroke="#007acc" stroke-width="2"/>
+  <text x="315" y="100" text-anchor="middle" fill="#007acc" font-size="14" font-weight="bold">RUNNING</text>
+  <!-- Arrow to COMPLETED -->
+  <line x1="380" y1="80" x2="490" y2="55" stroke="#28c840" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="440" y="55" text-anchor="middle" fill="#888888" font-size="10">success</text>
+  <!-- Arrow to FAILED -->
+  <line x1="380" y1="110" x2="490" y2="140" stroke="#ff5f57" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="440" y="145" text-anchor="middle" fill="#888888" font-size="10">exception</text>
+  <!-- COMPLETED -->
+  <rect x="490" y="30" width="150" height="50" rx="8" fill="#252526" stroke="#28c840" stroke-width="2"/>
+  <text x="565" y="60" text-anchor="middle" fill="#28c840" font-size="14" font-weight="bold">COMPLETED</text>
+  <!-- FAILED -->
+  <rect x="490" y="115" width="130" height="50" rx="8" fill="#252526" stroke="#ff5f57" stroke-width="2"/>
+  <text x="555" y="145" text-anchor="middle" fill="#ff5f57" font-size="14" font-weight="bold">FAILED</text>
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#4ec9b0"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#28c840"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ff5f57"/>
+    </marker>
+  </defs>
+  <!-- Caption -->
+  <text x="400" y="185" text-anchor="middle" fill="#888888" font-size="11">Job lifecycle — works perfectly with one thread. Chapter 2 breaks it.</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" font-family="monospace">
+  <rect width="800" height="240" fill="#1e1e1e" rx="12"/>
+  <text x="400" y="25" text-anchor="middle" fill="#cccccc" font-size="12">THE NIGHTLY PIPELINE — jobs must run in order</text>
+  <!-- CSV_IMPORT -->
+  <rect x="40" y="80" width="130" height="40" rx="6" fill="#252526" stroke="#007acc" stroke-width="2"/>
+  <text x="105" y="105" text-anchor="middle" fill="#007acc" font-size="10">CSV_IMPORT</text>
+  <!-- Arrows from import -->
+  <line x1="170" y1="90" x2="230" y2="70" stroke="#4ec9b0" stroke-width="1.5" marker-end="url(#a5)"/>
+  <line x1="170" y1="110" x2="230" y2="160" stroke="#4ec9b0" stroke-width="1.5" marker-end="url(#a5)"/>
+  <!-- PRICE_CALCULATION -->
+  <rect x="230" y="50" width="150" height="40" rx="6" fill="#252526" stroke="#e6a700" stroke-width="1.5"/>
+  <text x="305" y="75" text-anchor="middle" fill="#e6a700" font-size="10">PRICE_CALC</text>
+  <!-- INVENTORY_SYNC -->
+  <rect x="230" y="140" width="150" height="40" rx="6" fill="#252526" stroke="#888888" stroke-width="1.5"/>
+  <text x="305" y="165" text-anchor="middle" fill="#888888" font-size="10">INVENTORY_SYNC</text>
+  <text x="305" y="200" text-anchor="middle" fill="#4ec9b0" font-size="9">runs in parallel ↑</text>
+  <!-- Arrow from prices -->
+  <line x1="380" y1="70" x2="440" y2="70" stroke="#4ec9b0" stroke-width="1.5" marker-end="url(#a5)"/>
+  <!-- REPORT_GENERATION -->
+  <rect x="440" y="50" width="150" height="40" rx="6" fill="#252526" stroke="#e6a700" stroke-width="1.5"/>
+  <text x="515" y="75" text-anchor="middle" fill="#e6a700" font-size="10">REPORT_GEN</text>
+  <!-- Arrow from report -->
+  <line x1="590" y1="70" x2="650" y2="70" stroke="#4ec9b0" stroke-width="1.5" marker-end="url(#a5)"/>
+  <!-- EMAIL_DISPATCH -->
+  <rect x="650" y="50" width="120" height="40" rx="6" fill="#252526" stroke="#28c840" stroke-width="1.5"/>
+  <text x="710" y="75" text-anchor="middle" fill="#28c840" font-size="10">EMAIL</text>
+  <!-- Legend -->
+  <text x="400" y="225" text-anchor="middle" fill="#888888" font-size="10">Import → Prices → Report → Email (sequential) | Import → Inventory (parallel branch)</text>
+  <defs><marker id="a5" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="#4ec9b0"/></marker></defs>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="monospace">
+  <rect width="800" height="300" fill="#1e1e1e" rx="12"/>
+  <!-- Mrs. Jira -->
+  <circle cx="180" cy="130" r="40" fill="#ff6b6b"/>
+  <text x="180" y="135" text-anchor="middle" fill="#1e1e1e" font-size="28">🔥</text>
+  <text x="180" y="195" text-anchor="middle" fill="#cccccc" font-size="13">Mrs. Jira</text>
+  <!-- Speech bubble -->
+  <rect x="260" y="70" width="360" height="80" rx="10" fill="#333333" stroke="#4ec9b0" stroke-width="1.5"/>
+  <polygon points="260,110 240,130 260,130" fill="#333333" stroke="#4ec9b0" stroke-width="1.5"/>
+  <text x="280" y="100" fill="#e6a700" font-size="14">"We need a thing that runs things.</text>
+  <text x="280" y="120" fill="#e6a700" font-size="14"> Karen has a CSV. Automate it."</text>
+  <text x="280" y="140" fill="#888888" font-size="11">TICKET-4721 · Priority: CRITICAL · Created: 3:47 AM</text>
+  <!-- Intern -->
+  <circle cx="680" cy="130" r="40" fill="#4ec9b0"/>
+  <text x="680" y="135" text-anchor="middle" fill="#1e1e1e" font-size="28">🫠</text>
+  <text x="680" y="195" text-anchor="middle" fill="#cccccc" font-size="13">You (The Intern)</text>
+  <!-- Bottom text -->
+  <text x="400" y="260" text-anchor="middle" fill="#888888" font-size="12">Day 1 at ShopZilla Inc.</text>
+</svg>

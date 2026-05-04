@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" font-family="monospace">
+  <rect width="800" height="260" fill="#1e1e1e" rx="12"/>
+  <!-- Parent job -->
+  <rect x="280" y="15" width="240" height="40" rx="8" fill="#252526" stroke="#e6a700" stroke-width="2"/>
+  <text x="400" y="40" text-anchor="middle" fill="#e6a700" font-size="12" font-weight="bold">CSV_IMPORT (50,000 rows)</text>
+  <!-- Split lines -->
+  <line x1="400" y1="55" x2="80" y2="100" stroke="#3c3c3c" stroke-width="1"/>
+  <line x1="400" y1="55" x2="240" y2="100" stroke="#3c3c3c" stroke-width="1"/>
+  <line x1="400" y1="55" x2="400" y2="100" stroke="#3c3c3c" stroke-width="1"/>
+  <line x1="400" y1="55" x2="560" y2="100" stroke="#3c3c3c" stroke-width="1"/>
+  <line x1="400" y1="55" x2="720" y2="100" stroke="#3c3c3c" stroke-width="1"/>
+  <!-- Chunks -->
+  <rect x="20" y="100" width="120" height="50" rx="6" fill="#252526" stroke="#007acc" stroke-width="1.5"/>
+  <text x="80" y="120" text-anchor="middle" fill="#007acc" font-size="10">CHUNK 1</text>
+  <text x="80" y="138" text-anchor="middle" fill="#888888" font-size="9">rows 0–10k</text>
+  <rect x="180" y="100" width="120" height="50" rx="6" fill="#252526" stroke="#007acc" stroke-width="1.5"/>
+  <text x="240" y="120" text-anchor="middle" fill="#007acc" font-size="10">CHUNK 2</text>
+  <text x="240" y="138" text-anchor="middle" fill="#888888" font-size="9">rows 10–20k</text>
+  <rect x="340" y="100" width="120" height="50" rx="6" fill="#252526" stroke="#007acc" stroke-width="1.5"/>
+  <text x="400" y="120" text-anchor="middle" fill="#007acc" font-size="10">CHUNK 3</text>
+  <text x="400" y="138" text-anchor="middle" fill="#888888" font-size="9">rows 20–30k</text>
+  <rect x="500" y="100" width="120" height="50" rx="6" fill="#252526" stroke="#007acc" stroke-width="1.5"/>
+  <text x="560" y="120" text-anchor="middle" fill="#007acc" font-size="10">CHUNK 4</text>
+  <text x="560" y="138" text-anchor="middle" fill="#888888" font-size="9">rows 30–40k</text>
+  <rect x="660" y="100" width="120" height="50" rx="6" fill="#252526" stroke="#007acc" stroke-width="1.5"/>
+  <text x="720" y="120" text-anchor="middle" fill="#007acc" font-size="10">CHUNK 5</text>
+  <text x="720" y="138" text-anchor="middle" fill="#888888" font-size="9">rows 40–50k</text>
+  <!-- Workers -->
+  <text x="80" y="170" text-anchor="middle" fill="#4ec9b0" font-size="9">worker 1</text>
+  <text x="240" y="170" text-anchor="middle" fill="#4ec9b0" font-size="9">worker 2</text>
+  <text x="400" y="170" text-anchor="middle" fill="#4ec9b0" font-size="9">worker 3</text>
+  <text x="560" y="170" text-anchor="middle" fill="#4ec9b0" font-size="9">worker 4</text>
+  <text x="720" y="170" text-anchor="middle" fill="#4ec9b0" font-size="9">worker 5</text>
+  <!-- Merge lines -->
+  <line x1="80" y1="178" x2="400" y2="210" stroke="#3c3c3c" stroke-width="1"/>
+  <line x1="240" y1="178" x2="400" y2="210" stroke="#3c3c3c" stroke-width="1"/>
+  <line x1="400" y1="178" x2="400" y2="210" stroke="#3c3c3c" stroke-width="1"/>
+  <line x1="560" y1="178" x2="400" y2="210" stroke="#3c3c3c" stroke-width="1"/>
+  <line x1="720" y1="178" x2="400" y2="210" stroke="#3c3c3c" stroke-width="1"/>
+  <!-- Result -->
+  <rect x="280" y="210" width="240" height="35" rx="8" fill="#252526" stroke="#28c840" stroke-width="2"/>
+  <text x="400" y="232" text-anchor="middle" fill="#28c840" font-size="11">✓ COMPLETED — 50,000 rows in ~2 min</text>
+</svg>
