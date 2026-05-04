@@ -1,0 +1,218 @@
+{
+  "v01_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v01_zh.mp3",
+    "duration": 1.2
+  },
+  "v01_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v01_en.mp3",
+    "duration": 1.56
+  },
+  "v02_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v02_zh.mp3",
+    "duration": 1.32
+  },
+  "v02_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v02_en.mp3",
+    "duration": 1.728
+  },
+  "v03_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v03_zh.mp3",
+    "duration": 1.416
+  },
+  "v03_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v03_en.mp3",
+    "duration": 1.728
+  },
+  "v04_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v04_zh.mp3",
+    "duration": 1.272
+  },
+  "v04_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v04_en.mp3",
+    "duration": 1.608
+  },
+  "v05_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v05_zh.mp3",
+    "duration": 1.224
+  },
+  "v05_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v05_en.mp3",
+    "duration": 1.536
+  },
+  "v06_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v06_zh.mp3",
+    "duration": 1.44
+  },
+  "v06_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v06_en.mp3",
+    "duration": 1.776
+  },
+  "v07_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v07_zh.mp3",
+    "duration": 1.368
+  },
+  "v07_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v07_en.mp3",
+    "duration": 1.584
+  },
+  "v08_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v08_zh.mp3",
+    "duration": 1.464
+  },
+  "v08_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v08_en.mp3",
+    "duration": 2.544
+  },
+  "v09_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v09_zh.mp3",
+    "duration": 1.056
+  },
+  "v09_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v09_en.mp3",
+    "duration": 1.512
+  },
+  "v10_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v10_zh.mp3",
+    "duration": 1.416
+  },
+  "v10_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\v10_en.mp3",
+    "duration": 1.728
+  },
+  "p01_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p01_zh.mp3",
+    "duration": 1.608
+  },
+  "p01_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p01_en.mp3",
+    "duration": 2.16
+  },
+  "p02_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p02_zh.mp3",
+    "duration": 1.8
+  },
+  "p02_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p02_en.mp3",
+    "duration": 1.848
+  },
+  "p03_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p03_zh.mp3",
+    "duration": 1.92
+  },
+  "p03_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p03_en.mp3",
+    "duration": 1.968
+  },
+  "p04_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p04_zh.mp3",
+    "duration": 1.728
+  },
+  "p04_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p04_en.mp3",
+    "duration": 1.896
+  },
+  "p05_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p05_zh.mp3",
+    "duration": 1.728
+  },
+  "p05_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p05_en.mp3",
+    "duration": 1.968
+  },
+  "p06_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p06_zh.mp3",
+    "duration": 1.176
+  },
+  "p06_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p06_en.mp3",
+    "duration": 3.312
+  },
+  "p07_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p07_zh.mp3",
+    "duration": 1.752
+  },
+  "p07_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p07_en.mp3",
+    "duration": 1.992
+  },
+  "p08_zh": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p08_zh.mp3",
+    "duration": 1.848
+  },
+  "p08_en": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\p08_en.mp3",
+    "duration": 2.184
+  },
+  "d01": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d01.mp3",
+    "duration": 2.664
+  },
+  "d02": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d02.mp3",
+    "duration": 3.84
+  },
+  "d03": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d03.mp3",
+    "duration": 3.168
+  },
+  "d04": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d04.mp3",
+    "duration": 3.336
+  },
+  "d05": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d05.mp3",
+    "duration": 3.0
+  },
+  "d06": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d06.mp3",
+    "duration": 1.2
+  },
+  "d07": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d07.mp3",
+    "duration": 3.192
+  },
+  "d08": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d08.mp3",
+    "duration": 3.672
+  },
+  "d09": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d09.mp3",
+    "duration": 4.176
+  },
+  "d10": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d10.mp3",
+    "duration": 1.2
+  },
+  "d11": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d11.mp3",
+    "duration": 1.368
+  },
+  "d12": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d12.mp3",
+    "duration": 2.568
+  },
+  "d13": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d13.mp3",
+    "duration": 3.864
+  },
+  "d14": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d14.mp3",
+    "duration": 3.936
+  },
+  "d15": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d15.mp3",
+    "duration": 4.056
+  },
+  "d16": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d16.mp3",
+    "duration": 3.768
+  },
+  "d17": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d17.mp3",
+    "duration": 2.52
+  },
+  "d18": {
+    "path": "D:\\work\\poc\\ghpage\\acode\\chinese-lessons\\audio\\ep01\\d18.mp3",
+    "duration": 1.2
+  }
+}
