@@ -621,3 +621,299 @@ C-/             Undo
 ```
 
 That's it. 20 episodes. You now know more Emacs than most people who've used it for years.
+
+---
+
+## Tips for Daily Mastery
+
+### The 30-Day Muscle Memory Plan
+
+Don't try to learn everything at once. Add one new habit per week:
+
+| Week | Focus | Daily Practice |
+|---|---|---|
+| 1 | Navigation | Never touch the mouse. `C-f/b/n/p` for everything. |
+| 2 | Kill/Yank | Use `C-k`, `C-w`, `C-y` instead of backspace. Kill whole lines. |
+| 3 | Buffers/Windows | Keep 5+ files open. Switch with `C-x b`. Split with `C-x 2/3`. |
+| 4 | Search | Use `C-s` to navigate (not just to "find"). Jump to words by searching. |
+
+After 4 weeks, your hands know the basics without thinking. Then add power tools (macros, magit, org) one at a time.
+
+### The "No Arrow Keys" Challenge
+
+Unbind arrow keys for a week. Force yourself to use `C-f/b/n/p`:
+
+```elisp
+;; Add to init.el (remove after the habit sticks)
+(global-unset-key (kbd "<left>"))
+(global-unset-key (kbd "<right>"))
+(global-unset-key (kbd "<up>"))
+(global-unset-key (kbd "<down>"))
+```
+
+Painful for 2 days. Natural by day 5. Faster than arrows by day 7.
+
+### Speed Tips That Compound
+
+| Tip | Why It Matters |
+|---|---|
+| `C-u 8 C-n` | Move 8 lines down. Prefix any command with `C-u N` to repeat it. |
+| `M-g g 42` | Jump to line 42 instantly. |
+| `C-x C-x` | Swap point and mark (jump back to where you started selecting). |
+| `C-l` | Center the screen on cursor. Press again: top. Again: bottom. |
+| `M-;` | Comment/uncomment region. Works in any language. |
+| `C-x z` | Repeat last command. Press `z` again to keep repeating. |
+| `M-q` | Reflow paragraph to fill-column width. |
+| `C-x r t` | String-rectangle: insert text at the same column across multiple lines. |
+| `C-x r k` | Kill rectangle (delete a column of text). |
+| `M-^` | Join this line to the previous one. |
+
+### The "Describe" Commands — Learn Emacs From Inside Emacs
+
+| Command | What It Tells You |
+|---|---|
+| `C-h k` then press a key | What does this key do? |
+| `C-h f` then type a function | What does this function do? |
+| `C-h v` then type a variable | What's this variable's value? |
+| `C-h m` | What modes are active? What keys are available? |
+| `C-h b` | Show ALL keybindings for current buffer. |
+| `C-h i` | Open the full Emacs manual (Info). |
+
+**The meta-tip:** When you think "I wish Emacs could do X," type `C-h a` (apropos) and search for a keyword. It probably already can.
+
+---
+
+## Practical Scenarios — Become a Master
+
+### Scenario 1: Refactor a Variable Name Across a Project
+
+**Situation:** You need to rename `user_name` to `username` in 47 files.
+
+```
+1. C-c p s g          → projectile-grep: search "user_name" across project
+2. Review matches in the *grep* buffer
+3. M-x wgrep-change-to-wgrep-mode   → make grep results editable
+4. C-M-% user_name RET username RET  → regex replace in the buffer
+5. C-c C-c            → apply all changes to the actual files
+6. C-x s !            → save all modified buffers at once
+```
+
+Or with multiple cursors:
+```
+1. Open a file with occurrences
+2. Select "user_name"
+3. C-c C-<            → mark all occurrences in this buffer
+4. Type "username"    → all change simultaneously
+5. Repeat per file (or use projectile-replace)
+```
+
+### Scenario 2: Convert 200 Lines of JSON to SQL Inserts
+
+**Situation:** You have a JSON array and need SQL INSERT statements.
+
+```json
+{"name": "Alice", "email": "alice@test.com"}
+{"name": "Bob", "email": "bob@test.com"}
+... (200 more)
+```
+
+**Target:**
+```sql
+INSERT INTO users (name, email) VALUES ('Alice', 'alice@test.com');
+```
+
+**Solution — Keyboard Macro:**
+```
+1. Go to first line
+2. C-x (                          → start recording
+3. C-a                            → beginning of line
+4. C-k                            → kill the whole line
+5. Type: INSERT INTO users (name, email) VALUES ('
+6. C-y                            → yank back the killed line
+7. Now use C-s, C-w, M-% to extract name and email from the JSON
+   (or use a regex replace on that line)
+8. C-n                            → move to next line
+9. C-x )                          → stop recording
+10. C-u 199 C-x e                 → replay 199 times
+```
+
+**Alternative — regex replace on the whole buffer:**
+```
+C-M-%  (regex replace)
+Regex: {"name": "\(.+?\)", "email": "\(.+?\)"}
+Replace: INSERT INTO users (name, email) VALUES ('\1', '\2');
+Press !  → replace all
+```
+
+### Scenario 3: Debug a Failing Test — Full Workflow
+
+```
+1. C-c p t            → run project tests (projectile)
+2. Errors appear in *compilation* buffer
+3. Click the error (or M-g n) → jump to failing file:line
+4. C-x 3              → split vertically, test on left, code on right
+5. Fix the code
+6. M-x recompile      → re-run tests without leaving
+7. Green? C-x g       → magit status
+8. s                  → stage the fix
+9. c c               → commit, type message, C-c C-c
+10. P p              → push
+```
+
+Total time: 90 seconds. Never left Emacs.
+
+### Scenario 4: Write Documentation with Org Mode
+
+**Situation:** Write a technical doc with code examples, export to HTML and PDF.
+
+```org
+#+TITLE: API Documentation
+#+AUTHOR: Your Name
+#+OPTIONS: toc:2 num:t
+
+* Authentication
+  All requests require a Bearer token.
+
+  #+BEGIN_SRC bash
+  curl -H "Authorization: Bearer $TOKEN" https://api.example.com/users
+  #+END_SRC
+
+* Endpoints
+** GET /users
+   Returns a list of users.
+
+   | Field | Type   | Description      |
+   |-------+--------+------------------|
+   | id    | int    | Unique ID        |
+   | name  | string | Display name     |
+   | email | string | Email address    |
+
+** POST /users
+   Create a new user.
+
+   #+BEGIN_SRC json
+   {
+     "name": "Alice",
+     "email": "alice@example.com"
+   }
+   #+END_SRC
+```
+
+```
+C-c C-e h h    → export to HTML (opens in browser)
+C-c C-e l p    → export to PDF (via LaTeX)
+```
+
+### Scenario 5: Resolve a Merge Conflict with Magit + Ediff
+
+```
+1. C-x g              → magit status (shows "unmerged" files)
+2. Move to conflicted file, press e → open in ediff
+3. Ediff shows 3 panels: yours | theirs | merged
+4. n/p                → navigate between conflicts
+5. a                  → accept version A (yours)
+6. b                  → accept version B (theirs)
+7. Or edit the merged buffer directly
+8. q                  → quit ediff, save merged result
+9. Back in magit: s   → stage the resolved file
+10. c c              → commit the merge
+```
+
+### Scenario 6: Explore an Unfamiliar Codebase
+
+```
+1. C-c p f            → find any file by fuzzy name
+2. M-.                → jump to definition (LSP)
+3. M-?                → find all references
+4. M-,                → jump back to where you were
+5. C-c p s g          → grep for a string across the project
+6. C-x C-b            → see all open buffers (your "breadcrumb trail")
+7. C-x r m            → set a bookmark at an important location
+8. C-x r b            → jump back to a bookmark
+```
+
+### Scenario 7: Batch-Edit Config Files
+
+**Situation:** Add a new environment variable to 12 Docker Compose files.
+
+```
+1. C-c p f            → find first docker-compose.yml
+2. Add the line: "  NEW_VAR: value"
+3. C-x (              → start macro
+4. C-x C-s            → save
+5. C-x b              → switch buffer (to next compose file)
+6. C-s environment    → search for the environment section
+7. C-e RET            → new line after it
+8. Type: "  NEW_VAR: value"
+9. C-x )              → stop macro
+10. Open remaining files, C-x e on each
+```
+
+Or use `dired` + `wdired` + `shell-command-on-region` for truly bulk operations.
+
+### Scenario 8: Live-Code a Presentation
+
+```org
+;; Use org-present or org-tree-slide
+(use-package org-tree-slide)
+
+;; In an org file:
+;; M-x org-tree-slide-mode
+;; → Each top-level heading becomes a "slide"
+;; → Right arrow: next slide
+;; → Left arrow: previous slide
+;; → Code blocks can be executed live with C-c C-c
+```
+
+### Scenario 9: Remote Editing via TRAMP
+
+Edit files on a remote server as if they were local:
+
+```
+C-x C-f /ssh:user@server:/path/to/file.py RET
+```
+
+That's it. The file opens. You edit. You save (`C-x C-s`). TRAMP handles the SSH transfer transparently. Magit, LSP, compilation — all work over TRAMP.
+
+```
+;; Edit as root on local machine:
+C-x C-f /sudo::/etc/nginx/nginx.conf
+
+;; Edit on remote as root:
+C-x C-f /ssh:user@server|sudo::/etc/nginx/nginx.conf
+```
+
+### Scenario 10: Build a Personal Knowledge Base (Org-Roam)
+
+```elisp
+(use-package org-roam
+  :custom (org-roam-directory "~/notes")
+  :config (org-roam-db-autosync-mode))
+```
+
+```
+C-c n f    → find or create a note (by title)
+C-c n i    → insert a link to another note
+C-c n l    → toggle backlinks buffer (what links HERE?)
+C-c n g    → visualize your note graph
+```
+
+Build a Zettelkasten — interconnected notes that grow into a second brain. All plain text. All searchable. All version-controlled with git.
+
+---
+
+## The Mastery Path
+
+```
+Week 1-2:   Survive (open, edit, save, close, don't panic)
+Week 3-4:   Navigate (buffers, windows, search, movement)
+Month 2:    Edit efficiently (kill/yank, macros, multiple cursors)
+Month 3:    Customize (init.el, packages, theme, keybindings)
+Month 4:    Integrate (magit, LSP, projectile, terminal)
+Month 5:    Automate (macros, elisp functions, snippets)
+Month 6+:   Transcend (org-mode, TRAMP, custom workflows)
+```
+
+The goal isn't to memorize every keybinding. It's to reach the point where Emacs disappears — where you think about your *work*, not your *editor*. The keystrokes become reflexes. The editor becomes an extension of your thought process.
+
+That's mastery. And it starts with `C-x C-f`.
