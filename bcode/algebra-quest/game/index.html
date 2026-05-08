@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algebra Quest — The Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game" width="480" height="320"></canvas>
+    <div id="ui-overlay">
+      <div id="hud" class="hidden">
+        <span id="level-display">Level 1</span>
+        <span id="score-display">⭐ 0</span>
+        <span id="lives-display">❤️❤️❤️</span>
+      </div>
+      <div id="equation-panel" class="hidden">
+        <div id="equation-text"></div>
+        <input id="answer-input" type="number" placeholder="x = ?" autocomplete="off">
+        <button id="submit-btn">⚡ Solve!</button>
+        <div id="feedback"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
