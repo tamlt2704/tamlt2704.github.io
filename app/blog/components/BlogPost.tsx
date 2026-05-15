@@ -32,7 +32,7 @@ export default function BlogPost({
             <article className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 py-12">
                 {/* Breadcrumb */}
                 <div style={{ marginBottom: "24px", fontSize: "13px" }}>
-                    <Link href="/blog" style={{ color: "#3b82f6", textDecoration: "none" }}>
+                    <Link href="/blog" style={{ color: "#0d9488", textDecoration: "none" }}>
                         ← Blog
                     </Link>
                     <span style={{ color: "#9ca3af", margin: "0 8px" }}>/</span>
@@ -57,12 +57,12 @@ export default function BlogPost({
                 {/* Navigation */}
                 <nav style={{ marginTop: "48px", paddingTop: "24px", borderTop: "1px solid #e5e7eb", display: "flex", justifyContent: "space-between" }}>
                     {prevSlug ? (
-                        <Link href={`/blog/${prevSlug}`} style={{ color: "#3b82f6", textDecoration: "none", fontSize: "14px" }}>
+                        <Link href={`/blog/${prevSlug}`} style={{ color: "#0d9488", textDecoration: "none", fontSize: "14px" }}>
                             ← {prevTitle}
                         </Link>
                     ) : <span />}
                     {nextSlug ? (
-                        <Link href={`/blog/${nextSlug}`} style={{ color: "#3b82f6", textDecoration: "none", fontSize: "14px" }}>
+                        <Link href={`/blog/${nextSlug}`} style={{ color: "#0d9488", textDecoration: "none", fontSize: "14px" }}>
                             {nextTitle} →
                         </Link>
                     ) : <span />}

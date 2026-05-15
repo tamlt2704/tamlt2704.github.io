@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 const links = [
     { href: "/", label: "Home" },
     { href: "/blog", label: "Blog" },
-    { href: "/courses", label: "Courses" },
     { href: "/about", label: "About" },
 ];
 
@@ -25,7 +24,7 @@ export default function Navbar() {
                         href={link.href}
                         style={{
                             color: "black",
-                            textDecoration: pathname === link.href ? "underline" : "none",
+                            textDecoration: (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))) ? "underline" : "none",
                             fontSize: "14px",
                         }}
                     >

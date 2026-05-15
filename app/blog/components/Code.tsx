@@ -1,12 +1,15 @@
 "use client";
 
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+
 interface CodeProps {
     children: string;
     lang?: string;
     title?: string;
 }
 
-export function Code({ children, lang, title }: CodeProps) {
+export function Code({ children, lang = "python", title }: CodeProps) {
     return (
         <div style={{ margin: "16px 0", borderRadius: "8px", overflow: "hidden", border: "1px solid #e5e7eb" }}>
             {title && (
@@ -14,11 +17,13 @@ export function Code({ children, lang, title }: CodeProps) {
                     {title}
                 </div>
             )}
-            <pre style={{ background: "#1f2937", padding: "16px", margin: 0, overflow: "auto", fontSize: "13px", lineHeight: 1.6 }}>
-                <code style={{ color: "#e5e7eb", fontFamily: "var(--font-geist-mono), monospace" }}>
-                    {children}
-                </code>
-            </pre>
+            <SyntaxHighlighter
+                language={lang}
+                style={oneDark}
+                customStyle={{ margin: 0, borderRadius: 0, fontSize: "13px", lineHeight: 1.6 }}
+            >
+                {children.trim()}
+            </SyntaxHighlighter>
         </div>
     );
 }
@@ -66,6 +71,15 @@ export function Note({ children }: { children: React.ReactNode }) {
     return (
         <div style={{ background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: "8px", padding: "12px 16px", margin: "16px 0", fontSize: "14px", color: "#1e40af" }}>
             {children}
+        </div>
+    );
+}
+
+export function BlogImage({ src, alt }: { src: string; alt: string }) {
+    return (
+        <div style={{ margin: "20px 0", borderRadius: "8px", overflow: "hidden", border: "1px solid #e5e7eb" }}>
+            <img src={src} alt={alt} style={{ width: "100%", display: "block" }} />
+            {alt && <p style={{ fontSize: "12px", color: "#6b7280", padding: "8px 12px", background: "#f9fafb" }}>{alt}</p>}
         </div>
     );
 }
