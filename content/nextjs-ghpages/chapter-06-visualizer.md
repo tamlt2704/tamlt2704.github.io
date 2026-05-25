@@ -143,16 +143,40 @@ git commit -m "feat: add StepVisualizer component"
 
 ## Register It
 
+Add `StepVisualizer` to the components map alongside the existing ones:
+
+| Key              | What it replaces                           | Why                                                     |
+| ---------------- | ------------------------------------------ | ------------------------------------------------------- |
+| `code`           | `` `inline` `` and ` ```fenced``` ` blocks | Adds syntax highlighting via `react-syntax-highlighter` |
+| `pre`            | `<pre>` wrapper around code blocks         | Prevents Tailwind prose from double-styling the block   |
+| `a`              | Every `[link](url)` in markdown            | Strips `.md` extension so chapter links work as routes  |
+| `Quiz`           | `<Quiz />` in markdown                     | Interactive multiple-choice component                   |
+| `CodePlayground` | `<CodePlayground />` in markdown           | Editable, runnable code blocks                          |
+| `StepVisualizer` | `<StepVisualizer />` in markdown           | Step-by-step algorithm visualizer                       |
+
 ```tsx
+import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
+import { Quiz } from "@/app/blog/components/Quiz";
+import { CodePlayground } from "@/app/blog/components/CodePlayground";
 import { StepVisualizer } from "@/app/blog/components/StepVisualizer";
 
-components={{
-  code: MarkdownCode,
-  pre: MarkdownPre,
-  Quiz,
-  CodePlayground,
-  StepVisualizer,
-}}
+<MDXRemote
+  source={content}
+  components={{
+    code: MarkdownCode,
+    pre: MarkdownPre,
+    a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
+    Quiz,
+    CodePlayground,
+    StepVisualizer,
+  }}
+  options={{
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      format: "md",
+    },
+  }}
+/>;
 ```
 
 ## Composing All Three

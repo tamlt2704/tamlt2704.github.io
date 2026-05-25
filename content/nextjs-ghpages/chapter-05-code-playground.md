@@ -149,17 +149,34 @@ async function loadPyodide() {
 
 ## Register It
 
-Add to your MDX components map:
+The `components` map tells MDXRemote: "when you encounter this HTML tag or JSX component name, render this React component instead."
+
+| Key    | What it replaces                           | Why                                                     |
+| ------ | ------------------------------------------ | ------------------------------------------------------- |
+| `code` | `` `inline` `` and ` ```fenced``` ` blocks | Adds syntax highlighting via `react-syntax-highlighter` |
+| `pre`  | `<pre>` wrapper around code blocks         | Prevents Tailwind prose from double-styling the block   |
+| `a`    | Every `[link](url)` in markdown            | Strips `.md` extension so chapter links work as routes  |
+| `Quiz` | `<Quiz />` in markdown                     | Renders the interactive multiple-choice component       |
 
 ```tsx
-import { CodePlayground } from "@/app/blog/components/CodePlayground";
+import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
+import { Quiz } from "@/app/blog/components/Quiz";
 
-components={{
-  code: MarkdownCode,
-  pre: MarkdownPre,
-  Quiz,
-  CodePlayground,
-}}
+<MDXRemote
+  source={content}
+  components={{
+    code: MarkdownCode, // syntax highlighting
+    pre: MarkdownPre, // prevents double-wrapping by Tailwind prose
+    a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />, // strips .md from chapter links
+    Quiz, // interactive multiple-choice component
+  }}
+  options={{
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      format: "md",
+    },
+  }}
+/>;
 ```
 
 ## Use It in Markdown

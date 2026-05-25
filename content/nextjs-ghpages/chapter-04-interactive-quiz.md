@@ -137,6 +137,7 @@ import { Quiz } from "@/app/blog/components/Quiz";
   components={{
     code: MarkdownCode,
     pre: MarkdownPre,
+    a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
     Quiz, // ← readers can now use <Quiz /> in markdown
   }}
   options={{

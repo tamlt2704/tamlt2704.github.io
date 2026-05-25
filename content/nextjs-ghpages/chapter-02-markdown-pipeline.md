@@ -236,6 +236,14 @@ export default async function BlogPage({ params }: Props) {
 }
 ```
 
+**What each `components` entry does:**
+
+| Key    | What it replaces                           | Why                                                            |
+| ------ | ------------------------------------------ | -------------------------------------------------------------- |
+| `code` | `` `inline` `` and ` ```fenced``` ` blocks | Adds syntax highlighting via `react-syntax-highlighter`        |
+| `pre`  | `<pre>` wrapper around code blocks         | Prevents Tailwind prose from double-styling the block          |
+| `a`    | Every `[link](url)` in markdown            | Strips `.md` extension so chapter links work as Next.js routes |
+
 ## How It Works
 
 The `[...slug]` catch-all route matches any URL under `/blog/`:
