@@ -19,7 +19,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "precommit:typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "^16.2.6",
