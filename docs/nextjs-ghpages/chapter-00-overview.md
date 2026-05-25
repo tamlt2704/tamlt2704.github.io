@@ -296,6 +296,38 @@ touch .secretlintrc.json
 
 All of this runs in ~2 seconds (only on staged files). You never push broken code again.
 
+**Optional: enforce commit message format**
+
+commitlint checks your commit message _before_ the commit goes through. If the message doesn't follow the convention, the commit is rejected.
+
+```bash
+npm install -D @commitlint/cli@19.8.0 @commitlint/config-conventional@19.8.0
+echo '{"extends": ["@commitlint/config-conventional"]}' > .commitlintrc.json
+```
+
+Add a `commit-msg` husky hook:
+
+```bash
+echo 'npx commitlint --edit $1' > .husky/commit-msg
+```
+
+Now every commit message must follow the format `type: description`:
+
+| Type       | When to use                             |
+| ---------- | --------------------------------------- |
+| `feat`     | Adding a new feature                    |
+| `fix`      | Fixing a bug                            |
+| `docs`     | Documentation changes only              |
+| `chore`    | Maintenance (deps, config, tooling)     |
+| `refactor` | Code change that isn't a fix or feature |
+| `style`    | Formatting, missing semicolons, etc.    |
+
+```bash
+git commit -m "feat: add quiz component"   # ✅ passes
+git commit -m "add quiz component"         # ❌ blocked — missing type
+git commit -m "ch00"                       # ❌ blocked — missing type
+```
+
 ## Step 6: Zero-Setup Option — GitHub Codespaces
 
 Don't want to install anything locally? GitHub Codespaces gives you a full VS Code editor in the browser, running on a cloud VM. By adding a config file to your repo, you define exactly what that environment looks like — extensions, settings, even which commands to run on startup.

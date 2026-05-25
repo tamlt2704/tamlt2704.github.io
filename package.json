@@ -28,6 +28,8 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@secretlint/secretlint-rule-preset-recommend": "^8.4.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
