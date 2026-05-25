@@ -102,7 +102,7 @@ export function getSeriesChapters(series: string) {
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
-    .filter((f) => f.endsWith(".md"))
+    .filter((f) => f.endsWith(".md") && f !== "README.md") // exclude README
     .sort();
 }
 ```
@@ -126,10 +126,6 @@ Create `app/blog/[...slug]/page.tsx`:
 mkdir -p "app/blog/[...slug]" && touch "app/blog/[...slug]/page.tsx"
 ```
 
-```bash
-mkdir -p app/blog/\[...slug\] && touch app/blog/\[...slug\]/page.tsx
-```
-
 ```tsx
 import { notFound } from "next/navigation"; // Shows a 404 page
 import fs from "fs";
@@ -137,6 +133,7 @@ import path from "path";
 import matter from "gray-matter"; // Parses YAML frontmatter from markdown
 import { MDXRemote } from "next-mdx-remote/rsc"; // Renders markdown as React components
 import remarkGfm from "remark-gfm"; // Adds GitHub-flavored markdown (tables, etc.)
+import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
 import { getSeriesChapters } from "@/lib/markdown";
 
 // Next.js passes URL segments as params.
@@ -158,13 +155,15 @@ export async function generateStaticParams() {
   const folders = fs.readdirSync(base, { withFileTypes: true }).filter((d) => d.isDirectory());
 
   for (const folder of folders) {
-    const files = fs.readdirSync(path.join(base, folder.name)).filter((f) => f.endsWith(".md"));
+    const files = fs
+      .readdirSync(path.join(base, folder.name))
+      .filter((f) => f.endsWith(".md") && f !== "README.md"); // exclude README
     for (const file of files) {
       // Each file becomes a URL: /blog/{folder}/{filename-without-.md}
-      params.push({ slug: [folder.name, file.replace(".md", "")] });
+      params.push({ slug: [folder.name, file.replace(/\.md$/, "")] });
     }
   }
-  return params;
+  return params; // must return or generateStaticParams returns undefined
 }
 
 /**
@@ -198,6 +197,12 @@ export default async function BlogPage({ params }: Props) {
       <div className="prose prose-lg max-w-none">
         <MDXRemote
           source={content}
+          components={{
+            code: MarkdownCode, // syntax highlighting for code blocks
+            pre: MarkdownPre, // prevents double-wrapping by Tailwind prose
+            // strip .md from links so chapter links work as Next.js routes
+            a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
+          }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm], // Enable tables, strikethrough, task lists
@@ -209,8 +214,22 @@ export default async function BlogPage({ params }: Props) {
 
       {/* Prev / Next */}
       <nav className="mt-12 flex justify-between border-t pt-6 text-sm">
-        {prev && <a href={`/blog/${series}/${prev.replace(".md", "")}`}>← Previous</a>}
-        {next && <a href={`/blog/${series}/${next.replace(".md", "")}`}>Next →</a>}
+        {prev && (
+          <a
+            href={`/blog/${series}/${prev.replace(".md", "")}`}
+            className="text-teal-600 hover:underline"
+          >
+            ← Previous
+          </a>
+        )}
+        {next && (
+          <a
+            href={`/blog/${series}/${next.replace(".md", "")}`}
+            className="ml-auto text-teal-600 hover:underline"
+          >
+            Next →
+          </a>
+        )}
       </nav>
     </article>
   );

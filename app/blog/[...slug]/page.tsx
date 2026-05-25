@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc"; // Renders markdown string as React components (server-side, runs at build time)
 import remarkGfm from "remark-gfm";
 import { getSeriesChapters } from "@/lib/markdown";
+import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
 
 // Next.js passes URL segments as params.
 // For /blog/algorithms/chapter-01 → slug = ["algorithms", "chapter-01"]
@@ -62,6 +63,8 @@ export default async function BlogPage({ params }: Props) {
         <MDXRemote
           source={content}
           components={{
+            code: MarkdownCode,
+            pre: MarkdownPre,
             // Strip .md from links so relative chapter links work as Next.js routes
             a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
           }}
