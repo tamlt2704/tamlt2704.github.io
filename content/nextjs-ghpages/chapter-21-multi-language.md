@@ -416,7 +416,7 @@ Always review AI translations — especially for technical terms. "Variable" in 
 
 Code is universal. Only translate the prose:
 
-````markdown
+`````markdown
 <!-- English -->
 
 A variable stores a value. You create one with `let`:
@@ -434,6 +434,8 @@ name = "Ada"
 age = 36
 ```⁠
 ````
+`````
+
 ````
 
 The code block is identical. Only the explanation changes.
@@ -540,3 +542,4 @@ No code changes to components. No new routes. The system discovers languages fro
 **Deploy:** `git push`
 
 You're not just a blogger. You're running a course platform. Ship it.
+````

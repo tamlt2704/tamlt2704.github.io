@@ -20,7 +20,7 @@ def binary_search(arr, target):
 
 <Quiz
 question="If the array has 1024 elements, what's the maximum number of comparisons binary search needs?"
-options={["1024", "512", "10", "32"]}
-answer={2}
+options='["1024", "512", "10", "32"]'
+answer="2"
 explanation="log₂(1024) = 10. Binary search halves the space each step."
 />

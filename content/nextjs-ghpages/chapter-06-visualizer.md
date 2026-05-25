@@ -235,8 +235,8 @@ console.log(bubbleSort([5, 3, 8, 1, 2]));
 
 <Quiz
   question="What is the worst-case time complexity of bubble sort?"
-  options={["O(n)", "O(n log n)", "O(n²)", "O(log n)"]}
-  answer={2}
+  options='["O(n)", "O(n log n)", "O(n²)", "O(log n)"]'
+  answer="2"
   explanation="Two nested loops over n elements = n × n = O(n²)"
 />
 ````

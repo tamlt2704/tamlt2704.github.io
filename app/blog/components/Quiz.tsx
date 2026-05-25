@@ -14,15 +14,17 @@ export function Quiz({ question, options, answer, explanation }: QuizProps) {
   const [revealed, setRevealed] = useState(false);
 
   // MDX passes array props as raw strings e.g. '["a","b"]' — parse them
-  console.log("Quiz options raw:", options, typeof options);
   const normalizedOptions: string[] = Array.isArray(options)
     ? options
     : (() => {
+        const str = String(options);
         try {
-          return JSON.parse(String(options).replace(/'/g, '"'));
-        } catch {
-          return [];
-        }
+          const parsed = JSON.parse(str.replace(/'/g, '"'));
+          if (Array.isArray(parsed)) return parsed;
+        } catch {}
+        // fallback: comma-separated string
+        if (str.includes(",")) return str.split(",").map((s) => s.trim());
+        return [];
       })();
   const normalizedAnswer = typeof answer === "string" ? parseInt(answer, 10) : answer;
 
@@ -35,7 +37,7 @@ export function Quiz({ question, options, answer, explanation }: QuizProps) {
   const isCorrect = selected === normalizedAnswer;
 
   return (
-    <div className="my-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
+    <div className="not-prose my-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
       <p className="mb-4 font-semibold text-gray-900">{question}</p>
 
       <div className="space-y-2">

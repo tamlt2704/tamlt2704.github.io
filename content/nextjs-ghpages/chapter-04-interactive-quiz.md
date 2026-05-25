@@ -15,8 +15,8 @@ What if, after explaining binary search, you could write this in your markdown:
 
 <Quiz
 question="What is the time complexity of binary search?"
-options={["O(n)", "O(log n)", "O(n log n)", "O(1)"]}
-answer={1}
+options='["O(n)", "O(log n)", "O(n log n)", "O(1)"]'
+answer="1"
 />
 ```
 
@@ -182,8 +182,8 @@ def binary_search(arr, target):
 
 <Quiz
   question="If the array has 1024 elements, what's the maximum number of comparisons binary search needs?"
-  options={["1024", "512", "10", "32"]}
-  answer={2}
+  options='["1024", "512", "10", "32"]'
+  answer="2"
   explanation="log₂(1024) = 10. Binary search halves the space each step."
 />
 ````
@@ -219,7 +219,7 @@ Some ideas:
   Don't forget to handle the empty array case!
 </Callout>
 
-<Quiz question="..." options={[...]} answer={0} />
+<Quiz question="..." options='[...]' answer="0" />
 
 <CodePlayground language="python" initialCode="print('hello')" />
 
