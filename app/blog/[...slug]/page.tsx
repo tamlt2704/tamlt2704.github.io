@@ -1,0 +1,74 @@
+import { notFound } from "next/navigation";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote/rsc"; // Renders markdown string as React components (server-side, runs at build time)
+import remarkGfm from "remark-gfm";
+import { getSeriesChapters } from "@/lib/markdown";
+
+// Next.js passes URL segments as params.
+// For /blog/algorithms/chapter-01 → slug = ["algorithms", "chapter-01"]
+interface Props {
+  params: Promise<{ slug: string[] }>;
+}
+
+/**
+ * generateStaticParams tells Next.js which pages to pre-build.
+ * At build time, it scans all .md files and returns their URL paths.
+ * Without this, Next.js wouldn't know what pages exist (since they're dynamic).
+ */
+export async function generateStaticParams() {
+  const base = path.join(process.cwd(), "content");
+  if (!fs.existsSync(base)) return [];
+
+  const params: { slug: string[] }[] = [];
+  const folders = fs.readdirSync(base, { withFileTypes: true }).filter((d) => d.isDirectory());
+
+  for (const folder of folders) {
+    const files = fs.readdirSync(path.join(base, folder.name)).filter((f) => f.endsWith(".md"));
+    for (const file of files) {
+      params.push({ slug: [folder.name, file.replace(/\.md$/, "")] });
+    }
+  }
+}
+
+export default async function BlogPage({ params }: Props) {
+  const { slug } = await params;
+  if (slug.length < 2) notFound(); // Need at least series + chapter
+
+  // Destructure: /blog/algorithms/chapter-01 → series="algorithms", fileSlug="chapter-01"
+  const [series, fileSlug] = slug;
+  const filePath = path.join(process.cwd(), "content", series, `${fileSlug}.md`);
+
+  if (!fs.existsSync(filePath)) notFound();
+
+  const raw = fs.readFileSync(filePath, "utf8");
+  const { content } = matter(raw); // content = the markdown text without frontmatter
+
+  // build next/prev navigation links
+  const chapters = getSeriesChapters(series);
+  const currentFile = `${fileSlug}.md`;
+  const idx = chapters.indexOf(currentFile);
+  const prev = idx > 0 ? chapters[idx - 1] : null;
+  const next = idx < chapters.length - 1 ? chapters[idx + 1] : null;
+
+  return (
+    <article className="mx-auto max-w-3xl px-6 py-12">
+      {/* prose = Tailwind typography plugin, styles all HTML elements beautifully */}
+      <div className="prose prose-lg max-w-none">
+        <MDXRemote
+          source={content}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm], // Enable tables, strikethrough, task lists
+              format: "md", // Treat input as markdown (not MDX)
+            },
+          }}
+        />
+      </div>
+      {/* Prev / Next */}
+      <nav>{prev && <a href={`/blog/${series}/${prev.replace(".md", "")}`}>← Previous</a>}</nav>
+      <nav>{next && <a href={`/blog/${series}/${next.replace(".md", "")}`}>Next →</a>}</nav>
+    </article>
+  );
+}

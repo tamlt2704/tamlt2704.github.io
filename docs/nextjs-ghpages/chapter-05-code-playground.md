@@ -25,6 +25,10 @@ This component has three parts: an editable textarea (the "editor"), a Run butto
 
 Create `app/blog/components/CodePlayground.tsx`:
 
+```bash
+touch app/blog/components/CodePlayground.tsx
+```
+
 ```tsx
 "use client"; // Interactive — needs browser APIs (textarea, Function constructor)
 

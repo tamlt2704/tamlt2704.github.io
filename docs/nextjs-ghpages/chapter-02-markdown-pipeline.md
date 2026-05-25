@@ -48,6 +48,10 @@ This file scans your `content/` folder and provides functions to list series and
 
 Create `lib/markdown.ts`:
 
+```bash
+mkdir -p lib && touch lib/markdown.ts
+```
+
 ```typescript
 import fs from "fs"; // Node.js file system module — reads files and folders
 import path from "path"; // Builds file paths that work on any OS (Windows, Mac, Linux)
@@ -118,13 +122,21 @@ This is the most important file in the project. One component renders _every_ ma
 
 Create `app/blog/[...slug]/page.tsx`:
 
+```bash
+mkdir -p "app/blog/[...slug]" && touch "app/blog/[...slug]/page.tsx"
+```
+
+```bash
+mkdir -p app/blog/\[...slug\] && touch app/blog/\[...slug\]/page.tsx
+```
+
 ```tsx
-import { notFound } from "next/navigation";  // Shows a 404 page
+import { notFound } from "next/navigation"; // Shows a 404 page
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";             // Parses YAML frontmatter from markdown
-import { MDXRemote } from "next-mdx-remote/rsc";  // Renders markdown as React components
-import remarkGfm from "remark-gfm";          // Adds GitHub-flavored markdown (tables, etc.)
+import matter from "gray-matter"; // Parses YAML frontmatter from markdown
+import { MDXRemote } from "next-mdx-remote/rsc"; // Renders markdown as React components
+import remarkGfm from "remark-gfm"; // Adds GitHub-flavored markdown (tables, etc.)
 import { getSeriesChapters } from "@/lib/markdown";
 
 // Next.js passes URL segments as params.
@@ -143,12 +155,10 @@ export async function generateStaticParams() {
   if (!fs.existsSync(base)) return [];
 
   const params: { slug: string[] }[] = [];
-  const folders = fs.readdirSync(base, { withFileTypes: true })
-    .filter((d) => d.isDirectory());
+  const folders = fs.readdirSync(base, { withFileTypes: true }).filter((d) => d.isDirectory());
 
   for (const folder of folders) {
-    const files = fs.readdirSync(path.join(base, folder.name))
-      .filter((f) => f.endsWith(".md"));
+    const files = fs.readdirSync(path.join(base, folder.name)).filter((f) => f.endsWith(".md"));
     for (const file of files) {
       // Each file becomes a URL: /blog/{folder}/{filename-without-.md}
       params.push({ slug: [folder.name, file.replace(".md", "")] });
@@ -163,19 +173,17 @@ export async function generateStaticParams() {
  */
 export default async function BlogPage({ params }: Props) {
   const { slug } = await params;
-  if (slug.length < 2) return notFound();  // Need at least series + chapter
+  if (slug.length < 2) return notFound(); // Need at least series + chapter
 
   // Destructure: /blog/algorithms/chapter-01 → series="algorithms", fileSlug="chapter-01"
   const [series, fileSlug] = slug;
-  const filePath = path.join(
-    process.cwd(), "content", series, `${fileSlug}.md`
-  );
+  const filePath = path.join(process.cwd(), "content", series, `${fileSlug}.md`);
 
-  if (!fs.existsSync(filePath)) return notFound();  // File doesn't exist → 404
+  if (!fs.existsSync(filePath)) return notFound(); // File doesn't exist → 404
 
   // Read the markdown file and separate frontmatter (metadata) from content
   const raw = fs.readFileSync(filePath, "utf-8");
-  const { content } = matter(raw);  // content = the markdown text without frontmatter
+  const { content } = matter(raw); // content = the markdown text without frontmatter
 
   // Build prev/next navigation links
   const chapters = getSeriesChapters(series);
@@ -185,36 +193,24 @@ export default async function BlogPage({ params }: Props) {
   const next = idx < chapters.length - 1 ? chapters[idx + 1] : null;
 
   return (
-    <article className="max-w-3xl mx-auto px-6 py-12">
+    <article className="mx-auto max-w-3xl px-6 py-12">
       {/* prose = Tailwind typography plugin, styles all HTML elements beautifully */}
       <div className="prose prose-lg max-w-none">
         <MDXRemote
-          source={content}           {/* The markdown text to render */}
+          source={content}
           options={{
             mdxOptions: {
-              remarkPlugins: [remarkGfm],  {/* Enable tables, strikethrough, task lists */}
-              format: "md",                {/* Treat input as markdown (not MDX) */}
-            },
-          }}
-        />
-      </div>
+              remarkPlugins: [remarkGfm], // Enable tables, strikethrough, task lists
+              format: "md", // Treat input as markdown (not MDX)
             },
           }}
         />
       </div>
 
       {/* Prev / Next */}
-      <nav className="mt-12 pt-6 border-t flex justify-between text-sm">
-        {prev && (
-          <a href={`/blog/${series}/${prev.replace(".md", "")}`}>
-            ← Previous
-          </a>
-        )}
-        {next && (
-          <a href={`/blog/${series}/${next.replace(".md", "")}`}>
-            Next →
-          </a>
-        )}
+      <nav className="mt-12 flex justify-between border-t pt-6 text-sm">
+        {prev && <a href={`/blog/${series}/${prev.replace(".md", "")}`}>← Previous</a>}
+        {next && <a href={`/blog/${series}/${next.replace(".md", "")}`}>Next →</a>}
       </nav>
     </article>
   );

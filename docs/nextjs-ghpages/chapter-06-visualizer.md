@@ -16,6 +16,10 @@ A step visualizer shows an array (or any data structure) and lets the reader ste
 
 Create `app/blog/components/StepVisualizer.tsx`:
 
+```bash
+touch app/blog/components/StepVisualizer.tsx
+```
+
 ```tsx
 "use client"; // Interactive — user clicks prev/next buttons
 

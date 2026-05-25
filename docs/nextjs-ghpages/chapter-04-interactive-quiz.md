@@ -30,6 +30,10 @@ The Quiz component needs to be a **client component** (runs in the browser) beca
 
 Create `app/blog/components/Quiz.tsx`:
 
+```bash
+touch app/blog/components/Quiz.tsx
+```
+
 ```tsx
 "use client"; // This directive marks it as a client component (runs in browser, not at build time)
 

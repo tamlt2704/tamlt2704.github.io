@@ -25,6 +25,10 @@ When MDX renders a markdown code block, it creates `<pre><code>` elements. We in
 
 Create `app/blog/components/MarkdownCode.tsx`:
 
+```bash
+mkdir -p app/blog/components && touch app/blog/components/MarkdownCode.tsx
+```
+
 ````tsx
 "use client"; // Needs browser — SyntaxHighlighter uses DOM APIs
 

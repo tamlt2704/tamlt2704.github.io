@@ -19,6 +19,10 @@ What's missing: a landing page, series navigation, and SEO.
 
 Create `app/blog/page.tsx` — lists all series:
 
+```bash
+touch app/blog/page.tsx
+```
+
 ```tsx
 import Link from "next/link";
 import { getAllSeries } from "@/lib/markdown";
