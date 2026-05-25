@@ -1,0 +1,159 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
+3:I[37457,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
+5:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+9:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"ViewportBoundary"]
+b:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"MetadataBoundary"]
+d:I[68027,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default",1]
+:HL["/_next/static/chunks/0t0s.~un1o7-9.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","nextjs-ghpages","chapter-04-interactive-quiz"],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","nextjs-ghpages/chapter-04-interactive-quiz","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0t0s.~un1o7-9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0r7n~75v~2g-i.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/0n5hzmmyroibb.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0t0s.~un1o7-9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"d74lRfk2ZD3xgV-RnkdYk"}
+e:[]
+8:"$We"
+4:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":"$Lf"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-03-beautiful-code","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-05-code-playground","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+10:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownPre"]
+11:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownCode"]
+12:Tcab,"use client"; // This directive marks it as a client component (runs in browser, not at build time)
+
+import { useState } from "react"; // React hook for managing state that changes over time
+
+// TypeScript interface: defines what props this component accepts
+// This acts as documentation AND catches errors if you pass wrong data
+interface QuizProps {
+  question: string; // The question text
+  options: string[]; // Array of answer choices, e.g. ["O(n)", "O(log n)", ...]
+  answer: number; // Index of the correct answer (0-based)
+  explanation?: string; // Optional explanation shown after answering (? = optional)
+}
+
+export function Quiz({ question, options, answer, explanation }: QuizProps) {
+  // useState returns [currentValue, setterFunction]
+  // selected: which option the user clicked (null = hasn't clicked yet)
+  const [selected, setSelected] = useState<number | null>(null);
+  // revealed: whether to show the answer (prevents clicking again)
+  const [revealed, setRevealed] = useState(false);
+
+  const handleSelect = (index: number) => {
+    if (revealed) return; // Already answered — ignore further clicks
+    setSelected(index); // Remember which option was clicked
+    setRevealed(true); // Lock in the answer, show result
+  };
+
+  const isCorrect = selected === answer;
+
+  return (
+    // my-8 = vertical margin, p-6 = padding, rounded-lg = rounded corners
+    <div className="my-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
+      <p className="mb-4 font-semibold text-gray-900">{question}</p>
+
+      {/* space-y-2 = 8px gap between each button */}
+      <div className="space-y-2">
+        {/* .map() renders one button per option */}
+        {options.map((option, i) => {
+          // Determine button style based on state
+          let style = "border-gray-200 bg-white hover:border-teal-400"; // default
+          if (revealed) {
+            if (i === answer)
+              style = "border-green-500 bg-green-50"; // correct answer: green
+            else if (i === selected)
+              style = "border-red-400 bg-red-50"; // wrong selection: red
+            else style = "border-gray-200 bg-white opacity-60"; // other options: faded
+          }
+
+          return (
+            <button
+              key={i} // React needs unique key for list items
+              onClick={() => handleSelect(i)} // When clicked, select this option
+              disabled={revealed} // Can't click after answering
+              className={`w-full rounded-md border px-4 py-3 text-left text-sm transition ${style}`}
+            >
+              {/* String.fromCharCode(65) = "A", 66 = "B", etc. */}
+              <span className="mr-3 font-mono text-gray-400">{String.fromCharCode(65 + i)}.</span>
+              {option}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Only show result after user has answered */}
+      {revealed && (
+        <div
+          className={`mt-4 rounded p-3 text-sm ${isCorrect ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
+        >
+          {isCorrect ? "Correct!" : `Not quite. The answer is ${String.fromCharCode(65 + answer)}.`}
+          {explanation && <p className="mt-1 text-gray-700">{explanation}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+f:[["$","h1",null,{"children":"Chapter 4: Your First Interactive Component"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-03-beautiful-code","children":"← Chapter 3: Beautiful Code"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-05-code-playground","children":"Chapter 5: Code Playground →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Moment It Gets Interesting"}],"\n",["$","p",null,{"children":"Your blog has beautiful markdown rendering. Syntax highlighting. Typography. But the reader is still passive — scrolling, reading, maybe copying a code snippet. There's no feedback loop. No \"did I actually understand that?\""}],"\n",["$","p",null,{"children":"What if, after explaining binary search, you could write this in your markdown:"}],"\n",["$","$L10",null,{"children":["$","$L11",null,{"className":"language-markdown","children":"## Quick Check\n\n<Quiz\nquestion=\"What is the time complexity of binary search?\"\noptions={[\"O(n)\", \"O(log n)\", \"O(n log n)\", \"O(1)\"]}\nanswer={1}\n/>\n"}]}],"\n",["$","p",null,{"children":"And the reader sees a multiple-choice question. They click an answer. Green flash for correct. Red shake for wrong. Instant feedback, right where the concept was explained."}],"\n",["$","p",null,{"children":"That's what we're building."}],"\n",["$","h2",null,{"children":"The Quiz Component"}],"\n",["$","p",null,{"children":["The Quiz component needs to be a ",["$","strong",null,{"children":"client component"}]," (runs in the browser) because it uses ",["$","$L11",null,{"children":"useState"}]," for interactivity. Server components can't handle clicks or state changes."]}],"\n",["$","p",null,{"children":["Create ",["$","$L11",null,{"children":"app/blog/components/Quiz.tsx"}],":"]}],"\n",["$","$L10",null,{"children":["$","$L11",null,{"className":"language-bash","children":"touch app/blog/components/Quiz.tsx\n"}]}],"\n",["$","$L10",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$12"}]}],"\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f"]
+13:["$","p",null,{"children":["$","strong",null,{"children":"How the state machine works:"}]}]
+14:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"State"}],["$","th",null,{"children":["$","$L11",null,{"children":"selected"}]}],["$","th",null,{"children":["$","$L11",null,{"children":"revealed"}]}],["$","th",null,{"children":"What user sees"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Initial"}],["$","td",null,{"children":["$","$L11",null,{"children":"null"}]}],["$","td",null,{"children":["$","$L11",null,{"children":"false"}]}],["$","td",null,{"children":"Question + clickable buttons"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"After click"}],["$","td",null,{"children":[["$","$L11",null,{"children":"2"}]," (e.g.)"]}],["$","td",null,{"children":["$","$L11",null,{"children":"true"}]}],["$","td",null,{"children":"Buttons locked, correct=green, wrong=red, result message"}]]}]]}]]}]
+15:["$","p",null,{"children":"Two pieces of state, one event handler. That's the entire Quiz logic."}]
+16:["$","$L10",null,{"children":["$","$L11",null,{"className":"language-bash","children":"git add app/blog/components/Quiz.tsx\ngit commit -m \"feat: add Quiz component\"\n"}]}]
+17:["$","h2",null,{"children":"Register It With MDX"}]
+18:["$","p",null,{"children":["Update ",["$","$L11",null,{"children":"app/blog/[...slug]/page.tsx"}]," — add Quiz to the components map:"]}]
+19:["$","$L10",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"import { Quiz } from \"@/app/blog/components/Quiz\";\n\n<MDXRemote\n  source={content}\n  components={{\n    code: MarkdownCode,\n    pre: MarkdownPre,\n    Quiz, // ← readers can now use <Quiz /> in markdown\n  }}\n  options={{\n    mdxOptions: {\n      remarkPlugins: [remarkGfm],\n      format: \"md\",\n    },\n  }}\n/>;\n"}]}]
+1a:["$","p",null,{"children":"That's the entire wiring. One import, one line in the components object."}]
+1b:["$","$L10",null,{"children":["$","$L11",null,{"className":"language-bash","children":"git add app/blog\ngit commit -m \"feat: register Quiz in MDX components map\"\n"}]}]
+1c:["$","h2",null,{"children":"Use It in Markdown"}]
+1d:["$","p",null,{"children":["Now in any ",["$","$L11",null,{"children":".md"}]," file:"]}]
+1e:["$","$L10",null,{"children":["$","$L11",null,{"className":"language-markdown","children":"# Binary Search\n\nBinary search works on sorted arrays. It compares the target to the middle\nelement and eliminates half the remaining elements each step.\n\n````python\ndef binary_search(arr, target):\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n```⁠\n\n<Quiz\n  question=\"If the array has 1024 elements, what's the maximum number of comparisons binary search needs?\"\n  options={[\"1024\", \"512\", \"10\", \"32\"]}\n  answer={2}\n  explanation=\"log₂(1024) = 10. Binary search halves the space each step.\"\n/>\n````\n"}]}]
+20:T5ab,
+The reader learns the concept, sees the code, then immediately tests their understanding. The feedback is instant. No scrolling to an answer key.
+
+## How MDX Components Work in Markdown
+
+When `next-mdx-remote` encounters `<Quiz ... />` in a markdown file, it:
+
+1. Recognizes it as a JSX tag (not HTML)
+2. Looks up `Quiz` in the `components` map you provided
+3. Passes the props (`question`, `options`, `answer`)
+4. Renders the React component in place
+
+The markdown file stays readable. The component handles all interactivity. They compose naturally.
+
+## Adding More Components
+
+The pattern is always the same:
+
+1. Create a client component in `app/blog/components/`
+2. Add it to the `components` map in your page
+3. Use it in any markdown file with JSX syntax
+
+Some ideas:
+
+```markdown
+<Callout type="warning">
+  Don't forget to handle the empty array case!
+</Callout>
+
+<Quiz question="..." options={[...]} answer={0} />
+
+<CodePlayground language="python" initialCode="print('hello')" />
+
+<StepVisualizer steps={[...]} />
+```
+
+Each one is a self-contained React component. The markdown is the glue.
+
+---
+
+## Commit Your Progress
+
+```bash
+git add .
+git commit -m "feat: add Quiz component for interactive markdown"
+```
+
+## What's Next
+
+A quiz tests recall. But what about experimentation? In Chapter 5, we'll build a Code Playground — an editable code block where readers can modify the code and see results instantly. The blog becomes a sandbox.
+1f:["$","$L10",null,{"children":["$","$L11",null,{"children":"$20"}]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+21:I[27201,["/_next/static/chunks/0r7n~75v~2g-i.js"],"IconMark"]
+7:null
+c:[["$","title","0",{"children":"Tam's blog"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L21","3",{}]]

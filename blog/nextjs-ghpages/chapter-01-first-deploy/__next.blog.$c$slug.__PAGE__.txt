@@ -1,0 +1,136 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownPre"]
+46:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
+47:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 1: Live in Ten Minutes"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-00-overview","children":"← Chapter 0: Overview"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-02-markdown-pipeline","children":"Chapter 2: The Markdown Pipeline →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Goal"}],"\n",["$","p",null,{"children":["By the end of this chapter, you'll have a Next.js site live at ",["$","$L2",null,{"children":"https://yourusername.github.io"}],". It'll show one page with one sentence. That's enough — the pipeline is what matters."]}],"\n",["$","h2",null,{"children":"Option A: Start with a Dev Container (Recommended)"}],"\n",["$","p",null,{"children":["If you set up the devcontainer from Chapter 0, you can start coding immediately in the cloud. Create a new repo on GitHub, add the ",["$","$L2",null,{"children":".devcontainer/devcontainer.json"}],", open a Codespace, and you're ready."]}],"\n",["$","p",null,{"children":"But the devcontainer needs a project to work with. Let's create one."}],"\n",["$","h2",null,{"children":"Option B: Local Setup"}],"\n",["$","p",null,{"children":"If you're working locally, make sure you have Node.js 20+ installed:"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"# Check your Node version — needs to be 20 or higher\nnode --version\n# v20.x.x or v22.x.x\n"}]}],"\n",["$","h2",null,{"children":"Create the Project (Pinned Versions)"}],"\n",["$","p",null,{"children":"We pin every dependency to an exact version. This prevents \"it worked yesterday but broke today\" situations where a minor update introduces breaking changes."}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"# Create a new Next.js project with TypeScript, Tailwind, App Router, and React Compiler\n# We pin to version 16.1.6 — the same version used throughout this series\n# --typescript: adds TypeScript support (type checking)\n# --tailwind: adds Tailwind CSS (utility-first styling)\n# --app: uses the App Router (modern Next.js routing)\n# --no-src-dir: puts app/ at the root (simpler structure for a blog)\n# --react-compiler: enables the React Compiler (automatic memoization)\nnpx create-next-app@16.1.6 . --typescript --tailwind --app --no-src-dir --eslint --react-compiler --force\n"}]}],"\n",["$","p",null,{"children":["Say ",["$","strong",null,{"children":"yes"}]," to the import alias (",["$","$L2",null,{"children":"@/*"}],")."]}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":["Why ",["$","$L2",null,{"children":"."}]," instead of ",["$","$L2",null,{"children":"my-blog"}],"?"]}]," Using ",["$","$L2",null,{"children":"."}]," scaffolds into the current folder instead of creating a subfolder. This means your existing ",["$","$L2",null,{"children":".husky/"}],", ",["$","$L2",null,{"children":".prettierrc"}],", ",["$","$L2",null,{"children":"eslint"}],", and ",["$","$L2",null,{"children":"lint-staged"}]," configs are automatically picked up — no duplication, no conflicts."]}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":["Why ",["$","$L2",null,{"children":"--force"}],"?"]}]," ",["$","$L2",null,{"children":"create-next-app"}]," refuses to scaffold into a folder that already has files (like ",["$","$L2",null,{"children":".husky/"}],", ",["$","$L2",null,{"children":"package.json"}],", ",["$","$L2",null,{"children":".prettierrc"}],"). The ",["$","$L2",null,{"children":"--force"}]," flag tells it to proceed anyway and merge — your existing configs are preserved."]}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":"What is the React Compiler?"}]," Before React 19, you had to manually tell React \"don't re-render this unless these values change\" using ",["$","$L2",null,{"children":"useMemo"}],", ",["$","$L2",null,{"children":"useCallback"}],", and ",["$","$L2",null,{"children":"React.memo"}],". It was easy to forget, easy to get wrong, and added noise to every component."]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40"]}],"$L41"]}],["$L42"],"$L43"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"d74lRfk2ZD3xgV-RnkdYk"}
+4:["$","p",null,{"children":["The React Compiler is a build-time tool that analyzes your code and adds that memoization automatically. You write plain components. The compiler figures out what to optimize. No manual ",["$","$L2",null,{"children":"useMemo"}]," needed."]}]
+5:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Without React Compiler"}],["$","th",null,{"children":"With React Compiler"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["Manual ",["$","$L2",null,{"children":"useMemo"}],", ",["$","$L2",null,{"children":"useCallback"}],", ",["$","$L2",null,{"children":"React.memo"}]]}],["$","td",null,{"children":"Write plain functions — compiler handles it"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Easy to forget, causes unnecessary re-renders"}],["$","td",null,{"children":"Automatic, consistent, always correct"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Adds noise to every component"}],["$","td",null,{"children":"Clean, readable components"}]]}]]}]]}]
+6:["$","p",null,{"children":["The ",["$","$L2",null,{"children":"--react-compiler"}]," flag installs ",["$","$L2",null,{"children":"babel-plugin-react-compiler"}]," and enables it in ",["$","$L2",null,{"children":"next.config.ts"}]," via ",["$","$L2",null,{"children":"experimental.reactCompiler: true"}]," automatically — no manual setup needed."]}]
+7:["$","p",null,{"children":["Now let's pin the versions. Open ",["$","$L2",null,{"children":"package.json"}]," and replace the dependency versions with exact numbers (no ",["$","$L2",null,{"children":"^"}]," prefix — that allows auto-upgrades):"]}]
+44:T4e9,{
+  "dependencies": {
+    // Core framework — pinned to exact versions used in this series
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+
+    // Markdown rendering — converts .md files to React components
+    "next-mdx-remote": "6.0.0",
+    "gray-matter": "4.0.3", // Parses YAML frontmatter from markdown
+    "remark-gfm": "4.0.1", // GitHub-flavored markdown (tables, task lists)
+
+    // Syntax highlighting — colors code blocks by language
+    "react-syntax-highlighter": "16.1.1",
+    "@types/react-syntax-highlighter": "15.5.13",
+  },
+  "devDependencies": {
+    // TypeScript — type checking at build time
+    "typescript": "5.7.0",
+    "@types/node": "20.17.0",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+
+    // Tailwind CSS v4 — utility-first styling
+    "tailwindcss": "4.0.0",
+    "@tailwindcss/postcss": "4.0.0",
+    "@tailwindcss/typography": "0.5.19", // Beautiful prose styling
+
+    // Code quality
+    "eslint": "9.17.0",
+    "eslint-config-next": "16.1.6",
+    "prettier": "3.4.2",
+    "prettier-plugin-tailwindcss": "0.6.9", // Auto-sorts Tailwind classes
+
+    // React Compiler — automatically memoizes components at build time
+    "babel-plugin-react-compiler": "19.1.0",
+  },
+}
+8:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-jsonc","children":"$44"}]}]
+9:["$","p",null,{"children":"Install everything:"}]
+a:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"npm install    # Downloads all packages listed in package.json\n"}]}]
+b:["$","blockquote",null,{"children":["\n",["$","p",null,{"children":[["$","strong",null,{"children":"Why pin versions?"}]," The ",["$","$L2",null,{"children":"^"}]," prefix (e.g. ",["$","$L2",null,{"children":"\"^15.1.0\""}],") means \"any compatible version up to 16.0.0.\" That sounds safe, but libraries sometimes introduce bugs in minor releases. Pinning to exact versions means your project builds the same way today, tomorrow, and next year. Update manually when you're ready."]}],"\n"]}]
+c:["$","h2",null,{"children":"Install the Markdown Plugins"}]
+d:["$","p",null,{"children":["These aren't included by ",["$","$L2",null,{"children":"create-next-app"}]," — we need them for our blog pipeline:"]}]
+e:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"# next-mdx-remote: renders markdown as React components (supports custom components in .md)\n# gray-matter: extracts YAML metadata from the top of markdown files\n# remark-gfm: adds GitHub-flavored markdown support (tables, strikethrough, checkboxes)\nnpm install next-mdx-remote@6.0.0 gray-matter@4.0.3 remark-gfm@4.0.1\n\n# react-syntax-highlighter: applies color themes to code blocks\nnpm install react-syntax-highlighter@16.1.1\nnpm install -D @types/react-syntax-highlighter@15.5.13\n\n# Tailwind typography plugin: makes prose (paragraphs, headings, lists) look professional\nnpm install -D @tailwindcss/typography@0.5.19\n\n# Prettier + Tailwind class sorting\nnpm install -D prettier@3.4.2 prettier-plugin-tailwindcss@0.6.9\n"}]}]
+f:["$","h2",null,{"children":"Configure for Static Export"}]
+10:["$","p",null,{"children":"GitHub Pages serves static files — it can't run a Node.js server. We need to tell Next.js to output plain HTML/CSS/JS instead of expecting a server."}]
+11:["$","p",null,{"children":["Open ",["$","$L2",null,{"children":"next.config.ts"}],":"]}]
+12:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-typescript","children":"import type { NextConfig } from \"next\";\n\n// NextConfig is a TypeScript type that defines all valid configuration options\n// Your editor will autocomplete and validate these settings\nconst nextConfig: NextConfig = {\n  // \"export\" mode: `next build` generates a static `out/` folder\n  // Instead of a server that renders pages on request, ALL pages are pre-built as HTML files\n  output: \"export\",\n\n  // GitHub Pages can't run Next.js's image optimization server\n  // This tells Next.js to use standard <img> tags instead\n  images: {\n    unoptimized: true,\n  },\n\n  // Enables the React Compiler — automatically optimizes components at build time\n  // Added automatically by --react-compiler flag in create-next-app\n  experimental: {\n    reactCompiler: true,\n  },\n};\n\nexport default nextConfig;\n"}]}]
+13:["$","p",null,{"children":["$","strong",null,{"children":["What changes with ",["$","$L2",null,{"children":"output: \"export\""}],":"]}]}]
+14:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Without (default)"}],["$","th",null,{"children":["With ",["$","$L2",null,{"children":"output: \"export\""}]]}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Needs a Node.js server to run"}],["$","td",null,{"children":"Just static files — any web host works"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Pages rendered on each request"}],["$","td",null,{"children":"Pages pre-built at build time"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Can use server-side features (API routes, middleware)"}],["$","td",null,{"children":"Only static/client features"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Deploy to Vercel, Railway, etc."}],["$","td",null,{"children":"Deploy to GitHub Pages, Netlify, S3, anywhere"}]]}]]}]]}]
+15:["$","h2",null,{"children":"Your First Page"}]
+16:["$","p",null,{"children":["Replace ",["$","$L2",null,{"children":"app/page.tsx"}]," with something simple. In Next.js App Router, every ",["$","$L2",null,{"children":"page.tsx"}]," file inside the ",["$","$L2",null,{"children":"app/"}]," folder becomes a route. This one is at the root, so it's your homepage (",["$","$L2",null,{"children":"/"}],"):"]}]
+17:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"// app/page.tsx\n// This is a React Server Component — it runs at build time, not in the browser.\n// The function name doesn't matter, but it must be the default export.\nexport default function Home() {\n  return (\n    // Tailwind classes: max-w-2xl = max width 672px, mx-auto = center horizontally\n    // px-6 = padding left/right 24px, py-20 = padding top/bottom 80px\n    <main className=\"mx-auto max-w-2xl px-6 py-20\">\n      <h1 className=\"text-3xl font-bold text-gray-900\">My Blog</h1>\n      <p className=\"mt-4 text-gray-600\">This site teaches back.</p>\n    </main>\n  );\n}\n"}]}]
+18:["$","p",null,{"children":["If you're new to Tailwind: instead of writing CSS in a separate file, you apply small utility classes directly. ",["$","$L2",null,{"children":"text-3xl"}]," = font-size 30px. ",["$","$L2",null,{"children":"font-bold"}]," = font-weight 700. ",["$","$L2",null,{"children":"mt-4"}]," = margin-top 16px. It feels weird at first, then you never go back."]}]
+19:["$","p",null,{"children":"Test locally:"}]
+1a:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"npm run dev\n"}]}]
+1b:["$","p",null,{"children":["Open ",["$","$L2",null,{"children":"http://localhost:3000"}],". You see your page. Good."]}]
+1c:["$","p",null,{"children":"Now build the static version:"}]
+1d:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"npm run build\n"}]}]
+1e:["$","p",null,{"children":["Look at the ",["$","$L2",null,{"children":"out/"}]," folder that appeared. That's your entire site — plain HTML, CSS, and JS files. No server needed. That's what GitHub Pages will serve."]}]
+1f:["$","h2",null,{"children":"Update Your Blog Title"}]
+20:["$","p",null,{"children":[["$","$L2",null,{"children":"create-next-app"}]," sets a default title of \"Create Next App\". Update it now in ",["$","$L2",null,{"children":"app/layout.tsx"}],":"]}]
+21:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"export const metadata: Metadata = {\n  title: \"Your Blog Name\", // Shown in browser tabs and search results\n  description: \"Your blog description\",\n};\n"}]}]
+22:["$","p",null,{"children":["This is the global title. Individual pages can override it with their own ",["$","$L2",null,{"children":"generateMetadata"}]," export — covered in Chapter 7."]}]
+23:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git add app/layout.tsx\ngit commit -m \"chore: update blog title and description\"\n"}]}]
+24:["$","h2",null,{"children":"Push to GitHub"}]
+25:["$","p",null,{"children":["Create a repository on GitHub. Name it ",["$","$L2",null,{"children":"yourusername.github.io"}]," for a user site, or anything else for a project site."]}]
+26:["$","p",null,{"children":"These git commands initialize your project and push it to GitHub:"}]
+27:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git init                    # Create a new git repository in this folder\ngit add .                   # Stage all files for commit\ngit commit -m \"chore: initial project setup\"  # Save the current state\ngit remote add origin https://github.com/yourusername/yourusername.github.io.git  # Link to GitHub\ngit push -u origin main     # Push code to GitHub (-u sets up tracking for future pushes)\n"}]}]
+28:["$","h2",null,{"children":"The Deploy Workflow"}]
+29:["$","p",null,{"children":"GitHub Actions is a CI/CD system built into GitHub. You define a workflow in a YAML file, and GitHub runs it automatically when certain events happen (like pushing code)."}]
+2a:["$","p",null,{"children":["Create ",["$","$L2",null,{"children":".github/workflows/deploy.yml"}],":"]}]
+2b:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"mkdir -p .github/workflows && touch .github/workflows/deploy.yml\n"}]}]
+45:T42f,# This file tells GitHub: "every time I push to main, build my site and deploy it"
+name: Deploy to GitHub Pages
+
+# Trigger: run this workflow whenever code is pushed to the main branch
+on:
+  push:
+    branches: [main]
+
+# Permission: allow the workflow to push to the gh-pages branch
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Use a fresh Linux machine (free, provided by GitHub)
+    steps:
+      - uses: actions/checkout@v4 # Step 1: Download your code
+      - uses: actions/setup-node@v4 # Step 2: Install Node.js
+        with:
+          node-version: 20
+      - run: npm install # Step 3: Install dependencies (next, react, etc.)
+      - run: npm run build # Step 4: Build static HTML into out/ folder
+      - run: touch out/.nojekyll # Step 5: Tell GitHub Pages "don't use Jekyll"
+      - uses: peaceiris/actions-gh-pages@v3 # Step 6: Push out/ folder to gh-pages branch
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Auto-provided by GitHub, no setup needed
+          publish_dir: ./out # Which folder to deploy
+2c:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-yaml","children":"$45"}]}]
+2d:["$","p",null,{"children":["$","strong",null,{"children":"Line-by-line breakdown:"}]}]
+2e:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Line"}],["$","th",null,{"children":"What it does"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"on: push: branches: [main]"}]}],["$","td",null,{"children":["Only runs when you push to ",["$","$L2",null,{"children":"main"}]," (not other branches)"]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"permissions: contents: write"}]}],["$","td",null,{"children":["Allows the action to create/update the ",["$","$L2",null,{"children":"gh-pages"}]," branch"]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"runs-on: ubuntu-latest"}]}],["$","td",null,{"children":"GitHub gives you a free Linux VM for ~6 minutes"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"actions/checkout@v4"}]}],["$","td",null,{"children":"Clones your repo into the VM"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"actions/setup-node@v4"}]}],["$","td",null,{"children":"Installs Node.js 20 on the VM"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"npm run build"}]}],["$","td",null,{"children":["Runs ",["$","$L2",null,{"children":"next build"}]," which generates static files in ",["$","$L2",null,{"children":"out/"}]]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"touch out/.nojekyll"}]}],["$","td",null,{"children":"Creates an empty file that prevents Jekyll processing"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"peaceiris/actions-gh-pages@v3"}]}],["$","td",null,{"children":["A community action that pushes a folder to ",["$","$L2",null,{"children":"gh-pages"}]," branch"]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"$${{ secrets.GITHUB_TOKEN }}"}]}],["$","td",null,{"children":"A token GitHub auto-generates — you don't need to create it"}]]}]]}]]}]
+2f:["$","p",null,{"children":"Commit and push:"}]
+30:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git add .\ngit commit -m \"feat: add GitHub Actions deploy workflow\"\ngit push\n"}]}]
+31:["$","h2",null,{"children":"Enable GitHub Pages"}]
+32:["$","p",null,{"children":["Go to your repo → Settings → Pages → Source: ",["$","strong",null,{"children":"Deploy from a branch"}]," → Branch: ",["$","$L2",null,{"children":"gh-pages"}]," / ",["$","$L2",null,{"children":"/ (root)"}]," → Save."]}]
+33:["$","p",null,{"children":["Wait 2 minutes. Visit ",["$","$L2",null,{"children":"https://yourusername.github.io"}],"."]}]
+34:["$","p",null,{"children":"Your page is live."}]
+35:["$","h2",null,{"children":"What Just Happened"}]
+36:["$","$L3",null,{"children":["$","$L2",null,{"children":"You write code\n    ↓ git push\nGitHub Actions runs\n    ↓ npm run build\nStatic HTML generated in out/\n    ↓ pushed to gh-pages branch\nGitHub Pages serves it\n    ↓\nThe world sees your site\n"}]}]
+37:["$","p",null,{"children":"Every future push triggers this automatically. Write → push → live. No deploy commands, no servers, no bills."}]
+38:["$","h2",null,{"children":["The ",["$","$L2",null,{"children":".nojekyll"}]," File"]}]
+39:["$","p",null,{"children":["Without it, GitHub Pages assumes your site is a Jekyll project and ignores files starting with ",["$","$L2",null,{"children":"_"}],". Next.js generates ",["$","$L2",null,{"children":"_next/"}]," for its assets. The ",["$","$L2",null,{"children":".nojekyll"}]," file says \"serve everything as-is.\""]}]
+3a:["$","p",null,{"children":"One empty file. Critical."}]
+3b:["$","hr",null,{}]
+3c:["$","h2",null,{"children":"Commit Your Progress"}]
+3d:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git add .\ngit commit -m \"feat: scaffold Next.js project with static export\"\ngit push\n"}]}]
+3e:["$","h2",null,{"children":"What's Next"}]
+3f:["$","p",null,{"children":["We have a live site with one page. Boring. In Chapter 2, we'll build the markdown pipeline — drop a ",["$","$L2",null,{"children":".md"}]," file in a folder and it automatically becomes a blog post with syntax highlighting, navigation, and beautiful typography."]}]
+40:["$","p",null,{"children":"The content drives the site. Not the other way around."}]
+41:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-00-overview","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-02-markdown-pipeline","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+42:["$","script","script-0",{"src":"/_next/static/chunks/0n5hzmmyroibb.js","async":true}]
+43:["$","$L46",null,{"children":["$","$47",null,{"name":"Next.MetadataOutlet","children":"$@48"}]}]
+48:null

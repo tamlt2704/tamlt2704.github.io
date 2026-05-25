@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownCode"]
+16:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+4:Tcab,"use client"; // This directive marks it as a client component (runs in browser, not at build time)
+
+import { useState } from "react"; // React hook for managing state that changes over time
+
+// TypeScript interface: defines what props this component accepts
+// This acts as documentation AND catches errors if you pass wrong data
+interface QuizProps {
+  question: string; // The question text
+  options: string[]; // Array of answer choices, e.g. ["O(n)", "O(log n)", ...]
+  answer: number; // Index of the correct answer (0-based)
+  explanation?: string; // Optional explanation shown after answering (? = optional)
+}
+
+export function Quiz({ question, options, answer, explanation }: QuizProps) {
+  // useState returns [currentValue, setterFunction]
+  // selected: which option the user clicked (null = hasn't clicked yet)
+  const [selected, setSelected] = useState<number | null>(null);
+  // revealed: whether to show the answer (prevents clicking again)
+  const [revealed, setRevealed] = useState(false);
+
+  const handleSelect = (index: number) => {
+    if (revealed) return; // Already answered — ignore further clicks
+    setSelected(index); // Remember which option was clicked
+    setRevealed(true); // Lock in the answer, show result
+  };
+
+  const isCorrect = selected === answer;
+
+  return (
+    // my-8 = vertical margin, p-6 = padding, rounded-lg = rounded corners
+    <div className="my-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
+      <p className="mb-4 font-semibold text-gray-900">{question}</p>
+
+      {/* space-y-2 = 8px gap between each button */}
+      <div className="space-y-2">
+        {/* .map() renders one button per option */}
+        {options.map((option, i) => {
+          // Determine button style based on state
+          let style = "border-gray-200 bg-white hover:border-teal-400"; // default
+          if (revealed) {
+            if (i === answer)
+              style = "border-green-500 bg-green-50"; // correct answer: green
+            else if (i === selected)
+              style = "border-red-400 bg-red-50"; // wrong selection: red
+            else style = "border-gray-200 bg-white opacity-60"; // other options: faded
+          }
+
+          return (
+            <button
+              key={i} // React needs unique key for list items
+              onClick={() => handleSelect(i)} // When clicked, select this option
+              disabled={revealed} // Can't click after answering
+              className={`w-full rounded-md border px-4 py-3 text-left text-sm transition ${style}`}
+            >
+              {/* String.fromCharCode(65) = "A", 66 = "B", etc. */}
+              <span className="mr-3 font-mono text-gray-400">{String.fromCharCode(65 + i)}.</span>
+              {option}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Only show result after user has answered */}
+      {revealed && (
+        <div
+          className={`mt-4 rounded p-3 text-sm ${isCorrect ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
+        >
+          {isCorrect ? "Correct!" : `Not quite. The answer is ${String.fromCharCode(65 + answer)}.`}
+          {explanation && <p className="mt-1 text-gray-700">{explanation}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 4: Your First Interactive Component"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-03-beautiful-code","children":"← Chapter 3: Beautiful Code"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-05-code-playground","children":"Chapter 5: Code Playground →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Moment It Gets Interesting"}],"\n",["$","p",null,{"children":"Your blog has beautiful markdown rendering. Syntax highlighting. Typography. But the reader is still passive — scrolling, reading, maybe copying a code snippet. There's no feedback loop. No \"did I actually understand that?\""}],"\n",["$","p",null,{"children":"What if, after explaining binary search, you could write this in your markdown:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-markdown","children":"## Quick Check\n\n<Quiz\nquestion=\"What is the time complexity of binary search?\"\noptions={[\"O(n)\", \"O(log n)\", \"O(n log n)\", \"O(1)\"]}\nanswer={1}\n/>\n"}]}],"\n",["$","p",null,{"children":"And the reader sees a multiple-choice question. They click an answer. Green flash for correct. Red shake for wrong. Instant feedback, right where the concept was explained."}],"\n",["$","p",null,{"children":"That's what we're building."}],"\n",["$","h2",null,{"children":"The Quiz Component"}],"\n",["$","p",null,{"children":["The Quiz component needs to be a ",["$","strong",null,{"children":"client component"}]," (runs in the browser) because it uses ",["$","$L3",null,{"children":"useState"}]," for interactivity. Server components can't handle clicks or state changes."]}],"\n",["$","p",null,{"children":["Create ",["$","$L3",null,{"children":"app/blog/components/Quiz.tsx"}],":"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"touch app/blog/components/Quiz.tsx\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11"]}],"$L12"]}],["$L13"],"$L14"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"d74lRfk2ZD3xgV-RnkdYk"}
+5:["$","p",null,{"children":["$","strong",null,{"children":"How the state machine works:"}]}]
+6:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"State"}],["$","th",null,{"children":["$","$L3",null,{"children":"selected"}]}],["$","th",null,{"children":["$","$L3",null,{"children":"revealed"}]}],["$","th",null,{"children":"What user sees"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Initial"}],["$","td",null,{"children":["$","$L3",null,{"children":"null"}]}],["$","td",null,{"children":["$","$L3",null,{"children":"false"}]}],["$","td",null,{"children":"Question + clickable buttons"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"After click"}],["$","td",null,{"children":[["$","$L3",null,{"children":"2"}]," (e.g.)"]}],["$","td",null,{"children":["$","$L3",null,{"children":"true"}]}],["$","td",null,{"children":"Buttons locked, correct=green, wrong=red, result message"}]]}]]}]]}]
+7:["$","p",null,{"children":"Two pieces of state, one event handler. That's the entire Quiz logic."}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"git add app/blog/components/Quiz.tsx\ngit commit -m \"feat: add Quiz component\"\n"}]}]
+9:["$","h2",null,{"children":"Register It With MDX"}]
+a:["$","p",null,{"children":["Update ",["$","$L3",null,{"children":"app/blog/[...slug]/page.tsx"}]," — add Quiz to the components map:"]}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"import { Quiz } from \"@/app/blog/components/Quiz\";\n\n<MDXRemote\n  source={content}\n  components={{\n    code: MarkdownCode,\n    pre: MarkdownPre,\n    Quiz, // ← readers can now use <Quiz /> in markdown\n  }}\n  options={{\n    mdxOptions: {\n      remarkPlugins: [remarkGfm],\n      format: \"md\",\n    },\n  }}\n/>;\n"}]}]
+c:["$","p",null,{"children":"That's the entire wiring. One import, one line in the components object."}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"git add app/blog\ngit commit -m \"feat: register Quiz in MDX components map\"\n"}]}]
+e:["$","h2",null,{"children":"Use It in Markdown"}]
+f:["$","p",null,{"children":["Now in any ",["$","$L3",null,{"children":".md"}]," file:"]}]
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-markdown","children":"# Binary Search\n\nBinary search works on sorted arrays. It compares the target to the middle\nelement and eliminates half the remaining elements each step.\n\n````python\ndef binary_search(arr, target):\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n```⁠\n\n<Quiz\n  question=\"If the array has 1024 elements, what's the maximum number of comparisons binary search needs?\"\n  options={[\"1024\", \"512\", \"10\", \"32\"]}\n  answer={2}\n  explanation=\"log₂(1024) = 10. Binary search halves the space each step.\"\n/>\n````\n"}]}]
+15:T5ab,
+The reader learns the concept, sees the code, then immediately tests their understanding. The feedback is instant. No scrolling to an answer key.
+
+## How MDX Components Work in Markdown
+
+When `next-mdx-remote` encounters `<Quiz ... />` in a markdown file, it:
+
+1. Recognizes it as a JSX tag (not HTML)
+2. Looks up `Quiz` in the `components` map you provided
+3. Passes the props (`question`, `options`, `answer`)
+4. Renders the React component in place
+
+The markdown file stays readable. The component handles all interactivity. They compose naturally.
+
+## Adding More Components
+
+The pattern is always the same:
+
+1. Create a client component in `app/blog/components/`
+2. Add it to the `components` map in your page
+3. Use it in any markdown file with JSX syntax
+
+Some ideas:
+
+```markdown
+<Callout type="warning">
+  Don't forget to handle the empty array case!
+</Callout>
+
+<Quiz question="..." options={[...]} answer={0} />
+
+<CodePlayground language="python" initialCode="print('hello')" />
+
+<StepVisualizer steps={[...]} />
+```
+
+Each one is a self-contained React component. The markdown is the glue.
+
+---
+
+## Commit Your Progress
+
+```bash
+git add .
+git commit -m "feat: add Quiz component for interactive markdown"
+```
+
+## What's Next
+
+A quiz tests recall. But what about experimentation? In Chapter 5, we'll build a Code Playground — an editable code block where readers can modify the code and see results instantly. The blog becomes a sandbox.
+11:["$","$L2",null,{"children":["$","$L3",null,{"children":"$15"}]}]
+12:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-03-beautiful-code","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-05-code-playground","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+13:["$","script","script-0",{"src":"/_next/static/chunks/0n5hzmmyroibb.js","async":true}]
+14:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+18:null

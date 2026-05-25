@@ -1,0 +1,61 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownPre"]
+22:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
+23:"$Sreact.suspense"
+4:T4dd,/**
+ * This component outputs a <script> tag that runs BEFORE the page renders.
+ * It checks localStorage and system preference, then adds "dark" class to <html>.
+ * Because it's in <head>, it executes before any CSS is applied — no flash.
+ */
+export function ThemeScript() {
+  // This string becomes inline JavaScript in the HTML <head>
+  const script = `
+    (function() {
+      try {
+        // Check if user previously chose a theme
+        var stored = localStorage.getItem('theme');
+        // Check if their OS/browser prefers dark mode
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        // Use stored preference, or fall back to system preference
+        var dark = stored === 'dark' || (!stored && prefersDark);
+        // Add the class BEFORE any CSS renders — prevents white flash
+        if (dark) document.documentElement.classList.add('dark');
+      } catch(e) {}  // Silently fail if localStorage is blocked (private browsing)
+    })();
+  `;
+  // dangerouslySetInnerHTML injects raw HTML — needed for inline scripts
+  // It's "dangerous" because it bypasses React's XSS protection, but here we control the content
+  return <script dangerouslySetInnerHTML={{ __html: script }} />;
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 8: Dark Mode That Doesn't Flash"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-07-finishing-touches","children":"← Chapter 7: Finishing Touches"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-09-streaming","children":"Chapter 9: Streaming on Static →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Problem"}],"\n",["$","p",null,{"children":"It's 11 PM. Your reader opens your blog. White background. Retinas scorched. They close the tab."}],"\n",["$","p",null,{"children":"Dark mode isn't a luxury — it's table stakes. But implementing it wrong gives you the dreaded \"white flash\" on page load: the page renders light, then JavaScript kicks in and switches to dark. Jarring."}],"\n",["$","p",null,{"children":"We need dark mode that:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":"Respects the system preference by default"}],"\n",["$","li",null,{"children":"Lets users toggle manually"}],"\n",["$","li",null,{"children":"Persists their choice across visits"}],"\n",["$","li",null,{"children":"Never flashes the wrong theme"}],"\n"]}],"\n",["$","h2",null,{"children":"The Strategy"}],"\n",["$","p",null,{"children":["The trick: apply the theme ",["$","strong",null,{"children":"before React hydrates"}],". That means a tiny inline script in ",["$","$L2",null,{"children":"<head>"}]," that reads localStorage and sets a class on ",["$","$L2",null,{"children":"<html>"}]," — before any CSS paints."]}],"\n",["$","h2",null,{"children":"Step 1: Tailwind Dark Mode"}],"\n",["$","p",null,{"children":["Tailwind supports dark mode via a class on ",["$","$L2",null,{"children":"<html>"}],":"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-css","children":"/* app/globals.css */\n@import \"tailwindcss\";\n@plugin \"@tailwindcss/typography\";\n\n@custom-variant dark (&:where(.dark, .dark *));\n"}]}],"\n",["$","p",null,{"children":["Now any ",["$","$L2",null,{"children":"dark:"}]," prefix works when ",["$","$L2",null,{"children":"<html class=\"dark\">"}]," is set:"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"<div className=\"bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100\">\n"}]}],"\n",["$","h2",null,{"children":"Step 2: The Anti-Flash Script"}],"\n",["$","p",null,{"children":["The problem: React hydrates ",["$","em",null,{"children":"after"}]," the browser paints. If the user prefers dark mode, they'll see a white flash before JavaScript adds the ",["$","$L2",null,{"children":"dark"}]," class. The fix: inject a tiny script in ",["$","$L2",null,{"children":"<head>"}]," that runs ",["$","em",null,{"children":"before"}]," any CSS paints."]}],"\n",["$","p",null,{"children":["Create ",["$","$L2",null,{"children":"app/theme-script.tsx"}],":"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e"]}],"$L1f"]}],["$L20"],"$L21"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"d74lRfk2ZD3xgV-RnkdYk"}
+5:["$","p",null,{"children":[["$","strong",null,{"children":["Why not just use ",["$","$L2",null,{"children":"useEffect"}],"?"]}]," Because ",["$","$L2",null,{"children":"useEffect"}]," runs ",["$","em",null,{"children":"after"}]," the component renders. By then, the browser has already painted the white background. This inline script runs synchronously in ",["$","$L2",null,{"children":"<head>"}],", before any paint happens."]}]
+6:["$","p",null,{"children":["Add it to ",["$","$L2",null,{"children":"app/layout.tsx"}],":"]}]
+7:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"import { ThemeScript } from \"./theme-script\";\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\" suppressHydrationWarning>\n      <head>\n        <ThemeScript />\n      </head>\n      <body className=\"bg-white text-gray-900 transition-colors dark:bg-gray-900 dark:text-gray-100\">\n        {children}\n      </body>\n    </html>\n  );\n}\n"}]}]
+8:["$","p",null,{"children":["The script runs ",["$","strong",null,{"children":"synchronously"}]," before the browser paints. No flash."]}]
+9:["$","p",null,{"children":[["$","$L2",null,{"children":"suppressHydrationWarning"}]," tells React not to complain about the class mismatch between server render (no class) and client (has ",["$","$L2",null,{"children":"dark"}]," class)."]}]
+a:["$","h2",null,{"children":"Step 3: The Toggle Button"}]
+b:["$","p",null,{"children":["Create ",["$","$L2",null,{"children":"app/components/ThemeToggle.tsx"}],":"]}]
+c:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nexport function ThemeToggle() {\n  const [dark, setDark] = useState(false);\n\n  useEffect(() => {\n    setDark(document.documentElement.classList.contains(\"dark\"));\n  }, []);\n\n  const toggle = () => {\n    const next = !dark;\n    setDark(next);\n    document.documentElement.classList.toggle(\"dark\", next);\n    localStorage.setItem(\"theme\", next ? \"dark\" : \"light\");\n  };\n\n  return (\n    <button\n      onClick={toggle}\n      className=\"rounded-md p-2 transition hover:bg-gray-100 dark:hover:bg-gray-800\"\n      aria-label=\"Toggle theme\"\n    >\n      {dark ? \"☀️\" : \"🌙\"}\n    </button>\n  );\n}\n"}]}]
+d:["$","p",null,{"children":"Drop it in your navbar. One click toggles. Choice persists in localStorage."}]
+e:["$","h2",null,{"children":"Step 4: Dark Prose Styles"}]
+f:["$","p",null,{"children":"Update your article wrapper:"}]
+10:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"<div className=\"prose prose-lg dark:prose-invert max-w-none\">\n  <MDXRemote ... />\n</div>\n"}]}]
+11:["$","p",null,{"children":[["$","$L2",null,{"children":"dark:prose-invert"}]," flips all typography colors for dark mode. Headings, paragraphs, links, blockquotes — all handled."]}]
+12:["$","h2",null,{"children":"Step 5: Dark Code Blocks"}]
+13:["$","p",null,{"children":["Your ",["$","$L2",null,{"children":"MarkdownCode.tsx"}]," already uses ",["$","$L2",null,{"children":"oneDark"}]," (a dark theme). For light mode, swap themes:"]}]
+14:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"import { oneDark } from \"react-syntax-highlighter/dist/esm/styles/prism\";\nimport { oneLight } from \"react-syntax-highlighter/dist/esm/styles/prism\";\n\nexport function MarkdownCode({ children, className }: Props) {\n  const [isDark, setIsDark] = useState(false);\n\n  useEffect(() => {\n    const check = () => setIsDark(document.documentElement.classList.contains(\"dark\"));\n    check();\n    const observer = new MutationObserver(check);\n    observer.observe(document.documentElement, { attributes: true, attributeFilter: [\"class\"] });\n    return () => observer.disconnect();\n  }, []);\n\n  // ... rest of component\n  return (\n    <SyntaxHighlighter\n      language={lang}\n      style={isDark ? oneDark : oneLight}\n      // ...\n    >\n      {code}\n    </SyntaxHighlighter>\n  );\n}\n"}]}]
+15:["$","p",null,{"children":["A ",["$","$L2",null,{"children":"MutationObserver"}]," watches the ",["$","$L2",null,{"children":"<html>"}]," class. When it changes, code blocks re-render with the matching theme. Instant, no page reload."]}]
+16:["$","h2",null,{"children":"Step 6: Dark Interactive Components"}]
+17:["$","p",null,{"children":"Update Quiz, CodePlayground, StepVisualizer with dark variants:"}]
+18:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"// Quiz.tsx — just add dark: classes\n<div className=\"my-8 p-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800\">\n  <p className=\"font-semibold text-gray-900 dark:text-gray-100\">{question}</p>\n  ...\n</div>\n\n// CodePlayground.tsx\n<textarea className=\"bg-gray-900 text-gray-100\" /> {/* already dark */}\n<div className=\"bg-gray-100 dark:bg-gray-800 border-t dark:border-gray-700\">\n  ...\n</div>\n"}]}]
+19:["$","p",null,{"children":"Since the editor is always dark (code looks better that way), only the controls and output need dark variants."}]
+1a:["$","h2",null,{"children":"The Result"}]
+1b:["$","ul",null,{"children":["\n",["$","li",null,{"children":"First visit: system preference applied instantly (no flash)"}],"\n",["$","li",null,{"children":"Toggle: instant switch, persisted"}],"\n",["$","li",null,{"children":"Code blocks: theme-aware"}],"\n",["$","li",null,{"children":"Interactive components: dark-ready"}],"\n",["$","li",null,{"children":"Zero external libraries"}],"\n"]}]
+1c:["$","hr",null,{}]
+1d:["$","h2",null,{"children":"What's Next"}]
+1e:["$","p",null,{"children":"Dark mode is visual polish. Chapter 9 tackles something more ambitious: can we get streaming-like behavior on a static site? Progressive content loading, skeleton states, and the illusion of server-side streaming — all from GitHub Pages."}]
+1f:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-07-finishing-touches","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-09-streaming","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+20:["$","script","script-0",{"src":"/_next/static/chunks/0n5hzmmyroibb.js","async":true}]
+21:["$","$L22",null,{"children":["$","$23",null,{"name":"Next.MetadataOutlet","children":"$@24"}]}]
+24:null

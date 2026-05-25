@@ -1,0 +1,88 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownPre"]
+21:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
+22:"$Sreact.suspense"
+4:T85d,"use client"; // Needs browser — SyntaxHighlighter uses DOM APIs
+
+// Prism is a syntax highlighting engine. It tokenizes code and applies colors.
+// oneDark is VS Code's dark theme — familiar to most developers.
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+interface Props {
+  children: React.ReactNode; // The code text inside the <code> tag
+  className?: string; // MDX sets this to "language-python" for ```python blocks
+}
+
+export function MarkdownCode({ children, className }: Props) {
+  // Extract language from className. Example: "language-python" → "python"
+  // If no language specified (inline code), match will be null
+  const match = /language-(\w+)/.exec(className || "");
+  const lang = match ? match[1] : "";
+  // Convert children to string and remove trailing newline (Prism adds extra line otherwise)
+  const code = String(children).replace(/\n$/, "");
+
+  if (!match) {
+    // No language = inline code like `variable`
+    // Render with a subtle pink highlight (common convention in docs)
+    return (
+      <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-pink-600">
+        {children}
+      </code>
+    );
+  }
+
+  // Fenced code block with a language — apply full syntax highlighting
+  return (
+    <SyntaxHighlighter
+      language={lang} // "python", "javascript", "bash", etc.
+      style={oneDark} // Color theme (object mapping token types to colors)
+      customStyle={{
+        margin: "1rem 0", // Space above and below the block
+        borderRadius: "0.5rem", // Rounded corners
+        fontSize: "0.85rem", // Slightly smaller than body text
+        lineHeight: 1.6, // Comfortable reading spacing
+      }}
+    >
+      {code}
+    </SyntaxHighlighter>
+  );
+}
+
+// MarkdownPre prevents double-wrapping.
+// Without this, Tailwind's prose styles add their own <pre> styling on top of ours.
+// By replacing <pre> with a fragment (<>), we let SyntaxHighlighter handle all styling.
+export function MarkdownPre({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 3: Beautiful Code Blocks"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-02-markdown-pipeline","children":"← Chapter 2: Markdown Pipeline"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","children":"Chapter 4: Interactive Quiz →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Problem"}],"\n",["$","p",null,{"children":["Your code blocks render as plain ",["$","$L2",null,{"children":"<pre>"}]," tags. White text on gray. No language detection. No color. Your readers' eyes glaze over."]}],"\n",["$","p",null,{"children":"Compare:"}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":"Before:"}]," A wall of monospace text.\n",["$","strong",null,{"children":"After:"}]," Python keywords in purple, strings in green, comments in gray. The reader's brain parses the structure before reading the words."]}],"\n",["$","h2",null,{"children":"Install the Highlighter"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"npm install react-syntax-highlighter @types/react-syntax-highlighter\n"}]}],"\n",["$","h2",null,{"children":"The Custom Code Component"}],"\n",["$","p",null,{"children":["When MDX renders a markdown code block, it creates ",["$","$L2",null,{"children":"<pre><code>"}]," elements. We intercept the ",["$","$L2",null,{"children":"<code>"}]," element and replace it with a syntax-highlighted version. This component handles both inline code (",["$","$L2",null,{"children":"`like this`"}],") and fenced code blocks (",["$","$L2",null,{"children":"```python ... ```"}],")."]}],"\n",["$","p",null,{"children":["Create ",["$","$L2",null,{"children":"app/blog/components/MarkdownCode.tsx"}],":"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"mkdir -p app/blog/components && touch app/blog/components/MarkdownCode.tsx\n"}]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d"]}],"$L1e"]}],["$L1f"],"$L20"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"d74lRfk2ZD3xgV-RnkdYk"}
+5:["$","p",null,{"children":["$","strong",null,{"children":"The flow when MDX encounters a code block:"}]}]
+6:["$","$L3",null,{"children":["$","$L2",null,{"children":"Markdown: ```python\\nprint(\"hi\")\\n```\n    ↓ MDX parser\nJSX: <pre><code className=\"language-python\">print(\"hi\")</code></pre>\n    ↓ Our components override\n<MarkdownPre> → renders nothing (fragment)\n  <MarkdownCode className=\"language-python\"> → renders SyntaxHighlighter\n    ↓\nColored, styled code block in the browser\n"}]}]
+7:["$","ol",null,{"children":["\n",["$","li",null,{"children":["MDX passes every code block through our ",["$","$L2",null,{"children":"code"}]," component"]}],"\n",["$","li",null,{"children":["Fenced blocks get ",["$","$L2",null,{"children":"className=\"language-python\""}]," — we extract the language"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"SyntaxHighlighter"}]," applies the ",["$","$L2",null,{"children":"oneDark"}]," theme (VS Code's dark theme)"]}],"\n",["$","li",null,{"children":"Inline code gets a subtle pink highlight instead"}],"\n"]}]
+8:["$","p",null,{"children":["The ",["$","$L2",null,{"children":"MarkdownPre"}]," wrapper prevents Tailwind's prose styles from double-wrapping the code block."]}]
+9:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git add app/blog/components/MarkdownCode.tsx\ngit commit -m \"feat: add MarkdownCode syntax highlighter component\"\n"}]}]
+a:["$","h2",null,{"children":"Wire It Into the Renderer"}]
+b:["$","p",null,{"children":["Update ",["$","$L2",null,{"children":"app/blog/[...slug]/page.tsx"}],":"]}]
+c:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"import { MarkdownCode, MarkdownPre } from \"@/app/blog/components/MarkdownCode\";\n\n// In the MDXRemote component:\n<MDXRemote\n  source={content}\n  components={{\n    code: MarkdownCode,\n    pre: MarkdownPre,\n  }}\n  options={{\n    mdxOptions: {\n      remarkPlugins: [remarkGfm],\n      format: \"md\",\n    },\n  }}\n/>;\n"}]}]
+d:["$","p",null,{"children":"That's it. Every code block in every markdown file now gets syntax highlighting. You didn't touch a single content file."}]
+e:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git add app/blog\ngit commit -m \"feat: wire syntax highlighting into MDX renderer\"\n"}]}]
+f:["$","h2",null,{"children":"Add Tailwind Typography"}]
+10:["$","p",null,{"children":"Install the plugin:"}]
+11:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"npm install @tailwindcss/typography\n"}]}]
+12:["$","p",null,{"children":["Add to your ",["$","$L2",null,{"children":"tailwind.config.ts"}]," (or ",["$","$L2",null,{"children":"app/globals.css"}]," with Tailwind v4):"]}]
+13:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-css","children":"@import \"tailwindcss\";\n@plugin \"@tailwindcss/typography\";\n"}]}]
+14:["$","p",null,{"children":["Now wrap your content in ",["$","$L2",null,{"children":"prose"}]," classes:"]}]
+15:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"<div className=\"prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-teal-600\">\n  <MDXRemote ... />\n</div>\n"}]}]
+16:["$","p",null,{"children":["The ",["$","$L2",null,{"children":"prose"}]," class handles:"]}]
+17:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Heading sizes and spacing"}],"\n",["$","li",null,{"children":"Paragraph line height"}],"\n",["$","li",null,{"children":"List indentation"}],"\n",["$","li",null,{"children":"Blockquote styling"}],"\n",["$","li",null,{"children":"Link colors"}],"\n",["$","li",null,{"children":"Table borders"}],"\n"]}]
+18:["$","p",null,{"children":"All from one class. Your markdown looks like a professionally typeset article."}]
+19:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git add app/globals.css\ngit commit -m \"feat: add Tailwind typography plugin for prose styling\"\n"}]}]
+1a:["$","h2",null,{"children":"The Result"}]
+1b:["$","p",null,{"children":["Write this in any ",["$","$L2",null,{"children":".md"}]," file:"]}]
+1c:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-markdown","children":"## Binary Search\n\nThe key insight: if the array is sorted, you can eliminate half the remaining elements with each comparison.\n\n````python\ndef binary_search(arr, target):\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n```⁠\n\nTime complexity: `O(log n)` — each step halves the search space.\n````\n"}]}]
+1d:["$","$L3",null,{"children":["$","$L2",null,{"children":"\nIt renders with:\n\n- A styled heading\n- Proper paragraph spacing\n- Syntax-highlighted Python with the `oneDark` theme\n- Inline code (`O(log n)`) in pink with a gray background\n\nZero configuration per file. Write markdown, get beauty.\n\n---\n\n## Commit Your Progress\n\n```bash\ngit add .\ngit commit -m \"feat: add syntax highlighting and typography styles\"\n```\n\n## What's Next\n\nStatic content looks great now. But a blog that just _shows_ code isn't much better than a textbook. In Chapter 4, we'll build our first interactive component — a Quiz that lives inside markdown and gives readers immediate feedback.\n\nThe blog starts teaching back.\n"}]}]
+1e:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-02-markdown-pipeline","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+1f:["$","script","script-0",{"src":"/_next/static/chunks/0n5hzmmyroibb.js","async":true}]
+20:["$","$L21",null,{"children":["$","$22",null,{"name":"Next.MetadataOutlet","children":"$@23"}]}]
+23:null

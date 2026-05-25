@@ -1,0 +1,159 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownPre"]
+15:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+4:Tc1b,"use client"; // Interactive — user clicks prev/next buttons
+
+import { useState } from "react";
+
+// Each step is a snapshot: the array state, which indices to highlight, and a description
+interface Step {
+  data: number[]; // The array values at this point in the algorithm
+  highlights: number[]; // Which indices are "active" (being compared, swapped, etc.)
+  label: string; // Human-readable description: "Compare 5 and 3. Swap!"
+}
+
+interface Props {
+  steps: Step[]; // The full sequence of steps (provided by the markdown author)
+  title?: string; // Optional heading above the visualizer
+}
+
+export function StepVisualizer({ steps, title }: Props) {
+  // current = which step we're viewing (0 = first step)
+  const [current, setCurrent] = useState(0);
+  const step = steps[current]; // The data for the current step
+
+  return (
+    <div className="my-8 rounded-lg border border-gray-200 bg-white p-5">
+      {title && <p className="mb-3 text-sm font-semibold text-gray-700">{title}</p>}
+
+      {/* Array visualization — each number is a box, highlighted ones are teal + scaled up */}
+      <div className="mb-4 flex justify-center gap-1">
+        {step.data.map((val, i) => (
+          <div
+            key={i}
+            className={`flex h-10 w-10 items-center justify-center rounded border font-mono text-sm transition-all duration-200 ${
+              step.highlights.includes(i)
+                ? "scale-110 border-teal-500 bg-teal-100 text-teal-900" // Active: teal + bigger
+                : "border-gray-200 bg-gray-50 text-gray-700" // Inactive: gray
+            }`}
+          >
+            {val}
+          </div>
+        ))}
+      </div>
+
+      {/* What happened this step — fixed height so layout doesn't jump */}
+      <p className="mb-4 h-5 text-center text-sm text-gray-600">{step.label}</p>
+
+      {/* Navigation controls */}
+      <div className="flex items-center justify-center gap-3">
+        <button
+          onClick={() => setCurrent(0)}
+          disabled={current === 0}
+          className="px-2 py-1 text-xs text-gray-500 hover:text-gray-900 disabled:opacity-30"
+        >
+          ⏮ Start
+        </button>
+        <button
+          onClick={() => setCurrent(Math.max(0, current - 1))}
+          disabled={current === 0}
+          className="rounded border px-3 py-1 text-sm hover:bg-gray-50 disabled:opacity-30"
+        >
+          ← Prev
+        </button>
+        <span className="w-16 text-center text-xs text-gray-400">
+          {current + 1} / {steps.length}
+        </span>
+        <button
+          onClick={() => setCurrent(Math.min(steps.length - 1, current + 1))}
+          disabled={current === steps.length - 1}
+          className="rounded border px-3 py-1 text-sm hover:bg-gray-50 disabled:opacity-30"
+        >
+          Next →
+        </button>
+        <button
+          onClick={() => setCurrent(steps.length - 1)}
+          disabled={current === steps.length - 1}
+          className="px-2 py-1 text-xs text-gray-500 hover:text-gray-900 disabled:opacity-30"
+        >
+          End ⏭
+        </button>
+      </div>
+    </div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 6: The Step Visualizer"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-05-code-playground","children":"← Chapter 5: Code Playground"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-07-finishing-touches","children":"Chapter 7: Finishing Touches →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Why Visualize"}],"\n",["$","p",null,{"children":["Some things click only when you ",["$","em",null,{"children":"see"}]," them move. Binary search eliminating half the array. Bubble sort swapping adjacent elements. A tree rotating to stay balanced."]}],"\n",["$","p",null,{"children":["Text explains the ",["$","em",null,{"children":"what"}],". Code shows the ",["$","em",null,{"children":"how"}],". Visualization shows the ",["$","em",null,{"children":"why it works"}],"."]}],"\n",["$","h2",null,{"children":"The Component"}],"\n",["$","p",null,{"children":"A step visualizer shows an array (or any data structure) and lets the reader step forward/backward through an algorithm's execution. It's essentially a slideshow where each \"slide\" is a snapshot of the data at one point in the algorithm."}],"\n",["$","p",null,{"children":["Create ",["$","$L2",null,{"children":"app/blog/components/StepVisualizer.tsx"}],":"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"touch app/blog/components/StepVisualizer.tsx\n"}]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10"]}],"$L11"]}],["$L12"],"$L13"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"d74lRfk2ZD3xgV-RnkdYk"}
+5:["$","h2",null,{"children":"Use It in Markdown"}]
+6:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-markdown","children":"## Binary Search: Step by Step\n\nWatch binary search find `7` in a sorted array:\n\n<StepVisualizer\ntitle=\"Binary Search for 7\"\nsteps={[\n{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: \"Start: check middle (index 3) = 7\" },\n{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: \"Found! 7 === 7. Return index 3.\" }\n]}\n/>\n"}]}]
+7:["$","p",null,{"children":["A more interesting example — searching for ",["$","$L2",null,{"children":"11"}],":"]}]
+8:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-markdown","children":"<StepVisualizer\ntitle=\"Binary Search for 11\"\nsteps={[\n{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [0, 1, 2, 3, 4, 5, 6], label: \"Full array. lo=0, hi=6\" },\n{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: \"Check mid=3: arr[3]=7 < 11. Go right.\" },\n{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [4, 5, 6], label: \"Search right half. lo=4, hi=6\" },\n{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [5], label: \"Check mid=5: arr[5]=11 === 11. Found!\" }\n]}\n/>\n"}]}]
+9:["$","p",null,{"children":["The reader clicks through each step. They see the search space shrink. They see ",["$","em",null,{"children":"why"}]," it's O(log n) — not because you told them, but because they watched it happen."]}]
+a:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git add app/blog/components/StepVisualizer.tsx\ngit commit -m \"feat: add StepVisualizer component\"\n"}]}]
+b:["$","h2",null,{"children":"Register It"}]
+c:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"import { StepVisualizer } from \"@/app/blog/components/StepVisualizer\";\n\ncomponents={{\n  code: MarkdownCode,\n  pre: MarkdownPre,\n  Quiz,\n  CodePlayground,\n  StepVisualizer,\n}}\n"}]}]
+d:["$","h2",null,{"children":"Composing All Three"}]
+e:["$","p",null,{"children":"The real power is combining components in a single chapter:"}]
+14:T589,# Bubble Sort
+
+Bubble sort repeatedly swaps adjacent elements that are out of order.
+
+````python
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(n - 1 - i):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+```⁠
+
+## Watch It Work
+
+<StepVisualizer
+  title="Bubble Sort: [5, 3, 8, 1, 2]"
+  steps={[
+    { data: [5, 3, 8, 1, 2], highlights: [0, 1], label: "Compare 5 and 3. Swap!" },
+    { data: [3, 5, 8, 1, 2], highlights: [1, 2], label: "Compare 5 and 8. No swap." },
+    { data: [3, 5, 8, 1, 2], highlights: [2, 3], label: "Compare 8 and 1. Swap!" },
+    { data: [3, 5, 1, 8, 2], highlights: [3, 4], label: "Compare 8 and 2. Swap!" },
+    { data: [3, 5, 1, 2, 8], highlights: [4], label: "Pass 1 done. 8 is in place." }
+  ]}
+/>
+
+## Try It
+
+<CodePlayground
+  language="javascript"
+  initialCode={`
+function bubbleSort(arr) {
+  const n = arr.length;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
+}
+
+console.log(bubbleSort([5, 3, 8, 1, 2]));
+`}
+/>
+
+## Check Understanding
+
+<Quiz
+  question="What is the worst-case time complexity of bubble sort?"
+  options={["O(n)", "O(n log n)", "O(n²)", "O(log n)"]}
+  answer={2}
+  explanation="Two nested loops over n elements = n × n = O(n²)"
+/>
+````
+f:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-markdown","children":"$14"}]}]
+10:["$","$L3",null,{"children":["$","$L2",null,{"children":"\nOne chapter. Three interactive elements. The reader:\n\n1. Reads the explanation\n2. Watches the algorithm step by step\n3. Experiments with the code\n4. Tests their understanding\n\nThat's a teaching machine, not a blog post.\n\n---\n\n## Commit Your Progress\n\n```bash\ngit add .\ngit commit -m \"feat: add StepVisualizer component for algorithm walkthroughs\"\n```\n\n## What's Next\n\nChapter 7 ties it all together — navigation between chapters, SEO metadata, a landing page that lists all series, and the final deploy. Your interactive learning platform goes live.\n"}]}]
+11:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-05-code-playground","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-07-finishing-touches","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+12:["$","script","script-0",{"src":"/_next/static/chunks/0n5hzmmyroibb.js","async":true}]
+13:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+17:null

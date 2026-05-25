@@ -1,0 +1,160 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
+3:I[37457,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
+5:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+9:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"ViewportBoundary"]
+b:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"MetadataBoundary"]
+d:I[68027,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default",1]
+:HL["/_next/static/chunks/0t0s.~un1o7-9.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","nextjs-ghpages","chapter-05-code-playground"],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","nextjs-ghpages/chapter-05-code-playground","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0t0s.~un1o7-9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0r7n~75v~2g-i.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/0n5hzmmyroibb.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0t0s.~un1o7-9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"d74lRfk2ZD3xgV-RnkdYk"}
+e:[]
+8:"$We"
+4:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":"$Lf"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-06-visualizer","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+10:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownCode"]
+11:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/0n5hzmmyroibb.js"],"MarkdownPre"]
+12:T1081,"use client"; // Interactive — needs browser APIs (textarea, Function constructor)
+
+import { useState, useRef } from "react";
+// useState: track code text, output, and running state
+// useRef: get a reference to the textarea DOM element (for focus management)
+
+interface Props {
+  language?: string; // "javascript" or "python"
+  initialCode: string; // The starting code shown in the editor
+  height?: string; // CSS height of the textarea (default "200px")
+}
+
+export function CodePlayground({
+  language = "javascript", // Default to JS if not specified
+  initialCode,
+  height = "200px",
+}: Props) {
+  const [code, setCode] = useState(initialCode.trim()); // Current editor content
+  const [output, setOutput] = useState(""); // Execution result
+  const [running, setRunning] = useState(false); // Show "Running..." state
+  const textareaRef = useRef<HTMLTextAreaElement>(null); // DOM reference for focus
+
+  const runCode = async () => {
+    setRunning(true);
+    setOutput(""); // Clear previous output
+
+    try {
+      if (language === "javascript" || language === "js") {
+        // JavaScript execution strategy:
+        // 1. Create a fake console that captures log() calls into an array
+        // 2. Wrap the user's code in a new Function (like eval, but scoped)
+        // 3. Pass our fake console as the "console" variable
+        const logs: string[] = [];
+        const fakeConsole = { log: (...args: any[]) => logs.push(args.join(" ")) };
+        const fn = new Function("console", code); // Creates: function(console) { <user code> }
+        fn(fakeConsole); // Execute with our fake console
+        setOutput(logs.join("\n") || "(no output)");
+      } else if (language === "python") {
+        // Python execution strategy:
+        // Pyodide is CPython compiled to WebAssembly — real Python in the browser
+        // It's ~5MB, so we load it lazily (only when user clicks Run)
+        const pyodide = await loadPyodide();
+        // Redirect Python's stdout to a StringIO buffer so we can capture print() output
+        pyodide.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+`);
+        pyodide.runPython(code); // Execute the user's Python code
+        const stdout = pyodide.runPython("sys.stdout.getvalue()"); // Read captured output
+        setOutput(stdout || "(no output)");
+      }
+    } catch (err: any) {
+      // Show the error message (syntax errors, runtime errors, etc.)
+      setOutput(`Error: ${err.message}`);
+    }
+
+    setRunning(false);
+  };
+
+  return (
+    <div className="my-6 overflow-hidden rounded-lg border border-gray-300">
+      {/* Editor */}
+      <div className="relative">
+        <textarea
+          ref={textareaRef}
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          spellCheck={false}
+          className="w-full resize-none bg-gray-900 p-4 font-mono text-sm text-gray-100 focus:outline-none"
+          style={{ height, tabSize: 4 }}
+        />
+        <span className="absolute top-2 right-2 rounded bg-gray-800 px-2 py-0.5 text-xs text-gray-500">
+          {language}
+        </span>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center gap-2 border-t bg-gray-100 px-4 py-2">
+        <button
+          onClick={runCode}
+          disabled={running}
+          className="rounded bg-teal-600 px-3 py-1 text-sm text-white hover:bg-teal-700 disabled:opacity-50"
+        >
+          {running ? "Running..." : "▶ Run"}
+        </button>
+        <button
+          onClick={() => setCode(initialCode.trim())}
+          className="px-3 py-1 text-sm text-gray-600 hover:text-gray-900"
+        >
+          Reset
+        </button>
+      </div>
+
+      {/* Output */}
+      {output && (
+        <pre className="border-t bg-gray-50 px-4 py-3 font-mono text-sm whitespace-pre-wrap text-gray-800">
+          {output}
+        </pre>
+      )}
+    </div>
+  );
+}
+
+// Lazy Pyodide loader
+let pyodideInstance: any = null;
+async function loadPyodide() {
+  if (pyodideInstance) return pyodideInstance;
+  // @ts-ignore
+  const { loadPyodide: load } = await import("pyodide");
+  pyodideInstance = await load({
+    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/",
+  });
+  return pyodideInstance;
+}
+f:[["$","h1",null,{"children":"Chapter 5: The Code Playground"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","children":"← Chapter 4: Interactive Quiz"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-06-visualizer","children":"Chapter 6: Visualizer →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Limitation"}],"\n",["$","p",null,{"children":"Your reader sees a code block. They think \"what if I change the input?\" They copy the code, open a terminal, paste it, run it. Context switch. Flow broken."}],"\n",["$","p",null,{"children":"What if the code block itself was editable? What if there was a \"Run\" button right there?"}],"\n",["$","h2",null,{"children":"The Approach"}],"\n",["$","p",null,{"children":"For a static site (no backend), we have two options for running code:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"JavaScript/TypeScript"}]," — runs natively in the browser"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Python"}]," — use Pyodide (Python compiled to WebAssembly)"]}],"\n"]}],"\n",["$","p",null,{"children":"We'll build a playground that handles both. JavaScript runs instantly. Python loads Pyodide on first use."}],"\n",["$","h2",null,{"children":"The Component"}],"\n",["$","p",null,{"children":["This component has three parts: an editable textarea (the \"editor\"), a Run button, and an output area. For JavaScript, it executes code using ",["$","$L10",null,{"children":"new Function()"}],". For Python, it loads Pyodide (a WebAssembly Python runtime) on demand."]}],"\n",["$","p",null,{"children":["Create ",["$","$L10",null,{"children":"app/blog/components/CodePlayground.tsx"}],":"]}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"touch app/blog/components/CodePlayground.tsx\n"}]}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"$12"}]}],"\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29"]
+13:["$","h2",null,{"children":"Register It"}]
+14:["$","p",null,{"children":"Add to your MDX components map:"}]
+15:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"import { CodePlayground } from \"@/app/blog/components/CodePlayground\";\n\ncomponents={{\n  code: MarkdownCode,\n  pre: MarkdownPre,\n  Quiz,\n  CodePlayground,\n}}\n"}]}]
+16:["$","h2",null,{"children":"Use It in Markdown"}]
+17:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-markdown","children":"## Try It Yourself\n\nModify the code below. Change the input array or the target value:\n\n<CodePlayground\nlanguage=\"javascript\"\ninitialCode={`\nfunction binarySearch(arr, target) {\nlet lo = 0, hi = arr.length - 1;\nwhile (lo <= hi) {\nconst mid = Math.floor((lo + hi) / 2);\nif (arr[mid] === target) return mid;\nif (arr[mid] < target) lo = mid + 1;\nelse hi = mid - 1;\n}\nreturn -1;\n}\n\nconsole.log(binarySearch([1, 3, 5, 7, 9, 11], 7));\nconsole.log(binarySearch([1, 3, 5, 7, 9, 11], 4));\n`}\n/>\n"}]}]
+18:["$","p",null,{"children":["The reader sees an editable code block. They change ",["$","$L10",null,{"children":"7"}]," to ",["$","$L10",null,{"children":"11"}],". Click Run. See the result. No context switch. No terminal. Learning by doing, right in the article."]}]
+19:["$","h2",null,{"children":"Python Playground"}]
+1a:["$","p",null,{"children":"For Python content, Pyodide loads on first click (~5MB, cached after):"}]
+1b:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-markdown","children":"<CodePlayground\nlanguage=\"python\"\ninitialCode={`\ndef fibonacci(n):\nif n <= 1:\nreturn n\nreturn fibonacci(n-1) + fibonacci(n-2)\n\nfor i in range(10):\nprint(f\"fib({i}) = {fibonacci(i)}\")\n`}\n/>\n"}]}]
+1c:["$","p",null,{"children":"First run takes 2-3 seconds (loading WASM). After that, instant."}]
+1d:["$","h2",null,{"children":"Design Decisions"}]
+1e:["$","p",null,{"children":["$","strong",null,{"children":"Why a textarea instead of Monaco/CodeMirror?"}]}]
+1f:["$","p",null,{"children":["Simplicity. A ",["$","$L10",null,{"children":"<textarea>"}]," is 0 KB of JavaScript. Monaco is 2MB. For a blog where people tweak 5-10 lines, a textarea with monospace font is enough. If you want syntax highlighting in the editor later, swap in CodeMirror — the interface stays the same."]}]
+20:["$","p",null,{"children":["$","strong",null,{"children":"Why not a backend?"}]}]
+21:["$","p",null,{"children":"GitHub Pages is static. No server means no execution environment. Pyodide solves this for Python. JavaScript runs natively. For other languages, you'd need an external API (like Judge0) — but that adds latency and cost."}]
+22:["$","p",null,{"children":["$","strong",null,{"children":"Why lazy-load Pyodide?"}]}]
+23:["$","p",null,{"children":"5MB is too much to load on page load. Loading on first \"Run\" click means JavaScript-only pages stay fast. The reader who needs Python pays the cost once."}]
+24:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"git add app/blog/components/CodePlayground.tsx\ngit commit -m \"feat: add CodePlayground component\"\n"}]}]
+25:["$","hr",null,{}]
+26:["$","h2",null,{"children":"Commit Your Progress"}]
+27:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"git add .\ngit commit -m \"feat: add CodePlayground component for JS and Python\"\n"}]}]
+28:["$","h2",null,{"children":"What's Next"}]
+29:["$","p",null,{"children":["Quizzes test knowledge. Playgrounds enable experimentation. But some concepts need ",["$","em",null,{"children":"visualization"}]," — watching an algorithm step through data, seeing the tree rebalance, watching the sort happen. Chapter 6: the Visualizer component."]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+2a:I[27201,["/_next/static/chunks/0r7n~75v~2g-i.js"],"IconMark"]
+7:null
+c:[["$","title","0",{"children":"Tam's blog"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2a","3",{}]]
