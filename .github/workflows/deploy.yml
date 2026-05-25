@@ -1,0 +1,27 @@
+# This file tells GitHub: "every time I push to main, build my site and deploy it"
+name: Deploy to GitHub Pages
+
+# Trigger: run this workflow whenever code is pushed to the main branch
+on:
+  push:
+    branches: [main]
+
+# Permission: allow the workflow to push to the gh-pages branch
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Use a fresh Linux machine (free, provided by GitHub)
+    steps:
+      - uses: actions/checkout@v4 # Step 1: Download your code
+      - uses: actions/setup-node@v4 # Step 2: Install Node.js
+        with:
+          node-version: 20
+      - run: npm install # Step 3: Install dependencies (next, react, etc.)
+      - run: npm run build # Step 4: Build static HTML into out/ folder
+      - run: touch out/.nojekyll # Step 5: Tell GitHub Pages "don't use Jekyll"
+      - uses: peaceiris/actions-gh-pages@v3 # Step 6: Push out/ folder to gh-pages branch
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Auto-provided by GitHub, no setup needed
+          publish_dir: ./out # Which folder to deploy

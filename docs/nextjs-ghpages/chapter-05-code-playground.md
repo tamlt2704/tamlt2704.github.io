@@ -222,6 +222,11 @@ GitHub Pages is static. No server means no execution environment. Pyodide solves
 
 5MB is too much to load on page load. Loading on first "Run" click means JavaScript-only pages stay fast. The reader who needs Python pays the cost once.
 
+```bash
+git add app/blog/components/CodePlayground.tsx
+git commit -m "feat: add CodePlayground component"
+```
+
 ---
 
 ## Commit Your Progress

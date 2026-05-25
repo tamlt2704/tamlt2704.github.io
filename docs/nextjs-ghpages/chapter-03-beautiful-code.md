@@ -101,6 +101,11 @@ Colored, styled code block in the browser
 
 The `MarkdownPre` wrapper prevents Tailwind's prose styles from double-wrapping the code block.
 
+```bash
+git add app/blog/components/MarkdownCode.tsx
+git commit -m "feat: add MarkdownCode syntax highlighter component"
+```
+
 ## Wire It Into the Renderer
 
 Update `app/blog/[...slug]/page.tsx`:
@@ -125,6 +130,11 @@ import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
 ```
 
 That's it. Every code block in every markdown file now gets syntax highlighting. You didn't touch a single content file.
+
+```bash
+git add app/blog
+git commit -m "feat: wire syntax highlighting into MDX renderer"
+```
 
 ## Add Tailwind Typography
 
@@ -160,11 +170,16 @@ The `prose` class handles:
 
 All from one class. Your markdown looks like a professionally typeset article.
 
+```bash
+git add app/globals.css
+git commit -m "feat: add Tailwind typography plugin for prose styling"
+```
+
 ## The Result
 
 Write this in any `.md` file:
 
-````markdown
+`````markdown
 ## Binary Search
 
 The key insight: if the array is sorted, you can eliminate half the remaining elements with each comparison.
@@ -185,6 +200,8 @@ def binary_search(arr, target):
 
 Time complexity: `O(log n)` — each step halves the search space.
 ````
+`````
+
 ````
 
 It renders with:
@@ -210,3 +227,4 @@ git commit -m "feat: add syntax highlighting and typography styles"
 Static content looks great now. But a blog that just _shows_ code isn't much better than a textbook. In Chapter 4, we'll build our first interactive component — a Quiz that lives inside markdown and gives readers immediate feedback.
 
 The blog starts teaching back.
+````

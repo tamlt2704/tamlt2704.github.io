@@ -132,6 +132,11 @@ steps={[
 
 The reader clicks through each step. They see the search space shrink. They see _why_ it's O(log n) — not because you told them, but because they watched it happen.
 
+```bash
+git add app/blog/components/StepVisualizer.tsx
+git commit -m "feat: add StepVisualizer component"
+```
+
 ## Register It
 
 ```tsx
@@ -150,7 +155,7 @@ components={{
 
 The real power is combining components in a single chapter:
 
-````markdown
+`````markdown
 # Bubble Sort
 
 Bubble sort repeatedly swaps adjacent elements that are out of order.
@@ -207,6 +212,8 @@ console.log(bubbleSort([5, 3, 8, 1, 2]));
   explanation="Two nested loops over n elements = n × n = O(n²)"
 />
 ````
+`````
+
 ````
 
 One chapter. Three interactive elements. The reader:
@@ -230,3 +237,4 @@ git commit -m "feat: add StepVisualizer component for algorithm walkthroughs"
 ## What's Next
 
 Chapter 7 ties it all together — navigation between chapters, SEO metadata, a landing page that lists all series, and the final deploy. Your interactive learning platform goes live.
+````

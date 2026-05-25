@@ -51,6 +51,11 @@ export default function BlogIndex() {
 
 Visit `/blog` — every folder in `content/` appears as a clickable card.
 
+```bash
+git add app/blog/page.tsx
+git commit -m "feat: add blog index page"
+```
+
 ## Chapter Sidebar
 
 For longer series, add a sidebar showing all chapters. Update `app/blog/[...slug]/page.tsx`:
@@ -82,6 +87,11 @@ For longer series, add a sidebar showing all chapters. Update `app/blog/[...slug
 
 On desktop, readers see where they are in the series and can jump to any chapter.
 
+```bash
+git add app/blog
+git commit -m "feat: add chapter sidebar navigation"
+```
+
 ## SEO: Page Titles and Metadata
 
 Add `generateMetadata` to your catch-all route:
@@ -106,6 +116,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 ```
 
 Each page gets a unique `<title>` tag. Google indexes them properly.
+
+```bash
+git add app/blog
+git commit -m "feat: add generateMetadata for per-page SEO titles"
+```
 
 ## The Complete Components Map
 

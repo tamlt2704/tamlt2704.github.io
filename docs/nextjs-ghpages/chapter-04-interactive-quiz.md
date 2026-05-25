@@ -116,6 +116,11 @@ export function Quiz({ question, options, answer, explanation }: QuizProps) {
 
 Two pieces of state, one event handler. That's the entire Quiz logic.
 
+```bash
+git add app/blog/components/Quiz.tsx
+git commit -m "feat: add Quiz component"
+```
+
 ## Register It With MDX
 
 Update `app/blog/[...slug]/page.tsx` — add Quiz to the components map:
@@ -141,11 +146,16 @@ import { Quiz } from "@/app/blog/components/Quiz";
 
 That's the entire wiring. One import, one line in the components object.
 
+```bash
+git add app/blog
+git commit -m "feat: register Quiz in MDX components map"
+```
+
 ## Use It in Markdown
 
 Now in any `.md` file:
 
-````markdown
+`````markdown
 # Binary Search
 
 Binary search works on sorted arrays. It compares the target to the middle
@@ -172,6 +182,8 @@ def binary_search(arr, target):
   explanation="log₂(1024) = 10. Binary search halves the space each step."
 />
 ````
+`````
+
 ````
 
 The reader learns the concept, sees the code, then immediately tests their understanding. The feedback is instant. No scrolling to an answer key.
@@ -223,3 +235,4 @@ git commit -m "feat: add Quiz component for interactive markdown"
 ## What's Next
 
 A quiz tests recall. But what about experimentation? In Chapter 5, we'll build a Code Playground — an editable code block where readers can modify the code and see results instantly. The blog becomes a sandbox.
+````

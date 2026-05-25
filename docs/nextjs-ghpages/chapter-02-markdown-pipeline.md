@@ -107,6 +107,11 @@ export function getSeriesChapters(series: string) {
 
 This is the entire content layer. No database. No API. Just `fs.readFileSync`.
 
+```bash
+git add lib/markdown.ts
+git commit -m "feat: add markdown content reader"
+```
+
 ## The Catch-All Route
 
 This is the most important file in the project. One component renders _every_ markdown file as a page. The `[...slug]` in the folder name means "match any URL path with any number of segments."
@@ -232,11 +237,16 @@ renders as HTML with MDXRemote
 
 `generateStaticParams()` runs at build time, enumerates every `.md` file, and pre-renders all pages. The result is pure static HTML — no server needed.
 
+```bash
+git add app/blog
+git commit -m "feat: add catch-all blog route with prev/next navigation"
+```
+
 ## Test It
 
 Create `content/hello/chapter-00-test.md`:
 
-````markdown
+`````markdown
 # Hello World
 
 This is my first blog post.
@@ -257,6 +267,8 @@ print("Hello from the blog!")
 | Code blocks | ✅ |
 | Tables | ✅ |
 ````
+`````
+
 ````
 
 Run `npm run dev`, visit `http://localhost:3000/blog/hello/chapter-00-test`.
@@ -289,3 +301,4 @@ git commit -m "feat: add markdown pipeline with catch-all route"
 ## What's Next
 
 The page works but looks plain. Code blocks are unstyled monospace. In Chapter 3, we'll add syntax highlighting with `react-syntax-highlighter` and Tailwind's typography plugin to make everything look professional with zero effort.
+````
