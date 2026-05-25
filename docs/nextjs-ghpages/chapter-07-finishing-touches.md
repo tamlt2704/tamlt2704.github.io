@@ -7,6 +7,7 @@
 ## What We Have
 
 A Next.js site that:
+
 - Reads markdown from folders
 - Renders with syntax highlighting
 - Supports interactive components (Quiz, CodePlayground, StepVisualizer)
@@ -26,22 +27,20 @@ export default function BlogIndex() {
   const series = getAllSeries();
 
   return (
-    <main className="max-w-3xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Blog</h1>
+    <main className="mx-auto max-w-3xl px-6 py-12">
+      <h1 className="mb-8 text-3xl font-bold text-gray-900">Blog</h1>
 
       <div className="space-y-6">
         {series.map((s) => (
           <Link
             key={s.slug}
             href={`/blog/${s.slug}/${s.chapters[0].replace(".md", "")}`}
-            className="block p-5 rounded-lg border border-gray-200 hover:border-teal-400 transition"
+            className="block rounded-lg border border-gray-200 p-5 transition hover:border-teal-400"
           >
             <h2 className="text-lg font-semibold text-gray-900">
-              {s.name.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+              {s.name.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
             </h2>
-            <p className="text-sm text-gray-500 mt-1">
-              {s.chapters.length} chapters
-            </p>
+            <p className="mt-1 text-sm text-gray-500">{s.chapters.length} chapters</p>
           </Link>
         ))}
       </div>
@@ -58,10 +57,8 @@ For longer series, add a sidebar showing all chapters. Update `app/blog/[...slug
 
 ```tsx
 // Inside the return, before <article>:
-<aside className="hidden lg:block fixed left-8 top-24 w-56">
-  <p className="text-xs font-semibold text-gray-400 uppercase mb-3">
-    {series.replace(/-/g, " ")}
-  </p>
+<aside className="fixed top-24 left-8 hidden w-56 lg:block">
+  <p className="mb-3 text-xs font-semibold text-gray-400 uppercase">{series.replace(/-/g, " ")}</p>
   <nav className="space-y-1">
     {chapters.map((ch) => {
       const slug = ch.replace(".md", "");
@@ -71,10 +68,8 @@ For longer series, add a sidebar showing all chapters. Update `app/blog/[...slug
         <a
           key={ch}
           href={`/blog/${series}/${slug}`}
-          className={`block text-sm px-3 py-1.5 rounded ${
-            isActive
-              ? "bg-teal-50 text-teal-700 font-medium"
-              : "text-gray-600 hover:text-gray-900"
+          className={`block rounded px-3 py-1.5 text-sm ${
+            isActive ? "bg-teal-50 font-medium text-teal-700" : "text-gray-600 hover:text-gray-900"
           }`}
         >
           {label}
@@ -190,3 +185,13 @@ Total JavaScript frameworks: 1.
 Total lines of infrastructure code: ~30 (the deploy workflow).
 
 The blog teaches back. Ship it.
+
+---
+
+## Commit Your Progress
+
+```bash
+git add .
+git commit -m "feat: add blog index, sidebar navigation, and SEO metadata"
+git push
+```

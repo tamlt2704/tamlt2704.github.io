@@ -6,9 +6,9 @@
 
 ## Why Visualize
 
-Some things click only when you *see* them move. Binary search eliminating half the array. Bubble sort swapping adjacent elements. A tree rotating to stay balanced.
+Some things click only when you _see_ them move. Binary search eliminating half the array. Bubble sort swapping adjacent elements. A tree rotating to stay balanced.
 
-Text explains the *what*. Code shows the *how*. Visualization shows the *why it works*.
+Text explains the _what_. Code shows the _how_. Visualization shows the _why it works_.
 
 ## The Component
 
@@ -17,42 +17,40 @@ A step visualizer shows an array (or any data structure) and lets the reader ste
 Create `app/blog/components/StepVisualizer.tsx`:
 
 ```tsx
-"use client";  // Interactive — user clicks prev/next buttons
+"use client"; // Interactive — user clicks prev/next buttons
 
 import { useState } from "react";
 
 // Each step is a snapshot: the array state, which indices to highlight, and a description
 interface Step {
-  data: number[];        // The array values at this point in the algorithm
-  highlights: number[];  // Which indices are "active" (being compared, swapped, etc.)
-  label: string;         // Human-readable description: "Compare 5 and 3. Swap!"
+  data: number[]; // The array values at this point in the algorithm
+  highlights: number[]; // Which indices are "active" (being compared, swapped, etc.)
+  label: string; // Human-readable description: "Compare 5 and 3. Swap!"
 }
 
 interface Props {
-  steps: Step[];    // The full sequence of steps (provided by the markdown author)
-  title?: string;   // Optional heading above the visualizer
+  steps: Step[]; // The full sequence of steps (provided by the markdown author)
+  title?: string; // Optional heading above the visualizer
 }
 
 export function StepVisualizer({ steps, title }: Props) {
   // current = which step we're viewing (0 = first step)
   const [current, setCurrent] = useState(0);
-  const step = steps[current];  // The data for the current step
+  const step = steps[current]; // The data for the current step
 
   return (
-    <div className="my-8 p-5 rounded-lg border border-gray-200 bg-white">
-      {title && (
-        <p className="text-sm font-semibold text-gray-700 mb-3">{title}</p>
-      )}
+    <div className="my-8 rounded-lg border border-gray-200 bg-white p-5">
+      {title && <p className="mb-3 text-sm font-semibold text-gray-700">{title}</p>}
 
       {/* Array visualization — each number is a box, highlighted ones are teal + scaled up */}
-      <div className="flex gap-1 justify-center mb-4">
+      <div className="mb-4 flex justify-center gap-1">
         {step.data.map((val, i) => (
           <div
             key={i}
-            className={`w-10 h-10 flex items-center justify-center rounded text-sm font-mono border transition-all duration-200 ${
+            className={`flex h-10 w-10 items-center justify-center rounded border font-mono text-sm transition-all duration-200 ${
               step.highlights.includes(i)
-                ? "bg-teal-100 border-teal-500 text-teal-900 scale-110"  // Active: teal + bigger
-                : "bg-gray-50 border-gray-200 text-gray-700"             // Inactive: gray
+                ? "scale-110 border-teal-500 bg-teal-100 text-teal-900" // Active: teal + bigger
+                : "border-gray-200 bg-gray-50 text-gray-700" // Inactive: gray
             }`}
           >
             {val}
@@ -61,9 +59,7 @@ export function StepVisualizer({ steps, title }: Props) {
       </div>
 
       {/* What happened this step — fixed height so layout doesn't jump */}
-      <p className="text-center text-sm text-gray-600 mb-4 h-5">
-        {step.label}
-      </p>
+      <p className="mb-4 h-5 text-center text-sm text-gray-600">{step.label}</p>
 
       {/* Navigation controls */}
       <div className="flex items-center justify-center gap-3">
@@ -77,17 +73,17 @@ export function StepVisualizer({ steps, title }: Props) {
         <button
           onClick={() => setCurrent(Math.max(0, current - 1))}
           disabled={current === 0}
-          className="px-3 py-1 text-sm border rounded hover:bg-gray-50 disabled:opacity-30"
+          className="rounded border px-3 py-1 text-sm hover:bg-gray-50 disabled:opacity-30"
         >
           ← Prev
         </button>
-        <span className="text-xs text-gray-400 w-16 text-center">
+        <span className="w-16 text-center text-xs text-gray-400">
           {current + 1} / {steps.length}
         </span>
         <button
           onClick={() => setCurrent(Math.min(steps.length - 1, current + 1))}
           disabled={current === steps.length - 1}
-          className="px-3 py-1 text-sm border rounded hover:bg-gray-50 disabled:opacity-30"
+          className="rounded border px-3 py-1 text-sm hover:bg-gray-50 disabled:opacity-30"
         >
           Next →
         </button>
@@ -112,11 +108,11 @@ export function StepVisualizer({ steps, title }: Props) {
 Watch binary search find `7` in a sorted array:
 
 <StepVisualizer
-  title="Binary Search for 7"
-  steps={[
-    { data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: "Start: check middle (index 3) = 7" },
-    { data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: "Found! 7 === 7. Return index 3." }
-  ]}
+title="Binary Search for 7"
+steps={[
+{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: "Start: check middle (index 3) = 7" },
+{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: "Found! 7 === 7. Return index 3." }
+]}
 />
 ```
 
@@ -124,17 +120,17 @@ A more interesting example — searching for `11`:
 
 ```markdown
 <StepVisualizer
-  title="Binary Search for 11"
-  steps={[
-    { data: [1, 3, 5, 7, 9, 11, 13], highlights: [0, 1, 2, 3, 4, 5, 6], label: "Full array. lo=0, hi=6" },
-    { data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: "Check mid=3: arr[3]=7 < 11. Go right." },
-    { data: [1, 3, 5, 7, 9, 11, 13], highlights: [4, 5, 6], label: "Search right half. lo=4, hi=6" },
-    { data: [1, 3, 5, 7, 9, 11, 13], highlights: [5], label: "Check mid=5: arr[5]=11 === 11. Found!" }
-  ]}
+title="Binary Search for 11"
+steps={[
+{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [0, 1, 2, 3, 4, 5, 6], label: "Full array. lo=0, hi=6" },
+{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: "Check mid=3: arr[3]=7 < 11. Go right." },
+{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [4, 5, 6], label: "Search right half. lo=4, hi=6" },
+{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [5], label: "Check mid=5: arr[5]=11 === 11. Found!" }
+]}
 />
 ```
 
-The reader clicks through each step. They see the search space shrink. They see *why* it's O(log n) — not because you told them, but because they watched it happen.
+The reader clicks through each step. They see the search space shrink. They see _why_ it's O(log n) — not because you told them, but because they watched it happen.
 
 ## Register It
 
@@ -154,12 +150,12 @@ components={{
 
 The real power is combining components in a single chapter:
 
-```markdown
+````markdown
 # Bubble Sort
 
 Bubble sort repeatedly swaps adjacent elements that are out of order.
 
-```python
+````python
 def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
@@ -210,9 +206,11 @@ console.log(bubbleSort([5, 3, 8, 1, 2]));
   answer={2}
   explanation="Two nested loops over n elements = n × n = O(n²)"
 />
-```
+````
+````
 
 One chapter. Three interactive elements. The reader:
+
 1. Reads the explanation
 2. Watches the algorithm step by step
 3. Experiments with the code
@@ -221,6 +219,13 @@ One chapter. Three interactive elements. The reader:
 That's a teaching machine, not a blog post.
 
 ---
+
+## Commit Your Progress
+
+```bash
+git add .
+git commit -m "feat: add StepVisualizer component for algorithm walkthroughs"
+```
 
 ## What's Next
 

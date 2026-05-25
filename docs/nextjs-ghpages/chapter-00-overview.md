@@ -397,6 +397,34 @@ Every chapter follows the same pattern:
 
 No filler. No "in this chapter we will learn about..." Just build, explain, build more.
 
+### Commit Often, Commit Well
+
+Every time something works — commit it. Don't batch up a day's work into one commit. Small commits mean:
+
+- **Easy to revert** — broke something? Roll back one commit, not a day of work
+- **Readable history** — future you can see exactly when and why each change was made
+- **Safer to experiment** — you can try things knowing you can always get back to a working state
+
+At the end of each chapter, you'll see a suggested commit. Use it as a checkpoint — the site works, the tests pass, the code is clean.
+
+Commit message format (enforced by commitlint from Chapter 0):
+
+```bash
+git add .
+git commit -m "feat: add quiz component to markdown pipeline"
+```
+
+| Type       | When to use                             |
+| ---------- | --------------------------------------- |
+| `feat`     | Adding something new                    |
+| `fix`      | Fixing a bug                            |
+| `docs`     | Documentation only                      |
+| `chore`    | Maintenance (deps, config)              |
+| `refactor` | Restructuring without changing behavior |
+| `style`    | Formatting, whitespace                  |
+
+Don't overthink the message. A clear `feat: add X` is always better than `update stuff`.
+
 ### Writing Rules
 
 - **Never show code without context.** Before every code block, explain _what_ it does and _why_ it's needed. After the block, explain any non-obvious lines.

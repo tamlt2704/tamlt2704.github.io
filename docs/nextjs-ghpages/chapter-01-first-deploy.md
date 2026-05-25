@@ -49,11 +49,11 @@ Say **yes** to the import alias (`@/*`).
 
 The React Compiler is a build-time tool that analyzes your code and adds that memoization automatically. You write plain components. The compiler figures out what to optimize. No manual `useMemo` needed.
 
-| Without React Compiler | With React Compiler |
-|------------------------|---------------------|
+| Without React Compiler                        | With React Compiler                         |
+| --------------------------------------------- | ------------------------------------------- |
 | Manual `useMemo`, `useCallback`, `React.memo` | Write plain functions — compiler handles it |
-| Easy to forget, causes unnecessary re-renders | Automatic, consistent, always correct |
-| Adds noise to every component | Clean, readable components |
+| Easy to forget, causes unnecessary re-renders | Automatic, consistent, always correct       |
+| Adds noise to every component                 | Clean, readable components                  |
 
 The `--react-compiler` flag installs `babel-plugin-react-compiler` and enables it in `next.config.ts` via `experimental.reactCompiler: true` automatically — no manual setup needed.
 
@@ -69,12 +69,12 @@ Now let's pin the versions. Open `package.json` and replace the dependency versi
 
     // Markdown rendering — converts .md files to React components
     "next-mdx-remote": "6.0.0",
-    "gray-matter": "4.0.3",       // Parses YAML frontmatter from markdown
-    "remark-gfm": "4.0.1",       // GitHub-flavored markdown (tables, task lists)
+    "gray-matter": "4.0.3", // Parses YAML frontmatter from markdown
+    "remark-gfm": "4.0.1", // GitHub-flavored markdown (tables, task lists)
 
     // Syntax highlighting — colors code blocks by language
     "react-syntax-highlighter": "16.1.1",
-    "@types/react-syntax-highlighter": "15.5.13"
+    "@types/react-syntax-highlighter": "15.5.13",
   },
   "devDependencies": {
     // TypeScript — type checking at build time
@@ -86,17 +86,17 @@ Now let's pin the versions. Open `package.json` and replace the dependency versi
     // Tailwind CSS v4 — utility-first styling
     "tailwindcss": "4.0.0",
     "@tailwindcss/postcss": "4.0.0",
-    "@tailwindcss/typography": "0.5.19",  // Beautiful prose styling
+    "@tailwindcss/typography": "0.5.19", // Beautiful prose styling
 
     // Code quality
     "eslint": "9.17.0",
     "eslint-config-next": "16.1.6",
     "prettier": "3.4.2",
-    "prettier-plugin-tailwindcss": "0.6.9",  // Auto-sorts Tailwind classes
+    "prettier-plugin-tailwindcss": "0.6.9", // Auto-sorts Tailwind classes
 
     // React Compiler — automatically memoizes components at build time
-    "babel-plugin-react-compiler": "19.1.0"
-  }
+    "babel-plugin-react-compiler": "19.1.0",
+  },
 }
 ```
 
@@ -163,12 +163,12 @@ export default nextConfig;
 
 **What changes with `output: "export"`:**
 
-| Without (default) | With `output: "export"` |
-|-------------------|------------------------|
-| Needs a Node.js server to run | Just static files — any web host works |
-| Pages rendered on each request | Pages pre-built at build time |
-| Can use server-side features (API routes, middleware) | Only static/client features |
-| Deploy to Vercel, Railway, etc. | Deploy to GitHub Pages, Netlify, S3, anywhere |
+| Without (default)                                     | With `output: "export"`                       |
+| ----------------------------------------------------- | --------------------------------------------- |
+| Needs a Node.js server to run                         | Just static files — any web host works        |
+| Pages rendered on each request                        | Pages pre-built at build time                 |
+| Can use server-side features (API routes, middleware) | Only static/client features                   |
+| Deploy to Vercel, Railway, etc.                       | Deploy to GitHub Pages, Netlify, S3, anywhere |
 
 ## Your First Page
 
@@ -182,13 +182,9 @@ export default function Home() {
   return (
     // Tailwind classes: max-w-2xl = max width 672px, mx-auto = center horizontally
     // px-6 = padding left/right 24px, py-20 = padding top/bottom 80px
-    <main className="max-w-2xl mx-auto px-6 py-20">
-      <h1 className="text-3xl font-bold text-gray-900">
-        My Blog
-      </h1>
-      <p className="mt-4 text-gray-600">
-        This site teaches back.
-      </p>
+    <main className="mx-auto max-w-2xl px-6 py-20">
+      <h1 className="text-3xl font-bold text-gray-900">My Blog</h1>
+      <p className="mt-4 text-gray-600">This site teaches back.</p>
     </main>
   );
 }
@@ -212,6 +208,19 @@ npm run build
 
 Look at the `out/` folder that appeared. That's your entire site — plain HTML, CSS, and JS files. No server needed. That's what GitHub Pages will serve.
 
+## Update Your Blog Title
+
+`create-next-app` sets a default title of "Create Next App". Update it now in `app/layout.tsx`:
+
+```tsx
+export const metadata: Metadata = {
+  title: "Your Blog Name", // Shown in browser tabs and search results
+  description: "Your blog description",
+};
+```
+
+This is the global title. Individual pages can override it with their own `generateMetadata` export — covered in Chapter 7.
+
 ## Push to GitHub
 
 Create a repository on GitHub. Name it `yourusername.github.io` for a user site, or anything else for a project site.
@@ -232,6 +241,10 @@ GitHub Actions is a CI/CD system built into GitHub. You define a workflow in a Y
 
 Create `.github/workflows/deploy.yml`:
 
+```bash
+mkdir -p .github/workflows && touch .github/workflows/deploy.yml
+```
+
 ```yaml
 # This file tells GitHub: "every time I push to main, build my site and deploy it"
 name: Deploy to GitHub Pages
@@ -247,34 +260,34 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest    # Use a fresh Linux machine (free, provided by GitHub)
+    runs-on: ubuntu-latest # Use a fresh Linux machine (free, provided by GitHub)
     steps:
-      - uses: actions/checkout@v4          # Step 1: Download your code
-      - uses: actions/setup-node@v4        # Step 2: Install Node.js
+      - uses: actions/checkout@v4 # Step 1: Download your code
+      - uses: actions/setup-node@v4 # Step 2: Install Node.js
         with:
           node-version: 20
-      - run: npm install                   # Step 3: Install dependencies (next, react, etc.)
-      - run: npm run build                 # Step 4: Build static HTML into out/ folder
-      - run: touch out/.nojekyll           # Step 5: Tell GitHub Pages "don't use Jekyll"
-      - uses: peaceiris/actions-gh-pages@v3  # Step 6: Push out/ folder to gh-pages branch
+      - run: npm install # Step 3: Install dependencies (next, react, etc.)
+      - run: npm run build # Step 4: Build static HTML into out/ folder
+      - run: touch out/.nojekyll # Step 5: Tell GitHub Pages "don't use Jekyll"
+      - uses: peaceiris/actions-gh-pages@v3 # Step 6: Push out/ folder to gh-pages branch
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Auto-provided by GitHub, no setup needed
-          publish_dir: ./out               # Which folder to deploy
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Auto-provided by GitHub, no setup needed
+          publish_dir: ./out # Which folder to deploy
 ```
 
 **Line-by-line breakdown:**
 
-| Line | What it does |
-|------|-------------|
-| `on: push: branches: [main]` | Only runs when you push to `main` (not other branches) |
-| `permissions: contents: write` | Allows the action to create/update the `gh-pages` branch |
-| `runs-on: ubuntu-latest` | GitHub gives you a free Linux VM for ~6 minutes |
-| `actions/checkout@v4` | Clones your repo into the VM |
-| `actions/setup-node@v4` | Installs Node.js 20 on the VM |
-| `npm run build` | Runs `next build` which generates static files in `out/` |
-| `touch out/.nojekyll` | Creates an empty file that prevents Jekyll processing |
+| Line                            | What it does                                                 |
+| ------------------------------- | ------------------------------------------------------------ |
+| `on: push: branches: [main]`    | Only runs when you push to `main` (not other branches)       |
+| `permissions: contents: write`  | Allows the action to create/update the `gh-pages` branch     |
+| `runs-on: ubuntu-latest`        | GitHub gives you a free Linux VM for ~6 minutes              |
+| `actions/checkout@v4`           | Clones your repo into the VM                                 |
+| `actions/setup-node@v4`         | Installs Node.js 20 on the VM                                |
+| `npm run build`                 | Runs `next build` which generates static files in `out/`     |
+| `touch out/.nojekyll`           | Creates an empty file that prevents Jekyll processing        |
 | `peaceiris/actions-gh-pages@v3` | A community action that pushes a folder to `gh-pages` branch |
-| `${{ secrets.GITHUB_TOKEN }}` | A token GitHub auto-generates — you don't need to create it |
+| `${{ secrets.GITHUB_TOKEN }}`   | A token GitHub auto-generates — you don't need to create it  |
 
 Commit and push:
 
@@ -315,6 +328,14 @@ Without it, GitHub Pages assumes your site is a Jekyll project and ignores files
 One empty file. Critical.
 
 ---
+
+## Commit Your Progress
+
+```bash
+git add .
+git commit -m "feat: scaffold Next.js project with static export"
+git push
+```
 
 ## What's Next
 

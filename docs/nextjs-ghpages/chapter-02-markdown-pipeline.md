@@ -49,7 +49,7 @@ This file scans your `content/` folder and provides functions to list series and
 Create `lib/markdown.ts`:
 
 ```typescript
-import fs from "fs";    // Node.js file system module — reads files and folders
+import fs from "fs"; // Node.js file system module — reads files and folders
 import path from "path"; // Builds file paths that work on any OS (Windows, Mac, Linux)
 
 const CONTENT_DIR = "content";
@@ -65,14 +65,17 @@ export function getAllSeries() {
   // If the content folder doesn't exist yet, return empty (no crash)
   if (!fs.existsSync(base)) return [];
 
-  return fs.readdirSync(base, { withFileTypes: true })  // List everything in content/
-    .filter((d) => d.isDirectory())                      // Keep only folders (not files)
-    .map((d) => ({                                       // Transform each folder into an object
-      name: d.name,                                      // "algorithms"
-      slug: d.name,                                      // Used in URLs: /blog/algorithms/...
-      chapters: fs.readdirSync(path.join(base, d.name))  // List files inside the folder
-        .filter((f) => f.endsWith(".md"))                 // Keep only markdown files
-        .sort(),                                         // Alphabetical order (chapter-00, chapter-01, ...)
+  return fs
+    .readdirSync(base, { withFileTypes: true }) // List everything in content/
+    .filter((d) => d.isDirectory()) // Keep only folders (not files)
+    .map((d) => ({
+      // Transform each folder into an object
+      name: d.name, // "algorithms"
+      slug: d.name, // Used in URLs: /blog/algorithms/...
+      chapters: fs
+        .readdirSync(path.join(base, d.name)) // List files inside the folder
+        .filter((f) => f.endsWith(".md")) // Keep only markdown files
+        .sort(), // Alphabetical order (chapter-00, chapter-01, ...)
     }));
 }
 
@@ -83,7 +86,7 @@ export function getAllSeries() {
 export function getChapterContent(series: string, file: string) {
   const filePath = path.join(process.cwd(), CONTENT_DIR, series, file);
   if (!fs.existsSync(filePath)) return null;
-  return fs.readFileSync(filePath, "utf-8");  // Read the entire file as text
+  return fs.readFileSync(filePath, "utf-8"); // Read the entire file as text
 }
 
 /**
@@ -93,7 +96,8 @@ export function getChapterContent(series: string, file: string) {
 export function getSeriesChapters(series: string) {
   const dir = path.join(process.cwd(), CONTENT_DIR, series);
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir)
+  return fs
+    .readdirSync(dir)
     .filter((f) => f.endsWith(".md"))
     .sort();
 }
@@ -105,7 +109,7 @@ This is the entire content layer. No database. No API. Just `fs.readFileSync`.
 
 ## The Catch-All Route
 
-This is the most important file in the project. One component renders *every* markdown file as a page. The `[...slug]` in the folder name means "match any URL path with any number of segments."
+This is the most important file in the project. One component renders _every_ markdown file as a page. The `[...slug]` in the folder name means "match any URL path with any number of segments."
 
 Create `app/blog/[...slug]/page.tsx`:
 
@@ -232,16 +236,16 @@ renders as HTML with MDXRemote
 
 Create `content/hello/chapter-00-test.md`:
 
-```markdown
+````markdown
 # Hello World
 
 This is my first blog post.
 
-It supports **bold**, *italic*, and `inline code`.
+It supports **bold**, _italic_, and `inline code`.
 
 ## A Code Block
 
-```python
+````python
 print("Hello from the blog!")
 ```⁠
 
@@ -252,7 +256,8 @@ print("Hello from the blog!")
 | Markdown | ✅ |
 | Code blocks | ✅ |
 | Tables | ✅ |
-```
+````
+````
 
 Run `npm run dev`, visit `http://localhost:3000/blog/hello/chapter-00-test`.
 
@@ -270,9 +275,16 @@ content/
 Static HTML at build time
 ```
 
-Add a folder → new series appears. Add a file → new chapter appears. Delete a file → page disappears. The filesystem *is* your CMS.
+Add a folder → new series appears. Add a file → new chapter appears. Delete a file → page disappears. The filesystem _is_ your CMS.
 
 ---
+
+## Commit Your Progress
+
+```bash
+git add .
+git commit -m "feat: add markdown pipeline with catch-all route"
+```
 
 ## What's Next
 

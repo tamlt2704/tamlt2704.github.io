@@ -25,8 +25,8 @@ When MDX renders a markdown code block, it creates `<pre><code>` elements. We in
 
 Create `app/blog/components/MarkdownCode.tsx`:
 
-```tsx
-"use client";  // Needs browser — SyntaxHighlighter uses DOM APIs
+````tsx
+"use client"; // Needs browser — SyntaxHighlighter uses DOM APIs
 
 // Prism is a syntax highlighting engine. It tokenizes code and applies colors.
 // oneDark is VS Code's dark theme — familiar to most developers.
@@ -34,8 +34,8 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 interface Props {
-  children: React.ReactNode;  // The code text inside the <code> tag
-  className?: string;          // MDX sets this to "language-python" for ```python blocks
+  children: React.ReactNode; // The code text inside the <code> tag
+  className?: string; // MDX sets this to "language-python" for ```python blocks
 }
 
 export function MarkdownCode({ children, className }: Props) {
@@ -50,7 +50,7 @@ export function MarkdownCode({ children, className }: Props) {
     // No language = inline code like `variable`
     // Render with a subtle pink highlight (common convention in docs)
     return (
-      <code className="text-pink-600 bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">
+      <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-pink-600">
         {children}
       </code>
     );
@@ -59,13 +59,13 @@ export function MarkdownCode({ children, className }: Props) {
   // Fenced code block with a language — apply full syntax highlighting
   return (
     <SyntaxHighlighter
-      language={lang}        // "python", "javascript", "bash", etc.
-      style={oneDark}        // Color theme (object mapping token types to colors)
+      language={lang} // "python", "javascript", "bash", etc.
+      style={oneDark} // Color theme (object mapping token types to colors)
       customStyle={{
-        margin: "1rem 0",    // Space above and below the block
-        borderRadius: "0.5rem",  // Rounded corners
-        fontSize: "0.85rem",     // Slightly smaller than body text
-        lineHeight: 1.6,         // Comfortable reading spacing
+        margin: "1rem 0", // Space above and below the block
+        borderRadius: "0.5rem", // Rounded corners
+        fontSize: "0.85rem", // Slightly smaller than body text
+        lineHeight: 1.6, // Comfortable reading spacing
       }}
     >
       {code}
@@ -79,11 +79,11 @@ export function MarkdownCode({ children, className }: Props) {
 export function MarkdownPre({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
-```
+````
 
 **The flow when MDX encounters a code block:**
 
-```
+````
 Markdown: ```python\nprint("hi")\n```
     ↓ MDX parser
 JSX: <pre><code className="language-python">print("hi")</code></pre>
@@ -92,7 +92,7 @@ JSX: <pre><code className="language-python">print("hi")</code></pre>
   <MarkdownCode className="language-python"> → renders SyntaxHighlighter
     ↓
 Colored, styled code block in the browser
-```
+````
 
 1. MDX passes every code block through our `code` component
 2. Fenced blocks get `className="language-python"` — we extract the language
@@ -121,7 +121,7 @@ import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
       format: "md",
     },
   }}
-/>
+/>;
 ```
 
 That's it. Every code block in every markdown file now gets syntax highlighting. You didn't touch a single content file.
@@ -150,6 +150,7 @@ Now wrap your content in `prose` classes:
 ```
 
 The `prose` class handles:
+
 - Heading sizes and spacing
 - Paragraph line height
 - List indentation
@@ -163,12 +164,12 @@ All from one class. Your markdown looks like a professionally typeset article.
 
 Write this in any `.md` file:
 
-```markdown
+````markdown
 ## Binary Search
 
 The key insight: if the array is sorted, you can eliminate half the remaining elements with each comparison.
 
-```python
+````python
 def binary_search(arr, target):
     lo, hi = 0, len(arr) - 1
     while lo <= hi:
@@ -183,9 +184,11 @@ def binary_search(arr, target):
 ```⁠
 
 Time complexity: `O(log n)` — each step halves the search space.
-```
+````
+````
 
 It renders with:
+
 - A styled heading
 - Proper paragraph spacing
 - Syntax-highlighted Python with the `oneDark` theme
@@ -195,8 +198,15 @@ Zero configuration per file. Write markdown, get beauty.
 
 ---
 
+## Commit Your Progress
+
+```bash
+git add .
+git commit -m "feat: add syntax highlighting and typography styles"
+```
+
 ## What's Next
 
-Static content looks great now. But a blog that just *shows* code isn't much better than a textbook. In Chapter 4, we'll build our first interactive component — a Quiz that lives inside markdown and gives readers immediate feedback.
+Static content looks great now. But a blog that just _shows_ code isn't much better than a textbook. In Chapter 4, we'll build our first interactive component — a Quiz that lives inside markdown and gives readers immediate feedback.
 
 The blog starts teaching back.

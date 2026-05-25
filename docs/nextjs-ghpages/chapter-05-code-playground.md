@@ -26,31 +26,31 @@ This component has three parts: an editable textarea (the "editor"), a Run butto
 Create `app/blog/components/CodePlayground.tsx`:
 
 ```tsx
-"use client";  // Interactive — needs browser APIs (textarea, Function constructor)
+"use client"; // Interactive — needs browser APIs (textarea, Function constructor)
 
 import { useState, useRef } from "react";
 // useState: track code text, output, and running state
 // useRef: get a reference to the textarea DOM element (for focus management)
 
 interface Props {
-  language?: string;      // "javascript" or "python"
-  initialCode: string;    // The starting code shown in the editor
-  height?: string;        // CSS height of the textarea (default "200px")
+  language?: string; // "javascript" or "python"
+  initialCode: string; // The starting code shown in the editor
+  height?: string; // CSS height of the textarea (default "200px")
 }
 
 export function CodePlayground({
-  language = "javascript",  // Default to JS if not specified
+  language = "javascript", // Default to JS if not specified
   initialCode,
   height = "200px",
 }: Props) {
-  const [code, setCode] = useState(initialCode.trim());  // Current editor content
-  const [output, setOutput] = useState("");               // Execution result
-  const [running, setRunning] = useState(false);          // Show "Running..." state
-  const textareaRef = useRef<HTMLTextAreaElement>(null);   // DOM reference for focus
+  const [code, setCode] = useState(initialCode.trim()); // Current editor content
+  const [output, setOutput] = useState(""); // Execution result
+  const [running, setRunning] = useState(false); // Show "Running..." state
+  const textareaRef = useRef<HTMLTextAreaElement>(null); // DOM reference for focus
 
   const runCode = async () => {
     setRunning(true);
-    setOutput("");  // Clear previous output
+    setOutput(""); // Clear previous output
 
     try {
       if (language === "javascript" || language === "js") {
@@ -60,8 +60,8 @@ export function CodePlayground({
         // 3. Pass our fake console as the "console" variable
         const logs: string[] = [];
         const fakeConsole = { log: (...args: any[]) => logs.push(args.join(" ")) };
-        const fn = new Function("console", code);  // Creates: function(console) { <user code> }
-        fn(fakeConsole);                            // Execute with our fake console
+        const fn = new Function("console", code); // Creates: function(console) { <user code> }
+        fn(fakeConsole); // Execute with our fake console
         setOutput(logs.join("\n") || "(no output)");
       } else if (language === "python") {
         // Python execution strategy:
@@ -74,8 +74,8 @@ import sys
 from io import StringIO
 sys.stdout = StringIO()
 `);
-        pyodide.runPython(code);  // Execute the user's Python code
-        const stdout = pyodide.runPython("sys.stdout.getvalue()");  // Read captured output
+        pyodide.runPython(code); // Execute the user's Python code
+        const stdout = pyodide.runPython("sys.stdout.getvalue()"); // Read captured output
         setOutput(stdout || "(no output)");
       }
     } catch (err: any) {
@@ -87,7 +87,7 @@ sys.stdout = StringIO()
   };
 
   return (
-    <div className="my-6 rounded-lg border border-gray-300 overflow-hidden">
+    <div className="my-6 overflow-hidden rounded-lg border border-gray-300">
       {/* Editor */}
       <div className="relative">
         <textarea
@@ -95,20 +95,20 @@ sys.stdout = StringIO()
           value={code}
           onChange={(e) => setCode(e.target.value)}
           spellCheck={false}
-          className="w-full font-mono text-sm bg-gray-900 text-gray-100 p-4 resize-none focus:outline-none"
+          className="w-full resize-none bg-gray-900 p-4 font-mono text-sm text-gray-100 focus:outline-none"
           style={{ height, tabSize: 4 }}
         />
-        <span className="absolute top-2 right-2 text-xs text-gray-500 bg-gray-800 px-2 py-0.5 rounded">
+        <span className="absolute top-2 right-2 rounded bg-gray-800 px-2 py-0.5 text-xs text-gray-500">
           {language}
         </span>
       </div>
 
       {/* Controls */}
-      <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 border-t">
+      <div className="flex items-center gap-2 border-t bg-gray-100 px-4 py-2">
         <button
           onClick={runCode}
           disabled={running}
-          className="px-3 py-1 text-sm bg-teal-600 text-white rounded hover:bg-teal-700 disabled:opacity-50"
+          className="rounded bg-teal-600 px-3 py-1 text-sm text-white hover:bg-teal-700 disabled:opacity-50"
         >
           {running ? "Running..." : "▶ Run"}
         </button>
@@ -122,7 +122,7 @@ sys.stdout = StringIO()
 
       {/* Output */}
       {output && (
-        <pre className="px-4 py-3 bg-gray-50 border-t text-sm font-mono text-gray-800 whitespace-pre-wrap">
+        <pre className="border-t bg-gray-50 px-4 py-3 font-mono text-sm whitespace-pre-wrap text-gray-800">
           {output}
         </pre>
       )}
@@ -166,17 +166,17 @@ components={{
 Modify the code below. Change the input array or the target value:
 
 <CodePlayground
-  language="javascript"
-  initialCode={`
+language="javascript"
+initialCode={`
 function binarySearch(arr, target) {
-  let lo = 0, hi = arr.length - 1;
-  while (lo <= hi) {
-    const mid = Math.floor((lo + hi) / 2);
-    if (arr[mid] === target) return mid;
-    if (arr[mid] < target) lo = mid + 1;
-    else hi = mid - 1;
-  }
-  return -1;
+let lo = 0, hi = arr.length - 1;
+while (lo <= hi) {
+const mid = Math.floor((lo + hi) / 2);
+if (arr[mid] === target) return mid;
+if (arr[mid] < target) lo = mid + 1;
+else hi = mid - 1;
+}
+return -1;
 }
 
 console.log(binarySearch([1, 3, 5, 7, 9, 11], 7));
@@ -193,15 +193,15 @@ For Python content, Pyodide loads on first click (~5MB, cached after):
 
 ```markdown
 <CodePlayground
-  language="python"
-  initialCode={`
+language="python"
+initialCode={`
 def fibonacci(n):
-    if n <= 1:
-        return n
-    return fibonacci(n-1) + fibonacci(n-2)
+if n <= 1:
+return n
+return fibonacci(n-1) + fibonacci(n-2)
 
 for i in range(10):
-    print(f"fib({i}) = {fibonacci(i)}")
+print(f"fib({i}) = {fibonacci(i)}")
 `}
 />
 ```
@@ -224,6 +224,13 @@ GitHub Pages is static. No server means no execution environment. Pyodide solves
 
 ---
 
+## Commit Your Progress
+
+```bash
+git add .
+git commit -m "feat: add CodePlayground component for JS and Python"
+```
+
 ## What's Next
 
-Quizzes test knowledge. Playgrounds enable experimentation. But some concepts need *visualization* — watching an algorithm step through data, seeing the tree rebalance, watching the sort happen. Chapter 6: the Visualizer component.
+Quizzes test knowledge. Playgrounds enable experimentation. But some concepts need _visualization_ — watching an algorithm step through data, seeing the tree rebalance, watching the sort happen. Chapter 6: the Visualizer component.
