@@ -221,6 +221,11 @@ export const metadata: Metadata = {
 
 This is the global title. Individual pages can override it with their own `generateMetadata` export — covered in Chapter 7.
 
+```bash
+git add app/layout.tsx
+git commit -m "chore: update blog title and description"
+```
+
 ## Push to GitHub
 
 Create a repository on GitHub. Name it `yourusername.github.io` for a user site, or anything else for a project site.
