@@ -1,0 +1,34 @@
+{
+  // Display name shown in the Codespace creation UI
+  "name": "Next.js Blog",
+
+  // Base Docker image — Microsoft provides pre-built images with Node.js installed
+  // Pin to Node 22 (LTS) — matches the version we use throughout this series
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+
+  // VS Code-specific customizations (extensions + settings)
+  "customizations": {
+    "vscode": {
+      // Same settings as your local .vscode/settings.json
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        }
+      },
+      // Extensions to auto-install — uses the extension marketplace IDs
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "dsznajder.es7-react-js-snippets",
+        "usernamehw.errorlens"
+      ]
+    }
+  },
+
+  // Automatically forward port 3000 from the container to your browser
+  // So when you run `npm run dev`, you can access it immediately
+  "forwardPorts": [3000]
+}

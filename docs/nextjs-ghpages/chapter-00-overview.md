@@ -8,9 +8,9 @@
 
 You've been writing notes. Algorithms, Docker commands, physics simulations — scattered across Notion pages, local markdown files, random Gists. Some are good. Some could help other people. But they just sit there.
 
-Then you see a blog where the code examples *run*. Where readers can drag items to sort them. Where a quiz pops up after an explanation and says "did you actually get that?"
+Then you see a blog where the code examples _run_. Where readers can drag items to sort them. Where a quiz pops up after an explanation and says "did you actually get that?"
 
-You think: I want that. A blog that doesn't just show — it *teaches*.
+You think: I want that. A blog that doesn't just show — it _teaches_.
 
 ## What We're Building
 
@@ -24,14 +24,14 @@ A GitHub Pages site powered by Next.js that:
 
 The stack:
 
-| Layer | Tool | Why |
-|-------|------|-----|
-| Framework | Next.js 16 (App Router) | Static export, React Server Components |
-| Content | Plain `.md` files in folders | Version controlled, easy to write |
-| Rendering | `next-mdx-remote` | Renders markdown with custom React components |
-| Styling | Tailwind CSS + `@tailwindcss/typography` | Prose styling out of the box |
-| Interactivity | Custom React components | Quizzes, playgrounds, visualizers |
-| Deploy | GitHub Actions → `gh-pages` branch | Push and forget |
+| Layer         | Tool                                     | Why                                           |
+| ------------- | ---------------------------------------- | --------------------------------------------- |
+| Framework     | Next.js 16 (App Router)                  | Static export, React Server Components        |
+| Content       | Plain `.md` files in folders             | Version controlled, easy to write             |
+| Rendering     | `next-mdx-remote`                        | Renders markdown with custom React components |
+| Styling       | Tailwind CSS + `@tailwindcss/typography` | Prose styling out of the box                  |
+| Interactivity | Custom React components                  | Quizzes, playgrounds, visualizers             |
+| Deploy        | GitHub Actions → `gh-pages` branch       | Push and forget                               |
 
 **What these tools are (if you haven't heard of them):**
 
@@ -43,15 +43,15 @@ The stack:
 
 ## The Journey
 
-| Chapter | What You'll Build |
-|---------|-------------------|
-| 1 | Empty Next.js project → live on GitHub Pages in 10 minutes |
-| 2 | Markdown pipeline — folders become blog series automatically |
-| 3 | Syntax highlighting and prose styling that looks professional |
-| 4 | Your first interactive component: a Quiz inside markdown |
-| 5 | Code Playground — editable, runnable code blocks |
-| 6 | Visualizer — animated step-by-step algorithm walkthroughs |
-| 7 | Navigation, SEO, and the finishing touches |
+| Chapter | What You'll Build                                             |
+| ------- | ------------------------------------------------------------- |
+| 1       | Empty Next.js project → live on GitHub Pages in 10 minutes    |
+| 2       | Markdown pipeline — folders become blog series automatically  |
+| 3       | Syntax highlighting and prose styling that looks professional |
+| 4       | Your first interactive component: a Quiz inside markdown      |
+| 5       | Code Playground — editable, runnable code blocks              |
+| 6       | Visualizer — animated step-by-step algorithm walkthroughs     |
+| 7       | Navigation, SEO, and the finishing touches                    |
 
 ## Prerequisites
 
@@ -81,11 +81,11 @@ Say **yes** to the import alias (`@/*`).
 
 **What is the React Compiler?** Before React 19, you had to manually tell React "don't re-render this unless these values change" using `useMemo`, `useCallback`, and `React.memo`. The React Compiler is a build-time tool that analyzes your code and adds that memoization automatically. You write plain components. The compiler figures out what to optimize.
 
-| Without React Compiler | With React Compiler |
-|------------------------|---------------------|
+| Without React Compiler                        | With React Compiler                         |
+| --------------------------------------------- | ------------------------------------------- |
 | Manual `useMemo`, `useCallback`, `React.memo` | Write plain functions — compiler handles it |
-| Easy to forget, causes unnecessary re-renders | Automatic, consistent, always correct |
-| Adds noise to every component | Clean, readable components |
+| Easy to forget, causes unnecessary re-renders | Automatic, consistent, always correct       |
+| Adds noise to every component                 | Clean, readable components                  |
 
 ## Step 2: Set Up Your Editor
 
@@ -95,19 +95,23 @@ With the project created, set up VS Code so it catches mistakes and formats code
 
 Open VS Code → Extensions panel (Ctrl+Shift+X) → search and install each of these:
 
-| Extension | Marketplace ID | What It Does |
-|-----------|---------------|-------------|
-| **ESLint** | `dbaeumer.vscode-eslint` | Shows JavaScript/TypeScript errors and warnings as you type |
-| **Prettier** | `esbenp.prettier-vscode` | Auto-formats code on save (indentation, quotes, semicolons) |
-| **Tailwind CSS IntelliSense** | `bradlc.vscode-tailwindcss` | Autocomplete for Tailwind classes + hover preview of CSS |
-| **ES7+ React Snippets** | `dsznajder.es7-react-js-snippets` | Type `rafce` → generates a full React component skeleton |
-| **Error Lens** | `usernamehw.errorlens` | Shows error messages inline next to the code (not just red underlines) |
+| Extension                     | Marketplace ID                    | What It Does                                                           |
+| ----------------------------- | --------------------------------- | ---------------------------------------------------------------------- |
+| **ESLint**                    | `dbaeumer.vscode-eslint`          | Shows JavaScript/TypeScript errors and warnings as you type            |
+| **Prettier**                  | `esbenp.prettier-vscode`          | Auto-formats code on save (indentation, quotes, semicolons)            |
+| **Tailwind CSS IntelliSense** | `bradlc.vscode-tailwindcss`       | Autocomplete for Tailwind classes + hover preview of CSS               |
+| **ES7+ React Snippets**       | `dsznajder.es7-react-js-snippets` | Type `rafce` → generates a full React component skeleton               |
+| **Error Lens**                | `usernamehw.errorlens`            | Shows error messages inline next to the code (not just red underlines) |
 
 **Why these specific extensions?** ESLint + Prettier handle code quality and formatting automatically. Tailwind IntelliSense is essential because Tailwind has hundreds of class names — you can't memorize them all. Error Lens makes errors impossible to miss.
 
 ### Configure Format on Save
 
 Create `.vscode/settings.json` in your project root:
+
+```bash
+mkdir -p .vscode && touch .vscode/settings.json
+```
 
 ```jsonc
 {
@@ -121,7 +125,7 @@ Create `.vscode/settings.json` in your project root:
   // When you save, also run ESLint's auto-fix
   // This fixes things like: unused imports, missing semicolons, wrong quotes
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
   },
 
   // Tell VS Code to use the project's TypeScript version (not its built-in one)
@@ -130,26 +134,28 @@ Create `.vscode/settings.json` in your project root:
 
   // Help Tailwind IntelliSense find class names in your JSX
   // Without this, autocomplete only works in plain HTML `class=""` attributes
-  "tailwindCSS.experimental.classRegex": [
-    ["className\\s*=\\s*['\"]([^'\"]*)['\"]"]
-  ]
+  "tailwindCSS.experimental.classRegex": [["className\\s*=\\s*['\"]([^'\"]*)['\"]"]],
 }
 ```
 
 **What each setting does in practice:**
 
-| Setting | Without it | With it |
-|---------|-----------|---------|
-| `formatOnSave` | You manually run Prettier or code stays messy | Every save = perfectly formatted |
-| `fixAll.eslint` | You see red squiggles but have to fix manually | Auto-fixes on save (removes unused imports, etc.) |
-| `js/ts.tsdk.path` | Might use wrong TS version, different errors | Matches your project exactly |
-| `tailwindCSS.classRegex` | No autocomplete for `className="..."` in JSX | Full Tailwind autocomplete in React |
+| Setting                  | Without it                                     | With it                                           |
+| ------------------------ | ---------------------------------------------- | ------------------------------------------------- |
+| `formatOnSave`           | You manually run Prettier or code stays messy  | Every save = perfectly formatted                  |
+| `fixAll.eslint`          | You see red squiggles but have to fix manually | Auto-fixes on save (removes unused imports, etc.) |
+| `js/ts.tsdk.path`        | Might use wrong TS version, different errors   | Matches your project exactly                      |
+| `tailwindCSS.classRegex` | No autocomplete for `className="..."` in JSX   | Full Tailwind autocomplete in React               |
 
 ## Step 3: Configure Prettier
 
 Prettier is an opinionated code formatter — it rewrites your code to follow consistent style rules. You configure it once, and every file in the project looks the same regardless of who wrote it.
 
 Create `.prettierrc` in your project root:
+
+```bash
+touch .prettierrc
+```
 
 ```json
 {
@@ -193,7 +199,7 @@ With the VS Code settings above, you'll see errors inline as you type. No need t
 
 ## Step 5: Pre-Commit Hooks
 
-You don't want broken code, lint errors, or unformatted files in your git history. Git hooks run checks *before* a commit goes through. If the check fails, the commit is rejected.
+You don't want broken code, lint errors, or unformatted files in your git history. Git hooks run checks _before_ a commit goes through. If the check fails, the commit is rejected.
 
 **Install Husky + lint-staged:**
 
@@ -214,25 +220,25 @@ npm run precommit:typecheck && npx lint-staged
 
 **Add `lint-staged` config to `package.json`:**
 
+Open your existing `package.json` and add these two fields alongside whatever is already there:
+
 ```jsonc
 {
   "lint-staged": {
     // For TypeScript/React files: fix lint errors, then format
     "*.{ts,tsx}": [
-      "eslint --fix",       // Auto-fix ESLint issues (unused imports, etc.)
-      "prettier --write"    // Reformat to match .prettierrc rules
+      "eslint --fix", // Auto-fix ESLint issues (unused imports, etc.)
+      "prettier --write", // Reformat to match .prettierrc rules
     ],
     // For non-code files: just format (no linting needed)
-    "*.{md,json,css}": [
-      "prettier --write"
-    ],
+    "*.{md,json,css}": ["prettier --write"],
     // Run on ALL staged files — blocks commit if a secret is detected
-    "*": ["secretlint"]
+    "*": ["secretlint"],
   },
   "scripts": {
     // tsc = TypeScript compiler, --noEmit = check types but don't output JS files
-    "precommit:typecheck": "tsc --noEmit"
-  }
+    "precommit:typecheck": "tsc --noEmit",
+  },
 }
 ```
 
@@ -265,6 +271,10 @@ npm install -D secretlint@8.4.0 @secretlint/secretlint-rule-preset-recommend@8.4
 
 Create `.secretlintrc.json`:
 
+```bash
+touch .secretlintrc.json
+```
+
 ```json
 {
   "rules": [
@@ -277,12 +287,12 @@ Create `.secretlintrc.json`:
 
 **The safety net:**
 
-| Check | Catches |
-|-------|---------|
-| ESLint | Unused vars, missing deps, bad patterns |
-| Prettier | Inconsistent formatting |
-| TypeScript | Type errors, missing props |
-| Secretlint | Leaked API keys, tokens |
+| Check      | Catches                                 |
+| ---------- | --------------------------------------- |
+| ESLint     | Unused vars, missing deps, bad patterns |
+| Prettier   | Inconsistent formatting                 |
+| TypeScript | Type errors, missing props              |
+| Secretlint | Leaked API keys, tokens                 |
 
 All of this runs in ~2 seconds (only on staged files). You never push broken code again.
 
@@ -291,6 +301,10 @@ All of this runs in ~2 seconds (only on staged files). You never push broken cod
 Don't want to install anything locally? GitHub Codespaces gives you a full VS Code editor in the browser, running on a cloud VM. By adding a config file to your repo, you define exactly what that environment looks like — extensions, settings, even which commands to run on startup.
 
 Add a `.devcontainer/devcontainer.json` to your repo:
+
+```bash
+mkdir -p .devcontainer && touch .devcontainer/devcontainer.json
+```
 
 ```jsonc
 {
@@ -309,8 +323,8 @@ Add a `.devcontainer/devcontainer.json` to your repo:
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": "explicit"
-        }
+          "source.fixAll.eslint": "explicit",
+        },
       },
       // Extensions to auto-install — uses the extension marketplace IDs
       "extensions": [
@@ -318,14 +332,14 @@ Add a `.devcontainer/devcontainer.json` to your repo:
         "dbaeumer.vscode-eslint",
         "bradlc.vscode-tailwindcss",
         "dsznajder.es7-react-js-snippets",
-        "usernamehw.errorlens"
-      ]
-    }
+        "usernamehw.errorlens",
+      ],
+    },
   },
 
   // Automatically forward port 3000 from the container to your browser
   // So when you run `npm run dev`, you can access it immediately
-  "forwardPorts": [3000]
+  "forwardPorts": [3000],
 }
 ```
 
@@ -353,7 +367,7 @@ No filler. No "in this chapter we will learn about..." Just build, explain, buil
 
 ### Writing Rules
 
-- **Never show code without context.** Before every code block, explain *what* it does and *why* it's needed. After the block, explain any non-obvious lines.
+- **Never show code without context.** Before every code block, explain _what_ it does and _why_ it's needed. After the block, explain any non-obvious lines.
 - **Assume the reader is smart but unfamiliar.** They can learn fast, but they haven't seen this before.
 - **Comments inside code are mandatory** for anything non-trivial. If a line would make someone pause, add a comment.
 - **No magic.** If something "just works," explain the mechanism. Readers should understand, not memorize.
