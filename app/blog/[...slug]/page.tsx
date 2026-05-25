@@ -73,7 +73,7 @@ export default async function BlogPage({ params }: Props) {
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm], // Enable tables, strikethrough, task lists
-              format: "md", // Treat input as markdown (not MDX)
+              format: "mdx", // Treat input as MDX to support JSX components like <Quiz />
             },
           }}
         />
