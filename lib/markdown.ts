@@ -38,6 +38,6 @@ export function getSeriesChapters(series: string) {
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
-    .filter((f) => f.endsWith(".md"))
+    .filter((f) => f.endsWith(".md") && f !== "README.md")
     .sort();
 }

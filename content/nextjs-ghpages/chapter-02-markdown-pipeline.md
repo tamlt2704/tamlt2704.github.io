@@ -1,6 +1,6 @@
 # Chapter 2: The Markdown Pipeline
 
-[← Chapter 1: First Deploy](chapter-01-first-deploy.md) | [Chapter 3: Beautiful Code →](chapter-03-beautiful-code.md)
+[← Chapter 1: First Deploy](/blog/nextjs-ghpages/chapter-01-first-deploy) | [Chapter 3: Beautiful Code →](/blog/nextjs-ghpages/chapter-03-beautiful-code)
 
 ---
 

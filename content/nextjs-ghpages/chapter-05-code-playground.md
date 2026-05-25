@@ -1,6 +1,6 @@
 # Chapter 5: The Code Playground
 
-[← Chapter 4: Interactive Quiz](chapter-04-interactive-quiz.md) | [Chapter 6: Visualizer →](chapter-06-visualizer.md)
+[← Chapter 4: Interactive Quiz](/blog/nextjs-ghpages/chapter-04-interactive-quiz) | [Chapter 6: Visualizer →](/blog/nextjs-ghpages/chapter-06-visualizer)
 
 ---
 

@@ -1,6 +1,6 @@
 # Chapter 1: Live in Ten Minutes
 
-[← Chapter 0: Overview](chapter-00-overview.md) | [Chapter 2: The Markdown Pipeline →](chapter-02-markdown-pipeline.md)
+[← Chapter 0: Overview](/blog/nextjs-ghpages/chapter-00-overview) | [Chapter 2: The Markdown Pipeline →](/blog/nextjs-ghpages/chapter-02-markdown-pipeline)
 
 ---
 

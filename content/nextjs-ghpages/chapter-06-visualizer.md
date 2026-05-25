@@ -1,6 +1,6 @@
 # Chapter 6: The Step Visualizer
 
-[← Chapter 5: Code Playground](chapter-05-code-playground.md) | [Chapter 7: Finishing Touches →](chapter-07-finishing-touches.md)
+[← Chapter 5: Code Playground](/blog/nextjs-ghpages/chapter-05-code-playground) | [Chapter 7: Finishing Touches →](/blog/nextjs-ghpages/chapter-07-finishing-touches)
 
 ---
 

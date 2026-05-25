@@ -1,6 +1,6 @@
 # Chapter 7: Finishing Touches
 
-[← Chapter 6: Visualizer](chapter-06-visualizer.md)
+[← Chapter 6: Visualizer](/blog/nextjs-ghpages/chapter-06-visualizer) | [Chapter 8: Dark Mode →](/blog/nextjs-ghpages/chapter-08-dark-mode)
 
 ---
 

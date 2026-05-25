@@ -1,6 +1,6 @@
 # Chapter 3: Beautiful Code Blocks
 
-[← Chapter 2: Markdown Pipeline](chapter-02-markdown-pipeline.md) | [Chapter 4: Interactive Quiz →](chapter-04-interactive-quiz.md)
+[← Chapter 2: Markdown Pipeline](/blog/nextjs-ghpages/chapter-02-markdown-pipeline) | [Chapter 4: Interactive Quiz →](/blog/nextjs-ghpages/chapter-04-interactive-quiz)
 
 ---
 

@@ -25,22 +25,25 @@ export async function generateStaticParams() {
   const folders = fs.readdirSync(base, { withFileTypes: true }).filter((d) => d.isDirectory());
 
   for (const folder of folders) {
-    const files = fs.readdirSync(path.join(base, folder.name)).filter((f) => f.endsWith(".md"));
+    const files = fs
+      .readdirSync(path.join(base, folder.name))
+      .filter((f) => f.endsWith(".md") && f !== "README.md");
     for (const file of files) {
       params.push({ slug: [folder.name, file.replace(/\.md$/, "")] });
     }
   }
+  return params;
 }
 
 export default async function BlogPage({ params }: Props) {
   const { slug } = await params;
-  if (slug.length < 2) notFound(); // Need at least series + chapter
+  if (slug.length < 2) return notFound();
 
   // Destructure: /blog/algorithms/chapter-01 → series="algorithms", fileSlug="chapter-01"
   const [series, fileSlug] = slug;
   const filePath = path.join(process.cwd(), "content", series, `${fileSlug}.md`);
 
-  if (!fs.existsSync(filePath)) notFound();
+  if (!fs.existsSync(filePath)) return notFound();
 
   const raw = fs.readFileSync(filePath, "utf8");
   const { content } = matter(raw); // content = the markdown text without frontmatter
@@ -58,6 +61,10 @@ export default async function BlogPage({ params }: Props) {
       <div className="prose prose-lg max-w-none">
         <MDXRemote
           source={content}
+          components={{
+            // Strip .md from links so relative chapter links work as Next.js routes
+            a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
+          }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm], // Enable tables, strikethrough, task lists
@@ -67,8 +74,24 @@ export default async function BlogPage({ params }: Props) {
         />
       </div>
       {/* Prev / Next */}
-      <nav>{prev && <a href={`/blog/${series}/${prev.replace(".md", "")}`}>← Previous</a>}</nav>
-      <nav>{next && <a href={`/blog/${series}/${next.replace(".md", "")}`}>Next →</a>}</nav>
+      <nav className="mt-12 flex justify-between border-t pt-6 text-sm">
+        {prev && (
+          <a
+            href={`/blog/${series}/${prev.replace(".md", "")}`}
+            className="text-teal-600 hover:underline"
+          >
+            ← Previous
+          </a>
+        )}
+        {next && (
+          <a
+            href={`/blog/${series}/${next.replace(".md", "")}`}
+            className="ml-auto text-teal-600 hover:underline"
+          >
+            Next →
+          </a>
+        )}
+      </nav>
     </article>
   );
 }

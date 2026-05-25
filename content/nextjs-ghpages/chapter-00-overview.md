@@ -1,6 +1,6 @@
 # Chapter 0: The Blog That Teaches Back
 
-[Chapter 1: First Deploy →](chapter-01-first-deploy.md)
+[Chapter 1: First Deploy →](/blog/nextjs-ghpages/chapter-01-first-deploy)
 
 ---
 

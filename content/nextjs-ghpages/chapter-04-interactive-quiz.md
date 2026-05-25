@@ -1,6 +1,6 @@
 # Chapter 4: Your First Interactive Component
 
-[← Chapter 3: Beautiful Code](chapter-03-beautiful-code.md) | [Chapter 5: Code Playground →](chapter-05-code-playground.md)
+[← Chapter 3: Beautiful Code](/blog/nextjs-ghpages/chapter-03-beautiful-code) | [Chapter 5: Code Playground →](/blog/nextjs-ghpages/chapter-05-code-playground)
 
 ---
 
