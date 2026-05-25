@@ -16,6 +16,9 @@
   // This ensures you get the same errors locally as in CI/build
   "js/ts.tsdk.path": "node_modules/typescript/lib",
 
+  // Disable unknown at-rule warnings for Tailwind v4 directives (@plugin, @theme, etc.)
+  "css.lint.unknownAtRules": "ignore",
+
   // Help Tailwind IntelliSense find class names in your JSX
   // Without this, autocomplete only works in plain HTML `class=""` attributes
   "tailwindCSS.experimental.classRegex": [["className\\s*=\\s*['\"]([^'\"]*)['\"]"]]
