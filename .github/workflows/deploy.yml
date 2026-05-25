@@ -4,7 +4,7 @@ name: Deploy to GitHub Pages
 # Trigger: run this workflow whenever code is pushed to the main branch
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 # Permission: allow the workflow to push to the gh-pages branch
 permissions:

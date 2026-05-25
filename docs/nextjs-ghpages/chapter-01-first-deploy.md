@@ -235,7 +235,7 @@ These git commands initialize your project and push it to GitHub:
 ```bash
 git init                    # Create a new git repository in this folder
 git add .                   # Stage all files for commit
-git commit -m "initial commit"  # Save the current state
+git commit -m "chore: initial project setup"  # Save the current state
 git remote add origin https://github.com/yourusername/yourusername.github.io.git  # Link to GitHub
 git push -u origin main     # Push code to GitHub (-u sets up tracking for future pushes)
 ```
@@ -298,7 +298,7 @@ Commit and push:
 
 ```bash
 git add .
-git commit -m "add deploy workflow"
+git commit -m "feat: add GitHub Actions deploy workflow"
 git push
 ```
 
