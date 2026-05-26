@@ -1,21 +1,22 @@
 1:"$Sreact.fragment"
-2:I[39756,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
-3:I[37457,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
-5:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
-6:"$Sreact.suspense"
-9:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"ViewportBoundary"]
-b:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"MetadataBoundary"]
-d:I[68027,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default",1]
-:HL["/_next/static/chunks/0vckq1ix8hcvi.css","style"]
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"default",1]
+:HL["/_next/static/chunks/0n.kd8dfq-pgr.css","style"]
 :HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"P":null,"c":["","blog","nextjs-ghpages","chapter-23-ui-design",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","nextjs-ghpages/chapter-23-ui-design","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0vckq1ix8hcvi.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0r7n~75v~2g-i.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/01n0zee04b3fe.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0vckq1ix8hcvi.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Ibw_iDUAHpsVfBjQdFRYj"}
-e:[]
-8:"$We"
-4:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":"$Lf"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]]}]
-10:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/01n0zee04b3fe.js"],"MarkdownCode"]
-11:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/01n0zee04b3fe.js"],"MarkdownPre"]
-12:T698,import Link from "next/link";
+0:{"P":null,"c":["","blog","nextjs-ghpages","chapter-23-ui-design",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","nextjs-ghpages/chapter-23-ui-design","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0n.kd8dfq-pgr.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06v13rhvmbnl-.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white","children":"Tam's Blog"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/16tbll6al9xh_.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0n.kd8dfq-pgr.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"1Jizpt6el3Jrj3XoNIx07"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/16tbll6al9xh_.js"],"MarkdownCode"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/16tbll6al9xh_.js"],"MarkdownPre"]
+13:T698,import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { AuthButton } from "./AuthButton";
 import { LangSwitcher } from "./LangSwitcher";
@@ -62,9 +63,9 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
     </Link>
   );
 }
-f:[["$","h1",null,{"children":"Chapter 23: Building a Beautiful UI"}],"\n",["$","p",null,{"children":["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","children":"← Chapter 22: Gated Resources"}]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Difference"}],"\n",["$","p",null,{"children":"Two blogs with identical content. One looks like a default template. The other feels crafted — the navbar is clean, the course cards invite clicks, the typography breathes. Readers trust the second one more. They stay longer."}],"\n",["$","p",null,{"children":"Good design isn't decoration. It's communication. Let's build a UI that communicates \"this is worth your time.\""}],"\n",["$","h2",null,{"children":"The Navbar"}],"\n",["$","p",null,{"children":"A navbar needs to do three things: show where you are, let you navigate, and stay out of the way."}],"\n",["$","p",null,{"children":["Create ",["$","$L10",null,{"children":"app/components/Navbar.tsx"}],":"]}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"$12"}]}],"\n",["$","h3",null,{"children":"Design decisions:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L10",null,{"children":"sticky top-0"}]}]," — stays visible on scroll without taking space"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":[["$","$L10",null,{"children":"backdrop-blur-md"}]," + semi-transparent bg"]}]," — content shows through subtly, feels modern"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L10",null,{"children":"h-14"}]}]," — compact, doesn't waste mobile screen space"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Hidden on mobile"}]," — center nav hides below ",["$","$L10",null,{"children":"md:"}],", use a hamburger or bottom nav instead"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Logo as gradient square"}]," — distinctive, works at any size, no image to load"]}],"\n"]}],"\n",["$","h3",null,{"children":"Mobile Navigation"}],"\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d"]
-13:["$","p",null,{"children":"Add a hamburger menu for mobile:"}]
-3e:T679,"use client";
+10:[["$","h1",null,{"children":"Chapter 23: Building a Beautiful UI"}],"\n",["$","p",null,{"children":["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","children":"← Chapter 22: Gated Resources"}]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Difference"}],"\n",["$","p",null,{"children":"Two blogs with identical content. One looks like a default template. The other feels crafted — the navbar is clean, the course cards invite clicks, the typography breathes. Readers trust the second one more. They stay longer."}],"\n",["$","p",null,{"children":"Good design isn't decoration. It's communication. Let's build a UI that communicates \"this is worth your time.\""}],"\n",["$","h2",null,{"children":"The Navbar"}],"\n",["$","p",null,{"children":"A navbar needs to do three things: show where you are, let you navigate, and stay out of the way."}],"\n",["$","p",null,{"children":["Create ",["$","$L11",null,{"children":"app/components/Navbar.tsx"}],":"]}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$13"}]}],"\n",["$","h3",null,{"children":"Design decisions:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L11",null,{"children":"sticky top-0"}]}]," — stays visible on scroll without taking space"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":[["$","$L11",null,{"children":"backdrop-blur-md"}]," + semi-transparent bg"]}]," — content shows through subtly, feels modern"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L11",null,{"children":"h-14"}]}]," — compact, doesn't waste mobile screen space"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Hidden on mobile"}]," — center nav hides below ",["$","$L11",null,{"children":"md:"}],", use a hamburger or bottom nav instead"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Logo as gradient square"}]," — distinctive, works at any size, no image to load"]}],"\n"]}],"\n",["$","h3",null,{"children":"Mobile Navigation"}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e"]
+14:["$","p",null,{"children":"Add a hamburger menu for mobile:"}]
+3f:T679,"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -126,11 +127,11 @@ function MobileLink({
     </Link>
   );
 }
-14:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"$3e"}]}]
-15:["$","h2",null,{"children":"Course Cards"}]
-16:["$","p",null,{"children":"The landing page shows all available courses as cards. Each card needs: title, description, chapter count, and a visual hook."}]
-17:["$","p",null,{"children":["Create ",["$","$L10",null,{"children":"app/components/CourseCard.tsx"}],":"]}]
-3f:T6e8,import Link from "next/link";
+15:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$3f"}]}]
+16:["$","h2",null,{"children":"Course Cards"}]
+17:["$","p",null,{"children":"The landing page shows all available courses as cards. Each card needs: title, description, chapter count, and a visual hook."}]
+18:["$","p",null,{"children":["Create ",["$","$L11",null,{"children":"app/components/CourseCard.tsx"}],":"]}]
+40:T6e8,import Link from "next/link";
 
 interface Props {
   title: string;
@@ -178,11 +179,11 @@ export function CourseCard({ title, description, chapters, href, icon, color, ta
     </Link>
   );
 }
-18:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"$3f"}]}]
-19:["$","h3",null,{"children":"Design decisions:"}]
-1a:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":[["$","$L10",null,{"children":"hover:-translate-y-0.5"}]," + ",["$","$L10",null,{"children":"hover:shadow-lg"}]]}]," — card lifts on hover, feels interactive"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Gradient accent bar"}]," — each course has a unique color, visual variety"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L10",null,{"children":"line-clamp-2"}]}]," — description never overflows, consistent card height"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Tags"}]," — quick scan of what the course covers"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Group hover"}]," — title changes color when hovering anywhere on the card"]}],"\n"]}]
-1b:["$","h2",null,{"children":"The Course Grid"}]
-40:T7e4,// app/page.tsx or app/blog/page.tsx
+19:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$40"}]}]
+1a:["$","h3",null,{"children":"Design decisions:"}]
+1b:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":[["$","$L11",null,{"children":"hover:-translate-y-0.5"}]," + ",["$","$L11",null,{"children":"hover:shadow-lg"}]]}]," — card lifts on hover, feels interactive"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Gradient accent bar"}]," — each course has a unique color, visual variety"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L11",null,{"children":"line-clamp-2"}]}]," — description never overflows, consistent card height"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Tags"}]," — quick scan of what the course covers"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Group hover"}]," — title changes color when hovering anywhere on the card"]}],"\n"]}]
+1c:["$","h2",null,{"children":"The Course Grid"}]
+41:T7e4,// app/page.tsx or app/blog/page.tsx
 import { CourseCard } from "@/app/components/CourseCard";
 
 const COURSES = [
@@ -244,18 +245,18 @@ export default function HomePage() {
     </main>
   );
 }
-1c:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"$40"}]}]
-1d:["$","h3",null,{"children":"The grid:"}]
-1e:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"1 column"}]," on mobile (< 640px)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"2 columns"}]," on tablet (640–1023px)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"3 columns"}]," on desktop (1024px+)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L10",null,{"children":"gap-5"}]}]," — breathing room between cards"]}],"\n"]}]
-1f:["$","h2",null,{"children":"Component Styling Patterns"}]
-20:["$","h3",null,{"children":"The Card Pattern (reusable)"}]
-21:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"function Card({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  return (\n    <div\n      className={`rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900 ${className}`}\n    >\n      {children}\n    </div>\n  );\n}\n"}]}]
-22:["$","p",null,{"children":"Use it everywhere:"}]
-23:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"<Card>Quiz content</Card>\n<Card className=\"hover:shadow-lg transition\">Clickable card</Card>\n<Card className=\"border-teal-200 bg-teal-50 dark:bg-teal-900/20\">Highlighted card</Card>\n"}]}]
-24:["$","h3",null,{"children":"The Badge Pattern"}]
-25:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"function Badge({\n  children,\n  variant = \"default\",\n}: {\n  children: React.ReactNode;\n  variant?: \"default\" | \"success\" | \"warning\";\n}) {\n  const styles = {\n    default: \"bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400\",\n    success: \"bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400\",\n    warning: \"bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400\",\n  };\n\n  return (\n    <span\n      className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${styles[variant]}`}\n    >\n      {children}\n    </span>\n  );\n}\n"}]}]
-26:["$","h3",null,{"children":"The Button Pattern"}]
-41:T424,interface ButtonProps {
+1d:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$41"}]}]
+1e:["$","h3",null,{"children":"The grid:"}]
+1f:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"1 column"}]," on mobile (< 640px)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"2 columns"}]," on tablet (640–1023px)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"3 columns"}]," on desktop (1024px+)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L11",null,{"children":"gap-5"}]}]," — breathing room between cards"]}],"\n"]}]
+20:["$","h2",null,{"children":"Component Styling Patterns"}]
+21:["$","h3",null,{"children":"The Card Pattern (reusable)"}]
+22:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"function Card({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  return (\n    <div\n      className={`rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900 ${className}`}\n    >\n      {children}\n    </div>\n  );\n}\n"}]}]
+23:["$","p",null,{"children":"Use it everywhere:"}]
+24:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"<Card>Quiz content</Card>\n<Card className=\"hover:shadow-lg transition\">Clickable card</Card>\n<Card className=\"border-teal-200 bg-teal-50 dark:bg-teal-900/20\">Highlighted card</Card>\n"}]}]
+25:["$","h3",null,{"children":"The Badge Pattern"}]
+26:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"function Badge({\n  children,\n  variant = \"default\",\n}: {\n  children: React.ReactNode;\n  variant?: \"default\" | \"success\" | \"warning\";\n}) {\n  const styles = {\n    default: \"bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400\",\n    success: \"bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400\",\n    warning: \"bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400\",\n  };\n\n  return (\n    <span\n      className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${styles[variant]}`}\n    >\n      {children}\n    </span>\n  );\n}\n"}]}]
+27:["$","h3",null,{"children":"The Button Pattern"}]
+42:T424,interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
@@ -291,9 +292,9 @@ function Button({ children, variant = "primary", size = "md", onClick, disabled 
     </button>
   );
 }
-27:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"$41"}]}]
-28:["$","h2",null,{"children":"The Footer"}]
-42:T8be,export function Footer() {
+28:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$42"}]}]
+29:["$","h2",null,{"children":"The Footer"}]
+43:T8be,export function Footer() {
   return (
     <footer className="mt-20 border-t border-gray-200 dark:border-gray-800">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -359,28 +360,28 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     </a>
   );
 }
-29:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"$42"}]}]
-2a:["$","h2",null,{"children":"Color System"}]
-2b:["$","p",null,{"children":"Keep it simple — one accent color, neutral grays, semantic colors:"}]
-2c:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-css","children":"/* Your color palette (already built into Tailwind) */\n/* Primary accent: teal-600 */\n/* Text: gray-900 (light) / white (dark) */\n/* Muted text: gray-600 (light) / gray-400 (dark) */\n/* Borders: gray-200 (light) / gray-800 (dark) */\n/* Backgrounds: white (light) / gray-950 (dark) */\n/* Success: green-600 */\n/* Warning: yellow-600 */\n/* Error: red-600 */\n"}]}]
-2d:["$","p",null,{"children":"One accent color (teal) used consistently = professional. Rainbow colors = amateur."}]
-2e:["$","h2",null,{"children":"Typography Scale"}]
-2f:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-css","children":"/* Consistent sizing */\ntext-xs    → 12px  (badges, metadata)\ntext-sm    → 14px  (body text, buttons)\ntext-base  → 16px  (default body)\ntext-lg    → 18px  (card titles)\ntext-xl    → 20px  (section headings)\ntext-2xl   → 24px  (page headings)\ntext-4xl   → 36px  (hero heading)\n"}]}]
-30:["$","p",null,{"children":"Rule: never use more than 3-4 sizes on one page. Consistency > variety."}]
-31:["$","h2",null,{"children":"Spacing System"}]
-32:["$","p",null,{"children":"Tailwind's spacing scale is your friend:"}]
-33:["$","$L11",null,{"children":["$","$L10",null,{"children":"gap-1  (4px)  → between inline elements\ngap-2  (8px)  → between related items\ngap-4  (16px) → between sections\ngap-6  (24px) → between major blocks\ngap-8  (32px) → between page sections\npy-12  (48px) → page top/bottom padding\npy-16  (64px) → hero sections\n"}]}]
-34:["$","p",null,{"children":"Rule: use multiples of 4. Everything aligns to a grid. Looks intentional."}]
-35:["$","h2",null,{"children":"The Complete Page Layout"}]
-36:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"// app/layout.tsx\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\" suppressHydrationWarning>\n      <head>\n        <ThemeScript />\n      </head>\n      <body className=\"flex min-h-screen flex-col bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100\">\n        <Navbar />\n        <main className=\"flex-1\">{children}</main>\n        <Footer />\n      </body>\n    </html>\n  );\n}\n"}]}]
-37:["$","p",null,{"children":[["$","$L10",null,{"children":"flex flex-col"}]," + ",["$","$L10",null,{"children":"flex-1"}]," on main = footer always at the bottom, even on short pages."]}]
-38:["$","hr",null,{}]
-39:["$","h2",null,{"children":"Design Principles for Developer Blogs"}]
-3a:["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Whitespace is content"}]," — let things breathe, don't cram"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"One accent color"}]," — teal for links, buttons, highlights. That's it."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Consistent borders"}]," — ",["$","$L10",null,{"children":"border-gray-200 dark:border-gray-800"}]," everywhere"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Subtle interactions"}]," — hover lifts, color transitions, not bouncing animations"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Mobile first"}]," — design for 375px, then expand for desktop"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Dark mode isn't inverted"}]," — it's a separate palette, not ",["$","$L10",null,{"children":"filter: invert()"}]]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Typography does the work"}]," — good font sizes + line height > fancy layouts"]}],"\n"]}]
-3b:["$","hr",null,{}]
-3c:["$","h2",null,{"children":"What's Next"}]
-3d:["$","p",null,{"children":"You have a complete, beautiful, interactive learning platform. The only thing left is content. Write more courses. Ship them. The platform handles the rest."}]
-a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-43:I[27201,["/_next/static/chunks/0r7n~75v~2g-i.js"],"IconMark"]
-7:null
-c:[["$","title","0",{"children":"Tam's blog"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L43","3",{}]]
+2a:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$43"}]}]
+2b:["$","h2",null,{"children":"Color System"}]
+2c:["$","p",null,{"children":"Keep it simple — one accent color, neutral grays, semantic colors:"}]
+2d:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-css","children":"/* Your color palette (already built into Tailwind) */\n/* Primary accent: teal-600 */\n/* Text: gray-900 (light) / white (dark) */\n/* Muted text: gray-600 (light) / gray-400 (dark) */\n/* Borders: gray-200 (light) / gray-800 (dark) */\n/* Backgrounds: white (light) / gray-950 (dark) */\n/* Success: green-600 */\n/* Warning: yellow-600 */\n/* Error: red-600 */\n"}]}]
+2e:["$","p",null,{"children":"One accent color (teal) used consistently = professional. Rainbow colors = amateur."}]
+2f:["$","h2",null,{"children":"Typography Scale"}]
+30:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-css","children":"/* Consistent sizing */\ntext-xs    → 12px  (badges, metadata)\ntext-sm    → 14px  (body text, buttons)\ntext-base  → 16px  (default body)\ntext-lg    → 18px  (card titles)\ntext-xl    → 20px  (section headings)\ntext-2xl   → 24px  (page headings)\ntext-4xl   → 36px  (hero heading)\n"}]}]
+31:["$","p",null,{"children":"Rule: never use more than 3-4 sizes on one page. Consistency > variety."}]
+32:["$","h2",null,{"children":"Spacing System"}]
+33:["$","p",null,{"children":"Tailwind's spacing scale is your friend:"}]
+34:["$","$L12",null,{"children":["$","$L11",null,{"children":"gap-1  (4px)  → between inline elements\ngap-2  (8px)  → between related items\ngap-4  (16px) → between sections\ngap-6  (24px) → between major blocks\ngap-8  (32px) → between page sections\npy-12  (48px) → page top/bottom padding\npy-16  (64px) → hero sections\n"}]}]
+35:["$","p",null,{"children":"Rule: use multiples of 4. Everything aligns to a grid. Looks intentional."}]
+36:["$","h2",null,{"children":"The Complete Page Layout"}]
+37:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"// app/layout.tsx\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\" suppressHydrationWarning>\n      <head>\n        <ThemeScript />\n      </head>\n      <body className=\"flex min-h-screen flex-col bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100\">\n        <Navbar />\n        <main className=\"flex-1\">{children}</main>\n        <Footer />\n      </body>\n    </html>\n  );\n}\n"}]}]
+38:["$","p",null,{"children":[["$","$L11",null,{"children":"flex flex-col"}]," + ",["$","$L11",null,{"children":"flex-1"}]," on main = footer always at the bottom, even on short pages."]}]
+39:["$","hr",null,{}]
+3a:["$","h2",null,{"children":"Design Principles for Developer Blogs"}]
+3b:["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Whitespace is content"}]," — let things breathe, don't cram"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"One accent color"}]," — teal for links, buttons, highlights. That's it."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Consistent borders"}]," — ",["$","$L11",null,{"children":"border-gray-200 dark:border-gray-800"}]," everywhere"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Subtle interactions"}]," — hover lifts, color transitions, not bouncing animations"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Mobile first"}]," — design for 375px, then expand for desktop"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Dark mode isn't inverted"}]," — it's a separate palette, not ",["$","$L11",null,{"children":"filter: invert()"}]]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Typography does the work"}]," — good font sizes + line height > fancy layouts"]}],"\n"]}]
+3c:["$","hr",null,{}]
+3d:["$","h2",null,{"children":"What's Next"}]
+3e:["$","p",null,{"children":"You have a complete, beautiful, interactive learning platform. The only thing left is content. Write more courses. Ship them. The platform handles the rest."}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+44:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Tam's blog"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L44","3",{}]]

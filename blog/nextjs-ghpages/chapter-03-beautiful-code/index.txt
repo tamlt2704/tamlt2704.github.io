@@ -1,100 +1,110 @@
 1:"$Sreact.fragment"
-2:I[39756,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
-3:I[37457,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
-5:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
-6:"$Sreact.suspense"
-9:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"ViewportBoundary"]
-b:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"MetadataBoundary"]
-d:I[68027,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default",1]
-:HL["/_next/static/chunks/0vckq1ix8hcvi.css","style"]
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"default",1]
+:HL["/_next/static/chunks/0n.kd8dfq-pgr.css","style"]
 :HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"P":null,"c":["","blog","nextjs-ghpages","chapter-03-beautiful-code",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","nextjs-ghpages/chapter-03-beautiful-code","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0vckq1ix8hcvi.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0r7n~75v~2g-i.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/01n0zee04b3fe.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0vckq1ix8hcvi.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Ibw_iDUAHpsVfBjQdFRYj"}
-e:[]
-8:"$We"
-4:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":"$Lf"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-02-markdown-pipeline","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
-10:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/01n0zee04b3fe.js"],"MarkdownCode"]
-11:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/01n0zee04b3fe.js"],"MarkdownPre"]
-12:T85d,"use client"; // Needs browser — SyntaxHighlighter uses DOM APIs
+0:{"P":null,"c":["","blog","nextjs-ghpages","chapter-03-beautiful-code",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","nextjs-ghpages/chapter-03-beautiful-code","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0n.kd8dfq-pgr.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06v13rhvmbnl-.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white","children":"Tam's Blog"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/16tbll6al9xh_.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0n.kd8dfq-pgr.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"1Jizpt6el3Jrj3XoNIx07"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-02-markdown-pipeline","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/16tbll6al9xh_.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/16tbll6al9xh_.js"],"MarkdownCode"]
+13:T8a3,┌─────────────────────────────────────────────┐
+│ BEFORE: plain <pre> tag                     │
+├─────────────────────────────────────────────┤
+│                                             │
+│  def binary_search(arr, target):            │
+│      lo, hi = 0, len(arr) - 1              │
+│      while lo <= hi:                        │
+│          mid = (lo + hi) // 2              │
+│          if arr[mid] == target:            │
+│              return mid                     │
+│                                             │
+│  (all white text, gray background, no       │
+│   structure visible at a glance)            │
+│                                             │
+└─────────────────────────────────────────────┘
 
-// Prism is a syntax highlighting engine. It tokenizes code and applies colors.
-// oneDark is VS Code's dark theme — familiar to most developers.
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+                    ↓ after this chapter ↓
 
-interface Props {
-  children: React.ReactNode; // The code text inside the <code> tag
-  className?: string; // MDX sets this to "language-python" for ```python blocks
-}
-
-export function MarkdownCode({ children, className }: Props) {
-  // Extract language from className. Example: "language-python" → "python"
-  // If no language specified (inline code), match will be null
-  const match = /language-(\w+)/.exec(className || "");
-  const lang = match ? match[1] : "";
-  // Convert children to string and remove trailing newline (Prism adds extra line otherwise)
-  const code = String(children).replace(/\n$/, "");
-
-  if (!match) {
-    // No language = inline code like `variable`
-    // Render with a subtle pink highlight (common convention in docs)
-    return (
-      <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-pink-600">
-        {children}
-      </code>
-    );
-  }
-
-  // Fenced code block with a language — apply full syntax highlighting
-  return (
-    <SyntaxHighlighter
-      language={lang} // "python", "javascript", "bash", etc.
-      style={oneDark} // Color theme (object mapping token types to colors)
-      customStyle={{
-        margin: "1rem 0", // Space above and below the block
-        borderRadius: "0.5rem", // Rounded corners
-        fontSize: "0.85rem", // Slightly smaller than body text
-        lineHeight: 1.6, // Comfortable reading spacing
-      }}
-    >
-      {code}
-    </SyntaxHighlighter>
-  );
-}
-
-// MarkdownPre prevents double-wrapping.
-// Without this, Tailwind's prose styles add their own <pre> styling on top of ours.
-// By replacing <pre> with a fragment (<>), we let SyntaxHighlighter handle all styling.
-export function MarkdownPre({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
-}
-f:[["$","h1",null,{"children":"Chapter 3: Beautiful Code Blocks"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-02-markdown-pipeline","children":"← Chapter 2: Markdown Pipeline"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","children":"Chapter 4: Interactive Quiz →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Problem"}],"\n",["$","p",null,{"children":["Your code blocks render as plain ",["$","$L10",null,{"children":"<pre>"}]," tags. White text on gray. No language detection. No color. Your readers' eyes glaze over."]}],"\n",["$","p",null,{"children":"Compare:"}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":"Before:"}]," A wall of monospace text.\n",["$","strong",null,{"children":"After:"}]," Python keywords in purple, strings in green, comments in gray. The reader's brain parses the structure before reading the words."]}],"\n",["$","h2",null,{"children":"Install the Highlighter"}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"npm install react-syntax-highlighter @types/react-syntax-highlighter\n"}]}],"\n",["$","h2",null,{"children":"The Custom Code Component"}],"\n",["$","p",null,{"children":["When MDX renders a markdown code block, it creates ",["$","$L10",null,{"children":"<pre><code>"}]," elements. We intercept the ",["$","$L10",null,{"children":"<code>"}]," element and replace it with a syntax-highlighted version. This component handles both inline code (",["$","$L10",null,{"children":"`like this`"}],") and fenced code blocks (",["$","$L10",null,{"children":"```python ... ```"}],")."]}],"\n",["$","p",null,{"children":["Create ",["$","$L10",null,{"children":"app/blog/components/MarkdownCode.tsx"}],":"]}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"mkdir -p app/blog/components && touch app/blog/components/MarkdownCode.tsx\n"}]}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"$12"}]}],"\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b"]
-13:["$","p",null,{"children":["$","strong",null,{"children":"The flow when MDX encounters a code block:"}]}]
-14:["$","$L11",null,{"children":["$","$L10",null,{"children":"Markdown: ```python\\nprint(\"hi\")\\n```\n    ↓ MDX parser\nJSX: <pre><code className=\"language-python\">print(\"hi\")</code></pre>\n    ↓ Our components override\n<MarkdownPre> → renders nothing (fragment)\n  <MarkdownCode className=\"language-python\"> → renders SyntaxHighlighter\n    ↓\nColored, styled code block in the browser\n"}]}]
-15:["$","ol",null,{"children":["\n",["$","li",null,{"children":["MDX passes every code block through our ",["$","$L10",null,{"children":"code"}]," component"]}],"\n",["$","li",null,{"children":["Fenced blocks get ",["$","$L10",null,{"children":"className=\"language-python\""}]," — we extract the language"]}],"\n",["$","li",null,{"children":[["$","$L10",null,{"children":"SyntaxHighlighter"}]," applies the ",["$","$L10",null,{"children":"oneDark"}]," theme (VS Code's dark theme)"]}],"\n",["$","li",null,{"children":"Inline code gets a subtle pink highlight instead"}],"\n"]}]
-16:["$","p",null,{"children":["The ",["$","$L10",null,{"children":"MarkdownPre"}]," wrapper prevents Tailwind's prose styles from double-wrapping the code block."]}]
-17:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"git add app/blog/components/MarkdownCode.tsx\ngit commit -m \"feat: add MarkdownCode syntax highlighter component\"\n"}]}]
-18:["$","h2",null,{"children":"Wire It Into the Renderer"}]
-19:["$","p",null,{"children":["Update ",["$","$L10",null,{"children":"app/blog/[...slug]/page.tsx"}],":"]}]
-1a:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"import { MarkdownCode, MarkdownPre } from \"@/app/blog/components/MarkdownCode\";\n\n// In the MDXRemote component:\n<MDXRemote\n  source={content}\n  components={{\n    code: MarkdownCode,\n    pre: MarkdownPre,\n  }}\n  options={{\n    mdxOptions: {\n      remarkPlugins: [remarkGfm],\n      format: \"md\",\n    },\n  }}\n/>;\n"}]}]
-1b:["$","p",null,{"children":"That's it. Every code block in every markdown file now gets syntax highlighting. You didn't touch a single content file."}]
-1c:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"git add app/blog\ngit commit -m \"feat: wire syntax highlighting into MDX renderer\"\n"}]}]
-1d:["$","h2",null,{"children":"Add Tailwind Typography"}]
-1e:["$","p",null,{"children":"Install the plugin:"}]
-1f:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"npm install @tailwindcss/typography\n"}]}]
-20:["$","p",null,{"children":["Add to your ",["$","$L10",null,{"children":"tailwind.config.ts"}]," (or ",["$","$L10",null,{"children":"app/globals.css"}]," with Tailwind v4):"]}]
-21:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-css","children":"@import \"tailwindcss\";\n@plugin \"@tailwindcss/typography\";\n"}]}]
-22:["$","p",null,{"children":["Now wrap your content in ",["$","$L10",null,{"children":"prose"}]," classes:"]}]
-23:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"<div className=\"prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-teal-600\">\n  <MDXRemote ... />\n</div>\n"}]}]
-24:["$","p",null,{"children":["The ",["$","$L10",null,{"children":"prose"}]," class handles:"]}]
-25:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Heading sizes and spacing"}],"\n",["$","li",null,{"children":"Paragraph line height"}],"\n",["$","li",null,{"children":"List indentation"}],"\n",["$","li",null,{"children":"Blockquote styling"}],"\n",["$","li",null,{"children":"Link colors"}],"\n",["$","li",null,{"children":"Table borders"}],"\n"]}]
-26:["$","p",null,{"children":"All from one class. Your markdown looks like a professionally typeset article."}]
-27:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"git add app/globals.css\ngit commit -m \"feat: add Tailwind typography plugin for prose styling\"\n"}]}]
-28:["$","h2",null,{"children":"The Result"}]
-29:["$","p",null,{"children":["Write this in any ",["$","$L10",null,{"children":".md"}]," file:"]}]
-2a:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-markdown","children":"## Binary Search\n\nThe key insight: if the array is sorted, you can eliminate half the remaining elements with each comparison.\n\n````python\ndef binary_search(arr, target):\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n```⁠\n\nTime complexity: `O(log n)` — each step halves the search space.\n````\n"}]}]
-2b:["$","$L11",null,{"children":["$","$L10",null,{"children":"\nIt renders with:\n\n- A styled heading\n- Proper paragraph spacing\n- Syntax-highlighted Python with the `oneDark` theme\n- Inline code (`O(log n)`) in pink with a gray background\n\nZero configuration per file. Write markdown, get beauty.\n\n---\n\n## Commit Your Progress\n\n```bash\ngit add .\ngit commit -m \"feat: add syntax highlighting and typography styles\"\n```\n\n## What's Next\n\nStatic content looks great now. But a blog that just _shows_ code isn't much better than a textbook. In Chapter 4, we'll build our first interactive component — a Quiz that lives inside markdown and gives readers immediate feedback.\n\nThe blog starts teaching back.\n"}]}]
-a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-2c:I[27201,["/_next/static/chunks/0r7n~75v~2g-i.js"],"IconMark"]
-7:null
-c:[["$","title","0",{"children":"Tam's blog"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2c","3",{}]]
+┌─────────────────────────────────────────────┐
+│ AFTER: syntax highlighted                   │
+├─────────────────────────────────────────────┤
+│                                             │
+│  def binary_search(arr, target):  ← purple  │
+│      lo, hi = 0, len(arr) - 1    ← white   │
+│      while lo <= hi:              ← purple  │
+│          mid = (lo + hi) // 2     ← white   │
+│          if arr[mid] == target:   ← purple  │
+│              return mid           ← purple  │
+│                                             │
+│  (keywords colored, strings green,          │
+│   comments gray — brain parses structure    │
+│   before reading words)                     │
+│                                             │
+└─────────────────────────────────────────────┘
+10:[["$","h1",null,{"children":"Chapter 3: Beautiful Code Blocks"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-02-markdown-pipeline","children":"← Chapter 2: Markdown Pipeline"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","children":"Chapter 4: Interactive Quiz →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"What We're Fixing"}],"\n",["$","p",null,{"children":"Right now your code blocks look like this:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"children":"$13"}]}],"\n",["$","p",null,{"children":"Three things make this work:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"MarkdownCode"}]," — intercepts ",["$","$L12",null,{"children":"<code>"}]," tags and applies color"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"MarkdownPre"}]," — prevents double-wrapping from Tailwind's prose styles"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Components map"}]," — tells MDX to use our components instead of defaults"]}],"\n"]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Install the Highlighter"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"npm install react-syntax-highlighter @types/react-syntax-highlighter\n"}]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Concept: What Is Prism?"}],"\n",["$","p",null,{"children":["Prism is a syntax highlighting engine. It reads your code string, breaks it into ",["$","strong",null,{"children":"tokens"}]," (keywords, strings, comments, operators), and assigns each token a CSS class. A ",["$","strong",null,{"children":"theme"}]," maps those classes to colors."]}],"\n",["$","p",null,{"children":["We use ",["$","$L12",null,{"children":"react-syntax-highlighter"}]," which wraps Prism in a React component. The ",["$","$L12",null,{"children":"oneDark"}]," theme gives you VS Code's familiar dark palette."]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Concept: Why 'use client'?"}],"\n",["$","p",null,{"children":["Next.js renders components on the server by default. But ",["$","$L12",null,{"children":"react-syntax-highlighter"}]," uses browser DOM APIs to measure and render highlighted code. Adding ","$L14"," tells Next.js: \"ship this component's JavaScript to the browser.\""]}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40","\n","$L41","\n","$L42","\n","$L43","\n","$L44","\n","$L45","\n","$L46","\n","$L47","\n","$L48"]
+14:["$","$L12",null,{"children":"\"use client\""}]
+15:["$","p",null,{"children":"Without it, you get a server-side error about missing DOM globals."}]
+16:["$","hr",null,{}]
+17:["$","h2",null,{"children":"Step 1: Create the MarkdownCode Component"}]
+18:["$","p",null,{"children":["This component receives every ",["$","$L12",null,{"children":"<code>"}]," tag from MDX. It checks: does this code block have a language? If yes → full syntax highlighting. If no → it's inline code, render with a subtle pink style."]}]
+19:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"mkdir -p app/blog/components\n"}]}]
+1a:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"// 📁 app/blog/components/MarkdownCode.tsx — create this file\n\n\"use client\"; // Prism needs browser DOM APIs\n\nimport { Prism as SyntaxHighlighter } from \"react-syntax-highlighter\";\nimport { oneDark } from \"react-syntax-highlighter/dist/esm/styles/prism\";\n\ninterface Props {\n  children: React.ReactNode;\n  className?: string; // MDX sets \"language-python\" for ```python blocks\n}\n"}]}]
+1b:["$","p",null,{"children":"Save. This is just the imports and types — the logic comes next."}]
+1c:["$","hr",null,{}]
+1d:["$","h2",null,{"children":"Step 2: Handle Inline Code"}]
+1e:["$","p",null,{"children":["When you write ",["$","$L12",null,{"children":"`variable`"}]," in markdown (no language), MDX renders ",["$","$L12",null,{"children":"<code>variable</code>"}]," with no className. We detect that and render a simple styled span."]}]
+1f:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"// 📁 app/blog/components/MarkdownCode.tsx — add the component body\n\nexport function MarkdownCode({ children, className }: Props) {\n  // \"language-python\" → \"python\", no class → null\n  const match = /language-(\\w+)/.exec(className || \"\");\n\n  if (!match) {\n    // Inline code: `like this` — pink highlight, no Prism\n    return (\n      <code className=\"rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-pink-600\">\n        {children}\n      </code>\n    );\n  }\n"}]}]
+20:["$","hr",null,{}]
+21:["$","h2",null,{"children":"Step 3: Handle Fenced Code Blocks"}]
+22:["$","p",null,{"children":["When MDX sees ",["$","$L12",null,{"children":"```python"}],", it passes ",["$","$L12",null,{"children":"className=\"language-python\""}]," to our component. We extract the language and feed it to SyntaxHighlighter."]}]
+23:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"// 📁 app/blog/components/MarkdownCode.tsx — continue inside the function\n\n  const lang = match[1]; // \"python\", \"javascript\", \"bash\", etc.\n  // Remove trailing newline — Prism adds an extra blank line otherwise\n  const code = String(children).replace(/\\n$/, \"\");\n\n  return (\n    <SyntaxHighlighter\n      language={lang}\n      style={oneDark}\n      customStyle={{\n        margin: \"1rem 0\",\n        borderRadius: \"0.5rem\",\n        fontSize: \"0.85rem\",\n        lineHeight: 1.6,\n      }}\n    >\n      {code}\n    </SyntaxHighlighter>\n  );\n}\n"}]}]
+24:["$","hr",null,{}]
+25:["$","h2",null,{"children":"Concept: What Is MarkdownPre?"}]
+26:["$","p",null,{"children":["MDX renders fenced code blocks as ",["$","$L12",null,{"children":"<pre><code>...</code></pre>"}],". Tailwind's ",["$","$L12",null,{"children":"prose"}]," class adds its own padding, background, and border-radius to ",["$","$L12",null,{"children":"<pre>"}]," tags. That conflicts with SyntaxHighlighter's styling — you get double padding, mismatched backgrounds."]}]
+27:["$","p",null,{"children":["The fix: replace ",["$","$L12",null,{"children":"<pre>"}]," with a React fragment (",["$","$L12",null,{"children":"<>...</>"}],"). The fragment renders nothing — it just passes children through. SyntaxHighlighter handles all the styling."]}]
+28:["$","$L11",null,{"children":["$","$L12",null,{"children":"MDX output:  <pre><code className=\"language-python\">...</code></pre>\n                │                    │\n                ↓                    ↓\nOur override:  <MarkdownPre>       <MarkdownCode>\n                │                    │\n                ↓                    ↓\nRenders as:    <> (nothing)         <SyntaxHighlighter> (colored code)\n"}]}]
+29:["$","hr",null,{}]
+2a:["$","h2",null,{"children":"Step 4: Add the MarkdownPre Wrapper"}]
+2b:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"// 📁 app/blog/components/MarkdownCode.tsx — add at the bottom of the file\n\n// Replaces <pre> with a fragment to prevent Tailwind prose double-styling\nexport function MarkdownPre({ children }: { children: React.ReactNode }) {\n  return <>{children}</>;\n}\n"}]}]
+2c:["$","p",null,{"children":"Save. The component file is complete."}]
+2d:["$","hr",null,{}]
+2e:["$","h2",null,{"children":"Concept: What Is a Components Map?"}]
+2f:["$","p",null,{"children":["MDX converts markdown to React. By default, ",["$","$L12",null,{"children":"# Hello"}]," becomes ",["$","$L12",null,{"children":"<h1>Hello</h1>"}]," and ",["$","$L12",null,{"children":"```python"}]," becomes ",["$","$L12",null,{"children":"<pre><code>...</code></pre>"}],"."]}]
+30:["$","p",null,{"children":["A ",["$","strong",null,{"children":"components map"}]," is an object that says: \"when you'd normally render ",["$","$L12",null,{"children":"<code>"}],", use my ",["$","$L12",null,{"children":"MarkdownCode"}]," instead.\" It's a lookup table from HTML tag names to custom React components:"]}]
+31:["$","$L11",null,{"children":["$","$L12",null,{"children":"{\n  code: MarkdownCode,   // every <code> → our highlighted version\n  pre: MarkdownPre,     // every <pre>  → transparent fragment\n}\n"}]}]
+32:["$","p",null,{"children":["You pass this map to ",["$","$L12",null,{"children":"MDXRemote"}],". Every markdown file in your blog gets the override — zero per-file configuration."]}]
+33:["$","hr",null,{}]
+34:["$","h2",null,{"children":"Step 5: Register in the MDX Components Map"}]
+35:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"// 📁 app/blog/[...slug]/page.tsx — update the MDXRemote call\n\nimport { MarkdownCode, MarkdownPre } from \"@/app/blog/components/MarkdownCode\";\n\n// Inside your component's return, update MDXRemote:\n<MDXRemote\n  source={content}\n  components={{\n    code: MarkdownCode, // intercept all <code> tags\n    pre: MarkdownPre, // strip default <pre> styling\n  }}\n  options={{\n    mdxOptions: { remarkPlugins: [remarkGfm], format: \"md\" },\n  }}\n/>;\n"}]}]
+36:["$","p",null,{"children":["Save. Refresh. You see every fenced code block in your posts rendered with VS Code's dark theme — keywords in purple, strings in green, comments in gray. Inline code like ",["$","$L12",null,{"children":"variable"}]," appears in pink with a light background."]}]
+37:["$","hr",null,{}]
+38:["$","h2",null,{"children":"Step 6: Add Tailwind Typography"}]
+39:["$","p",null,{"children":["The ",["$","$L12",null,{"children":"@tailwindcss/typography"}]," plugin gives you a single ",["$","$L12",null,{"children":"prose"}]," class that styles all markdown output — headings, paragraphs, lists, blockquotes, tables — with professional typographic defaults."]}]
+3a:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"npm install @tailwindcss/typography\n"}]}]
+3b:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-css","children":"/* 📁 app/globals.css — add these two lines at the top */\n\n@import \"tailwindcss\";\n@plugin \"@tailwindcss/typography\";\n"}]}]
+3c:["$","p",null,{"children":"Save. Now wrap your MDX output:"}]
+3d:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"// 📁 app/blog/[...slug]/page.tsx — wrap MDXRemote in prose\n\n<div className=\"prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-teal-600\">\n  <MDXRemote ... />\n</div>\n"}]}]
+3e:["$","p",null,{"children":"Save. Refresh. You see your markdown rendered like a professionally typeset article — proper heading hierarchy, comfortable line height, indented lists, styled blockquotes. All from one CSS class."}]
+3f:["$","hr",null,{}]
+40:["$","h2",null,{"children":"The Full Flow"}]
+41:["$","$L11",null,{"children":["$","$L12",null,{"children":"You write:     ```python\\ndef hello(): ...\\n```\n\nMDX parses:    <pre><code className=\"language-python\">def hello(): ...</code></pre>\n\nComponents     pre  → MarkdownPre  → renders <> (nothing)\nmap routes:    code → MarkdownCode → renders <SyntaxHighlighter>\n\nBrowser shows: colored, rounded, dark-themed code block\n"}]}]
+42:["$","hr",null,{}]
+43:["$","h2",null,{"children":"Commit Your Progress"}]
+44:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"git add app/blog/components/MarkdownCode.tsx app/blog/[...slug]/page.tsx app/globals.css\ngit commit -m \"feat: add syntax highlighting and typography styles\"\n"}]}]
+45:["$","hr",null,{}]
+46:["$","h2",null,{"children":"What's Next"}]
+47:["$","p",null,{"children":["Static content looks great now. But a blog that just ",["$","em",null,{"children":"shows"}]," code isn't much better than a textbook. In Chapter 4, we'll build our first interactive component — a Quiz that lives inside markdown and gives readers immediate feedback."]}]
+48:["$","p",null,{"children":"The blog starts teaching back."}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+49:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Tam's blog"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L49","3",{}]]

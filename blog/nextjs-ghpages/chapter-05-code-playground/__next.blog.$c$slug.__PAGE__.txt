@@ -1,157 +1,66 @@
 1:"$Sreact.fragment"
-2:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/01n0zee04b3fe.js"],"MarkdownCode"]
-3:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/01n0zee04b3fe.js"],"MarkdownPre"]
-28:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
-29:"$Sreact.suspense"
-4:T1081,"use client"; // Interactive — needs browser APIs (textarea, Function constructor)
-
-import { useState, useRef } from "react";
-// useState: track code text, output, and running state
-// useRef: get a reference to the textarea DOM element (for focus management)
-
-interface Props {
-  language?: string; // "javascript" or "python"
-  initialCode: string; // The starting code shown in the editor
-  height?: string; // CSS height of the textarea (default "200px")
-}
-
-export function CodePlayground({
-  language = "javascript", // Default to JS if not specified
-  initialCode,
-  height = "200px",
-}: Props) {
-  const [code, setCode] = useState(initialCode.trim()); // Current editor content
-  const [output, setOutput] = useState(""); // Execution result
-  const [running, setRunning] = useState(false); // Show "Running..." state
-  const textareaRef = useRef<HTMLTextAreaElement>(null); // DOM reference for focus
-
-  const runCode = async () => {
-    setRunning(true);
-    setOutput(""); // Clear previous output
-
-    try {
-      if (language === "javascript" || language === "js") {
-        // JavaScript execution strategy:
-        // 1. Create a fake console that captures log() calls into an array
-        // 2. Wrap the user's code in a new Function (like eval, but scoped)
-        // 3. Pass our fake console as the "console" variable
-        const logs: string[] = [];
-        const fakeConsole = { log: (...args: any[]) => logs.push(args.join(" ")) };
-        const fn = new Function("console", code); // Creates: function(console) { <user code> }
-        fn(fakeConsole); // Execute with our fake console
-        setOutput(logs.join("\n") || "(no output)");
-      } else if (language === "python") {
-        // Python execution strategy:
-        // Pyodide is CPython compiled to WebAssembly — real Python in the browser
-        // It's ~5MB, so we load it lazily (only when user clicks Run)
-        const pyodide = await loadPyodide();
-        // Redirect Python's stdout to a StringIO buffer so we can capture print() output
-        pyodide.runPython(`
-import sys
-from io import StringIO
-sys.stdout = StringIO()
-`);
-        pyodide.runPython(code); // Execute the user's Python code
-        const stdout = pyodide.runPython("sys.stdout.getvalue()"); // Read captured output
-        setOutput(stdout || "(no output)");
-      }
-    } catch (err: any) {
-      // Show the error message (syntax errors, runtime errors, etc.)
-      setOutput(`Error: ${err.message}`);
-    }
-
-    setRunning(false);
-  };
-
-  return (
-    <div className="my-6 overflow-hidden rounded-lg border border-gray-300">
-      {/* Editor */}
-      <div className="relative">
-        <textarea
-          ref={textareaRef}
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-          spellCheck={false}
-          className="w-full resize-none bg-gray-900 p-4 font-mono text-sm text-gray-100 focus:outline-none"
-          style={{ height, tabSize: 4 }}
-        />
-        <span className="absolute top-2 right-2 rounded bg-gray-800 px-2 py-0.5 text-xs text-gray-500">
-          {language}
-        </span>
-      </div>
-
-      {/* Controls */}
-      <div className="flex items-center gap-2 border-t bg-gray-100 px-4 py-2">
-        <button
-          onClick={runCode}
-          disabled={running}
-          className="rounded bg-teal-600 px-3 py-1 text-sm text-white hover:bg-teal-700 disabled:opacity-50"
-        >
-          {running ? "Running..." : "▶ Run"}
-        </button>
-        <button
-          onClick={() => setCode(initialCode.trim())}
-          className="px-3 py-1 text-sm text-gray-600 hover:text-gray-900"
-        >
-          Reset
-        </button>
-      </div>
-
-      {/* Output */}
-      {output && (
-        <pre className="border-t bg-gray-50 px-4 py-3 font-mono text-sm whitespace-pre-wrap text-gray-800">
-          {output}
-        </pre>
-      )}
-    </div>
-  );
-}
-
-// Lazy Pyodide loader
-let pyodideInstance: any = null;
-async function loadPyodide() {
-  if (pyodideInstance) return pyodideInstance;
-  // @ts-ignore
-  const { loadPyodide: load } = await import("pyodide");
-  pyodideInstance = await load({
-    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/",
-  });
-  return pyodideInstance;
-}
-0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 5: The Code Playground"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","children":"← Chapter 4: Interactive Quiz"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-06-visualizer","children":"Chapter 6: Visualizer →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Limitation"}],"\n",["$","p",null,{"children":"Your reader sees a code block. They think \"what if I change the input?\" They copy the code, open a terminal, paste it, run it. Context switch. Flow broken."}],"\n",["$","p",null,{"children":"What if the code block itself was editable? What if there was a \"Run\" button right there?"}],"\n",["$","h2",null,{"children":"The Approach"}],"\n",["$","p",null,{"children":"For a static site (no backend), we have two options for running code:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"JavaScript/TypeScript"}]," — runs natively in the browser"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Python"}]," — use Pyodide (Python compiled to WebAssembly)"]}],"\n"]}],"\n",["$","p",null,{"children":"We'll build a playground that handles both. JavaScript runs instantly. Python loads Pyodide on first use."}],"\n",["$","h2",null,{"children":"The Component"}],"\n",["$","p",null,{"children":["This component has three parts: an editable textarea (the \"editor\"), a Run button, and an output area. For JavaScript, it executes code using ",["$","$L2",null,{"children":"new Function()"}],". For Python, it loads Pyodide (a WebAssembly Python runtime) on demand."]}],"\n",["$","p",null,{"children":["Create ",["$","$L2",null,{"children":"app/blog/components/CodePlayground.tsx"}],":"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"touch app/blog/components/CodePlayground.tsx\n"}]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24"]}],"$L25"]}],["$L26"],"$L27"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Ibw_iDUAHpsVfBjQdFRYj"}
-5:["$","h2",null,{"children":"Register It"}]
-6:["$","p",null,{"children":["The ",["$","$L2",null,{"children":"components"}]," map tells MDXRemote: \"when you encounter this HTML tag or JSX component name, render this React component instead.\""]}]
-7:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Key"}],["$","th",null,{"children":"What it replaces"}],["$","th",null,{"children":"Why"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"code"}]}],["$","td",null,{"children":[["$","$L2",null,{"children":"`inline`"}]," and ",["$","$L2",null,{"children":"```fenced```"}]," blocks"]}],["$","td",null,{"children":["Adds syntax highlighting via ",["$","$L2",null,{"children":"react-syntax-highlighter"}]]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"pre"}]}],["$","td",null,{"children":[["$","$L2",null,{"children":"<pre>"}]," wrapper around code blocks"]}],["$","td",null,{"children":"Prevents Tailwind prose from double-styling the block"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"a"}]}],["$","td",null,{"children":["Every ",["$","$L2",null,{"children":"[link](url)"}]," in markdown"]}],["$","td",null,{"children":["Strips ",["$","$L2",null,{"children":".md"}]," extension so chapter links work as routes"]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"Quiz"}]}],["$","td",null,{"children":[["$","$L2",null,{"children":"<Quiz />"}]," in markdown"]}],["$","td",null,{"children":"Renders the interactive multiple-choice component"}]]}]]}]]}]
-8:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"import { MarkdownCode, MarkdownPre } from \"@/app/blog/components/MarkdownCode\";\nimport { Quiz } from \"@/app/blog/components/Quiz\";\n\n<MDXRemote\n  source={content}\n  components={{\n    code: MarkdownCode, // syntax highlighting\n    pre: MarkdownPre, // prevents double-wrapping by Tailwind prose\n    a: ({ href, ...props }) => <a href={href?.replace(/\\.md$/, \"\")} {...props} />, // strips .md from chapter links\n    Quiz, // interactive multiple-choice component\n  }}\n  options={{\n    mdxOptions: {\n      remarkPlugins: [remarkGfm],\n      format: \"md\",\n    },\n  }}\n/>;\n"}]}]
-9:["$","h2",null,{"children":"Use It in Markdown"}]
-a:["$","p",null,{"children":["MDX's JSX parser conflicts with curly braces ",["$","$L2",null,{"children":"{}"}]," in code strings. The reliable solution: base64-encode your code and pass it via the ",["$","$L2",null,{"children":"code"}]," prop. The component decodes it client-side with ",["$","$L2",null,{"children":"atob()"}],"."]}]
-b:["$","p",null,{"children":["$","strong",null,{"children":"Step 1: Encode your code"}]}]
-c:["$","p",null,{"children":"In your terminal (PowerShell):"}]
-d:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-powershell","children":"[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes(\"function binarySearch(arr, target) {`nlet lo = 0, hi = arr.length - 1;`nwhile (lo <= hi) {`nconst mid = Math.floor((lo + hi) / 2);`nif (arr[mid] === target) return mid;`nif (arr[mid] < target) lo = mid + 1;`nelse hi = mid - 1;`n}`nreturn -1;`n}`n`nconsole.log(binarySearch([1, 3, 5, 7, 9, 11], 7));\"))\n"}]}]
-e:["$","p",null,{"children":"Or in bash/Node:"}]
-f:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"echo -n 'your code here' | base64\n"}]}]
-10:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-javascript","children":"// Node.js one-liner\nBuffer.from(\n  `function binarySearch(arr, target) {\n  let lo = 0, hi = arr.length - 1;\n  while (lo <= hi) {\n    const mid = Math.floor((lo + hi) / 2);\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) lo = mid + 1;\n    else hi = mid - 1;\n  }\n  return -1;\n}\n\nconsole.log(binarySearch([1, 3, 5, 7, 9, 11], 7));`,\n).toString(\"base64\");\n"}]}]
-11:["$","p",null,{"children":["$","strong",null,{"children":"Step 2: Use the base64 string in markdown"}]}]
-12:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-markdown","children":"<CodePlayground language=\"javascript\" code=\"ZnVuY3Rpb24gYmluYXJ5U2VhcmNoKGFyciwgdGFyZ2V0KSB7CiAgbGV0IGxvID0gMCwgaGkgPSBhcnIubGVuZ3RoIC0gMTsKICB3aGlsZSAobG8gPD0gaGkpIHsKICAgIGNvbnN0IG1pZCA9IE1hdGguZmxvb3IoKGxvICsgaGkpIC8gMik7CiAgICBpZiAoYXJyW21pZF0gPT09IHRhcmdldCkgcmV0dXJuIG1pZDsKICAgIGlmIChhcnJbbWlkXSA8IHRhcmdldCkgbG8gPSBtaWQgKyAxOwogICAgZWxzZSBoaSA9IG1pZCAtIDE7CiAgfQogIHJldHVybiAtMTsKfQoKY29uc29sZS5sb2coYmluYXJ5U2VhcmNoKFsxLCAzLCA1LCA3LCA5LCAxMV0sIDcpKTs=\" />\n"}]}]
-13:["$","p",null,{"children":["The reader sees an editable code block with syntax highlighting. They change ",["$","$L2",null,{"children":"7"}]," to ",["$","$L2",null,{"children":"11"}],". Click Run. See the result. No context switch. No terminal. Learning by doing, right in the article."]}]
-14:["$","h2",null,{"children":"Python Playground"}]
-15:["$","p",null,{"children":"For Python content, Pyodide loads on first click (~5MB, cached after):"}]
-16:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-markdown","children":"<CodePlayground language=\"python\" code=\"ZGVmIGZpYm9uYWNjaShuKToKICAgIGlmIG4gPD0gMToKICAgICAgICByZXR1cm4gbgogICAgcmV0dXJuIGZpYm9uYWNjaShuLTEpICsgZmlib25hY2NpKG4tMikKCmZvciBpIGluIHJhbmdlKDEwKToKICAgIHByaW50KGYnZmliKHtpfSkgPSB7Zmlib25hY2NpKGkpfScp\" />\n"}]}]
-17:["$","p",null,{"children":"First run takes 2-3 seconds (loading WASM). After that, instant."}]
-18:["$","h2",null,{"children":"Design Decisions"}]
-19:["$","p",null,{"children":["$","strong",null,{"children":"Why a textarea instead of Monaco/CodeMirror?"}]}]
-1a:["$","p",null,{"children":["Simplicity. A ",["$","$L2",null,{"children":"<textarea>"}]," is 0 KB of JavaScript. Monaco is 2MB. For a blog where people tweak 5-10 lines, a textarea with monospace font is enough. If you want syntax highlighting in the editor later, swap in CodeMirror — the interface stays the same."]}]
-1b:["$","p",null,{"children":["$","strong",null,{"children":"Why not a backend?"}]}]
-1c:["$","p",null,{"children":"GitHub Pages is static. No server means no execution environment. Pyodide solves this for Python. JavaScript runs natively. For other languages, you'd need an external API (like Judge0) — but that adds latency and cost."}]
-1d:["$","p",null,{"children":["$","strong",null,{"children":"Why lazy-load Pyodide?"}]}]
-1e:["$","p",null,{"children":"5MB is too much to load on page load. Loading on first \"Run\" click means JavaScript-only pages stay fast. The reader who needs Python pays the cost once."}]
-1f:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git add app/blog/components/CodePlayground.tsx\ngit commit -m \"feat: add CodePlayground component\"\n"}]}]
-20:["$","hr",null,{}]
-21:["$","h2",null,{"children":"Commit Your Progress"}]
-22:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"git add .\ngit commit -m \"feat: add CodePlayground component for JS and Python\"\n"}]}]
-23:["$","h2",null,{"children":"What's Next"}]
-24:["$","p",null,{"children":["Quizzes test knowledge. Playgrounds enable experimentation. But some concepts need ",["$","em",null,{"children":"visualization"}]," — watching an algorithm step through data, seeing the tree rebalance, watching the sort happen. Chapter 6: the Visualizer component."]}]
-25:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-06-visualizer","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
-26:["$","script","script-0",{"src":"/_next/static/chunks/01n0zee04b3fe.js","async":true}]
-27:["$","$L28",null,{"children":["$","$29",null,{"name":"Next.MetadataOutlet","children":"$@2a"}]}]
-2a:null
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/16tbll6al9xh_.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/16tbll6al9xh_.js"],"MarkdownCode"]
+3f:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
+40:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 5: The Code Playground"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","children":"← Chapter 4: Interactive Quiz"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-06-visualizer","children":"Chapter 6: Visualizer →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"┌─────────────────────────────────────────────┐\n│  [javascript]                               │\n│                                             │\n│  function greet(name) {                     │  ← editable textarea\n│    console.log(\"Hello, \" + name);           │\n│  }                                          │\n│  greet(\"World\");                            │\n│                                             │\n├─────────────────────────────────────────────┤\n│  [▶ Run]  [Reset]                           │  ← controls bar\n├─────────────────────────────────────────────┤\n│  Hello, World                               │  ← output area\n└─────────────────────────────────────────────┘\n"}]}],"\n",["$","p",null,{"children":"The reader edits code, clicks Run, sees output. No terminal. No context switch."}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":["Concept: How ",["$","$L3",null,{"children":"new Function"}]," Works"]}],"\n",["$","p",null,{"children":["JavaScript's ",["$","$L3",null,{"children":"new Function"}]," constructor creates a function from a string at runtime:"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-js","children":"const fn = new Function(\"console\", \"console.log('hi')\");\nfn(fakeConsole); // calls: function(console) { console.log('hi') }\n"}]}],"\n",["$","p",null,{"children":"The first arguments are parameter names. The last argument is the function body. This lets us:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":"Execute arbitrary user code"}],"\n",["$","li",null,{"children":["Inject a ",["$","strong",null,{"children":"fake console"}]," that captures ",["$","$L3",null,{"children":"log()"}]," calls into an array"]}],"\n",["$","li",null,{"children":["Keep execution scoped (safer than raw ",["$","$L3",null,{"children":"eval"}],")"]}],"\n"]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Concept: What Is Pyodide?"}],"\n",["$","p",null,{"children":["Pyodide is CPython compiled to WebAssembly. It runs ",["$","strong",null,{"children":"real Python"}]," in the browser — no server needed."]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Size: ~5MB (loaded lazily, only when user clicks Run)"}],"\n",["$","li",null,{"children":"After first load: cached by the browser, subsequent runs are instant"}],"\n",["$","li",null,{"children":["We redirect ",["$","$L3",null,{"children":"sys.stdout"}]," to a ",["$","$L3",null,{"children":"StringIO"}]," buffer to capture ",["$","$L3",null,{"children":"print()"}]," output"]}],"\n"]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Concept: Why Base64 Encoding for MDX"}],"\n",["$","p",null,{"children":["In MDX, component props use JSX syntax with curly braces ",["$","$L3",null,{"children":"{}"}],". But code snippets also contain curly braces — this breaks JSX parsing:"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-mdx","children":"<!-- ❌ BROKEN — curly braces in code conflict with JSX -->\n\n<CodePlayground initialCode={`function() { return {} }`} />\n"}]}],"\n",["$","p",null,{"children":["The fix: encode the code as ",["$","strong",null,{"children":"base64"}]," and pass it via a ",["$","$L3",null,{"children":"code"}]," prop. The component decodes it at render time."]}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"How to encode with Node.js:"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-js","children":"Buffer.from('function greet() {\\n  console.log(\"hi\");\\n}').toString(\"base64\");\n// → \"ZnVuY3Rpb24gZ3JlZXQoKSB7CiAgY29uc29sZS5sb2coImhpIik7Cn0=\"\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b"]}],"$L3c"]}],["$L3d"],"$L3e"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"1Jizpt6el3Jrj3XoNIx07"}
+4:["$","p",null,{"children":"In your MDX file, use the encoded string:"}]
+5:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-mdx","children":"<CodePlayground\n  language=\"javascript\"\n  code=\"ZnVuY3Rpb24gZ3JlZXQoKSB7CiAgY29uc29sZS5sb2coImhpIik7Cn0=\"\n/>\n"}]}]
+6:["$","p",null,{"children":["The component decodes it with ",["$","$L3",null,{"children":"atob(code)"}]," before displaying in the editor."]}]
+7:["$","hr",null,{}]
+8:["$","h2",null,{"children":"Step 1: Create the Component File"}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"// 📁 app/blog/components/CodePlayground.tsx — create the file with client directive and imports\n\"use client\"; // Needs browser APIs: textarea, Function constructor, atob\n\nimport { useState, useRef } from \"react\";\n\ninterface Props {\n  language?: string; // \"javascript\" or \"python\"\n  code: string; // base64-encoded initial code (avoids JSX curly brace conflicts)\n  height?: string; // CSS height for the textarea\n}\n"}]}]
+a:["$","p",null,{"children":"Save. No visible change yet — we're building the component piece by piece."}]
+b:["$","hr",null,{}]
+c:["$","h2",null,{"children":"Step 2: Component State and Decode"}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"// 📁 app/blog/components/CodePlayground.tsx — add the component function with state\nexport function CodePlayground({\n  language = \"javascript\",\n  code,\n  height = \"200px\",\n}: Props) {\n  // Decode base64 prop back to readable code\n  const initialCode = typeof window !== \"undefined\" ? atob(code) : \"\";\n  const [editorCode, setEditorCode] = useState(initialCode);\n  const [output, setOutput] = useState(\"\");\n  const [running, setRunning] = useState(false);\n"}]}]
+e:["$","hr",null,{}]
+f:["$","h2",null,{"children":"Step 3: JavaScript Execution Logic"}]
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"// 📁 app/blog/components/CodePlayground.tsx — add runCode function inside the component\nconst runCode = async () => {\n  setRunning(true);\n  setOutput(\"\");\n  try {\n    if (language === \"javascript\" || language === \"js\") {\n      const logs: string[] = [];\n      // Fake console captures all log() calls into our array\n      const fakeConsole = { log: (...args: any[]) => logs.push(args.join(\" \")) };\n      const fn = new Function(\"console\", editorCode);\n      fn(fakeConsole);\n      setOutput(logs.join(\"\\n\") || \"(no output)\");\n    }\n  } catch (err: any) {\n    setOutput(`Error: ${err.message}`);\n  }\n  setRunning(false);\n};\n"}]}]
+11:["$","hr",null,{}]
+12:["$","h2",null,{"children":"Step 4: Python Execution Logic"}]
+13:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"// 📁 app/blog/components/CodePlayground.tsx — add Python branch inside the try block\n      } else if (language === \"python\") {\n        // Load Pyodide lazily — only on first Run click\n        const pyodide = await loadPyodide();\n        // Redirect stdout so we can capture print() output\n        pyodide.runPython(`\nimport sys\nfrom io import StringIO\nsys.stdout = StringIO()\n`);\n        pyodide.runPython(editorCode);\n        const stdout = pyodide.runPython(\"sys.stdout.getvalue()\");\n        setOutput(stdout || \"(no output)\");\n      }\n"}]}]
+14:["$","hr",null,{}]
+15:["$","h2",null,{"children":"Step 5: The JSX (Editor + Controls + Output)"}]
+16:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"// 📁 app/blog/components/CodePlayground.tsx — return the UI\n  return (\n    <div className=\"my-6 overflow-hidden rounded-lg border border-gray-300\">\n      <div className=\"relative\">\n        <textarea\n          value={editorCode}\n          onChange={(e) => setEditorCode(e.target.value)}\n          spellCheck={false}\n          className=\"w-full resize-none bg-gray-900 p-4 font-mono text-sm text-gray-100\"\n          style={{ height }}\n        />\n        <span className=\"absolute top-2 right-2 rounded bg-gray-800 px-2 py-0.5 text-xs text-gray-500\">\n          {language}\n        </span>\n      </div>\n"}]}]
+17:["$","hr",null,{}]
+18:["$","h2",null,{"children":"Step 6: Controls and Output Area"}]
+19:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"// 📁 app/blog/components/CodePlayground.tsx — controls bar and output display\n      <div className=\"flex items-center gap-2 border-t bg-gray-100 px-4 py-2\">\n        <button onClick={runCode} disabled={running}\n          className=\"rounded bg-teal-600 px-3 py-1 text-sm text-white hover:bg-teal-700 disabled:opacity-50\">\n          {running ? \"Running...\" : \"▶ Run\"}\n        </button>\n        <button onClick={() => setEditorCode(initialCode)}\n          className=\"px-3 py-1 text-sm text-gray-600 hover:text-gray-900\">\n          Reset\n        </button>\n      </div>\n      {output && (\n        <pre className=\"border-t bg-gray-50 px-4 py-3 font-mono text-sm whitespace-pre-wrap\">\n          {output}\n        </pre>\n      )}\n    </div>\n  );\n}\n"}]}]
+1a:["$","hr",null,{}]
+1b:["$","h2",null,{"children":"Step 7: Lazy Pyodide Loader"}]
+1c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"// 📁 app/blog/components/CodePlayground.tsx — add outside the component, at file bottom\nlet pyodideInstance: any = null;\n\nasync function loadPyodide() {\n  if (pyodideInstance) return pyodideInstance;\n  // Load from CDN only on first use — 5MB cached by browser after\n  const { loadPyodide: load } = await import(\"pyodide\" as any);\n  pyodideInstance = await load({\n    indexURL: \"https://cdn.jsdelivr.net/pyodide/v0.25.0/full/\",\n  });\n  return pyodideInstance;\n}\n"}]}]
+1d:["$","p",null,{"children":"Save. The component is complete."}]
+1e:["$","hr",null,{}]
+1f:["$","h2",null,{"children":"Step 8: Register in the Components Map"}]
+20:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"// 📁 app/blog/[...slug]/page.tsx — add CodePlayground to the MDXRemote components map\nimport { CodePlayground } from \"@/app/blog/components/CodePlayground\";\n\n// Inside your MDXRemote call, add to the components object:\ncomponents={{\n  code: MarkdownCode,\n  pre: MarkdownPre,\n  a: ({ href, ...props }) => <a href={href?.replace(/\\.md$/, \"\")} {...props} />,\n  Quiz,\n  CodePlayground, // ← new: enables <CodePlayground /> in MDX files\n}}\n"}]}]
+21:["$","p",null,{"children":["Save. Now MDX files can use ",["$","$L3",null,{"children":"<CodePlayground />"}],"."]}]
+22:["$","hr",null,{}]
+23:["$","h2",null,{"children":"Step 9: Use in MDX — JavaScript Example"}]
+24:["$","p",null,{"children":"First, encode your code snippet:"}]
+25:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"node -e \"console.log(Buffer.from('function binarySearch(arr, target) {\\n  let lo = 0, hi = arr.length - 1;\\n  while (lo <= hi) {\\n    const mid = Math.floor((lo + hi) / 2);\\n    if (arr[mid] === target) return mid;\\n    if (arr[mid] < target) lo = mid + 1;\\n    else hi = mid - 1;\\n  }\\n  return -1;\\n}\\nconsole.log(binarySearch([1,3,5,7,9,11], 7));').toString('base64'))\"\n"}]}]
+26:["$","p",null,{"children":"Then use the output in your MDX:"}]
+27:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-mdx","children":"<CodePlayground\n  language=\"javascript\"\n  code=\"ZnVuY3Rpb24gYmluYXJ5U2VhcmNoKGFyciwgdGFyZ2V0KSB7CiAgbGV0IGxvID0gMCwgaGkgPSBhcnIubGVuZ3RoIC0gMTsKICB3aGlsZSAobG8gPD0gaGkpIHsKICAgIGNvbnN0IG1pZCA9IE1hdGguZmxvb3IoKGxvICsgaGkpIC8gMik7CiAgICBpZiAoYXJyW21pZF0gPT09IHRhcmdldCkgcmV0dXJuIG1pZDsKICAgIGlmIChhcnJbbWlkXSA8IHRhcmdldCkgbG8gPSBtaWQgKyAxOwogICAgZWxzZSBoaSA9IG1pZCAtIDE7CiAgfQogIHJldHVybiAtMTsKfQpjb25zb2xlLmxvZyhiaW5hcnlTZWFyY2goWzEsMyw1LDcsOSwxMV0sIDcpKTs=\"\n/>\n"}]}]
+28:["$","p",null,{"children":["Save. Refresh. You see an editable code editor with a binary search function. Click Run — output shows ",["$","$L3",null,{"children":"3"}],"."]}]
+29:["$","hr",null,{}]
+2a:["$","h2",null,{"children":"Step 10: Use in MDX — Python Example"}]
+2b:["$","p",null,{"children":"Encode your Python code:"}]
+2c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"node -e \"console.log(Buffer.from('def fibonacci(n):\\n    if n <= 1:\\n        return n\\n    return fibonacci(n-1) + fibonacci(n-2)\\n\\nfor i in range(10):\\n    print(f\\\"fib({i}) = {fibonacci(i)}\\\")').toString('base64'))\"\n"}]}]
+2d:["$","p",null,{"children":"Use in MDX:"}]
+2e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-mdx","children":"<CodePlayground\n  language=\"python\"\n  code=\"ZGVmIGZpYm9uYWNjaShuKToKICAgIGlmIG4gPD0gMToKICAgICAgICByZXR1cm4gbgogICAgcmV0dXJuIGZpYm9uYWNjaShuLTEpICsgZmlib25hY2NpKG4tMikKCmZvciBpIGluIHJhbmdlKDEwKToKICAgIHByaW50KGYiZmliKHtpfSkgPSB7Zmlib25hY2NpKGkpfSIp\"\n/>\n"}]}]
+2f:["$","p",null,{"children":["Save. Refresh. You see a Python editor. First Run takes 2-3 seconds (loading Pyodide WASM). After that, instant. Output shows ",["$","$L3",null,{"children":"fib(0) = 0"}]," through ",["$","$L3",null,{"children":"fib(9) = 34"}],"."]}]
+30:["$","hr",null,{}]
+31:["$","h2",null,{"children":"Design Decisions"}]
+32:["$","p",null,{"children":[["$","strong",null,{"children":"Why a textarea instead of Monaco/CodeMirror?"}],"\nA ",["$","$L3",null,{"children":"<textarea>"}]," is 0 KB of JavaScript. Monaco is 2MB. For a blog where readers tweak 5-10 lines, monospace textarea is enough."]}]
+33:["$","p",null,{"children":[["$","strong",null,{"children":"Why no backend?"}],"\nGitHub Pages is static. Pyodide solves Python. JavaScript runs natively. No server cost."]}]
+34:["$","p",null,{"children":[["$","strong",null,{"children":"Why lazy-load Pyodide?"}],"\n5MB is too much on page load. JavaScript-only pages stay fast. Python cost is paid once, then cached."]}]
+35:["$","p",null,{"children":[["$","strong",null,{"children":"Why base64 instead of template literals?"}],"\nMDX parses JSX. Curly braces in code (",["$","$L3",null,{"children":"{}"}],") break the parser. Base64 eliminates all special characters — the prop is just a plain string."]}]
+36:["$","hr",null,{}]
+37:["$","h2",null,{"children":"Commit"}]
+38:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"git add app/blog/components/CodePlayground.tsx\ngit commit -m \"feat: add CodePlayground component for JS and Python\"\n"}]}]
+39:["$","hr",null,{}]
+3a:["$","h2",null,{"children":"What's Next"}]
+3b:["$","p",null,{"children":["Quizzes test knowledge. Playgrounds enable experimentation. But some concepts need ",["$","em",null,{"children":"visualization"}]," — watching an algorithm step through data, seeing a tree rebalance. Chapter 6: the Visualizer component."]}]
+3c:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-04-interactive-quiz","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-06-visualizer","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+3d:["$","script","script-0",{"src":"/_next/static/chunks/16tbll6al9xh_.js","async":true}]
+3e:["$","$L3f",null,{"children":["$","$40",null,{"name":"Next.MetadataOutlet","children":"$@41"}]}]
+41:null

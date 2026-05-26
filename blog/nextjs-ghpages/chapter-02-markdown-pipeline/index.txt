@@ -1,200 +1,69 @@
 1:"$Sreact.fragment"
-2:I[39756,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
-3:I[37457,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default"]
-5:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"OutletBoundary"]
-6:"$Sreact.suspense"
-9:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"ViewportBoundary"]
-b:I[97367,["/_next/static/chunks/0r7n~75v~2g-i.js"],"MetadataBoundary"]
-d:I[68027,["/_next/static/chunks/0r7n~75v~2g-i.js"],"default",1]
-:HL["/_next/static/chunks/0vckq1ix8hcvi.css","style"]
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"default",1]
+:HL["/_next/static/chunks/0n.kd8dfq-pgr.css","style"]
 :HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"P":null,"c":["","blog","nextjs-ghpages","chapter-02-markdown-pipeline",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","nextjs-ghpages/chapter-02-markdown-pipeline","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0vckq1ix8hcvi.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0r7n~75v~2g-i.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","script","script-0",{"src":"/_next/static/chunks/01n0zee04b3fe.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$@8"]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0vckq1ix8hcvi.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Ibw_iDUAHpsVfBjQdFRYj"}
-e:[]
-8:"$We"
-4:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":"$Lf"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-01-first-deploy","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-03-beautiful-code","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
-10:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/01n0zee04b3fe.js"],"MarkdownCode"]
-11:I[70099,["/_next/static/chunks/0r7n~75v~2g-i.js","/_next/static/chunks/01n0zee04b3fe.js"],"MarkdownPre"]
-12:T78b,import fs from "fs"; // Node.js file system module — reads files and folders
-import path from "path"; // Builds file paths that work on any OS (Windows, Mac, Linux)
-
-const CONTENT_DIR = "content";
-
-/**
- * Get all series (folders) with their chapters.
- * Returns: [{ name: "algorithms", slug: "algorithms", chapters: ["chapter-00.md", ...] }]
- */
-export function getAllSeries() {
-  // process.cwd() = the root of your project (where package.json lives)
-  const base = path.join(process.cwd(), CONTENT_DIR);
-
-  // If the content folder doesn't exist yet, return empty (no crash)
-  if (!fs.existsSync(base)) return [];
-
-  return fs
-    .readdirSync(base, { withFileTypes: true }) // List everything in content/
-    .filter((d) => d.isDirectory()) // Keep only folders (not files)
-    .map((d) => ({
-      // Transform each folder into an object
-      name: d.name, // "algorithms"
-      slug: d.name, // Used in URLs: /blog/algorithms/...
-      chapters: fs
-        .readdirSync(path.join(base, d.name)) // List files inside the folder
-        .filter((f) => f.endsWith(".md")) // Keep only markdown files
-        .sort(), // Alphabetical order (chapter-00, chapter-01, ...)
-    }));
-}
-
-/**
- * Read a single markdown file's content as a string.
- * Returns null if the file doesn't exist.
- */
-export function getChapterContent(series: string, file: string) {
-  const filePath = path.join(process.cwd(), CONTENT_DIR, series, file);
-  if (!fs.existsSync(filePath)) return null;
-  return fs.readFileSync(filePath, "utf-8"); // Read the entire file as text
-}
-
-/**
- * Get the list of chapter filenames in a series, sorted.
- * Used for prev/next navigation.
- */
-export function getSeriesChapters(series: string) {
-  const dir = path.join(process.cwd(), CONTENT_DIR, series);
-  if (!fs.existsSync(dir)) return [];
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith(".md") && f !== "README.md") // exclude README
-    .sort();
-}
-f:[["$","h1",null,{"children":"Chapter 2: The Markdown Pipeline"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-01-first-deploy","children":"← Chapter 1: First Deploy"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-03-beautiful-code","children":"Chapter 3: Beautiful Code →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Problem"}],"\n",["$","p",null,{"children":["You have 50 markdown files about algorithms. 20 about Docker. 15 about game development. You don't want to create a React component for each one. You want to drop a ",["$","$L10",null,{"children":".md"}]," file in a folder and have it appear as a page — automatically."]}],"\n",["$","h2",null,{"children":"The Folder Structure"}],"\n",["$","p",null,{"children":"Here's the plan:"}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"children":"my-blog/\n  content/\n    algorithms/\n      chapter-00-overview.md\n      chapter-01-linear-search.md\n      chapter-02-binary-search.md\n    docker101/\n      chapter-00-containers.md\n      chapter-01-images.md\n  app/\n    blog/\n      [...slug]/\n        page.tsx          ← one file renders ALL markdown\n  lib/\n    markdown.ts           ← reads folders, finds files\n"}]}],"\n",["$","p",null,{"children":"One React page. Unlimited content. The folder name becomes the series. The file name becomes the chapter."}],"\n",["$","h2",null,{"children":"Install Dependencies"}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"npm install next-mdx-remote gray-matter remark-gfm\n"}]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L10",null,{"children":"next-mdx-remote"}]," — renders markdown as React components (server-side)"]}],"\n",["$","li",null,{"children":[["$","$L10",null,{"children":"gray-matter"}]," — parses YAML frontmatter from markdown files"]}],"\n",["$","li",null,{"children":[["$","$L10",null,{"children":"remark-gfm"}]," — adds GitHub Flavored Markdown (tables, strikethrough, task lists)"]}],"\n"]}],"\n",["$","h2",null,{"children":"The Content Reader"}],"\n",["$","p",null,{"children":["This file scans your ",["$","$L10",null,{"children":"content/"}]," folder and provides functions to list series and read chapters. It runs at build time (server-side only) — readers never see this code."]}],"\n",["$","p",null,{"children":["Create ",["$","$L10",null,{"children":"lib/markdown.ts"}],":"]}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"mkdir -p lib && touch lib/markdown.ts\n"}]}],"\n",["$","$L11",null,{"children":["$","$L10",null,{"className":"language-typescript","children":"$12"}]}],"\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25"]
-13:["$","p",null,{"children":[["$","strong",null,{"children":["Why ",["$","$L10",null,{"children":"fs"}]," and not ",["$","$L10",null,{"children":"fetch"}],"?"]}]," This code runs at build time on your machine (or in GitHub Actions). It reads files directly from disk — no HTTP requests, no API, no latency. The result gets baked into static HTML."]}]
-14:["$","p",null,{"children":["This is the entire content layer. No database. No API. Just ",["$","$L10",null,{"children":"fs.readFileSync"}],"."]}]
-15:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"git add lib/markdown.ts\ngit commit -m \"feat: add markdown content reader\"\n"}]}]
-16:["$","h2",null,{"children":"The Catch-All Route"}]
-17:["$","p",null,{"children":["This is the most important file in the project. One component renders ",["$","em",null,{"children":"every"}]," markdown file as a page. The ",["$","$L10",null,{"children":"[...slug]"}]," in the folder name means \"match any URL path with any number of segments.\""]}]
-18:["$","p",null,{"children":["Create ",["$","$L10",null,{"children":"app/blog/[...slug]/page.tsx"}],":"]}]
-19:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"mkdir -p \"app/blog/[...slug]\" && touch \"app/blog/[...slug]/page.tsx\"\n"}]}]
-26:T1040,import { notFound } from "next/navigation"; // Shows a 404 page
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter"; // Parses YAML frontmatter from markdown
-import { MDXRemote } from "next-mdx-remote/rsc"; // Renders markdown as React components
-import remarkGfm from "remark-gfm"; // Adds GitHub-flavored markdown (tables, etc.)
-import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
-import { getSeriesChapters } from "@/lib/markdown";
-
-// Next.js passes URL segments as params.
-// For /blog/algorithms/chapter-01 → slug = ["algorithms", "chapter-01"]
-interface Props {
-  params: Promise<{ slug: string[] }>;
-}
-
-/**
- * generateStaticParams tells Next.js which pages to pre-build.
- * At build time, it scans all .md files and returns their URL paths.
- * Without this, Next.js wouldn't know what pages exist (since they're dynamic).
- */
-export async function generateStaticParams() {
-  const base = path.join(process.cwd(), "content");
-  if (!fs.existsSync(base)) return [];
-
-  const params: { slug: string[] }[] = [];
-  const folders = fs.readdirSync(base, { withFileTypes: true }).filter((d) => d.isDirectory());
-
-  for (const folder of folders) {
-    const files = fs
-      .readdirSync(path.join(base, folder.name))
-      .filter((f) => f.endsWith(".md") && f !== "README.md"); // exclude README
-    for (const file of files) {
-      // Each file becomes a URL: /blog/{folder}/{filename-without-.md}
-      params.push({ slug: [folder.name, file.replace(/\.md$/, "")] });
-    }
-  }
-  return params; // must return or generateStaticParams returns undefined
-}
-
-/**
- * The page component. Runs once per markdown file at build time.
- * Reads the file, renders it as HTML, wraps it in layout.
- */
-export default async function BlogPage({ params }: Props) {
-  const { slug } = await params;
-  if (slug.length < 2) return notFound(); // Need at least series + chapter
-
-  // Destructure: /blog/algorithms/chapter-01 → series="algorithms", fileSlug="chapter-01"
-  const [series, fileSlug] = slug;
-  const filePath = path.join(process.cwd(), "content", series, `${fileSlug}.md`);
-
-  if (!fs.existsSync(filePath)) return notFound(); // File doesn't exist → 404
-
-  // Read the markdown file and separate frontmatter (metadata) from content
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const { content } = matter(raw); // content = the markdown text without frontmatter
-
-  // Build prev/next navigation links
-  const chapters = getSeriesChapters(series);
-  const currentFile = `${fileSlug}.md`;
-  const idx = chapters.indexOf(currentFile);
-  const prev = idx > 0 ? chapters[idx - 1] : null;
-  const next = idx < chapters.length - 1 ? chapters[idx + 1] : null;
-
-  return (
-    <article className="mx-auto max-w-3xl px-6 py-12">
-      {/* prose = Tailwind typography plugin, styles all HTML elements beautifully */}
-      <div className="prose prose-lg max-w-none">
-        <MDXRemote
-          source={content}
-          components={{
-            code: MarkdownCode, // syntax highlighting for code blocks
-            pre: MarkdownPre, // prevents double-wrapping by Tailwind prose
-            // strip .md from links so chapter links work as Next.js routes
-            a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
-          }}
-          options={{
-            mdxOptions: {
-              remarkPlugins: [remarkGfm], // Enable tables, strikethrough, task lists
-              format: "mdx", // mdx mode enables JSX components like <Quiz /> inside markdown
-            },
-          }}
-        />
-      </div>
-
-      {/* Prev / Next */}
-      <nav className="mt-12 flex justify-between border-t pt-6 text-sm">
-        {prev && (
-          <a
-            href={`/blog/${series}/${prev.replace(".md", "")}`}
-            className="text-teal-600 hover:underline"
-          >
-            ← Previous
-          </a>
-        )}
-        {next && (
-          <a
-            href={`/blog/${series}/${next.replace(".md", "")}`}
-            className="ml-auto text-teal-600 hover:underline"
-          >
-            Next →
-          </a>
-        )}
-      </nav>
-    </article>
-  );
-}
-1a:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-tsx","children":"$26"}]}]
-1b:["$","p",null,{"children":["$","strong",null,{"children":["What each ",["$","$L10",null,{"children":"components"}]," entry does:"]}]}]
-1c:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Key"}],["$","th",null,{"children":"What it replaces"}],["$","th",null,{"children":"Why"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","$L10",null,{"children":"code"}]}],["$","td",null,{"children":[["$","$L10",null,{"children":"`inline`"}]," and ",["$","$L10",null,{"children":"```fenced```"}]," blocks"]}],["$","td",null,{"children":["Adds syntax highlighting via ",["$","$L10",null,{"children":"react-syntax-highlighter"}]]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L10",null,{"children":"pre"}]}],["$","td",null,{"children":[["$","$L10",null,{"children":"<pre>"}]," wrapper around code blocks"]}],["$","td",null,{"children":"Prevents Tailwind prose from double-styling the block"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L10",null,{"children":"a"}]}],["$","td",null,{"children":["Every ",["$","$L10",null,{"children":"[link](url)"}]," in markdown"]}],["$","td",null,{"children":["Strips ",["$","$L10",null,{"children":".md"}]," extension so chapter links work as Next.js routes"]}]]}]]}]]}]
-1d:["$","h2",null,{"children":"How It Works"}]
-1e:["$","p",null,{"children":["The ",["$","$L10",null,{"children":"[...slug]"}]," catch-all route matches any URL under ",["$","$L10",null,{"children":"/blog/"}],":"]}]
-1f:["$","$L11",null,{"children":["$","$L10",null,{"children":"/blog/algorithms/chapter-01-linear-search\n       ↓\nslug = [\"algorithms\", \"chapter-01-linear-search\"]\n       ↓\nreads: content/algorithms/chapter-01-linear-search.md\n       ↓\nrenders as HTML with MDXRemote\n"}]}]
-20:["$","p",null,{"children":[["$","$L10",null,{"children":"generateStaticParams()"}]," runs at build time, enumerates every ",["$","$L10",null,{"children":".md"}]," file, and pre-renders all pages. The result is pure static HTML — no server needed."]}]
-21:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-bash","children":"git add app/blog\ngit commit -m \"feat: add catch-all blog route with prev/next navigation\"\n"}]}]
-22:["$","h2",null,{"children":"Test It"}]
-23:["$","p",null,{"children":["Create ",["$","$L10",null,{"children":"content/hello/chapter-00-test.md"}],":"]}]
-24:["$","$L11",null,{"children":["$","$L10",null,{"className":"language-markdown","children":"# Hello World\n\nThis is my first blog post.\n\nIt supports **bold**, _italic_, and `inline code`.\n\n## A Code Block\n\n````python\nprint(\"Hello from the blog!\")\n```⁠\n\n## A Table\n\n| Feature | Status |\n|---------|--------|\n| Markdown | ✅ |\n| Code blocks | ✅ |\n| Tables | ✅ |\n````\n"}]}]
-25:["$","$L11",null,{"children":["$","$L10",null,{"children":"\nRun `npm run dev`, visit `http://localhost:3000/blog/hello/chapter-00-test`.\n\nYour markdown is a web page. No React component written. Just a file in a folder.\n\n## The Mental Model\n\n```\ncontent/\n  {series}/\n    {chapter}.md\n         ↓\n/blog/{series}/{chapter}\n         ↓\nStatic HTML at build time\n```\n\nAdd a folder → new series appears. Add a file → new chapter appears. Delete a file → page disappears. The filesystem _is_ your CMS.\n\n---\n\n## Commit Your Progress\n\n```bash\ngit add .\ngit commit -m \"feat: add markdown pipeline with catch-all route\"\n```\n\n## What's Next\n\nThe page works but looks plain. Code blocks are unstyled monospace. In Chapter 3, we'll add syntax highlighting with `react-syntax-highlighter` and Tailwind's typography plugin to make everything look professional with zero effort.\n"}]}]
-a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-27:I[27201,["/_next/static/chunks/0r7n~75v~2g-i.js"],"IconMark"]
-7:null
-c:[["$","title","0",{"children":"Tam's blog"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L27","3",{}]]
+0:{"P":null,"c":["","blog","nextjs-ghpages","chapter-02-markdown-pipeline",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","nextjs-ghpages/chapter-02-markdown-pipeline","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0n.kd8dfq-pgr.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06v13rhvmbnl-.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white","children":"Tam's Blog"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/16tbll6al9xh_.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0n.kd8dfq-pgr.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"1Jizpt6el3Jrj3XoNIx07"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-01-first-deploy","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-03-beautiful-code","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/16tbll6al9xh_.js"],"MarkdownCode"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/16tbll6al9xh_.js"],"MarkdownPre"]
+10:[["$","h1",null,{"children":"Chapter 2: The Markdown Pipeline"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-01-first-deploy","children":"← Chapter 1: First Deploy"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-03-beautiful-code","children":"Chapter 3: Beautiful Code →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Big Picture"}],"\n",["$","p",null,{"children":["You have 50 markdown files. You don't want 50 React components. You want to drop a ",["$","$L11",null,{"children":".md"}]," file in a folder and have it appear as a page — automatically."]}],"\n",["$","p",null,{"children":"Here's the pipeline we're building:"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"children":"┌─────────────┐     ┌──────────┐     ┌───────────┐     ┌──────────┐     ┌──────────┐\n│  .md file   │────▶│  fs.read │────▶│gray-matter │────▶│MDXRemote │────▶│HTML page │\n│  on disk    │     │  (Node)  │     │  (parse)   │     │ (render) │     │ (static) │\n└─────────────┘     └──────────┘     └───────────┘     └──────────┘     └──────────┘\n       │                                                                       │\n       │              BUILD TIME (your machine / GitHub Actions)                │\n       └───────────────────────────────────────────────────────────────────────┘\n"}]}],"\n",["$","p",null,{"children":["One React page. Unlimited content. The filesystem ",["$","em",null,{"children":"is"}]," your CMS."]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Step 1: Content Folder Structure"}],"\n",["$","p",null,{"children":"Before writing code, create the folder layout:"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"children":"my-blog/\n  content/\n    algorithms/\n      chapter-00-overview.md\n      chapter-01-linear-search.md\n    docker101/\n      chapter-00-containers.md\n  app/\n    blog/\n      [...slug]/\n        page.tsx        ← one file renders ALL markdown\n  lib/\n    markdown.ts         ← reads folders, finds files\n"}]}],"\n",["$","p",null,{"children":"The folder name becomes the series. The filename becomes the chapter URL."}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Step 2: Install Dependencies"}],"\n",["$","h3",null,{"children":"What is MDX?"}],"\n",["$","p",null,{"children":["MDX is markdown that can contain React components. ",["$","$L11",null,{"children":"next-mdx-remote"}]," renders MDX on the server at build time — the browser receives plain HTML, no JavaScript needed."]}],"\n",["$","h3",null,{"children":"What does gray-matter do?"}],"\n",["$","p",null,{"children":["Markdown files often start with YAML metadata (title, date, tags). ",["$","$L11",null,{"children":"gray-matter"}]," splits that metadata from the content so you can use both separately."]}],"\n",["$","h3",null,{"children":"Install:"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-bash","children":"npm install next-mdx-remote gray-matter remark-gfm\n"}]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Step 3: The Markdown Reader Utility"}],"\n",["$","p",null,{"children":["This utility reads your ",["$","$L11",null,{"children":"content/"}]," folder at build time. It uses Node.js ",["$","$L11",null,{"children":"fs"}]," — no database, no API, no latency."]}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-typescript","children":"// 📁 lib/markdown.ts — create the content reader\n\nimport fs from \"fs\";\nimport path from \"path\";\n\n// All markdown lives here, relative to project root\nconst CONTENT_DIR = \"content\";\n"}]}],"\n",["$","p",null,{"children":"Save. No visible change yet — this is a utility file."}],"\n",["$","p",null,{"children":"Now add the function that lists all series and their chapters:"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-typescript","children":"// 📁 lib/markdown.ts — add below the imports\n\nexport function getAllSeries() {\n  const base = path.join(process.cwd(), CONTENT_DIR);\n  if (!fs.existsSync(base)) return [];\n\n  return fs\n    .readdirSync(base, { withFileTypes: true })\n    .filter((d) => d.isDirectory()) // only folders\n    .map((d) => ({\n      name: d.name,\n      slug: d.name, // used in URLs\n      chapters: fs\n        .readdirSync(path.join(base, d.name))\n        .filter((f) => f.endsWith(\".md\"))\n        .sort(), // alphabetical = chapter order\n    }));\n}\n"}]}],"\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40"]
+13:["$","p",null,{"children":"Next, add the function that reads a single chapter file:"}]
+14:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-typescript","children":"// 📁 lib/markdown.ts — read one markdown file\n\nexport function getChapterContent(series: string, file: string) {\n  const filePath = path.join(process.cwd(), CONTENT_DIR, series, file);\n  if (!fs.existsSync(filePath)) return null;\n  return fs.readFileSync(filePath, \"utf-8\");\n}\n"}]}]
+15:["$","p",null,{"children":"Finally, add the function for listing chapters (used for prev/next navigation):"}]
+16:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-typescript","children":"// 📁 lib/markdown.ts — list chapters in a series\n\nexport function getSeriesChapters(series: string) {\n  const dir = path.join(process.cwd(), CONTENT_DIR, series);\n  if (!fs.existsSync(dir)) return [];\n  return fs\n    .readdirSync(dir)\n    .filter((f) => f.endsWith(\".md\") && f !== \"README.md\")\n    .sort();\n}\n"}]}]
+17:["$","p",null,{"children":"Save. No visible change — this runs only at build time."}]
+18:["$","p",null,{"children":[["$","strong",null,{"children":["Why ",["$","$L11",null,{"children":"fs"}]," and not ",["$","$L11",null,{"children":"fetch"}],"?"]}]," This code runs on your machine (or in GitHub Actions). It reads files directly from disk. The result gets baked into static HTML."]}]
+19:["$","hr",null,{}]
+1a:["$","h2",null,{"children":"Step 4: The Dynamic Route"}]
+1b:["$","h3",null,{"children":["What is ",["$","$L11",null,{"children":"[...slug]"}],"?"]}]
+1c:["$","p",null,{"children":["Next.js uses folder names with brackets for dynamic routes. ",["$","$L11",null,{"children":"[...slug]"}]," is a \"catch-all\" — it matches any number of URL segments:"]}]
+1d:["$","$L12",null,{"children":["$","$L11",null,{"children":"/blog/algorithms/chapter-01  →  slug = [\"algorithms\", \"chapter-01\"]\n/blog/docker101/chapter-00   →  slug = [\"docker101\", \"chapter-00\"]\n"}]}]
+1e:["$","h3",null,{"children":"What does generateStaticParams do?"}]
+1f:["$","p",null,{"children":["At build time, Next.js doesn't know what pages exist (they're just ",["$","$L11",null,{"children":".md"}]," files). ",["$","$L11",null,{"children":"generateStaticParams"}]," scans your content folder and returns every valid URL. Next.js then pre-renders each one as static HTML."]}]
+20:["$","p",null,{"children":"Create the route file:"}]
+21:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-bash","children":"mkdir -p \"app/blog/[...slug]\"\n"}]}]
+22:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"// 📁 app/blog/[...slug]/page.tsx — imports and types\n\nimport { notFound } from \"next/navigation\";\nimport fs from \"fs\";\nimport path from \"path\";\nimport matter from \"gray-matter\";\nimport { MDXRemote } from \"next-mdx-remote/rsc\";\nimport remarkGfm from \"remark-gfm\";\nimport { getSeriesChapters } from \"@/lib/markdown\";\n\ninterface Props {\n  params: Promise<{ slug: string[] }>;\n}\n"}]}]
+23:["$","p",null,{"children":["Now add ",["$","$L11",null,{"children":"generateStaticParams"}]," — this tells Next.js which pages to build:"]}]
+24:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"// 📁 app/blog/[...slug]/page.tsx — tell Next.js what pages exist\n\nexport async function generateStaticParams() {\n  const base = path.join(process.cwd(), \"content\");\n  if (!fs.existsSync(base)) return [];\n\n  const params: { slug: string[] }[] = [];\n  const folders = fs.readdirSync(base, { withFileTypes: true }).filter((d) => d.isDirectory());\n\n  for (const folder of folders) {\n    const files = fs\n      .readdirSync(path.join(base, folder.name))\n      .filter((f) => f.endsWith(\".md\") && f !== \"README.md\");\n    for (const file of files) {\n      // /blog/algorithms/chapter-01 → slug: [\"algorithms\", \"chapter-01\"]\n      params.push({ slug: [folder.name, file.replace(/\\.md$/, \"\")] });\n    }\n  }\n  return params;\n}\n"}]}]
+25:["$","p",null,{"children":"Now the page component — it reads the file and renders it:"}]
+26:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"// 📁 app/blog/[...slug]/page.tsx — the page component\n\nexport default async function BlogPage({ params }: Props) {\n  const { slug } = await params;\n  if (slug.length < 2) return notFound();\n\n  const [series, fileSlug] = slug;\n  const filePath = path.join(\n    process.cwd(), \"content\", series, `${fileSlug}.md`\n  );\n  if (!fs.existsSync(filePath)) return notFound();\n\n  // Separate YAML frontmatter from markdown content\n  const raw = fs.readFileSync(filePath, \"utf-8\");\n  const { content } = matter(raw);\n"}]}]
+27:["$","p",null,{"children":"Continue with the render and navigation:"}]
+28:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"  // 📁 app/blog/[...slug]/page.tsx — render MDX + navigation\n\n  // Build prev/next links from chapter list\n  const chapters = getSeriesChapters(series);\n  const currentFile = `${fileSlug}.md`;\n  const idx = chapters.indexOf(currentFile);\n  const prev = idx > 0 ? chapters[idx - 1] : null;\n  const next = idx < chapters.length - 1 ? chapters[idx + 1] : null;\n\n  return (\n    <article className=\"mx-auto max-w-3xl px-6 py-12\">\n      <div className=\"prose prose-lg max-w-none\">\n        <MDXRemote\n          source={content}\n          options={{\n            mdxOptions: { remarkPlugins: [remarkGfm], format: \"mdx\" },\n          }}\n        />\n      </div>\n"}]}]
+29:["$","p",null,{"children":"Finally, the prev/next navigation at the bottom:"}]
+2a:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"      {/* 📁 app/blog/[...slug]/page.tsx — prev/next nav */}\n\n      <nav className=\"mt-12 flex justify-between border-t pt-6 text-sm\">\n        {prev && (\n          <a\n            href={`/blog/${series}/${prev.replace(\".md\", \"\")}`}\n            className=\"text-teal-600 hover:underline\"\n          >\n            ← Previous\n          </a>\n        )}\n        {next && (\n          <a\n            href={`/blog/${series}/${next.replace(\".md\", \"\")}`}\n            className=\"ml-auto text-teal-600 hover:underline\"\n          >\n            Next →\n          </a>\n        )}\n      </nav>\n    </article>\n  );\n}\n"}]}]
+2b:["$","p",null,{"children":"Save. Now we need a test file to see it work."}]
+2c:["$","hr",null,{}]
+2d:["$","h2",null,{"children":"Step 5: Test It"}]
+2e:["$","p",null,{"children":"Create a sample markdown file:"}]
+2f:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-markdown","children":"<!-- 📁 content/hello/chapter-00-test.md — test content -->\n\n# Hello World\n\nThis is my first blog post. It supports **bold**, _italic_, and `code`.\n\n## A Table\n\n| Feature     | Status |\n| ----------- | ------ |\n| Markdown    | ✅     |\n| Code blocks | ✅     |\n| Tables      | ✅     |\n"}]}]
+30:["$","p",null,{"children":["Save. Refresh. You see your markdown rendered as a styled web page at ",["$","$L11",null,{"children":"http://localhost:3000/blog/hello/chapter-00-test"}],"."]}]
+31:["$","hr",null,{}]
+32:["$","h2",null,{"children":"Step 6: Prev/Next Navigation"}]
+33:["$","p",null,{"children":"Add a second file to test navigation:"}]
+34:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-markdown","children":"<!-- 📁 content/hello/chapter-01-second.md — second chapter -->\n\n# Second Chapter\n\nClick \"← Previous\" below to go back to chapter-00.\n"}]}]
+35:["$","p",null,{"children":"Save. Refresh. You see \"← Previous\" and \"Next →\" links at the bottom of each chapter, connecting them in alphabetical order."}]
+36:["$","hr",null,{}]
+37:["$","h2",null,{"children":"The Mental Model"}]
+38:["$","$L12",null,{"children":["$","$L11",null,{"children":"content/\n  {series}/\n    {chapter}.md         ← add file here\n         │\n         ▼\n/blog/{series}/{chapter} ← page appears here\n         │\n         ▼\nStatic HTML at build     ← no server needed\n"}]}]
+39:["$","p",null,{"children":"Add a folder → new series. Add a file → new chapter. Delete a file → page disappears."}]
+3a:["$","hr",null,{}]
+3b:["$","h2",null,{"children":"Commit"}]
+3c:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-bash","children":"git add .\ngit commit -m \"feat: add markdown pipeline with catch-all route\"\n"}]}]
+3d:["$","hr",null,{}]
+3e:["$","h2",null,{"children":"What's Next"}]
+3f:["$","p",null,{"children":["The page works but code blocks are unstyled monospace. In Chapter 3, we add syntax highlighting with ",["$","$L11",null,{"children":"react-syntax-highlighter"}]," and Tailwind typography to make everything look professional."]}]
+40:["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-01-first-deploy","children":"← Chapter 1: First Deploy"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-03-beautiful-code","children":"Chapter 3: Beautiful Code →"}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+41:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Tam's blog"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L41","3",{}]]
