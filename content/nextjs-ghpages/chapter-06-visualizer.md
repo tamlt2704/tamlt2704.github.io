@@ -4,27 +4,81 @@
 
 ---
 
-## Why Visualize
+## What We're Building
 
-Some things click only when you _see_ them move. Binary search eliminating half the array. Bubble sort swapping adjacent elements. A tree rotating to stay balanced.
+```
+┌─────────────────────────────────────────────────┐
+│  Binary Search for 7                            │
+│                                                 │
+│   ┌───┐ ┌───┐ ┌───┐ ┌═══┐ ┌───┐ ┌───┐ ┌───┐  │
+│   │ 1 │ │ 3 │ │ 5 │ ║ 7 ║ │ 9 │ │11 │ │13 │  │
+│   └───┘ └───┘ └───┘ └═══┘ └───┘ └───┘ └───┘  │
+│                       ▲▲▲                       │
+│              highlighted element                │
+│                                                 │
+│   "Check mid=3: arr[3]=7. Found!"              │
+│                                                 │
+│   [⏮ Start] [← Prev]  2 / 4  [Next →] [End ⏭] │
+└─────────────────────────────────────────────────┘
+```
 
-Text explains the _what_. Code shows the _how_. Visualization shows the _why it works_.
+The reader clicks Prev/Next to step through an algorithm. Each step shows the array with highlighted elements and a label explaining what happened.
 
-## The Component
+---
 
-A step visualizer shows an array (or any data structure) and lets the reader step forward/backward through an algorithm's execution. It's essentially a slideshow where each "slide" is a snapshot of the data at one point in the algorithm.
+## What Is a "Step"?
 
-Create `app/blog/components/StepVisualizer.tsx`:
+A step is a snapshot of data at one moment in an algorithm's execution:
+
+- **data** — the array values (e.g. `[1, 3, 5, 7, 9]`)
+- **highlights** — which indices are "active" (being compared, swapped, found)
+- **label** — a human-readable description ("Compare 5 and 3. Swap!")
+
+The component holds a list of steps and lets the user navigate between them.
+
+---
+
+## Why a JSON String for MDX Props?
+
+MDX cannot handle JSX expressions containing objects inside markdown files. This fails:
+
+```
+<StepVisualizer steps={[{ data: [1,2,3], highlights: [0], label: "hi" }]} />
+```
+
+MDX's parser chokes on the curly braces and object syntax. The workaround: pass steps as a **JSON string** wrapped in single quotes. The component parses it internally:
+
+```
+typeof steps === 'string' ? JSON.parse(steps) : steps
+```
+
+This means in your markdown you write:
+
+```
+<StepVisualizer steps='[{"data":[1,2,3],"highlights":[0],"label":"hi"}]' />
+```
+
+Single quotes around the JSON. The component handles the rest.
+
+---
+
+## Step 1: Create the Component File
 
 ```bash
 touch app/blog/components/StepVisualizer.tsx
 ```
 
+---
+
+## Step 2: Define the Interface and Props
+
 ```tsx
-"use client"; // Interactive — user clicks prev/next buttons
+// 📁 app/blog/components/StepVisualizer.tsx — define types
+"use client"; // Interactive — needs useState for navigation
 
 import { useState } from "react";
 
+// Each step = one snapshot of the algorithm
 interface Step {
   data: number[];
   highlights: number[];
@@ -32,32 +86,68 @@ interface Step {
 }
 
 interface Props {
-  steps: Step[];
+  steps: string | Step[]; // JSON string from MDX, or array directly
   title?: string;
 }
+```
 
+Save. No visual change yet — we need the component body.
+
+---
+
+## Step 3: Parse Steps and Set Up State
+
+```tsx
+// 📁 app/blog/components/StepVisualizer.tsx — component body
 export function StepVisualizer({ steps, title }: Props) {
-  const [current, setCurrent] = useState(0);
-  const step = steps[current];
+  // Parse JSON string from MDX, or use array directly
+  const parsed: Step[] =
+    typeof steps === "string" ? JSON.parse(steps) : steps;
 
+  // Track which step the user is viewing
+  const [current, setCurrent] = useState(0);
+  const step = parsed[current];
+```
+
+---
+
+## Step 4: Render the Array Boxes
+
+```tsx
+  // 📁 app/blog/components/StepVisualizer.tsx — array display
   return (
-    <div className="not-prose my-8 rounded-lg border border-gray-200 bg-white p-5">
-      {title && <p className="mb-3 text-sm font-semibold text-gray-700">{title}</p>}
+    <div className="my-8 rounded-lg border border-gray-200 bg-white p-5">
+      {title && <p className="mb-3 text-sm font-semibold">{title}</p>}
+
+      {/* Each number = a box. Highlighted = teal + scaled up */}
       <div className="mb-4 flex justify-center gap-1">
         {step.data.map((val, i) => (
           <div
             key={i}
             className={`flex h-10 w-10 items-center justify-center rounded border font-mono text-sm transition-all ${
               step.highlights.includes(i)
-                ? "scale-110 border-teal-500 bg-teal-100 text-teal-900"
-                : "border-gray-200 bg-gray-50 text-gray-700"
+                ? "scale-110 border-teal-500 bg-teal-100"
+                : "border-gray-200 bg-gray-50"
             }`}
           >
             {val}
           </div>
         ))}
       </div>
-      <p className="mb-4 text-center text-sm text-gray-600">{step.label}</p>
+```
+
+---
+
+## Step 5: Add the Label and Navigation Buttons
+
+```tsx
+      // 📁 app/blog/components/StepVisualizer.tsx — label + nav
+      {/* Description of what happened this step */}
+      <p className="mb-4 text-center text-sm text-gray-600">
+        {step.label}
+      </p>
+
+      {/* Prev/Next navigation */}
       <div className="flex items-center justify-center gap-3">
         <button
           onClick={() => setCurrent(Math.max(0, current - 1))}
@@ -67,11 +157,11 @@ export function StepVisualizer({ steps, title }: Props) {
           ← Prev
         </button>
         <span className="text-xs text-gray-400">
-          {current + 1}/{steps.length}
+          {current + 1} / {parsed.length}
         </span>
         <button
-          onClick={() => setCurrent(Math.min(steps.length - 1, current + 1))}
-          disabled={current === steps.length - 1}
+          onClick={() => setCurrent(Math.min(parsed.length - 1, current + 1))}
+          disabled={current === parsed.length - 1}
           className="rounded border px-3 py-1 text-sm disabled:opacity-30"
         >
           Next →
@@ -82,62 +172,21 @@ export function StepVisualizer({ steps, title }: Props) {
 }
 ```
 
-## Use It in Markdown
+Save. The component is complete but not yet usable in markdown.
 
-```markdown
-## Binary Search: Step by Step
+---
 
-Watch binary search find `7` in a sorted array:
+## Step 6: Register in MDX
 
-<StepVisualizer
-title="Binary Search for 7"
-steps={[
-{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: "Start: check middle (index 3) = 7" },
-{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: "Found! 7 === 7. Return index 3." }
-]}
-/>
-```
-
-A more interesting example — searching for `11`:
-
-```markdown
-<StepVisualizer
-title="Binary Search for 11"
-steps={[
-{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [0, 1, 2, 3, 4, 5, 6], label: "Full array. lo=0, hi=6" },
-{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [3], label: "Check mid=3: arr[3]=7 < 11. Go right." },
-{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [4, 5, 6], label: "Search right half. lo=4, hi=6" },
-{ data: [1, 3, 5, 7, 9, 11, 13], highlights: [5], label: "Check mid=5: arr[5]=11 === 11. Found!" }
-]}
-/>
-```
-
-The reader clicks through each step. They see the search space shrink. They see _why_ it's O(log n) — not because you told them, but because they watched it happen.
-
-```bash
-git add app/blog/components/StepVisualizer.tsx
-git commit -m "feat: add StepVisualizer component"
-```
-
-## Register It
-
-Add `StepVisualizer` to the components map alongside the existing ones:
-
-| Key              | What it replaces                           | Why                                                     |
-| ---------------- | ------------------------------------------ | ------------------------------------------------------- |
-| `code`           | `` `inline` `` and ` ```fenced``` ` blocks | Adds syntax highlighting via `react-syntax-highlighter` |
-| `pre`            | `<pre>` wrapper around code blocks         | Prevents Tailwind prose from double-styling the block   |
-| `a`              | Every `[link](url)` in markdown            | Strips `.md` extension so chapter links work as routes  |
-| `Quiz`           | `<Quiz />` in markdown                     | Interactive multiple-choice component                   |
-| `CodePlayground` | `<CodePlayground />` in markdown           | Editable, runnable code blocks                          |
-| `StepVisualizer` | `<StepVisualizer />` in markdown           | Step-by-step algorithm visualizer                       |
+Add `StepVisualizer` to the components map so MDX knows about it.
 
 ```tsx
-import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
-import { Quiz } from "@/app/blog/components/Quiz";
-import { CodePlayground } from "@/app/blog/components/CodePlayground";
+// 📁 app/blog/[series]/[slug]/page.tsx — add to imports
 import { StepVisualizer } from "@/app/blog/components/StepVisualizer";
+```
 
+```tsx
+// 📁 app/blog/[series]/[slug]/page.tsx — add to components map
 <MDXRemote
   source={content}
   components={{
@@ -146,101 +195,91 @@ import { StepVisualizer } from "@/app/blog/components/StepVisualizer";
     a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
     Quiz,
     CodePlayground,
-    StepVisualizer,
+    StepVisualizer, // ← new
   }}
   options={{
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      format: "md",
-    },
+    mdxOptions: { remarkPlugins: [remarkGfm], format: "md" },
   }}
-/>;
+/>
 ```
 
-## Composing All Three
-
-The real power is combining components in a single chapter:
-
-`````markdown
-# Bubble Sort
-
-Bubble sort repeatedly swaps adjacent elements that are out of order.
-
-````python
-def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        for j in range(n - 1 - i):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-```⁠
-
-## Watch It Work
-
-<StepVisualizer
-  title="Bubble Sort: [5, 3, 8, 1, 2]"
-  steps={[
-    { data: [5, 3, 8, 1, 2], highlights: [0, 1], label: "Compare 5 and 3. Swap!" },
-    { data: [3, 5, 8, 1, 2], highlights: [1, 2], label: "Compare 5 and 8. No swap." },
-    { data: [3, 5, 8, 1, 2], highlights: [2, 3], label: "Compare 8 and 1. Swap!" },
-    { data: [3, 5, 1, 8, 2], highlights: [3, 4], label: "Compare 8 and 2. Swap!" },
-    { data: [3, 5, 1, 2, 8], highlights: [4], label: "Pass 1 done. 8 is in place." }
-  ]}
-/>
-
-## Try It
-
-<CodePlayground
-  language="javascript"
-  initialCode={`
-function bubbleSort(arr) {
-  const n = arr.length;
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n - 1 - i; j++) {
-      if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-      }
-    }
-  }
-  return arr;
-}
-
-console.log(bubbleSort([5, 3, 8, 1, 2]));
-`}
-/>
-
-## Check Understanding
-
-<Quiz
-  question="What is the worst-case time complexity of bubble sort?"
-  options='["O(n)", "O(n log n)", "O(n²)", "O(log n)"]'
-  answer="2"
-  explanation="Two nested loops over n elements = n × n = O(n²)"
-/>
-````
-`````
-
-````
-
-One chapter. Three interactive elements. The reader:
-
-1. Reads the explanation
-2. Watches the algorithm step by step
-3. Experiments with the code
-4. Tests their understanding
-
-That's a teaching machine, not a blog post.
+Save. Refresh. No visible change yet — we haven't used it in any markdown file.
 
 ---
 
-## Commit Your Progress
+## Step 7: Use It in Markdown
+
+Now use the component in a `.md` file. Remember: **JSON string in single quotes**.
+
+```markdown
+## Binary Search: Step by Step
+
+<StepVisualizer
+  title="Binary Search for 11"
+  steps='[
+    {"data":[1,3,5,7,9,11,13],"highlights":[0,1,2,3,4,5,6],"label":"Full array. lo=0, hi=6"},
+    {"data":[1,3,5,7,9,11,13],"highlights":[3],"label":"Check mid=3: arr[3]=7 < 11. Go right."},
+    {"data":[1,3,5,7,9,11,13],"highlights":[4,5,6],"label":"Search right half. lo=4, hi=6"},
+    {"data":[1,3,5,7,9,11,13],"highlights":[5],"label":"Check mid=5: arr[5]=11. Found!"}
+  ]'
+/>
+```
+
+Save. Refresh. You see a row of numbered boxes with Prev/Next buttons. Click Next — the highlights move and the label updates. You're watching binary search eliminate half the array each step.
+
+---
+
+## How It All Connects
+
+```
+Markdown file                    MDX rendering
+─────────────                    ─────────────
+<StepVisualizer                  components map finds
+  steps='[{"data":...}]'  ──►   StepVisualizer component
+/>                               │
+                                 ▼
+                          JSON.parse(steps)
+                                 │
+                                 ▼
+                          useState(0) tracks current step
+                          Prev/Next buttons update state
+                          Array boxes re-render with highlights
+```
+
+---
+
+## Combining All Three Components
+
+One chapter can use StepVisualizer, CodePlayground, and Quiz together:
+
+```markdown
+## Bubble Sort
+
+<StepVisualizer
+  title="Bubble Sort: [5, 3, 8, 1, 2]"
+  steps='[
+    {"data":[5,3,8,1,2],"highlights":[0,1],"label":"Compare 5 and 3. Swap!"},
+    {"data":[3,5,8,1,2],"highlights":[1,2],"label":"Compare 5 and 8. No swap."},
+    {"data":[3,5,8,1,2],"highlights":[2,3],"label":"Compare 8 and 1. Swap!"},
+    {"data":[3,5,1,8,2],"highlights":[3,4],"label":"Compare 8 and 2. Swap!"},
+    {"data":[3,5,1,2,8],"highlights":[4],"label":"Pass 1 done. 8 is in place."}
+  ]'
+/>
+```
+
+Save. Refresh. You see the bubble sort animation — each click shows one comparison or swap.
+
+---
+
+## Commit
 
 ```bash
-git add .
-git commit -m "feat: add StepVisualizer component for algorithm walkthroughs"
+git add app/blog/components/StepVisualizer.tsx
+git commit -m "feat: add StepVisualizer component"
 ```
+
+---
 
 ## What's Next
 
-Chapter 7 ties it all together — navigation between chapters, SEO metadata, a landing page that lists all series, and the final deploy. Your interactive learning platform goes live.
-````
+Chapter 7 ties it all together — navigation between chapters, SEO metadata, and the final deploy. Your interactive learning platform goes live.

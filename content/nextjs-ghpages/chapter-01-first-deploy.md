@@ -6,17 +6,43 @@
 
 ## The Goal
 
-By the end of this chapter, you'll have a Next.js site live at `https://yourusername.github.io`. It'll show one page with one sentence. That's enough — the pipeline is what matters.
+By the end of this chapter, you'll have a Next.js site live at `https://yourusername.github.io`. One page, one sentence. The pipeline is what matters.
 
-## Option A: Start with a Dev Container (Recommended)
+## What You'll Build
 
-If you set up the devcontainer from Chapter 0, you can start coding immediately in the cloud. Create a new repo on GitHub, add the `.devcontainer/devcontainer.json`, open a Codespace, and you're ready.
+```
+┌─────────────────────────────────────────────────────────┐
+│  YOUR MACHINE                                           │
+│                                                         │
+│  ┌──────────┐    ┌──────────────┐    ┌──────────────┐  │
+│  │ app/     │───▶│ next build   │───▶│ out/ folder  │  │
+│  │ page.tsx │    │ (static      │    │ (HTML, CSS,  │  │
+│  └──────────┘    │  export)     │    │  JS files)   │  │
+│                  └──────────────┘    └──────┬───────┘  │
+│                                             │          │
+└─────────────────────────────────────────────┼──────────┘
+                                              │ git push
+                                              ▼
+┌─────────────────────────────────────────────────────────┐
+│  GITHUB                                                 │
+│                                                         │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────┐  │
+│  │ Actions      │───▶│ gh-pages     │───▶│ GitHub   │  │
+│  │ (rebuilds    │    │ branch       │    │ Pages    │  │
+│  │  on push)    │    │ (static      │    │ (serves  │  │
+│  └──────────────┘    │  files)      │    │  site)   │  │
+│                      └──────────────┘    └──────────┘  │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
 
-But the devcontainer needs a project to work with. Let's create one.
+Every push triggers this pipeline automatically. Write → push → live.
 
-## Option B: Local Setup
+---
 
-If you're working locally, make sure you have Node.js 20+ installed:
+## Step 1: Check Your Environment
+
+If you set up the devcontainer from Chapter 0, skip this. Otherwise, verify Node.js locally:
 
 ```bash
 # Check your Node version — needs to be 20 or higher
@@ -24,164 +50,171 @@ node --version
 # v20.x.x or v22.x.x
 ```
 
-## Create the Project (Pinned Versions)
+---
 
-We pin every dependency to an exact version. This prevents "it worked yesterday but broke today" situations where a minor update introduces breaking changes.
+## Step 2: Create the Project
+
+We pin `create-next-app` to an exact version so everyone following this series gets identical output.
 
 ```bash
-# Create a new Next.js project with TypeScript, Tailwind, App Router, and React Compiler
-# We pin to version 16.1.6 — the same version used throughout this series
-# --typescript: adds TypeScript support (type checking)
-# --tailwind: adds Tailwind CSS (utility-first styling)
-# --app: uses the App Router (modern Next.js routing)
-# --no-src-dir: puts app/ at the root (simpler structure for a blog)
-# --react-compiler: enables the React Compiler (automatic memoization)
-npx create-next-app@16.1.6 . --typescript --tailwind --app --no-src-dir --eslint --react-compiler --force
+# Scaffold Next.js into the CURRENT folder (not a subfolder)
+# --force: allows scaffolding even if .husky/, .prettierrc exist
+npx create-next-app@16.1.6 . \
+  --typescript --tailwind --app \
+  --no-src-dir --eslint --react-compiler --force
 ```
 
 Say **yes** to the import alias (`@/*`).
 
-**Why `.` instead of `my-blog`?** Using `.` scaffolds into the current folder instead of creating a subfolder. This means your existing `.husky/`, `.prettierrc`, `eslint`, and `lint-staged` configs are automatically picked up — no duplication, no conflicts.
+**Why `.` instead of a folder name?** Scaffolds into the current directory — your existing configs (`.husky/`, `.prettierrc`) are preserved, not duplicated.
 
-**Why `--force`?** `create-next-app` refuses to scaffold into a folder that already has files (like `.husky/`, `package.json`, `.prettierrc`). The `--force` flag tells it to proceed anyway and merge — your existing configs are preserved.
+**Why `--force`?** Without it, `create-next-app` refuses to run in a non-empty folder.
 
-**What is the React Compiler?** Before React 19, you had to manually tell React "don't re-render this unless these values change" using `useMemo`, `useCallback`, and `React.memo`. It was easy to forget, easy to get wrong, and added noise to every component.
+**What is `--react-compiler`?** Before React 19, you manually added `useMemo`/`useCallback` everywhere to prevent re-renders. The React Compiler does this automatically at build time. You write plain components; it optimizes them.
 
-The React Compiler is a build-time tool that analyzes your code and adds that memoization automatically. You write plain components. The compiler figures out what to optimize. No manual `useMemo` needed.
+---
 
-| Without React Compiler                        | With React Compiler                         |
-| --------------------------------------------- | ------------------------------------------- |
-| Manual `useMemo`, `useCallback`, `React.memo` | Write plain functions — compiler handles it |
-| Easy to forget, causes unnecessary re-renders | Automatic, consistent, always correct       |
-| Adds noise to every component                 | Clean, readable components                  |
+## Step 3: Pin Dependency Versions
 
-The `--react-compiler` flag installs `babel-plugin-react-compiler` and enables it in `next.config.ts` via `experimental.reactCompiler: true` automatically — no manual setup needed.
+### Why pin?
 
-Now let's pin the versions. Open `package.json` and replace the dependency versions with exact numbers (no `^` prefix — that allows auto-upgrades):
+The `^` prefix (e.g. `"^15.1.0"`) means "any compatible version up to the next major." Libraries sometimes ship bugs in minor releases. Pinning to exact versions means your build is reproducible — today, tomorrow, next year.
+
+### Core dependencies
 
 ```jsonc
+// 📁 package.json — replace dependency versions (remove ^ prefixes)
 {
   "dependencies": {
-    // Core framework — pinned to exact versions used in this series
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-
-    // Markdown rendering — converts .md files to React components
-    "next-mdx-remote": "6.0.0",
-    "gray-matter": "4.0.3", // Parses YAML frontmatter from markdown
-    "remark-gfm": "4.0.1", // GitHub-flavored markdown (tables, task lists)
-
-    // Syntax highlighting — colors code blocks by language
-    "react-syntax-highlighter": "16.1.1",
-    "@types/react-syntax-highlighter": "15.5.13",
   },
+}
+```
+
+### Markdown dependencies (for the blog pipeline)
+
+```jsonc
+// 📁 package.json — add these to "dependencies"
+{
+  "next-mdx-remote": "6.0.0",
+  "gray-matter": "4.0.3",
+  "remark-gfm": "4.0.1",
+  "react-syntax-highlighter": "16.1.1",
+  "@types/react-syntax-highlighter": "15.5.13",
+}
+```
+
+### Dev dependencies
+
+```jsonc
+// 📁 package.json — replace devDependency versions
+{
   "devDependencies": {
-    // TypeScript — type checking at build time
     "typescript": "5.7.0",
     "@types/node": "20.17.0",
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0",
-
-    // Tailwind CSS v4 — utility-first styling
     "tailwindcss": "4.0.0",
     "@tailwindcss/postcss": "4.0.0",
-    "@tailwindcss/typography": "0.5.19", // Beautiful prose styling
-
-    // Code quality
+    "@tailwindcss/typography": "0.5.19",
     "eslint": "9.17.0",
     "eslint-config-next": "16.1.6",
     "prettier": "3.4.2",
-    "prettier-plugin-tailwindcss": "0.6.9", // Auto-sorts Tailwind classes
-
-    // React Compiler — automatically memoizes components at build time
+    "prettier-plugin-tailwindcss": "0.6.9",
     "babel-plugin-react-compiler": "19.1.0",
   },
 }
 ```
 
-Install everything:
+Now install everything:
 
 ```bash
-npm install    # Downloads all packages listed in package.json
+npm install
 ```
 
-> **Why pin versions?** The `^` prefix (e.g. `"^15.1.0"`) means "any compatible version up to 16.0.0." That sounds safe, but libraries sometimes introduce bugs in minor releases. Pinning to exact versions means your project builds the same way today, tomorrow, and next year. Update manually when you're ready.
+---
 
-## Install the Markdown Plugins
+## Step 4: Install Markdown Plugins
 
-These aren't included by `create-next-app` — we need them for our blog pipeline:
+These aren't included by `create-next-app` — we need them for the blog pipeline in later chapters:
 
 ```bash
-# next-mdx-remote: renders markdown as React components (supports custom components in .md)
-# gray-matter: extracts YAML metadata from the top of markdown files
-# remark-gfm: adds GitHub-flavored markdown support (tables, strikethrough, checkboxes)
+# Renders .md files as React components
 npm install next-mdx-remote@6.0.0 gray-matter@4.0.3 remark-gfm@4.0.1
+```
 
-# react-syntax-highlighter: applies color themes to code blocks
+```bash
+# Syntax highlighting for code blocks
 npm install react-syntax-highlighter@16.1.1
 npm install -D @types/react-syntax-highlighter@15.5.13
+```
 
-# Tailwind typography plugin: makes prose (paragraphs, headings, lists) look professional
+```bash
+# Typography plugin + Prettier with Tailwind class sorting
 npm install -D @tailwindcss/typography@0.5.19
-
-# Prettier + Tailwind class sorting
 npm install -D prettier@3.4.2 prettier-plugin-tailwindcss@0.6.9
 ```
 
-## Configure for Static Export
+---
 
-GitHub Pages serves static files — it can't run a Node.js server. We need to tell Next.js to output plain HTML/CSS/JS instead of expecting a server.
+## Step 5: Configure Static Export
 
-Open `next.config.ts`:
+### What is static export?
+
+By default, Next.js expects a Node.js server to render pages on each request. GitHub Pages can't run servers — it only serves static files. Setting `output: "export"` tells Next.js: "pre-build every page as plain HTML at build time."
+
+| Default mode                | Static export (`output: "export"`)   |
+| --------------------------- | ------------------------------------ |
+| Needs a Node.js server      | Just static files — any host works   |
+| Pages rendered per request  | Pages pre-built at build time        |
+| API routes, middleware work | Only static/client features          |
+| Deploy to Vercel, Railway   | Deploy to GitHub Pages, S3, anywhere |
+
+### The config file
 
 ```typescript
+// 📁 next.config.ts — replace entire file contents
 import type { NextConfig } from "next";
 
-// NextConfig is a TypeScript type that defines all valid configuration options
-// Your editor will autocomplete and validate these settings
 const nextConfig: NextConfig = {
-  // "export" mode: `next build` generates a static `out/` folder
-  // Instead of a server that renders pages on request, ALL pages are pre-built as HTML files
+  // Generate static HTML in out/ instead of requiring a server
   output: "export",
 
-  // GitHub Pages can't run Next.js's image optimization server
-  // This tells Next.js to use standard <img> tags instead
-  images: {
-    unoptimized: true,
-  },
+  // GitHub Pages can't run Next.js's image optimizer
+  images: { unoptimized: true },
 
-  // Enables the React Compiler — automatically optimizes components at build time
-  // Added automatically by --react-compiler flag in create-next-app
-  experimental: {
-    reactCompiler: true,
-  },
+  // React Compiler: auto-memoizes components at build time
+  experimental: { reactCompiler: true },
 };
 
 export default nextConfig;
 ```
 
-**What changes with `output: "export"`:**
+Save. Run `npm run build`. You see an `out/` folder appear — that's your entire site as static files.
 
-| Without (default)                                     | With `output: "export"`                       |
-| ----------------------------------------------------- | --------------------------------------------- |
-| Needs a Node.js server to run                         | Just static files — any web host works        |
-| Pages rendered on each request                        | Pages pre-built at build time                 |
-| Can use server-side features (API routes, middleware) | Only static/client features                   |
-| Deploy to Vercel, Railway, etc.                       | Deploy to GitHub Pages, Netlify, S3, anywhere |
+---
 
-## Your First Page
+## Step 6: Your First Page
 
-Replace `app/page.tsx` with something simple. In Next.js App Router, every `page.tsx` file inside the `app/` folder becomes a route. This one is at the root, so it's your homepage (`/`):
+### How routing works in App Router
+
+Every `page.tsx` inside the `app/` folder becomes a URL route:
+
+- `app/page.tsx` → `/` (homepage)
+- `app/about/page.tsx` → `/about`
+- `app/blog/[slug]/page.tsx` → `/blog/any-post-name`
+
+The function is a React Server Component — it runs at build time, not in the browser.
+
+### Write the homepage
 
 ```tsx
-// app/page.tsx
-// This is a React Server Component — it runs at build time, not in the browser.
-// The function name doesn't matter, but it must be the default export.
+// 📁 app/page.tsx — replace entire file contents
 export default function Home() {
   return (
-    // Tailwind classes: max-w-2xl = max width 672px, mx-auto = center horizontally
-    // px-6 = padding left/right 24px, py-20 = padding top/bottom 80px
+    // max-w-2xl = 672px max width, mx-auto = center horizontally
     <main className="mx-auto max-w-2xl px-6 py-20">
       <h1 className="text-3xl font-bold text-gray-900">My Blog</h1>
       <p className="mt-4 text-gray-600">This site teaches back.</p>
@@ -190,111 +223,121 @@ export default function Home() {
 }
 ```
 
-If you're new to Tailwind: instead of writing CSS in a separate file, you apply small utility classes directly. `text-3xl` = font-size 30px. `font-bold` = font-weight 700. `mt-4` = margin-top 16px. It feels weird at first, then you never go back.
+If you're new to Tailwind: instead of CSS files, you apply utility classes directly. `text-3xl` = 30px font. `font-bold` = weight 700. `mt-4` = 16px margin-top.
 
-Test locally:
+Save. Run `npm run dev`. Open `http://localhost:3000`. You see a centered heading "My Blog" with a subtitle below it.
 
-```bash
-npm run dev
-```
+---
 
-Open `http://localhost:3000`. You see your page. Good.
+## Step 7: Update the Site Title
 
-Now build the static version:
-
-```bash
-npm run build
-```
-
-Look at the `out/` folder that appeared. That's your entire site — plain HTML, CSS, and JS files. No server needed. That's what GitHub Pages will serve.
-
-## Update Your Blog Title
-
-`create-next-app` sets a default title of "Create Next App". Update it now in `app/layout.tsx`:
+`create-next-app` sets a default title of "Create Next App." Fix it now:
 
 ```tsx
+// 📁 app/layout.tsx — find the metadata export and update it
 export const metadata: Metadata = {
-  title: "Your Blog Name", // Shown in browser tabs and search results
+  // Shown in browser tabs and search engine results
+  title: "Your Blog Name",
   description: "Your blog description",
 };
 ```
 
-This is the global title. Individual pages can override it with their own `generateMetadata` export — covered in Chapter 7.
+Save. Refresh. You see your custom title in the browser tab.
+
+---
+
+## Step 8: Push to GitHub
+
+Create a repository on GitHub named `yourusername.github.io` (for a user site).
 
 ```bash
-git add app/layout.tsx
-git commit -m "chore: update blog title and description"
+git init
+git add .
+git commit -m "chore: initial project setup"
 ```
 
-## Push to GitHub
-
-Create a repository on GitHub. Name it `yourusername.github.io` for a user site, or anything else for a project site.
-
-These git commands initialize your project and push it to GitHub:
-
 ```bash
-git init                    # Create a new git repository in this folder
-git add .                   # Stage all files for commit
-git commit -m "chore: initial project setup"  # Save the current state
-git remote add origin https://github.com/yourusername/yourusername.github.io.git  # Link to GitHub
-git push -u origin main     # Push code to GitHub (-u sets up tracking for future pushes)
+# Link your local repo to GitHub and push
+git remote add origin https://github.com/YOU/YOU.github.io.git
+git push -u origin main
 ```
 
-## The Deploy Workflow
+---
 
-GitHub Actions is a CI/CD system built into GitHub. You define a workflow in a YAML file, and GitHub runs it automatically when certain events happen (like pushing code).
+## Step 9: The Deploy Workflow
 
-Create `.github/workflows/deploy.yml`:
+### What is GitHub Actions?
+
+A CI/CD system built into GitHub. You define a YAML file describing steps to run. GitHub executes them on a fresh Linux VM every time you push.
+
+### What this workflow does
+
+```
+push to main
+    ↓
+GitHub spins up a Linux VM
+    ↓
+Installs Node.js + your dependencies
+    ↓
+Runs `next build` → generates out/ folder
+    ↓
+Pushes out/ to the gh-pages branch
+    ↓
+GitHub Pages serves gh-pages as your site
+```
+
+### Create the workflow file
 
 ```bash
-mkdir -p .github/workflows && touch .github/workflows/deploy.yml
+mkdir -p .github/workflows
 ```
 
 ```yaml
-# This file tells GitHub: "every time I push to main, build my site and deploy it"
+# 📁 .github/workflows/deploy.yml — create this file
 name: Deploy to GitHub Pages
 
-# Trigger: run this workflow whenever code is pushed to the main branch
+# Run on every push to main
 on:
   push:
     branches: [main]
 
-# Permission: allow the workflow to push to the gh-pages branch
+# Allow pushing to gh-pages branch
 permissions:
   contents: write
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest # Use a fresh Linux machine (free, provided by GitHub)
-    steps:
-      - uses: actions/checkout@v4 # Step 1: Download your code
-      - uses: actions/setup-node@v4 # Step 2: Install Node.js
-        with:
-          node-version: 20
-      - run: npm install # Step 3: Install dependencies (next, react, etc.)
-      - run: npm run build # Step 4: Build static HTML into out/ folder
-      - run: touch out/.nojekyll # Step 5: Tell GitHub Pages "don't use Jekyll"
-      - uses: peaceiris/actions-gh-pages@v3 # Step 6: Push out/ folder to gh-pages branch
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Auto-provided by GitHub, no setup needed
-          publish_dir: ./out # Which folder to deploy
 ```
 
-**Line-by-line breakdown:**
+```yaml
+# 📁 .github/workflows/deploy.yml — continued (same file)
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run build
+      # Prevents GitHub from processing files with Jekyll
+      - run: touch out/.nojekyll
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+```
 
-| Line                            | What it does                                                 |
+### Line-by-line explanation
+
+| Line                            | Why                                                          |
 | ------------------------------- | ------------------------------------------------------------ |
-| `on: push: branches: [main]`    | Only runs when you push to `main` (not other branches)       |
-| `permissions: contents: write`  | Allows the action to create/update the `gh-pages` branch     |
-| `runs-on: ubuntu-latest`        | GitHub gives you a free Linux VM for ~6 minutes              |
-| `actions/checkout@v4`           | Clones your repo into the VM                                 |
-| `actions/setup-node@v4`         | Installs Node.js 20 on the VM                                |
-| `npm run build`                 | Runs `next build` which generates static files in `out/`     |
-| `touch out/.nojekyll`           | Creates an empty file that prevents Jekyll processing        |
-| `peaceiris/actions-gh-pages@v3` | A community action that pushes a folder to `gh-pages` branch |
-| `${{ secrets.GITHUB_TOKEN }}`   | A token GitHub auto-generates — you don't need to create it  |
+| `on: push: branches: [main]`    | Only deploys from main — feature branches don't go live      |
+| `permissions: contents: write`  | The action needs to create/update the `gh-pages` branch      |
+| `runs-on: ubuntu-latest`        | Free Linux VM from GitHub (~6 min runtime)                   |
+| `touch out/.nojekyll`           | Without this, GitHub ignores `_next/` (Next.js asset folder) |
+| `peaceiris/actions-gh-pages@v3` | Community action that pushes a folder to a branch            |
+| `${{ secrets.GITHUB_TOKEN }}`   | Auto-generated by GitHub — no manual setup needed            |
 
-Commit and push:
+### Push the workflow
 
 ```bash
 git add .
@@ -302,35 +345,41 @@ git commit -m "feat: add GitHub Actions deploy workflow"
 git push
 ```
 
-## Enable GitHub Pages
+Save. Push. You see the Actions tab in GitHub running your workflow (yellow dot → green checkmark).
 
-Go to your repo → Settings → Pages → Source: **Deploy from a branch** → Branch: `gh-pages` / `/ (root)` → Save.
+---
+
+## Step 10: Enable GitHub Pages
+
+1. Go to your repo → **Settings** → **Pages**
+2. Source: **Deploy from a branch**
+3. Branch: `gh-pages` / `/ (root)`
+4. Click **Save**
 
 Wait 2 minutes. Visit `https://yourusername.github.io`.
 
-Your page is live.
+You see your page live on the internet.
+
+---
+
+## The `.nojekyll` File — Why It Matters
+
+GitHub Pages assumes sites are Jekyll projects by default. Jekyll ignores files and folders starting with `_`. Next.js generates all its assets in `_next/`. Without `.nojekyll`, your CSS and JS won't load.
+
+One empty file. Critical.
+
+---
 
 ## What Just Happened
 
 ```
-You write code
-    ↓ git push
-GitHub Actions runs
-    ↓ npm run build
-Static HTML generated in out/
-    ↓ pushed to gh-pages branch
-GitHub Pages serves it
-    ↓
-The world sees your site
+┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐
+│ You write│────▶│ git push │────▶│ Actions  │────▶│ Site is  │
+│ code     │     │          │     │ builds   │     │ live     │
+└──────────┘     └──────────┘     └──────────┘     └──────────┘
 ```
 
-Every future push triggers this automatically. Write → push → live. No deploy commands, no servers, no bills.
-
-## The `.nojekyll` File
-
-Without it, GitHub Pages assumes your site is a Jekyll project and ignores files starting with `_`. Next.js generates `_next/` for its assets. The `.nojekyll` file says "serve everything as-is."
-
-One empty file. Critical.
+Every future push triggers this automatically. No deploy commands, no servers, no bills.
 
 ---
 
@@ -342,8 +391,12 @@ git commit -m "feat: scaffold Next.js project with static export"
 git push
 ```
 
+---
+
 ## What's Next
 
-We have a live site with one page. Boring. In Chapter 2, we'll build the markdown pipeline — drop a `.md` file in a folder and it automatically becomes a blog post with syntax highlighting, navigation, and beautiful typography.
+We have a live site with one page. In Chapter 2, we build the markdown pipeline — drop a `.md` file in a folder and it automatically becomes a blog post with syntax highlighting, navigation, and beautiful typography.
 
 The content drives the site. Not the other way around.
+
+[← Chapter 0: Overview](/blog/nextjs-ghpages/chapter-00-overview) | [Chapter 2: The Markdown Pipeline →](/blog/nextjs-ghpages/chapter-02-markdown-pipeline)

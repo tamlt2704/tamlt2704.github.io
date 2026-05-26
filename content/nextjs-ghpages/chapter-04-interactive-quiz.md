@@ -4,105 +4,161 @@
 
 ---
 
-## The Moment It Gets Interesting
+## What We're Building
 
-Your blog has beautiful markdown rendering. Syntax highlighting. Typography. But the reader is still passive — scrolling, reading, maybe copying a code snippet. There's no feedback loop. No "did I actually understand that?"
+A quiz that lives inside your markdown. The reader clicks an answer, gets instant feedback:
 
-What if, after explaining binary search, you could write this in your markdown:
-
-```markdown
-## Quick Check
-
-<Quiz
-question="What is the time complexity of binary search?"
-options='["O(n)", "O(log n)", "O(n log n)", "O(1)"]'
-answer="1"
-/>
+```
+┌─────────────────────────────────────────────────┐
+│  What is the time complexity of binary search?  │
+│                                                 │
+│  ┌─────────────────────────────────────────┐    │
+│  │ A. O(n)                                 │    │
+│  └─────────────────────────────────────────┘    │
+│  ┌─────────────────────────────────────────┐    │
+│  │ B. O(log n)                        ← ✓  │    │
+│  └─────────────────────────────────────────┘    │
+│  ┌─────────────────────────────────────────┐    │
+│  │ C. O(n log n)                           │    │
+│  └─────────────────────────────────────────┘    │
+│  ┌─────────────────────────────────────────┐    │
+│  │ D. O(1)                                 │    │
+│  └─────────────────────────────────────────┘    │
+│                                                 │
+│  ┌─────────────────────────────────────────┐    │
+│  │ ✅ Correct!                              │    │
+│  └─────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────┘
 ```
 
-And the reader sees a multiple-choice question. They click an answer. Green flash for correct. Red shake for wrong. Instant feedback, right where the concept was explained.
+Three steps: build the component, register it with MDX, use it in markdown.
 
-That's what we're building.
+---
 
-## The Quiz Component
+## Concept: Why "use client"?
 
-The Quiz component needs to be a **client component** (runs in the browser) because it uses `useState` for interactivity. Server components can't handle clicks or state changes.
+Next.js renders pages on the server by default. Server components can't respond to clicks or track state — they produce static HTML.
 
-Create `app/blog/components/Quiz.tsx`:
+When a component needs interactivity (clicks, typing, animations), you mark it with `"use client"`. This tells Next.js: "Ship this component's JavaScript to the browser so it can respond to user actions."
 
-```bash
-touch app/blog/components/Quiz.tsx
+Our Quiz needs clicks → it must be a client component.
+
+---
+
+## Concept: What useState Does
+
+`useState` gives a component memory that survives re-renders.
+
 ```
+const [selected, setSelected] = useState(null)
+         │              │                    │
+         │              │                    └── initial value
+         │              └── function to update it
+         └── current value (read this to display)
+```
+
+When you call `setSelected(2)`, React re-renders the component with `selected` now equal to `2`. The UI updates automatically.
+
+---
+
+## Step 1: Create the Quiz Component
 
 ```tsx
-"use client"; // This directive marks it as a client component (runs in browser, not at build time)
+// 📁 app/blog/components/Quiz.tsx — create this file
 
-import { useState } from "react"; // React hook for managing state that changes over time
+"use client"; // Enables interactivity (clicks, state)
 
-// TypeScript interface: defines what props this component accepts
-// This acts as documentation AND catches errors if you pass wrong data
+import { useState } from "react";
+
 interface QuizProps {
-  question: string; // The question text
-  options: string[]; // Array of answer choices, e.g. ["O(n)", "O(log n)", ...]
-  answer: number; // Index of the correct answer (0-based)
-  explanation?: string; // Optional explanation shown after answering (? = optional)
+  question: string;
+  options: string[]; // ["O(n)", "O(log n)", ...]
+  answer: number; // Index of correct answer (0-based)
+  explanation?: string;
 }
+```
+
+This is the top of the file: the directive, the import, and the type definition. The `interface` tells TypeScript exactly what props the component accepts — it catches mistakes before runtime.
+
+Now the component body with state:
+
+```tsx
+// 📁 app/blog/components/Quiz.tsx — add below the interface
 
 export function Quiz({ question, options, answer, explanation }: QuizProps) {
-  // useState returns [currentValue, setterFunction]
-  // selected: which option the user clicked (null = hasn't clicked yet)
+  // Track which option was clicked (null = not yet answered)
   const [selected, setSelected] = useState<number | null>(null);
-  // revealed: whether to show the answer (prevents clicking again)
+  // Lock the quiz after answering so they can't re-click
   const [revealed, setRevealed] = useState(false);
 
   const handleSelect = (index: number) => {
-    if (revealed) return; // Already answered — ignore further clicks
-    setSelected(index); // Remember which option was clicked
-    setRevealed(true); // Lock in the answer, show result
+    if (revealed) return; // Already answered, ignore
+    setSelected(index);
+    setRevealed(true);
   };
+```
 
-  const isCorrect = selected === answer;
+Two pieces of state, one handler. That's the entire logic.
+
+Now the render — the question and option buttons:
+
+```tsx
+// 📁 app/blog/components/Quiz.tsx — return statement inside Quiz
 
   return (
-    // my-8 = vertical margin, p-6 = padding, rounded-lg = rounded corners
     <div className="my-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
       <p className="mb-4 font-semibold text-gray-900">{question}</p>
-
-      {/* space-y-2 = 8px gap between each button */}
       <div className="space-y-2">
-        {/* .map() renders one button per option */}
         {options.map((option, i) => {
-          // Determine button style based on state
-          let style = "border-gray-200 bg-white hover:border-teal-400"; // default
-          if (revealed) {
-            if (i === answer)
-              style = "border-green-500 bg-green-50"; // correct answer: green
-            else if (i === selected)
-              style = "border-red-400 bg-red-50"; // wrong selection: red
-            else style = "border-gray-200 bg-white opacity-60"; // other options: faded
-          }
+          let style = "border-gray-200 bg-white hover:border-teal-400";
+          if (revealed && i === answer)
+            style = "border-green-500 bg-green-50";
+          else if (revealed && i === selected)
+            style = "border-red-400 bg-red-50";
+          else if (revealed)
+            style = "border-gray-200 bg-white opacity-60";
+```
+
+Each button gets a different style after the answer is revealed: green for correct, red for wrong pick, faded for the rest.
+
+The button itself and the result message:
+
+```tsx
+// 📁 app/blog/components/Quiz.tsx — continue inside the .map()
 
           return (
             <button
-              key={i} // React needs unique key for list items
-              onClick={() => handleSelect(i)} // When clicked, select this option
-              disabled={revealed} // Can't click after answering
+              key={i}
+              onClick={() => handleSelect(i)}
+              disabled={revealed}
               className={`w-full rounded-md border px-4 py-3 text-left text-sm transition ${style}`}
             >
-              {/* String.fromCharCode(65) = "A", 66 = "B", etc. */}
-              <span className="mr-3 font-mono text-gray-400">{String.fromCharCode(65 + i)}.</span>
+              <span className="mr-3 font-mono text-gray-400">
+                {String.fromCharCode(65 + i)}.
+              </span>
               {option}
             </button>
           );
         })}
       </div>
+```
 
-      {/* Only show result after user has answered */}
+`String.fromCharCode(65 + i)` converts 0→"A", 1→"B", 2→"C", 3→"D".
+
+Finally, the result feedback:
+
+```tsx
+// 📁 app/blog/components/Quiz.tsx — after the buttons div, before closing </div>
+
       {revealed && (
-        <div
-          className={`mt-4 rounded p-3 text-sm ${isCorrect ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
-        >
-          {isCorrect ? "Correct!" : `Not quite. The answer is ${String.fromCharCode(65 + answer)}.`}
+        <div className={`mt-4 rounded p-3 text-sm ${
+          selected === answer
+            ? "bg-green-100 text-green-800"
+            : "bg-red-100 text-red-800"
+        }`}>
+          {selected === answer
+            ? "Correct!"
+            : `Not quite. The answer is ${String.fromCharCode(65 + answer)}.`}
           {explanation && <p className="mt-1 text-gray-700">{explanation}</p>}
         </div>
       )}
@@ -111,34 +167,72 @@ export function Quiz({ question, options, answer, explanation }: QuizProps) {
 }
 ```
 
-**How the state machine works:**
+Save. Refresh. Nothing visible yet — we haven't wired it to MDX.
 
-| State       | `selected` | `revealed` | What user sees                                           |
-| ----------- | ---------- | ---------- | -------------------------------------------------------- |
-| Initial     | `null`     | `false`    | Question + clickable buttons                             |
-| After click | `2` (e.g.) | `true`     | Buttons locked, correct=green, wrong=red, result message |
+---
 
-Two pieces of state, one event handler. That's the entire Quiz logic.
+## Concept: How MDX Passes Props as Strings
 
-```bash
-git add app/blog/components/Quiz.tsx
-git commit -m "feat: add Quiz component"
+In markdown, you write:
+
+```markdown
+<Quiz options='["O(n)", "O(log n)"]' answer="1" />
 ```
 
-## Register It With MDX
+MDX passes `options` as a **string** `'["O(n)", "O(log n)"]'` and `answer` as a **string** `"1"`.
 
-Update `app/blog/[...slug]/page.tsx` — add Quiz to the components map:
+But our component expects `options: string[]` and `answer: number`. We need to parse them. Let's add a wrapper that handles this conversion.
+
+---
+
+## Step 2: Add a Wrapper That Parses String Props
 
 ```tsx
-import { Quiz } from "@/app/blog/components/Quiz";
+// 📁 app/blog/components/QuizMDX.tsx — create this file
+
+"use client";
+
+import { Quiz } from "./Quiz";
+
+// MDX passes all props as strings — this wrapper parses them
+export function QuizMDX(props: {
+  question: string;
+  options: string;
+  answer: string;
+  explanation?: string;
+}) {
+  return (
+    <Quiz
+      question={props.question}
+      options={JSON.parse(props.options)} // string → array
+      answer={Number(props.answer)} // string → number
+      explanation={props.explanation}
+    />
+  );
+}
+```
+
+Save. Refresh. Still nothing visible — next step wires it in.
+
+---
+
+## Step 3: Register in MDX Components Map
+
+```tsx
+// 📁 app/blog/[...slug]/page.tsx — add import at top
+
+import { QuizMDX } from "@/app/blog/components/QuizMDX";
+```
+
+```tsx
+// 📁 app/blog/[...slug]/page.tsx — add Quiz to components object
 
 <MDXRemote
   source={content}
   components={{
     code: MarkdownCode,
     pre: MarkdownPre,
-    a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
-    Quiz, // ← readers can now use <Quiz /> in markdown
+    Quiz: QuizMDX, // ← maps <Quiz> in markdown to our component
   }}
   options={{
     mdxOptions: {
@@ -146,98 +240,61 @@ import { Quiz } from "@/app/blog/components/Quiz";
       format: "md",
     },
   }}
-/>;
-```
-
-That's the entire wiring. One import, one line in the components object.
-
-```bash
-git add app/blog
-git commit -m "feat: register Quiz in MDX components map"
-```
-
-## Use It in Markdown
-
-Now in any `.md` file:
-
-`````markdown
-# Binary Search
-
-Binary search works on sorted arrays. It compares the target to the middle
-element and eliminates half the remaining elements each step.
-
-````python
-def binary_search(arr, target):
-    lo, hi = 0, len(arr) - 1
-    while lo <= hi:
-        mid = (lo + hi) // 2
-        if arr[mid] == target:
-            return mid
-        elif arr[mid] < target:
-            lo = mid + 1
-        else:
-            hi = mid - 1
-    return -1
-```⁠
-
-<Quiz
-  question="If the array has 1024 elements, what's the maximum number of comparisons binary search needs?"
-  options='["1024", "512", "10", "32"]'
-  answer="2"
-  explanation="log₂(1024) = 10. Binary search halves the space each step."
 />
-````
-`````
-
-````
-
-The reader learns the concept, sees the code, then immediately tests their understanding. The feedback is instant. No scrolling to an answer key.
-
-## How MDX Components Work in Markdown
-
-When `next-mdx-remote` encounters `<Quiz ... />` in a markdown file, it:
-
-1. Recognizes it as a JSX tag (not HTML)
-2. Looks up `Quiz` in the `components` map you provided
-3. Passes the props (`question`, `options`, `answer`)
-4. Renders the React component in place
-
-The markdown file stays readable. The component handles all interactivity. They compose naturally.
-
-## Adding More Components
-
-The pattern is always the same:
-
-1. Create a client component in `app/blog/components/`
-2. Add it to the `components` map in your page
-3. Use it in any markdown file with JSX syntax
-
-Some ideas:
-
-```markdown
-<Callout type="warning">
-  Don't forget to handle the empty array case!
-</Callout>
-
-<Quiz question="..." options='[...]' answer="0" />
-
-<CodePlayground language="python" initialCode="print('hello')" />
-
-<StepVisualizer steps={[...]} />
 ```
 
-Each one is a self-contained React component. The markdown is the glue.
+One import, one line in the map. When MDX sees `<Quiz .../>` in markdown, it renders `QuizMDX` with those props.
+
+Save. Refresh. No visible change yet — we need to actually use it in a post.
 
 ---
 
-## Commit Your Progress
+## Step 4: Use It in Markdown
+
+```markdown
+<!-- 📁 content/any-post.md — add a quiz anywhere in your post -->
+
+## Quick Check
+
+<Quiz
+  question="What is the time complexity of binary search?"
+  options='["O(n)", "O(log n)", "O(n log n)", "O(1)"]'
+  answer="1"
+  explanation="log₂(1024) = 10. Binary search halves the search space each step."
+/>
+```
+
+Note: `answer="1"` means index 1 (the second option, "O(log n)"). Zero-based.
+
+Save. Refresh. You see a styled quiz card with four clickable options. Click "B. O(log n)" — it turns green and shows "Correct!". Click any other — it turns red and reveals the right answer.
+
+---
+
+## How It All Connects
+
+```
+Markdown file          MDX engine              Browser
+─────────────          ──────────              ───────
+<Quiz                  Looks up "Quiz"         QuizMDX parses
+  question="..."  →    in components map   →    string props →  Quiz renders
+  options='[...]'      finds QuizMDX            with state       interactive UI
+  answer="1"
+/>
+```
+
+The markdown stays readable. The component handles all interactivity. They compose naturally.
+
+---
+
+## Commit
 
 ```bash
-git add .
-git commit -m "feat: add Quiz component for interactive markdown"
+git add app/blog/components/Quiz.tsx app/blog/components/QuizMDX.tsx
+git commit -m "feat: add interactive Quiz component for MDX"
 ```
+
+---
 
 ## What's Next
 
-A quiz tests recall. But what about experimentation? In Chapter 5, we'll build a Code Playground — an editable code block where readers can modify the code and see results instantly. The blog becomes a sandbox.
-````
+A quiz tests recall. But what about experimentation? In Chapter 5, we'll build a **Code Playground** — an editable code block where readers can modify code and see results instantly.

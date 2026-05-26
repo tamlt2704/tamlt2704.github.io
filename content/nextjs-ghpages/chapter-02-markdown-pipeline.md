@@ -4,13 +4,29 @@
 
 ---
 
-## The Problem
+## The Big Picture
 
-You have 50 markdown files about algorithms. 20 about Docker. 15 about game development. You don't want to create a React component for each one. You want to drop a `.md` file in a folder and have it appear as a page — automatically.
+You have 50 markdown files. You don't want 50 React components. You want to drop a `.md` file in a folder and have it appear as a page — automatically.
 
-## The Folder Structure
+Here's the pipeline we're building:
 
-Here's the plan:
+```
+┌─────────────┐     ┌──────────┐     ┌───────────┐     ┌──────────┐     ┌──────────┐
+│  .md file   │────▶│  fs.read │────▶│gray-matter │────▶│MDXRemote │────▶│HTML page │
+│  on disk    │     │  (Node)  │     │  (parse)   │     │ (render) │     │ (static) │
+└─────────────┘     └──────────┘     └───────────┘     └──────────┘     └──────────┘
+       │                                                                       │
+       │              BUILD TIME (your machine / GitHub Actions)                │
+       └───────────────────────────────────────────────────────────────────────┘
+```
+
+One React page. Unlimited content. The filesystem _is_ your CMS.
+
+---
+
+## Step 1: Content Folder Structure
+
+Before writing code, create the folder layout:
 
 ```
 my-blog/
@@ -18,135 +34,152 @@ my-blog/
     algorithms/
       chapter-00-overview.md
       chapter-01-linear-search.md
-      chapter-02-binary-search.md
     docker101/
       chapter-00-containers.md
-      chapter-01-images.md
   app/
     blog/
       [...slug]/
-        page.tsx          ← one file renders ALL markdown
+        page.tsx        ← one file renders ALL markdown
   lib/
-    markdown.ts           ← reads folders, finds files
+    markdown.ts         ← reads folders, finds files
 ```
 
-One React page. Unlimited content. The folder name becomes the series. The file name becomes the chapter.
+The folder name becomes the series. The filename becomes the chapter URL.
 
-## Install Dependencies
+---
+
+## Step 2: Install Dependencies
+
+### What is MDX?
+
+MDX is markdown that can contain React components. `next-mdx-remote` renders MDX on the server at build time — the browser receives plain HTML, no JavaScript needed.
+
+### What does gray-matter do?
+
+Markdown files often start with YAML metadata (title, date, tags). `gray-matter` splits that metadata from the content so you can use both separately.
+
+### Install:
 
 ```bash
 npm install next-mdx-remote gray-matter remark-gfm
 ```
 
-- `next-mdx-remote` — renders markdown as React components (server-side)
-- `gray-matter` — parses YAML frontmatter from markdown files
-- `remark-gfm` — adds GitHub Flavored Markdown (tables, strikethrough, task lists)
+---
 
-## The Content Reader
+## Step 3: The Markdown Reader Utility
 
-This file scans your `content/` folder and provides functions to list series and read chapters. It runs at build time (server-side only) — readers never see this code.
-
-Create `lib/markdown.ts`:
-
-```bash
-mkdir -p lib && touch lib/markdown.ts
-```
+This utility reads your `content/` folder at build time. It uses Node.js `fs` — no database, no API, no latency.
 
 ```typescript
-import fs from "fs"; // Node.js file system module — reads files and folders
-import path from "path"; // Builds file paths that work on any OS (Windows, Mac, Linux)
+// 📁 lib/markdown.ts — create the content reader
 
+import fs from "fs";
+import path from "path";
+
+// All markdown lives here, relative to project root
 const CONTENT_DIR = "content";
+```
 
-/**
- * Get all series (folders) with their chapters.
- * Returns: [{ name: "algorithms", slug: "algorithms", chapters: ["chapter-00.md", ...] }]
- */
+Save. No visible change yet — this is a utility file.
+
+Now add the function that lists all series and their chapters:
+
+```typescript
+// 📁 lib/markdown.ts — add below the imports
+
 export function getAllSeries() {
-  // process.cwd() = the root of your project (where package.json lives)
   const base = path.join(process.cwd(), CONTENT_DIR);
-
-  // If the content folder doesn't exist yet, return empty (no crash)
   if (!fs.existsSync(base)) return [];
 
   return fs
-    .readdirSync(base, { withFileTypes: true }) // List everything in content/
-    .filter((d) => d.isDirectory()) // Keep only folders (not files)
+    .readdirSync(base, { withFileTypes: true })
+    .filter((d) => d.isDirectory()) // only folders
     .map((d) => ({
-      // Transform each folder into an object
-      name: d.name, // "algorithms"
-      slug: d.name, // Used in URLs: /blog/algorithms/...
+      name: d.name,
+      slug: d.name, // used in URLs
       chapters: fs
-        .readdirSync(path.join(base, d.name)) // List files inside the folder
-        .filter((f) => f.endsWith(".md")) // Keep only markdown files
-        .sort(), // Alphabetical order (chapter-00, chapter-01, ...)
+        .readdirSync(path.join(base, d.name))
+        .filter((f) => f.endsWith(".md"))
+        .sort(), // alphabetical = chapter order
     }));
 }
+```
 
-/**
- * Read a single markdown file's content as a string.
- * Returns null if the file doesn't exist.
- */
+Next, add the function that reads a single chapter file:
+
+```typescript
+// 📁 lib/markdown.ts — read one markdown file
+
 export function getChapterContent(series: string, file: string) {
   const filePath = path.join(process.cwd(), CONTENT_DIR, series, file);
   if (!fs.existsSync(filePath)) return null;
-  return fs.readFileSync(filePath, "utf-8"); // Read the entire file as text
+  return fs.readFileSync(filePath, "utf-8");
 }
+```
 
-/**
- * Get the list of chapter filenames in a series, sorted.
- * Used for prev/next navigation.
- */
+Finally, add the function for listing chapters (used for prev/next navigation):
+
+```typescript
+// 📁 lib/markdown.ts — list chapters in a series
+
 export function getSeriesChapters(series: string) {
   const dir = path.join(process.cwd(), CONTENT_DIR, series);
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
-    .filter((f) => f.endsWith(".md") && f !== "README.md") // exclude README
+    .filter((f) => f.endsWith(".md") && f !== "README.md")
     .sort();
 }
 ```
 
-**Why `fs` and not `fetch`?** This code runs at build time on your machine (or in GitHub Actions). It reads files directly from disk — no HTTP requests, no API, no latency. The result gets baked into static HTML.
+Save. No visible change — this runs only at build time.
 
-This is the entire content layer. No database. No API. Just `fs.readFileSync`.
+**Why `fs` and not `fetch`?** This code runs on your machine (or in GitHub Actions). It reads files directly from disk. The result gets baked into static HTML.
 
-```bash
-git add lib/markdown.ts
-git commit -m "feat: add markdown content reader"
+---
+
+## Step 4: The Dynamic Route
+
+### What is `[...slug]`?
+
+Next.js uses folder names with brackets for dynamic routes. `[...slug]` is a "catch-all" — it matches any number of URL segments:
+
+```
+/blog/algorithms/chapter-01  →  slug = ["algorithms", "chapter-01"]
+/blog/docker101/chapter-00   →  slug = ["docker101", "chapter-00"]
 ```
 
-## The Catch-All Route
+### What does generateStaticParams do?
 
-This is the most important file in the project. One component renders _every_ markdown file as a page. The `[...slug]` in the folder name means "match any URL path with any number of segments."
+At build time, Next.js doesn't know what pages exist (they're just `.md` files). `generateStaticParams` scans your content folder and returns every valid URL. Next.js then pre-renders each one as static HTML.
 
-Create `app/blog/[...slug]/page.tsx`:
+Create the route file:
 
 ```bash
-mkdir -p "app/blog/[...slug]" && touch "app/blog/[...slug]/page.tsx"
+mkdir -p "app/blog/[...slug]"
 ```
 
 ```tsx
-import { notFound } from "next/navigation"; // Shows a 404 page
+// 📁 app/blog/[...slug]/page.tsx — imports and types
+
+import { notFound } from "next/navigation";
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter"; // Parses YAML frontmatter from markdown
-import { MDXRemote } from "next-mdx-remote/rsc"; // Renders markdown as React components
-import remarkGfm from "remark-gfm"; // Adds GitHub-flavored markdown (tables, etc.)
-import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
+import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getSeriesChapters } from "@/lib/markdown";
 
-// Next.js passes URL segments as params.
-// For /blog/algorithms/chapter-01 → slug = ["algorithms", "chapter-01"]
 interface Props {
   params: Promise<{ slug: string[] }>;
 }
+```
 
-/**
- * generateStaticParams tells Next.js which pages to pre-build.
- * At build time, it scans all .md files and returns their URL paths.
- * Without this, Next.js wouldn't know what pages exist (since they're dynamic).
- */
+Now add `generateStaticParams` — this tells Next.js which pages to build:
+
+```tsx
+// 📁 app/blog/[...slug]/page.tsx — tell Next.js what pages exist
+
 export async function generateStaticParams() {
   const base = path.join(process.cwd(), "content");
   if (!fs.existsSync(base)) return [];
@@ -157,34 +190,42 @@ export async function generateStaticParams() {
   for (const folder of folders) {
     const files = fs
       .readdirSync(path.join(base, folder.name))
-      .filter((f) => f.endsWith(".md") && f !== "README.md"); // exclude README
+      .filter((f) => f.endsWith(".md") && f !== "README.md");
     for (const file of files) {
-      // Each file becomes a URL: /blog/{folder}/{filename-without-.md}
+      // /blog/algorithms/chapter-01 → slug: ["algorithms", "chapter-01"]
       params.push({ slug: [folder.name, file.replace(/\.md$/, "")] });
     }
   }
-  return params; // must return or generateStaticParams returns undefined
+  return params;
 }
+```
 
-/**
- * The page component. Runs once per markdown file at build time.
- * Reads the file, renders it as HTML, wraps it in layout.
- */
+Now the page component — it reads the file and renders it:
+
+```tsx
+// 📁 app/blog/[...slug]/page.tsx — the page component
+
 export default async function BlogPage({ params }: Props) {
   const { slug } = await params;
-  if (slug.length < 2) return notFound(); // Need at least series + chapter
+  if (slug.length < 2) return notFound();
 
-  // Destructure: /blog/algorithms/chapter-01 → series="algorithms", fileSlug="chapter-01"
   const [series, fileSlug] = slug;
-  const filePath = path.join(process.cwd(), "content", series, `${fileSlug}.md`);
+  const filePath = path.join(
+    process.cwd(), "content", series, `${fileSlug}.md`
+  );
+  if (!fs.existsSync(filePath)) return notFound();
 
-  if (!fs.existsSync(filePath)) return notFound(); // File doesn't exist → 404
-
-  // Read the markdown file and separate frontmatter (metadata) from content
+  // Separate YAML frontmatter from markdown content
   const raw = fs.readFileSync(filePath, "utf-8");
-  const { content } = matter(raw); // content = the markdown text without frontmatter
+  const { content } = matter(raw);
+```
 
-  // Build prev/next navigation links
+Continue with the render and navigation:
+
+```tsx
+  // 📁 app/blog/[...slug]/page.tsx — render MDX + navigation
+
+  // Build prev/next links from chapter list
   const chapters = getSeriesChapters(series);
   const currentFile = `${fileSlug}.md`;
   const idx = chapters.indexOf(currentFile);
@@ -193,26 +234,21 @@ export default async function BlogPage({ params }: Props) {
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-12">
-      {/* prose = Tailwind typography plugin, styles all HTML elements beautifully */}
       <div className="prose prose-lg max-w-none">
         <MDXRemote
           source={content}
-          components={{
-            code: MarkdownCode, // syntax highlighting for code blocks
-            pre: MarkdownPre, // prevents double-wrapping by Tailwind prose
-            // strip .md from links so chapter links work as Next.js routes
-            a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
-          }}
           options={{
-            mdxOptions: {
-              remarkPlugins: [remarkGfm], // Enable tables, strikethrough, task lists
-              format: "mdx", // mdx mode enables JSX components like <Quiz /> inside markdown
-            },
+            mdxOptions: { remarkPlugins: [remarkGfm], format: "mdx" },
           }}
         />
       </div>
+```
 
-      {/* Prev / Next */}
+Finally, the prev/next navigation at the bottom:
+
+```tsx
+      {/* 📁 app/blog/[...slug]/page.tsx — prev/next nav */}
+
       <nav className="mt-12 flex justify-between border-t pt-6 text-sm">
         {prev && (
           <a
@@ -236,92 +272,79 @@ export default async function BlogPage({ params }: Props) {
 }
 ```
 
-**What each `components` entry does:**
+Save. Now we need a test file to see it work.
 
-| Key    | What it replaces                           | Why                                                            |
-| ------ | ------------------------------------------ | -------------------------------------------------------------- |
-| `code` | `` `inline` `` and ` ```fenced``` ` blocks | Adds syntax highlighting via `react-syntax-highlighter`        |
-| `pre`  | `<pre>` wrapper around code blocks         | Prevents Tailwind prose from double-styling the block          |
-| `a`    | Every `[link](url)` in markdown            | Strips `.md` extension so chapter links work as Next.js routes |
+---
 
-## How It Works
+## Step 5: Test It
 
-The `[...slug]` catch-all route matches any URL under `/blog/`:
+Create a sample markdown file:
 
-```
-/blog/algorithms/chapter-01-linear-search
-       ↓
-slug = ["algorithms", "chapter-01-linear-search"]
-       ↓
-reads: content/algorithms/chapter-01-linear-search.md
-       ↓
-renders as HTML with MDXRemote
-```
+```markdown
+<!-- 📁 content/hello/chapter-00-test.md — test content -->
 
-`generateStaticParams()` runs at build time, enumerates every `.md` file, and pre-renders all pages. The result is pure static HTML — no server needed.
-
-```bash
-git add app/blog
-git commit -m "feat: add catch-all blog route with prev/next navigation"
-```
-
-## Test It
-
-Create `content/hello/chapter-00-test.md`:
-
-`````markdown
 # Hello World
 
-This is my first blog post.
-
-It supports **bold**, _italic_, and `inline code`.
-
-## A Code Block
-
-````python
-print("Hello from the blog!")
-```⁠
+This is my first blog post. It supports **bold**, _italic_, and `code`.
 
 ## A Table
 
-| Feature | Status |
-|---------|--------|
-| Markdown | ✅ |
-| Code blocks | ✅ |
-| Tables | ✅ |
-````
-`````
+| Feature     | Status |
+| ----------- | ------ |
+| Markdown    | ✅     |
+| Code blocks | ✅     |
+| Tables      | ✅     |
+```
 
-````
+Save. Refresh. You see your markdown rendered as a styled web page at `http://localhost:3000/blog/hello/chapter-00-test`.
 
-Run `npm run dev`, visit `http://localhost:3000/blog/hello/chapter-00-test`.
+---
 
-Your markdown is a web page. No React component written. Just a file in a folder.
+## Step 6: Prev/Next Navigation
+
+Add a second file to test navigation:
+
+```markdown
+<!-- 📁 content/hello/chapter-01-second.md — second chapter -->
+
+# Second Chapter
+
+Click "← Previous" below to go back to chapter-00.
+```
+
+Save. Refresh. You see "← Previous" and "Next →" links at the bottom of each chapter, connecting them in alphabetical order.
+
+---
 
 ## The Mental Model
 
 ```
 content/
   {series}/
-    {chapter}.md
-         ↓
-/blog/{series}/{chapter}
-         ↓
-Static HTML at build time
+    {chapter}.md         ← add file here
+         │
+         ▼
+/blog/{series}/{chapter} ← page appears here
+         │
+         ▼
+Static HTML at build     ← no server needed
 ```
 
-Add a folder → new series appears. Add a file → new chapter appears. Delete a file → page disappears. The filesystem _is_ your CMS.
+Add a folder → new series. Add a file → new chapter. Delete a file → page disappears.
 
 ---
 
-## Commit Your Progress
+## Commit
 
 ```bash
 git add .
 git commit -m "feat: add markdown pipeline with catch-all route"
 ```
 
+---
+
 ## What's Next
 
-The page works but looks plain. Code blocks are unstyled monospace. In Chapter 3, we'll add syntax highlighting with `react-syntax-highlighter` and Tailwind's typography plugin to make everything look professional with zero effort.
-````
+The page works but code blocks are unstyled monospace. In Chapter 3, we add syntax highlighting with `react-syntax-highlighter` and Tailwind typography to make everything look professional.
+
+[← Chapter 1: First Deploy](/blog/nextjs-ghpages/chapter-01-first-deploy) | [Chapter 3: Beautiful Code →](/blog/nextjs-ghpages/chapter-03-beautiful-code)
