@@ -25,78 +25,56 @@ touch app/blog/components/StepVisualizer.tsx
 
 import { useState } from "react";
 
-// Each step is a snapshot: the array state, which indices to highlight, and a description
 interface Step {
-  data: number[]; // The array values at this point in the algorithm
-  highlights: number[]; // Which indices are "active" (being compared, swapped, etc.)
-  label: string; // Human-readable description: "Compare 5 and 3. Swap!"
+  data: number[];
+  highlights: number[];
+  label: string;
 }
 
 interface Props {
-  steps: Step[]; // The full sequence of steps (provided by the markdown author)
-  title?: string; // Optional heading above the visualizer
+  steps: Step[];
+  title?: string;
 }
 
 export function StepVisualizer({ steps, title }: Props) {
-  // current = which step we're viewing (0 = first step)
   const [current, setCurrent] = useState(0);
-  const step = steps[current]; // The data for the current step
+  const step = steps[current];
 
   return (
-    <div className="my-8 rounded-lg border border-gray-200 bg-white p-5">
+    <div className="not-prose my-8 rounded-lg border border-gray-200 bg-white p-5">
       {title && <p className="mb-3 text-sm font-semibold text-gray-700">{title}</p>}
-
-      {/* Array visualization — each number is a box, highlighted ones are teal + scaled up */}
       <div className="mb-4 flex justify-center gap-1">
         {step.data.map((val, i) => (
           <div
             key={i}
-            className={`flex h-10 w-10 items-center justify-center rounded border font-mono text-sm transition-all duration-200 ${
+            className={`flex h-10 w-10 items-center justify-center rounded border font-mono text-sm transition-all ${
               step.highlights.includes(i)
-                ? "scale-110 border-teal-500 bg-teal-100 text-teal-900" // Active: teal + bigger
-                : "border-gray-200 bg-gray-50 text-gray-700" // Inactive: gray
+                ? "scale-110 border-teal-500 bg-teal-100 text-teal-900"
+                : "border-gray-200 bg-gray-50 text-gray-700"
             }`}
           >
             {val}
           </div>
         ))}
       </div>
-
-      {/* What happened this step — fixed height so layout doesn't jump */}
-      <p className="mb-4 h-5 text-center text-sm text-gray-600">{step.label}</p>
-
-      {/* Navigation controls */}
+      <p className="mb-4 text-center text-sm text-gray-600">{step.label}</p>
       <div className="flex items-center justify-center gap-3">
-        <button
-          onClick={() => setCurrent(0)}
-          disabled={current === 0}
-          className="px-2 py-1 text-xs text-gray-500 hover:text-gray-900 disabled:opacity-30"
-        >
-          ⏮ Start
-        </button>
         <button
           onClick={() => setCurrent(Math.max(0, current - 1))}
           disabled={current === 0}
-          className="rounded border px-3 py-1 text-sm hover:bg-gray-50 disabled:opacity-30"
+          className="rounded border px-3 py-1 text-sm disabled:opacity-30"
         >
           ← Prev
         </button>
-        <span className="w-16 text-center text-xs text-gray-400">
-          {current + 1} / {steps.length}
+        <span className="text-xs text-gray-400">
+          {current + 1}/{steps.length}
         </span>
         <button
           onClick={() => setCurrent(Math.min(steps.length - 1, current + 1))}
           disabled={current === steps.length - 1}
-          className="rounded border px-3 py-1 text-sm hover:bg-gray-50 disabled:opacity-30"
+          className="rounded border px-3 py-1 text-sm disabled:opacity-30"
         >
           Next →
-        </button>
-        <button
-          onClick={() => setCurrent(steps.length - 1)}
-          disabled={current === steps.length - 1}
-          className="px-2 py-1 text-xs text-gray-500 hover:text-gray-900 disabled:opacity-30"
-        >
-          End ⏭
         </button>
       </div>
     </div>
