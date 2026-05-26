@@ -24,7 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <nav className="border-b px-6 py-3">
+          <div className="mx-auto flex max-w-5xl items-center justify-between">
+            <a>Tam&apos;s Blogaaa</a>
+          </div>
+        </nav>
+        {children}
+      </body>
     </html>
   );
 }
