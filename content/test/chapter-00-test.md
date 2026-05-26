@@ -24,3 +24,9 @@ options='["1024", "512", "10", "32"]'
 answer="2"
 explanation="log₂(1024) = 10. Binary search halves the space each step."
 />
+
+## Try It
+
+<CodePlayground language="javascript" code="ZnVuY3Rpb24gYmluYXJ5U2VhcmNoKGFyciwgdGFyZ2V0KSB7CiAgbGV0IGxvID0gMCwgaGkgPSBhcnIubGVuZ3RoIC0gMTsKICB3aGlsZSAobG8gPD0gaGkpIHsKICAgIGNvbnN0IG1pZCA9IE1hdGguZmxvb3IoKGxvICsgaGkpIC8gMik7CiAgICBpZiAoYXJyW21pZF0gPT09IHRhcmdldCkgcmV0dXJuIG1pZDsKICAgIGlmIChhcnJbbWlkXSA8IHRhcmdldCkgbG8gPSBtaWQgKyAxOwogICAgZWxzZSBoaSA9IG1pZCAtIDE7CiAgfQogIHJldHVybiAtMTsKfQoKY29uc29sZS5sb2coYmluYXJ5U2VhcmNoKFsxLCAzLCA1LCA3LCA5LCAxMV0sIDcpKTs=" />
+
+<CodePlayground language="python" code="ZGVmIGZpYm9uYWNjaShuKToKICAgIGlmIG4gPD0gMToKICAgICAgICByZXR1cm4gbgogICAgcmV0dXJuIGZpYm9uYWNjaShuLTEpICsgZmlib25hY2NpKG4tMikKCmZvciBpIGluIHJhbmdlKDEwKToKICAgIHByaW50KGYnZmliKHtpfSkgPSB7Zmlib25hY2NpKGkpfScp" />

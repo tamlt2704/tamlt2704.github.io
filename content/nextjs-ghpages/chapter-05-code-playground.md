@@ -181,50 +181,54 @@ import { Quiz } from "@/app/blog/components/Quiz";
 
 ## Use It in Markdown
 
-```markdown
-## Try It Yourself
+MDX's JSX parser conflicts with curly braces `{}` in code strings. The reliable solution: base64-encode your code and pass it via the `code` prop. The component decodes it client-side with `atob()`.
 
-Modify the code below. Change the input array or the target value:
+**Step 1: Encode your code**
 
-<CodePlayground
-language="javascript"
-initialCode={`
-function binarySearch(arr, target) {
-let lo = 0, hi = arr.length - 1;
-while (lo <= hi) {
-const mid = Math.floor((lo + hi) / 2);
-if (arr[mid] === target) return mid;
-if (arr[mid] < target) lo = mid + 1;
-else hi = mid - 1;
-}
-return -1;
-}
+In your terminal (PowerShell):
 
-console.log(binarySearch([1, 3, 5, 7, 9, 11], 7));
-console.log(binarySearch([1, 3, 5, 7, 9, 11], 4));
-`}
-/>
+```powershell
+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("function binarySearch(arr, target) {`nlet lo = 0, hi = arr.length - 1;`nwhile (lo <= hi) {`nconst mid = Math.floor((lo + hi) / 2);`nif (arr[mid] === target) return mid;`nif (arr[mid] < target) lo = mid + 1;`nelse hi = mid - 1;`n}`nreturn -1;`n}`n`nconsole.log(binarySearch([1, 3, 5, 7, 9, 11], 7));"))
 ```
 
-The reader sees an editable code block. They change `7` to `11`. Click Run. See the result. No context switch. No terminal. Learning by doing, right in the article.
+Or in bash/Node:
+
+```bash
+echo -n 'your code here' | base64
+```
+
+```javascript
+// Node.js one-liner
+Buffer.from(
+  `function binarySearch(arr, target) {
+  let lo = 0, hi = arr.length - 1;
+  while (lo <= hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    if (arr[mid] === target) return mid;
+    if (arr[mid] < target) lo = mid + 1;
+    else hi = mid - 1;
+  }
+  return -1;
+}
+
+console.log(binarySearch([1, 3, 5, 7, 9, 11], 7));`,
+).toString("base64");
+```
+
+**Step 2: Use the base64 string in markdown**
+
+```markdown
+<CodePlayground language="javascript" code="ZnVuY3Rpb24gYmluYXJ5U2VhcmNoKGFyciwgdGFyZ2V0KSB7CiAgbGV0IGxvID0gMCwgaGkgPSBhcnIubGVuZ3RoIC0gMTsKICB3aGlsZSAobG8gPD0gaGkpIHsKICAgIGNvbnN0IG1pZCA9IE1hdGguZmxvb3IoKGxvICsgaGkpIC8gMik7CiAgICBpZiAoYXJyW21pZF0gPT09IHRhcmdldCkgcmV0dXJuIG1pZDsKICAgIGlmIChhcnJbbWlkXSA8IHRhcmdldCkgbG8gPSBtaWQgKyAxOwogICAgZWxzZSBoaSA9IG1pZCAtIDE7CiAgfQogIHJldHVybiAtMTsKfQoKY29uc29sZS5sb2coYmluYXJ5U2VhcmNoKFsxLCAzLCA1LCA3LCA5LCAxMV0sIDcpKTs=" />
+```
+
+The reader sees an editable code block with syntax highlighting. They change `7` to `11`. Click Run. See the result. No context switch. No terminal. Learning by doing, right in the article.
 
 ## Python Playground
 
 For Python content, Pyodide loads on first click (~5MB, cached after):
 
 ```markdown
-<CodePlayground
-language="python"
-initialCode={`
-def fibonacci(n):
-if n <= 1:
-return n
-return fibonacci(n-1) + fibonacci(n-2)
-
-for i in range(10):
-print(f"fib({i}) = {fibonacci(i)}")
-`}
-/>
+<CodePlayground language="python" code="ZGVmIGZpYm9uYWNjaShuKToKICAgIGlmIG4gPD0gMToKICAgICAgICByZXR1cm4gbgogICAgcmV0dXJuIGZpYm9uYWNjaShuLTEpICsgZmlib25hY2NpKG4tMikKCmZvciBpIGluIHJhbmdlKDEwKToKICAgIHByaW50KGYnZmliKHtpfSkgPSB7Zmlib25hY2NpKGkpfScp" />
 ```
 
 First run takes 2-3 seconds (loading WASM). After that, instant.

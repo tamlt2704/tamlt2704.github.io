@@ -240,7 +240,7 @@ If you outgrow static export, Next.js makes the transition easy:
 2. Deploy to Vercel (free tier) or any Node.js host
 3. Real streaming, ISR, server actions — all available
 
-But for a blog with interactive components? Static + client-side progressive loading is more than enough. Your pages load in <100ms from GitHub's CDN. No server can beat that.
+But for a blog with interactive components? Static + client-side progressive loading is more than enough. Your pages load in &lt;100ms from GitHub's CDN. No server can beat that.
 
 ## Summary
 

@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import { getSeriesChapters } from "@/lib/markdown";
 import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
 import { Quiz } from "@/app/blog/components/Quiz";
+import { CodePlayground } from "@/app/blog/components/CodePlayground";
 
 // Next.js passes URL segments as params.
 // For /blog/algorithms/chapter-01 → slug = ["algorithms", "chapter-01"]
@@ -69,6 +70,7 @@ export default async function BlogPage({ params }: Props) {
             // Strip .md from links so relative chapter links work as Next.js routes
             a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
             Quiz,
+            CodePlayground,
           }}
           options={{
             mdxOptions: {
