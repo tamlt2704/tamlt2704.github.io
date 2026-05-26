@@ -7,11 +7,21 @@ import remarkGfm from "remark-gfm";
 import { getSeriesChapters } from "@/lib/markdown";
 import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
 import { Quiz } from "@/app/blog/components/Quiz";
+import { CodePlayground } from "@/app/blog/components/CodePlayground";
+import { StepVisualizer } from "@/app/blog/components/StepVisualizer";
+import type { Metadata } from "next"; // add to imports
 
 // Next.js passes URL segments as params.
 // For /blog/algorithms/chapter-01 → slug = ["algorithms", "chapter-01"]
 interface Props {
   params: Promise<{ slug: string[] }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const [series, fileSlug] = slug;
+  const title = fileSlug.replace("chapter-", "Ch ").replace(/-/g, " ");
+  return { title: `${title} — ${series.replace(/-/g, " ")}` };
 }
 
 /**
@@ -69,6 +79,8 @@ export default async function BlogPage({ params }: Props) {
             // Strip .md from links so relative chapter links work as Next.js routes
             a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
             Quiz,
+            CodePlayground,
+            StepVisualizer,
           }}
           options={{
             mdxOptions: {

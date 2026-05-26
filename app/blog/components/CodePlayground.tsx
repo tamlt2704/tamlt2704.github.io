@@ -35,19 +35,24 @@ export function CodePlayground({
     return s.trim();
   };
 
-  const [currentCode, setCurrentCode] = useState(getStartCode);
+  const [currentCode, setCurrentCode] = useState(() => getStartCode());
   const [output, setOutput] = useState("");
   const [running, setRunning] = useState(false);
   const [editing, setEditing] = useState(false);
 
   const runCode = async () => {
+    console.log("runCode called, currentCode length:", currentCode.length);
     setRunning(true);
     setOutput("");
 
     try {
       if (language === "javascript" || language === "js") {
         const logs: string[] = [];
-        const fakeConsole = { log: (...args: unknown[]) => logs.push(args.join(" ")) };
+        const fakeConsole = {
+          log: (...args: unknown[]) => logs.push(args.map(String).join(" ")),
+          error: (...args: unknown[]) => logs.push("ERROR: " + args.map(String).join(" ")),
+          warn: (...args: unknown[]) => logs.push("WARN: " + args.map(String).join(" ")),
+        };
         const fn = new Function("console", currentCode);
         fn(fakeConsole);
         setOutput(logs.join("\n") || "(no output)");

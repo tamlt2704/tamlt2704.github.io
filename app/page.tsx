@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-[80vh] items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       <div className="px-6 text-center">
         <h1 className="bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-5xl font-extrabold text-transparent">
           Learn by Doing
