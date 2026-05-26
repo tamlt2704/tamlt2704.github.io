@@ -19,22 +19,23 @@ export function CodePlayground({
   children,
   initialCode,
 }: Props) {
-  // Priority: code (base64) > initialCode (plain) > children
-  let startCode = "";
-  if (code) {
-    try {
-      startCode = atob(code);
-    } catch {
-      startCode = code;
+  const getStartCode = () => {
+    let s = "";
+    if (code) {
+      try {
+        s = atob(code);
+      } catch {
+        s = code;
+      }
+    } else if (initialCode) {
+      s = initialCode;
+    } else if (typeof children === "string") {
+      s = children;
     }
-  } else if (initialCode) {
-    startCode = initialCode;
-  } else if (typeof children === "string") {
-    startCode = children;
-  }
-  startCode = startCode.trim();
+    return s.trim();
+  };
 
-  const [currentCode, setCurrentCode] = useState(startCode);
+  const [currentCode, setCurrentCode] = useState(getStartCode);
   const [output, setOutput] = useState("");
   const [running, setRunning] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -106,7 +107,7 @@ sys.stdout = StringIO()
           {running ? "Running..." : "▶ Run"}
         </button>
         <button
-          onClick={() => setCurrentCode(startCode)}
+          onClick={() => setCurrentCode(getStartCode())}
           className="px-3 py-1 text-sm text-gray-600 hover:text-gray-900"
         >
           Reset
