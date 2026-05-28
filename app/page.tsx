@@ -4,6 +4,7 @@ const GAMES = [
   { href: "/games/matching", label: "🃏 Memory Match", desc: "Icon matching game with topics" },
   { href: "/games/chinese", label: "🀄 Learn Chinese", desc: "Hanzi, pinyin & stroke practice" },
   { href: "/games/physics", label: "⚛️ Physics Lab", desc: "Matter.js simulations" },
+  { href: "/games/food-order", label: "🍽️ Food Order", desc: "Order & cook SG/VN dishes!" },
 ];
 
 export default function Home() {
