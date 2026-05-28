@@ -1,6 +1,31 @@
 # Chapter 0: The Blog That Teaches Back
 
-[Chapter 1: First Deploy →](/blog/nextjs-ghpages/chapter-01-first-deploy)
+## Chapters
+
+- [Chapter 0: Overview (this page)](/blog/nextjs-ghpages/chapter-00-overview)
+- [Chapter 1: First Deploy](/blog/nextjs-ghpages/chapter-01-first-deploy)
+- [Chapter 2: Markdown Pipeline](/blog/nextjs-ghpages/chapter-02-markdown-pipeline)
+- [Chapter 3: Beautiful Code](/blog/nextjs-ghpages/chapter-03-beautiful-code)
+- [Chapter 4: Interactive Quiz](/blog/nextjs-ghpages/chapter-04-interactive-quiz)
+- [Chapter 5: Code Playground](/blog/nextjs-ghpages/chapter-05-code-playground)
+- [Chapter 6: Visualizer](/blog/nextjs-ghpages/chapter-06-visualizer)
+- [Chapter 7: Finishing Touches](/blog/nextjs-ghpages/chapter-07-finishing-touches)
+- [Chapter 8: Dark Mode](/blog/nextjs-ghpages/chapter-08-dark-mode)
+- [Chapter 9: Streaming](/blog/nextjs-ghpages/chapter-09-streaming)
+- [Chapter 10: Layout & Mobile](/blog/nextjs-ghpages/chapter-10-layout-mobile)
+- [Chapter 11: Performance](/blog/nextjs-ghpages/chapter-11-performance)
+- [Chapter 12: JS Essentials](/blog/nextjs-ghpages/chapter-12-js-essentials)
+- [Chapter 13: React Mental Model](/blog/nextjs-ghpages/chapter-13-react-mental-model)
+- [Chapter 14: Hooks Deep Dive](/blog/nextjs-ghpages/chapter-14-hooks-deep-dive)
+- [Chapter 15: TypeScript](/blog/nextjs-ghpages/chapter-15-typescript)
+- [Chapter 16: Supabase Setup](/blog/nextjs-ghpages/chapter-16-supabase-setup)
+- [Chapter 17: View Counts](/blog/nextjs-ghpages/chapter-17-view-counts)
+- [Chapter 18: Auth & Progress](/blog/nextjs-ghpages/chapter-18-auth-progress)
+- [Chapter 19: Comments](/blog/nextjs-ghpages/chapter-19-comments)
+- [Chapter 20: Monetization](/blog/nextjs-ghpages/chapter-20-monetization)
+- [Chapter 21: Multi-Language](/blog/nextjs-ghpages/chapter-21-multi-language)
+- [Chapter 22: Gated Resources](/blog/nextjs-ghpages/chapter-22-gated-resources)
+- [Chapter 23: UI Design](/blog/nextjs-ghpages/chapter-23-ui-design)
 
 ---
 
