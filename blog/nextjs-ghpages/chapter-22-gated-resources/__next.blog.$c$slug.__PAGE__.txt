@@ -1,8 +1,8 @@
 1:"$Sreact.fragment"
-2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/04jdb~mq0sf8-.js"],"MarkdownPre"]
-3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/04jdb~mq0sf8-.js"],"MarkdownCode"]
-37:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
-38:"$Sreact.suspense"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/06n_h_k9m1dtk.js","/_next/static/chunks/07t0714itaz6a.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/06n_h_k9m1dtk.js","/_next/static/chunks/07t0714itaz6a.js"],"MarkdownCode"]
+38:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
+39:"$Sreact.suspense"
 4:Ta8b,// app/blog/components/RegisteredOnly.tsx
 "use client";
 
@@ -70,7 +70,7 @@ export function RegisteredOnly({ children, message }: Props) {
 
   return <div className="my-6">{children}</div>;
 }
-0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 22: Gated Resources for Registered Users"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-21-multi-language","children":"← Chapter 21: Multi-Language"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-23-ui-design","children":"Chapter 23: UI Design →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Strategy"}],"\n",["$","p",null,{"children":"All your teaching content is free. Anyone can read every chapter. But you offer bonus resources — cheat sheets, source code, project templates, video walkthroughs — that require a free account."}],"\n",["$","p",null,{"children":"Why?"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Builds your user list"}]," — you know who's learning from you"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Increases engagement"}]," — logged-in users track progress, take quizzes"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Creates upgrade path"}]," — free account → paid resources later (if you want)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Feels fair"}]," — \"sign up for free to get the extras\" is a reasonable ask"]}],"\n"]}],"\n",["$","h2",null,{"children":"The Three Tiers"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"┌─────────────────────────────────────────────────┐\n│  PUBLIC (everyone)                              │\n│  • All chapters, all languages                  │\n│  • Code examples in the text                    │\n│  • Interactive quizzes and playgrounds          │\n├─────────────────────────────────────────────────┤\n│  REGISTERED (free account)                      │\n│  • PDF cheat sheets                             │\n│  • Complete source code downloads               │\n│  • Project starter templates                    │\n│  • Progress tracking + saved quiz scores        │\n├─────────────────────────────────────────────────┤\n│  SUPPORTER (Buy Me a Coffee / Sponsor)          │\n│  • Video walkthroughs                           │\n│  • 1-on-1 code review (limited)                 │\n│  • Early access to new courses                  │\n└─────────────────────────────────────────────────┘\n"}]}],"\n",["$","p",null,{"children":["This chapter covers the ",["$","strong",null,{"children":"Registered"}]," tier."]}],"\n",["$","h2",null,{"children":"Component 1: Soft Gate (Inline Content)"}],"\n",["$","p",null,{"children":"For bonus content that lives inside markdown — links, extra explanations, download buttons:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30"]}],"$L31"]}],["$L32"],"$L33"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"GuYHmDbJ6dCRxq2u2Z899"}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 22: Gated Resources for Registered Users"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-21-multi-language","children":"← Chapter 21: Multi-Language"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-23-ui-design","children":"Chapter 23: UI Design →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Strategy"}],"\n",["$","p",null,{"children":"All your teaching content is free. Anyone can read every chapter. But you offer bonus resources — cheat sheets, source code, project templates, video walkthroughs — that require a free account."}],"\n",["$","p",null,{"children":"Why?"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Builds your user list"}]," — you know who's learning from you"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Increases engagement"}]," — logged-in users track progress, take quizzes"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Creates upgrade path"}]," — free account → paid resources later (if you want)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Feels fair"}]," — \"sign up for free to get the extras\" is a reasonable ask"]}],"\n"]}],"\n",["$","h2",null,{"children":"The Three Tiers"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"┌─────────────────────────────────────────────────┐\n│  PUBLIC (everyone)                              │\n│  • All chapters, all languages                  │\n│  • Code examples in the text                    │\n│  • Interactive quizzes and playgrounds          │\n├─────────────────────────────────────────────────┤\n│  REGISTERED (free account)                      │\n│  • PDF cheat sheets                             │\n│  • Complete source code downloads               │\n│  • Project starter templates                    │\n│  • Progress tracking + saved quiz scores        │\n├─────────────────────────────────────────────────┤\n│  SUPPORTER (Buy Me a Coffee / Sponsor)          │\n│  • Video walkthroughs                           │\n│  • 1-on-1 code review (limited)                 │\n│  • Early access to new courses                  │\n└─────────────────────────────────────────────────┘\n"}]}],"\n",["$","p",null,{"children":["This chapter covers the ",["$","strong",null,{"children":"Registered"}]," tier."]}],"\n",["$","h2",null,{"children":"Component 1: Soft Gate (Inline Content)"}],"\n",["$","p",null,{"children":"For bonus content that lives inside markdown — links, extra explanations, download buttons:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30"]}],"$L31"]}],["$L32","$L33"],"$L34"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"tyz3pWujxbBqqRaeAVMb0"}
 5:["$","p",null,{"children":"Register it as an MDX component:"}]
 6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"components={{\n  ...existingComponents,\n  RegisteredOnly,\n}}\n"}]}]
 7:["$","h3",null,{"children":"Usage in Markdown"}]
@@ -84,7 +84,7 @@ e:["$","ol",null,{"children":["\n",["$","li",null,{"children":["Go to ",["$","st
 f:["$","p",null,{"children":"Add RLS policy:"}]
 10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-sql","children":"-- Only authenticated users can download from 'resources' bucket\ncreate policy \"Authenticated downloads\"\n  on storage.objects for select\n  using (bucket_id = 'resources' and auth.role() = 'authenticated');\n"}]}]
 11:["$","h3",null,{"children":"The Download Component"}]
-34:T7cc,// app/blog/components/SecureDownload.tsx
+35:T7cc,// app/blog/components/SecureDownload.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -153,14 +153,14 @@ export function SecureDownload({ path, label, size }: Props) {
     </button>
   );
 }
-12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$34"}]}]
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$35"}]}]
 13:["$","h3",null,{"children":"Usage in Markdown"}]
 14:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-markdown","children":"## Downloads\n\n<SecureDownload path=\"python-basics/cheatsheet.pdf\" label=\"Python Cheat Sheet\" size=\"2.1 MB\" />\n<SecureDownload path=\"python-basics/starter-project.zip\" label=\"Starter Template\" size=\"450 KB\" />\n<SecureDownload path=\"python-basics/solutions.pdf\" label=\"Exercise Solutions\" size=\"1.8 MB\" />\n"}]}]
 15:["$","p",null,{"children":"If not logged in: clicking shows the GitHub login flow. After login, the download starts automatically (redirect back to same page)."}]
 16:["$","p",null,{"children":"If logged in: instant download. The file URL is never exposed — Supabase generates a temporary signed URL server-side."}]
 17:["$","h2",null,{"children":"Component 3: Resource Library Page"}]
 18:["$","p",null,{"children":"A dedicated page listing all available resources:"}]
-35:T771,// app/resources/page.tsx
+36:T771,// app/resources/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -232,7 +232,7 @@ export default function ResourcesPage() {
     </main>
   );
 }
-19:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$35"}]}]
+19:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$36"}]}]
 1a:["$","h2",null,{"children":"Tracking Downloads"}]
 1b:["$","p",null,{"children":"Know which resources are popular:"}]
 1c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-sql","children":"create table download_log (\n  id uuid default gen_random_uuid() primary key,\n  user_id uuid references auth.users(id),\n  resource_path text not null,\n  downloaded_at timestamptz default now()\n);\n\nalter table download_log enable row level security;\ncreate policy \"Users log own downloads\"\n  on download_log for insert\n  with check (auth.uid() = user_id);\n"}]}]
@@ -243,7 +243,7 @@ export default function ResourcesPage() {
 21:["$","p",null,{"children":"If you want to email users about new courses:"}]
 22:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-sql","children":"-- Users table already exists via Supabase Auth\n-- Access email via auth.users table or user metadata\n\n-- Or create a newsletter opt-in:\ncreate table newsletter (\n  user_id uuid references auth.users(id) primary key,\n  email text not null,\n  opted_in boolean default true,\n  created_at timestamptz default now()\n);\n"}]}]
 23:["$","p",null,{"children":"After login, prompt once:"}]
-36:T49f,function NewsletterPrompt() {
+37:T49f,function NewsletterPrompt() {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
@@ -285,7 +285,7 @@ export default function ResourcesPage() {
     </div>
   );
 }
-24:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$36"}]}]
+24:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$37"}]}]
 25:["$","h2",null,{"children":"Security: What's Actually Protected?"}]
 26:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Method"}],["$","th",null,{"children":"Security Level"}],["$","th",null,{"children":"Use For"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"<RegisteredOnly>"}]}],["$","td",null,{"children":"Soft (client-side hide)"}],["$","td",null,{"children":"Bonus links, extra text, non-sensitive"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Supabase Storage (private bucket)"}],["$","td",null,{"children":"Hard (server-enforced)"}],["$","td",null,{"children":"PDFs, zips, paid content"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Supabase Edge Functions"}],["$","td",null,{"children":"Hardest (custom logic)"}],["$","td",null,{"children":"License checks, usage limits"}]]}]]}]]}]
 27:["$","p",null,{"children":[["$","strong",null,{"children":"Soft gate"}]," = content is in the HTML, just hidden. A developer could find it in view-source. That's fine for \"sign up to see the download link\" — the value is convenience, not secrecy."]}]
@@ -299,6 +299,7 @@ export default function ResourcesPage() {
 2f:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Part"}],["$","th",null,{"children":"Chapters"}],["$","th",null,{"children":"What"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Build"}],["$","td",null,{"children":"0–7"}],["$","td",null,{"children":"Static blog + interactive components"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Polish"}],["$","td",null,{"children":"8–11"}],["$","td",null,{"children":"Dark mode, mobile, performance"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Understand"}],["$","td",null,{"children":"12–15"}],["$","td",null,{"children":"JS, React, Hooks, TypeScript"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Backend"}],["$","td",null,{"children":"16–19"}],["$","td",null,{"children":"Supabase: views, auth, comments"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Scale"}],["$","td",null,{"children":"20–22"}],["$","td",null,{"children":"Monetization, i18n, gated resources"}]]}]]}]]}]
 30:["$","p",null,{"children":["$","strong",null,{"children":"Free for readers. Free to host. Yours to grow."}]}]
 31:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-21-multi-language","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-23-ui-design","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
-32:["$","script","script-0",{"src":"/_next/static/chunks/04jdb~mq0sf8-.js","async":true}]
-33:["$","$L37",null,{"children":["$","$38",null,{"name":"Next.MetadataOutlet","children":"$@39"}]}]
-39:null
+32:["$","script","script-0",{"src":"/_next/static/chunks/06n_h_k9m1dtk.js","async":true}]
+33:["$","script","script-1",{"src":"/_next/static/chunks/07t0714itaz6a.js","async":true}]
+34:["$","$L38",null,{"children":["$","$39",null,{"name":"Next.MetadataOutlet","children":"$@3a"}]}]
+3a:null

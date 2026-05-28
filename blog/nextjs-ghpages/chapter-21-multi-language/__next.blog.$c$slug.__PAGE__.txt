@@ -1,8 +1,8 @@
 1:"$Sreact.fragment"
-2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/04jdb~mq0sf8-.js"],"MarkdownCode"]
-3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/04jdb~mq0sf8-.js"],"MarkdownPre"]
-29:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
-2a:"$Sreact.suspense"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/06n_h_k9m1dtk.js","/_next/static/chunks/07t0714itaz6a.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/06n_h_k9m1dtk.js","/_next/static/chunks/07t0714itaz6a.js"],"MarkdownPre"]
+2a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
+2b:"$Sreact.suspense"
 4:T722,interface Props {
   params: Promise<{ slug: string[] }>;
 }
@@ -60,10 +60,10 @@ export default async function BlogPage({ params }: Props) {
     </article>
   );
 }
-0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 21: Multi-Language Course Platform"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-20-monetization","children":"← Chapter 20: Monetization"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","children":"Chapter 22: Gated Resources →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Vision"}],"\n",["$","p",null,{"children":"You teach Python. Your readers speak English, French, Vietnamese, and Chinese. You don't want four separate sites. You want one platform where:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Content exists in multiple languages"}],"\n",["$","li",null,{"children":"Readers pick their language once"}],"\n",["$","li",null,{"children":["The URL reflects the language (",["$","$L2",null,{"children":"/en/..."}],", ",["$","$L2",null,{"children":"/fr/..."}],", ",["$","$L2",null,{"children":"/vi/..."}],", ",["$","$L2",null,{"children":"/zh/..."}],")"]}],"\n",["$","li",null,{"children":"Shared components (Quiz, Playground) work in any language"}],"\n",["$","li",null,{"children":"You can add a language without changing code"}],"\n"]}],"\n",["$","h2",null,{"children":"The Folder Structure"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"children":"content/\n  en/\n    python-basics/\n      chapter-00-overview.md\n      chapter-01-variables.md\n      chapter-02-functions.md\n    react-fundamentals/\n      chapter-00-overview.md\n  fr/\n    python-basics/\n      chapter-00-apercu.md\n      chapter-01-variables.md\n      chapter-02-fonctions.md\n  vi/\n    python-basics/\n      chapter-00-tong-quan.md\n      chapter-01-bien.md\n      chapter-02-ham.md\n  zh/\n    python-basics/\n      chapter-00-概述.md\n      chapter-01-变量.md\n      chapter-02-函数.md\n"}]}],"\n",["$","p",null,{"children":"Each language is a top-level folder. Series and chapters mirror each other. Filenames can differ (localized slugs) or stay the same — your choice."}],"\n",["$","h2",null,{"children":"The Route"}],"\n",["$","p",null,{"children":["Update ",["$","$L2",null,{"children":"app/blog/[...slug]/page.tsx"}]," to handle the language prefix:"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21"]}],"$L22"]}],["$L23"],"$L24"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"GuYHmDbJ6dCRxq2u2Z899"}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 21: Multi-Language Course Platform"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-20-monetization","children":"← Chapter 20: Monetization"}]," | ",["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","children":"Chapter 22: Gated Resources →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Vision"}],"\n",["$","p",null,{"children":"You teach Python. Your readers speak English, French, Vietnamese, and Chinese. You don't want four separate sites. You want one platform where:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Content exists in multiple languages"}],"\n",["$","li",null,{"children":"Readers pick their language once"}],"\n",["$","li",null,{"children":["The URL reflects the language (",["$","$L2",null,{"children":"/en/..."}],", ",["$","$L2",null,{"children":"/fr/..."}],", ",["$","$L2",null,{"children":"/vi/..."}],", ",["$","$L2",null,{"children":"/zh/..."}],")"]}],"\n",["$","li",null,{"children":"Shared components (Quiz, Playground) work in any language"}],"\n",["$","li",null,{"children":"You can add a language without changing code"}],"\n"]}],"\n",["$","h2",null,{"children":"The Folder Structure"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"children":"content/\n  en/\n    python-basics/\n      chapter-00-overview.md\n      chapter-01-variables.md\n      chapter-02-functions.md\n    react-fundamentals/\n      chapter-00-overview.md\n  fr/\n    python-basics/\n      chapter-00-apercu.md\n      chapter-01-variables.md\n      chapter-02-fonctions.md\n  vi/\n    python-basics/\n      chapter-00-tong-quan.md\n      chapter-01-bien.md\n      chapter-02-ham.md\n  zh/\n    python-basics/\n      chapter-00-概述.md\n      chapter-01-变量.md\n      chapter-02-函数.md\n"}]}],"\n",["$","p",null,{"children":"Each language is a top-level folder. Series and chapters mirror each other. Filenames can differ (localized slugs) or stay the same — your choice."}],"\n",["$","h2",null,{"children":"The Route"}],"\n",["$","p",null,{"children":["Update ",["$","$L2",null,{"children":"app/blog/[...slug]/page.tsx"}]," to handle the language prefix:"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21"]}],"$L22"]}],["$L23","$L24"],"$L25"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"tyz3pWujxbBqqRaeAVMb0"}
 5:["$","p",null,{"children":["URL structure: ",["$","$L2",null,{"children":"/blog/en/python-basics/chapter-01-variables"}]]}]
 6:["$","h2",null,{"children":"The Language Switcher"}]
-25:T56c,// app/blog/components/LangSwitcher.tsx
+26:T56c,// app/blog/components/LangSwitcher.tsx
 "use client";
 
 import { usePathname } from "next/navigation";
@@ -111,10 +111,10 @@ export function LangSwitcher({ currentLang, slug }: Props) {
     </div>
   );
 }
-7:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$25"}]}]
+7:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$26"}]}]
 8:["$","h2",null,{"children":"Localized UI Strings"}]
 9:["$","p",null,{"children":"The interactive components need translated labels. Create a simple i18n system:"}]
-26:Ta79,// lib/i18n.ts
+27:Ta79,// lib/i18n.ts
 const translations: Record<string, Record<string, string>> = {
   en: {
     "quiz.correct": "Correct!",
@@ -189,7 +189,7 @@ const translations: Record<string, Record<string, string>> = {
 export function t(lang: string, key: string): string {
   return translations[lang]?.[key] || translations["en"][key] || key;
 }
-a:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-typescript","children":"$26"}]}]
+a:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-typescript","children":"$27"}]}]
 b:["$","h2",null,{"children":"Using Translations in Components"}]
 c:["$","p",null,{"children":["Pass ",["$","$L2",null,{"children":"lang"}]," through React Context so all components can access it:"]}]
 d:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"// lib/LangContext.tsx\n\"use client\";\n\nimport { createContext, useContext } from \"react\";\nimport { t as translate } from \"@/lib/i18n\";\n\nconst LangContext = createContext(\"en\");\n\nexport function LangProvider({ lang, children }: { lang: string; children: React.ReactNode }) {\n  return <LangContext.Provider value={lang}>{children}</LangContext.Provider>;\n}\n\nexport function useLang() {\n  return useContext(LangContext);\n}\n\nexport function useT() {\n  const lang = useLang();\n  return (key: string) => translate(lang, key);\n}\n"}]}]
@@ -202,7 +202,7 @@ f:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","child
 14:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"// app/components/LangDetector.tsx\n\"use client\";\n\nimport { useEffect } from \"react\";\nimport { usePathname, useRouter } from \"next/navigation\";\n\nexport function LangDetector() {\n  const pathname = usePathname();\n  const router = useRouter();\n\n  useEffect(() => {\n    // If on root /blog, redirect to preferred language\n    if (pathname === \"/blog\" || pathname === \"/blog/\") {\n      const saved = localStorage.getItem(\"lang\");\n      const browser = navigator.language.slice(0, 2);\n      const lang = saved || ([\"fr\", \"vi\", \"zh\"].includes(browser) ? browser : \"en\");\n      router.replace(`/blog/${lang}`);\n    }\n  }, [pathname, router]);\n\n  // Save language choice when navigating\n  useEffect(() => {\n    const lang = pathname.split(\"/\")[2];\n    if ([\"en\", \"fr\", \"vi\", \"zh\"].includes(lang)) {\n      localStorage.setItem(\"lang\", lang);\n    }\n  }, [pathname]);\n\n  return null;\n}\n"}]}]
 15:["$","h2",null,{"children":"The Course Index Page"}]
 16:["$","p",null,{"children":[["$","$L2",null,{"children":"app/blog/[lang]/page.tsx"}]," — shows all courses in the selected language:"]}]
-27:T63f,import Link from "next/link";
+28:T63f,import Link from "next/link";
 import fs from "fs";
 import path from "path";
 
@@ -257,7 +257,7 @@ export default async function CourseIndex({ params }: Props) {
     </main>
   );
 }
-17:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$27"}]}]
+17:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$28"}]}]
 18:["$","h2",null,{"children":"Writing Multi-Language Content"}]
 19:["$","h3",null,{"children":"Strategy 1: Write in English first, translate later"}]
 1a:["$","$L3",null,{"children":["$","$L2",null,{"children":"1. Write content/en/python-basics/chapter-01-variables.md\n2. Translate to content/fr/python-basics/chapter-01-variables.md\n3. Translate to content/vi/python-basics/chapter-01-bien.md\n4. Translate to content/zh/python-basics/chapter-01-变量.md\n"}]}]
@@ -267,7 +267,7 @@ export default async function CourseIndex({ params }: Props) {
 1e:["$","h3",null,{"children":"Strategy 3: Code blocks stay the same"}]
 1f:["$","p",null,{"children":"Code is universal. Only translate the prose:"}]
 20:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-markdown","children":"<!-- English -->\n\nA variable stores a value. You create one with `let`:\n\n````python\nname = \"Ada\"\nage = 36\n```⁠\n\n<!-- Vietnamese -->\nBiến lưu trữ một giá trị. Bạn tạo biến với `let`:\n\n```python\nname = \"Ada\"\nage = 36\n```⁠\n````\n"}]}]
-28:Tb23,
+29:Tb23,
 The code block is identical. Only the explanation changes.
 
 ## CJK Typography
@@ -372,8 +372,9 @@ No code changes to components. No new routes. The system discovers languages fro
 **Deploy:** `git push`
 
 You're not just a blogger. You're running a course platform. Ship it.
-21:["$","$L3",null,{"children":["$","$L2",null,{"children":"$28"}]}]
+21:["$","$L3",null,{"children":["$","$L2",null,{"children":"$29"}]}]
 22:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-20-monetization","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
-23:["$","script","script-0",{"src":"/_next/static/chunks/04jdb~mq0sf8-.js","async":true}]
-24:["$","$L29",null,{"children":["$","$2a",null,{"name":"Next.MetadataOutlet","children":"$@2b"}]}]
-2b:null
+23:["$","script","script-0",{"src":"/_next/static/chunks/06n_h_k9m1dtk.js","async":true}]
+24:["$","script","script-1",{"src":"/_next/static/chunks/07t0714itaz6a.js","async":true}]
+25:["$","$L2a",null,{"children":["$","$2b",null,{"name":"Next.MetadataOutlet","children":"$@2c"}]}]
+2c:null

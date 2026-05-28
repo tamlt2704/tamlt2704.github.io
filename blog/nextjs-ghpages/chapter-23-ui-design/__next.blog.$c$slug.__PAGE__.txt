@@ -1,8 +1,8 @@
 1:"$Sreact.fragment"
-2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/04jdb~mq0sf8-.js"],"MarkdownCode"]
-3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/04jdb~mq0sf8-.js"],"MarkdownPre"]
-39:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
-3a:"$Sreact.suspense"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/06n_h_k9m1dtk.js","/_next/static/chunks/07t0714itaz6a.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/06n_h_k9m1dtk.js","/_next/static/chunks/07t0714itaz6a.js"],"MarkdownPre"]
+3c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
+3d:"$Sreact.suspense"
 4:T698,import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { AuthButton } from "./AuthButton";
@@ -50,10 +50,12 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
     </Link>
   );
 }
-0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 23: Building a Beautiful UI"}],"\n",["$","p",null,{"children":["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","children":"← Chapter 22: Gated Resources"}]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Difference"}],"\n",["$","p",null,{"children":"Two blogs with identical content. One looks like a default template. The other feels crafted — the navbar is clean, the course cards invite clicks, the typography breathes. Readers trust the second one more. They stay longer."}],"\n",["$","p",null,{"children":"Good design isn't decoration. It's communication. Let's build a UI that communicates \"this is worth your time.\""}],"\n",["$","h2",null,{"children":"The Navbar"}],"\n",["$","p",null,{"children":"A navbar needs to do three things: show where you are, let you navigate, and stay out of the way."}],"\n",["$","p",null,{"children":["Create ",["$","$L2",null,{"children":"app/components/Navbar.tsx"}],":"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$4"}]}],"\n",["$","h3",null,{"children":"Design decisions:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L2",null,{"children":"sticky top-0"}]}]," — stays visible on scroll without taking space"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":[["$","$L2",null,{"children":"backdrop-blur-md"}]," + semi-transparent bg"]}]," — content shows through subtly, feels modern"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L2",null,{"children":"h-14"}]}]," — compact, doesn't waste mobile screen space"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Hidden on mobile"}]," — center nav hides below ",["$","$L2",null,{"children":"md:"}],", use a hamburger or bottom nav instead"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Logo as gradient square"}]," — distinctive, works at any size, no image to load"]}],"\n"]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30"]}],"$L31"]}],["$L32"],"$L33"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"GuYHmDbJ6dCRxq2u2Z899"}
-5:["$","h3",null,{"children":"Mobile Navigation"}]
-6:["$","p",null,{"children":"Add a hamburger menu for mobile:"}]
-34:T679,"use client";
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 23: Building a Beautiful UI"}],"\n",["$","p",null,{"children":["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","children":"← Chapter 22: Gated Resources"}]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Difference"}],"\n",["$","p",null,{"children":"Two blogs with identical content. One looks like a default template. The other feels crafted — the navbar is clean, the course cards invite clicks, the typography breathes. Readers trust the second one more. They stay longer."}],"\n",["$","p",null,{"children":"Good design isn't decoration. It's communication. Let's build a UI that communicates \"this is worth your time.\""}],"\n",["$","h2",null,{"children":"The Navbar"}],"\n",["$","p",null,{"children":"A navbar needs to do three things: show where you are, let you navigate, and stay out of the way."}],"\n",["$","p",null,{"children":["Create ",["$","$L2",null,{"children":"app/components/Navbar.tsx"}],":"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$4"}]}],"\n",["$","h3",null,{"children":"Design decisions:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L2",null,{"children":"sticky top-0"}]}]," — stays visible on scroll without taking space"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":[["$","$L2",null,{"children":"backdrop-blur-md"}]," + semi-transparent bg"]}]," — content shows through subtly, feels modern"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L2",null,{"children":"h-14"}]}]," — compact, doesn't waste mobile screen space"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Hidden on mobile"}]," — center nav hides below ","$L5",", use a hamburger or bottom nav instead"]}],"\n","$L6","\n"]}],"\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32"]}],"$L33"]}],["$L34","$L35"],"$L36"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"tyz3pWujxbBqqRaeAVMb0"}
+5:["$","$L2",null,{"children":"md:"}]
+6:["$","li",null,{"children":[["$","strong",null,{"children":"Logo as gradient square"}]," — distinctive, works at any size, no image to load"]}]
+7:["$","h3",null,{"children":"Mobile Navigation"}]
+8:["$","p",null,{"children":"Add a hamburger menu for mobile:"}]
+37:T679,"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -115,11 +117,11 @@ function MobileLink({
     </Link>
   );
 }
-7:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$34"}]}]
-8:["$","h2",null,{"children":"Course Cards"}]
-9:["$","p",null,{"children":"The landing page shows all available courses as cards. Each card needs: title, description, chapter count, and a visual hook."}]
-a:["$","p",null,{"children":["Create ",["$","$L2",null,{"children":"app/components/CourseCard.tsx"}],":"]}]
-35:T6e8,import Link from "next/link";
+9:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$37"}]}]
+a:["$","h2",null,{"children":"Course Cards"}]
+b:["$","p",null,{"children":"The landing page shows all available courses as cards. Each card needs: title, description, chapter count, and a visual hook."}]
+c:["$","p",null,{"children":["Create ",["$","$L2",null,{"children":"app/components/CourseCard.tsx"}],":"]}]
+38:T6e8,import Link from "next/link";
 
 interface Props {
   title: string;
@@ -167,11 +169,11 @@ export function CourseCard({ title, description, chapters, href, icon, color, ta
     </Link>
   );
 }
-b:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$35"}]}]
-c:["$","h3",null,{"children":"Design decisions:"}]
-d:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":[["$","$L2",null,{"children":"hover:-translate-y-0.5"}]," + ",["$","$L2",null,{"children":"hover:shadow-lg"}]]}]," — card lifts on hover, feels interactive"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Gradient accent bar"}]," — each course has a unique color, visual variety"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L2",null,{"children":"line-clamp-2"}]}]," — description never overflows, consistent card height"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Tags"}]," — quick scan of what the course covers"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Group hover"}]," — title changes color when hovering anywhere on the card"]}],"\n"]}]
-e:["$","h2",null,{"children":"The Course Grid"}]
-36:T7e4,// app/page.tsx or app/blog/page.tsx
+d:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$38"}]}]
+e:["$","h3",null,{"children":"Design decisions:"}]
+f:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":[["$","$L2",null,{"children":"hover:-translate-y-0.5"}]," + ",["$","$L2",null,{"children":"hover:shadow-lg"}]]}]," — card lifts on hover, feels interactive"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Gradient accent bar"}]," — each course has a unique color, visual variety"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L2",null,{"children":"line-clamp-2"}]}]," — description never overflows, consistent card height"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Tags"}]," — quick scan of what the course covers"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Group hover"}]," — title changes color when hovering anywhere on the card"]}],"\n"]}]
+10:["$","h2",null,{"children":"The Course Grid"}]
+39:T7e4,// app/page.tsx or app/blog/page.tsx
 import { CourseCard } from "@/app/components/CourseCard";
 
 const COURSES = [
@@ -233,18 +235,18 @@ export default function HomePage() {
     </main>
   );
 }
-f:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$36"}]}]
-10:["$","h3",null,{"children":"The grid:"}]
-11:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"1 column"}]," on mobile (< 640px)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"2 columns"}]," on tablet (640–1023px)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"3 columns"}]," on desktop (1024px+)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L2",null,{"children":"gap-5"}]}]," — breathing room between cards"]}],"\n"]}]
-12:["$","h2",null,{"children":"Component Styling Patterns"}]
-13:["$","h3",null,{"children":"The Card Pattern (reusable)"}]
-14:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"function Card({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  return (\n    <div\n      className={`rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900 ${className}`}\n    >\n      {children}\n    </div>\n  );\n}\n"}]}]
-15:["$","p",null,{"children":"Use it everywhere:"}]
-16:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"<Card>Quiz content</Card>\n<Card className=\"hover:shadow-lg transition\">Clickable card</Card>\n<Card className=\"border-teal-200 bg-teal-50 dark:bg-teal-900/20\">Highlighted card</Card>\n"}]}]
-17:["$","h3",null,{"children":"The Badge Pattern"}]
-18:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"function Badge({\n  children,\n  variant = \"default\",\n}: {\n  children: React.ReactNode;\n  variant?: \"default\" | \"success\" | \"warning\";\n}) {\n  const styles = {\n    default: \"bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400\",\n    success: \"bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400\",\n    warning: \"bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400\",\n  };\n\n  return (\n    <span\n      className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${styles[variant]}`}\n    >\n      {children}\n    </span>\n  );\n}\n"}]}]
-19:["$","h3",null,{"children":"The Button Pattern"}]
-37:T424,interface ButtonProps {
+11:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$39"}]}]
+12:["$","h3",null,{"children":"The grid:"}]
+13:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"1 column"}]," on mobile (< 640px)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"2 columns"}]," on tablet (640–1023px)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"3 columns"}]," on desktop (1024px+)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["$","$L2",null,{"children":"gap-5"}]}]," — breathing room between cards"]}],"\n"]}]
+14:["$","h2",null,{"children":"Component Styling Patterns"}]
+15:["$","h3",null,{"children":"The Card Pattern (reusable)"}]
+16:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"function Card({ children, className = \"\" }: { children: React.ReactNode; className?: string }) {\n  return (\n    <div\n      className={`rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900 ${className}`}\n    >\n      {children}\n    </div>\n  );\n}\n"}]}]
+17:["$","p",null,{"children":"Use it everywhere:"}]
+18:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"<Card>Quiz content</Card>\n<Card className=\"hover:shadow-lg transition\">Clickable card</Card>\n<Card className=\"border-teal-200 bg-teal-50 dark:bg-teal-900/20\">Highlighted card</Card>\n"}]}]
+19:["$","h3",null,{"children":"The Badge Pattern"}]
+1a:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"function Badge({\n  children,\n  variant = \"default\",\n}: {\n  children: React.ReactNode;\n  variant?: \"default\" | \"success\" | \"warning\";\n}) {\n  const styles = {\n    default: \"bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400\",\n    success: \"bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400\",\n    warning: \"bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400\",\n  };\n\n  return (\n    <span\n      className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${styles[variant]}`}\n    >\n      {children}\n    </span>\n  );\n}\n"}]}]
+1b:["$","h3",null,{"children":"The Button Pattern"}]
+3a:T424,interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
@@ -280,9 +282,9 @@ function Button({ children, variant = "primary", size = "md", onClick, disabled 
     </button>
   );
 }
-1a:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$37"}]}]
-1b:["$","h2",null,{"children":"The Footer"}]
-38:T8be,export function Footer() {
+1c:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$3a"}]}]
+1d:["$","h2",null,{"children":"The Footer"}]
+3b:T8be,export function Footer() {
   return (
     <footer className="mt-20 border-t border-gray-200 dark:border-gray-800">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -348,28 +350,29 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     </a>
   );
 }
-1c:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$38"}]}]
-1d:["$","h2",null,{"children":"Color System"}]
-1e:["$","p",null,{"children":"Keep it simple — one accent color, neutral grays, semantic colors:"}]
-1f:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-css","children":"/* Your color palette (already built into Tailwind) */\n/* Primary accent: teal-600 */\n/* Text: gray-900 (light) / white (dark) */\n/* Muted text: gray-600 (light) / gray-400 (dark) */\n/* Borders: gray-200 (light) / gray-800 (dark) */\n/* Backgrounds: white (light) / gray-950 (dark) */\n/* Success: green-600 */\n/* Warning: yellow-600 */\n/* Error: red-600 */\n"}]}]
-20:["$","p",null,{"children":"One accent color (teal) used consistently = professional. Rainbow colors = amateur."}]
-21:["$","h2",null,{"children":"Typography Scale"}]
-22:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-css","children":"/* Consistent sizing */\ntext-xs    → 12px  (badges, metadata)\ntext-sm    → 14px  (body text, buttons)\ntext-base  → 16px  (default body)\ntext-lg    → 18px  (card titles)\ntext-xl    → 20px  (section headings)\ntext-2xl   → 24px  (page headings)\ntext-4xl   → 36px  (hero heading)\n"}]}]
-23:["$","p",null,{"children":"Rule: never use more than 3-4 sizes on one page. Consistency > variety."}]
-24:["$","h2",null,{"children":"Spacing System"}]
-25:["$","p",null,{"children":"Tailwind's spacing scale is your friend:"}]
-26:["$","$L3",null,{"children":["$","$L2",null,{"children":"gap-1  (4px)  → between inline elements\ngap-2  (8px)  → between related items\ngap-4  (16px) → between sections\ngap-6  (24px) → between major blocks\ngap-8  (32px) → between page sections\npy-12  (48px) → page top/bottom padding\npy-16  (64px) → hero sections\n"}]}]
-27:["$","p",null,{"children":"Rule: use multiples of 4. Everything aligns to a grid. Looks intentional."}]
-28:["$","h2",null,{"children":"The Complete Page Layout"}]
-29:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"// app/layout.tsx\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\" suppressHydrationWarning>\n      <head>\n        <ThemeScript />\n      </head>\n      <body className=\"flex min-h-screen flex-col bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100\">\n        <Navbar />\n        <main className=\"flex-1\">{children}</main>\n        <Footer />\n      </body>\n    </html>\n  );\n}\n"}]}]
-2a:["$","p",null,{"children":[["$","$L2",null,{"children":"flex flex-col"}]," + ",["$","$L2",null,{"children":"flex-1"}]," on main = footer always at the bottom, even on short pages."]}]
-2b:["$","hr",null,{}]
-2c:["$","h2",null,{"children":"Design Principles for Developer Blogs"}]
-2d:["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Whitespace is content"}]," — let things breathe, don't cram"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"One accent color"}]," — teal for links, buttons, highlights. That's it."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Consistent borders"}]," — ",["$","$L2",null,{"children":"border-gray-200 dark:border-gray-800"}]," everywhere"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Subtle interactions"}]," — hover lifts, color transitions, not bouncing animations"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Mobile first"}]," — design for 375px, then expand for desktop"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Dark mode isn't inverted"}]," — it's a separate palette, not ",["$","$L2",null,{"children":"filter: invert()"}]]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Typography does the work"}]," — good font sizes + line height > fancy layouts"]}],"\n"]}]
-2e:["$","hr",null,{}]
-2f:["$","h2",null,{"children":"What's Next"}]
-30:["$","p",null,{"children":"You have a complete, beautiful, interactive learning platform. The only thing left is content. Write more courses. Ship them. The platform handles the rest."}]
-31:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
-32:["$","script","script-0",{"src":"/_next/static/chunks/04jdb~mq0sf8-.js","async":true}]
-33:["$","$L39",null,{"children":["$","$3a",null,{"name":"Next.MetadataOutlet","children":"$@3b"}]}]
-3b:null
+1e:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"$3b"}]}]
+1f:["$","h2",null,{"children":"Color System"}]
+20:["$","p",null,{"children":"Keep it simple — one accent color, neutral grays, semantic colors:"}]
+21:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-css","children":"/* Your color palette (already built into Tailwind) */\n/* Primary accent: teal-600 */\n/* Text: gray-900 (light) / white (dark) */\n/* Muted text: gray-600 (light) / gray-400 (dark) */\n/* Borders: gray-200 (light) / gray-800 (dark) */\n/* Backgrounds: white (light) / gray-950 (dark) */\n/* Success: green-600 */\n/* Warning: yellow-600 */\n/* Error: red-600 */\n"}]}]
+22:["$","p",null,{"children":"One accent color (teal) used consistently = professional. Rainbow colors = amateur."}]
+23:["$","h2",null,{"children":"Typography Scale"}]
+24:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-css","children":"/* Consistent sizing */\ntext-xs    → 12px  (badges, metadata)\ntext-sm    → 14px  (body text, buttons)\ntext-base  → 16px  (default body)\ntext-lg    → 18px  (card titles)\ntext-xl    → 20px  (section headings)\ntext-2xl   → 24px  (page headings)\ntext-4xl   → 36px  (hero heading)\n"}]}]
+25:["$","p",null,{"children":"Rule: never use more than 3-4 sizes on one page. Consistency > variety."}]
+26:["$","h2",null,{"children":"Spacing System"}]
+27:["$","p",null,{"children":"Tailwind's spacing scale is your friend:"}]
+28:["$","$L3",null,{"children":["$","$L2",null,{"children":"gap-1  (4px)  → between inline elements\ngap-2  (8px)  → between related items\ngap-4  (16px) → between sections\ngap-6  (24px) → between major blocks\ngap-8  (32px) → between page sections\npy-12  (48px) → page top/bottom padding\npy-16  (64px) → hero sections\n"}]}]
+29:["$","p",null,{"children":"Rule: use multiples of 4. Everything aligns to a grid. Looks intentional."}]
+2a:["$","h2",null,{"children":"The Complete Page Layout"}]
+2b:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-tsx","children":"// app/layout.tsx\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\" suppressHydrationWarning>\n      <head>\n        <ThemeScript />\n      </head>\n      <body className=\"flex min-h-screen flex-col bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100\">\n        <Navbar />\n        <main className=\"flex-1\">{children}</main>\n        <Footer />\n      </body>\n    </html>\n  );\n}\n"}]}]
+2c:["$","p",null,{"children":[["$","$L2",null,{"children":"flex flex-col"}]," + ",["$","$L2",null,{"children":"flex-1"}]," on main = footer always at the bottom, even on short pages."]}]
+2d:["$","hr",null,{}]
+2e:["$","h2",null,{"children":"Design Principles for Developer Blogs"}]
+2f:["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Whitespace is content"}]," — let things breathe, don't cram"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"One accent color"}]," — teal for links, buttons, highlights. That's it."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Consistent borders"}]," — ",["$","$L2",null,{"children":"border-gray-200 dark:border-gray-800"}]," everywhere"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Subtle interactions"}]," — hover lifts, color transitions, not bouncing animations"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Mobile first"}]," — design for 375px, then expand for desktop"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Dark mode isn't inverted"}]," — it's a separate palette, not ",["$","$L2",null,{"children":"filter: invert()"}]]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Typography does the work"}]," — good font sizes + line height > fancy layouts"]}],"\n"]}]
+30:["$","hr",null,{}]
+31:["$","h2",null,{"children":"What's Next"}]
+32:["$","p",null,{"children":"You have a complete, beautiful, interactive learning platform. The only thing left is content. Write more courses. Ship them. The platform handles the rest."}]
+33:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/nextjs-ghpages/chapter-22-gated-resources","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+34:["$","script","script-0",{"src":"/_next/static/chunks/06n_h_k9m1dtk.js","async":true}]
+35:["$","script","script-1",{"src":"/_next/static/chunks/07t0714itaz6a.js","async":true}]
+36:["$","$L3c",null,{"children":["$","$3d",null,{"name":"Next.MetadataOutlet","children":"$@3e"}]}]
+3e:null

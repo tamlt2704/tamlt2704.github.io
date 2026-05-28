@@ -1,0 +1,75 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/06n_h_k9m1dtk.js","/_next/static/chunks/07t0714itaz6a.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js","/_next/static/chunks/06n_h_k9m1dtk.js","/_next/static/chunks/07t0714itaz6a.js"],"MarkdownCode"]
+1d:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06v13rhvmbnl-.js"],"OutletBoundary"]
+1e:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/physics-matterjs/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 6: Advanced Demos"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/physics-matterjs/chapter-05-collisions","children":"← Chapter 5: Collisions"}]," | ",["$","a",null,{"href":"/blog/physics-matterjs/chapter-00-overview","children":"Overview"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Goal"}],"\n",["$","p",null,{"children":"Build complete physics simulations: stacking towers, slingshots, ragdolls, and interactive playgrounds."}],"\n",["$","h2",null,{"children":"Demo 1: Stacking Tower"}],"\n",["$","p",null,{"children":"A tower of boxes that can be knocked over:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"function createTower(x: number, y: number, cols: number, rows: number) {\n  for (let row = 0; row < rows; row++) {\n    for (let col = 0; col < cols; col++) {\n      const bx = x + col * 42;\n      const by = y - row * 42;\n      Composite.add(\n        engine.world,\n        Bodies.rectangle(bx, by, 40, 40, {\n          render: { fillStyle: `hsl(${row * 40 + col * 20}, 70%, 60%)` },\n        }),\n      );\n    }\n  }\n}\n\n// Wrecking ball to knock it down\nconst wreckingBall = Bodies.circle(100, 200, 35, {\n  density: 0.01, // heavy!\n  render: { fillStyle: \"#e74c3c\" },\n});\n"}]}],"\n",["$","p",null,{"children":["Physics lesson: ",["$","strong",null,{"children":"center of mass"}]," and ",["$","strong",null,{"children":"torque"}],". A tower falls when the center of mass moves outside the base."]}],"\n",["$","h2",null,{"children":"Demo 2: Slingshot"}],"\n",["$","p",null,{"children":"Elastic constraint + projectile:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"const anchor = { x: 200, y: 350 };\nconst ball = Bodies.circle(200, 350, 20, { density: 0.005 });\n\nconst elastic = Constraint.create({\n  pointA: anchor,\n  bodyB: ball,\n  stiffness: 0.05,\n  render: { strokeStyle: \"#fff\", lineWidth: 3 },\n});\n\n// Targets to hit\nfor (let i = 0; i < 5; i++) {\n  Composite.add(\n    engine.world,\n    Bodies.rectangle(500, 450 - i * 45, 35, 35, {\n      render: { fillStyle: `hsl(${i * 60}, 70%, 60%)` },\n    }),\n  );\n}\n"}]}],"\n",["$","p",null,{"children":["Physics lesson: ",["$","strong",null,{"children":"elastic potential energy"}]," converts to ",["$","strong",null,{"children":"kinetic energy"}],". Pull further = more energy = faster launch."]}],"\n",["$","h2",null,{"children":"Demo 3: Ragdoll"}],"\n",["$","p",null,{"children":"A human figure made of connected bodies:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"function createRagdoll(x: number, y: number) {\n  const head = Bodies.circle(x, y, 15);\n  const torso = Bodies.rectangle(x, y + 40, 30, 50);\n  const armL = Bodies.rectangle(x - 30, y + 30, 10, 40);\n  const armR = Bodies.rectangle(x + 30, y + 30, 10, 40);\n  const legL = Bodies.rectangle(x - 10, y + 80, 10, 45);\n  const legR = Bodies.rectangle(x + 10, y + 80, 10, 45);\n\n  // Connect with constraints\n  const joints = [\n    Constraint.create({ bodyA: head, bodyB: torso, length: 20, stiffness: 0.6 }),\n    Constraint.create({ bodyA: torso, bodyB: armL, pointA: { x: -15, y: -20 }, length: 5 }),\n    Constraint.create({ bodyA: torso, bodyB: armR, pointA: { x: 15, y: -20 }, length: 5 }),\n    Constraint.create({ bodyA: torso, bodyB: legL, pointA: { x: -8, y: 25 }, length: 5 }),\n    Constraint.create({ bodyA: torso, bodyB: legR, pointA: { x: 8, y: 25 }, length: 5 }),\n  ];\n\n  Composite.add(engine.world, [head, torso, armL, armR, legL, legR, ...joints]);\n}\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17"]}],"$L18"]}],["$L19","$L1a"],"$L1b"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"tyz3pWujxbBqqRaeAVMb0"}
+4:["$","p",null,{"children":["Physics lesson: ",["$","strong",null,{"children":"rigid body dynamics"}]," and ",["$","strong",null,{"children":"joint constraints"}],". Each limb has independent physics but is connected."]}]
+5:["$","h2",null,{"children":"Demo 4: Conveyor Belt"}]
+6:["$","p",null,{"children":"A surface that moves objects along it:"}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"const belt = Bodies.rectangle(350, 400, 400, 20, {\n  isStatic: true,\n  friction: 1,\n  label: \"belt\",\n});\n\n// Move objects on the belt\nEvents.on(engine, \"beforeUpdate\", () => {\n  engine.world.bodies\n    .filter((b) => !b.isStatic && b.position.y < 400 && b.position.y > 380)\n    .forEach((b) => {\n      Body.setVelocity(b, { x: b.velocity.x + 0.5, y: b.velocity.y });\n    });\n});\n"}]}]
+8:["$","h2",null,{"children":"Demo 5: Soft Body (Pressure)"}]
+9:["$","p",null,{"children":"Approximate a soft body with circles and springs:"}]
+1c:T451,function createSoftBody(x: number, y: number, cols: number, rows: number) {
+  const particles: Matter.Body[] = [];
+  const gap = 25;
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const p = Bodies.circle(x + col * gap, y + row * gap, 8, {
+        render: { fillStyle: "#3498db" },
+      });
+      particles.push(p);
+    }
+  }
+
+  // Connect neighbors with springs
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const i = row * cols + col;
+      if (col < cols - 1) {
+        Composite.add(
+          engine.world,
+          Constraint.create({
+            bodyA: particles[i],
+            bodyB: particles[i + 1],
+            stiffness: 0.1,
+            length: gap,
+          }),
+        );
+      }
+      if (row < rows - 1) {
+        Composite.add(
+          engine.world,
+          Constraint.create({
+            bodyA: particles[i],
+            bodyB: particles[i + cols],
+            stiffness: 0.1,
+            length: gap,
+          }),
+        );
+      }
+    }
+  }
+
+  Composite.add(engine.world, particles);
+}
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$1c"}]}]
+b:["$","h2",null,{"children":"Putting It All Together: The Physics Lab"}]
+c:["$","p",null,{"children":["Our ",["$","a",null,{"href":"/games/physics","children":"Physics Lab"}]," combines all these concepts:"]}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"children":"PhysicsLab Component\n├── Demo selector (7 simulations)\n├── Gravity slider (real-time adjustment)\n├── Canvas with Matter.js renderer\n└── Mouse interaction (drag any object)\n"}]}]
+e:["$","p",null,{"children":"Each demo teaches a different physics concept:"}]
+f:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Gravity"}]," → free fall, mass independence"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Bounce"}]," → restitution, energy conservation"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Friction"}]," → surface interaction, ramps"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Pendulum"}]," → periodic motion, constraints"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Newton's Cradle"}]," → momentum conservation"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Stacking"}]," → center of mass, stability"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Slingshot"}]," → elastic energy, projectile motion"]}],"\n"]}]
+10:["$","h2",null,{"children":"What's Next?"}]
+11:["$","p",null,{"children":"Ideas to extend:"}]
+12:["$","ul",null,{"children":["\n",["$","li",null,{"children":["Add a ",["$","strong",null,{"children":"car"}]," with wheel constraints and motor"]}],"\n",["$","li",null,{"children":["Build a ",["$","strong",null,{"children":"bridge"}]," that breaks under weight"]}],"\n",["$","li",null,{"children":["Create a ",["$","strong",null,{"children":"marble run"}]," with ramps and funnels"]}],"\n",["$","li",null,{"children":["Make a ",["$","strong",null,{"children":"physics puzzle game"}]," (get the ball to the goal)"]}],"\n",["$","li",null,{"children":["Add ",["$","strong",null,{"children":"fluid simulation"}]," with many small particles"]}],"\n"]}]
+13:["$","hr",null,{}]
+14:["$","h2",null,{"children":"The Full Journey"}]
+15:["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Setup"}]," — Engine, Render, Runner, ground"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Bodies"}]," — Shapes, mass, restitution, friction"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Forces"}]," — Gravity, applied forces, projectiles"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Constraints"}]," — Pendulums, springs, chains"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Collisions"}]," — Events, sensors, filtering"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Advanced"}]," — Complex simulations combining everything"]}],"\n"]}]
+16:["$","p",null,{"children":"You now have the tools to simulate any 2D physics scenario. The math is handled by Matter.js — your job is to set up the world and let physics do the rest."}]
+17:["$","p",null,{"children":["$","a",null,{"href":"/blog/physics-matterjs/chapter-00-overview","children":"← Overview"}]}]
+18:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/physics-matterjs/chapter-05-collisions","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+19:["$","script","script-0",{"src":"/_next/static/chunks/06n_h_k9m1dtk.js","async":true}]
+1a:["$","script","script-1",{"src":"/_next/static/chunks/07t0714itaz6a.js","async":true}]
+1b:["$","$L1d",null,{"children":["$","$1e",null,{"name":"Next.MetadataOutlet","children":"$@1f"}]}]
+1f:null
