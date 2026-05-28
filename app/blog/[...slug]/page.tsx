@@ -9,6 +9,7 @@ import { MarkdownCode, MarkdownPre } from "@/app/blog/components/MarkdownCode";
 import { Quiz } from "@/app/blog/components/Quiz";
 import { CodePlayground } from "@/app/blog/components/CodePlayground";
 import { StepVisualizer } from "@/app/blog/components/StepVisualizer";
+import { Mermaid } from "@/app/blog/components/Mermaid";
 import type { Metadata } from "next"; // add to imports
 
 // Next.js passes URL segments as params.
@@ -121,6 +122,7 @@ export default async function BlogPage({ params }: Props) {
             Quiz,
             CodePlayground,
             StepVisualizer,
+            Mermaid,
           }}
           options={{
             mdxOptions: {
