@@ -117,8 +117,16 @@ export default async function BlogPage({ params }: Props) {
           components={{
             code: MarkdownCode,
             pre: MarkdownPre,
-            // Strip .md from links so relative chapter links work as Next.js routes
-            a: ({ href, ...props }) => <a href={href?.replace(/\.md$/, "")} {...props} />,
+            // Convert relative .md links to absolute blog routes
+            a: ({ href, ...props }) => {
+              let resolved = href;
+              if (href && !href.startsWith("http") && !href.startsWith("/")) {
+                resolved = `/blog/${series}/${href.replace(/\.md$/, "")}`;
+              } else if (href) {
+                resolved = href.replace(/\.md$/, "");
+              }
+              return <a href={resolved} {...props} />;
+            },
             Quiz,
             CodePlayground,
             StepVisualizer,
