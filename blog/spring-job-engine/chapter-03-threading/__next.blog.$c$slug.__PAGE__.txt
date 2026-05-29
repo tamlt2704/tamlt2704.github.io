@@ -1,0 +1,82 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1b:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1c:"$Sreact.suspense"
+4:T780,@Service
+public class JobExecutor {
+
+    private final ThreadPoolTaskExecutor executor;
+    private final JobService jobService;
+    private final Map<String, Future<?>> runningJobs = new ConcurrentHashMap<>();
+
+    public JobExecutor(@Qualifier("jobExecutor") ThreadPoolTaskExecutor executor,
+                       JobService jobService) {
+        this.executor = executor;
+        this.jobService = jobService;
+    }
+
+    public void execute(Job job) {
+        Future<?> future = executor.submit(() -> {
+            Thread.currentThread().setName("job-" + job.getId());
+            try {
+                jobService.transition(job.getId(), JobStatus.RUNNING);
+                doWork(job);
+                jobService.transition(job.getId(), JobStatus.COMPLETED);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                jobService.transition(job.getId(), JobStatus.CANCELLED);
+            } catch (Exception e) {
+                job.setResult(e.getMessage());
+                jobService.transition(job.getId(), JobStatus.FAILED);
+            } finally {
+                runningJobs.remove(job.getId());
+            }
+        });
+        runningJobs.put(job.getId(), future);
+    }
+
+    public boolean cancel(String jobId) {
+        Future<?> future = runningJobs.get(jobId);
+        if (future != null) {
+            return future.cancel(true);  // interrupt the thread
+        }
+        return false;
+    }
+
+    private void doWork(Job job) throws InterruptedException {
+        // Simulate work with progress updates
+        for (int i = 0; i <= 100; i += 10) {
+            if (Thread.currentThread().isInterrupted()) {
+                throw new InterruptedException("Job cancelled");
+            }
+            job.setProgress(i);
+            jobService.updateProgress(job.getId(), i);
+            Thread.sleep(500);  // simulate processing
+        }
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 3: Java Multithreading & Thread Pools"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-02-job-model","children":"← Chapter 2: Job Model"}]," | ",["$","a",null,{"href":"/blog/spring-job-engine/chapter-04-spring-integration","children":"Chapter 4: Spring Integration →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Story"}],"\n",["$","p",null,{"children":"You have jobs in a queue. But running them one-by-one is too slow. The system needs to process 4, 8, 16 jobs simultaneously. You need a thread pool — a team of workers picking tasks from a shared queue."}],"\n",["$","h2",null,{"children":"The Concepts"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"┌─────────────────────────────────────────────┐\n│              ThreadPoolExecutor              │\n│                                             │\n│  Queue: [Job5] [Job6] [Job7] [Job8] ...    │\n│                                             │\n│  Workers:                                   │\n│    Thread-1: ████████░░ Job1 (80%)          │\n│    Thread-2: ███░░░░░░░ Job2 (30%)          │\n│    Thread-3: █████████░ Job3 (90%)          │\n│    Thread-4: ░░░░░░░░░░ idle                │\n│                                             │\n│  Core: 4 | Max: 16 | Queue: 100            │\n└─────────────────────────────────────────────┘\n"}]}],"\n",["$","h2",null,{"children":"Step 1: Thread Pool Configuration"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\npublic class ThreadPoolConfig {\n\n    @Value(\"${job-engine.thread-pool.core-size:4}\")\n    private int coreSize;\n\n    @Value(\"${job-engine.thread-pool.max-size:16}\")\n    private int maxSize;\n\n    @Value(\"${job-engine.thread-pool.queue-capacity:100}\")\n    private int queueCapacity;\n\n    @Bean(\"jobExecutor\")\n    public ThreadPoolTaskExecutor jobExecutor() {\n        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();\n        executor.setCorePoolSize(coreSize);\n        executor.setMaxPoolSize(maxSize);\n        executor.setQueueCapacity(queueCapacity);\n        executor.setThreadNamePrefix(\"job-worker-\");\n        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());\n        executor.setWaitForTasksToCompleteOnShutdown(true);\n        executor.setAwaitTerminationSeconds(30);\n        executor.initialize();\n        return executor;\n    }\n}\n"}]}],"\n",["$","p",null,{"children":"Key settings:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"coreSize"}]," — always-alive threads (even when idle)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"maxSize"}]," — maximum threads under load"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"queueCapacity"}]," — jobs waiting when all threads are busy"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"CallerRunsPolicy"}]," — if queue is full, the submitting thread runs the job (backpressure)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"WaitForTasksToComplete"}]," — graceful shutdown waits for running jobs"]}],"\n"]}],"\n",["$","h2",null,{"children":"Step 2: The Job Executor"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16"]}],"$L17"]}],["$L18","$L19"],"$L1a"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ZuSjgxTf-pST8lByzW397"}
+5:["$","h2",null,{"children":"Step 3: Understanding Thread Safety"}]
+6:["$","p",null,{"children":"Multiple threads access shared state. Here's what can go wrong and how we prevent it:"}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// WRONG — race condition\nprivate int activeJobs = 0;\nactiveJobs++;  // not atomic!\n\n// RIGHT — atomic operations\nprivate final AtomicInteger activeJobs = new AtomicInteger(0);\nactiveJobs.incrementAndGet();\n\n// WRONG — shared mutable map\nprivate Map<String, Future<?>> jobs = new HashMap<>();  // not thread-safe!\n\n// RIGHT — concurrent map\nprivate final Map<String, Future<?>> jobs = new ConcurrentHashMap<>();\n"}]}]
+8:["$","h2",null,{"children":"Step 4: The Scheduler (Polling for Jobs)"}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class JobScheduler {\n\n    private final JobService jobService;\n    private final JobExecutor jobExecutor;\n    private final ThreadPoolTaskExecutor executor;\n\n    @Scheduled(fixedDelay = 1000)  // check every second\n    public void pollAndExecute() {\n        int available = executor.getMaxPoolSize() - executor.getActiveCount();\n        if (available <= 0) return;  // all workers busy\n\n        List<Job> jobs = jobService.getQueuedJobs(available);\n        jobs.forEach(jobExecutor::execute);\n    }\n}\n"}]}]
+a:["$","p",null,{"children":"This is the heartbeat — every second, it checks for capacity and fills it with queued jobs."}]
+b:["$","h2",null,{"children":"Step 5: Virtual Threads (Java 21)"}]
+c:["$","p",null,{"children":"For I/O-heavy jobs (HTTP calls, DB queries), virtual threads are game-changing:"}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean(\"virtualExecutor\")\npublic ExecutorService virtualExecutor() {\n    return Executors.newVirtualThreadPerTaskExecutor();\n}\n"}]}]
+e:["$","p",null,{"children":"Virtual threads are lightweight — you can have millions. Use them for jobs that wait on I/O. Use platform threads (ThreadPoolExecutor) for CPU-bound work."}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// Choose executor based on job type\npublic void execute(Job job) {\n    Executor exec = job.getType().endsWith(\"_IO\")\n        ? virtualExecutor\n        : platformExecutor;\n\n    exec.execute(() -> doWork(job));\n}\n"}]}]
+10:["$","h2",null,{"children":"Step 6: Monitoring the Pool"}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@RestController\n@RequestMapping(\"/api/engine\")\npublic class EngineController {\n\n    private final ThreadPoolTaskExecutor executor;\n\n    @GetMapping(\"/status\")\n    public Map<String, Object> status() {\n        return Map.of(\n            \"activeThreads\", executor.getActiveCount(),\n            \"poolSize\", executor.getPoolSize(),\n            \"queueSize\", executor.getThreadPoolExecutor().getQueue().size(),\n            \"completedTasks\", executor.getThreadPoolExecutor().getCompletedTaskCount()\n        );\n    }\n}\n"}]}]
+12:["$","h2",null,{"children":"Key Concepts Summary"}]
+13:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Concept"}],["$","th",null,{"children":"What"}],["$","th",null,{"children":"Why"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"ThreadPoolExecutor"}],["$","td",null,{"children":"Reuses threads"}],["$","td",null,{"children":"Creating threads is expensive"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"ConcurrentHashMap"}],["$","td",null,{"children":"Thread-safe map"}],["$","td",null,{"children":"Multiple threads read/write job state"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"AtomicInteger"}],["$","td",null,{"children":"Lock-free counter"}],["$","td",null,{"children":"Track active jobs without synchronization"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Future.cancel(true)"}],["$","td",null,{"children":"Interrupt a thread"}],["$","td",null,{"children":"Allows job cancellation"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"CallerRunsPolicy"}],["$","td",null,{"children":"Backpressure"}],["$","td",null,{"children":"Prevents OOM when queue is full"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Virtual Threads"}],["$","td",null,{"children":"Lightweight threads"}],["$","td",null,{"children":"Scale I/O-bound work to millions"}]]}]]}]]}]
+14:["$","h2",null,{"children":"Next"}]
+15:["$","p",null,{"children":"We'll wire this into Spring Integration — channels, routers, and message-driven flows that orchestrate the entire pipeline."}]
+16:["$","p",null,{"children":["$","a",null,{"href":"/blog/spring-job-engine/chapter-04-spring-integration","children":"Chapter 4: Spring Integration Flows →"}]}]
+17:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-02-job-model","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-job-engine/chapter-04-spring-integration","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+18:["$","script","script-0",{"src":"/_next/static/chunks/099v51bpaswwx.js","async":true}]
+19:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1a:["$","$L1b",null,{"children":["$","$1c",null,{"name":"Next.MetadataOutlet","children":"$@1d"}]}]
+1d:null

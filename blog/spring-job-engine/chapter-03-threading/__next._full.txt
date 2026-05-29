@@ -1,0 +1,94 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0teiij56aclwu.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","spring-job-engine","chapter-03-threading",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","spring-job-engine/chapter-03-threading","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0teiij56aclwu.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/099v51bpaswwx.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0teiij56aclwu.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"ZuSjgxTf-pST8lByzW397"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-02-job-model","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-job-engine/chapter-04-spring-integration","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T780,@Service
+public class JobExecutor {
+
+    private final ThreadPoolTaskExecutor executor;
+    private final JobService jobService;
+    private final Map<String, Future<?>> runningJobs = new ConcurrentHashMap<>();
+
+    public JobExecutor(@Qualifier("jobExecutor") ThreadPoolTaskExecutor executor,
+                       JobService jobService) {
+        this.executor = executor;
+        this.jobService = jobService;
+    }
+
+    public void execute(Job job) {
+        Future<?> future = executor.submit(() -> {
+            Thread.currentThread().setName("job-" + job.getId());
+            try {
+                jobService.transition(job.getId(), JobStatus.RUNNING);
+                doWork(job);
+                jobService.transition(job.getId(), JobStatus.COMPLETED);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                jobService.transition(job.getId(), JobStatus.CANCELLED);
+            } catch (Exception e) {
+                job.setResult(e.getMessage());
+                jobService.transition(job.getId(), JobStatus.FAILED);
+            } finally {
+                runningJobs.remove(job.getId());
+            }
+        });
+        runningJobs.put(job.getId(), future);
+    }
+
+    public boolean cancel(String jobId) {
+        Future<?> future = runningJobs.get(jobId);
+        if (future != null) {
+            return future.cancel(true);  // interrupt the thread
+        }
+        return false;
+    }
+
+    private void doWork(Job job) throws InterruptedException {
+        // Simulate work with progress updates
+        for (int i = 0; i <= 100; i += 10) {
+            if (Thread.currentThread().isInterrupted()) {
+                throw new InterruptedException("Job cancelled");
+            }
+            job.setProgress(i);
+            jobService.updateProgress(job.getId(), i);
+            Thread.sleep(500);  // simulate processing
+        }
+    }
+}
+10:[["$","h1",null,{"children":"Chapter 3: Java Multithreading & Thread Pools"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-02-job-model","children":"← Chapter 2: Job Model"}]," | ",["$","a",null,{"href":"/blog/spring-job-engine/chapter-04-spring-integration","children":"Chapter 4: Spring Integration →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Story"}],"\n",["$","p",null,{"children":"You have jobs in a queue. But running them one-by-one is too slow. The system needs to process 4, 8, 16 jobs simultaneously. You need a thread pool — a team of workers picking tasks from a shared queue."}],"\n",["$","h2",null,{"children":"The Concepts"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"children":"┌─────────────────────────────────────────────┐\n│              ThreadPoolExecutor              │\n│                                             │\n│  Queue: [Job5] [Job6] [Job7] [Job8] ...    │\n│                                             │\n│  Workers:                                   │\n│    Thread-1: ████████░░ Job1 (80%)          │\n│    Thread-2: ███░░░░░░░ Job2 (30%)          │\n│    Thread-3: █████████░ Job3 (90%)          │\n│    Thread-4: ░░░░░░░░░░ idle                │\n│                                             │\n│  Core: 4 | Max: 16 | Queue: 100            │\n└─────────────────────────────────────────────┘\n"}]}],"\n",["$","h2",null,{"children":"Step 1: Thread Pool Configuration"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Configuration\npublic class ThreadPoolConfig {\n\n    @Value(\"${job-engine.thread-pool.core-size:4}\")\n    private int coreSize;\n\n    @Value(\"${job-engine.thread-pool.max-size:16}\")\n    private int maxSize;\n\n    @Value(\"${job-engine.thread-pool.queue-capacity:100}\")\n    private int queueCapacity;\n\n    @Bean(\"jobExecutor\")\n    public ThreadPoolTaskExecutor jobExecutor() {\n        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();\n        executor.setCorePoolSize(coreSize);\n        executor.setMaxPoolSize(maxSize);\n        executor.setQueueCapacity(queueCapacity);\n        executor.setThreadNamePrefix(\"job-worker-\");\n        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());\n        executor.setWaitForTasksToCompleteOnShutdown(true);\n        executor.setAwaitTerminationSeconds(30);\n        executor.initialize();\n        return executor;\n    }\n}\n"}]}],"\n",["$","p",null,{"children":"Key settings:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"coreSize"}]," — always-alive threads (even when idle)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"maxSize"}]," — maximum threads under load"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"queueCapacity"}]," — jobs waiting when all threads are busy"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"CallerRunsPolicy"}]," — if queue is full, the submitting thread runs the job (backpressure)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"WaitForTasksToComplete"}]," — graceful shutdown waits for running jobs"]}],"\n"]}],"\n",["$","h2",null,{"children":"Step 2: The Job Executor"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$13"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25"]
+14:["$","h2",null,{"children":"Step 3: Understanding Thread Safety"}]
+15:["$","p",null,{"children":"Multiple threads access shared state. Here's what can go wrong and how we prevent it:"}]
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// WRONG — race condition\nprivate int activeJobs = 0;\nactiveJobs++;  // not atomic!\n\n// RIGHT — atomic operations\nprivate final AtomicInteger activeJobs = new AtomicInteger(0);\nactiveJobs.incrementAndGet();\n\n// WRONG — shared mutable map\nprivate Map<String, Future<?>> jobs = new HashMap<>();  // not thread-safe!\n\n// RIGHT — concurrent map\nprivate final Map<String, Future<?>> jobs = new ConcurrentHashMap<>();\n"}]}]
+17:["$","h2",null,{"children":"Step 4: The Scheduler (Polling for Jobs)"}]
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Component\npublic class JobScheduler {\n\n    private final JobService jobService;\n    private final JobExecutor jobExecutor;\n    private final ThreadPoolTaskExecutor executor;\n\n    @Scheduled(fixedDelay = 1000)  // check every second\n    public void pollAndExecute() {\n        int available = executor.getMaxPoolSize() - executor.getActiveCount();\n        if (available <= 0) return;  // all workers busy\n\n        List<Job> jobs = jobService.getQueuedJobs(available);\n        jobs.forEach(jobExecutor::execute);\n    }\n}\n"}]}]
+19:["$","p",null,{"children":"This is the heartbeat — every second, it checks for capacity and fills it with queued jobs."}]
+1a:["$","h2",null,{"children":"Step 5: Virtual Threads (Java 21)"}]
+1b:["$","p",null,{"children":"For I/O-heavy jobs (HTTP calls, DB queries), virtual threads are game-changing:"}]
+1c:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Bean(\"virtualExecutor\")\npublic ExecutorService virtualExecutor() {\n    return Executors.newVirtualThreadPerTaskExecutor();\n}\n"}]}]
+1d:["$","p",null,{"children":"Virtual threads are lightweight — you can have millions. Use them for jobs that wait on I/O. Use platform threads (ThreadPoolExecutor) for CPU-bound work."}]
+1e:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// Choose executor based on job type\npublic void execute(Job job) {\n    Executor exec = job.getType().endsWith(\"_IO\")\n        ? virtualExecutor\n        : platformExecutor;\n\n    exec.execute(() -> doWork(job));\n}\n"}]}]
+1f:["$","h2",null,{"children":"Step 6: Monitoring the Pool"}]
+20:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@RestController\n@RequestMapping(\"/api/engine\")\npublic class EngineController {\n\n    private final ThreadPoolTaskExecutor executor;\n\n    @GetMapping(\"/status\")\n    public Map<String, Object> status() {\n        return Map.of(\n            \"activeThreads\", executor.getActiveCount(),\n            \"poolSize\", executor.getPoolSize(),\n            \"queueSize\", executor.getThreadPoolExecutor().getQueue().size(),\n            \"completedTasks\", executor.getThreadPoolExecutor().getCompletedTaskCount()\n        );\n    }\n}\n"}]}]
+21:["$","h2",null,{"children":"Key Concepts Summary"}]
+22:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Concept"}],["$","th",null,{"children":"What"}],["$","th",null,{"children":"Why"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"ThreadPoolExecutor"}],["$","td",null,{"children":"Reuses threads"}],["$","td",null,{"children":"Creating threads is expensive"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"ConcurrentHashMap"}],["$","td",null,{"children":"Thread-safe map"}],["$","td",null,{"children":"Multiple threads read/write job state"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"AtomicInteger"}],["$","td",null,{"children":"Lock-free counter"}],["$","td",null,{"children":"Track active jobs without synchronization"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Future.cancel(true)"}],["$","td",null,{"children":"Interrupt a thread"}],["$","td",null,{"children":"Allows job cancellation"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"CallerRunsPolicy"}],["$","td",null,{"children":"Backpressure"}],["$","td",null,{"children":"Prevents OOM when queue is full"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Virtual Threads"}],["$","td",null,{"children":"Lightweight threads"}],["$","td",null,{"children":"Scale I/O-bound work to millions"}]]}]]}]]}]
+23:["$","h2",null,{"children":"Next"}]
+24:["$","p",null,{"children":"We'll wire this into Spring Integration — channels, routers, and message-driven flows that orchestrate the entire pipeline."}]
+25:["$","p",null,{"children":["$","a",null,{"href":"/blog/spring-job-engine/chapter-04-spring-integration","children":"Chapter 4: Spring Integration Flows →"}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+26:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 03 threading — spring job engine"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L26","3",{}]]

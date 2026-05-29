@@ -1,0 +1,81 @@
+1:"$Sreact.fragment"
+2:I[7939,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"Mermaid"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+4:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+22:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+23:"$Sreact.suspense"
+5:T5a4,@Configuration
+public class JobIntegrationFlow {
+
+    @Bean
+    public IntegrationFlow jobSubmissionFlow() {
+        return IntegrationFlow
+            .from("jobInputChannel")
+            .filter(Job.class, job -> job.getParams() != null,
+                f -> f.discardChannel("invalidJobChannel"))
+            .enrichHeaders(h -> h.header("submittedAt", Instant.now()))
+            .route(Job.class, job -> job.getPriority().name(),
+                r -> r
+                    .channelMapping("CRITICAL", "criticalJobChannel")
+                    .channelMapping("HIGH", "highPriorityChannel")
+                    .defaultOutputChannel("normalJobChannel"))
+            .get();
+    }
+
+    @Bean
+    public IntegrationFlow criticalJobFlow() {
+        return IntegrationFlow
+            .from("criticalJobChannel")
+            .handle("jobExecutor", "executeCritical")
+            .channel("jobCompletionChannel")
+            .get();
+    }
+
+    @Bean
+    public IntegrationFlow normalJobFlow() {
+        return IntegrationFlow
+            .from("normalJobChannel")
+            .handle("jobExecutor", "execute")
+            .channel("jobCompletionChannel")
+            .get();
+    }
+
+    @Bean
+    public IntegrationFlow completionFlow() {
+        return IntegrationFlow
+            .from("jobCompletionChannel")
+            .handle("auditService", "logCompletion")
+            .handle("kafkaProducer", "publishEvent")
+            .get();
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 4: Spring Integration Flows"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-03-threading","children":"← Chapter 3: Threading"}]," | ",["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","children":"Chapter 5: Priority & Pause →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Story"}],"\n",["$","p",null,{"children":"You have threads running jobs. But the flow is hardcoded — submit, execute, done. The PM wants: \"Route different job types to different handlers. Add validation. Send notifications when done.\" You need a pipeline."}],"\n",["$","p",null,{"children":"Spring Integration gives you message-driven architecture with channels, routers, transformers, and service activators — all configurable."}],"\n",["$","h2",null,{"children":"The Big Picture"}],"\n",["$","$L2",null,{}],"\n",["$","h2",null,{"children":"Step 1: Core Concepts"}],"\n",["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Concept"}],["$","th",null,{"children":"Analogy"}],["$","th",null,{"children":"Purpose"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Message"}],["$","td",null,{"children":"A letter"}],["$","td",null,{"children":"Wraps the job payload + headers"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Channel"}],["$","td",null,{"children":"A pipe"}],["$","td",null,{"children":"Connects components"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Gateway"}],["$","td",null,{"children":"A mailbox"}],["$","td",null,{"children":"Entry point from your code"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Router"}],["$","td",null,{"children":"A sorting machine"}],["$","td",null,{"children":"Sends messages to different channels"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Transformer"}],["$","td",null,{"children":"A translator"}],["$","td",null,{"children":"Converts message format"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Service Activator"}],["$","td",null,{"children":"A worker"}],["$","td",null,{"children":"Does the actual work"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Filter"}],["$","td",null,{"children":"A bouncer"}],["$","td",null,{"children":"Rejects invalid messages"}]]}]]}]]}],"\n",["$","h2",null,{"children":"Step 2: Define the Integration Flow"}],"\n",["$","$L3",null,{"children":["$","$L4",null,{"className":"language-java","children":"$5"}]}],"\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d"]}],"$L1e"]}],["$L1f","$L20"],"$L21"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ZuSjgxTf-pST8lByzW397"}
+6:["$","h2",null,{"children":"Step 3: The Gateway (Entry Point)"}]
+7:["$","$L3",null,{"children":["$","$L4",null,{"className":"language-java","children":"@MessagingGateway\npublic interface JobGateway {\n\n    @Gateway(requestChannel = \"jobInputChannel\")\n    void submit(Job job);\n}\n"}]}]
+8:["$","p",null,{"children":"Now your controller just calls:"}]
+9:["$","$L3",null,{"children":["$","$L4",null,{"className":"language-java","children":"@PostMapping(\"/api/jobs\")\npublic Job submitJob(@RequestBody JobRequest request) {\n    Job job = jobService.create(request);\n    jobGateway.submit(job);  // enters the integration flow\n    return job;\n}\n"}]}]
+a:["$","h2",null,{"children":"Step 4: Priority Channels with Capacity"}]
+b:["$","$L3",null,{"children":["$","$L4",null,{"className":"language-java","children":"@Bean\npublic PriorityChannel criticalJobChannel() {\n    return new PriorityChannel(10,\n        Comparator.comparing(m -> ((Job) m.getPayload()).getSubmittedAt()));\n}\n\n@Bean\npublic QueueChannel normalJobChannel() {\n    return new QueueChannel(100);  // buffered queue\n}\n"}]}]
+c:["$","p",null,{"children":"Priority channels sort messages. Queue channels buffer them."}]
+d:["$","h2",null,{"children":"Step 5: Error Handling"}]
+e:["$","$L3",null,{"children":["$","$L4",null,{"className":"language-java","children":"@Bean\npublic IntegrationFlow errorFlow() {\n    return IntegrationFlow\n        .from(\"errorChannel\")  // Spring Integration's global error channel\n        .handle(message -> {\n            MessagingException ex = (MessagingException) message.getPayload();\n            Job job = (Job) ex.getFailedMessage().getPayload();\n            jobService.transition(job.getId(), JobStatus.FAILED);\n            auditService.log(job.getId(), \"FAILED\", ex.getCause().getMessage());\n        })\n        .get();\n}\n"}]}]
+f:["$","p",null,{"children":["Any unhandled exception in the flow lands in ",["$","$L4",null,{"children":"errorChannel"}],". We catch it, mark the job as failed, and log it."]}]
+10:["$","h2",null,{"children":"Step 6: Polling Consumer (Thread Pool Integration)"}]
+11:["$","$L3",null,{"children":["$","$L4",null,{"className":"language-java","children":"@Bean\npublic IntegrationFlow pollingFlow() {\n    return IntegrationFlow\n        .from(\"normalJobChannel\",\n            c -> c.poller(Pollers.fixedDelay(500)\n                .taskExecutor(jobExecutor())\n                .maxMessagesPerPoll(5)))\n        .handle(\"jobExecutor\", \"execute\")\n        .get();\n}\n"}]}]
+12:["$","p",null,{"children":"This polls the queue every 500ms, picks up to 5 messages, and runs them on the thread pool. Spring Integration manages the threading for you."}]
+13:["$","h2",null,{"children":"Why Spring Integration?"}]
+14:["$","p",null,{"children":"Without it:"}]
+15:["$","$L3",null,{"children":["$","$L4",null,{"className":"language-java","children":"// Spaghetti\nif (job.getPriority() == HIGH) { ... }\nif (job.getType().equals(\"EXPORT\")) { ... }\ntry { execute(job); } catch { ... }\nnotify(job);\naudit(job);\n"}]}]
+16:["$","p",null,{"children":"With it:"}]
+17:["$","$L3",null,{"children":["$","$L4",null,{"className":"language-java","children":"// Declarative pipeline\n.filter(...)\n.route(...)\n.handle(...)\n.channel(...)\n"}]}]
+18:["$","p",null,{"children":"Each concern is a separate, testable component. Add a new step? Insert it in the flow. Remove one? Delete the line."}]
+19:["$","h2",null,{"children":"What We Have"}]
+1a:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Message-driven job pipeline"}],"\n",["$","li",null,{"children":"Priority routing (critical jobs get dedicated channel)"}],"\n",["$","li",null,{"children":"Validation filter (rejects bad jobs)"}],"\n",["$","li",null,{"children":"Error handling flow"}],"\n",["$","li",null,{"children":"Completion notifications"}],"\n",["$","li",null,{"children":"Thread pool integration via pollers"}],"\n"]}]
+1b:["$","h2",null,{"children":"Next"}]
+1c:["$","p",null,{"children":"We'll add the ability to pause, resume, and cancel running jobs — with priority reordering."}]
+1d:["$","p",null,{"children":["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","children":"Chapter 5: Priority, Pause & Resume →"}]}]
+1e:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-03-threading","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+1f:["$","script","script-0",{"src":"/_next/static/chunks/099v51bpaswwx.js","async":true}]
+20:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+21:["$","$L22",null,{"children":["$","$23",null,{"name":"Next.MetadataOutlet","children":"$@24"}]}]
+24:null

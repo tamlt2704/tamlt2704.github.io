@@ -1,0 +1,92 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0teiij56aclwu.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","spring-job-engine","chapter-04-spring-integration",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","spring-job-engine/chapter-04-spring-integration","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0teiij56aclwu.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/099v51bpaswwx.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0teiij56aclwu.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"ZuSjgxTf-pST8lByzW397"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-03-threading","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[7939,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"Mermaid"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+13:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+14:T5a4,@Configuration
+public class JobIntegrationFlow {
+
+    @Bean
+    public IntegrationFlow jobSubmissionFlow() {
+        return IntegrationFlow
+            .from("jobInputChannel")
+            .filter(Job.class, job -> job.getParams() != null,
+                f -> f.discardChannel("invalidJobChannel"))
+            .enrichHeaders(h -> h.header("submittedAt", Instant.now()))
+            .route(Job.class, job -> job.getPriority().name(),
+                r -> r
+                    .channelMapping("CRITICAL", "criticalJobChannel")
+                    .channelMapping("HIGH", "highPriorityChannel")
+                    .defaultOutputChannel("normalJobChannel"))
+            .get();
+    }
+
+    @Bean
+    public IntegrationFlow criticalJobFlow() {
+        return IntegrationFlow
+            .from("criticalJobChannel")
+            .handle("jobExecutor", "executeCritical")
+            .channel("jobCompletionChannel")
+            .get();
+    }
+
+    @Bean
+    public IntegrationFlow normalJobFlow() {
+        return IntegrationFlow
+            .from("normalJobChannel")
+            .handle("jobExecutor", "execute")
+            .channel("jobCompletionChannel")
+            .get();
+    }
+
+    @Bean
+    public IntegrationFlow completionFlow() {
+        return IntegrationFlow
+            .from("jobCompletionChannel")
+            .handle("auditService", "logCompletion")
+            .handle("kafkaProducer", "publishEvent")
+            .get();
+    }
+}
+10:[["$","h1",null,{"children":"Chapter 4: Spring Integration Flows"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-03-threading","children":"← Chapter 3: Threading"}]," | ",["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","children":"Chapter 5: Priority & Pause →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Story"}],"\n",["$","p",null,{"children":"You have threads running jobs. But the flow is hardcoded — submit, execute, done. The PM wants: \"Route different job types to different handlers. Add validation. Send notifications when done.\" You need a pipeline."}],"\n",["$","p",null,{"children":"Spring Integration gives you message-driven architecture with channels, routers, transformers, and service activators — all configurable."}],"\n",["$","h2",null,{"children":"The Big Picture"}],"\n",["$","$L11",null,{}],"\n",["$","h2",null,{"children":"Step 1: Core Concepts"}],"\n",["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Concept"}],["$","th",null,{"children":"Analogy"}],["$","th",null,{"children":"Purpose"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Message"}],["$","td",null,{"children":"A letter"}],["$","td",null,{"children":"Wraps the job payload + headers"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Channel"}],["$","td",null,{"children":"A pipe"}],["$","td",null,{"children":"Connects components"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Gateway"}],["$","td",null,{"children":"A mailbox"}],["$","td",null,{"children":"Entry point from your code"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Router"}],["$","td",null,{"children":"A sorting machine"}],["$","td",null,{"children":"Sends messages to different channels"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Transformer"}],["$","td",null,{"children":"A translator"}],["$","td",null,{"children":"Converts message format"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Service Activator"}],["$","td",null,{"children":"A worker"}],["$","td",null,{"children":"Does the actual work"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Filter"}],["$","td",null,{"children":"A bouncer"}],["$","td",null,{"children":"Rejects invalid messages"}]]}]]}]]}],"\n",["$","h2",null,{"children":"Step 2: Define the Integration Flow"}],"\n",["$","$L12",null,{"children":["$","$L13",null,{"className":"language-java","children":"$14"}]}],"\n",["$","h2",null,{"children":"Step 3: The Gateway (Entry Point)"}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b"]
+15:["$","$L12",null,{"children":["$","$L13",null,{"className":"language-java","children":"@MessagingGateway\npublic interface JobGateway {\n\n    @Gateway(requestChannel = \"jobInputChannel\")\n    void submit(Job job);\n}\n"}]}]
+16:["$","p",null,{"children":"Now your controller just calls:"}]
+17:["$","$L12",null,{"children":["$","$L13",null,{"className":"language-java","children":"@PostMapping(\"/api/jobs\")\npublic Job submitJob(@RequestBody JobRequest request) {\n    Job job = jobService.create(request);\n    jobGateway.submit(job);  // enters the integration flow\n    return job;\n}\n"}]}]
+18:["$","h2",null,{"children":"Step 4: Priority Channels with Capacity"}]
+19:["$","$L12",null,{"children":["$","$L13",null,{"className":"language-java","children":"@Bean\npublic PriorityChannel criticalJobChannel() {\n    return new PriorityChannel(10,\n        Comparator.comparing(m -> ((Job) m.getPayload()).getSubmittedAt()));\n}\n\n@Bean\npublic QueueChannel normalJobChannel() {\n    return new QueueChannel(100);  // buffered queue\n}\n"}]}]
+1a:["$","p",null,{"children":"Priority channels sort messages. Queue channels buffer them."}]
+1b:["$","h2",null,{"children":"Step 5: Error Handling"}]
+1c:["$","$L12",null,{"children":["$","$L13",null,{"className":"language-java","children":"@Bean\npublic IntegrationFlow errorFlow() {\n    return IntegrationFlow\n        .from(\"errorChannel\")  // Spring Integration's global error channel\n        .handle(message -> {\n            MessagingException ex = (MessagingException) message.getPayload();\n            Job job = (Job) ex.getFailedMessage().getPayload();\n            jobService.transition(job.getId(), JobStatus.FAILED);\n            auditService.log(job.getId(), \"FAILED\", ex.getCause().getMessage());\n        })\n        .get();\n}\n"}]}]
+1d:["$","p",null,{"children":["Any unhandled exception in the flow lands in ",["$","$L13",null,{"children":"errorChannel"}],". We catch it, mark the job as failed, and log it."]}]
+1e:["$","h2",null,{"children":"Step 6: Polling Consumer (Thread Pool Integration)"}]
+1f:["$","$L12",null,{"children":["$","$L13",null,{"className":"language-java","children":"@Bean\npublic IntegrationFlow pollingFlow() {\n    return IntegrationFlow\n        .from(\"normalJobChannel\",\n            c -> c.poller(Pollers.fixedDelay(500)\n                .taskExecutor(jobExecutor())\n                .maxMessagesPerPoll(5)))\n        .handle(\"jobExecutor\", \"execute\")\n        .get();\n}\n"}]}]
+20:["$","p",null,{"children":"This polls the queue every 500ms, picks up to 5 messages, and runs them on the thread pool. Spring Integration manages the threading for you."}]
+21:["$","h2",null,{"children":"Why Spring Integration?"}]
+22:["$","p",null,{"children":"Without it:"}]
+23:["$","$L12",null,{"children":["$","$L13",null,{"className":"language-java","children":"// Spaghetti\nif (job.getPriority() == HIGH) { ... }\nif (job.getType().equals(\"EXPORT\")) { ... }\ntry { execute(job); } catch { ... }\nnotify(job);\naudit(job);\n"}]}]
+24:["$","p",null,{"children":"With it:"}]
+25:["$","$L12",null,{"children":["$","$L13",null,{"className":"language-java","children":"// Declarative pipeline\n.filter(...)\n.route(...)\n.handle(...)\n.channel(...)\n"}]}]
+26:["$","p",null,{"children":"Each concern is a separate, testable component. Add a new step? Insert it in the flow. Remove one? Delete the line."}]
+27:["$","h2",null,{"children":"What We Have"}]
+28:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Message-driven job pipeline"}],"\n",["$","li",null,{"children":"Priority routing (critical jobs get dedicated channel)"}],"\n",["$","li",null,{"children":"Validation filter (rejects bad jobs)"}],"\n",["$","li",null,{"children":"Error handling flow"}],"\n",["$","li",null,{"children":"Completion notifications"}],"\n",["$","li",null,{"children":"Thread pool integration via pollers"}],"\n"]}]
+29:["$","h2",null,{"children":"Next"}]
+2a:["$","p",null,{"children":"We'll add the ability to pause, resume, and cancel running jobs — with priority reordering."}]
+2b:["$","p",null,{"children":["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","children":"Chapter 5: Priority, Pause & Resume →"}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+2c:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 04 spring integration — spring job engine"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2c","3",{}]]

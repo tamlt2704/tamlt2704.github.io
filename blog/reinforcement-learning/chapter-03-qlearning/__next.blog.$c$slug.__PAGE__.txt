@@ -1,0 +1,59 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+d:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+4:T571,import numpy as np
+import gymnasium as gym
+
+def q_learning(env_name, episodes=10000, alpha=0.1, gamma=0.99,
+               epsilon_start=1.0, epsilon_end=0.01, epsilon_decay=0.995):
+    env = gym.make(env_name)
+    n_states = env.observation_space.n
+    n_actions = env.action_space.n
+    Q = np.zeros((n_states, n_actions))
+
+    epsilon = epsilon_start
+    rewards_history = []
+
+    for ep in range(episodes):
+        state, _ = env.reset()
+        total_reward = 0
+        done = False
+
+        while not done:
+            # Epsilon-greedy action selection
+            if np.random.random() < epsilon:
+                action = env.action_space.sample()
+            else:
+                action = np.argmax(Q[state])
+
+            next_state, reward, terminated, truncated, _ = env.step(action)
+            done = terminated or truncated
+
+            # Q-learning update
+            td_target = reward + gamma * np.max(Q[next_state]) * (1 - terminated)
+            Q[state, action] += alpha * (td_target - Q[state, action])
+
+            state = next_state
+            total_reward += reward
+
+        epsilon = max(epsilon_end, epsilon * epsilon_decay)
+        rewards_history.append(total_reward)
+
+    env.close()
+    return Q, rewards_history
+
+# Train on Taxi environment
+Q, rewards = q_learning('Taxi-v3', episodes=5000)
+print(f"Last 100 episodes avg reward: {np.mean(rewards[-100:]):.2f}")
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/reinforcement-learning/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 3: Q-Learning (Tabular)"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-02-mdp","children":"← MDPs"}]," | ",["$","a",null,{"href":"./chapter-04-dqn","children":"Next: Deep Q-Networks →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Q-Learning Algorithm"}],"\n",["$","p",null,{"children":["Model-free, off-policy algorithm. Learns ",["$","$L2",null,{"children":"Q^*(s,a)"}]," without knowing transition probabilities."]}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"Update rule:"}]}],"\n",["$","p",null,{"children":["$","$L2",null,{"children":"Q(s,a) \\leftarrow Q(s,a) + \\alpha\\left[r + \\gamma \\max_{a'} Q(s',a') - Q(s,a)\\right]"}]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L2",null,{"children":"\\alpha"}],": Learning rate"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"\\gamma"}],": Discount factor"]}],"\n",["$","li",null,{"children":["The term in brackets is the ",["$","strong",null,{"children":"TD error"}]]}],"\n"]}],"\n",["$","h2",null,{"children":"Implementation"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"$4"}]}],"\n",["$","h2",null,{"children":"Testing the Learned Policy"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"env = gym.make('Taxi-v3')\ntotal = 0\nfor _ in range(100):\n    state, _ = env.reset()\n    done = False\n    while not done:\n        action = np.argmax(Q[state])\n        state, reward, terminated, truncated, _ = env.step(action)\n        done = terminated or truncated\n        total += reward\n\nprint(f\"Average reward (greedy): {total/100:.2f}\")\n"}]}],"\n",["$","h2",null,{"children":"SARSA (On-Policy Alternative)"}],"\n",["$","p",null,{"children":["$","$L2",null,{"children":"Q(s,a) \\leftarrow Q(s,a) + \\alpha\\left[r + \\gamma Q(s',a') - Q(s,a)\\right]"}]}],"\n",["$","p",null,{"children":["Difference: Uses the ",["$","em",null,{"children":"actual"}]," next action ",["$","$L2",null,{"children":"a'"}]," (from policy) instead of ",["$","$L2",null,{"children":"\\max_{a'}"}],"."]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"# SARSA update (inside loop):\nnext_action = epsilon_greedy(Q[next_state], epsilon)\nQ[state, action] += alpha * (\n    reward + gamma * Q[next_state, next_action] * (1 - terminated)\n    - Q[state, action]\n)\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8"]}],"$L9"]}],["$La","$Lb"],"$Lc"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ZuSjgxTf-pST8lByzW397"}
+5:["$","h2",null,{"children":"Q-Learning vs SARSA"}]
+6:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Aspect"}],["$","th",null,{"children":"Q-Learning"}],["$","th",null,{"children":"SARSA"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Type"}],["$","td",null,{"children":"Off-policy"}],["$","td",null,{"children":"On-policy"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Update uses"}],["$","td",null,{"children":"max Q(s',a')"}],["$","td",null,{"children":"Q(s', actual a')"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Behavior"}],["$","td",null,{"children":"More aggressive"}],["$","td",null,{"children":"Safer, avoids cliffs"}]]}]]}]]}]
+7:["$","hr",null,{}]
+8:["$","p",null,{"children":[["$","a",null,{"href":"./chapter-02-mdp","children":"← MDPs"}]," | ",["$","a",null,{"href":"./chapter-04-dqn","children":"Next: Deep Q-Networks →"}]]}]
+9:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/reinforcement-learning/chapter-02-mdp","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/reinforcement-learning/chapter-04-dqn","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+a:["$","script","script-0",{"src":"/_next/static/chunks/099v51bpaswwx.js","async":true}]
+b:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+c:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

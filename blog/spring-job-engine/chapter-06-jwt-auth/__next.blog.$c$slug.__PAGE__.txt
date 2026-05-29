@@ -1,0 +1,48 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+12:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+13:"$Sreact.suspense"
+4:T455,@Component
+public class JwtAuthFilter extends OncePerRequestFilter {
+
+    private final JwtTokenProvider tokenProvider;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     FilterChain chain) throws ServletException, IOException {
+        String header = request.getHeader("Authorization");
+        if (header != null && header.startsWith("Bearer ")) {
+            String token = header.substring(7);
+            try {
+                Claims claims = tokenProvider.parseToken(token);
+                var auth = new UsernamePasswordAuthenticationToken(
+                    claims.getSubject(),
+                    null,
+                    List.of(new SimpleGrantedAuthority("ROLE_" + claims.get("role")))
+                );
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            } catch (JwtException e) {
+                response.setStatus(401);
+                return;
+            }
+        }
+        chain.doFilter(request, response);
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 6: JWT Authentication"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","children":"← Chapter 5: Priority & Pause"}]," | ",["$","a",null,{"href":"/blog/spring-job-engine/chapter-07-audit","children":"Chapter 7: Audit →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Story"}],"\n",["$","p",null,{"children":"Anyone can submit jobs. Anyone can cancel them. The security team is not happy. You need: login, tokens, and role-based access."}],"\n",["$","h2",null,{"children":"Step 1: JWT Token Provider"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class JwtTokenProvider {\n\n    @Value(\"${jwt.secret}\")\n    private String secret;\n\n    @Value(\"${jwt.expiration:86400000}\")  // 24h\n    private long expiration;\n\n    public String generateToken(String email, String role) {\n        return Jwts.builder()\n            .subject(email)\n            .claim(\"role\", role)\n            .issuedAt(new Date())\n            .expiration(new Date(System.currentTimeMillis() + expiration))\n            .signWith(Keys.hmacShaKeyFor(secret.getBytes()))\n            .compact();\n    }\n\n    public Claims parseToken(String token) {\n        return Jwts.parser()\n            .verifyWith(Keys.hmacShaKeyFor(secret.getBytes()))\n            .build()\n            .parseSignedClaims(token)\n            .getPayload();\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Step 2: Auth Filter"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"Step 3: Security Configuration"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\n@EnableMethodSecurity\npublic class SecurityConfig {\n\n    private final JwtAuthFilter jwtFilter;\n\n    @Bean\n    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {\n        return http\n            .csrf(c -> c.disable())\n            .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))\n            .authorizeHttpRequests(a -> a\n                .requestMatchers(\"/api/auth/**\").permitAll()\n                .requestMatchers(\"/api/health\").permitAll()\n                .requestMatchers(\"/api/jobs/**\").authenticated()\n                .requestMatchers(\"/api/admin/**\").hasRole(\"ADMIN\")\n                .anyRequest().authenticated()\n            )\n            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)\n            .build();\n    }\n\n    @Bean\n    public PasswordEncoder passwordEncoder() {\n        return new BCryptPasswordEncoder();\n    }\n}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld"]}],"$Le"]}],["$Lf","$L10"],"$L11"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ZuSjgxTf-pST8lByzW397"}
+5:["$","h2",null,{"children":"Step 4: Login Endpoint"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@RestController\n@RequestMapping(\"/api/auth\")\npublic class AuthController {\n\n    private final UserRepository userRepo;\n    private final PasswordEncoder encoder;\n    private final JwtTokenProvider tokenProvider;\n\n    @PostMapping(\"/login\")\n    public Map<String, String> login(@RequestBody LoginRequest request) {\n        User user = userRepo.findByEmail(request.email())\n            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));\n\n        if (!encoder.matches(request.password(), user.getPassword())) {\n            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);\n        }\n\n        String token = tokenProvider.generateToken(user.getEmail(), user.getRole());\n        return Map.of(\"token\", token, \"email\", user.getEmail());\n    }\n}\n"}]}]
+7:["$","h2",null,{"children":"Step 5: Getting Current User in Jobs"}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// In JobService\npublic Job submit(JobRequest request) {\n    String user = SecurityContextHolder.getContext()\n        .getAuthentication().getName();  // email from JWT\n\n    Job job = new Job();\n    job.setSubmittedBy(user);\n    // ...\n}\n"}]}]
+9:["$","h2",null,{"children":"Step 6: Role-Based Access"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@PreAuthorize(\"hasRole('ADMIN') or @jobService.isOwner(#id, authentication.name)\")\n@PostMapping(\"/api/jobs/{id}/cancel\")\npublic Job cancelJob(@PathVariable String id) {\n    // Only admin or the job owner can cancel\n}\n"}]}]
+b:["$","p",null,{"children":"Users can only cancel their own jobs. Admins can cancel anything."}]
+c:["$","hr",null,{}]
+d:["$","p",null,{"children":["$","a",null,{"href":"/blog/spring-job-engine/chapter-07-audit","children":"Chapter 7: Audit Trail →"}]}]
+e:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-job-engine/chapter-07-audit","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+f:["$","script","script-0",{"src":"/_next/static/chunks/099v51bpaswwx.js","async":true}]
+10:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+11:["$","$L12",null,{"children":["$","$13",null,{"name":"Next.MetadataOutlet","children":"$@14"}]}]
+14:null
