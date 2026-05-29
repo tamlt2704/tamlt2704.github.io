@@ -6,11 +6,20 @@
 
 ## The Story
 
-The system is running. But during peak hours, low-priority reports clog the queue while critical risk calculations wait. And when a job goes haywire, there's no way to stop it without killing the server.
+The system is running. Spring Integration routes jobs by priority into separate channels (Chapter 4). But you need more control:
 
-## Step 1: Priority Queue
+- **Dynamic reprioritization** — a job is already queued as LOW, but the CEO wants it NOW
+- **Pause/Resume** — a runaway job is eating CPU; pause it without losing progress
+- **Cancellation** — kill a job cleanly, not by restarting the server
+
+Chapter 4 handles _initial_ priority routing. This chapter handles _runtime_ control over jobs that are already in-flight or queued.
+
+## Step 1: Priority Queue (Runtime Reprioritization)
+
+Spring Integration's `PriorityChannel` sorts on insertion, but doesn't support changing priority after the fact. For dynamic reprioritization, we use a `PriorityBlockingQueue` wrapper:
 
 ```java
+// service/PriorityJobQueue.java
 @Component
 public class PriorityJobQueue {
 
@@ -51,11 +60,35 @@ public class PriorityJobQueue {
 
 `PriorityBlockingQueue` — thread-safe, sorted by priority weight (descending), then by submission time (FIFO within same priority).
 
+### Wiring It In
+
+The `PriorityJobQueue` replaces the database polling from Chapter 3's `JobScheduler`. Jobs enter here after Spring Integration routes them:
+
+```java
+// In JobIntegrationFlow — route normal jobs into the priority queue instead of executing directly
+.handle(m -> priorityJobQueue.enqueue((Job) m.getPayload()))
+```
+
+The scheduler now pulls from this in-memory queue:
+
+```java
+@Scheduled(fixedDelay = 500)
+public void drainQueue() {
+    int available = executor.getMaxPoolSize() - executor.getActiveCount();
+    while (available-- > 0) {
+        Job job = priorityJobQueue.poll();
+        if (job == null) break;
+        jobExecutor.execute(job);
+    }
+}
+```
+
 ## Step 2: Pause & Resume with Cooperative Cancellation
 
 Jobs must check a flag periodically:
 
 ```java
+// model/PausableJob.java
 public abstract class PausableJob implements Runnable {
 
     private volatile boolean paused = false;
@@ -112,6 +145,7 @@ The job checks `checkPausePoint()` at natural boundaries. If paused, the thread 
 ## Step 4: The Controller
 
 ```java
+// controller/JobController.java (add these endpoints to the existing JobController)
 @PostMapping("/api/jobs/{id}/pause")
 public Job pauseJob(@PathVariable String id) {
     jobExecutor.pause(id);
@@ -138,6 +172,16 @@ public Job reprioritize(@PathVariable String id, @RequestBody Map<String, String
 }
 ```
 
+```java
+// Add to service/JobService.java
+// Add to JobService in chapter 2
+public Job updatePriority(String id, JobPriority priority) {
+    Job job = getJob(id);
+    job.setPriority(priority);
+    return repo.save(job);
+}
+```
+
 ## Step 5: Tracking Pausable Jobs
 
 ```java
@@ -146,8 +190,9 @@ public class JobExecutor {
 
     private final Map<String, PausableJob> activeJobs = new ConcurrentHashMap<>();
 
+    // Create the appropriate PausableJob based on job type
     public void execute(Job job) {
-        PausableJob runnable = JobFactory.create(job);
+        PausableJob runnable = createPausableJob(job);
         activeJobs.put(job.getId(), runnable);
         executor.submit(() -> {
             try {
@@ -156,6 +201,11 @@ public class JobExecutor {
                 activeJobs.remove(job.getId());
             }
         });
+    }
+
+    private PausableJob createPausableJob(Job job) {
+        // Factory method — extend for different job types
+        return new ReportJob(job);
     }
 
     public void pause(String jobId) {

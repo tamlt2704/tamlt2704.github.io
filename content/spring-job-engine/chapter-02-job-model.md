@@ -36,6 +36,7 @@ Before you can run jobs, you need to define what a job _is_. The PM asks: "What 
 ## Step 1: The Status Enum
 
 ```java
+// model/JobStatus.java
 public enum JobStatus {
     QUEUED,
     RUNNING,
@@ -53,6 +54,7 @@ public enum JobStatus {
 ## Step 2: The Priority Enum
 
 ```java
+// model/JobPriority.java
 public enum JobPriority {
     LOW(1),
     MEDIUM(5),
@@ -69,6 +71,7 @@ public enum JobPriority {
 ## Step 3: The Job Entity
 
 ```java
+// model/Job.java
 @Entity
 @Table(name = "jobs")
 public class Job {
@@ -118,6 +121,7 @@ Key design decisions:
 ## Step 4: The Repository
 
 ```java
+// repository/JobRepository.java
 public interface JobRepository extends JpaRepository<Job, String> {
 
     List<Job> findByStatusOrderByPriorityDesc(JobStatus status);
@@ -136,6 +140,7 @@ The `findNextJobs` query is the heart of the scheduler — it picks the highest 
 Not every transition is valid. Enforce it:
 
 ```java
+// service/JobStateMachine.java
 @Service
 public class JobStateMachine {
 
@@ -163,6 +168,7 @@ public class JobStateMachine {
 ## Step 6: The Job Service
 
 ```java
+// service/JobService.java
 @Service
 @Transactional
 public class JobService {
@@ -179,6 +185,11 @@ public class JobService {
         return repo.save(job);
     }
 
+    // JobRequest is defined in Chapter 4
+    public Job create(JobRequest request) {
+        return submit(request.type(), request.priority(), request.params(), null);
+    }
+
     public Job getJob(String id) {
         return repo.findById(id)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -192,6 +203,12 @@ public class JobService {
 
     public List<Job> getQueuedJobs(int limit) {
         return repo.findNextJobs(PageRequest.of(0, limit));
+    }
+
+    public void updateProgress(String id, int progress) {
+        Job job = getJob(id);
+        job.setProgress(progress);
+        repo.save(job);
     }
 }
 ```

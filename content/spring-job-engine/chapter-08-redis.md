@@ -11,6 +11,7 @@ Users keep hitting "refresh" to check job status. Each request hits the database
 ## Step 1: Redis Configuration
 
 ```java
+// config/RedisConfig.java
 @Configuration
 @EnableCaching
 public class RedisConfig {
@@ -35,6 +36,8 @@ public class RedisConfig {
 ```
 
 ## Step 2: Caching Job Status
+
+> **Note:** Add these annotations to the existing `JobService` from Chapter 2. This shows how the same methods gain caching behavior.
 
 ```java
 @Service
@@ -84,6 +87,7 @@ public JobResult getResult(String id) {
 Beyond caching, use Redis as a live state store for progress:
 
 ```java
+// service/JobProgressStore.java
 @Service
 public class JobProgressStore {
 
@@ -121,9 +125,34 @@ This gives you:
 
 ## Step 5: Distributed Locking
 
+### Why Is This Needed?
+
+With a single instance, Spring Integration's in-memory channels guarantee one consumer per message. But when you scale to multiple instances (e.g., 2 pods in Kubernetes), each has its own channels and both poll the **same database**:
+
+```
+Instance A: SELECT * FROM jobs WHERE status = 'QUEUED' → gets job-7a3f
+Instance B: SELECT * FROM jobs WHERE status = 'QUEUED' → also gets job-7a3f
+                                                          ↑ race condition!
+```
+
+Spring Integration can't help here — its channels are local to each JVM. The database is the shared state.
+
+### Solutions Compared
+
+| Approach                           | How                                                           | Tradeoff                                     |
+| ---------------------------------- | ------------------------------------------------------------- | -------------------------------------------- |
+| **Redis lock** (below)             | `SETNX` — first one wins                                      | Fast, but lock can expire while job runs     |
+| **DB optimistic lock**             | `UPDATE ... WHERE status='QUEUED'` — only one UPDATE succeeds | No extra infra, but DB contention under load |
+| **Kafka partitioning** (Chapter 9) | Each job goes to one partition → one consumer                 | Best for scale, but adds Kafka dependency    |
+
+Redis lock is the middle ground — lightweight, fast, works across instances without changing the DB query pattern.
+
+### Implementation
+
 Prevent two instances from picking the same job:
 
 ```java
+// service/JobLockService.java
 @Service
 public class JobLockService {
 

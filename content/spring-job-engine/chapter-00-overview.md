@@ -14,6 +14,11 @@
 - [Chapter 9: Kafka Event Streaming](/blog/spring-job-engine/chapter-09-kafka)
 - [Chapter 10: Putting It All Together](/blog/spring-job-engine/chapter-10-final)
 - [Chapter 11: Next.js Frontend Dashboard](/blog/spring-job-engine/chapter-11-nextjs-frontend)
+- [Chapter 12: WebSocket Real-Time Updates](/blog/spring-job-engine/chapter-12-websocket)
+- [Chapter 13: Scheduled & Recurring Jobs](/blog/spring-job-engine/chapter-13-scheduled-jobs)
+- [Chapter 14: Job Dependencies (DAG)](/blog/spring-job-engine/chapter-14-job-dependencies)
+- [Chapter 15: Multi-Tenancy](/blog/spring-job-engine/chapter-15-multi-tenancy)
+- [Chapter 16: Rate Limiting](/blog/spring-job-engine/chapter-16-rate-limiting)
 
 ---
 

@@ -59,6 +59,10 @@ dependencies {
     // WebSocket (for frontend real-time updates)
     implementation("org.springframework.boot:spring-boot-starter-websocket")
 
+    // Lombok
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
@@ -148,6 +152,7 @@ job-engine:
 ## Step 4: The Main Class
 
 ```java
+// JobEngineApplication.java
 @SpringBootApplication
 @EnableIntegration
 public class JobEngineApplication {
@@ -159,7 +164,35 @@ public class JobEngineApplication {
 
 `@EnableIntegration` activates Spring Integration — the backbone of our job flow.
 
-## Step 5: Health Check
+## Step 5: Security Config (Permit Health Endpoint)
+
+Since we added `spring-boot-starter-security`, **all endpoints are locked down by default**. Without configuration, `curl http://localhost:8080/api/health` returns `401 Unauthorized`.
+
+We need to explicitly permit the health endpoint:
+
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/health").permitAll()
+                .anyRequest().authenticated()
+            );
+        return http.build();
+    }
+}
+```
+
+> **Why does this happen?** Spring Security's default behavior is to require authentication for every request. This is secure-by-default — you opt endpoints _out_ of security rather than opting them _in_.
+
+> **Note:** This is a starter SecurityConfig. It gets replaced with a full JWT-based version in [Chapter 6](/blog/spring-job-engine/chapter-06-security).
+
+## Step 6: Health Check
 
 ```java
 @RestController

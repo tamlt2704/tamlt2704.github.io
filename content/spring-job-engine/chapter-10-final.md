@@ -50,7 +50,12 @@ K->>U: Dashboard (WebSocket)
 ```java
 @RestController
 @RequestMapping("/api/admin")
+@RequiredArgsConstructor
 public class AdminController {
+
+    private final ThreadPoolTaskExecutor executor;
+    private final PriorityJobQueue priorityQueue;
+    private final JobProgressStore progressStore;
 
     @GetMapping("/metrics")
     public Map<String, Object> metrics() {
@@ -163,16 +168,13 @@ class JobEngineIntegrationTest {
 9. **Event Streaming** — Kafka, consumer groups, dead letters
 10. **Production** — graceful shutdown, retries, metrics, testing
 
-## What's Next?
+## What's Next
 
-Ideas to extend:
-
-- **WebSocket** — push real-time progress to the frontend
-- **Scheduled Jobs** — cron-like recurring execution
-- **Job Dependencies** — Job B waits for Job A to complete
-- **Multi-tenancy** — isolate jobs by organization
-- **Rate Limiting** — per-user job submission limits
-- **UI Dashboard** — React frontend showing live job status
+- [Chapter 12: WebSocket](/blog/spring-job-engine/chapter-12-websocket) — push real-time progress to the frontend
+- [Chapter 13: Scheduled Jobs](/blog/spring-job-engine/chapter-13-scheduled-jobs) — cron-like recurring execution
+- [Chapter 14: Job Dependencies](/blog/spring-job-engine/chapter-14-job-dependencies) — Job B waits for Job A to complete
+- [Chapter 15: Multi-Tenancy](/blog/spring-job-engine/chapter-15-multi-tenancy) — isolate jobs by organization
+- [Chapter 16: Rate Limiting](/blog/spring-job-engine/chapter-16-rate-limiting) — per-user job submission limits
 
 ---
 

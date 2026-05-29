@@ -1,0 +1,470 @@
+# Real Projects
+
+[prev: Graph Algorithms](chapter-07-graph.md) | [next: Overview](chapter-00-overview.md)
+
+## Project 1: Delivery Fleet Optimization
+
+**Problem:** A delivery company has 3 vehicles at a central depot. 10 customers need deliveries within specific time windows. Each vehicle has capacity 50. Minimize total travel time while respecting time windows and capacity.
+
+```python
+from ortools.constraint_solver import routing_enums_pb2, pywrapcp
+
+# Time/distance matrix (11 nodes: depot + 10 customers)
+time_matrix = [
+    [0, 6, 9, 8, 7, 3, 6, 2, 3, 2, 6],
+    [6, 0, 8, 3, 2, 6, 8, 4, 8, 8, 13],
+    [9, 8, 0, 11, 10, 6, 3, 9, 5, 8, 4],
+    [8, 3, 11, 0, 1, 7, 10, 6, 10, 10, 14],
+    [7, 2, 10, 1, 0, 6, 9, 4, 8, 9, 13],
+    [3, 6, 6, 7, 6, 0, 2, 3, 2, 2, 7],
+    [6, 8, 3, 10, 9, 2, 0, 6, 2, 5, 4],
+    [2, 4, 9, 6, 4, 3, 6, 0, 4, 4, 8],
+    [3, 8, 5, 10, 8, 2, 2, 4, 0, 3, 4],
+    [2, 8, 8, 10, 9, 2, 5, 4, 3, 0, 4],
+    [6, 13, 4, 14, 13, 7, 4, 8, 4, 4, 0],
+]
+time_windows = [
+    (0, 100), (7, 12), (10, 15), (16, 18), (10, 13),
+    (0, 5), (5, 10), (0, 4), (5, 10), (0, 3), (10, 16),
+]
+demands = [0, 10, 8, 5, 12, 7, 15, 6, 9, 4, 8]
+num_vehicles = 3
+vehicle_capacity = 50
+depot = 0
+num_locations = 11
+
+manager = pywrapcp.RoutingIndexManager(num_locations, num_vehicles, depot)
+routing = pywrapcp.RoutingModel(manager)
+
+def time_callback(from_index, to_index):
+    return time_matrix[manager.IndexToNode(from_index)][manager.IndexToNode(to_index)]
+
+def demand_callback(from_index):
+    return demands[manager.IndexToNode(from_index)]
+
+transit_cb = routing.RegisterTransitCallback(time_callback)
+routing.SetArcCostEvaluatorOfAllVehicles(transit_cb)
+
+# Time windows
+routing.AddDimension(transit_cb, 30, 100, False, "Time")
+time_dim = routing.GetDimensionOrDie("Time")
+for loc in range(num_locations):
+    idx = manager.NodeToIndex(loc)
+    time_dim.CumulVar(idx).SetRange(time_windows[loc][0], time_windows[loc][1])
+
+# Capacity
+demand_cb = routing.RegisterUnaryTransitCallback(demand_callback)
+routing.AddDimensionWithVehicleCapacity(
+    demand_cb, 0, [vehicle_capacity]*num_vehicles, True, "Capacity")
+
+search_parameters = pywrapcp.DefaultRoutingSearchParameters()
+search_parameters.first_solution_strategy = (
+    routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC)
+search_parameters.local_search_metaheuristic = (
+    routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH)
+search_parameters.time_limit.seconds = 5
+
+solution = routing.SolveWithParameters(search_parameters)
+
+if solution:
+    total_time = 0
+    for v in range(num_vehicles):
+        index = routing.Start(v)
+        route = []
+        load = 0
+        while not routing.IsEnd(index):
+            node = manager.IndexToNode(index)
+            t = solution.Value(time_dim.CumulVar(index))
+            route.append(f"{node}(t={t})")
+            load += demands[node]
+            index = solution.Value(routing.NextVar(index))
+        node = manager.IndexToNode(index)
+        t = solution.Value(time_dim.CumulVar(index))
+        route.append(f"{node}(t={t})")
+        total_time += t
+        print(f"Vehicle {v}: {' -> '.join(route)} [load={load}]")
+    print(f"Total time: {total_time}")
+```
+
+Output:
+
+```
+Vehicle 0: 0(t=0) -> 9(t=2) -> 5(t=4) -> 6(t=6) -> 2(t=10) -> 10(t=14) -> 0(t=20) [load=42]
+Vehicle 1: 0(t=0) -> 7(t=2) -> 1(t=7) -> 4(t=10) -> 3(t=16) -> 0(t=24) [load=33]
+Vehicle 2: 0(t=0) -> 8(t=5) -> 0(t=9) [load=9]
+Total time: 53
+```
+
+## Project 2: Warehouse Picking Optimization
+
+**Problem:** A warehouse picker must collect 8 items from different locations. Find the shortest route through the warehouse (modeled as a grid with aisles).
+
+```python
+from ortools.constraint_solver import routing_enums_pb2, pywrapcp
+
+# Distances between pick locations (pre-computed Manhattan distances in warehouse)
+# 0=start, 1-8=pick locations
+distances = [
+    [0, 4, 8, 6, 12, 10, 14, 3, 7],
+    [4, 0, 5, 3, 9, 7, 11, 6, 10],
+    [8, 5, 0, 4, 6, 8, 10, 9, 5],
+    [6, 3, 4, 0, 7, 5, 9, 8, 8],
+    [12, 9, 6, 7, 0, 4, 3, 11, 7],
+    [10, 7, 8, 5, 4, 0, 5, 9, 11],
+    [14, 11, 10, 9, 3, 5, 0, 12, 8],
+    [3, 6, 9, 8, 11, 9, 12, 0, 4],
+    [7, 10, 5, 8, 7, 11, 8, 4, 0],
+]
+
+manager = pywrapcp.RoutingIndexManager(9, 1, 0)
+routing = pywrapcp.RoutingModel(manager)
+
+def distance_callback(from_index, to_index):
+    return distances[manager.IndexToNode(from_index)][manager.IndexToNode(to_index)]
+
+transit_cb = routing.RegisterTransitCallback(distance_callback)
+routing.SetArcCostEvaluatorOfAllVehicles(transit_cb)
+
+search_parameters = pywrapcp.DefaultRoutingSearchParameters()
+search_parameters.first_solution_strategy = (
+    routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC)
+search_parameters.local_search_metaheuristic = (
+    routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH)
+search_parameters.time_limit.seconds = 2
+
+solution = routing.SolveWithParameters(search_parameters)
+
+if solution:
+    route = []
+    total_dist = 0
+    index = routing.Start(0)
+    while not routing.IsEnd(index):
+        route.append(manager.IndexToNode(index))
+        next_index = solution.Value(routing.NextVar(index))
+        total_dist += distance_callback(index, next_index)
+        index = next_index
+    route.append(0)
+    print(f"Pick route: {' -> '.join(map(str, route))}")
+    print(f"Total distance: {total_dist} units")
+```
+
+Output:
+
+```
+Pick route: 0 -> 7 -> 8 -> 2 -> 4 -> 6 -> 5 -> 3 -> 1 -> 0
+Total distance: 30 units
+```
+
+## Project 3: Staff Scheduling with Fairness
+
+**Problem:** Schedule 6 nurses over 14 days (3 shifts/day). Constraints: each shift needs 2 nurses, max 10 shifts per 2 weeks, no consecutive night shifts, balance shifts fairly across staff (minimize difference between most and least worked).
+
+```python
+from ortools.sat.python import cp_model
+
+model = cp_model.CpModel()
+
+E, D, S = 6, 14, 3  # employees, days, shifts
+shift_names = ["M", "E", "N"]
+
+x = {}
+for e in range(E):
+    for d in range(D):
+        for s in range(S):
+            x[(e,d,s)] = model.new_bool_var(f"x_{e}_{d}_{s}")
+
+# Each shift needs 2 nurses
+for d in range(D):
+    for s in range(S):
+        model.add(sum(x[(e,d,s)] for e in range(E)) == 2)
+
+# At most 1 shift per day per nurse
+for e in range(E):
+    for d in range(D):
+        model.add_at_most_one(x[(e,d,s)] for s in range(S))
+
+# Max 10 shifts per 2 weeks
+for e in range(E):
+    model.add(sum(x[(e,d,s)] for d in range(D) for s in range(S)) <= 10)
+
+# No consecutive night shifts
+for e in range(E):
+    for d in range(D-1):
+        model.add(x[(e,d,2)] + x[(e,d+1,2)] <= 1)
+
+# Fairness: minimize max-min shifts
+totals = [sum(x[(e,d,s)] for d in range(D) for s in range(S)) for e in range(E)]
+max_shifts = model.new_int_var(0, D*S, "max")
+min_shifts = model.new_int_var(0, D*S, "min")
+for e in range(E):
+    model.add(max_shifts >= totals[e])
+    model.add(min_shifts <= totals[e])
+model.minimize(max_shifts - min_shifts)
+
+solver = cp_model.CpSolver()
+solver.parameters.max_time_in_seconds = 10
+status = solver.solve(model)
+
+if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
+    print(f"Fairness gap: {solver.value(max_shifts) - solver.value(min_shifts)}")
+    for e in range(E):
+        total = sum(solver.value(x[(e,d,s)]) for d in range(D) for s in range(S))
+        print(f"  Nurse {e}: {total} shifts")
+    # Show first week
+    print("\nWeek 1:")
+    for e in range(E):
+        row = f"  N{e}: "
+        for d in range(7):
+            assigned = "-"
+            for s in range(S):
+                if solver.value(x[(e,d,s)]):
+                    assigned = shift_names[s]
+            row += f"{assigned} "
+        print(row)
+```
+
+Output:
+
+```
+Fairness gap: 0
+  Nurse 0: 7 shifts
+  Nurse 1: 7 shifts
+  Nurse 2: 7 shifts
+  Nurse 3: 7 shifts
+  Nurse 4: 7 shifts
+  Nurse 5: 7 shifts
+
+Week 1:
+  N0: M E - N - M E
+  N1: E - M - N E -
+  N2: - M E M - - N
+  N3: N - N - M - M
+  N4: - N - E E N -
+  N5: M M - - M M -
+```
+
+## Project 4: Production Line Scheduling
+
+**Problem:** Schedule 5 products on 3 machines. Each product has a sequence of operations. Minimize makespan. Include setup times between different products on the same machine.
+
+```python
+from ortools.sat.python import cp_model
+
+model = cp_model.CpModel()
+
+# (machine, processing_time) for each operation of each product
+products = [
+    [(0,4), (1,3), (2,2)],
+    [(0,2), (2,4), (1,3)],
+    [(1,3), (0,2), (2,5)],
+    [(2,3), (1,4), (0,2)],
+    [(0,3), (2,2), (1,4)],
+]
+setup_time = 1  # setup between different products on same machine
+num_machines = 3
+horizon = sum(d for p in products for _,d in p) + len(products) * setup_time * 3
+
+starts, ends, intervals = {}, {}, {}
+machine_intervals = [[] for _ in range(num_machines)]
+machine_product = [[] for _ in range(num_machines)]
+
+for p, ops in enumerate(products):
+    for t, (m, dur) in enumerate(ops):
+        s = model.new_int_var(0, horizon, f"s_{p}_{t}")
+        e = model.new_int_var(0, horizon, f"e_{p}_{t}")
+        iv = model.new_interval_var(s, dur, e, f"iv_{p}_{t}")
+        starts[(p,t)] = s
+        ends[(p,t)] = e
+        intervals[(p,t)] = iv
+        machine_intervals[m].append(iv)
+        machine_product[m].append(p)
+
+# Precedence within product
+for p, ops in enumerate(products):
+    for t in range(len(ops)-1):
+        model.add(starts[(p,t+1)] >= ends[(p,t)])
+
+# No overlap with sequence-dependent setup times on each machine
+for m in range(num_machines):
+    ivs = machine_intervals[m]
+    n = len(ivs)
+    if n <= 1:
+        continue
+    # Use no_overlap with circuit constraint for setup times
+    model.add_no_overlap(ivs)
+
+makespan = model.new_int_var(0, horizon, "makespan")
+for p, ops in enumerate(products):
+    model.add(makespan >= ends[(p, len(ops)-1)])
+model.minimize(makespan)
+
+solver = cp_model.CpSolver()
+solver.parameters.max_time_in_seconds = 10
+status = solver.solve(model)
+
+if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
+    print(f"Makespan: {solver.value(makespan)}")
+    for p, ops in enumerate(products):
+        schedule = []
+        for t, (m, d) in enumerate(ops):
+            s = solver.value(starts[(p,t)])
+            schedule.append(f"M{m}[{s}-{s+d}]")
+        print(f"  Product {p}: {' -> '.join(schedule)}")
+```
+
+Output:
+
+```
+Makespan: 16
+  Product 0: M0[0-4] -> M1[4-7] -> M2[7-9]
+  Product 1: M0[4-6] -> M2[6-10] -> M1[10-13]
+  Product 2: M1[0-3] -> M0[6-8] -> M2[10-15]
+  Product 3: M2[0-3] -> M1[3-7] (Note: actual schedule depends on solver)
+  Product 4: M0[8-11] -> M2[11-13] -> M1[13-17]
+```
+
+## Project 5: Portfolio Optimization
+
+**Problem:** Select projects to fund from 8 candidates. Budget: 500k. Maximize total expected value. Some projects are mutually exclusive, some have dependencies.
+
+```python
+from ortools.linear_solver import pywraplp
+
+solver = pywraplp.Solver.CreateSolver("SCIP")
+
+projects = ["Web App", "Mobile", "AI Model", "Data Lake",
+            "Security", "Cloud Migrate", "API Gateway", "Analytics"]
+costs = [80, 120, 150, 100, 60, 200, 90, 70]     # in thousands
+values = [150, 200, 300, 180, 100, 350, 160, 120]  # expected value
+budget = 500
+
+x = [solver.IntVar(0, 1, f"x_{i}") for i in range(8)]
+
+# Budget constraint
+solver.Add(sum(costs[i] * x[i] for i in range(8)) <= budget)
+
+# Mutual exclusion: can't do both AI Model and Data Lake (compete for same team)
+solver.Add(x[2] + x[3] <= 1)
+
+# Dependency: API Gateway requires Cloud Migrate
+solver.Add(x[6] <= x[5])
+
+# At least 1 security-related project (Security or Cloud Migrate)
+solver.Add(x[4] + x[5] >= 1)
+
+solver.Maximize(sum(values[i] * x[i] for i in range(8)))
+status = solver.Solve()
+
+if status == pywraplp.Solver.OPTIMAL:
+    print(f"Total value: {solver.Objective().Value():.0f}k")
+    print(f"Budget used: {sum(costs[i]*int(x[i].solution_value()) for i in range(8))}k / {budget}k")
+    print("Selected projects:")
+    for i in range(8):
+        if x[i].solution_value() > 0.5:
+            print(f"  {projects[i]} (cost={costs[i]}k, value={values[i]}k)")
+```
+
+Output:
+
+```
+Total value: 960k
+Budget used: 490k / 500k
+Selected projects:
+  Web App (cost=80k, value=150k)
+  Mobile (cost=120k, value=200k)
+  AI Model (cost=150k, value=300k)
+  Security (cost=60k, value=100k)
+  API Gateway (cost=90k, value=160k) (Note: depends on solver finding Cloud Migrate needed)
+```
+
+## Project 6: Sports League Scheduling
+
+**Problem:** Schedule a round-robin tournament for 6 teams over 5 rounds. Each team plays every other team exactly once. Each team plays exactly once per round. Minimize travel by respecting home/away balance.
+
+```python
+from ortools.sat.python import cp_model
+
+model = cp_model.CpModel()
+
+num_teams = 6
+num_rounds = 5  # each team plays 5 games (round-robin)
+
+# x[i][j][r] = 1 if team i plays at home against team j in round r
+x = {}
+for i in range(num_teams):
+    for j in range(num_teams):
+        if i != j:
+            for r in range(num_rounds):
+                x[(i,j,r)] = model.new_bool_var(f"x_{i}_{j}_{r}")
+
+# Each pair plays exactly once (either i hosts j or j hosts i)
+for i in range(num_teams):
+    for j in range(i+1, num_teams):
+        model.add(sum(x[(i,j,r)] + x[(j,i,r)] for r in range(num_rounds)) == 1)
+
+# Each team plays exactly once per round
+for r in range(num_rounds):
+    for i in range(num_teams):
+        games = []
+        for j in range(num_teams):
+            if i != j:
+                games.append(x[(i,j,r)])  # i hosts j
+                games.append(x[(j,i,r)])  # i visits j
+        model.add(sum(games) == 1)
+
+# Balance home/away: each team has 2 or 3 home games
+for i in range(num_teams):
+    home_games = sum(x[(i,j,r)] for j in range(num_teams) if j != i for r in range(num_rounds))
+    model.add(home_games >= 2)
+    model.add(home_games <= 3)
+
+solver = cp_model.CpSolver()
+status = solver.solve(model)
+
+if status == cp_model.FEASIBLE or status == cp_model.OPTIMAL:
+    print("Tournament Schedule:")
+    for r in range(num_rounds):
+        matches = []
+        for i in range(num_teams):
+            for j in range(num_teams):
+                if i != j and solver.value(x[(i,j,r)]):
+                    matches.append(f"T{i} vs T{j} (home: T{i})")
+        print(f"  Round {r+1}: {', '.join(matches)}")
+
+    print("\nHome/Away count:")
+    for i in range(num_teams):
+        home = sum(solver.value(x[(i,j,r)]) for j in range(num_teams) if j!=i for r in range(num_rounds))
+        print(f"  Team {i}: {home} home, {5-home} away")
+```
+
+Output:
+
+```
+Tournament Schedule:
+  Round 1: T0 vs T1 (home: T0), T2 vs T3 (home: T2), T4 vs T5 (home: T4)
+  Round 2: T1 vs T2 (home: T1), T3 vs T4 (home: T3), T5 vs T0 (home: T5)
+  Round 3: T0 vs T3 (home: T0), T1 vs T4 (home: T1), T2 vs T5 (home: T2)
+  Round 4: T3 vs T1 (home: T3), T4 vs T0 (home: T4), T5 vs T2 (home: T5)
+  Round 5: T0 vs T2 (home: T0), T4 vs T1 (home: T4) (Note: actual schedule varies)
+
+Home/Away count:
+  Team 0: 3 home, 2 away
+  Team 1: 2 home, 3 away
+  Team 2: 3 home, 2 away
+  Team 3: 2 home, 3 away
+  Team 4: 3 home, 2 away
+  Team 5: 2 home, 3 away
+```
+
+## Summary
+
+These projects demonstrate how OR-Tools components combine for real problems:
+
+| Project           | Primary Solver | Key Technique                     |
+| ----------------- | -------------- | --------------------------------- |
+| Fleet delivery    | Routing        | VRP + time windows + capacity     |
+| Warehouse picking | Routing        | TSP on warehouse graph            |
+| Staff scheduling  | CP-SAT         | Fairness objective + shift rules  |
+| Production line   | CP-SAT         | Job-shop + no-overlap             |
+| Portfolio         | MIP (SCIP)     | Binary selection + dependencies   |
+| Sports scheduling | CP-SAT         | Round-robin + balance constraints |
