@@ -1,0 +1,71 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+20:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+21:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/google-or-tools/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Integer and Mixed-Integer Programming"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-02-linear","children":"prev: Linear Programming"}]," | ",["$","a",null,{"href":"chapter-04-constraint","children":"next: Constraint Programming"}]]}],"\n",["$","h2",null,{"children":"Why Integers Matter"}],"\n",["$","p",null,{"children":"Linear Programming gives fractional solutions: \"hire 2.5 people\" or \"build 0.7 warehouses.\" In reality, many decisions are discrete:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"You hire 2 or 3 people, not 2.5"}],"\n",["$","li",null,{"children":"You open a warehouse or you don't"}],"\n",["$","li",null,{"children":"You ship in whole containers"}],"\n"]}],"\n",["$","p",null,{"children":"Integer Programming (IP) restricts variables to integer values. Mixed-Integer Programming (MIP) allows a mix of continuous and integer variables."}],"\n",["$","h2",null,{"children":"Binary Variables: Yes/No Decisions"}],"\n",["$","p",null,{"children":"Binary variables (0 or 1) model yes/no decisions:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":["Should we open facility X? (",["$","$L2",null,{"children":"open_x = 0 or 1"}],")"]}],"\n",["$","li",null,{"children":["Should we assign worker A to task B? (",["$","$L2",null,{"children":"assign_a_b = 0 or 1"}],")"]}],"\n",["$","li",null,{"children":["Should we include item in the knapsack? (",["$","$L2",null,{"children":"include_item = 0 or 1"}],")"]}],"\n"]}],"\n",["$","h2",null,{"children":"Big-M Method"}],"\n",["$","p",null,{"children":["The Big-M method links binary decisions to constraints. If ",["$","$L2",null,{"children":"y = 1"}]," (facility open), production ",["$","$L2",null,{"children":"x"}]," can be up to capacity. If ",["$","$L2",null,{"children":"y = 0"}],", production must be 0:"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"children":"x <= M * y\n"}]}],"\n",["$","p",null,{"children":["Where M is a large constant. When ",["$","$L2",null,{"children":"y = 0"}],", constraint becomes ",["$","$L2",null,{"children":"x <= 0"}],". When ",["$","$L2",null,{"children":"y = 1"}],", constraint becomes ",["$","$L2",null,{"children":"x <= M"}]," (effectively inactive)."]}],"\n",["$","h2",null,{"children":"Example 1: Knapsack Problem"}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":"Problem:"}]," A knapsack has capacity 15 kg. Choose items to maximize total value."]}],"\n",["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Item"}],["$","th",null,{"children":"Weight"}],["$","th",null,{"children":"Value"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Laptop"}],["$","td",null,{"children":"5"}],["$","td",null,{"children":"100"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Camera"}],["$","td",null,{"children":"3"}],["$","td",null,{"children":"60"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Book"}],["$","td",null,{"children":"2"}],["$","td",null,{"children":"20"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Jewelry"}],["$","td",null,{"children":"1"}],["$","td",null,{"children":"80"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Food"}],["$","td",null,{"children":"4"}],["$","td",null,{"children":"40"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Clothes"}],["$","td",null,{"children":"6"}],["$","td",null,{"children":"50"}]]}]]}]]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"from ortools.linear_solver import pywraplp\n\nsolver = pywraplp.Solver.CreateSolver(\"SCIP\")\n\nitems = [\"Laptop\", \"Camera\", \"Book\", \"Jewelry\", \"Food\", \"Clothes\"]\nweights = [5, 3, 2, 1, 4, 6]\nvalues = [100, 60, 20, 80, 40, 50]\ncapacity = 15\n\nx = [solver.IntVar(0, 1, f\"x_{i}\") for i in range(len(items))]\n\nsolver.Add(sum(weights[i] * x[i] for i in range(len(items))) <= capacity)\nsolver.Maximize(sum(values[i] * x[i] for i in range(len(items))))\n\nstatus = solver.Solve()\nif status == pywraplp.Solver.OPTIMAL:\n    print(f\"Total value: {solver.Objective().Value():.0f}\")\n    total_weight = 0\n    for i in range(len(items)):\n        if x[i].solution_value() > 0.5:\n            print(f\"  Take {items[i]} (w={weights[i]}, v={values[i]})\")\n            total_weight += weights[i]\n    print(f\"Total weight: {total_weight}/{capacity}\")\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a"]}],"$L1b"]}],["$L1c","$L1d"],"$L1e"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","p",null,{"children":"Output:"}]
+5:["$","$L3",null,{"children":["$","$L2",null,{"children":"Total value: 300\n  Take Laptop (w=5, v=100)\n  Take Camera (w=3, v=60)\n  Take Jewelry (w=1, v=80)\n  Take Food (w=4, v=40)\n  Take Book (w=2, v=20)\nTotal weight: 15/15\n"}]}]
+6:["$","h2",null,{"children":"Example 2: Facility Location"}]
+7:["$","p",null,{"children":[["$","strong",null,{"children":"Problem:"}]," Decide which warehouses to open and how to assign customers. Opening has a fixed cost. Minimize total cost (fixed + shipping)."]}]
+8:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Warehouse"}],["$","th",null,{"children":"Fixed cost"}],["$","th",null,{"children":"Capacity"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"W1"}],["$","td",null,{"children":"100"}],["$","td",null,{"children":"50"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"W2"}],["$","td",null,{"children":"150"}],["$","td",null,{"children":"80"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"W3"}],["$","td",null,{"children":"120"}],["$","td",null,{"children":"60"}]]}]]}]]}]
+9:["$","p",null,{"children":"Shipping costs and customer demands: C1=20, C2=30, C3=25, C4=15."}]
+1f:T455,from ortools.linear_solver import pywraplp
+
+solver = pywraplp.Solver.CreateSolver("SCIP")
+
+fixed_costs = [100, 150, 120]
+capacities = [50, 80, 60]
+demands = [20, 30, 25, 15]
+ship_cost = [
+    [4, 6, 9, 5],
+    [5, 3, 2, 8],
+    [7, 8, 4, 3],
+]
+W, C = 3, 4
+
+y = [solver.IntVar(0, 1, f"open_{w}") for w in range(W)]
+x = [[solver.NumVar(0, solver.infinity(), f"ship_{w}_{c}")
+      for c in range(C)] for w in range(W)]
+
+for c in range(C):
+    solver.Add(sum(x[w][c] for w in range(W)) == demands[c])
+
+for w in range(W):
+    solver.Add(sum(x[w][c] for c in range(C)) <= capacities[w] * y[w])
+
+obj = sum(fixed_costs[w] * y[w] for w in range(W))
+obj += sum(ship_cost[w][c] * x[w][c] for w in range(W) for c in range(C))
+solver.Minimize(obj)
+
+status = solver.Solve()
+if status == pywraplp.Solver.OPTIMAL:
+    print(f"Total cost: {solver.Objective().Value():.0f}")
+    for w in range(W):
+        if y[w].solution_value() > 0.5:
+            shipped = sum(x[w][c].solution_value() for c in range(C))
+            print(f"  W{w+1}: OPEN (ships {shipped:.0f} units)")
+        else:
+            print(f"  W{w+1}: CLOSED")
+a:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"$1f"}]}]
+b:["$","p",null,{"children":"Output:"}]
+c:["$","$L3",null,{"children":["$","$L2",null,{"children":"Total cost: 610\n  W1: OPEN (ships 20 units)\n  W2: OPEN (ships 55 units)\n  W3: CLOSED\n"}]}]
+d:["$","h2",null,{"children":"Example 3: Bin Packing"}]
+e:["$","p",null,{"children":[["$","strong",null,{"children":"Problem:"}]," Pack items of various sizes into minimum number of bins (capacity 10 each)."]}]
+f:["$","p",null,{"children":"Items: sizes [6, 6, 5, 5, 4, 4, 3, 3, 2, 2]"}]
+10:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"from ortools.linear_solver import pywraplp\n\nsolver = pywraplp.Solver.CreateSolver(\"SCIP\")\n\nitems = [6, 6, 5, 5, 4, 4, 3, 3, 2, 2]\nbin_cap = 10\nn = len(items)\nB = n  # upper bound on bins\n\ny = [solver.IntVar(0, 1, f\"bin_{b}\") for b in range(B)]\nx = [[solver.IntVar(0, 1, f\"item_{i}_bin_{b}\")\n      for b in range(B)] for i in range(n)]\n\nfor i in range(n):\n    solver.Add(sum(x[i][b] for b in range(B)) == 1)\n\nfor b in range(B):\n    solver.Add(sum(items[i] * x[i][b] for i in range(n)) <= bin_cap * y[b])\n\nsolver.Minimize(sum(y[b] for b in range(B)))\nstatus = solver.Solve()\n\nif status == pywraplp.Solver.OPTIMAL:\n    print(f\"Bins used: {int(solver.Objective().Value())}\")\n    for b in range(B):\n        if y[b].solution_value() > 0.5:\n            bin_items = [items[i] for i in range(n) if x[i][b].solution_value() > 0.5]\n            print(f\"  Bin {b+1}: {bin_items} (sum={sum(bin_items)})\")\n"}]}]
+11:["$","p",null,{"children":"Output:"}]
+12:["$","$L3",null,{"children":["$","$L2",null,{"children":"Bins used: 4\n  Bin 1: [6, 4] (sum=10)\n  Bin 2: [6, 4] (sum=10)\n  Bin 3: [5, 5] (sum=10)\n  Bin 4: [3, 3, 2, 2] (sum=10)\n"}]}]
+13:["$","h2",null,{"children":"Example 4: Assignment Problem"}]
+14:["$","p",null,{"children":[["$","strong",null,{"children":"Problem:"}]," Assign 4 workers to 4 tasks minimizing total cost. One worker per task."]}]
+15:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{}],["$","th",null,{"children":"Task 1"}],["$","th",null,{"children":"Task 2"}],["$","th",null,{"children":"Task 3"}],["$","th",null,{"children":"Task 4"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Worker A"}],["$","td",null,{"children":"9"}],["$","td",null,{"children":"2"}],["$","td",null,{"children":"7"}],["$","td",null,{"children":"8"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Worker B"}],["$","td",null,{"children":"6"}],["$","td",null,{"children":"4"}],["$","td",null,{"children":"3"}],["$","td",null,{"children":"7"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Worker C"}],["$","td",null,{"children":"5"}],["$","td",null,{"children":"8"}],["$","td",null,{"children":"1"}],["$","td",null,{"children":"8"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Worker D"}],["$","td",null,{"children":"7"}],["$","td",null,{"children":"6"}],["$","td",null,{"children":"9"}],["$","td",null,{"children":"4"}]]}]]}]]}]
+16:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"from ortools.linear_solver import pywraplp\n\nsolver = pywraplp.Solver.CreateSolver(\"SCIP\")\n\ncosts = [[9,2,7,8],[6,4,3,7],[5,8,1,8],[7,6,9,4]]\nworkers = [\"A\", \"B\", \"C\", \"D\"]\nn = 4\n\nx = [[solver.IntVar(0, 1, f\"x_{i}_{j}\") for j in range(n)] for i in range(n)]\n\nfor i in range(n):\n    solver.Add(sum(x[i][j] for j in range(n)) == 1)\nfor j in range(n):\n    solver.Add(sum(x[i][j] for i in range(n)) == 1)\n\nsolver.Minimize(sum(costs[i][j] * x[i][j] for i in range(n) for j in range(n)))\nstatus = solver.Solve()\n\nif status == pywraplp.Solver.OPTIMAL:\n    print(f\"Total cost: {int(solver.Objective().Value())}\")\n    for i in range(n):\n        for j in range(n):\n            if x[i][j].solution_value() > 0.5:\n                print(f\"  Worker {workers[i]} -> Task {j+1} (cost={costs[i][j]})\")\n"}]}]
+17:["$","p",null,{"children":"Output:"}]
+18:["$","$L3",null,{"children":["$","$L2",null,{"children":"Total cost: 13\n  Worker A -> Task 2 (cost=2)\n  Worker B -> Task 3 (cost=3)\n  Worker C -> Task 1 (cost=5)\n  Worker D -> Task 4 (cost=4)\n"}]}]
+19:["$","h2",null,{"children":"Key Takeaways"}]
+1a:["$","ul",null,{"children":["\n",["$","li",null,{"children":["Use ",["$","$L2",null,{"children":"IntVar(0, 1, name)"}]," for binary decisions, ",["$","$L2",null,{"children":"IntVar(lb, ub, name)"}]," for general integers"]}],"\n",["$","li",null,{"children":"Use SCIP solver for MIP problems (not GLOP)"}],"\n",["$","li",null,{"children":["MIP is NP-hard — large problems may take time; set limits with ",["$","$L2",null,{"children":"solver.SetTimeLimit(ms)"}]]}],"\n",["$","li",null,{"children":"Big-M links binary decisions to continuous variables"}],"\n",["$","li",null,{"children":["Check for ",["$","$L2",null,{"children":"OPTIMAL"}]," or ",["$","$L2",null,{"children":"FEASIBLE"}]," status"]}],"\n"]}]
+1b:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/google-or-tools/chapter-02-linear","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/google-or-tools/chapter-04-constraint","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+1c:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1d:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1e:["$","$L20",null,{"children":["$","$21",null,{"name":"Next.MetadataOutlet","children":"$@22"}]}]
+22:null

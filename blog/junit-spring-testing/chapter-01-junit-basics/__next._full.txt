@@ -1,0 +1,121 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","junit-spring-testing","chapter-01-junit-basics",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","junit-spring-testing/chapter-01-junit-basics","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/junit-spring-testing/chapter-02-mockito","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+13:T4ba,package com.example.service;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CalculatorTest {
+
+    private Calculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
+    }
+
+    @Test
+    @DisplayName("should add two numbers correctly")
+    void shouldAdd() {
+        assertEquals(5, calculator.add(2, 3));
+    }
+
+    @Test
+    @DisplayName("should throw when dividing by zero")
+    void shouldThrowOnDivideByZero() {
+        ArithmeticException ex = assertThrows(
+            ArithmeticException.class,
+            () -> calculator.divide(10, 0)
+        );
+        assertEquals("Cannot divide by zero", ex.getMessage());
+    }
+
+    @Test
+    @DisplayName("should validate multiple assertions together")
+    void shouldValidateMultipleAssertions() {
+        assertAll("calculator operations",
+            () -> assertEquals(4, calculator.add(2, 2)),
+            () -> assertEquals(5, calculator.divide(10, 2)),
+            () -> assertTrue(calculator.isPositive(1)),
+            () -> assertFalse(calculator.isPositive(-1))
+        );
+    }
+}
+14:T461,package com.example.service;
+
+import org.junit.jupiter.api.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("Calculator")
+class CalculatorNestedTest {
+
+    private Calculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
+    }
+
+    @Nested
+    @DisplayName("add")
+    class Add {
+
+        @Test
+        @DisplayName("returns sum of two positive numbers")
+        void positiveNumbers() {
+            assertEquals(7, calculator.add(3, 4));
+        }
+
+        @Test
+        @DisplayName("returns sum with negative numbers")
+        void negativeNumbers() {
+            assertEquals(-1, calculator.add(2, -3));
+        }
+    }
+
+    @Nested
+    @DisplayName("divide")
+    class Divide {
+
+        @Test
+        @DisplayName("returns quotient for valid inputs")
+        void validDivision() {
+            assertEquals(3, calculator.divide(9, 3));
+        }
+
+        @Test
+        @DisplayName("throws for zero divisor")
+        void zeroDivisor() {
+            assertThrows(ArithmeticException.class,
+                () -> calculator.divide(1, 0));
+        }
+    }
+}
+10:[["$","h1",null,{"children":"JUnit 5 Basics"}],"\n",["$","h2",null,{"children":"Test Lifecycle"}],"\n",["$","p",null,{"children":["JUnit 5 creates a ",["$","strong",null,{"children":"new test instance per test method"}]," by default:"]}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","$L11",null,{"children":"@BeforeAll"}]," — once before all tests (static method)"]}],"\n",["$","li",null,{"children":[["$","$L11",null,{"children":"@BeforeEach"}]," — before each test method"]}],"\n",["$","li",null,{"children":[["$","$L11",null,{"children":"@Test"}]," — the test itself"]}],"\n",["$","li",null,{"children":[["$","$L11",null,{"children":"@AfterEach"}]," — after each test method"]}],"\n",["$","li",null,{"children":[["$","$L11",null,{"children":"@AfterAll"}]," — once after all tests (static method)"]}],"\n"]}],"\n",["$","h2",null,{"children":"Class Under Test"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-java","children":"package com.example.service;\n\npublic class Calculator {\n\n    public int add(int a, int b) {\n        return a + b;\n    }\n\n    public int divide(int a, int b) {\n        if (b == 0) {\n            throw new ArithmeticException(\"Cannot divide by zero\");\n        }\n        return a / b;\n    }\n\n    public boolean isPositive(int number) {\n        return number > 0;\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Basic Test with @Test and Assertions"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-java","children":"$13"}]}],"\n",["$","h2",null,{"children":"@Nested Tests for Grouping"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-java","children":"$14"}]}],"\n","$L15","\n","$L16","\n","$L17"]
+15:["$","h2",null,{"children":"Key Points"}]
+16:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L11",null,{"children":"@DisplayName"}]," provides readable test names in reports"]}],"\n",["$","li",null,{"children":[["$","$L11",null,{"children":"assertAll"}]," runs all assertions even if one fails — reports all failures"]}],"\n",["$","li",null,{"children":[["$","$L11",null,{"children":"assertThrows"}]," returns the exception for further assertions"]}],"\n",["$","li",null,{"children":[["$","$L11",null,{"children":"@Nested"}]," classes share the outer ",["$","$L11",null,{"children":"@BeforeEach"}]," setup"]}],"\n",["$","li",null,{"children":["Each ",["$","$L11",null,{"children":"@Nested"}]," class can have its own ",["$","$L11",null,{"children":"@BeforeEach"}]]}],"\n"]}]
+17:["$","p",null,{"children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","children":"prev: Overview"}]," | ",["$","a",null,{"href":"/blog/junit-spring-testing/chapter-02-mockito","children":"next: Mockito"}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+18:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 01 junit basics — junit spring testing"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L18","3",{}]]

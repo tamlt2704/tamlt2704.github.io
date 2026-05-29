@@ -1,0 +1,86 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+d:"$Sreact.suspense"
+4:T7f0,package com.example.service;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+class OrderServiceTest {
+
+    @Mock
+    private OrderRepository orderRepository;
+
+    @Mock
+    private NotificationService notificationService;
+
+    @InjectMocks
+    private OrderService orderService;
+
+    @Test
+    void placeOrder_savesAndNotifies() {
+        Order savedOrder = new Order("Laptop", 1);
+        savedOrder.setId(42L);
+
+        when(orderRepository.save(any(Order.class))).thenReturn(savedOrder);
+        doNothing().when(notificationService).sendConfirmation(anyLong());
+
+        Order result = orderService.placeOrder("Laptop", 1);
+
+        assertEquals(42L, result.getId());
+        verify(orderRepository).save(any(Order.class));
+        verify(notificationService).sendConfirmation(42L);
+    }
+
+    @Test
+    void findById_returnsOrder() {
+        Order order = new Order("Phone", 2);
+        order.setId(1L);
+        when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+        Order result = orderService.findById(1L);
+
+        assertEquals("Phone", result.getProduct());
+        verify(orderRepository, times(1)).findById(1L);
+    }
+
+    @Test
+    void findById_throwsWhenNotFound() {
+        when(orderRepository.findById(99L)).thenReturn(Optional.empty());
+
+        assertThrows(OrderNotFoundException.class,
+            () -> orderService.findById(99L));
+
+        verify(notificationService, never()).sendConfirmation(anyLong());
+    }
+
+    @Test
+    void cancelOrder_deletesById() {
+        doNothing().when(orderRepository).deleteById(5L);
+
+        orderService.cancelOrder(5L);
+
+        verify(orderRepository).deleteById(5L);
+        verify(notificationService, never()).sendConfirmation(anyLong());
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Mockito Fundamentals"}],"\n",["$","h2",null,{"children":"Class Under Test"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\npublic class OrderService {\n\n    private final OrderRepository orderRepository;\n    private final NotificationService notificationService;\n\n    public OrderService(OrderRepository orderRepository, NotificationService notificationService) {\n        this.orderRepository = orderRepository;\n        this.notificationService = notificationService;\n    }\n\n    public Order placeOrder(String product, int quantity) {\n        Order order = new Order(product, quantity);\n        Order saved = orderRepository.save(order);\n        notificationService.sendConfirmation(saved.getId());\n        return saved;\n    }\n\n    public Order findById(Long id) {\n        return orderRepository.findById(id)\n            .orElseThrow(() -> new OrderNotFoundException(\"Order not found: \" + id));\n    }\n\n    public void cancelOrder(Long id) {\n        orderRepository.deleteById(id);\n    }\n}\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\npublic class Order {\n    private Long id;\n    private String product;\n    private int quantity;\n\n    public Order(String product, int quantity) {\n        this.product = product;\n        this.quantity = quantity;\n    }\n\n    public Long getId() { return id; }\n    public void setId(Long id) { this.id = id; }\n    public String getProduct() { return product; }\n    public int getQuantity() { return quantity; }\n}\n"}]}],"\n",["$","h2",null,{"children":"Test with @Mock and @InjectMocks"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7"]}],"$L8"]}],["$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Key Points"}]
+6:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"@ExtendWith(MockitoExtension.class)"}]," — integrates Mockito with JUnit 5"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"@Mock"}]," — creates a mock instance"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"@InjectMocks"}]," — creates the real object and injects mocks into it"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"when(...).thenReturn(...)"}]," — stubs a return value"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"doNothing().when(mock).voidMethod()"}]," — stubs void methods"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"verify(mock)"}]," — asserts the method was called once"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"verify(mock, times(n))"}]," — asserts exact call count"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"verify(mock, never())"}]," — asserts method was never called"]}],"\n"]}]
+7:["$","p",null,{"children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-01-junit-basics","children":"prev: JUnit 5 Basics"}]," | ",["$","a",null,{"href":"/blog/junit-spring-testing/chapter-03-argument-capture","children":"next: Argument Capture"}]]}]
+8:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-01-junit-basics","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/junit-spring-testing/chapter-03-argument-capture","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+9:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+a:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+b:["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]
+e:null

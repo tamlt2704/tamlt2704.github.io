@@ -1,0 +1,213 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+28:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+29:"$Sreact.suspense"
+4:T46f,// service/RateLimiter.java
+@Service
+@RequiredArgsConstructor
+public class RateLimiter {
+
+    private final StringRedisTemplate redis;
+
+    /**
+     * Sliding window rate limit.
+     * @param key     unique identifier (e.g., "rate:user:alice@co.com")
+     * @param limit   max requests allowed in the window
+     * @param window  time window duration
+     * @return true if allowed, false if rate limited
+     */
+    public boolean isAllowed(String key, int limit, Duration window) {
+        long now = Instant.now().toEpochMilli();
+        long windowStart = now - window.toMillis();
+
+        // Use a sorted set: score = timestamp, value = unique request ID
+        redis.opsForZSet().removeRangeByScore(key, 0, windowStart);  // remove expired
+        Long count = redis.opsForZSet().zCard(key);                   // count remaining
+
+        if (count != null && count >= limit) {
+            return false;  // rate limited
+        }
+
+        // Add this request
+        redis.opsForZSet().add(key, now + ":" + UUID.randomUUID(), now);
+        redis.expire(key, window.plusSeconds(1));  // auto-cleanup
+        return true;
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 16: Rate Limiting"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-15-multi-tenancy","children":"← Chapter 15: Multi-Tenancy"}]," | ",["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","children":"Overview"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Story"}],"\n",["$","p",null,{"children":"A junior dev writes a script that submits 10,000 jobs in a loop. The queue explodes, Redis fills up, and everyone else's jobs are stuck. You need rate limiting — per-user and per-tenant caps on how fast jobs can be submitted."}],"\n",["$","h2",null,{"children":"Rate Limiting Algorithms"}],"\n",["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Algorithm"}],["$","th",null,{"children":"How it works"}],["$","th",null,{"children":"Best for"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Fixed Window"}]}],["$","td",null,{"children":"Count requests in a time window (e.g., 100/minute). Resets at window boundary."}],["$","td",null,{"children":"Simple, but allows bursts at window edges"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Sliding Window"}]}],["$","td",null,{"children":"Weighted average of current + previous window"}],["$","td",null,{"children":"Smoother than fixed, slightly more complex"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Token Bucket"}]}],["$","td",null,{"children":"Bucket fills with tokens at a fixed rate. Each request consumes one."}],["$","td",null,{"children":"Allows controlled bursts"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Leaky Bucket"}]}],["$","td",null,{"children":"Requests enter a queue that drains at a fixed rate"}],["$","td",null,{"children":"Strict constant rate output"}]]}]]}]]}],"\n",["$","p",null,{"children":["For a job engine, ",["$","strong",null,{"children":"sliding window"}]," (for submission limits) + ",["$","strong",null,{"children":"token bucket"}]," (for burst tolerance) is a good combination."]}],"\n",["$","h2",null,{"children":"Step 1: Redis Sliding Window"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h3",null,{"children":"How It Works"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"Window: 1 minute, Limit: 10\n\nSorted Set \"rate:user:alice\":\n  Score (timestamp)    Value\n  1706000001000       \"1706000001000:uuid1\"\n  1706000005000       \"1706000005000:uuid2\"\n  1706000030000       \"1706000030000:uuid3\"\n  ... (7 more)\n\nNew request at 1706000061000:\n  1. Remove entries with score < (now - 60000) → clears old ones\n  2. Count remaining → 8\n  3. 8 < 10 → allowed, add entry\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f"]}],"$L20"]}],["$L21","$L22"],"$L23"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Step 2: Apply to Job Submission"}]
+24:T460,@RestController
+@RequiredArgsConstructor
+public class JobController {
+
+    private final RateLimiter rateLimiter;
+    private final JobService jobService;
+    private final JobGateway jobGateway;
+
+    @PostMapping("/api/jobs")
+    public ResponseEntity<?> submitJob(@RequestBody JobRequest request) {
+        String user = SecurityContextHolder.getContext().getAuthentication().getName();
+        String tenant = TenantContext.getTenant();
+
+        // Per-user limit: 20 jobs per minute
+        if (!rateLimiter.isAllowed("rate:user:" + user, 20, Duration.ofMinutes(1))) {
+            return ResponseEntity.status(429)
+                .body(Map.of("error", "Rate limit exceeded", "retryAfter", "60s"));
+        }
+
+        // Per-tenant limit: 100 jobs per minute
+        if (!rateLimiter.isAllowed("rate:tenant:" + tenant, 100, Duration.ofMinutes(1))) {
+            return ResponseEntity.status(429)
+                .body(Map.of("error", "Tenant rate limit exceeded"));
+        }
+
+        Job job = jobService.create(request);
+        jobGateway.submit(job);
+        return ResponseEntity.status(201).body(job);
+    }
+}
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$24"}]}]
+7:["$","h2",null,{"children":"Step 3: Rate Limit as a Filter (Reusable)"}]
+8:["$","p",null,{"children":"Instead of checking in every controller, use a servlet filter:"}]
+25:T4b2,// security/RateLimitFilter.java
+@Component
+public class RateLimitFilter extends OncePerRequestFilter {
+
+    private final RateLimiter rateLimiter;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     FilterChain chain) throws ServletException, IOException {
+        String user = SecurityContextHolder.getContext().getAuthentication() != null
+            ? SecurityContextHolder.getContext().getAuthentication().getName()
+            : request.getRemoteAddr();
+
+        if (!rateLimiter.isAllowed("rate:api:" + user, 60, Duration.ofMinutes(1))) {
+            response.setStatus(429);
+            response.setHeader("Retry-After", "60");
+            response.getWriter().write("{\"error\":\"Too many requests\"}");
+            return;
+        }
+
+        chain.doFilter(request, response);
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        // Don't rate-limit health checks or auth endpoints
+        String path = request.getRequestURI();
+        return path.startsWith("/api/health") || path.startsWith("/api/auth");
+    }
+}
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$25"}]}]
+a:["$","h2",null,{"children":"Step 4: Token Bucket (Burst-Tolerant)"}]
+b:["$","p",null,{"children":"The sliding window is strict. A token bucket allows short bursts while maintaining an average rate:"}]
+26:T5c6,// service/TokenBucketLimiter.java
+@Service
+@RequiredArgsConstructor
+public class TokenBucketLimiter {
+
+    private final StringRedisTemplate redis;
+
+    /**
+     * Token bucket rate limiter.
+     * @param key        unique identifier
+     * @param capacity   max tokens (burst size)
+     * @param refillRate tokens added per second
+     * @return true if allowed
+     */
+    public boolean tryConsume(String key, int capacity, double refillRate) {
+        String tokensKey = key + ":tokens";
+        String timestampKey = key + ":ts";
+
+        String tokensStr = redis.opsForValue().get(tokensKey);
+        String tsStr = redis.opsForValue().get(timestampKey);
+
+        double tokens = tokensStr != null ? Double.parseDouble(tokensStr) : capacity;
+        long lastRefill = tsStr != null ? Long.parseLong(tsStr) : System.currentTimeMillis();
+
+        // Refill tokens based on elapsed time
+        long now = System.currentTimeMillis();
+        double elapsed = (now - lastRefill) / 1000.0;
+        tokens = Math.min(capacity, tokens + elapsed * refillRate);
+
+        if (tokens < 1) {
+            return false;  // no tokens available
+        }
+
+        // Consume one token
+        tokens -= 1;
+        redis.opsForValue().set(tokensKey, String.valueOf(tokens));
+        redis.opsForValue().set(timestampKey, String.valueOf(now));
+        redis.expire(tokensKey, Duration.ofMinutes(5));
+        redis.expire(timestampKey, Duration.ofMinutes(5));
+        return true;
+    }
+}
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$26"}]}]
+d:["$","h3",null,{"children":"Token Bucket Visualized"}]
+e:["$","$L2",null,{"children":["$","$L3",null,{"children":"Capacity: 10 tokens, Refill: 2 tokens/sec\n\nTime 0s:  [██████████] 10 tokens — user submits 5 jobs instantly → allowed\nTime 0s:  [█████     ]  5 tokens remaining\nTime 1s:  [███████   ]  7 tokens (refilled 2)\nTime 2s:  [█████████ ]  9 tokens (refilled 2)\nTime 2s:  user submits 9 jobs → allowed, 0 remaining\nTime 2s:  [          ]  0 tokens\nTime 2.5s: user submits 1 job → DENIED (only 1 token refilled, need to wait)\nTime 3s:  [██        ]  2 tokens available again\n"}]}]
+f:["$","h2",null,{"children":"Step 5: Lua Script (Atomic Redis Operations)"}]
+10:["$","p",null,{"children":"The token bucket above has a race condition — two requests can read the same token count. Use a Lua script for atomicity:"}]
+27:T4ee,// service/AtomicRateLimiter.java
+@Service
+public class AtomicRateLimiter {
+
+    private final StringRedisTemplate redis;
+
+    private static final String LUA_SCRIPT = """
+        local key = KEYS[1]
+        local capacity = tonumber(ARGV[1])
+        local refillRate = tonumber(ARGV[2])
+        local now = tonumber(ARGV[3])
+
+        local data = redis.call('HMGET', key, 'tokens', 'ts')
+        local tokens = tonumber(data[1]) or capacity
+        local lastRefill = tonumber(data[2]) or now
+
+        local elapsed = (now - lastRefill) / 1000
+        tokens = math.min(capacity, tokens + elapsed * refillRate)
+
+        if tokens < 1 then
+            return 0
+        end
+
+        tokens = tokens - 1
+        redis.call('HMSET', key, 'tokens', tokens, 'ts', now)
+        redis.call('EXPIRE', key, 300)
+        return 1
+    """;
+
+    private final RedisScript<Long> script = new DefaultRedisScript<>(LUA_SCRIPT, Long.class);
+
+    public boolean tryConsume(String key, int capacity, double refillRate) {
+        Long result = redis.execute(script,
+            List.of(key),
+            String.valueOf(capacity),
+            String.valueOf(refillRate),
+            String.valueOf(System.currentTimeMillis()));
+        return result != null && result == 1;
+    }
+}
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$27"}]}]
+12:["$","h3",null,{"children":"Why Lua?"}]
+13:["$","p",null,{"children":["Redis executes Lua scripts ",["$","strong",null,{"children":"atomically"}]," — no other command can interleave. This eliminates the read-then-write race condition without distributed locks."]}]
+14:["$","h2",null,{"children":"Step 6: Response Headers"}]
+15:["$","p",null,{"children":"Good rate limiting tells the client their remaining quota:"}]
+16:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@PostMapping(\"/api/jobs\")\npublic ResponseEntity<?> submitJob(@RequestBody JobRequest request) {\n    String user = getUser();\n    String key = \"rate:user:\" + user;\n    int limit = 20;\n    Duration window = Duration.ofMinutes(1);\n\n    if (!rateLimiter.isAllowed(key, limit, window)) {\n        return ResponseEntity.status(429)\n            .header(\"X-RateLimit-Limit\", String.valueOf(limit))\n            .header(\"X-RateLimit-Remaining\", \"0\")\n            .header(\"Retry-After\", \"60\")\n            .body(Map.of(\"error\", \"Rate limit exceeded\"));\n    }\n\n    Long remaining = redis.opsForZSet().zCard(key);\n    Job job = jobService.create(request);\n    jobGateway.submit(job);\n\n    return ResponseEntity.status(201)\n        .header(\"X-RateLimit-Limit\", String.valueOf(limit))\n        .header(\"X-RateLimit-Remaining\", String.valueOf(limit - remaining))\n        .body(job);\n}\n"}]}]
+17:["$","h2",null,{"children":"Step 7: Configurable Limits per Role/Tenant"}]
+18:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-yaml","children":"# application.yml\nrate-limits:\n  default:\n    per-user: 20\n    per-tenant: 100\n    window: 60s\n  admin:\n    per-user: 200\n    per-tenant: 1000\n    window: 60s\n"}]}]
+19:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@ConfigurationProperties(prefix = \"rate-limits\")\npublic record RateLimitConfig(\n    LimitTier defaultLimits,\n    LimitTier admin\n) {\n    public record LimitTier(int perUser, int perTenant, Duration window) {}\n}\n"}]}]
+1a:["$","h2",null,{"children":"Summary"}]
+1b:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Layer"}],["$","th",null,{"children":"What"}],["$","th",null,{"children":"Algorithm"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"API-wide"}],["$","td",null,{"children":"60 req/min per user (all endpoints)"}],["$","td",null,{"children":"Sliding window"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Job submission"}],["$","td",null,{"children":"20 jobs/min per user"}],["$","td",null,{"children":"Sliding window"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Tenant cap"}],["$","td",null,{"children":"100 jobs/min per org"}],["$","td",null,{"children":"Sliding window"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Burst tolerance"}],["$","td",null,{"children":"10 burst + 2/sec refill"}],["$","td",null,{"children":"Token bucket"}]]}]]}]]}]
+1c:["$","$L2",null,{"children":["$","$L3",null,{"children":"Request → RateLimitFilter (API-wide) → Controller (per-endpoint) → Job submitted\n              ↓ 429                         ↓ 429\n         \"Too many requests\"          \"Job rate limit exceeded\"\n"}]}]
+1d:["$","hr",null,{}]
+1e:["$","p",null,{"children":"You now have a complete job engine with real-time updates, scheduling, dependencies, multi-tenancy, and rate limiting. 🚀"}]
+1f:["$","p",null,{"children":["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","children":"← Overview"}]}]
+20:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-15-multi-tenancy","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+21:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+22:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+23:["$","$L28",null,{"children":["$","$29",null,{"name":"Next.MetadataOutlet","children":"$@2a"}]}]
+2a:null

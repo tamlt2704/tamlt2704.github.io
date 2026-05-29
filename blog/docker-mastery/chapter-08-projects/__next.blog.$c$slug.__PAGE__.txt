@@ -1,0 +1,94 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1d:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/docker-mastery/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 8: Real Projects"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-07-production","children":"← Production"}]," | ",["$","a",null,{"href":"./chapter-00-overview","children":"Overview"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Project 1: Dockerize a Spring Boot App"}],"\n",["$","h3",null,{"children":"Dockerfile"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-dockerfile","children":"FROM eclipse-temurin:21-jdk-alpine AS builder\nWORKDIR /app\nCOPY gradle/ gradle/\nCOPY gradlew build.gradle.kts settings.gradle.kts ./\nRUN ./gradlew dependencies --no-daemon\nCOPY src/ src/\nRUN ./gradlew bootJar --no-daemon\n\nFROM eclipse-temurin:21-jre-alpine\nWORKDIR /app\nRUN addgroup -S spring && adduser -S spring -G spring\nCOPY --from=builder /app/build/libs/*.jar app.jar\nUSER spring\nEXPOSE 8080\nHEALTHCHECK --interval=30s --timeout=5s \\\n  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1\nCMD [\"java\", \"-jar\", \"app.jar\"]\n"}]}],"\n",["$","h3",null,{"children":".dockerignore"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":".gradle\nbuild\n.idea\n*.iml\n.git\n"}]}],"\n",["$","h3",null,{"children":"Build and run"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"docker build -t spring-app:1.0 .\ndocker run -d -p 8080:8080 --name spring-app spring-app:1.0\ncurl http://localhost:8080/actuator/health\n"}]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Project 2: Dockerize a Next.js App"}],"\n",["$","h3",null,{"children":"Dockerfile"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-dockerfile","children":"FROM node:20-alpine AS deps\nWORKDIR /app\nCOPY package.json package-lock.json ./\nRUN npm ci\n\nFROM node:20-alpine AS builder\nWORKDIR /app\nCOPY --from=deps /app/node_modules ./node_modules\nCOPY . .\nRUN npm run build\n\nFROM node:20-alpine AS runner\nWORKDIR /app\nENV NODE_ENV=production\n\nRUN addgroup -S nextjs && adduser -S nextjs -G nextjs\n\nCOPY --from=builder /app/public ./public\nCOPY --from=builder --chown=nextjs:nextjs /app/.next/standalone ./\nCOPY --from=builder --chown=nextjs:nextjs /app/.next/static ./.next/static\n\nUSER nextjs\nEXPOSE 3000\nENV PORT=3000\nENV HOSTNAME=\"0.0.0.0\"\n\nHEALTHCHECK --interval=30s --timeout=5s \\\n  CMD wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1\n\nCMD [\"node\", \"server.js\"]\n"}]}],"\n",["$","h3",null,{"children":"next.config.js requirement"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-javascript","children":"// next.config.js — enable standalone output\nconst nextConfig = {\n  output: \"standalone\",\n};\nmodule.exports = nextConfig;\n"}]}],"\n",["$","h3",null,{"children":".dockerignore"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"node_modules\n.next\n.git\n*.md\n"}]}],"\n",["$","h3",null,{"children":"Build and run"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"docker build -t nextjs-app:1.0 .\ndocker run -d -p 3000:3000 --name nextjs-app nextjs-app:1.0\ncurl http://localhost:3000\n"}]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Project 3: Full-Stack Compose"}],"\n",["$","p",null,{"children":"A complete stack with React frontend, Node.js backend, PostgreSQL, and Redis."}],"\n",["$","h3",null,{"children":"Directory structure"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"project/\n  frontend/\n    Dockerfile\n    src/\n    package.json\n  backend/\n    Dockerfile\n    src/\n    package.json\n  docker-compose.yml\n  .env\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16"]}],"$L17"]}],["$L18","$L19"],"$L1a"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","h3",null,{"children":"backend/Dockerfile"}]
+5:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-dockerfile","children":"FROM node:20-alpine\nWORKDIR /app\nCOPY package.json package-lock.json ./\nRUN npm ci --only=production\nCOPY . .\nUSER node\nEXPOSE 4000\nCMD [\"node\", \"src/index.js\"]\n"}]}]
+6:["$","h3",null,{"children":"frontend/Dockerfile"}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-dockerfile","children":"FROM node:20-alpine AS builder\nWORKDIR /app\nCOPY package.json package-lock.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\nFROM nginx:alpine\nCOPY --from=builder /app/dist /usr/share/nginx/html\nCOPY nginx.conf /etc/nginx/conf.d/default.conf\nEXPOSE 80\n"}]}]
+8:["$","h3",null,{"children":"docker-compose.yml"}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-yaml","children":"services:\n  frontend:\n    build: ./frontend\n    ports:\n      - \"80:80\"\n    depends_on:\n      - backend\n\n  backend:\n    build: ./backend\n    ports:\n      - \"4000:4000\"\n    environment:\n      DATABASE_URL: postgres://admin:secret@db:5432/myapp\n      REDIS_URL: redis://redis:6379\n    depends_on:\n      db:\n        condition: service_healthy\n      redis:\n        condition: service_started\n\n  db:\n    image: postgres:16\n    environment:\n      POSTGRES_DB: myapp\n      POSTGRES_USER: admin\n      POSTGRES_PASSWORD: secret\n    volumes:\n      - pgdata:/var/lib/postgresql/data\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready -U admin\"]\n      interval: 5s\n      timeout: 5s\n      retries: 5\n\n  redis:\n    image: redis:7-alpine\n    volumes:\n      - redis-data:/data\n\nvolumes:\n  pgdata:\n  redis-data:\n"}]}]
+a:["$","h3",null,{"children":"Run the full stack"}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# Start everything\ndocker compose up -d --build\n\n# Check status\ndocker compose ps\n\n# View backend logs\ndocker compose logs -f backend\n\n# Stop everything\ndocker compose down\n\n# Stop and remove all data\ndocker compose down -v\n"}]}]
+c:["$","hr",null,{}]
+d:["$","h2",null,{"children":"Project 4: CI/CD with GitHub Actions"}]
+e:["$","h3",null,{"children":".github/workflows/docker.yml"}]
+1b:T5ee,name: Build and Push Docker Image
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: github.repository
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: github.actor
+          password: secrets.GITHUB_TOKEN
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/github.repository
+          tags: |
+            type=sha
+            type=ref,event=branch
+            type=semver,pattern=vversion
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: github.event_name != 'pull_request'
+          tags: steps.meta.outputs.tags
+          labels: steps.meta.outputs.labels
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tests with Compose
+        run: |
+          docker compose -f docker-compose.test.yml up --build --abort-on-container-exit
+          docker compose -f docker-compose.test.yml down -v
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-yaml","children":"$1b"}]}]
+10:["$","h3",null,{"children":"docker-compose.test.yml"}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-yaml","children":"services:\n  test:\n    build:\n      context: .\n      dockerfile: Dockerfile\n    command: npm test\n    environment:\n      DATABASE_URL: postgres://admin:secret@db:5432/testdb\n    depends_on:\n      db:\n        condition: service_healthy\n\n  db:\n    image: postgres:16\n    environment:\n      POSTGRES_DB: testdb\n      POSTGRES_USER: admin\n      POSTGRES_PASSWORD: secret\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready -U admin\"]\n      interval: 2s\n      timeout: 5s\n      retries: 5\n"}]}]
+12:["$","hr",null,{}]
+13:["$","h2",null,{"children":"Exercises"}]
+14:["$","ol",null,{"children":["\n",["$","li",null,{"children":"Dockerize a Spring Boot application with a multi-stage build and verify the health endpoint works"}],"\n",["$","li",null,{"children":"Dockerize a Next.js app using standalone output and multi-stage build — compare the final image size to a naive single-stage build"}],"\n",["$","li",null,{"children":"Create a full-stack docker-compose.yml with frontend, backend, PostgreSQL, and Redis — verify all services communicate"}],"\n",["$","li",null,{"children":"Set up a GitHub Actions workflow that builds and pushes your image to GHCR on every push to main"}],"\n",["$","li",null,{"children":["Create a ",["$","$L3",null,{"children":"docker-compose.test.yml"}]," that runs your test suite against a real database in CI"]}],"\n"]}]
+15:["$","hr",null,{}]
+16:["$","p",null,{"children":[["$","a",null,{"href":"./chapter-07-production","children":"← Production"}]," | ",["$","a",null,{"href":"./chapter-00-overview","children":"Overview"}]]}]
+17:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/docker-mastery/chapter-07-production","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+18:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+19:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1a:["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]
+1e:null

@@ -1,0 +1,217 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","pixel-game-js","chapter-04-tilemap",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","pixel-game-js/chapter-04-tilemap","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-03-sprites","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/pixel-game-js/chapter-05-phaser","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T518,const camera = { x: 0, y: 0 };
+const SCREEN_W = 160;
+const SCREEN_H = 144;
+
+function updateCamera(targetX: number, targetY: number) {
+  camera.x = targetX - SCREEN_W / 2;
+  camera.y = targetY - SCREEN_H / 2;
+
+  // Clamp to map bounds
+  camera.x = Math.max(0, Math.min(camera.x, MAP_W * TILE_SIZE - SCREEN_W));
+  camera.y = Math.max(0, Math.min(camera.y, MAP_H * TILE_SIZE - SCREEN_H));
+
+  camera.x = Math.floor(camera.x);
+  camera.y = Math.floor(camera.y);
+}
+
+function drawMapWithCamera() {
+  // Only draw visible tiles
+  const startCol = Math.floor(camera.x / TILE_SIZE);
+  const startRow = Math.floor(camera.y / TILE_SIZE);
+  const endCol = Math.min(startCol + Math.ceil(SCREEN_W / TILE_SIZE) + 1, MAP_W);
+  const endRow = Math.min(startRow + Math.ceil(SCREEN_H / TILE_SIZE) + 1, MAP_H);
+
+  for (let row = startRow; row < endRow; row++) {
+    for (let col = startCol; col < endCol; col++) {
+      const tileId = map[row * MAP_W + col];
+      if (tileId === 0) continue;
+
+      const destX = col * TILE_SIZE - camera.x;
+      const destY = row * TILE_SIZE - camera.y;
+      const srcX = (tileId % TILESET_COLS) * TILE_SIZE;
+      const srcY = Math.floor(tileId / TILESET_COLS) * TILE_SIZE;
+
+      ctx.drawImage(tileset, srcX, srcY, TILE_SIZE, TILE_SIZE, destX, destY, TILE_SIZE, TILE_SIZE);
+    }
+  }
+}
+10:[["$","h1",null,{"children":"Tilemaps"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-03-sprites","children":"prev: Sprites"}]," | ",["$","a",null,{"href":"./chapter-05-phaser","children":"next: Phaser 3"}]]}],"\n",["$","p",null,{"children":"Tilemaps let you build large worlds from small reusable tiles. A 16x16 tileset can create infinite variety."}],"\n",["$","h2",null,{"children":"Tile-Based World"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"children":"Tileset (one image):        Map (array of indices):\n+---+---+---+---+           [0,0,0,0,0,0,0,0]\n| 0 | 1 | 2 | 3 |          [0,0,0,0,0,0,0,0]\n+---+---+---+---+           [0,0,0,0,0,0,0,0]\n| 4 | 5 | 6 | 7 |          [1,1,1,0,0,1,1,1]\n+---+---+---+---+           [2,2,2,0,0,2,2,2]\n                             [3,3,3,3,3,3,3,3]\n0=sky, 1=grass-top, 2=dirt, 3=stone\n"}]}],"\n",["$","h2",null,{"children":"Basic Tilemap Renderer"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"const TILE_SIZE = 16;\nconst MAP_W = 10;\nconst MAP_H = 9;\n\nconst map = [\n  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,\n  1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n];\n\nlet tileset: HTMLImageElement;\nconst TILESET_COLS = 4; // tiles per row in the tileset image\n\nfunction drawMap() {\n  for (let i = 0; i < map.length; i++) {\n    const tileId = map[i];\n    if (tileId === 0) continue;\n\n    const destX = (i % MAP_W) * TILE_SIZE;\n    const destY = Math.floor(i / MAP_W) * TILE_SIZE;\n    const srcX = (tileId % TILESET_COLS) * TILE_SIZE;\n    const srcY = Math.floor(tileId / TILESET_COLS) * TILE_SIZE;\n\n    ctx.drawImage(tileset, srcX, srcY, TILE_SIZE, TILE_SIZE, destX, destY, TILE_SIZE, TILE_SIZE);\n  }\n}\n"}]}],"\n",["$","h2",null,{"children":"Loading Tilemap Data (JSON)"}],"\n",["$","p",null,{"children":"Export from Tiled editor or define manually:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"interface TilemapData {\n  width: number;\n  height: number;\n  tileSize: number;\n  layers: { name: string; data: number[] }[];\n}\n\nasync function loadMap(url: string): Promise<TilemapData> {\n  const res = await fetch(url);\n  return res.json();\n}\n\n// map.json\n// {\n//   \"width\": 20, \"height\": 15, \"tileSize\": 16,\n//   \"layers\": [\n//     { \"name\": \"background\", \"data\": [0,0,0,...] },\n//     { \"name\": \"foreground\", \"data\": [0,0,5,...] },\n//     { \"name\": \"collision\",  \"data\": [0,0,1,...] }\n//   ]\n// }\n"}]}],"\n",["$","h2",null,{"children":"Camera / Viewport Scrolling"}],"\n",["$","p",null,{"children":"For maps larger than the screen, use a camera offset:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"$13"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e"]
+14:["$","h2",null,{"children":"Tile Collision"}]
+1f:T441,function getTile(x: number, y: number, layer: number[]): number {
+  const col = Math.floor(x / TILE_SIZE);
+  const row = Math.floor(y / TILE_SIZE);
+  if (col < 0 || col >= MAP_W || row < 0 || row >= MAP_H) return 1; // solid outside
+  return layer[row * MAP_W + col];
+}
+
+function isSolid(x: number, y: number): boolean {
+  return getTile(x, y, collisionLayer) !== 0;
+}
+
+// Check player movement
+function movePlayer(dt: number) {
+  const newX = player.x + player.vx * dt;
+  const newY = player.y + player.vy * dt;
+
+  // Horizontal
+  if (
+    !isSolid(newX, player.y) &&
+    !isSolid(newX + player.width - 1, player.y) &&
+    !isSolid(newX, player.y + player.height - 1) &&
+    !isSolid(newX + player.width - 1, player.y + player.height - 1)
+  ) {
+    player.x = newX;
+  } else {
+    player.vx = 0;
+  }
+
+  // Vertical
+  if (
+    !isSolid(player.x, newY) &&
+    !isSolid(player.x + player.width - 1, newY) &&
+    !isSolid(player.x, newY + player.height - 1) &&
+    !isSolid(player.x + player.width - 1, newY + player.height - 1)
+  ) {
+    player.y = newY;
+  } else {
+    player.vy = 0;
+  }
+}
+15:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"$1f"}]}]
+16:["$","h2",null,{"children":"Tiled Editor Export"}]
+17:["$","p",null,{"children":[["$","a",null,{"href":"https://www.mapeditor.org/","children":"Tiled"}]," is the standard tilemap editor. Export as JSON:"]}]
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"// Tiled JSON format (simplified)\ninterface TiledMap {\n  width: number;\n  height: number;\n  tilewidth: number;\n  tileheight: number;\n  layers: {\n    name: string;\n    type: string;\n    data: number[]; // 1-indexed! Subtract 1 for your tileset\n  }[];\n}\n\nasync function loadTiledMap(url: string) {\n  const data: TiledMap = await (await fetch(url)).json();\n  return {\n    width: data.width,\n    height: data.height,\n    tileSize: data.tilewidth,\n    layers: data.layers\n      .filter((l) => l.type === \"tilelayer\")\n      .map((l) => ({\n        name: l.name,\n        data: l.data.map((id) => id - 1), // Tiled uses 1-indexed, 0 = empty\n      })),\n  };\n}\n"}]}]
+19:["$","h2",null,{"children":"Layers"}]
+1a:["$","p",null,{"children":"Render layers in order: background first, then player, then foreground:"}]
+20:T424,function render() {
+  ctx.fillStyle = "#87ceeb"; // sky
+  ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+
+  drawLayer(mapData.layers[0]); // background
+  drawPlayer();
+  drawLayer(mapData.layers[1]); // foreground (trees, roofs)
+}
+
+function drawLayer(layer: { data: number[] }) {
+  const startCol = Math.floor(camera.x / TILE_SIZE);
+  const startRow = Math.floor(camera.y / TILE_SIZE);
+  const endCol = Math.min(startCol + Math.ceil(SCREEN_W / TILE_SIZE) + 1, MAP_W);
+  const endRow = Math.min(startRow + Math.ceil(SCREEN_H / TILE_SIZE) + 1, MAP_H);
+
+  for (let row = startRow; row < endRow; row++) {
+    for (let col = startCol; col < endCol; col++) {
+      const tileId = layer.data[row * MAP_W + col];
+      if (tileId < 0) continue;
+      const destX = col * TILE_SIZE - camera.x;
+      const destY = row * TILE_SIZE - camera.y;
+      const srcX = (tileId % TILESET_COLS) * TILE_SIZE;
+      const srcY = Math.floor(tileId / TILESET_COLS) * TILE_SIZE;
+      ctx.drawImage(tileset, srcX, srcY, TILE_SIZE, TILE_SIZE, destX, destY, TILE_SIZE, TILE_SIZE);
+    }
+  }
+}
+1b:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"$20"}]}]
+1c:["$","h2",null,{"children":"Complete Example"}]
+21:Tb42,const canvas = document.getElementById("game") as HTMLCanvasElement;
+const ctx = canvas.getContext("2d")!;
+canvas.width = 160;
+canvas.height = 144;
+ctx.imageSmoothingEnabled = false;
+
+const TILE = 16,
+  COLS = 20,
+  ROWS = 15;
+const camera = { x: 0, y: 0 };
+const player = { x: 32, y: 32, vx: 0, vy: 0, w: 12, h: 14 };
+const keys: Record<string, boolean> = {};
+window.addEventListener("keydown", (e) => {
+  keys[e.code] = true;
+});
+window.addEventListener("keyup", (e) => {
+  keys[e.code] = false;
+});
+
+const collision = [
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1,
+];
+
+function isSolid(x: number, y: number) {
+  const c = Math.floor(x / TILE),
+    r = Math.floor(y / TILE);
+  if (c < 0 || c >= COLS || r < 0 || r >= ROWS) return true;
+  return collision[r * COLS + c] !== 0;
+}
+
+let lastTime = 0;
+function loop(t: number) {
+  const dt = Math.min((t - lastTime) / 1000, 0.1);
+  lastTime = t;
+  const speed = 80;
+  player.vx = 0;
+  player.vy = 0;
+  if (keys["ArrowLeft"]) player.vx = -speed;
+  if (keys["ArrowRight"]) player.vx = speed;
+  if (keys["ArrowUp"]) player.vy = -speed;
+  if (keys["ArrowDown"]) player.vy = speed;
+
+  const nx = player.x + player.vx * dt;
+  if (!isSolid(nx, player.y) && !isSolid(nx + player.w, player.y + player.h)) player.x = nx;
+  const ny = player.y + player.vy * dt;
+  if (!isSolid(player.x, ny) && !isSolid(player.x + player.w, ny + player.h)) player.y = ny;
+
+  camera.x = Math.floor(player.x - 80);
+  camera.y = Math.floor(player.y - 72);
+
+  ctx.fillStyle = "#2d2d44";
+  ctx.fillRect(0, 0, 160, 144);
+  for (let i = 0; i < collision.length; i++) {
+    if (collision[i] === 0) continue;
+    const dx = (i % COLS) * TILE - camera.x;
+    const dy = Math.floor(i / COLS) * TILE - camera.y;
+    ctx.fillStyle = "#5a5a8a";
+    ctx.fillRect(dx, dy, TILE, TILE);
+  }
+  ctx.fillStyle = "#e94560";
+  ctx.fillRect(
+    Math.floor(player.x - camera.x),
+    Math.floor(player.y - camera.y),
+    player.w,
+    player.h,
+  );
+
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+1d:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"$21"}]}]
+1e:["$","p",null,{"children":[["$","a",null,{"href":"./chapter-03-sprites","children":"prev: Sprites"}]," | ",["$","a",null,{"href":"./chapter-05-phaser","children":"next: Phaser 3"}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+22:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 04 tilemap — pixel game js"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L22","3",{}]]

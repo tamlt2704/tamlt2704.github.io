@@ -1,0 +1,64 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1b:"$Sreact.suspense"
+4:T453,@Service
+public class ProductSearchService {
+
+    private final ProductRepository productRepository;
+
+    public ProductSearchService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    public Page<Product> search(ProductFilter filter, Pageable pageable) {
+        Specification<Product> spec = Specification.where(null);
+
+        if (filter.category() != null) {
+            spec = spec.and(ProductSpecs.hasCategory(filter.category()));
+        }
+        if (filter.minPrice() != null && filter.maxPrice() != null) {
+            spec = spec.and(ProductSpecs.priceBetween(filter.minPrice(), filter.maxPrice()));
+        }
+        if (filter.name() != null) {
+            spec = spec.and(ProductSpecs.nameContains(filter.name()));
+        }
+        if (filter.inStockOnly()) {
+            spec = spec.and(ProductSpecs.isInStock());
+        }
+
+        return productRepository.findAll(spec, pageable);
+    }
+}
+
+public record ProductFilter(
+    Category category,
+    BigDecimal minPrice,
+    BigDecimal maxPrice,
+    String name,
+    boolean inStockOnly
+) {}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-data-jpa/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 7: Specifications and Dynamic Queries"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-06-transactions","children":"prev: Transactions"}]," | ",["$","a",null,{"href":"chapter-08-auditing","children":"next: Auditing"}]]}],"\n",["$","h2",null,{"children":"The Problem"}],"\n",["$","p",null,{"children":"Search endpoints with many optional filters:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"GET /products?category=ELECTRONICS&minPrice=100&maxPrice=500&name=phone&inStock=true\n"}]}],"\n",["$","p",null,{"children":"You cannot create a derived query method for every combination. Specifications let you build queries dynamically."}],"\n",["$","h2",null,{"children":"JpaSpecificationExecutor"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public interface ProductRepository extends JpaRepository<Product, Long>,\n                                           JpaSpecificationExecutor<Product> {\n}\n"}]}],"\n",["$","p",null,{"children":["This adds: ",["$","$L3",null,{"children":"findAll(Specification)"}],", ",["$","$L3",null,{"children":"findAll(Specification, Pageable)"}],", ",["$","$L3",null,{"children":"count(Specification)"}],", ",["$","$L3",null,{"children":"exists(Specification)"}],"."]}],"\n",["$","h2",null,{"children":"Writing Specifications"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public class ProductSpecs {\n\n    public static Specification<Product> hasCategory(Category category) {\n        return (root, query, cb) -> cb.equal(root.get(\"category\"), category);\n    }\n\n    public static Specification<Product> priceBetween(BigDecimal min, BigDecimal max) {\n        return (root, query, cb) -> cb.between(root.get(\"price\"), min, max);\n    }\n\n    public static Specification<Product> nameContains(String name) {\n        return (root, query, cb) ->\n            cb.like(cb.lower(root.get(\"name\")), \"%\" + name.toLowerCase() + \"%\");\n    }\n\n    public static Specification<Product> isInStock() {\n        return (root, query, cb) -> cb.greaterThan(root.get(\"stockQuantity\"), 0);\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Combining Specifications"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15"]}],"$L16"]}],["$L17","$L18"],"$L19"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Reusable Filter Pattern"}]
+6:["$","p",null,{"children":"A generic approach for building specs from filter objects:"}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public class SpecBuilder<T> {\n\n    private Specification<T> spec = Specification.where(null);\n\n    public SpecBuilder<T> and(boolean condition, Supplier<Specification<T>> specSupplier) {\n        if (condition) {\n            spec = spec.and(specSupplier.get());\n        }\n        return this;\n    }\n\n    public Specification<T> build() {\n        return spec;\n    }\n}\n"}]}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public Page<Product> search(ProductFilter filter, Pageable pageable) {\n    Specification<Product> spec = new SpecBuilder<Product>()\n        .and(filter.category() != null, () -> ProductSpecs.hasCategory(filter.category()))\n        .and(filter.name() != null, () -> ProductSpecs.nameContains(filter.name()))\n        .and(filter.inStockOnly(), ProductSpecs::isInStock)\n        .build();\n\n    return productRepository.findAll(spec, pageable);\n}\n"}]}]
+9:["$","h2",null,{"children":"Specifications with Joins"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public class OrderSpecs {\n\n    public static Specification<Order> customerNameContains(String name) {\n        return (root, query, cb) -> {\n            Join<Order, Customer> customer = root.join(\"customer\", JoinType.INNER);\n            return cb.like(cb.lower(customer.get(\"name\")), \"%\" + name.toLowerCase() + \"%\");\n        };\n    }\n\n    public static Specification<Order> hasItemWithProduct(Long productId) {\n        return (root, query, cb) -> {\n            Join<Order, OrderItem> items = root.join(\"items\", JoinType.INNER);\n            return cb.equal(items.get(\"product\").get(\"id\"), productId);\n        };\n    }\n}\n"}]}]
+b:["$","h2",null,{"children":"Criteria API (Lower Level)"}]
+c:["$","p",null,{"children":"Specifications are built on the Criteria API. For complex queries you can use it directly:"}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Repository\npublic class ProductSearchDao {\n\n    @PersistenceContext\n    private EntityManager em;\n\n    public List<Product> search(ProductFilter filter) {\n        CriteriaBuilder cb = em.getCriteriaBuilder();\n        CriteriaQuery<Product> cq = cb.createQuery(Product.class);\n        Root<Product> root = cq.from(Product.class);\n\n        List<Predicate> predicates = new ArrayList<>();\n\n        if (filter.category() != null) {\n            predicates.add(cb.equal(root.get(\"category\"), filter.category()));\n        }\n        if (filter.minPrice() != null) {\n            predicates.add(cb.greaterThanOrEqualTo(root.get(\"price\"), filter.minPrice()));\n        }\n\n        cq.where(predicates.toArray(new Predicate[0]));\n        cq.orderBy(cb.asc(root.get(\"name\")));\n\n        return em.createQuery(cq).getResultList();\n    }\n}\n"}]}]
+e:["$","h2",null,{"children":"QueryDSL Integration"}]
+f:["$","p",null,{"children":"QueryDSL provides type-safe queries with generated Q-classes."}]
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-kotlin","children":"// build.gradle.kts\ndependencies {\n    implementation(\"com.querydsl:querydsl-jpa:5.1.0:jakarta\")\n    annotationProcessor(\"com.querydsl:querydsl-apt:5.1.0:jakarta\")\n    annotationProcessor(\"jakarta.persistence:jakarta.persistence-api\")\n}\n"}]}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public interface ProductRepository extends JpaRepository<Product, Long>,\n                                           QuerydslPredicateExecutor<Product> {\n}\n"}]}]
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Service\npublic class ProductSearchService {\n\n    private final ProductRepository productRepository;\n\n    public ProductSearchService(ProductRepository productRepository) {\n        this.productRepository = productRepository;\n    }\n\n    public Page<Product> search(ProductFilter filter, Pageable pageable) {\n        QProduct product = QProduct.product;\n        BooleanBuilder builder = new BooleanBuilder();\n\n        if (filter.category() != null) {\n            builder.and(product.category.eq(filter.category()));\n        }\n        if (filter.minPrice() != null) {\n            builder.and(product.price.goe(filter.minPrice()));\n        }\n        if (filter.name() != null) {\n            builder.and(product.name.containsIgnoreCase(filter.name()));\n        }\n\n        return productRepository.findAll(builder, pageable);\n    }\n}\n"}]}]
+13:["$","p",null,{"children":"QueryDSL advantages: compile-time type safety, IDE autocomplete, readable syntax. Downside: requires annotation processing setup and generated classes."}]
+14:["$","h2",null,{"children":"Exercises"}]
+15:["$","ol",null,{"children":["\n",["$","li",null,{"children":["Create ",["$","$L3",null,{"children":"ProductSpecs"}]," with: hasCategory, priceBetween, nameContains, isActive"]}],"\n",["$","li",null,{"children":"Build a search endpoint that combines specs based on optional query parameters"}],"\n",["$","li",null,{"children":["Implement the ",["$","$L3",null,{"children":"SpecBuilder"}]," utility and refactor your search to use it"]}],"\n",["$","li",null,{"children":"Write a specification with a JOIN to filter orders by customer name"}],"\n",["$","li",null,{"children":["(Optional) Set up QueryDSL and rewrite the same search with ",["$","$L3",null,{"children":"BooleanBuilder"}]]}],"\n"]}]
+16:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-data-jpa/chapter-06-transactions","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-data-jpa/chapter-08-auditing","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+17:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+18:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+19:["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]
+1c:null

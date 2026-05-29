@@ -1,0 +1,188 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+21:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+22:"$Sreact.suspense"
+4:T5d2,import torch
+import torch.nn as nn
+from torch.utils.data import Dataset
+
+class InstructionDataset(Dataset):
+    def __init__(self, data, tokenizer, max_len=512):
+        """
+        data: list of {"instruction": str, "response": str}
+        """
+        self.examples = []
+        for item in data:
+            prompt = f"### Instruction:\n{item['instruction']}\n\n### Response:\n"
+            full = prompt + item["response"]
+            ids = tokenizer.encode(full)[:max_len]
+            prompt_len = len(tokenizer.encode(prompt))
+            self.examples.append((ids, prompt_len))
+
+    def __len__(self):
+        return len(self.examples)
+
+    def __getitem__(self, idx):
+        ids, prompt_len = self.examples[idx]
+        x = torch.tensor(ids[:-1], dtype=torch.long)
+        y = torch.tensor(ids[1:], dtype=torch.long)
+
+        # Mask loss on prompt tokens (only train on response)
+        loss_mask = torch.zeros_like(y)
+        loss_mask[prompt_len - 1:] = 1.0
+        return x, y, loss_mask
+
+def sft_loss(logits, targets, loss_mask):
+    """
+    logits: (batch, seq_len, vocab_size)
+    targets: (batch, seq_len)
+    loss_mask: (batch, seq_len) — 1 for response tokens, 0 for prompt
+    """
+    loss = nn.functional.cross_entropy(
+        logits.view(-1, logits.size(-1)),
+        targets.view(-1),
+        reduction="none"
+    )  # (batch * seq_len,)
+    loss = loss.view(targets.shape)  # (batch, seq_len)
+    loss = (loss * loss_mask).sum() / loss_mask.sum()
+    return loss
+5:T6a0,import torch
+import torch.nn as nn
+import math
+
+class LoRALinear(nn.Module):
+    def __init__(self, original_linear, rank=8, alpha=16):
+        super().__init__()
+        self.original = original_linear
+        self.original.weight.requires_grad_(False)  # Freeze original
+
+        in_features = original_linear.in_features
+        out_features = original_linear.out_features
+
+        # Low-rank matrices
+        self.lora_A = nn.Parameter(torch.randn(in_features, rank) / math.sqrt(rank))
+        self.lora_B = nn.Parameter(torch.zeros(rank, out_features))
+        self.scaling = alpha / rank
+
+    def forward(self, x):
+        # x shape: (batch, seq_len, in_features)
+        base_output = self.original(x)  # (batch, seq_len, out_features)
+        lora_output = (x @ self.lora_A @ self.lora_B) * self.scaling
+        return base_output + lora_output
+
+def apply_lora(model, rank=8, alpha=16, target_modules=("W_qkv", "W_out")):
+    """Replace target linear layers with LoRA versions."""
+    for name, module in model.named_modules():
+        for attr_name in target_modules:
+            if hasattr(module, attr_name):
+                original = getattr(module, attr_name)
+                if isinstance(original, nn.Linear):
+                    setattr(module, attr_name, LoRALinear(original, rank, alpha))
+
+    # Count trainable params
+    trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    total = sum(p.numel() for p in model.parameters())
+    print(f"Trainable: {trainable/1e6:.2f}M / {total/1e6:.2f}M "
+          f"({100*trainable/total:.2f}%)")
+    return model
+
+# Usage: typically trains only 0.1-1% of parameters
+# model = apply_lora(model, rank=16, alpha=32)
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 8: Fine-tuning"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-07-scaling","children":"prev: Scaling"}]," | ",["$","a",null,{"href":"chapter-09-inference","children":"next: Inference and Deployment"}]]}],"\n",["$","p",null,{"children":"Pre-training gives the model general language ability. Fine-tuning specializes it for specific tasks like instruction following, chat, or code generation."}],"\n",["$","h2",null,{"children":"Supervised Fine-Tuning (SFT)"}],"\n",["$","p",null,{"children":"Train on (instruction, response) pairs with the same next-token prediction objective, but only compute loss on the response tokens:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"$4"}]}],"\n",["$","h2",null,{"children":"LoRA (Low-Rank Adaptation) from Scratch"}],"\n",["$","p",null,{"children":"Instead of updating all parameters, LoRA adds small trainable matrices to frozen weights:"}],"\n",["$","p",null,{"children":["$","$L3",null,{"children":"W_new = W_frozen + (A @ B) * (alpha / rank)"}]}],"\n",["$","p",null,{"children":["Where A is ",["$","$L3",null,{"children":"(d, r)"}]," and B is ",["$","$L3",null,{"children":"(r, d)"}]," with rank ",["$","$L3",null,{"children":"r"}]," much smaller than ",["$","$L3",null,{"children":"d"}],"."]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"$5"}]}],"\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a"]}],"$L1b"]}],["$L1c","$L1d"],"$L1e"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+6:["$","h2",null,{"children":"QLoRA (Quantized LoRA)"}]
+7:["$","p",null,{"children":"QLoRA quantizes the base model to 4-bit, then applies LoRA on top. This allows fine-tuning a 7B model on a single 24GB GPU:"}]
+1f:T4f5,import torch
+import torch.nn as nn
+
+class QuantizedLinear(nn.Module):
+    """Simplified 4-bit quantized linear (conceptual implementation)."""
+
+    def __init__(self, weight, group_size=128):
+        super().__init__()
+        # Quantize weight to 4-bit with group-wise scaling
+        self.group_size = group_size
+        n_groups = weight.shape[1] // group_size
+
+        # Compute scale per group
+        w_grouped = weight.reshape(weight.shape[0], n_groups, group_size)
+        scales = w_grouped.abs().max(dim=-1).values  # (out, n_groups)
+
+        # Quantize to 4-bit range [-8, 7]
+        w_quantized = torch.round(w_grouped / scales.unsqueeze(-1) * 7)
+        w_quantized = w_quantized.clamp(-8, 7).to(torch.int8)
+
+        self.register_buffer("weight_quantized", w_quantized)
+        self.register_buffer("scales", scales)
+
+    def forward(self, x):
+        # Dequantize on-the-fly
+        w = self.weight_quantized.float() * self.scales.unsqueeze(-1) / 7
+        w = w.reshape(w.shape[0], -1)  # (out_features, in_features)
+        return x @ w.T
+
+# QLoRA = QuantizedLinear (frozen) + LoRA adapters (trainable)
+# In practice, use bitsandbytes library:
+# from bitsandbytes import nn as bnb
+# model = AutoModelForCausalLM.from_pretrained(..., load_in_4bit=True)
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"$1f"}]}]
+9:["$","h2",null,{"children":"RLHF Overview (Reward Model + PPO)"}]
+a:["$","p",null,{"children":"RLHF aligns the model with human preferences in three stages:"}]
+b:["$","p",null,{"children":[["$","strong",null,{"children":"Stage 1"}],": SFT (covered above)"]}]
+c:["$","p",null,{"children":[["$","strong",null,{"children":"Stage 2"}],": Train a reward model on human preference data:"]}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"import torch\nimport torch.nn as nn\n\nclass RewardModel(nn.Module):\n    def __init__(self, base_model):\n        super().__init__()\n        self.base = base_model  # Pre-trained GPT (frozen or fine-tuned)\n        self.reward_head = nn.Linear(base_model.ln_final.weight.shape[0], 1)\n\n    def forward(self, token_ids):\n        # token_ids: (batch, seq_len)\n        # Get last hidden state\n        with torch.no_grad():\n            logits = self.base(token_ids)\n        # Use the hidden state before lm_head (hack: get from hook or modify model)\n        # Simplified: use mean of logits as features\n        hidden = logits.mean(dim=-1)  # (batch, seq_len)\n        reward = self.reward_head(hidden[:, -1:, :].squeeze())  # (batch, 1)\n        return reward\n\ndef reward_model_loss(reward_chosen, reward_rejected):\n    \"\"\"Bradley-Terry preference model loss.\"\"\"\n    # We want reward_chosen > reward_rejected\n    return -torch.log(torch.sigmoid(reward_chosen - reward_rejected)).mean()\n"}]}]
+e:["$","p",null,{"children":[["$","strong",null,{"children":"Stage 3"}],": PPO optimization (simplified):"]}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"import torch\n\ndef ppo_step(model, ref_model, reward_model, prompts, optimizer,\n             clip_epsilon=0.2, kl_coeff=0.1):\n    \"\"\"Simplified PPO update for language model alignment.\"\"\"\n    # Generate responses from current model\n    with torch.no_grad():\n        responses = generate(model, prompts, max_new_tokens=128)\n        rewards = reward_model(responses)\n\n        # Reference model log probs (for KL penalty)\n        ref_logits = ref_model(responses)\n        ref_log_probs = torch.log_softmax(ref_logits, dim=-1)\n\n    # Current model log probs\n    logits = model(responses)\n    log_probs = torch.log_softmax(logits, dim=-1)\n\n    # KL divergence penalty\n    kl = (torch.exp(log_probs) * (log_probs - ref_log_probs)).sum(dim=-1).mean()\n\n    # PPO objective (simplified)\n    loss = -(rewards - kl_coeff * kl).mean()\n\n    optimizer.zero_grad()\n    loss.backward()\n    optimizer.step()\n    return loss.item()\n"}]}]
+10:["$","h2",null,{"children":"DPO (Direct Preference Optimization)"}]
+11:["$","p",null,{"children":"DPO skips the reward model entirely. It directly optimizes the policy using preference pairs:"}]
+20:T665,import torch
+import torch.nn.functional as F
+
+def dpo_loss(model, ref_model, chosen_ids, rejected_ids, beta=0.1):
+    """
+    Direct Preference Optimization loss.
+    chosen_ids: (batch, seq_len) — preferred responses
+    rejected_ids: (batch, seq_len) — dispreferred responses
+    beta: temperature parameter controlling deviation from reference
+    """
+    # Get log probabilities from policy model
+    chosen_logits = model(chosen_ids)
+    rejected_logits = model(rejected_ids)
+    chosen_logprobs = get_sequence_logprobs(chosen_logits, chosen_ids)
+    rejected_logprobs = get_sequence_logprobs(rejected_logits, rejected_ids)
+
+    # Get log probabilities from reference model (frozen)
+    with torch.no_grad():
+        ref_chosen_logits = ref_model(chosen_ids)
+        ref_rejected_logits = ref_model(rejected_ids)
+        ref_chosen_logprobs = get_sequence_logprobs(ref_chosen_logits, chosen_ids)
+        ref_rejected_logprobs = get_sequence_logprobs(ref_rejected_logits, rejected_ids)
+
+    # DPO loss: log-sigmoid of scaled preference margin
+    chosen_reward = beta * (chosen_logprobs - ref_chosen_logprobs)
+    rejected_reward = beta * (rejected_logprobs - ref_rejected_logprobs)
+
+    loss = -F.logsigmoid(chosen_reward - rejected_reward).mean()
+    return loss
+
+def get_sequence_logprobs(logits, ids):
+    """Sum of log probs for each token in the sequence."""
+    # logits: (batch, seq_len, vocab_size)
+    # ids: (batch, seq_len)
+    log_probs = torch.log_softmax(logits[:, :-1, :], dim=-1)
+    token_log_probs = log_probs.gather(-1, ids[:, 1:].unsqueeze(-1)).squeeze(-1)
+    return token_log_probs.sum(dim=-1)  # (batch,)
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"$20"}]}]
+13:["$","p",null,{"children":[["$","strong",null,{"children":"DPO vs RLHF"}],": DPO is simpler (no reward model, no PPO), more stable, and often performs comparably."]}]
+14:["$","h2",null,{"children":"Evaluation"}]
+15:["$","h3",null,{"children":"Perplexity"}]
+16:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"import torch\nimport math\n\n@torch.no_grad()\ndef evaluate_perplexity(model, dataloader, device=\"cuda\"):\n    model.eval()\n    total_loss = 0.0\n    total_tokens = 0\n\n    for x, y in dataloader:\n        x, y = x.to(device), y.to(device)\n        logits = model(x)\n        loss = torch.nn.functional.cross_entropy(\n            logits.view(-1, logits.size(-1)), y.view(-1), reduction=\"sum\"\n        )\n        total_loss += loss.item()\n        total_tokens += y.numel()\n\n    avg_loss = total_loss / total_tokens\n    perplexity = math.exp(avg_loss)\n    return perplexity\n"}]}]
+17:["$","h3",null,{"children":"Common Benchmarks"}]
+18:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Benchmark"}],["$","th",null,{"children":"What it measures"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"MMLU"}],["$","td",null,{"children":"Multi-task knowledge (57 subjects)"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"HellaSwag"}],["$","td",null,{"children":"Commonsense reasoning"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"HumanEval"}],["$","td",null,{"children":"Code generation"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"TruthfulQA"}],["$","td",null,{"children":"Factual accuracy"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"GSM8K"}],["$","td",null,{"children":"Math reasoning"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"MT-Bench"}],["$","td",null,{"children":"Multi-turn chat quality"}]]}]]}]]}]
+19:["$","h2",null,{"children":"Key Takeaways"}]
+1a:["$","ul",null,{"children":["\n",["$","li",null,{"children":"SFT teaches the model to follow instructions using (prompt, response) pairs"}],"\n",["$","li",null,{"children":"LoRA reduces trainable parameters to less than 1% while maintaining quality"}],"\n",["$","li",null,{"children":"QLoRA enables fine-tuning large models on consumer GPUs"}],"\n",["$","li",null,{"children":"RLHF aligns models with human preferences but is complex (3 stages)"}],"\n",["$","li",null,{"children":"DPO achieves similar alignment with a single training stage"}],"\n",["$","li",null,{"children":"Always evaluate on held-out data; perplexity alone does not capture quality"}],"\n"]}]
+1b:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-07-scaling","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/llm-from-scratch/chapter-09-inference","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+1c:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1d:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1e:["$","$L21",null,{"children":["$","$22",null,{"name":"Next.MetadataOutlet","children":"$@23"}]}]
+23:null

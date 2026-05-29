@@ -1,0 +1,394 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","react-flow","chapter-04-interaction",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","react-flow/chapter-04-interaction","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/react-flow/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/react-flow/chapter-03-edges","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/react-flow/chapter-05-custom-nodes","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T5e5,import { useCallback } from "react";
+import {
+  ReactFlow,
+  Background,
+  Controls,
+  addEdge,
+  applyNodeChanges,
+  applyEdgeChanges,
+} from "@xyflow/react";
+import type { Node, Edge, OnNodesChange, OnEdgesChange, OnConnect } from "@xyflow/react";
+import { useState } from "react";
+import "@xyflow/react/dist/style.css";
+
+const initNodes: Node[] = [
+  { id: "1", type: "input", position: { x: 0, y: 0 }, data: { label: "Start" } },
+  { id: "2", position: { x: 200, y: 100 }, data: { label: "Middle" } },
+  { id: "3", type: "output", position: { x: 400, y: 200 }, data: { label: "End" } },
+];
+
+const initEdges: Edge[] = [{ id: "e1-2", source: "1", target: "2" }];
+
+export default function App() {
+  const [nodes, setNodes] = useState(initNodes);
+  const [edges, setEdges] = useState(initEdges);
+
+  const onNodesChange: OnNodesChange = useCallback(
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    [],
+  );
+  const onEdgesChange: OnEdgesChange = useCallback(
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    [],
+  );
+  const onConnect: OnConnect = useCallback(
+    (connection) => setEdges((eds) => addEdge(connection, eds)),
+    [],
+  );
+
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        fitView
+      >
+        <Background />
+        <Controls />
+      </ReactFlow>
+    </div>
+  );
+}
+14:Ta7d,import { useCallback, useState, DragEvent } from "react";
+import {
+  ReactFlow,
+  Background,
+  addEdge,
+  applyNodeChanges,
+  applyEdgeChanges,
+  useReactFlow,
+  ReactFlowProvider,
+} from "@xyflow/react";
+import type { Node, Edge, OnNodesChange, OnEdgesChange, OnConnect } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+let id = 0;
+const getId = () => `dnd_${id++}`;
+
+function Sidebar() {
+  const onDragStart = (event: DragEvent, nodeType: string) => {
+    event.dataTransfer.setData("application/reactflow", nodeType);
+    event.dataTransfer.effectAllowed = "move";
+  };
+  return (
+    <aside className="w-48 border-r bg-gray-50 p-4">
+      <p className="mb-2 text-sm font-bold">Drag nodes</p>
+      <div
+        className="mb-2 cursor-grab rounded bg-blue-100 p-2"
+        onDragStart={(e) => onDragStart(e, "default")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="cursor-grab rounded bg-green-100 p-2"
+        onDragStart={(e) => onDragStart(e, "output")}
+        draggable
+      >
+        Output Node
+      </div>
+    </aside>
+  );
+}
+
+function Flow() {
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [edges, setEdges] = useState<Edge[]>([]);
+  const { screenToFlowPosition } = useReactFlow();
+
+  const onNodesChange: OnNodesChange = useCallback(
+    (c) => setNodes((n) => applyNodeChanges(c, n)),
+    [],
+  );
+  const onEdgesChange: OnEdgesChange = useCallback(
+    (c) => setEdges((e) => applyEdgeChanges(c, e)),
+    [],
+  );
+  const onConnect: OnConnect = useCallback((c) => setEdges((e) => addEdge(c, e)), []);
+
+  const onDrop = useCallback(
+    (event: DragEvent) => {
+      event.preventDefault();
+      const type = event.dataTransfer.getData("application/reactflow");
+      if (!type) return;
+      const position = screenToFlowPosition({ x: event.clientX, y: event.clientY });
+      setNodes((nds) => [...nds, { id: getId(), type, position, data: { label: type } }]);
+    },
+    [screenToFlowPosition],
+  );
+
+  const onDragOver = useCallback((event: DragEvent) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }, []);
+
+  return (
+    <div className="h-full flex-1">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        onDrop={onDrop}
+        onDragOver={onDragOver}
+        fitView
+      >
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ReactFlowProvider>
+      <div className="flex h-screen w-screen">
+        <Sidebar />
+        <Flow />
+      </div>
+    </ReactFlowProvider>
+  );
+}
+10:[["$","h1",null,{"children":"React Flow: Interaction"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-03-edges","children":"prev: Edges"}]," | ",["$","a",null,{"href":"./chapter-05-custom-nodes","children":"next: Advanced Custom Nodes"}]]}],"\n",["$","h2",null,{"children":"onNodesChange, onEdgesChange, onConnect"}],"\n",["$","p",null,{"children":"These are the core callbacks for making the flow interactive:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"$13"}]}],"\n",["$","h2",null,{"children":"Drag and Drop from Sidebar"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"$14"}]}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f"]
+15:["$","h2",null,{"children":"Delete and Selection"}]
+16:["$","p",null,{"children":"Nodes and edges can be deleted with Backspace/Delete when selected. Multi-select with Shift+click or drag selection box:"}]
+20:T5e1,import { useCallback, useState } from "react";
+import { ReactFlow, Background, applyNodeChanges, applyEdgeChanges, addEdge } from "@xyflow/react";
+import type { Node, Edge, OnNodesChange, OnEdgesChange, OnConnect } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+const initNodes: Node[] = [
+  { id: "1", position: { x: 0, y: 0 }, data: { label: "Select me" } },
+  { id: "2", position: { x: 200, y: 0 }, data: { label: "Or me" } },
+  { id: "3", position: { x: 100, y: 150 }, data: { label: "Delete with Backspace" } },
+];
+const initEdges: Edge[] = [
+  { id: "e1-3", source: "1", target: "3" },
+  { id: "e2-3", source: "2", target: "3" },
+];
+
+export default function App() {
+  const [nodes, setNodes] = useState(initNodes);
+  const [edges, setEdges] = useState(initEdges);
+  const onNodesChange: OnNodesChange = useCallback(
+    (c) => setNodes((n) => applyNodeChanges(c, n)),
+    [],
+  );
+  const onEdgesChange: OnEdgesChange = useCallback(
+    (c) => setEdges((e) => applyEdgeChanges(c, e)),
+    [],
+  );
+  const onConnect: OnConnect = useCallback((c) => setEdges((e) => addEdge(c, e)), []);
+
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        deleteKeyCode="Backspace"
+        multiSelectionKeyCode="Shift"
+        selectionOnDrag
+        fitView
+      >
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+17:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"$20"}]}]
+18:["$","h2",null,{"children":"Undo/Redo Pattern"}]
+21:Ta19,import { useCallback, useState, useRef } from "react";
+import {
+  ReactFlow,
+  Background,
+  Controls,
+  applyNodeChanges,
+  applyEdgeChanges,
+  addEdge,
+} from "@xyflow/react";
+import type { Node, Edge, OnNodesChange, OnEdgesChange, OnConnect } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+type Snapshot = { nodes: Node[]; edges: Edge[] };
+
+const initNodes: Node[] = [
+  { id: "1", position: { x: 0, y: 0 }, data: { label: "Move me" } },
+  { id: "2", position: { x: 200, y: 100 }, data: { label: "Then undo" } },
+];
+const initEdges: Edge[] = [{ id: "e1-2", source: "1", target: "2" }];
+
+export default function App() {
+  const [nodes, setNodes] = useState(initNodes);
+  const [edges, setEdges] = useState(initEdges);
+  const history = useRef<Snapshot[]>([{ nodes: initNodes, edges: initEdges }]);
+  const pointer = useRef(0);
+
+  const takeSnapshot = () => {
+    pointer.current++;
+    history.current = history.current.slice(0, pointer.current);
+    history.current.push({ nodes, edges });
+  };
+
+  const undo = () => {
+    if (pointer.current > 0) {
+      pointer.current--;
+      const snap = history.current[pointer.current];
+      setNodes(snap.nodes);
+      setEdges(snap.edges);
+    }
+  };
+
+  const redo = () => {
+    if (pointer.current < history.current.length - 1) {
+      pointer.current++;
+      const snap = history.current[pointer.current];
+      setNodes(snap.nodes);
+      setEdges(snap.edges);
+    }
+  };
+
+  const onNodesChange: OnNodesChange = useCallback(
+    (c) => setNodes((n) => applyNodeChanges(c, n)),
+    [],
+  );
+  const onEdgesChange: OnEdgesChange = useCallback(
+    (c) => setEdges((e) => applyEdgeChanges(c, e)),
+    [],
+  );
+  const onConnect: OnConnect = useCallback(
+    (c) => {
+      setEdges((e) => addEdge(c, e));
+      takeSnapshot();
+    },
+    [nodes, edges],
+  );
+
+  return (
+    <div className="relative h-screen w-screen">
+      <div className="absolute top-4 left-4 z-10 flex gap-2">
+        <button onClick={undo} className="rounded bg-white px-3 py-1 shadow">
+          Undo
+        </button>
+        <button onClick={redo} className="rounded bg-white px-3 py-1 shadow">
+          Redo
+        </button>
+        <button onClick={takeSnapshot} className="rounded bg-blue-500 px-3 py-1 text-white shadow">
+          Save
+        </button>
+      </div>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        fitView
+      >
+        <Background />
+        <Controls />
+      </ReactFlow>
+    </div>
+  );
+}
+19:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"$21"}]}]
+1a:["$","h2",null,{"children":"Context Menu (Right-Click)"}]
+22:T865,import { useCallback, useState } from "react";
+import { ReactFlow, Background, applyNodeChanges, applyEdgeChanges } from "@xyflow/react";
+import type { Node, Edge, OnNodesChange, OnEdgesChange, NodeMouseHandler } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+const initNodes: Node[] = [
+  { id: "1", position: { x: 100, y: 50 }, data: { label: "Right-click me" } },
+  { id: "2", position: { x: 100, y: 200 }, data: { label: "Or me" } },
+];
+
+export default function App() {
+  const [nodes, setNodes] = useState(initNodes);
+  const [edges, setEdges] = useState<Edge[]>([{ id: "e1-2", source: "1", target: "2" }]);
+  const [menu, setMenu] = useState<{ x: number; y: number; nodeId: string } | null>(null);
+
+  const onNodesChange: OnNodesChange = useCallback(
+    (c) => setNodes((n) => applyNodeChanges(c, n)),
+    [],
+  );
+  const onEdgesChange: OnEdgesChange = useCallback(
+    (c) => setEdges((e) => applyEdgeChanges(c, e)),
+    [],
+  );
+
+  const onNodeContextMenu: NodeMouseHandler = useCallback((event, node) => {
+    event.preventDefault();
+    setMenu({ x: event.clientX, y: event.clientY, nodeId: node.id });
+  }, []);
+
+  const deleteNode = () => {
+    if (menu) {
+      setNodes((nds) => nds.filter((n) => n.id !== menu.nodeId));
+      setEdges((eds) => eds.filter((e) => e.source !== menu.nodeId && e.target !== menu.nodeId));
+      setMenu(null);
+    }
+  };
+
+  return (
+    <div className="h-screen w-screen" onClick={() => setMenu(null)}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onNodeContextMenu={onNodeContextMenu}
+        onPaneClick={() => setMenu(null)}
+        fitView
+      >
+        <Background />
+      </ReactFlow>
+      {menu && (
+        <div
+          className="fixed z-50 rounded border bg-white p-2 shadow-lg"
+          style={{ left: menu.x, top: menu.y }}
+        >
+          <button
+            onClick={deleteNode}
+            className="block w-full px-3 py-1 text-left text-red-600 hover:bg-red-50"
+          >
+            Delete Node
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+1b:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-tsx","children":"$22"}]}]
+1c:["$","h2",null,{"children":"Keyboard Shortcuts"}]
+1d:["$","p",null,{"children":"React Flow supports these built-in shortcuts:"}]
+1e:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Backspace / Delete"}]," — Remove selected nodes/edges"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Ctrl+A"}]," — Select all"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Escape"}]," — Deselect all"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Shift+Click"}]," — Multi-select"]}],"\n"]}]
+1f:["$","p",null,{"children":["Custom shortcuts can be added via ",["$","$L12",null,{"children":"onKeyDown"}]," on the wrapper div or with a ",["$","$L12",null,{"children":"useEffect"}]," listener."]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+23:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 04 interaction — react flow"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L23","3",{}]]

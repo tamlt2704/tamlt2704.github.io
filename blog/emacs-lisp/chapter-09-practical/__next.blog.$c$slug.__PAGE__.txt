@@ -1,0 +1,109 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+20:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+21:"$Sreact.suspense"
+4:T4af,;;; -*- lexical-binding: t; -*-
+
+(defvar pomodoro--timer nil)
+(defvar pomodoro--end-time nil)
+
+(defun pomodoro--format-remaining ()
+  "Format remaining time as MM:SS."
+  (let ((remaining (- (float-time pomodoro--end-time) (float-time))))
+    (if (> remaining 0)
+        (format " [P:%s]" (format-seconds "%m:%s" remaining))
+      " [P:done]")))
+
+(defun pomodoro--tick ()
+  "Check if timer is done."
+  (if (time-less-p pomodoro--end-time (current-time))
+      (progn
+        (cancel-timer pomodoro--timer)
+        (setq pomodoro--timer nil)
+        (message "Pomodoro complete! Take a break.")
+        (ding))
+    (force-mode-line-update t)))
+
+(defun pomodoro-start (minutes)
+  "Start a pomodoro timer for MINUTES (default 25)."
+  (interactive "nMinutes: ")
+  (when pomodoro--timer
+    (cancel-timer pomodoro--timer))
+  (setq pomodoro--end-time (time-add (current-time) (* minutes 60))
+        pomodoro--timer (run-at-time 1 1 #'pomodoro--tick))
+  (message "Pomodoro started: %d minutes" minutes))
+
+(defun pomodoro-stop ()
+  "Cancel the current pomodoro."
+  (interactive)
+  (when pomodoro--timer
+    (cancel-timer pomodoro--timer)
+    (setq pomodoro--timer nil)
+    (message "Pomodoro cancelled.")))
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/emacs-lisp/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 9: Practical Projects"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-08-packages","children":"prev: Writing Packages"}]," | ",["$","a",null,{"href":"chapter-00-overview","children":"next: Overview"}]]}],"\n",["$","h2",null,{"children":"Project 1: Word Counter Mode"}],"\n",["$","p",null,{"children":"A minor mode that displays the word count in the mode line and updates as you type:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":";;; -*- lexical-binding: t; -*-\n\n(defvar-local wc-mode--count 0)\n\n(defun wc-mode--update (&rest _)\n  \"Recount words in buffer.\"\n  (setq wc-mode--count (count-words (point-min) (point-max)))\n  (force-mode-line-update))\n\n(define-minor-mode wc-mode\n  \"Display word count in mode line.\"\n  :lighter (:eval (format \" [%dW]\" wc-mode--count))\n  (if wc-mode\n      (progn\n        (wc-mode--update)\n        (add-hook 'after-change-functions #'wc-mode--update nil t))\n    (remove-hook 'after-change-functions #'wc-mode--update t)))\n"}]}],"\n",["$","p",null,{"children":["Usage: ",["$","$L3",null,{"children":"M-x wc-mode"}]," to toggle. The mode line shows ",["$","$L3",null,{"children":"[42W]"}],"."]}],"\n",["$","h2",null,{"children":"Project 2: Pomodoro Timer"}],"\n",["$","p",null,{"children":"A simple 25-minute timer with notification:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":"$4"}]}],"\n",["$","h2",null,{"children":"Project 3: Custom Org-Capture Template Function"}],"\n",["$","p",null,{"children":"A function that creates a capture template with dynamic content:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":";;; -*- lexical-binding: t; -*-\n\n(defun my-capture-meeting-template ()\n  \"Generate an org-capture template for meetings.\"\n  (let ((attendees (read-string \"Attendees: \"))\n        (date (format-time-string \"%Y-%m-%d %a\")))\n    (concat \"* Meeting: %^{Topic}\\n\"\n            \":PROPERTIES:\\n\"\n            \":DATE: \" date \"\\n\"\n            \":ATTENDEES: \" attendees \"\\n\"\n            \":END:\\n\\n\"\n            \"** Agenda\\n%?\\n\\n\"\n            \"** Action Items\\n- [ ] \\n\\n\"\n            \"** Notes\\n\")))\n\n;; Add to org-capture-templates:\n;; (add-to-list 'org-capture-templates\n;;              '(\"m\" \"Meeting\" entry\n;;                (file \"~/org/meetings.org\")\n;;                (function my-capture-meeting-template)))\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a"]}],"$L1b"]}],["$L1c","$L1d"],"$L1e"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Project 4: Mode-Line Segment"}]
+6:["$","p",null,{"children":"A custom mode-line segment showing git branch:"}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":";;; -*- lexical-binding: t; -*-\n\n(defvar-local my-modeline--branch nil)\n\n(defun my-modeline--get-branch ()\n  \"Get current git branch name.\"\n  (let ((branch (string-trim\n                 (shell-command-to-string\n                  \"git rev-parse --abbrev-ref HEAD 2>/dev/null\"))))\n    (setq my-modeline--branch\n          (unless (string-empty-p branch) branch))))\n\n(defun my-modeline-branch-segment ()\n  \"Return mode-line string for git branch.\"\n  (when my-modeline--branch\n    (format \" [%s]\" my-modeline--branch)))\n\n;; Update on file open\n(add-hook 'find-file-hook #'my-modeline--get-branch)\n\n;; Add to mode-line:\n;; (setq-default mode-line-format\n;;   (append mode-line-format\n;;           '((:eval (my-modeline-branch-segment)))))\n"}]}]
+8:["$","h2",null,{"children":"Project 5: Simple REST Client"}]
+9:["$","p",null,{"children":"Make HTTP requests and display results:"}]
+1f:T47e,;;; -*- lexical-binding: t; -*-
+
+(require 'url)
+(require 'json)
+
+(defun rest-get (url)
+  "GET URL and return parsed JSON."
+  (with-current-buffer (url-retrieve-synchronously url t)
+    (goto-char (point-min))
+    (re-search-forward "^$")
+    (forward-char)
+    (let ((json-object-type 'alist))
+      (prog1 (json-read)
+        (kill-buffer)))))
+
+(defun rest-post (url data)
+  "POST DATA (alist) to URL, return parsed JSON."
+  (let ((url-request-method "POST")
+        (url-request-extra-headers
+         '(("Content-Type" . "application/json")))
+        (url-request-data (json-encode data)))
+    (with-current-buffer (url-retrieve-synchronously url t)
+      (goto-char (point-min))
+      (re-search-forward "^$")
+      (forward-char)
+      (let ((json-object-type 'alist))
+        (prog1 (json-read)
+          (kill-buffer))))))
+
+(defun rest-show (url)
+  "Fetch URL and display JSON in a buffer."
+  (interactive "sURL: ")
+  (let ((result (rest-get url)))
+    (with-current-buffer (get-buffer-create "*REST Response*")
+      (erase-buffer)
+      (insert (pp-to-string result))
+      (goto-char (point-min))
+      (display-buffer (current-buffer)))))
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":"$1f"}]}]
+b:["$","p",null,{"children":"Usage:"}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":"(rest-get \"https://httpbin.org/get\")\n;; => alist of response data\n\n(rest-post \"https://httpbin.org/post\" '((name . \"Alice\") (age . 30)))\n;; => alist of response\n"}]}]
+d:["$","h2",null,{"children":"Project 6: Advice Functions"}]
+e:["$","p",null,{"children":"Advice lets you modify existing functions without changing their source:"}]
+f:["$","h3",null,{"children":":before — run code before the original"}]
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":"(defun my-save-message (&rest _)\n  \"Log a message before saving.\"\n  (message \"Saving %s at %s\" (buffer-name) (current-time-string)))\n\n(advice-add 'save-buffer :before #'my-save-message)\n"}]}]
+11:["$","h3",null,{"children":":after — run code after the original"}]
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":"(defun my-after-find-file (&rest _)\n  \"Notify after opening a file.\"\n  (message \"Opened: %s (%d bytes)\"\n           (buffer-file-name) (buffer-size)))\n\n(advice-add 'find-file :after #'my-after-find-file)\n"}]}]
+13:["$","h3",null,{"children":":around — wrap the original"}]
+14:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":"(defun my-timed-advice (orig-fn &rest args)\n  \"Time how long ORIG-FN takes.\"\n  (let ((start (current-time)))\n    (prog1 (apply orig-fn args)\n      (message \"Took %.3fs\"\n               (float-time (time-subtract (current-time) start))))))\n\n(advice-add 'some-slow-function :around #'my-timed-advice)\n"}]}]
+15:["$","h3",null,{"children":"Removing advice"}]
+16:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":"(advice-remove 'save-buffer #'my-save-message)\n(advice-remove 'find-file #'my-after-find-file)\n"}]}]
+17:["$","h3",null,{"children":"Practical example: auto-chmod scripts"}]
+18:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-elisp","children":"(defun my-make-script-executable (&rest _)\n  \"Make file executable if it starts with #!.\"\n  (when (and (buffer-file-name)\n             (save-excursion\n               (goto-char (point-min))\n               (looking-at \"#!\")))\n    (set-file-modes (buffer-file-name) #o755)))\n\n(advice-add 'save-buffer :after #'my-make-script-executable)\n"}]}]
+19:["$","h2",null,{"children":"Exercises"}]
+1a:["$","ol",null,{"children":["\n",["$","li",null,{"children":"Extend the word counter mode to also show character count."}],"\n",["$","li",null,{"children":"Add a \"break timer\" (5 minutes) that starts automatically when a pomodoro finishes."}],"\n",["$","li",null,{"children":"Write an advice that automatically creates parent directories when saving a file to a non-existent path."}],"\n",["$","li",null,{"children":"Extend the REST client to support custom headers passed as an alist."}],"\n",["$","li",null,{"children":"Write a mode-line segment that shows the number of TODO items in the current buffer, updating on changes."}],"\n"]}]
+1b:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/emacs-lisp/chapter-08-packages","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+1c:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1d:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1e:["$","$L20",null,{"children":["$","$21",null,{"name":"Next.MetadataOutlet","children":"$@22"}]}]
+22:null

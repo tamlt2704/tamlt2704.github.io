@@ -1,0 +1,165 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1e:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1f:"$Sreact.suspense"
+4:T7af,class VirtualJoystick {
+  active = false;
+  baseX = 0;
+  baseY = 0;
+  stickX = 0;
+  stickY = 0;
+  dx = 0;
+  dy = 0;
+  radius = 20;
+
+  constructor(private canvas: HTMLCanvasElement) {
+    canvas.addEventListener("touchstart", (e) => this.onStart(e));
+    canvas.addEventListener("touchmove", (e) => this.onMove(e));
+    canvas.addEventListener("touchend", () => this.onEnd());
+  }
+
+  private getPos(e: TouchEvent) {
+    const rect = this.canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    return {
+      x: (touch.clientX - rect.left) * (this.canvas.width / rect.width),
+      y: (touch.clientY - rect.top) * (this.canvas.height / rect.height),
+    };
+  }
+
+  onStart(e: TouchEvent) {
+    e.preventDefault();
+    const p = this.getPos(e);
+    this.active = true;
+    this.baseX = p.x;
+    this.baseY = p.y;
+    this.stickX = p.x;
+    this.stickY = p.y;
+    this.dx = 0;
+    this.dy = 0;
+  }
+
+  onMove(e: TouchEvent) {
+    if (!this.active) return;
+    e.preventDefault();
+    const p = this.getPos(e);
+    let ox = p.x - this.baseX;
+    let oy = p.y - this.baseY;
+    const dist = Math.hypot(ox, oy);
+    if (dist > this.radius) {
+      ox = (ox / dist) * this.radius;
+      oy = (oy / dist) * this.radius;
+    }
+    this.stickX = this.baseX + ox;
+    this.stickY = this.baseY + oy;
+    this.dx = ox / this.radius; // -1 to 1
+    this.dy = oy / this.radius;
+  }
+
+  onEnd() {
+    this.active = false;
+    this.dx = 0;
+    this.dy = 0;
+  }
+
+  render(ctx: CanvasRenderingContext2D) {
+    if (!this.active) return;
+    ctx.globalAlpha = 0.3;
+    ctx.beginPath();
+    ctx.arc(this.baseX, this.baseY, this.radius, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(this.stickX, this.stickY, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+}
+
+// Usage in update:
+const joystick = new VirtualJoystick(canvas);
+function update(dt: number) {
+  player.vx = joystick.dx * player.speed;
+  player.vy = joystick.dy * player.speed;
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Publishing"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-09-polish","children":"prev: Polish"}]," | ",["$","a",null,{"href":"./chapter-00-overview","children":"next: Overview"}]]}],"\n",["$","p",null,{"children":"Your game is done — now ship it. This chapter covers bundling, deploying to itch.io, mobile controls, PWA offline support, and performance optimization."}],"\n",["$","h2",null,{"children":"Bundling with Vite"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npm create vite@latest my-game -- --template vanilla-ts\ncd my-game\nnpm install\n"}]}],"\n",["$","p",null,{"children":[["$","$L3",null,{"children":"vite.config.ts"}],":"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { defineConfig } from \"vite\";\n\nexport default defineConfig({\n  base: \"./\", // relative paths for itch.io\n  build: {\n    assetsInlineLimit: 0, // don't inline assets\n    outDir: \"dist\",\n  },\n});\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npm run build\n# Output in dist/ — ready to deploy\n"}]}],"\n",["$","h2",null,{"children":"Deploying to itch.io"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":["Run ",["$","$L3",null,{"children":"npm run build"}]]}],"\n",["$","li",null,{"children":["Zip the ",["$","$L3",null,{"children":"dist/"}]," folder"]}],"\n",["$","li",null,{"children":"Go to itch.io > Dashboard > Create new project"}],"\n",["$","li",null,{"children":"Set \"Kind of project\" to HTML"}],"\n",["$","li",null,{"children":"Upload the zip"}],"\n",["$","li",null,{"children":"Check \"This file will be played in the browser\""}],"\n",["$","li",null,{"children":"Set viewport dimensions (e.g., 640x576 for 4x scale)"}],"\n"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"dist/\n  index.html\n  assets/\n    player.png\n    tileset.png\n    index-abc123.js\n"}]}],"\n",["$","h2",null,{"children":"Embedding in a Website"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<iframe\n  src=\"https://yourusername.itch.io/your-game\"\n  width=\"640\"\n  height=\"576\"\n  frameborder=\"0\"\n  allowfullscreen\n>\n</iframe>\n"}]}],"\n",["$","p",null,{"children":"Or self-host the dist folder:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<iframe src=\"/games/my-game/index.html\" width=\"640\" height=\"576\"></iframe>\n"}]}],"\n",["$","h2",null,{"children":"Mobile Controls (Virtual Joystick)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18"]}],"$L19"]}],["$L1a","$L1b"],"$L1c"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"PWA for Offline Play"}]
+6:["$","p",null,{"children":[["$","$L3",null,{"children":"manifest.json"}],":"]}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-json","children":"{\n  \"name\": \"My Pixel Game\",\n  \"short_name\": \"PixelGame\",\n  \"start_url\": \"./index.html\",\n  \"display\": \"fullscreen\",\n  \"orientation\": \"landscape\",\n  \"background_color\": \"#1a1a2e\",\n  \"theme_color\": \"#1a1a2e\",\n  \"icons\": [{ \"src\": \"icon-192.png\", \"sizes\": \"192x192\", \"type\": \"image/png\" }]\n}\n"}]}]
+8:["$","p",null,{"children":[["$","$L3",null,{"children":"sw.js"}]," (service worker):"]}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-javascript","children":"const CACHE = \"game-v1\";\nconst ASSETS = [\"./index.html\", \"./assets/index.js\", \"./assets/player.png\", \"./assets/tileset.png\"];\n\nself.addEventListener(\"install\", (e) => {\n  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));\n});\n\nself.addEventListener(\"fetch\", (e) => {\n  e.respondWith(caches.match(e.request).then((r) => r || fetch(e.request)));\n});\n"}]}]
+a:["$","p",null,{"children":["Register in ",["$","$L3",null,{"children":"index.html"}],":"]}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<link rel=\"manifest\" href=\"manifest.json\" />\n<script>\n  if (\"serviceWorker\" in navigator) navigator.serviceWorker.register(\"sw.js\");\n</script>\n"}]}]
+c:["$","h2",null,{"children":"Performance Tips"}]
+d:["$","h3",null,{"children":"Object Pooling"}]
+e:["$","p",null,{"children":"Avoid garbage collection spikes by reusing objects:"}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"class Pool<T> {\n  private items: T[] = [];\n  private active: T[] = [];\n\n  constructor(\n    private create: () => T,\n    private reset: (item: T) => void,\n    size: number,\n  ) {\n    for (let i = 0; i < size; i++) this.items.push(create());\n  }\n\n  get(): T | undefined {\n    const item = this.items.pop();\n    if (item) this.active.push(item);\n    return item;\n  }\n\n  release(item: T) {\n    const idx = this.active.indexOf(item);\n    if (idx !== -1) {\n      this.active.splice(idx, 1);\n      this.reset(item);\n      this.items.push(item);\n    }\n  }\n\n  getActive(): T[] {\n    return this.active;\n  }\n}\n\n// Particle pool\nconst particlePool = new Pool<Particle>(\n  () => ({ x: 0, y: 0, vx: 0, vy: 0, life: 0, maxLife: 0, color: \"\", size: 1 }),\n  (p) => {\n    p.life = 0;\n  },\n  200,\n);\n"}]}]
+10:["$","h3",null,{"children":"Spatial Hashing"}]
+11:["$","p",null,{"children":"Fast collision detection for many objects:"}]
+1d:T684,class SpatialHash {
+  private cells = new Map<string, any[]>();
+  private cellSize: number;
+
+  constructor(cellSize: number) {
+    this.cellSize = cellSize;
+  }
+
+  clear() {
+    this.cells.clear();
+  }
+
+  private key(x: number, y: number): string {
+    return `${Math.floor(x / this.cellSize)},${Math.floor(y / this.cellSize)}`;
+  }
+
+  insert(obj: { x: number; y: number; width: number; height: number }) {
+    const x1 = Math.floor(obj.x / this.cellSize);
+    const y1 = Math.floor(obj.y / this.cellSize);
+    const x2 = Math.floor((obj.x + obj.width) / this.cellSize);
+    const y2 = Math.floor((obj.y + obj.height) / this.cellSize);
+    for (let x = x1; x <= x2; x++) {
+      for (let y = y1; y <= y2; y++) {
+        const k = `${x},${y}`;
+        if (!this.cells.has(k)) this.cells.set(k, []);
+        this.cells.get(k)!.push(obj);
+      }
+    }
+  }
+
+  query(obj: { x: number; y: number; width: number; height: number }): any[] {
+    const results = new Set<any>();
+    const x1 = Math.floor(obj.x / this.cellSize);
+    const y1 = Math.floor(obj.y / this.cellSize);
+    const x2 = Math.floor((obj.x + obj.width) / this.cellSize);
+    const y2 = Math.floor((obj.y + obj.height) / this.cellSize);
+    for (let x = x1; x <= x2; x++) {
+      for (let y = y1; y <= y2; y++) {
+        const cell = this.cells.get(`${x},${y}`);
+        if (cell)
+          cell.forEach((o) => {
+            if (o !== obj) results.add(o);
+          });
+      }
+    }
+    return [...results];
+  }
+}
+
+// Usage each frame:
+const hash = new SpatialHash(32);
+hash.clear();
+entities.forEach((e) => hash.insert(e));
+const nearby = hash.query(player);
+// Only check collision with nearby entities
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$1d"}]}]
+13:["$","h3",null,{"children":"Other Tips"}]
+14:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Offscreen canvas"}],": Pre-render static backgrounds to a buffer canvas"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Dirty rectangles"}],": Only redraw changed regions"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Reduce draw calls"}],": Batch similar sprites"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Avoid allocations in the loop"}],": Reuse vectors, arrays"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["Use ",["$","$L3",null,{"children":"requestAnimationFrame"}]]}],": Never ",["$","$L3",null,{"children":"setInterval"}]," for rendering"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Profile"}],": Use Chrome DevTools Performance tab to find bottlenecks"]}],"\n"]}]
+15:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"// Offscreen buffer for static background\nconst bgCanvas = document.createElement(\"canvas\");\nbgCanvas.width = mapWidth;\nbgCanvas.height = mapHeight;\nconst bgCtx = bgCanvas.getContext(\"2d\")!;\n// Draw map once to bgCanvas\nrenderMapTo(bgCtx);\n\n// In game loop, just blit the buffer:\nctx.drawImage(bgCanvas, -camera.x, -camera.y);\n"}]}]
+16:["$","h2",null,{"children":"Checklist Before Publishing"}]
+17:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Test on multiple browsers (Chrome, Firefox, Safari)"}],"\n",["$","li",null,{"children":"Test on mobile (touch controls work?)"}],"\n",["$","li",null,{"children":"Assets load correctly with relative paths"}],"\n",["$","li",null,{"children":"No console errors"}],"\n",["$","li",null,{"children":"Game pauses when tab is hidden"}],"\n",["$","li",null,{"children":"Audio starts on user interaction (browser policy)"}],"\n",["$","li",null,{"children":"Performance is smooth (60fps on target hardware)"}],"\n",["$","li",null,{"children":"Add a loading screen for large assets"}],"\n"]}]
+18:["$","p",null,{"children":[["$","a",null,{"href":"./chapter-09-polish","children":"prev: Polish"}]," | ",["$","a",null,{"href":"./chapter-00-overview","children":"next: Overview"}]]}]
+19:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-09-polish","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+1a:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1b:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1c:["$","$L1e",null,{"children":["$","$1f",null,{"name":"Next.MetadataOutlet","children":"$@20"}]}]
+20:null

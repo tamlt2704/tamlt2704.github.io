@@ -1,0 +1,88 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+18:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/react-native/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 4: State Management"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-03-navigation","children":"prev: Navigation"}]," | ",["$","a",null,{"href":"./chapter-05-apis","children":"next: Working with APIs"}]]}],"\n",["$","h2",null,{"children":"Local State: useState"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { useState } from \"react\";\nimport { View, Text, Pressable, StyleSheet } from \"react-native\";\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n  return (\n    <View style={styles.container}>\n      <Text style={styles.count}>{count}</Text>\n      <Pressable onPress={() => setCount((c) => c + 1)} style={styles.btn}>\n        <Text>Increment</Text>\n      </Pressable>\n    </View>\n  );\n}\n\nconst styles = StyleSheet.create({\n  container: { flex: 1, justifyContent: \"center\", alignItems: \"center\" },\n  count: { fontSize: 48, fontWeight: \"bold\" },\n  btn: { marginTop: 16, padding: 12, backgroundColor: \"#007AFF\", borderRadius: 8 },\n});\n"}]}],"\n",["$","h2",null,{"children":"Shared State: useContext"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { createContext, useContext, useState, ReactNode } from \"react\";\n\ntype AuthState = { user: string | null; login: (name: string) => void; logout: () => void };\n\nconst AuthContext = createContext<AuthState | null>(null);\n\nexport function AuthProvider({ children }: { children: ReactNode }) {\n  const [user, setUser] = useState<string | null>(null);\n  return (\n    <AuthContext.Provider value={{ user, login: setUser, logout: () => setUser(null) }}>\n      {children}\n    </AuthContext.Provider>\n  );\n}\n\nexport function useAuth() {\n  const ctx = useContext(AuthContext);\n  if (!ctx) throw new Error(\"useAuth must be inside AuthProvider\");\n  return ctx;\n}\n"}]}],"\n",["$","h2",null,{"children":"Complex Local State: useReducer"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { useReducer } from \"react\";\n\ntype Todo = { id: number; text: string; done: boolean };\ntype Action =\n  | { type: \"add\"; text: string }\n  | { type: \"toggle\"; id: number }\n  | { type: \"remove\"; id: number };\n\nfunction todoReducer(state: Todo[], action: Action): Todo[] {\n  switch (action.type) {\n    case \"add\":\n      return [...state, { id: Date.now(), text: action.text, done: false }];\n    case \"toggle\":\n      return state.map((t) => (t.id === action.id ? { ...t, done: !t.done } : t));\n    case \"remove\":\n      return state.filter((t) => t.id !== action.id);\n  }\n}\n\nfunction useTodos() {\n  const [todos, dispatch] = useReducer(todoReducer, []);\n  return { todos, dispatch };\n}\n"}]}],"\n",["$","h2",null,{"children":"Global State: Zustand"}],"\n",["$","p",null,{"children":"Zustand is lightweight and requires no providers:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install zustand\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { create } from \"zustand\";\n\ntype CartItem = { id: string; name: string; qty: number };\n\ntype CartStore = {\n  items: CartItem[];\n  addItem: (item: Omit<CartItem, \"qty\">) => void;\n  removeItem: (id: string) => void;\n  clear: () => void;\n};\n\nexport const useCartStore = create<CartStore>((set) => ({\n  items: [],\n  addItem: (item) =>\n    set((state) => {\n      const existing = state.items.find((i) => i.id === item.id);\n      if (existing) {\n        return { items: state.items.map((i) => (i.id === item.id ? { ...i, qty: i.qty + 1 } : i)) };\n      }\n      return { items: [...state.items, { ...item, qty: 1 }] };\n    }),\n  removeItem: (id) => set((state) => ({ items: state.items.filter((i) => i.id !== id) })),\n  clear: () => set({ items: [] }),\n}));\n\n// Usage in any component — no provider needed:\nfunction CartBadge() {\n  const count = useCartStore((s) => s.items.length);\n  return <Text>{count} items</Text>;\n}\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12"]}],"$L13"]}],["$L14","$L15"],"$L16"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","h2",null,{"children":"Persistence: AsyncStorage"}]
+5:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install @react-native-async-storage/async-storage\n"}]}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import AsyncStorage from \"@react-native-async-storage/async-storage\";\n\nasync function saveToken(token: string) {\n  await AsyncStorage.setItem(\"auth_token\", token);\n}\n\nasync function getToken(): Promise<string | null> {\n  return AsyncStorage.getItem(\"auth_token\");\n}\n\nasync function clearToken() {\n  await AsyncStorage.removeItem(\"auth_token\");\n}\n"}]}]
+7:["$","h3",null,{"children":"Zustand with persistence"}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { create } from \"zustand\";\nimport { persist, createJSONStorage } from \"zustand/middleware\";\nimport AsyncStorage from \"@react-native-async-storage/async-storage\";\n\ntype SettingsStore = {\n  theme: \"light\" | \"dark\";\n  setTheme: (theme: \"light\" | \"dark\") => void;\n};\n\nexport const useSettingsStore = create<SettingsStore>()(\n  persist(\n    (set) => ({\n      theme: \"light\",\n      setTheme: (theme) => set({ theme }),\n    }),\n    { name: \"settings\", storage: createJSONStorage(() => AsyncStorage) },\n  ),\n);\n"}]}]
+9:["$","h2",null,{"children":"Server State: TanStack Query"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install @tanstack/react-query\n"}]}]
+b:["$","p",null,{"children":"Setup provider:"}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { QueryClient, QueryClientProvider } from \"@tanstack/react-query\";\n\nconst queryClient = new QueryClient();\n\nexport default function App() {\n  return (\n    <QueryClientProvider client={queryClient}>\n      <MainApp />\n    </QueryClientProvider>\n  );\n}\n"}]}]
+d:["$","p",null,{"children":"Fetch data:"}]
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { useQuery } from \"@tanstack/react-query\";\nimport { View, Text, ActivityIndicator } from \"react-native\";\n\ntype Post = { id: number; title: string };\n\nfunction PostList() {\n  const { data, isLoading, error } = useQuery<Post[]>({\n    queryKey: [\"posts\"],\n    queryFn: () => fetch(\"https://jsonplaceholder.typicode.com/posts\").then((r) => r.json()),\n  });\n\n  if (isLoading) return <ActivityIndicator />;\n  if (error) return <Text>Error loading posts</Text>;\n\n  return (\n    <View>\n      {data?.map((post) => (\n        <Text key={post.id}>{post.title}</Text>\n      ))}\n    </View>\n  );\n}\n"}]}]
+f:["$","h2",null,{"children":"Mini-Project: Todo App with Zustand + AsyncStorage"}]
+17:T8b1,import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, Text, TextInput, Pressable, FlatList, StyleSheet } from "react-native";
+import { useState } from "react";
+
+type Todo = { id: number; text: string; done: boolean };
+
+const useTodoStore = create<{
+  todos: Todo[];
+  add: (text: string) => void;
+  toggle: (id: number) => void;
+}>()(
+  persist(
+    (set) => ({
+      todos: [],
+      add: (text) => set((s) => ({ todos: [...s.todos, { id: Date.now(), text, done: false }] })),
+      toggle: (id) =>
+        set((s) => ({ todos: s.todos.map((t) => (t.id === id ? { ...t, done: !t.done } : t)) })),
+    }),
+    { name: "todos", storage: createJSONStorage(() => AsyncStorage) }
+  )
+);
+
+export default function TodoApp() {
+  const [text, setText] = useState("");
+  const { todos, add, toggle } = useTodoStore();
+
+  const handleAdd = () => {
+    if (text.trim()) { add(text.trim()); setText(""); }
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.row}>
+        <TextInput style={styles.input} value={text} onChangeText={setText} placeholder="New todo" />
+        <Pressable onPress={handleAdd} style={styles.addBtn}>
+          <Text style={styles.addText}>Add</Text>
+        </Pressable>
+      </View>
+      <FlatList
+        data={todos}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => (
+          <Pressable onPress={() => toggle(item.id)} style={styles.todo}>
+            <Text style={item.done ? styles.done : undefined}>{item.text}</Text>
+          </Pressable>
+        )}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 16, paddingTop: 60 },
+  row: { flexDirection: "row", gap: 8, marginBottom: 16 },
+  input: { flex: 1, borderWidth: 1, borderColor: "#ccc", borderRadius: 8, padding: 12 },
+  addBtn: { padding: 12, backgroundColor: "#007AFF", borderRadius: 8, justifyContent: "center" },
+  addText: { color: "#fff", fontWeight: "bold" },
+  todo: { padding: 16, borderBottomWidth: 1, borderBottomColor: "#eee" },
+  done: { textDecorationLine: "line-through", color: "#999" },
+});
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$17"}]}]
+11:["$","h2",null,{"children":"Summary"}]
+12:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"useState"}]," for simple local state, ",["$","$L3",null,{"children":"useReducer"}]," for complex local logic"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"useContext"}]," for sharing state across a subtree (auth, theme)"]}],"\n",["$","li",null,{"children":"Zustand for global state — no boilerplate, no providers"}],"\n",["$","li",null,{"children":"AsyncStorage for persisting data across app restarts"}],"\n",["$","li",null,{"children":"TanStack Query for server state — handles caching, refetching, loading/error states"}],"\n"]}]
+13:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/react-native/chapter-03-navigation","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/react-native/chapter-05-apis","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+14:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+15:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+16:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

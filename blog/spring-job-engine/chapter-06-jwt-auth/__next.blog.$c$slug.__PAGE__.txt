@@ -1,9 +1,31 @@
 1:"$Sreact.fragment"
-2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
-3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/099v51bpaswwx.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
-12:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
-13:"$Sreact.suspense"
-4:T455,@Component
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+4e:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+4f:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 6: JWT Authentication"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","children":"← Chapter 5: Priority & Pause"}]," | ",["$","a",null,{"href":"/blog/spring-job-engine/chapter-07-audit","children":"Chapter 7: Audit →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Story"}],"\n",["$","p",null,{"children":"Anyone can submit jobs. Anyone can cancel them. The security team is not happy. You need: login, tokens, and role-based access."}],"\n",["$","h2",null,{"children":"Step 1: JWT Token Provider"}],"\n",["$","h3",null,{"children":"Why JWT?"}],"\n",["$","p",null,{"children":["Traditional session-based auth stores state on the server (session ID → user). JWT is ",["$","strong",null,{"children":"stateless"}]," — all user info lives inside the token itself:"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"┌─────────────────────────────────────────────────────┐\n│  Header          │  Payload           │  Signature  │\n│  {\"alg\":\"HS256\"} │  {\"sub\":\"alice\",   │  HMAC(      │\n│                  │   \"role\":\"ADMIN\",  │   header +  │\n│                  │   \"exp\":17000...}  │   payload,  │\n│                  │                    │   secret)   │\n└─────────────────────────────────────────────────────┘\n"}]}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"Why use JWT over sessions for a job engine:"}]}],"\n",["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Concern"}],["$","th",null,{"children":"Session"}],["$","th",null,{"children":"JWT"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Scalability"}],["$","td",null,{"children":"Sticky sessions or shared store (Redis)"}],["$","td",null,{"children":"Any server can validate — no shared state"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Microservices"}],["$","td",null,{"children":"Must propagate session across services"}],["$","td",null,{"children":"Token travels in header, self-contained"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Stateless REST"}],["$","td",null,{"children":"Violates REST principles"}],["$","td",null,{"children":"Fits naturally — server stores nothing"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Performance"}],["$","td",null,{"children":"DB/Redis lookup per request"}],["$","td",null,{"children":"Just verify signature (CPU only)"}]]}]]}]]}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":"The tradeoff:"}]," You can't revoke a JWT before it expires (unless you maintain a blacklist, which reintroduces state). For a job engine, short-lived tokens (24h) + refresh tokens is a good balance."]}],"\n",["$","h3",null,{"children":"How the flow works:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":["User calls ",["$","$L3",null,{"children":"POST /api/auth/login"}]," with credentials"]}],"\n",["$","li",null,{"children":"Server validates, returns a signed JWT"}],"\n",["$","li",null,{"children":["Client sends ",["$","$L3",null,{"children":"Authorization: Bearer <token>"}]," on every request"]}],"\n",["$","li",null,{"children":"Server verifies signature — no DB lookup needed"}],"\n",["$","li",null,{"children":"Token contains user email + role → used for access control"}],"\n"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// security/JwtTokenProvider.java\n@Component\npublic class JwtTokenProvider {\n\n    @Value(\"${jwt.secret}\")\n    private String secret;\n\n    @Value(\"${jwt.expiration:86400000}\")  // 24h\n    private long expiration;\n\n    public String generateToken(String email, String role) {\n        return Jwts.builder()\n            .subject(email)\n            .claim(\"role\", role)\n            .issuedAt(new Date())\n            .expiration(new Date(System.currentTimeMillis() + expiration))\n            .signWith(Keys.hmacShaKeyFor(secret.getBytes()))\n            .compact();\n    }\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40","\n","$L41","\n","$L42","\n","$L43","\n","$L44","\n","$L45","\n","$L46"]}],"$L47"]}],["$L48","$L49"],"$L4a"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","h3",null,{"children":"What are Claims?"}]
+5:["$","p",null,{"children":["Claims are key-value pairs stored in the JWT payload. They're the ",["$","strong",null,{"children":"data"}]," the token carries."]}]
+6:["$","p",null,{"children":[["$","strong",null,{"children":"Registered claims"}]," (standard, predefined by the JWT spec):"]}]
+7:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Claim"}],["$","th",null,{"children":"Method"}],["$","th",null,{"children":"Meaning"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"sub"}]}],["$","td",null,{"children":["$","$L3",null,{"children":".subject()"}]}],["$","td",null,{"children":"Subject — who this token is about (user email/ID)"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"iat"}]}],["$","td",null,{"children":["$","$L3",null,{"children":".issuedAt()"}]}],["$","td",null,{"children":"Issued at — when the token was created"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"exp"}]}],["$","td",null,{"children":["$","$L3",null,{"children":".expiration()"}]}],["$","td",null,{"children":"Expires — when the token becomes invalid"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"iss"}]}],["$","td",null,{"children":["$","$L3",null,{"children":".issuer()"}]}],["$","td",null,{"children":"Issuer — who created the token (e.g., \"job-engine\")"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"aud"}]}],["$","td",null,{"children":["$","$L3",null,{"children":".audience()"}]}],["$","td",null,{"children":"Audience — who the token is intended for"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"nbf"}]}],["$","td",null,{"children":["$","$L3",null,{"children":".notBefore()"}]}],["$","td",null,{"children":"Not before — token is invalid before this time"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"jti"}]}],["$","td",null,{"children":["$","$L3",null,{"children":".id()"}]}],["$","td",null,{"children":"JWT ID — unique identifier to prevent replay attacks"}]]}]]}]]}]
+8:["$","p",null,{"children":[["$","strong",null,{"children":"Custom claims"}]," (your own data, added via ",["$","$L3",null,{"children":".claim(key, value)"}],"):"]}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":".claim(\"role\", \"ADMIN\")           // user's role\n.claim(\"department\", \"risk\")      // business context\n.claim(\"permissions\", List.of(\"submit\", \"cancel\"))  // fine-grained access\n"}]}]
+a:["$","p",null,{"children":["$","strong",null,{"children":"Important rules:"}]}]
+b:["$","ul",null,{"children":["\n",["$","li",null,{"children":["Claims are ",["$","strong",null,{"children":"Base64-encoded, not encrypted"}]," — anyone can decode and read them. Never put passwords or secrets in claims."]}],"\n",["$","li",null,{"children":"Keep claims small — the token travels in every HTTP header. Large tokens = wasted bandwidth."}],"\n",["$","li",null,{"children":"The signature guarantees claims haven't been tampered with, but doesn't hide them."}],"\n"]}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"    public Claims parseToken(String token) {\n        return Jwts.parser()\n            .verifyWith(Keys.hmacShaKeyFor(secret.getBytes()))\n            .build()\n            .parseSignedClaims(token)\n            .getPayload();\n    }\n}\n"}]}]
+d:["$","h2",null,{"children":"Step 2: Auth Filter"}]
+4b:T981,// security/JwtAuthFilter.java
+
+// OncePerRequestFilter guarantees this filter runs exactly ONCE per HTTP request.
+// Without it, a filter can execute multiple times if the request is forwarded
+// or dispatched internally (e.g., error handling, async dispatch).
+//
+// It's called BEFORE your controller — part of the Spring Security filter chain:
+//   HTTP Request → ... → JwtAuthFilter → ... → SecurityContext check → Controller
+//
+// If the token is valid, we set the SecurityContext so downstream code
+// (controllers, @PreAuthorize) knows who the user is.
+@Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtTokenProvider tokenProvider;
@@ -12,37 +34,184 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                      HttpServletResponse response,
                                      FilterChain chain) throws ServletException, IOException {
+        // 1. Extract the Authorization header
         String header = request.getHeader("Authorization");
+
         if (header != null && header.startsWith("Bearer ")) {
+            // 2. Strip "Bearer " prefix to get the raw token
             String token = header.substring(7);
             try {
+                // 3. Verify signature + parse claims (throws if expired or tampered)
                 Claims claims = tokenProvider.parseToken(token);
+
+                // 4. Create an Authentication object with user identity + role
                 var auth = new UsernamePasswordAuthenticationToken(
-                    claims.getSubject(),
-                    null,
+                    claims.getSubject(),       // principal (email)
+                    null,                      // credentials (not needed, token already verified)
                     List.of(new SimpleGrantedAuthority("ROLE_" + claims.get("role")))
                 );
+
+                // 5. Store in SecurityContext — now accessible via @AuthenticationPrincipal
                 SecurityContextHolder.getContext().setAuthentication(auth);
             } catch (JwtException e) {
+                // Invalid/expired token — reject immediately
                 response.setStatus(401);
                 return;
             }
         }
+        // 6. Continue the filter chain (next filter or controller)
+        //    If no token was present, request proceeds unauthenticated
+        //    (SecurityConfig decides if that's allowed for this endpoint)
         chain.doFilter(request, response);
     }
 }
-0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 6: JWT Authentication"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","children":"← Chapter 5: Priority & Pause"}]," | ",["$","a",null,{"href":"/blog/spring-job-engine/chapter-07-audit","children":"Chapter 7: Audit →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Story"}],"\n",["$","p",null,{"children":"Anyone can submit jobs. Anyone can cancel them. The security team is not happy. You need: login, tokens, and role-based access."}],"\n",["$","h2",null,{"children":"Step 1: JWT Token Provider"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class JwtTokenProvider {\n\n    @Value(\"${jwt.secret}\")\n    private String secret;\n\n    @Value(\"${jwt.expiration:86400000}\")  // 24h\n    private long expiration;\n\n    public String generateToken(String email, String role) {\n        return Jwts.builder()\n            .subject(email)\n            .claim(\"role\", role)\n            .issuedAt(new Date())\n            .expiration(new Date(System.currentTimeMillis() + expiration))\n            .signWith(Keys.hmacShaKeyFor(secret.getBytes()))\n            .compact();\n    }\n\n    public Claims parseToken(String token) {\n        return Jwts.parser()\n            .verifyWith(Keys.hmacShaKeyFor(secret.getBytes()))\n            .build()\n            .parseSignedClaims(token)\n            .getPayload();\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Step 2: Auth Filter"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"Step 3: Security Configuration"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\n@EnableMethodSecurity\npublic class SecurityConfig {\n\n    private final JwtAuthFilter jwtFilter;\n\n    @Bean\n    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {\n        return http\n            .csrf(c -> c.disable())\n            .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))\n            .authorizeHttpRequests(a -> a\n                .requestMatchers(\"/api/auth/**\").permitAll()\n                .requestMatchers(\"/api/health\").permitAll()\n                .requestMatchers(\"/api/jobs/**\").authenticated()\n                .requestMatchers(\"/api/admin/**\").hasRole(\"ADMIN\")\n                .anyRequest().authenticated()\n            )\n            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)\n            .build();\n    }\n\n    @Bean\n    public PasswordEncoder passwordEncoder() {\n        return new BCryptPasswordEncoder();\n    }\n}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld"]}],"$Le"]}],["$Lf","$L10"],"$L11"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ZuSjgxTf-pST8lByzW397"}
-5:["$","h2",null,{"children":"Step 4: Login Endpoint"}]
-6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@RestController\n@RequestMapping(\"/api/auth\")\npublic class AuthController {\n\n    private final UserRepository userRepo;\n    private final PasswordEncoder encoder;\n    private final JwtTokenProvider tokenProvider;\n\n    @PostMapping(\"/login\")\n    public Map<String, String> login(@RequestBody LoginRequest request) {\n        User user = userRepo.findByEmail(request.email())\n            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));\n\n        if (!encoder.matches(request.password(), user.getPassword())) {\n            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);\n        }\n\n        String token = tokenProvider.generateToken(user.getEmail(), user.getRole());\n        return Map.of(\"token\", token, \"email\", user.getEmail());\n    }\n}\n"}]}]
-7:["$","h2",null,{"children":"Step 5: Getting Current User in Jobs"}]
-8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// In JobService\npublic Job submit(JobRequest request) {\n    String user = SecurityContextHolder.getContext()\n        .getAuthentication().getName();  // email from JWT\n\n    Job job = new Job();\n    job.setSubmittedBy(user);\n    // ...\n}\n"}]}]
-9:["$","h2",null,{"children":"Step 6: Role-Based Access"}]
-a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@PreAuthorize(\"hasRole('ADMIN') or @jobService.isOwner(#id, authentication.name)\")\n@PostMapping(\"/api/jobs/{id}/cancel\")\npublic Job cancelJob(@PathVariable String id) {\n    // Only admin or the job owner can cancel\n}\n"}]}]
-b:["$","p",null,{"children":"Users can only cancel their own jobs. Admins can cancel anything."}]
-c:["$","hr",null,{}]
-d:["$","p",null,{"children":["$","a",null,{"href":"/blog/spring-job-engine/chapter-07-audit","children":"Chapter 7: Audit Trail →"}]}]
-e:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-job-engine/chapter-07-audit","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
-f:["$","script","script-0",{"src":"/_next/static/chunks/099v51bpaswwx.js","async":true}]
-10:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
-11:["$","$L12",null,{"children":["$","$13",null,{"name":"Next.MetadataOutlet","children":"$@14"}]}]
-14:null
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4b"}]}]
+f:["$","h3",null,{"children":"How SecurityContextHolder Works"}]
+10:["$","p",null,{"children":[["$","$L3",null,{"children":"SecurityContextHolder"}]," is a ",["$","strong",null,{"children":"ThreadLocal-based storage"}]," — it holds the current user's identity for the duration of a single request:"]}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"children":"Thread-1 (Request A):  SecurityContext → { user: \"alice@co.com\", role: ADMIN }\nThread-2 (Request B):  SecurityContext → { user: \"bob@co.com\", role: USER }\nThread-3 (Request C):  SecurityContext → { empty, unauthenticated }\n"}]}]
+12:["$","p",null,{"children":"Each thread has its own isolated copy. No locking, no shared state."}]
+13:["$","p",null,{"children":["$","strong",null,{"children":"Lifecycle of a request:"}]}]
+14:["$","ol",null,{"children":["\n",["$","li",null,{"children":["Request arrives → ",["$","$L3",null,{"children":"SecurityContextHolder"}]," is empty"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"JwtAuthFilter"}]," runs → calls ",["$","$L3",null,{"children":".setAuthentication(auth)"}]," → context now has user info"]}],"\n",["$","li",null,{"children":"Controller runs → reads context to know who's calling"}],"\n",["$","li",null,{"children":"Response sent → Spring clears the context automatically"}],"\n"]}]
+15:["$","p",null,{"children":["$","strong",null,{"children":"How to read it in your code:"}]}]
+16:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// In any Spring-managed bean (controller, service, etc.)\nString email = SecurityContextHolder.getContext()\n    .getAuthentication().getName();\n\n// Or use Spring's shortcut in controller parameters:\n@GetMapping(\"/me\")\npublic String me(@AuthenticationPrincipal String email) {\n    return email;\n}\n"}]}]
+17:["$","p",null,{"children":[["$","strong",null,{"children":"Why ThreadLocal?"}]," HTTP servers reuse threads from a pool. ThreadLocal ensures Request A's user doesn't leak into Request B on the same thread — Spring clears it after each request completes."]}]
+18:["$","h2",null,{"children":"Step 3: Security Configuration"}]
+19:["$","blockquote",null,{"children":["\n",["$","p",null,{"children":[["$","strong",null,{"children":"Note:"}]," This replaces the starter SecurityConfig from Chapter 1. The full version adds JWT filter, method security, and role-based access."]}],"\n"]}]
+1a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\n@EnableMethodSecurity\npublic class SecurityConfig {\n\n    private final JwtAuthFilter jwtFilter;\n\n    @Bean\n    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {\n        return http\n            .csrf(c -> c.disable())\n            .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))\n            .authorizeHttpRequests(a -> a\n                .requestMatchers(\"/api/auth/**\").permitAll()\n                .requestMatchers(\"/api/health\").permitAll()\n                .requestMatchers(\"/api/jobs/**\").authenticated()\n                .requestMatchers(\"/api/admin/**\").hasRole(\"ADMIN\")\n                .anyRequest().authenticated()\n            )\n            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)\n            .build();\n    }\n\n    @Bean\n    public PasswordEncoder passwordEncoder() {\n        return new BCryptPasswordEncoder();\n    }\n}\n"}]}]
+1b:["$","h3",null,{"children":"BCrypt, Salt & Pepper"}]
+1c:["$","p",null,{"children":[["$","strong",null,{"children":"Salt"}]," — a random value generated per password and stored alongside the hash. BCrypt does this automatically — you don't manage it yourself:"]}]
+1d:["$","$L2",null,{"children":["$","$L3",null,{"children":"$$2a$10$N9qo8uLOickgx2ZMRZoMye  ←── algorithm + cost + salt (first 29 chars)\nIjZAgcfl7p92ldGxad68LJZdL17lhWy  ←── the actual hash\n"}]}]
+1e:["$","p",null,{"children":["Every call to ",["$","$L3",null,{"children":"encode(\"same-password\")"}]," produces a different hash because the salt is random. ",["$","$L3",null,{"children":"matches()"}]," extracts the salt from the stored hash to verify."]}]
+1f:["$","p",null,{"children":[["$","strong",null,{"children":"Pepper"}]," — a secret key applied to all passwords ",["$","em",null,{"children":"before"}]," hashing. Unlike salt, it's not stored in the database — it lives in config/env. If the DB is leaked, hashes are useless without the pepper."]}]
+20:["$","blockquote",null,{"children":["\n",["$","p",null,{"children":[["$","strong",null,{"children":"Note:"}]," The plain ",["$","$L3",null,{"children":"BCryptPasswordEncoder"}]," bean above is shown first for simplicity. The pepper version below is the recommended production approach — it adds an extra layer of defense against database leaks."]}],"\n"]}]
+21:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic PasswordEncoder passwordEncoder(@Value(\"${auth.pepper}\") String pepper) {\n    return new PasswordEncoder() {\n        private final BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();\n\n        @Override\n        public String encode(CharSequence raw) {\n            return bcrypt.encode(raw + pepper);\n        }\n\n        @Override\n        public boolean matches(CharSequence raw, String encoded) {\n            return bcrypt.matches(raw + pepper, encoded);\n        }\n    };\n}\n"}]}]
+22:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-yaml","children":"# application.yml\nauth:\n  pepper: ${AUTH_PEPPER} # from environment variable, never commit to git\n"}]}]
+23:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Concept"}],["$","th",null,{"children":"Stored where"}],["$","th",null,{"children":"Protects against"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Salt"}]}],["$","td",null,{"children":"In the hash itself (auto by BCrypt)"}],["$","td",null,{"children":"Rainbow tables, identical passwords having same hash"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Pepper"}]}],["$","td",null,{"children":"Environment variable / secrets manager"}],["$","td",null,{"children":"Database leaks — attacker can't brute-force without it"}]]}]]}]]}]
+24:["$","h2",null,{"children":"Step 4: Login Endpoint"}]
+25:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// model/User.java\n@Entity\n@Table(name = \"users\")\npublic class User {\n\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n\n    @Column(unique = true, nullable = false)\n    private String email;\n\n    @Column(nullable = false)\n    private String password;  // BCrypt hash\n\n    private String role;  // \"ADMIN\", \"USER\"\n\n    // getters, setters\n}\n"}]}]
+26:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// repository/UserRepository.java\npublic interface UserRepository extends JpaRepository<User, Long> {\n    Optional<User> findByEmail(String email);\n}\n"}]}]
+27:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// controller/LoginRequest.java\npublic record LoginRequest(String email, String password) {}\n"}]}]
+28:["$","p",null,{"children":["This is the ",["$","strong",null,{"children":"token issuer"}]," — the only endpoint that creates JWTs. Here's how it fits in the full auth flow:"]}]
+29:["$","$L2",null,{"children":["$","$L3",null,{"children":"┌──────────┐         ┌──────────────┐         ┌──────────────┐\n│  Client  │──POST──▶│AuthController│──token──▶│   Client     │\n│          │ /login  │ (this class) │          │ stores token │\n└──────────┘         └──────────────┘         └──────┬───────┘\n                                                      │\n     Every subsequent request:                        │\n     Authorization: Bearer <token>                    ▼\n┌──────────┐         ┌──────────────┐         ┌──────────────┐\n│  Client  │──GET───▶│ JwtAuthFilter│──valid──▶│  Controller  │\n│          │ /api/*  │ (verifies)   │          │ (your code)  │\n└──────────┘         └──────────────┘         └──────────────┘\n"}]}]
+2a:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"AuthController"}]," = issues tokens (login). Called once."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"JwtAuthFilter"}]," = verifies tokens. Called on every request."]}],"\n"]}]
+2b:["$","p",null,{"children":["The controller validates credentials (email + password) against the database, then calls ",["$","$L3",null,{"children":"tokenProvider.generateToken()"}]," to create a signed JWT. After this, the server forgets about the user — no session stored. The client must send the token back on every future request."]}]
+2c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@RestController\n@RequestMapping(\"/api/auth\")\npublic class AuthController {\n\n    private final UserRepository userRepo;\n    private final PasswordEncoder encoder;\n    private final JwtTokenProvider tokenProvider;\n\n    @PostMapping(\"/login\")\n    public Map<String, String> login(@RequestBody LoginRequest request) {\n        User user = userRepo.findByEmail(request.email())\n            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));\n\n        if (!encoder.matches(request.password(), user.getPassword())) {\n            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);\n        }\n\n        String token = tokenProvider.generateToken(user.getEmail(), user.getRole());\n        return Map.of(\"token\", token, \"email\", user.getEmail());\n    }\n}\n"}]}]
+2d:["$","h2",null,{"children":"Step 5: Token Refresh"}]
+2e:["$","p",null,{"children":["Access tokens expire (24h in our case). Instead of forcing users to log in again, we issue a ",["$","strong",null,{"children":"refresh token"}]," — a long-lived token used solely to get a new access token."]}]
+2f:["$","h3",null,{"children":"Why two tokens?"}]
+30:["$","$L2",null,{"children":["$","$L3",null,{"children":"┌─────────────────────────────────────────────────────────────┐\n│  Access Token          │  Refresh Token                     │\n│  Short-lived (24h)     │  Long-lived (7 days)               │\n│  Sent on every request │  Sent only to /api/auth/refresh    │\n│  Stateless (no DB)     │  Stored in DB (revocable)          │\n│  If stolen: limited    │  If stolen: revoke it in DB        │\n│  damage window         │                                    │\n└─────────────────────────────────────────────────────────────┘\n"}]}]
+31:["$","p",null,{"children":["$","strong",null,{"children":"The flow:"}]}]
+32:["$","ol",null,{"children":["\n",["$","li",null,{"children":["User logs in → gets both ",["$","$L3",null,{"children":"accessToken"}]," and ",["$","$L3",null,{"children":"refreshToken"}]]}],"\n",["$","li",null,{"children":["Client uses ",["$","$L3",null,{"children":"accessToken"}]," for API calls"]}],"\n",["$","li",null,{"children":["When ",["$","$L3",null,{"children":"accessToken"}]," expires (401 response), client calls ",["$","$L3",null,{"children":"POST /api/auth/refresh"}]]}],"\n",["$","li",null,{"children":"Server validates the refresh token, issues a new access token"}],"\n",["$","li",null,{"children":"Optionally rotates the refresh token too (more secure)"}],"\n"]}]
+33:["$","h3",null,{"children":"Refresh Token Entity"}]
+34:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Entity\n@Table(name = \"refresh_tokens\")\npublic class RefreshToken {\n\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n\n    @Column(unique = true, nullable = false)\n    private String token;\n\n    @Column(nullable = false)\n    private String email;\n\n    @Column(nullable = false)\n    private Instant expiresAt;\n\n    private boolean revoked;\n}\n"}]}]
+35:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long> {\n    Optional<RefreshToken> findByTokenAndRevokedFalse(String token);\n    void deleteByEmail(String email);  // revoke all on logout\n}\n"}]}]
+36:["$","h3",null,{"children":"Generating Refresh Tokens"}]
+4c:T512,@Service
+public class RefreshTokenService {
+
+    @Value("${jwt.refresh-expiration:604800000}")  // 7 days
+    private long refreshExpiration;
+
+    private final RefreshTokenRepository refreshTokenRepo;
+
+    public RefreshToken createRefreshToken(String email) {
+        RefreshToken rt = new RefreshToken();
+        rt.setToken(UUID.randomUUID().toString());
+        rt.setEmail(email);
+        rt.setExpiresAt(Instant.now().plusMillis(refreshExpiration));
+        rt.setRevoked(false);
+        return refreshTokenRepo.save(rt);
+    }
+
+    public RefreshToken verifyAndRotate(String token) {
+        RefreshToken rt = refreshTokenRepo.findByTokenAndRevokedFalse(token)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid refresh token"));
+
+        if (rt.getExpiresAt().isBefore(Instant.now())) {
+            refreshTokenRepo.delete(rt);
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Refresh token expired");
+        }
+
+        // Rotate: revoke old, issue new (prevents reuse attacks)
+        rt.setRevoked(true);
+        refreshTokenRepo.save(rt);
+
+        return createRefreshToken(rt.getEmail());
+    }
+
+    @Transactional
+    public void revokeAllForUser(String email) {
+        refreshTokenRepo.deleteByEmail(email);
+    }
+}
+37:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4c"}]}]
+38:["$","h3",null,{"children":"Updated Auth Controller"}]
+4d:T717,@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+
+    private final UserRepository userRepo;
+    private final PasswordEncoder encoder;
+    private final JwtTokenProvider tokenProvider;
+    private final RefreshTokenService refreshTokenService;
+
+    @PostMapping("/login")
+    public Map<String, String> login(@RequestBody LoginRequest request) {
+        User user = userRepo.findByEmail(request.email())
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
+
+        if (!encoder.matches(request.password(), user.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        }
+
+        String accessToken = tokenProvider.generateToken(user.getEmail(), user.getRole());
+        RefreshToken refreshToken = refreshTokenService.createRefreshToken(user.getEmail());
+
+        return Map.of(
+            "accessToken", accessToken,
+            "refreshToken", refreshToken.getToken(),
+            "email", user.getEmail()
+        );
+    }
+
+    @PostMapping("/refresh")
+    public Map<String, String> refresh(@RequestBody Map<String, String> request) {
+        String token = request.get("refreshToken");
+
+        RefreshToken newRefreshToken = refreshTokenService.verifyAndRotate(token);
+
+        User user = userRepo.findByEmail(newRefreshToken.getEmail())
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
+
+        String accessToken = tokenProvider.generateToken(user.getEmail(), user.getRole());
+
+        return Map.of(
+            "accessToken", accessToken,
+            "refreshToken", newRefreshToken.getToken()
+        );
+    }
+
+    @PostMapping("/logout")
+    public void logout(@AuthenticationPrincipal String email) {
+        refreshTokenService.revokeAllForUser(email);
+    }
+}
+39:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4d"}]}]
+3a:["$","h3",null,{"children":"Client-Side: Automatic Refresh"}]
+3b:["$","p",null,{"children":"On the frontend, intercept 401 responses and retry with a fresh token:"}]
+3c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-javascript","children":"// api.js — axios interceptor example\napi.interceptors.response.use(\n  (response) => response,\n  async (error) => {\n    const originalRequest = error.config;\n\n    if (error.response?.status === 401 && !originalRequest._retry) {\n      originalRequest._retry = true;\n\n      const { data } = await api.post(\"/api/auth/refresh\", {\n        refreshToken: localStorage.getItem(\"refreshToken\"),\n      });\n\n      localStorage.setItem(\"accessToken\", data.accessToken);\n      localStorage.setItem(\"refreshToken\", data.refreshToken);\n\n      originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;\n      return api(originalRequest);\n    }\n\n    return Promise.reject(error);\n  },\n);\n"}]}]
+3d:["$","h3",null,{"children":"Security Considerations"}]
+3e:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Strategy"}],["$","th",null,{"children":"What it prevents"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":[["$","strong",null,{"children":"Token rotation"}]," (issue new refresh token each time)"]}],["$","td",null,{"children":"Stolen refresh token reuse — old one is revoked"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":[["$","strong",null,{"children":"Short access token TTL"}]," (24h)"]}],["$","td",null,{"children":"Limits damage window if access token is stolen"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"DB-backed refresh tokens"}]}],["$","td",null,{"children":"Can revoke on logout, password change, or suspicious activity"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":[["$","strong",null,{"children":"HttpOnly cookie"}]," for refresh token (alternative to localStorage)"]}],["$","td",null,{"children":"XSS can't steal the refresh token"}]]}]]}]]}]
+3f:["$","hr",null,{}]
+40:["$","h2",null,{"children":"Step 6: Getting Current User in Jobs"}]
+41:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// In JobService\npublic Job submit(JobRequest request) {\n    String user = SecurityContextHolder.getContext()\n        .getAuthentication().getName();  // email from JWT\n\n    Job job = new Job();\n    job.setSubmittedBy(user);\n    // ...\n}\n"}]}]
+42:["$","h2",null,{"children":"Step 7: Role-Based Access"}]
+43:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@PreAuthorize(\"hasRole('ADMIN') or @jobService.isOwner(#id, authentication.name)\")\n@PostMapping(\"/api/jobs/{id}/cancel\")\npublic Job cancelJob(@PathVariable String id) {\n    // Only admin or the job owner can cancel\n}\n"}]}]
+44:["$","p",null,{"children":"Users can only cancel their own jobs. Admins can cancel anything."}]
+45:["$","hr",null,{}]
+46:["$","p",null,{"children":["$","a",null,{"href":"/blog/spring-job-engine/chapter-07-audit","children":"Chapter 7: Audit Trail →"}]}]
+47:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-05-priority-pause","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-job-engine/chapter-07-audit","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+48:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+49:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+4a:["$","$L4e",null,{"children":["$","$4f",null,{"name":"Next.MetadataOutlet","children":"$@50"}]}]
+50:null

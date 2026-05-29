@@ -1,0 +1,54 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+b:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+c:"$Sreact.suspense"
+4:T44e,"use client";
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+
+export default function ThreeScene() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      ref.current.clientWidth / ref.current.clientHeight,
+      0.1,
+      1000,
+    );
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(ref.current.clientWidth, ref.current.clientHeight);
+    ref.current.appendChild(renderer.domElement);
+
+    const cube = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshNormalMaterial());
+    scene.add(cube);
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    return () => {
+      renderer.dispose();
+      ref.current?.removeChild(renderer.domElement);
+    };
+  }, []);
+
+  return <div ref={ref} className="h-[500px] w-full" />;
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/threejs/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 1: Scene, Camera, Renderer"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/threejs/chapter-00-overview","children":"← Overview"}]," | ",["$","a",null,{"href":"/blog/threejs/chapter-02-geometries","children":"Chapter 2: Geometries →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Three Pillars"}],"\n",["$","p",null,{"children":"Every Three.js app needs exactly three things:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"Scene    → the container (holds objects, lights)\nCamera   → the viewpoint (what you see)\nRenderer → the painter (draws to canvas)\n"}]}],"\n",["$","h2",null,{"children":"Step 1: Minimal Setup"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import * as THREE from \"three\";\n\n// 1. Scene\nconst scene = new THREE.Scene();\n\n// 2. Camera (FOV, aspect ratio, near clip, far clip)\nconst camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);\ncamera.position.z = 5;\n\n// 3. Renderer\nconst renderer = new THREE.WebGLRenderer({ antialias: true });\nrenderer.setSize(window.innerWidth, window.innerHeight);\ndocument.body.appendChild(renderer.domElement);\n"}]}],"\n",["$","h2",null,{"children":"Step 2: Add a Cube"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"const geometry = new THREE.BoxGeometry(1, 1, 1);\nconst material = new THREE.MeshBasicMaterial({ color: 0x00ff88 });\nconst cube = new THREE.Mesh(geometry, material);\nscene.add(cube);\n"}]}],"\n",["$","p",null,{"children":["A ",["$","$L3",null,{"children":"Mesh"}]," = ",["$","$L3",null,{"children":"Geometry"}]," (shape) + ",["$","$L3",null,{"children":"Material"}]," (appearance)."]}],"\n",["$","h2",null,{"children":"Step 3: The Render Loop"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"function animate() {\n  requestAnimationFrame(animate);\n\n  cube.rotation.x += 0.01;\n  cube.rotation.y += 0.01;\n\n  renderer.render(scene, camera);\n}\nanimate();\n"}]}],"\n",["$","p",null,{"children":[["$","$L3",null,{"children":"requestAnimationFrame"}]," runs at 60fps. Each frame we rotate the cube slightly and re-render."]}],"\n",["$","h2",null,{"children":"Step 4: Handle Resize"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"window.addEventListener(\"resize\", () => {\n  camera.aspect = window.innerWidth / window.innerHeight;\n  camera.updateProjectionMatrix();\n  renderer.setSize(window.innerWidth, window.innerHeight);\n});\n"}]}],"\n",["$","h2",null,{"children":"Camera Types"}],"\n",["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Type"}],["$","th",null,{"children":"Use Case"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"PerspectiveCamera"}]}],["$","td",null,{"children":"Realistic 3D (objects shrink with distance)"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"OrthographicCamera"}]}],["$","td",null,{"children":"2D/isometric (no perspective distortion)"}]]}]]}]]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"// Orthographic (for 2D-style games)\nconst ortho = new THREE.OrthographicCamera(-5, 5, 5, -5, 0.1, 100);\n"}]}],"\n",["$","h2",null,{"children":"Coordinate System"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"        Y (up)\n        |\n        |\n        |_______ X (right)\n       /\n      /\n     Z (toward you)\n"}]}],"\n",["$","h2",null,{"children":"Next.js Integration"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6"]}],"$L7"]}],["$L8","$L9"],"$La"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","hr",null,{}]
+6:["$","p",null,{"children":["$","a",null,{"href":"/blog/threejs/chapter-02-geometries","children":"Chapter 2: Geometries & Materials →"}]}]
+7:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/threejs/chapter-00-overview","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/threejs/chapter-02-geometries","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+9:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+a:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
+d:null

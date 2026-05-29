@@ -1,0 +1,64 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+16:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 4: ItemProcessors"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-03-readers","children":"prev: Readers"}]," | ",["$","a",null,{"href":"chapter-05-writers","children":"next: Writers"}]]}],"\n",["$","h2",null,{"children":"Basic ItemProcessor"}],"\n",["$","p",null,{"children":["An ",["$","$L2",null,{"children":"ItemProcessor<I, O>"}]," transforms an input item of type I into an output item of type O."]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"@Bean\npublic ItemProcessor<Person, PersonDto> personProcessor() {\n    return person -> new PersonDto(\n            person.firstName().toUpperCase(),\n            person.lastName().toUpperCase(),\n            person.email().toLowerCase(),\n            person.age()\n    );\n}\n"}]}],"\n",["$","h2",null,{"children":"Filtering Items (Return null to Skip)"}],"\n",["$","p",null,{"children":["Returning ",["$","$L2",null,{"children":"null"}]," from a processor tells Spring Batch to skip the item — it will not be passed to the writer."]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"@Bean\npublic ItemProcessor<Person, Person> adultFilter() {\n    return person -> person.age() >= 18 ? person : null;\n}\n"}]}],"\n",["$","h2",null,{"children":"CompositeItemProcessor (Chaining)"}],"\n",["$","p",null,{"children":"Chain multiple processors in sequence. Each processor's output becomes the next processor's input."}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"@Bean\npublic CompositeItemProcessor<Person, PersonDto> compositeProcessor() {\n    CompositeItemProcessor<Person, PersonDto> composite = new CompositeItemProcessor<>();\n    composite.setDelegates(List.of(\n            validatingProcessor(),\n            adultFilter(),\n            personTransformer()\n    ));\n    return composite;\n}\n\n@Bean\npublic ItemProcessor<Person, Person> validatingProcessor() {\n    return person -> {\n        if (person.email() == null || person.email().isBlank()) {\n            return null; // skip invalid\n        }\n        return person;\n    };\n}\n\n@Bean\npublic ItemProcessor<Person, Person> adultFilter() {\n    return person -> person.age() >= 18 ? person : null;\n}\n\n@Bean\npublic ItemProcessor<Person, PersonDto> personTransformer() {\n    return person -> new PersonDto(\n            person.firstName().toUpperCase(),\n            person.lastName().toUpperCase(),\n            person.email().toLowerCase(),\n            person.age()\n    );\n}\n"}]}],"\n",["$","h2",null,{"children":"ValidatingItemProcessor (Bean Validation)"}],"\n",["$","p",null,{"children":["Validates items using JSR-380 (Bean Validation) annotations. Throws ",["$","$L2",null,{"children":"ValidationException"}]," on failure."]}],"\n",["$","p",null,{"children":"Add dependency:"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-groovy","children":"implementation 'org.springframework.boot:spring-boot-starter-validation'\n"}]}],"\n",["$","p",null,{"children":"The validated model:"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"public class PersonInput {\n    @NotBlank\n    private String firstName;\n\n    @NotBlank\n    private String lastName;\n\n    @Email\n    @NotBlank\n    private String email;\n\n    @Min(0)\n    @Max(150)\n    private int age;\n\n    // constructors, getters, setters\n}\n"}]}],"\n",["$","p",null,{"children":"Configure the validating processor:"}],"\n",["$","$L3",null,{"children":"$L4"}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10"]}],"$L11"]}],["$L12","$L13"],"$L14"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","$L2",null,{"className":"language-java","children":"@Bean\npublic ValidatingItemProcessor<PersonInput> validatingProcessor(Validator validator) {\n    ValidatingItemProcessor<PersonInput> processor = new ValidatingItemProcessor<>();\n    processor.setValidator(new SpringValidator<>(validator));\n    processor.setFilter(true); // filter instead of throwing exception\n    return processor;\n}\n"}]
+5:["$","p",null,{"children":"Custom Spring Batch Validator adapter:"}]
+6:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"public class SpringValidator<T> implements org.springframework.batch.item.validator.Validator<T> {\n\n    private final Validator validator;\n\n    public SpringValidator(Validator validator) {\n        this.validator = validator;\n    }\n\n    @Override\n    public void validate(T value) throws ValidationException {\n        Set<ConstraintViolation<T>> violations = validator.validate(value);\n        if (!violations.isEmpty()) {\n            String message = violations.stream()\n                    .map(v -> v.getPropertyPath() + \": \" + v.getMessage())\n                    .collect(Collectors.joining(\", \"));\n            throw new ValidationException(message);\n        }\n    }\n}\n"}]}]
+7:["$","h2",null,{"children":"Conditional Processing"}]
+8:["$","p",null,{"children":"Apply different logic based on item properties:"}]
+9:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"@Bean\npublic ItemProcessor<Order, Order> conditionalProcessor() {\n    return order -> {\n        if (order.total() > 1000) {\n            return order.withDiscount(0.10); // 10% discount for large orders\n        } else if (order.total() > 500) {\n            return order.withDiscount(0.05); // 5% discount\n        }\n        return order; // no discount\n    };\n}\n"}]}]
+a:["$","h2",null,{"children":"ClassifierCompositeItemProcessor"}]
+b:["$","p",null,{"children":"Routes items to different processors based on a classifier. Each item type gets its own processing logic."}]
+15:T529,@Bean
+public ClassifierCompositeItemProcessor<Transaction, Transaction> classifierProcessor() {
+    ClassifierCompositeItemProcessor<Transaction, Transaction> processor =
+            new ClassifierCompositeItemProcessor<>();
+
+    Map<String, ItemProcessor<Transaction, Transaction>> processorMap = Map.of(
+            "CREDIT", creditProcessor(),
+            "DEBIT", debitProcessor(),
+            "TRANSFER", transferProcessor()
+    );
+
+    processor.setClassifier(new Classifier<Transaction, ItemProcessor<?, ? extends Transaction>>() {
+        @Override
+        public ItemProcessor<Transaction, Transaction> classify(Transaction transaction) {
+            return processorMap.getOrDefault(transaction.type(), noOpProcessor());
+        }
+    });
+
+    return processor;
+}
+
+@Bean
+public ItemProcessor<Transaction, Transaction> creditProcessor() {
+    return tx -> tx.withProcessedDate(LocalDate.now()).withFee(0.0);
+}
+
+@Bean
+public ItemProcessor<Transaction, Transaction> debitProcessor() {
+    return tx -> tx.withProcessedDate(LocalDate.now()).withFee(tx.amount() * 0.01);
+}
+
+@Bean
+public ItemProcessor<Transaction, Transaction> transferProcessor() {
+    return tx -> tx.withProcessedDate(LocalDate.now()).withFee(2.50);
+}
+
+@Bean
+public ItemProcessor<Transaction, Transaction> noOpProcessor() {
+    return tx -> tx;
+}
+c:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$15"}]}]
+d:["$","h2",null,{"children":"Complete Job Example with Processor"}]
+e:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"@Configuration\npublic class PersonImportJobConfig {\n\n    @Bean\n    public Job personImportJob(JobRepository jobRepository, Step importStep) {\n        return new JobBuilder(\"personImportJob\", jobRepository)\n                .start(importStep)\n                .build();\n    }\n\n    @Bean\n    public Step importStep(JobRepository jobRepository,\n                           PlatformTransactionManager transactionManager,\n                           FlatFileItemReader<Person> reader,\n                           CompositeItemProcessor<Person, PersonDto> processor,\n                           JdbcBatchItemWriter<PersonDto> writer) {\n        return new StepBuilder(\"importStep\", jobRepository)\n                .<Person, PersonDto>chunk(500, transactionManager)\n                .reader(reader)\n                .processor(processor)\n                .writer(writer)\n                .build();\n    }\n}\n"}]}]
+f:["$","h2",null,{"children":"Exercises"}]
+10:["$","ol",null,{"children":["\n",["$","li",null,{"children":"Write a processor that filters out records with invalid email addresses (no @ sign) and transforms valid emails to lowercase."}],"\n",["$","li",null,{"children":["Create a ",["$","$L2",null,{"children":"CompositeItemProcessor"}]," that chains: validation, deduplication (track seen emails in a Set), and transformation."]}],"\n",["$","li",null,{"children":["Implement a ",["$","$L2",null,{"children":"ClassifierCompositeItemProcessor"}]," that routes orders to different processors based on their region (US, EU, APAC)."]}],"\n",["$","li",null,{"children":"Process a CSV of 1M records: filter out minors, validate emails, uppercase names. Measure throughput with chunk sizes of 100, 500, and 1000."}],"\n"]}]
+11:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-03-readers","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-05-writers","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+12:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+13:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+14:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+18:null

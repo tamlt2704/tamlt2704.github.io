@@ -1,0 +1,152 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+39:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+3a:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/svg-animation/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 2: CSS Animations on SVG"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-01-svg-basics","children":"prev: SVG Basics"}]," | ",["$","a",null,{"href":"./chapter-03-smil","children":"next: SMIL"}]]}],"\n",["$","p",null,{"children":"CSS animations work on SVG elements just like HTML elements. You can animate transforms, opacity, colors, stroke properties, and more. This is the simplest way to add motion to SVGs — no JavaScript required."}],"\n",["$","h2",null,{"children":"Transitions"}],"\n",["$","p",null,{"children":"The simplest animation: smooth property changes on state change (hover, focus, class toggle)."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"200\" height=\"200\" viewBox=\"0 0 200 200\">\n  <style>\n    .hover-circle {\n      fill: #3498db;\n      transition:\n        fill 0.3s ease,\n        r 0.3s ease;\n    }\n    .hover-circle:hover {\n      fill: #e74c3c;\n      r: 90;\n    }\n  </style>\n  <circle class=\"hover-circle\" cx=\"100\" cy=\"100\" r=\"70\" />\n</svg>\n"}]}],"\n",["$","p",null,{"children":"Visually: A blue circle that smoothly turns red and grows larger when you hover over it."}],"\n",["$","h2",null,{"children":"@keyframes Animations"}],"\n",["$","h3",null,{"children":"Basic Pulse"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"200\" height=\"200\" viewBox=\"0 0 200 200\">\n  <style>\n    .pulse {\n      animation: pulse 2s ease-in-out infinite;\n      transform-origin: center;\n    }\n    @keyframes pulse {\n      0%,\n      100% {\n        transform: scale(1);\n        opacity: 1;\n      }\n      50% {\n        transform: scale(1.2);\n        opacity: 0.7;\n      }\n    }\n  </style>\n  <circle class=\"pulse\" cx=\"100\" cy=\"100\" r=\"50\" fill=\"#e74c3c\" />\n</svg>\n"}]}],"\n",["$","p",null,{"children":"Visually: A red circle that rhythmically grows and fades, then shrinks back — like a heartbeat."}],"\n",["$","h3",null,{"children":"Rotation"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"200\" height=\"200\" viewBox=\"0 0 200 200\">\n  <style>\n    .spin {\n      animation: rotate 3s linear infinite;\n      transform-origin: 100px 100px;\n    }\n    @keyframes rotate {\n      from {\n        transform: rotate(0deg);\n      }\n      to {\n        transform: rotate(360deg);\n      }\n    }\n  </style>\n  <g class=\"spin\">\n    <rect x=\"80\" y=\"30\" width=\"40\" height=\"40\" rx=\"5\" fill=\"#3498db\" />\n    <rect x=\"130\" y=\"80\" width=\"40\" height=\"40\" rx=\"5\" fill=\"#e74c3c\" />\n    <rect x=\"80\" y=\"130\" width=\"40\" height=\"40\" rx=\"5\" fill=\"#2ecc71\" />\n    <rect x=\"30\" y=\"80\" width=\"40\" height=\"40\" rx=\"5\" fill=\"#f39c12\" />\n  </g>\n</svg>\n"}]}],"\n",["$","p",null,{"children":"Visually: Four colored squares arranged in a diamond pattern, spinning continuously around the center."}],"\n",["$","h2",null,{"children":"transform-origin"}],"\n",["$","p",null,{"children":["Critical for SVG animations. Unlike HTML, SVG elements default to ",["$","$L3",null,{"children":"transform-origin: 0 0"}]," (top-left of the SVG canvas), not the element's center."]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"300\" height=\"200\" viewBox=\"0 0 300 200\">\n  <style>\n    .rotate-corner {\n      animation: rotate 3s linear infinite;\n      transform-origin: 50px 50px; /* top-left of the rect */\n    }\n    .rotate-center {\n      animation: rotate 3s linear infinite;\n      transform-origin: 200px 100px; /* center of the rect */\n    }\n    @keyframes rotate {\n      to {\n        transform: rotate(360deg);\n      }\n    }\n  </style>\n  <!-- Rotates around its top-left corner -->\n  <rect class=\"rotate-corner\" x=\"50\" y=\"50\" width=\"60\" height=\"60\" fill=\"#3498db\" />\n\n  <!-- Rotates around its center -->\n  <rect class=\"rotate-center\" x=\"170\" y=\"70\" width=\"60\" height=\"60\" fill=\"#e74c3c\" />\n</svg>\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32"]}],"$L33"]}],["$L34","$L35"],"$L36"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","p",null,{"children":"Visually: The blue square orbits around its corner (wide arc). The red square spins in place around its center."}]
+5:["$","h2",null,{"children":"Line Drawing Effect (stroke-dasharray)"}]
+6:["$","p",null,{"children":["The most iconic SVG animation technique. By setting ",["$","$L3",null,{"children":"stroke-dasharray"}]," equal to the path length and animating ",["$","$L3",null,{"children":"stroke-dashoffset"}]," from that length to 0, the path appears to draw itself."]}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"300\" height=\"200\" viewBox=\"0 0 300 200\">\n  <style>\n    .draw {\n      stroke-dasharray: 800;\n      stroke-dashoffset: 800;\n      animation: draw 3s ease forwards;\n    }\n    @keyframes draw {\n      to {\n        stroke-dashoffset: 0;\n      }\n    }\n  </style>\n  <path\n    class=\"draw\"\n    d=\"M 20,100 C 20,20 140,20 150,100 C 160,180 280,180 280,100\"\n    fill=\"none\"\n    stroke=\"#e74c3c\"\n    stroke-width=\"4\"\n    stroke-linecap=\"round\"\n  />\n</svg>\n"}]}]
+8:["$","p",null,{"children":"Visually: An S-curve that draws itself from left to right over 3 seconds, as if an invisible pen is tracing it."}]
+9:["$","h3",null,{"children":"Line Drawing a Complex Shape"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"200\" height=\"200\" viewBox=\"0 0 100 100\">\n  <style>\n    .draw-check {\n      stroke-dasharray: 100;\n      stroke-dashoffset: 100;\n      animation: draw 0.8s ease forwards 0.3s;\n    }\n    .draw-circle {\n      stroke-dasharray: 283;\n      stroke-dashoffset: 283;\n      animation: draw 1s ease forwards;\n    }\n    @keyframes draw {\n      to {\n        stroke-dashoffset: 0;\n      }\n    }\n  </style>\n  <!-- Circle draws first -->\n  <circle\n    class=\"draw-circle\"\n    cx=\"50\"\n    cy=\"50\"\n    r=\"45\"\n    fill=\"none\"\n    stroke=\"#2ecc71\"\n    stroke-width=\"3\"\n  />\n  <!-- Checkmark draws after circle (0.3s delay) -->\n  <path\n    class=\"draw-check\"\n    d=\"M 25,50 L 45,70 L 75,30\"\n    fill=\"none\"\n    stroke=\"#2ecc71\"\n    stroke-width=\"4\"\n    stroke-linecap=\"round\"\n    stroke-linejoin=\"round\"\n  />\n</svg>\n"}]}]
+b:["$","p",null,{"children":"Visually: A green circle draws itself, then a checkmark draws inside it — like a success confirmation animation."}]
+c:["$","h3",null,{"children":"Getting the Path Length"}]
+d:["$","p",null,{"children":["To find the correct ",["$","$L3",null,{"children":"stroke-dasharray"}]," value, use JavaScript:"]}]
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"const path = document.querySelector(\"path\");\nconsole.log(path.getTotalLength()); // e.g., 523.4\n"}]}]
+f:["$","p",null,{"children":"Or set a large value (like 1000) — if it's larger than the actual path, it still works."}]
+10:["$","h2",null,{"children":"Hover Effects"}]
+11:["$","h3",null,{"children":"Icon Hover with Color and Scale"}]
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"100\" height=\"100\" viewBox=\"0 0 24 24\">\n  <style>\n    .icon-path {\n      fill: #666;\n      transition:\n        fill 0.2s ease,\n        transform 0.2s ease;\n      transform-origin: 12px 12px;\n    }\n    svg:hover .icon-path {\n      fill: #e74c3c;\n      transform: scale(1.1);\n    }\n  </style>\n  <!-- Heart icon -->\n  <path\n    class=\"icon-path\"\n    d=\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 \n       2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 \n       19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\"\n  />\n</svg>\n"}]}]
+13:["$","p",null,{"children":"Visually: A grey heart icon that turns red and slightly enlarges on hover."}]
+14:["$","h3",null,{"children":"Stroke Draw on Hover"}]
+15:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"200\" height=\"60\" viewBox=\"0 0 200 60\">\n  <style>\n    .btn-border {\n      stroke-dasharray: 500;\n      stroke-dashoffset: 500;\n      transition: stroke-dashoffset 0.6s ease;\n    }\n    svg:hover .btn-border {\n      stroke-dashoffset: 0;\n    }\n    .btn-text {\n      fill: #333;\n      font-family: sans-serif;\n      font-size: 14px;\n    }\n  </style>\n  <rect\n    class=\"btn-border\"\n    x=\"2\"\n    y=\"2\"\n    width=\"196\"\n    height=\"56\"\n    rx=\"8\"\n    fill=\"none\"\n    stroke=\"#3498db\"\n    stroke-width=\"2\"\n  />\n  <text class=\"btn-text\" x=\"100\" y=\"35\" text-anchor=\"middle\">Hover Me</text>\n</svg>\n"}]}]
+16:["$","p",null,{"children":"Visually: Text with an invisible border. On hover, a blue border draws itself around the text like a pen tracing the rectangle."}]
+17:["$","h2",null,{"children":"Loading Spinners"}]
+18:["$","h3",null,{"children":"Simple Rotating Spinner"}]
+19:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"50\" height=\"50\" viewBox=\"0 0 50 50\">\n  <style>\n    .spinner {\n      animation: rotate 1s linear infinite;\n      transform-origin: 25px 25px;\n    }\n    @keyframes rotate {\n      to {\n        transform: rotate(360deg);\n      }\n    }\n  </style>\n  <circle\n    class=\"spinner\"\n    cx=\"25\"\n    cy=\"25\"\n    r=\"20\"\n    fill=\"none\"\n    stroke=\"#3498db\"\n    stroke-width=\"4\"\n    stroke-dasharray=\"80\"\n    stroke-linecap=\"round\"\n  />\n</svg>\n"}]}]
+1a:["$","p",null,{"children":"Visually: A partial blue circle (arc) spinning continuously — the classic loading indicator."}]
+1b:["$","h3",null,{"children":"Pulsing Dots Loader"}]
+1c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"80\" height=\"40\" viewBox=\"0 0 80 40\">\n  <style>\n    .dot {\n      animation: bounce 1.4s ease-in-out infinite;\n    }\n    .dot:nth-child(1) {\n      animation-delay: 0s;\n    }\n    .dot:nth-child(2) {\n      animation-delay: 0.2s;\n    }\n    .dot:nth-child(3) {\n      animation-delay: 0.4s;\n    }\n    @keyframes bounce {\n      0%,\n      80%,\n      100% {\n        transform: translateY(0);\n        opacity: 0.4;\n      }\n      40% {\n        transform: translateY(-15px);\n        opacity: 1;\n      }\n    }\n  </style>\n  <circle class=\"dot\" cx=\"20\" cy=\"30\" r=\"6\" fill=\"#3498db\" />\n  <circle class=\"dot\" cx=\"40\" cy=\"30\" r=\"6\" fill=\"#3498db\" />\n  <circle class=\"dot\" cx=\"60\" cy=\"30\" r=\"6\" fill=\"#3498db\" />\n</svg>\n"}]}]
+1d:["$","p",null,{"children":"Visually: Three blue dots bouncing up and down in sequence — each one jumps up as the previous one comes down."}]
+1e:["$","h3",null,{"children":"Circular Progress Spinner"}]
+1f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\">\n  <style>\n    .track {\n      stroke: #eee;\n    }\n    .progress {\n      stroke-dasharray: 150;\n      stroke-dashoffset: 150;\n      animation:\n        fill-progress 2s ease forwards,\n        rotate 1.5s linear infinite;\n      transform-origin: 30px 30px;\n    }\n    @keyframes fill-progress {\n      to {\n        stroke-dashoffset: 0;\n      }\n    }\n    @keyframes rotate {\n      to {\n        transform: rotate(360deg);\n      }\n    }\n  </style>\n  <circle class=\"track\" cx=\"30\" cy=\"30\" r=\"24\" fill=\"none\" stroke-width=\"5\" />\n  <circle\n    class=\"progress\"\n    cx=\"30\"\n    cy=\"30\"\n    r=\"24\"\n    fill=\"none\"\n    stroke=\"#2ecc71\"\n    stroke-width=\"5\"\n    stroke-linecap=\"round\"\n  />\n</svg>\n"}]}]
+20:["$","p",null,{"children":"Visually: A grey circle track with a green arc that grows while spinning — combining progress indication with rotation."}]
+21:["$","h2",null,{"children":"Animating Multiple Properties"}]
+22:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"300\" height=\"200\" viewBox=\"0 0 300 200\">\n  <style>\n    .morph-rect {\n      animation: morph 4s ease-in-out infinite;\n    }\n    @keyframes morph {\n      0% {\n        rx: 0;\n        fill: #3498db;\n        transform: translate(0, 0);\n      }\n      25% {\n        rx: 50;\n        fill: #e74c3c;\n        transform: translate(50px, 0);\n      }\n      50% {\n        rx: 50;\n        fill: #2ecc71;\n        transform: translate(50px, 50px);\n      }\n      75% {\n        rx: 0;\n        fill: #f39c12;\n        transform: translate(0, 50px);\n      }\n      100% {\n        rx: 0;\n        fill: #3498db;\n        transform: translate(0, 0);\n      }\n    }\n  </style>\n  <rect class=\"morph-rect\" x=\"75\" y=\"25\" width=\"100\" height=\"100\" fill=\"#3498db\" />\n</svg>\n"}]}]
+23:["$","p",null,{"children":"Visually: A square that moves in a square path while changing color and morphing between a rectangle and a circle (via border-radius)."}]
+24:["$","h2",null,{"children":"Staggered Animations"}]
+37:T401,<svg width="300" height="100" viewBox="0 0 300 100">
+  <style>
+    .bar {
+      animation: grow 1.5s ease-in-out infinite alternate;
+      transform-origin: bottom;
+    }
+    .bar:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .bar:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    .bar:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+    .bar:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+    .bar:nth-child(5) {
+      animation-delay: 0.4s;
+    }
+    @keyframes grow {
+      from {
+        transform: scaleY(0.3);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+  </style>
+  <rect class="bar" x="40" y="10" width="30" height="80" rx="4" fill="#3498db" />
+  <rect class="bar" x="80" y="10" width="30" height="80" rx="4" fill="#2ecc71" />
+  <rect class="bar" x="120" y="10" width="30" height="80" rx="4" fill="#e74c3c" />
+  <rect class="bar" x="160" y="10" width="30" height="80" rx="4" fill="#f39c12" />
+  <rect class="bar" x="200" y="10" width="30" height="80" rx="4" fill="#9b59b6" />
+</svg>
+25:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"$37"}]}]
+26:["$","p",null,{"children":"Visually: Five colored bars that grow and shrink in a wave pattern — each one starts slightly after the previous, creating a ripple effect like an audio equalizer."}]
+27:["$","h2",null,{"children":"Morphing with CSS (Limited)"}]
+28:["$","p",null,{"children":"CSS can animate between simple shape values in some browsers:"}]
+29:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<svg width=\"200\" height=\"200\" viewBox=\"0 0 200 200\">\n  <style>\n    .morph-shape {\n      d: path(\"M 100,20 L 180,180 L 20,180 Z\");\n      transition: d 1s ease;\n      fill: #3498db;\n    }\n    svg:hover .morph-shape {\n      d: path(\"M 100,20 L 180,100 L 100,180 L 20,100 Z\");\n    }\n  </style>\n  <path class=\"morph-shape\" />\n</svg>\n"}]}]
+2a:["$","p",null,{"children":["Visually: A blue triangle that morphs into a diamond shape on hover. Note: the ",["$","$L3",null,{"children":"d"}]," property animation works in Chrome/Edge but has limited support elsewhere. For cross-browser morphing, use GSAP MorphSVGPlugin (Chapter 4)."]}]
+2b:["$","h2",null,{"children":"Complete Example: Animated Notification Bell"}]
+38:T4df,<svg width="100" height="100" viewBox="0 0 24 24">
+  <style>
+    .bell {
+      transform-origin: 12px 2px;
+      animation: ring 2s ease infinite;
+    }
+    .bell-dot {
+      animation: pulse-dot 2s ease infinite;
+    }
+    @keyframes ring {
+      0%,
+      70%,
+      100% {
+        transform: rotate(0deg);
+      }
+      5% {
+        transform: rotate(15deg);
+      }
+      10% {
+        transform: rotate(-15deg);
+      }
+      15% {
+        transform: rotate(10deg);
+      }
+      20% {
+        transform: rotate(-10deg);
+      }
+      25% {
+        transform: rotate(5deg);
+      }
+      30% {
+        transform: rotate(0deg);
+      }
+    }
+    @keyframes pulse-dot {
+      0%,
+      70%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      85% {
+        transform: scale(1.3);
+        opacity: 0.8;
+      }
+    }
+  </style>
+  <!-- Bell body -->
+  <path
+    class="bell"
+    fill="#f39c12"
+    d="M12 2C11.45 2 11 2.45 11 3v1.07C7.61 4.56 5 7.47 5 11v5l-2 2v1h18v-1l-2-2v-5c0-3.53-2.61-6.44-6-6.93V3c0-.55-.45-1-1-1z"
+  />
+  <!-- Bell clapper -->
+  <path fill="#f39c12" d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z" />
+  <!-- Notification dot -->
+  <circle class="bell-dot" cx="17" cy="6" r="3" fill="#e74c3c" />
+</svg>
+2c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"$38"}]}]
+2d:["$","p",null,{"children":"Visually: A golden bell that swings back and forth (like it's ringing), with a red notification dot that pulses. The bell swings quickly then settles, pauses, then rings again."}]
+2e:["$","h2",null,{"children":"Performance Tips"}]
+2f:["$","ul",null,{"children":["\n",["$","li",null,{"children":["Animate ",["$","$L3",null,{"children":"transform"}]," and ",["$","$L3",null,{"children":"opacity"}]," — they're GPU-accelerated"]}],"\n",["$","li",null,{"children":["Avoid animating ",["$","$L3",null,{"children":"width"}],", ",["$","$L3",null,{"children":"height"}],", ",["$","$L3",null,{"children":"x"}],", ",["$","$L3",null,{"children":"y"}]," — they trigger layout recalculation"]}],"\n",["$","li",null,{"children":["Use ",["$","$L3",null,{"children":"will-change: transform"}]," for complex animations"]}],"\n",["$","li",null,{"children":["Prefer ",["$","$L3",null,{"children":"transform-origin"}]," in pixels for SVG (percentages can be unreliable)"]}],"\n",["$","li",null,{"children":"Test on mobile — complex SVG animations can be expensive"}],"\n"]}]
+30:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-css","children":"/* Good: GPU-accelerated */\n.fast {\n  animation: spin 1s linear infinite;\n}\n@keyframes spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n/* Avoid: triggers layout */\n.slow {\n  animation: move 1s linear infinite;\n}\n@keyframes move {\n  to {\n    cx: 200;\n  }\n}\n"}]}]
+31:["$","h2",null,{"children":"Key Takeaways"}]
+32:["$","ul",null,{"children":["\n",["$","li",null,{"children":"CSS transitions handle simple state changes (hover, active)"}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"@keyframes"}]," enables complex multi-step animations"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"transform-origin"}]," must be set explicitly for SVG elements (use pixel values)"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"stroke-dasharray"}]," + ",["$","$L3",null,{"children":"stroke-dashoffset"}]," creates the line drawing effect"]}],"\n",["$","li",null,{"children":["Stagger animations with ",["$","$L3",null,{"children":"animation-delay"}]," for wave/ripple effects"]}],"\n",["$","li",null,{"children":["Stick to ",["$","$L3",null,{"children":"transform"}]," and ",["$","$L3",null,{"children":"opacity"}]," for best performance"]}],"\n"]}]
+33:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/svg-animation/chapter-01-svg-basics","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/svg-animation/chapter-03-smil","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+34:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+35:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+36:["$","$L39",null,{"children":["$","$3a",null,{"name":"Next.MetadataOutlet","children":"$@3b"}]}]
+3b:null

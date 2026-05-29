@@ -1,0 +1,58 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+f:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+4:T443,import { ReactFlow, ReactFlowProvider, useReactFlow } from "@xyflow/react";
+import type { Node, Edge } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+const nodes: Node[] = [{ id: "1", position: { x: 0, y: 0 }, data: { label: "Hello" } }];
+const edges: Edge[] = [];
+
+function Toolbar() {
+  const { fitView, zoomIn, zoomOut } = useReactFlow();
+  return (
+    <div className="absolute top-4 left-4 z-10 flex gap-2">
+      <button onClick={() => zoomIn()} className="rounded bg-white px-3 py-1 shadow">
+        +
+      </button>
+      <button onClick={() => zoomOut()} className="rounded bg-white px-3 py-1 shadow">
+        -
+      </button>
+      <button onClick={() => fitView()} className="rounded bg-white px-3 py-1 shadow">
+        Fit
+      </button>
+    </div>
+  );
+}
+
+function Flow() {
+  return (
+    <div className="relative h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} fitView>
+        <Toolbar />
+      </ReactFlow>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ReactFlowProvider>
+      <Flow />
+    </ReactFlowProvider>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/react-flow/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"React Flow: Setup"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-00-overview","children":"prev: Overview"}]," | ",["$","a",null,{"href":"./chapter-02-nodes","children":"next: Nodes"}]]}],"\n",["$","h2",null,{"children":"Installation"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"// npm install @xyflow/react\n// The package includes TypeScript types out of the box\n"}]}],"\n",["$","h2",null,{"children":"Basic ReactFlow Component"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"import { ReactFlow, Background, Controls, MiniMap } from \"@xyflow/react\";\nimport type { Node, Edge } from \"@xyflow/react\";\nimport \"@xyflow/react/dist/style.css\";\n\nconst initialNodes: Node[] = [\n  { id: \"1\", type: \"input\", position: { x: 250, y: 0 }, data: { label: \"Input Node\" } },\n  { id: \"2\", position: { x: 100, y: 100 }, data: { label: \"Default Node\" } },\n  { id: \"3\", type: \"output\", position: { x: 250, y: 200 }, data: { label: \"Output Node\" } },\n];\n\nconst initialEdges: Edge[] = [\n  { id: \"e1-2\", source: \"1\", target: \"2\" },\n  { id: \"e2-3\", source: \"2\", target: \"3\" },\n];\n\nexport default function App() {\n  return (\n    <div className=\"h-screen w-screen\">\n      <ReactFlow nodes={initialNodes} edges={initialEdges} fitView>\n        <Background />\n        <Controls />\n        <MiniMap />\n      </ReactFlow>\n    </div>\n  );\n}\n"}]}],"\n",["$","h2",null,{"children":"ReactFlowProvider"}],"\n",["$","p",null,{"children":["Wrap your app with ",["$","$L3",null,{"children":"ReactFlowProvider"}]," when you need to access React Flow state from components outside the ",["$","$L3",null,{"children":"ReactFlow"}]," component:"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$4"}]}],"\n",["$","h2",null,{"children":"TypeScript Types"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"import type {\n  Node,\n  Edge,\n  NodeTypes,\n  EdgeTypes,\n  OnNodesChange,\n  OnEdgesChange,\n  OnConnect,\n  Connection,\n  NodeProps,\n  EdgeProps,\n  Position,\n  XYPosition,\n} from \"@xyflow/react\";\n\n// Custom node data typing\ntype MyNodeData = { label: string; value: number };\n\nconst myNode: Node<MyNodeData> = {\n  id: \"1\",\n  type: \"custom\",\n  position: { x: 0, y: 0 },\n  data: { label: \"Typed\", value: 42 },\n};\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La"]}],"$Lb"]}],["$Lc","$Ld"],"$Le"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"fitView Options"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"import { ReactFlow } from \"@xyflow/react\";\nimport type { Node, Edge } from \"@xyflow/react\";\nimport \"@xyflow/react/dist/style.css\";\n\nconst nodes: Node[] = [\n  { id: \"1\", position: { x: 0, y: 0 }, data: { label: \"A\" } },\n  { id: \"2\", position: { x: 300, y: 200 }, data: { label: \"B\" } },\n];\nconst edges: Edge[] = [{ id: \"e1-2\", source: \"1\", target: \"2\" }];\n\nexport default function App() {\n  return (\n    <div className=\"h-screen w-screen\">\n      <ReactFlow\n        nodes={nodes}\n        edges={edges}\n        fitView\n        fitViewOptions={{ padding: 0.2, maxZoom: 1.5 }}\n      />\n    </div>\n  );\n}\n"}]}]
+7:["$","h2",null,{"children":"Default Styles"}]
+8:["$","p",null,{"children":"Always import the default stylesheet — without it, nodes and edges won't render correctly:"}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"import \"@xyflow/react/dist/style.css\";\n"}]}]
+a:["$","p",null,{"children":["You can override styles with CSS or Tailwind by targeting ",["$","$L3",null,{"children":".react-flow"}]," class selectors."]}]
+b:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/react-flow/chapter-00-overview","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/react-flow/chapter-02-nodes","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+e:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+11:null

@@ -1,0 +1,56 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1b:"$Sreact.suspense"
+4:T413,@Service
+@RequiredArgsConstructor
+public class InventoryService {
+
+    private final RedissonClient redissonClient;
+    private final ProductRepository productRepository;
+
+    public void decrementStock(Long productId, int quantity) {
+        RLock lock = redissonClient.getLock("lock:product:" + productId);
+        try {
+            // Wait up to 10s to acquire, auto-release after 30s
+            if (lock.tryLock(10, 30, TimeUnit.SECONDS)) {
+                try {
+                    Product product = productRepository.findById(productId).orElseThrow();
+                    if (product.getStock() < quantity) {
+                        throw new IllegalStateException("Insufficient stock");
+                    }
+                    product.setStock(product.getStock() - quantity);
+                    productRepository.save(product);
+                } finally {
+                    lock.unlock();
+                }
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/redis-mastery/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 5: Distributed Patterns"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-04-pubsub","children":"← Pub/Sub & Streams"}]," | ",["$","a",null,{"href":"./chapter-06-persistence","children":"Next: Persistence & HA →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"5.1 Distributed Locks with Redisson"}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"build.gradle"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-groovy","children":"dependencies {\n    implementation 'org.redisson:redisson-spring-boot-starter:3.27.0'\n}\n"}]}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"Configuration"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\npublic class RedissonConfig {\n\n    @Bean\n    public RedissonClient redissonClient() {\n        Config config = new Config();\n        config.useSingleServer().setAddress(\"redis://localhost:6379\");\n        return Redisson.create(config);\n    }\n}\n"}]}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"Using distributed locks"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"redis-cli lock equivalent"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# Acquire lock (SET with NX and EX)\nredis-cli SET lock:product:1 \"owner-abc\" NX EX 30\n\n# Release lock (only if owner matches - use Lua for atomicity)\nredis-cli EVAL \"if redis.call('get',KEYS[1]) == ARGV[1] then return redis.call('del',KEYS[1]) else return 0 end\" 1 lock:product:1 \"owner-abc\"\n"}]}],"\n",["$","h2",null,{"children":"5.2 Rate Limiting"}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"Sliding window rate limiter"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Service\n@RequiredArgsConstructor\npublic class RateLimiterService {\n\n    private final StringRedisTemplate redisTemplate;\n\n    public boolean isAllowed(String clientId, int maxRequests, Duration window) {\n        String key = \"ratelimit:\" + clientId;\n        long now = System.currentTimeMillis();\n        long windowStart = now - window.toMillis();\n\n        // Remove old entries, add current, count\n        redisTemplate.opsForZSet().removeRangeByScore(key, 0, windowStart);\n        redisTemplate.opsForZSet().add(key, String.valueOf(now), now);\n        redisTemplate.expire(key, window);\n\n        Long count = redisTemplate.opsForZSet().zCard(key);\n        return count != null && count <= maxRequests;\n    }\n}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15"]}],"$L16"]}],["$L17","$L18"],"$L19"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","p",null,{"children":["$","strong",null,{"children":"Fixed window counter (simpler)"}]}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public boolean isAllowedFixedWindow(String clientId, int maxRequests, Duration window) {\n    String key = \"ratelimit:fixed:\" + clientId;\n    Long count = redisTemplate.opsForValue().increment(key);\n    if (count == 1) {\n        redisTemplate.expire(key, window);\n    }\n    return count <= maxRequests;\n}\n"}]}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# redis-cli: simple rate limit check\nredis-cli INCR ratelimit:user:1\nredis-cli EXPIRE ratelimit:user:1 60\nredis-cli GET ratelimit:user:1\n"}]}]
+8:["$","h2",null,{"children":"5.3 Session Storage"}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\n@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1800)\npublic class SessionConfig {\n}\n"}]}]
+a:["$","p",null,{"children":["$","strong",null,{"children":"build.gradle"}]}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-groovy","children":"dependencies {\n    implementation 'org.springframework.session:spring-session-data-redis'\n}\n"}]}]
+c:["$","p",null,{"children":["$","strong",null,{"children":"Using sessions in a controller"}]}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@RestController\npublic class SessionController {\n\n    @GetMapping(\"/login\")\n    public String login(HttpSession session, @RequestParam String username) {\n        session.setAttribute(\"user\", username);\n        return \"Logged in as \" + username;\n    }\n\n    @GetMapping(\"/profile\")\n    public String profile(HttpSession session) {\n        String user = (String) session.getAttribute(\"user\");\n        return user != null ? \"Hello \" + user : \"Not logged in\";\n    }\n}\n"}]}]
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# Inspect session in Redis\nredis-cli KEYS \"spring:session:*\"\nredis-cli HGETALL \"spring:session:sessions:<session-id>\"\n"}]}]
+f:["$","h2",null,{"children":"5.4 Leaderboards with Sorted Sets"}]
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Service\n@RequiredArgsConstructor\npublic class LeaderboardService {\n\n    private final StringRedisTemplate redisTemplate;\n    private static final String KEY = \"game:leaderboard\";\n\n    public void addScore(String player, double score) {\n        redisTemplate.opsForZSet().add(KEY, player, score);\n    }\n\n    public void incrementScore(String player, double delta) {\n        redisTemplate.opsForZSet().incrementScore(KEY, player, delta);\n    }\n\n    public Set<ZSetOperations.TypedTuple<String>> getTopPlayers(int count) {\n        return redisTemplate.opsForZSet().reverseRangeWithScores(KEY, 0, count - 1);\n    }\n\n    public Long getPlayerRank(String player) {\n        return redisTemplate.opsForZSet().reverseRank(KEY, player);\n    }\n\n    public Double getPlayerScore(String player) {\n        return redisTemplate.opsForZSet().score(KEY, player);\n    }\n}\n"}]}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# redis-cli leaderboard\nredis-cli ZADD game:leaderboard 1500 \"alice\" 1200 \"bob\" 1800 \"charlie\"\nredis-cli ZREVRANGE game:leaderboard 0 2 WITHSCORES\nredis-cli ZREVRANK game:leaderboard \"alice\"\nredis-cli ZINCRBY game:leaderboard 100 \"bob\"\n"}]}]
+12:["$","h2",null,{"children":"Exercises"}]
+13:["$","ol",null,{"children":["\n",["$","li",null,{"children":"Implement a distributed lock for a payment processing service. Test with concurrent requests."}],"\n",["$","li",null,{"children":"Build a sliding window rate limiter that allows 100 requests per minute per user."}],"\n",["$","li",null,{"children":"Configure Spring Session with Redis. Verify session data persists across server restarts."}],"\n",["$","li",null,{"children":"Build a real-time leaderboard with endpoints for adding scores, getting top-N, and player rank."}],"\n"]}]
+14:["$","hr",null,{}]
+15:["$","p",null,{"children":[["$","a",null,{"href":"./chapter-04-pubsub","children":"← Pub/Sub & Streams"}]," | ",["$","a",null,{"href":"./chapter-06-persistence","children":"Next: Persistence & HA →"}]]}]
+16:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/redis-mastery/chapter-04-pubsub","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/redis-mastery/chapter-06-persistence","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+17:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+18:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+19:["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]
+1c:null

@@ -1,0 +1,583 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+18:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+4:Te75,import { useCallback, useState, DragEvent } from "react";
+import {
+  ReactFlow,
+  Background,
+  Controls,
+  Handle,
+  Position,
+  addEdge,
+  applyNodeChanges,
+  applyEdgeChanges,
+  ReactFlowProvider,
+  useReactFlow,
+} from "@xyflow/react";
+import type {
+  Node,
+  Edge,
+  NodeProps,
+  NodeTypes,
+  OnNodesChange,
+  OnEdgesChange,
+  OnConnect,
+} from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+function TriggerNode({ data }: NodeProps) {
+  return (
+    <div className="rounded-lg border-2 border-amber-500 bg-amber-100 px-4 py-2">
+      <span className="text-xs font-bold text-amber-700">TRIGGER</span>
+      <p className="text-sm">{data.label}</p>
+      <Handle type="source" position={Position.Bottom} />
+    </div>
+  );
+}
+
+function ActionNode({ data }: NodeProps) {
+  return (
+    <div className="rounded-lg border-2 border-blue-400 bg-blue-50 px-4 py-2">
+      <Handle type="target" position={Position.Top} />
+      <span className="text-xs font-bold text-blue-600">ACTION</span>
+      <p className="text-sm">{data.label}</p>
+      <Handle type="source" position={Position.Bottom} />
+    </div>
+  );
+}
+
+const nodeTypes: NodeTypes = { trigger: TriggerNode, action: ActionNode };
+
+let id = 0;
+const getId = () => `node_${id++}`;
+
+function Sidebar() {
+  const onDragStart = (e: DragEvent, type: string, label: string) => {
+    e.dataTransfer.setData("type", type);
+    e.dataTransfer.setData("label", label);
+  };
+  return (
+    <aside className="w-52 space-y-2 border-r bg-gray-50 p-4">
+      <p className="text-sm font-bold">Nodes</p>
+      <div
+        className="cursor-grab rounded bg-amber-100 p-2 text-sm"
+        draggable
+        onDragStart={(e) => onDragStart(e, "trigger", "Webhook")}
+      >
+        Webhook Trigger
+      </div>
+      <div
+        className="cursor-grab rounded bg-blue-50 p-2 text-sm"
+        draggable
+        onDragStart={(e) => onDragStart(e, "action", "HTTP Request")}
+      >
+        HTTP Request
+      </div>
+      <div
+        className="cursor-grab rounded bg-blue-50 p-2 text-sm"
+        draggable
+        onDragStart={(e) => onDragStart(e, "action", "Send Email")}
+      >
+        Send Email
+      </div>
+    </aside>
+  );
+}
+
+function Flow() {
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [edges, setEdges] = useState<Edge[]>([]);
+  const { screenToFlowPosition } = useReactFlow();
+
+  const onNodesChange: OnNodesChange = useCallback(
+    (c) => setNodes((n) => applyNodeChanges(c, n)),
+    [],
+  );
+  const onEdgesChange: OnEdgesChange = useCallback(
+    (c) => setEdges((e) => applyEdgeChanges(c, e)),
+    [],
+  );
+  const onConnect: OnConnect = useCallback((c) => setEdges((e) => addEdge(c, e)), []);
+
+  const onDrop = useCallback(
+    (event: DragEvent) => {
+      event.preventDefault();
+      const type = event.dataTransfer.getData("type");
+      const label = event.dataTransfer.getData("label");
+      const position = screenToFlowPosition({ x: event.clientX, y: event.clientY });
+      setNodes((nds) => [...nds, { id: getId(), type, position, data: { label } }]);
+    },
+    [screenToFlowPosition],
+  );
+
+  return (
+    <div className="h-full flex-1">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        nodeTypes={nodeTypes}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        onDrop={onDrop}
+        onDragOver={(e) => e.preventDefault()}
+        fitView
+      >
+        <Background />
+        <Controls />
+      </ReactFlow>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ReactFlowProvider>
+      <div className="flex h-screen w-screen">
+        <Sidebar />
+        <Flow />
+      </div>
+    </ReactFlowProvider>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/react-flow/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"React Flow: Projects"}],"\n",["$","p",null,{"children":["$","a",null,{"href":"./chapter-07-state","children":"prev: State Management"}]}],"\n",["$","h2",null,{"children":"Workflow Builder (n8n/Zapier Style)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le"]}],"$Lf"]}],["$L10","$L11"],"$L12"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Mind Map Editor"}]
+13:T8b8,import { useCallback } from "react";
+import {
+  ReactFlow,
+  Background,
+  Handle,
+  Position,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+} from "@xyflow/react";
+import type { Node, Edge, NodeProps, NodeTypes, OnConnect } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+function MindMapNode({ data }: NodeProps) {
+  return (
+    <div className="rounded-full border-2 border-violet-400 bg-white px-4 py-2 shadow">
+      <Handle type="target" position={Position.Left} />
+      <span className="text-sm font-medium">{data.label}</span>
+      <Handle type="source" position={Position.Right} />
+    </div>
+  );
+}
+
+const nodeTypes: NodeTypes = { mindmap: MindMapNode };
+
+const initNodes: Node[] = [
+  { id: "1", type: "mindmap", position: { x: 0, y: 100 }, data: { label: "React Flow" } },
+  { id: "2", type: "mindmap", position: { x: 250, y: 0 }, data: { label: "Nodes" } },
+  { id: "3", type: "mindmap", position: { x: 250, y: 100 }, data: { label: "Edges" } },
+  { id: "4", type: "mindmap", position: { x: 250, y: 200 }, data: { label: "Layout" } },
+  { id: "5", type: "mindmap", position: { x: 450, y: 0 }, data: { label: "Custom" } },
+  { id: "6", type: "mindmap", position: { x: 450, y: 50 }, data: { label: "Handles" } },
+];
+
+const initEdges: Edge[] = [
+  { id: "e1-2", source: "1", target: "2", type: "smoothstep" },
+  { id: "e1-3", source: "1", target: "3", type: "smoothstep" },
+  { id: "e1-4", source: "1", target: "4", type: "smoothstep" },
+  { id: "e2-5", source: "2", target: "5", type: "smoothstep" },
+  { id: "e2-6", source: "2", target: "6", type: "smoothstep" },
+];
+
+export default function App() {
+  const [nodes, , onNodesChange] = useNodesState(initNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
+  const onConnect: OnConnect = useCallback(
+    (c) => setEdges((e) => addEdge({ ...c, type: "smoothstep" }, e)),
+    [],
+  );
+
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        nodeTypes={nodeTypes}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        fitView
+      >
+        <Background variant="dots" />
+      </ReactFlow>
+    </div>
+  );
+}
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$13"}]}]
+7:["$","h2",null,{"children":"Database Schema Designer"}]
+14:T9d8,import { ReactFlow, Handle, Position, Background } from "@xyflow/react";
+import type { Node, Edge, NodeProps, NodeTypes } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+type Column = { name: string; type: string; pk?: boolean };
+type TableData = { label: string; columns: Column[] };
+
+function TableNode({ data }: NodeProps<Node<TableData>>) {
+  return (
+    <div className="min-w-[180px] overflow-hidden rounded-lg border-2 border-gray-700 bg-white">
+      <Handle type="target" position={Position.Left} />
+      <div className="bg-gray-700 px-3 py-1 text-sm font-bold text-white">{data.label}</div>
+      <div className="divide-y">
+        {data.columns.map((col) => (
+          <div key={col.name} className="flex justify-between px-3 py-1 text-xs">
+            <span>
+              {col.pk ? "🔑 " : ""}
+              {col.name}
+            </span>
+            <span className="text-gray-400">{col.type}</span>
+          </div>
+        ))}
+      </div>
+      <Handle type="source" position={Position.Right} />
+    </div>
+  );
+}
+
+const nodeTypes: NodeTypes = { table: TableNode };
+
+const nodes: Node[] = [
+  {
+    id: "1",
+    type: "table",
+    position: { x: 0, y: 0 },
+    data: {
+      label: "users",
+      columns: [
+        { name: "id", type: "uuid", pk: true },
+        { name: "name", type: "varchar" },
+        { name: "email", type: "varchar" },
+      ],
+    },
+  },
+  {
+    id: "2",
+    type: "table",
+    position: { x: 300, y: 0 },
+    data: {
+      label: "posts",
+      columns: [
+        { name: "id", type: "uuid", pk: true },
+        { name: "user_id", type: "uuid" },
+        { name: "title", type: "varchar" },
+        { name: "body", type: "text" },
+      ],
+    },
+  },
+  {
+    id: "3",
+    type: "table",
+    position: { x: 300, y: 200 },
+    data: {
+      label: "comments",
+      columns: [
+        { name: "id", type: "uuid", pk: true },
+        { name: "post_id", type: "uuid" },
+        { name: "author_id", type: "uuid" },
+        { name: "text", type: "text" },
+      ],
+    },
+  },
+];
+
+const edges: Edge[] = [
+  { id: "e1-2", source: "1", target: "2", label: "1:N", type: "smoothstep" },
+  { id: "e2-3", source: "2", target: "3", label: "1:N", type: "smoothstep" },
+  { id: "e1-3", source: "1", target: "3", label: "1:N", type: "smoothstep" },
+];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$14"}]}]
+9:["$","h2",null,{"children":"State Machine Visualizer"}]
+15:T808,import { ReactFlow, Background, MarkerType } from "@xyflow/react";
+import type { Node, Edge } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+const nodes: Node[] = [
+  {
+    id: "idle",
+    position: { x: 0, y: 100 },
+    data: { label: "Idle" },
+    style: {
+      background: "#d1fae5",
+      border: "2px solid #10b981",
+      borderRadius: 999,
+      padding: "8px 16px",
+    },
+  },
+  {
+    id: "loading",
+    position: { x: 200, y: 0 },
+    data: { label: "Loading" },
+    style: {
+      background: "#dbeafe",
+      border: "2px solid #3b82f6",
+      borderRadius: 999,
+      padding: "8px 16px",
+    },
+  },
+  {
+    id: "success",
+    position: { x: 400, y: 0 },
+    data: { label: "Success" },
+    style: {
+      background: "#d1fae5",
+      border: "2px solid #10b981",
+      borderRadius: 999,
+      padding: "8px 16px",
+    },
+  },
+  {
+    id: "error",
+    position: { x: 400, y: 200 },
+    data: { label: "Error" },
+    style: {
+      background: "#fee2e2",
+      border: "2px solid #ef4444",
+      borderRadius: 999,
+      padding: "8px 16px",
+    },
+  },
+];
+
+const edges: Edge[] = [
+  {
+    id: "e1",
+    source: "idle",
+    target: "loading",
+    label: "FETCH",
+    markerEnd: { type: MarkerType.ArrowClosed },
+  },
+  {
+    id: "e2",
+    source: "loading",
+    target: "success",
+    label: "RESOLVE",
+    markerEnd: { type: MarkerType.ArrowClosed },
+  },
+  {
+    id: "e3",
+    source: "loading",
+    target: "error",
+    label: "REJECT",
+    markerEnd: { type: MarkerType.ArrowClosed },
+  },
+  {
+    id: "e4",
+    source: "error",
+    target: "idle",
+    label: "RETRY",
+    markerEnd: { type: MarkerType.ArrowClosed },
+    type: "smoothstep",
+  },
+  {
+    id: "e5",
+    source: "success",
+    target: "idle",
+    label: "RESET",
+    markerEnd: { type: MarkerType.ArrowClosed },
+    type: "smoothstep",
+  },
+];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} fitView>
+        <Background variant="dots" />
+      </ReactFlow>
+    </div>
+  );
+}
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$15"}]}]
+b:["$","h2",null,{"children":"Data Pipeline Builder (DAG)"}]
+16:Ta5e,import { useCallback } from "react";
+import {
+  ReactFlow,
+  Background,
+  Controls,
+  Handle,
+  Position,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+  MarkerType,
+} from "@xyflow/react";
+import type { Node, Edge, NodeProps, NodeTypes, OnConnect } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+function PipelineNode({ data }: NodeProps) {
+  const colors: Record<string, string> = {
+    source: "border-green-500 bg-green-50",
+    transform: "border-blue-500 bg-blue-50",
+    sink: "border-red-500 bg-red-50",
+  };
+  return (
+    <div className={`rounded-lg border-2 px-4 py-2 ${colors[data.kind] || ""}`}>
+      <Handle type="target" position={Position.Top} />
+      <span className="text-xs font-bold text-gray-500 uppercase">{data.kind}</span>
+      <p className="text-sm font-medium">{data.label}</p>
+      <Handle type="source" position={Position.Bottom} />
+    </div>
+  );
+}
+
+const nodeTypes: NodeTypes = { pipeline: PipelineNode };
+
+const nodes: Node[] = [
+  {
+    id: "1",
+    type: "pipeline",
+    position: { x: 0, y: 0 },
+    data: { label: "PostgreSQL", kind: "source" },
+  },
+  {
+    id: "2",
+    type: "pipeline",
+    position: { x: 200, y: 0 },
+    data: { label: "S3 Bucket", kind: "source" },
+  },
+  {
+    id: "3",
+    type: "pipeline",
+    position: { x: 100, y: 120 },
+    data: { label: "Join", kind: "transform" },
+  },
+  {
+    id: "4",
+    type: "pipeline",
+    position: { x: 100, y: 240 },
+    data: { label: "Aggregate", kind: "transform" },
+  },
+  {
+    id: "5",
+    type: "pipeline",
+    position: { x: 100, y: 360 },
+    data: { label: "BigQuery", kind: "sink" },
+  },
+];
+
+const edges: Edge[] = [
+  { id: "e1-3", source: "1", target: "3", markerEnd: { type: MarkerType.ArrowClosed } },
+  { id: "e2-3", source: "2", target: "3", markerEnd: { type: MarkerType.ArrowClosed } },
+  { id: "e3-4", source: "3", target: "4", markerEnd: { type: MarkerType.ArrowClosed } },
+  { id: "e4-5", source: "4", target: "5", markerEnd: { type: MarkerType.ArrowClosed } },
+];
+
+export default function App() {
+  const [nds, , onNodesChange] = useNodesState(nodes);
+  const [eds, setEdges, onEdgesChange] = useEdgesState(edges);
+  const onConnect: OnConnect = useCallback(
+    (c) => setEdges((e) => addEdge({ ...c, markerEnd: { type: MarkerType.ArrowClosed } }, e)),
+    [],
+  );
+
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow
+        nodes={nds}
+        edges={eds}
+        nodeTypes={nodeTypes}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        fitView
+      >
+        <Background />
+        <Controls />
+      </ReactFlow>
+    </div>
+  );
+}
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$16"}]}]
+d:["$","h2",null,{"children":"Org Chart with Expand/Collapse"}]
+17:T8d3,import { useState, useCallback } from "react";
+import { ReactFlow, Background, Handle, Position, applyNodeChanges } from "@xyflow/react";
+import type { Node, Edge, NodeProps, NodeTypes, OnNodesChange } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+type OrgData = { label: string; role: string; children?: string[] };
+
+function OrgNode({ data, id }: NodeProps<Node<OrgData>>) {
+  const [expanded, setExpanded] = useState(true);
+  return (
+    <div className="min-w-[120px] rounded-lg border-2 border-slate-300 bg-white px-4 py-2 text-center">
+      <Handle type="target" position={Position.Top} />
+      <p className="text-sm font-bold">{data.label}</p>
+      <p className="text-xs text-gray-500">{data.role}</p>
+      {data.children && data.children.length > 0 && (
+        <button onClick={() => setExpanded(!expanded)} className="mt-1 text-xs text-blue-500">
+          {expanded ? "▼ Collapse" : "▶ Expand"}
+        </button>
+      )}
+      <Handle type="source" position={Position.Bottom} />
+    </div>
+  );
+}
+
+const nodeTypes: NodeTypes = { org: OrgNode };
+
+const nodes: Node[] = [
+  {
+    id: "1",
+    type: "org",
+    position: { x: 200, y: 0 },
+    data: { label: "Alice", role: "CEO", children: ["2", "3"] },
+  },
+  {
+    id: "2",
+    type: "org",
+    position: { x: 50, y: 120 },
+    data: { label: "Bob", role: "CTO", children: ["4"] },
+  },
+  { id: "3", type: "org", position: { x: 350, y: 120 }, data: { label: "Carol", role: "CFO" } },
+  { id: "4", type: "org", position: { x: 50, y: 240 }, data: { label: "Dave", role: "Engineer" } },
+];
+
+const edges: Edge[] = [
+  { id: "e1-2", source: "1", target: "2", type: "smoothstep" },
+  { id: "e1-3", source: "1", target: "3", type: "smoothstep" },
+  { id: "e2-4", source: "2", target: "4", type: "smoothstep" },
+];
+
+export default function App() {
+  const [nds, setNds] = useState(nodes);
+  const onNodesChange: OnNodesChange = useCallback(
+    (c) => setNds((n) => applyNodeChanges(c, n)),
+    [],
+  );
+
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow
+        nodes={nds}
+        edges={edges}
+        nodeTypes={nodeTypes}
+        onNodesChange={onNodesChange}
+        fitView
+      >
+        <Background variant="dots" />
+      </ReactFlow>
+    </div>
+  );
+}
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$17"}]}]
+f:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/react-flow/chapter-07-state","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+12:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

@@ -1,0 +1,323 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","react-flow","chapter-06-layout",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","react-flow/chapter-06-layout","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/react-flow/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/react-flow/chapter-05-custom-nodes","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/react-flow/chapter-07-state","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+13:Tc85,import { useCallback, useMemo } from "react";
+import {
+  ReactFlow,
+  Background,
+  Controls,
+  useNodesState,
+  useEdgesState,
+  Panel,
+} from "@xyflow/react";
+import type { Node, Edge } from "@xyflow/react";
+import Dagre from "@dagrejs/dagre";
+import "@xyflow/react/dist/style.css";
+
+const initialNodes: Node[] = [
+  { id: "1", position: { x: 0, y: 0 }, data: { label: "Start" } },
+  { id: "2", position: { x: 0, y: 0 }, data: { label: "Step A" } },
+  { id: "3", position: { x: 0, y: 0 }, data: { label: "Step B" } },
+  { id: "4", position: { x: 0, y: 0 }, data: { label: "Step C" } },
+  { id: "5", position: { x: 0, y: 0 }, data: { label: "End" } },
+];
+
+const initialEdges: Edge[] = [
+  { id: "e1-2", source: "1", target: "2" },
+  { id: "e1-3", source: "1", target: "3" },
+  { id: "e2-4", source: "2", target: "4" },
+  { id: "e3-4", source: "3", target: "4" },
+  { id: "e4-5", source: "4", target: "5" },
+];
+
+function getLayoutedElements(nodes: Node[], edges: Edge[], direction = "TB") {
+  const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
+  g.setGraph({ rankdir: direction, nodesep: 50, ranksep: 80 });
+
+  nodes.forEach((node) => g.setNode(node.id, { width: 150, height: 40 }));
+  edges.forEach((edge) => g.setEdge(edge.source, edge.target));
+  Dagre.layout(g);
+
+  const layoutedNodes = nodes.map((node) => {
+    const pos = g.node(node.id);
+    return { ...node, position: { x: pos.x - 75, y: pos.y - 20 } };
+  });
+  return { nodes: layoutedNodes, edges };
+}
+
+export default function App() {
+  const { nodes: layoutedNodes, edges: layoutedEdges } = useMemo(
+    () => getLayoutedElements(initialNodes, initialEdges, "TB"),
+    [],
+  );
+  const [nodes, setNodes, onNodesChange] = useNodesState(layoutedNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(layoutedEdges);
+
+  const onLayout = useCallback(
+    (direction: string) => {
+      const { nodes: ln, edges: le } = getLayoutedElements(nodes, edges, direction);
+      setNodes(ln);
+      setEdges(le);
+    },
+    [nodes, edges],
+  );
+
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        fitView
+      >
+        <Panel position="top-left">
+          <div className="flex gap-2">
+            <button
+              onClick={() => onLayout("TB")}
+              className="rounded bg-white px-3 py-1 text-sm shadow"
+            >
+              Top-Bottom
+            </button>
+            <button
+              onClick={() => onLayout("LR")}
+              className="rounded bg-white px-3 py-1 text-sm shadow"
+            >
+              Left-Right
+            </button>
+            <button
+              onClick={() => onLayout("BT")}
+              className="rounded bg-white px-3 py-1 text-sm shadow"
+            >
+              Bottom-Top
+            </button>
+            <button
+              onClick={() => onLayout("RL")}
+              className="rounded bg-white px-3 py-1 text-sm shadow"
+            >
+              Right-Left
+            </button>
+          </div>
+        </Panel>
+        <Background />
+        <Controls />
+      </ReactFlow>
+    </div>
+  );
+}
+10:[["$","h1",null,{"children":"React Flow: Auto-Layout"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-05-custom-nodes","children":"prev: Advanced Custom Nodes"}]," | ",["$","a",null,{"href":"./chapter-07-state","children":"next: State Management"}]]}],"\n",["$","h2",null,{"children":"Dagre (Hierarchical Layout)"}],"\n",["$","p",null,{"children":["Dagre is the most popular layout library for directed graphs. Install with ",["$","$L11",null,{"children":"npm install @dagrejs/dagre"}],"."]}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$13"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20"]
+14:["$","h2",null,{"children":"ELK (Advanced Layout)"}]
+15:["$","p",null,{"children":["ELK provides more sophisticated layout algorithms. Install with ",["$","$L11",null,{"children":"npm install elkjs"}],"."]}]
+21:T8bd,import { useCallback, useEffect, useState } from "react";
+import {
+  ReactFlow,
+  Background,
+  Controls,
+  useNodesState,
+  useEdgesState,
+  ReactFlowProvider,
+} from "@xyflow/react";
+import type { Node, Edge } from "@xyflow/react";
+import ELK from "elkjs/lib/elk.bundled.js";
+import "@xyflow/react/dist/style.css";
+
+const elk = new ELK();
+
+const initialNodes: Node[] = [
+  { id: "1", position: { x: 0, y: 0 }, data: { label: "Root" } },
+  { id: "2", position: { x: 0, y: 0 }, data: { label: "Branch A" } },
+  { id: "3", position: { x: 0, y: 0 }, data: { label: "Branch B" } },
+  { id: "4", position: { x: 0, y: 0 }, data: { label: "Leaf 1" } },
+  { id: "5", position: { x: 0, y: 0 }, data: { label: "Leaf 2" } },
+];
+
+const initialEdges: Edge[] = [
+  { id: "e1-2", source: "1", target: "2" },
+  { id: "e1-3", source: "1", target: "3" },
+  { id: "e2-4", source: "2", target: "4" },
+  { id: "e3-5", source: "3", target: "5" },
+];
+
+async function getLayoutedElements(nodes: Node[], edges: Edge[]) {
+  const graph = {
+    id: "root",
+    layoutOptions: {
+      "elk.algorithm": "layered",
+      "elk.direction": "DOWN",
+      "elk.spacing.nodeNode": "80",
+    },
+    children: nodes.map((n) => ({ id: n.id, width: 150, height: 40 })),
+    edges: edges.map((e) => ({ id: e.id, sources: [e.source], targets: [e.target] })),
+  };
+  const layout = await elk.layout(graph);
+  const layoutedNodes = nodes.map((node) => {
+    const elkNode = layout.children?.find((n) => n.id === node.id);
+    return { ...node, position: { x: elkNode?.x ?? 0, y: elkNode?.y ?? 0 } };
+  });
+  return { nodes: layoutedNodes, edges };
+}
+
+export default function App() {
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
+
+  useEffect(() => {
+    getLayoutedElements(initialNodes, initialEdges).then(({ nodes, edges }) => {
+      setNodes(nodes);
+      setEdges(edges);
+    });
+  }, []);
+
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        fitView
+      >
+        <Background />
+        <Controls />
+      </ReactFlow>
+    </div>
+  );
+}
+16:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$21"}]}]
+17:["$","h2",null,{"children":"D3-Hierarchy (Tree Layout)"}]
+18:["$","p",null,{"children":["For tree structures, ",["$","$L11",null,{"children":"d3-hierarchy"}]," provides clean layouts. Install with ",["$","$L11",null,{"children":"npm install d3-hierarchy"}],"."]}]
+22:T555,import { ReactFlow, Background, Controls } from "@xyflow/react";
+import type { Node, Edge } from "@xyflow/react";
+import { stratify, tree } from "d3-hierarchy";
+import "@xyflow/react/dist/style.css";
+
+const data = [
+  { id: "1", parentId: null, label: "CEO" },
+  { id: "2", parentId: "1", label: "CTO" },
+  { id: "3", parentId: "1", label: "CFO" },
+  { id: "4", parentId: "2", label: "Dev Lead" },
+  { id: "5", parentId: "2", label: "QA Lead" },
+  { id: "6", parentId: "3", label: "Accountant" },
+];
+
+function buildTree(): { nodes: Node[]; edges: Edge[] } {
+  const root = stratify<(typeof data)[0]>()
+    .id((d) => d.id)
+    .parentId((d) => d.parentId)(data);
+
+  const layout = tree<(typeof data)[0]>().nodeSize([180, 100])(root);
+
+  const nodes: Node[] = layout.descendants().map((d) => ({
+    id: d.data.id,
+    position: { x: d.x, y: d.y },
+    data: { label: d.data.label },
+  }));
+
+  const edges: Edge[] = layout.links().map((link) => ({
+    id: `e${link.source.data.id}-${link.target.data.id}`,
+    source: link.source.data.id,
+    target: link.target.data.id,
+  }));
+
+  return { nodes, edges };
+}
+
+const { nodes, edges } = buildTree();
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} fitView>
+        <Background />
+        <Controls />
+      </ReactFlow>
+    </div>
+  );
+}
+19:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$22"}]}]
+1a:["$","h2",null,{"children":"Force-Directed Layout"}]
+1b:["$","p",null,{"children":["Use ",["$","$L11",null,{"children":"d3-force"}]," for physics-based layouts. Install with ",["$","$L11",null,{"children":"npm install d3-force"}],"."]}]
+23:T6fe,import { useEffect, useState } from "react";
+import { ReactFlow, Background } from "@xyflow/react";
+import type { Node, Edge } from "@xyflow/react";
+import { forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide } from "d3-force";
+import "@xyflow/react/dist/style.css";
+
+const rawNodes = ["A", "B", "C", "D", "E", "F"].map((label, i) => ({
+  id: String(i + 1),
+  position: { x: 0, y: 0 },
+  data: { label },
+}));
+
+const rawEdges: Edge[] = [
+  { id: "e1-2", source: "1", target: "2" },
+  { id: "e1-3", source: "1", target: "3" },
+  { id: "e2-4", source: "2", target: "4" },
+  { id: "e3-5", source: "3", target: "5" },
+  { id: "e4-6", source: "4", target: "6" },
+  { id: "e5-6", source: "5", target: "6" },
+];
+
+function applyForceLayout(nodes: Node[], edges: Edge[]): Node[] {
+  const simNodes = nodes.map((n) => ({ ...n, x: Math.random() * 400, y: Math.random() * 400 }));
+  const simLinks = edges.map((e) => ({ source: e.source, target: e.target }));
+
+  const sim = forceSimulation(simNodes as any)
+    .force(
+      "link",
+      forceLink(simLinks as any)
+        .id((d: any) => d.id)
+        .distance(120),
+    )
+    .force("charge", forceManyBody().strength(-300))
+    .force("center", forceCenter(200, 200))
+    .force("collide", forceCollide(60))
+    .stop();
+
+  for (let i = 0; i < 300; i++) sim.tick();
+
+  return simNodes.map((sn: any) => ({
+    ...nodes.find((n) => n.id === sn.id)!,
+    position: { x: sn.x, y: sn.y },
+  }));
+}
+
+export default function App() {
+  const [nodes, setNodes] = useState<Node[]>([]);
+
+  useEffect(() => {
+    setNodes(applyForceLayout(rawNodes, rawEdges));
+  }, []);
+
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={rawEdges} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+1c:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-tsx","children":"$23"}]}]
+1d:["$","h2",null,{"children":"Layout Direction Options"}]
+1e:["$","p",null,{"children":"All layout libraries support direction configuration:"}]
+1f:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Direction"}],["$","th",null,{"children":"Description"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"TB"}],["$","td",null,{"children":"Top to Bottom (default)"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"BT"}],["$","td",null,{"children":"Bottom to Top"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"LR"}],["$","td",null,{"children":"Left to Right"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"RL"}],["$","td",null,{"children":"Right to Left"}]]}]]}]]}]
+20:["$","p",null,{"children":["Pass the direction to your layout algorithm's options (e.g., ",["$","$L11",null,{"children":"rankdir"}]," for dagre, ",["$","$L11",null,{"children":"elk.direction"}]," for ELK)."]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+24:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 06 layout — react flow"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L24","3",{}]]

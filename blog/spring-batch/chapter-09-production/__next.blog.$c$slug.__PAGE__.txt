@@ -1,0 +1,179 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+33:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+34:"$Sreact.suspense"
+4:T471,@Configuration
+public class QuartzBatchConfig {
+
+    @Bean
+    public JobDetail batchJobDetail() {
+        return JobBuilder.newJob(BatchJobLauncher.class)
+                .withIdentity("importJob")
+                .storeDurably()
+                .build();
+    }
+
+    @Bean
+    public Trigger batchJobTrigger() {
+        return TriggerBuilder.newTrigger()
+                .forJob(batchJobDetail())
+                .withIdentity("importTrigger")
+                .withSchedule(CronScheduleBuilder.cronSchedule("0 0 2 * * ?"))
+                .build();
+    }
+}
+
+public class BatchJobLauncher extends QuartzJobBean {
+
+    @Autowired
+    private JobLauncher jobLauncher;
+
+    @Autowired
+    private Job importJob;
+
+    @Override
+    protected void executeInternal(JobExecutionContext context) {
+        try {
+            JobParameters params = new JobParametersBuilder()
+                    .addLong("timestamp", System.currentTimeMillis())
+                    .toJobParameters();
+            jobLauncher.run(importJob, params);
+        } catch (Exception e) {
+            throw new RuntimeException("Batch job failed", e);
+        }
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 9: Production"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-08-scaling","children":"prev: Scaling"}]," | ",["$","a",null,{"href":"chapter-00-overview","children":"Overview"}]]}],"\n",["$","h2",null,{"children":"Scheduling with @Scheduled"}],"\n",["$","p",null,{"children":"Simple scheduling built into Spring:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\n@EnableScheduling\npublic class BatchScheduler {\n\n    private final JobLauncher jobLauncher;\n    private final Job importJob;\n\n    public BatchScheduler(JobLauncher jobLauncher, Job importJob) {\n        this.jobLauncher = jobLauncher;\n        this.importJob = importJob;\n    }\n\n    @Scheduled(cron = \"0 0 2 * * MON-FRI\") // 2 AM weekdays\n    public void runImport() throws Exception {\n        JobParameters params = new JobParametersBuilder()\n                .addLong(\"timestamp\", System.currentTimeMillis())\n                .addString(\"date\", LocalDate.now().toString())\n                .toJobParameters();\n        jobLauncher.run(importJob, params);\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Scheduling with Quartz"}],"\n",["$","p",null,{"children":"For more robust scheduling with persistence, clustering, and misfire handling."}],"\n",["$","p",null,{"children":"Add dependency:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-groovy","children":"implementation 'org.springframework.boot:spring-boot-starter-quartz'\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"Monitoring with Micrometer"}],"\n",["$","p",null,{"children":"Spring Batch 5 integrates with Micrometer for metrics out of the box."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-groovy","children":"implementation 'org.springframework.boot:spring-boot-starter-actuator'\nimplementation 'io.micrometer:micrometer-registry-prometheus'\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-properties","children":"management.endpoints.web.exposure.include=health,metrics,prometheus\nmanagement.metrics.tags.application=batch-app\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c"]}],"$L2d"]}],["$L2e","$L2f"],"$L30"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","p",null,{"children":"Available metrics:"}]
+6:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"spring.batch.job"}]," — job execution duration and status"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"spring.batch.job.active"}]," — currently running jobs"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"spring.batch.step"}]," — step execution duration"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"spring.batch.item.read"}]," — items read count"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"spring.batch.item.process"}]," — items processed count"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"spring.batch.chunk.write"}]," — chunk write duration"]}],"\n"]}]
+7:["$","h3",null,{"children":"Custom Metrics"}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class BatchMetricsListener implements JobExecutionListener {\n\n    private final MeterRegistry meterRegistry;\n\n    public BatchMetricsListener(MeterRegistry meterRegistry) {\n        this.meterRegistry = meterRegistry;\n    }\n\n    @Override\n    public void afterJob(JobExecution jobExecution) {\n        meterRegistry.counter(\"batch.job.completed\",\n                \"job\", jobExecution.getJobInstance().getJobName(),\n                \"status\", jobExecution.getStatus().toString()\n        ).increment();\n    }\n}\n"}]}]
+9:["$","h2",null,{"children":"Job Parameters"}]
+a:["$","p",null,{"children":"Design parameters for idempotency and traceability:"}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Job importJob(JobRepository jobRepository, Step importStep) {\n    return new JobBuilder(\"importJob\", jobRepository)\n            .incrementer(new RunIdIncrementer()) // auto-increment run.id\n            .start(importStep)\n            .build();\n}\n"}]}]
+c:["$","p",null,{"children":"Custom incrementer for date-based runs:"}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public class DailyJobParametersIncrementer implements JobParametersIncrementer {\n\n    @Override\n    public JobParameters getNext(JobParameters parameters) {\n        return new JobParametersBuilder(parameters != null ? parameters : new JobParameters())\n                .addString(\"runDate\", LocalDate.now().toString())\n                .addLong(\"runTimestamp\", System.currentTimeMillis())\n                .toJobParameters();\n    }\n}\n"}]}]
+e:["$","h2",null,{"children":"Idempotent Jobs"}]
+f:["$","p",null,{"children":"Ensure a job can be re-run safely without duplicating data:"}]
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Step idempotentStep(JobRepository jobRepository,\n                           PlatformTransactionManager transactionManager,\n                           ItemReader<Person> reader,\n                           JdbcBatchItemWriter<PersonDto> writer) {\n    // Use UPSERT instead of INSERT\n    writer.setSql(\n        \"INSERT INTO person_output (email, first_name, last_name, age) \" +\n        \"VALUES (:email, :firstName, :lastName, :age) \" +\n        \"ON CONFLICT (email) DO UPDATE SET \" +\n        \"first_name = EXCLUDED.first_name, last_name = EXCLUDED.last_name, age = EXCLUDED.age\"\n    );\n\n    return new StepBuilder(\"idempotentStep\", jobRepository)\n            .<Person, PersonDto>chunk(500, transactionManager)\n            .reader(reader)\n            .writer(writer)\n            .build();\n}\n"}]}]
+11:["$","h3",null,{"children":"Pre-cleanup Pattern"}]
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Job idempotentJob(JobRepository jobRepository,\n                         Step cleanupStep, Step importStep) {\n    return new JobBuilder(\"idempotentJob\", jobRepository)\n            .start(cleanupStep)\n            .next(importStep)\n            .build();\n}\n\n@Bean\npublic Step cleanupStep(JobRepository jobRepository,\n                        PlatformTransactionManager transactionManager,\n                        JdbcTemplate jdbcTemplate) {\n    return new StepBuilder(\"cleanupStep\", jobRepository)\n            .tasklet((contribution, chunkContext) -> {\n                String runDate = chunkContext.getStepContext()\n                        .getJobParameters().get(\"runDate\").toString();\n                jdbcTemplate.update(\"DELETE FROM person_output WHERE run_date = ?\", runDate);\n                return RepeatStatus.FINISHED;\n            }, transactionManager)\n            .build();\n}\n"}]}]
+13:["$","h2",null,{"children":"Testing with @SpringBatchTest"}]
+31:T4c5,@SpringBatchTest
+@SpringBootTest
+class ImportJobTest {
+
+    @Autowired
+    private JobLauncherTestUtils jobLauncherTestUtils;
+
+    @Autowired
+    private JobRepositoryTestUtils jobRepositoryTestUtils;
+
+    @BeforeEach
+    void cleanup() {
+        jobRepositoryTestUtils.removeJobExecutions();
+    }
+
+    @Test
+    void testFullJob() throws Exception {
+        JobParameters params = new JobParametersBuilder()
+                .addString("inputFile", "src/test/resources/test-input.csv")
+                .toJobParameters();
+
+        JobExecution execution = jobLauncherTestUtils.launchJob(params);
+
+        assertThat(execution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+        assertThat(execution.getStepExecutions()).hasSize(1);
+
+        StepExecution step = execution.getStepExecutions().iterator().next();
+        assertThat(step.getReadCount()).isEqualTo(100);
+        assertThat(step.getWriteCount()).isEqualTo(95); // 5 filtered
+        assertThat(step.getSkipCount()).isEqualTo(0);
+    }
+
+    @Test
+    void testSingleStep() throws Exception {
+        JobExecution execution = jobLauncherTestUtils.launchStep("importStep");
+        assertThat(execution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+    }
+}
+14:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$31"}]}]
+15:["$","p",null,{"children":"Test configuration:"}]
+16:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@TestConfiguration\n@EnableBatchProcessing\nclass BatchTestConfig {\n\n    @Bean\n    public DataSource dataSource() {\n        return new EmbeddedDatabaseBuilder()\n                .setType(EmbeddedDatabaseType.H2)\n                .addScript(\"/org/springframework/batch/core/schema-h2.sql\")\n                .build();\n    }\n}\n"}]}]
+17:["$","h2",null,{"children":"Docker Deployment"}]
+18:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-dockerfile","children":"FROM eclipse-temurin:17-jre-alpine\nWORKDIR /app\nCOPY build/libs/batch-app-1.0.0.jar app.jar\nENTRYPOINT [\"java\", \"-jar\", \"app.jar\"]\n"}]}]
+19:["$","p",null,{"children":"Docker Compose with PostgreSQL:"}]
+1a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-yaml","children":"services:\n  batch-app:\n    build: .\n    environment:\n      SPRING_PROFILES_ACTIVE: prod\n      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/batchdb\n      SPRING_DATASOURCE_USERNAME: batch_user\n      SPRING_DATASOURCE_PASSWORD: secret\n    depends_on:\n      db:\n        condition: service_healthy\n    volumes:\n      - ./data:/data\n\n  db:\n    image: postgres:16-alpine\n    environment:\n      POSTGRES_DB: batchdb\n      POSTGRES_USER: batch_user\n      POSTGRES_PASSWORD: secret\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready -U batch_user -d batchdb\"]\n      interval: 5s\n      timeout: 5s\n      retries: 5\n    volumes:\n      - pgdata:/var/lib/postgresql/data\n\nvolumes:\n  pgdata:\n"}]}]
+1b:["$","p",null,{"children":"Build and run:"}]
+1c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"./gradlew bootJar\ndocker compose up --build\n"}]}]
+1d:["$","h2",null,{"children":"Handling Large Files (Millions of Rows)"}]
+1e:["$","p",null,{"children":"Key strategies for processing files with millions of records:"}]
+1f:["$","h3",null,{"children":"1. Tune Chunk Size"}]
+20:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// For large files, chunk size 1000-5000 is typical\n.<Person, PersonDto>chunk(2000, transactionManager)\n"}]}]
+21:["$","h3",null,{"children":"2. Use Partitioning"}]
+22:["$","p",null,{"children":"Split the file and process partitions in parallel (see Chapter 8)."}]
+23:["$","h3",null,{"children":"3. Optimize Database Writes"}]
+24:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-properties","children":"# PostgreSQL batch insert optimization\nspring.datasource.hikari.maximum-pool-size=20\nspring.jpa.properties.hibernate.jdbc.batch_size=50\n"}]}]
+25:["$","h3",null,{"children":"4. Memory Management"}]
+26:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// Use streaming readers, avoid loading all data into memory\n// JdbcCursorItemReader streams one row at a time\n// FlatFileItemReader streams one line at a time\n"}]}]
+27:["$","h3",null,{"children":"5. JVM Tuning"}]
+28:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"java -Xms512m -Xmx2g -XX:+UseG1GC -jar app.jar\n"}]}]
+29:["$","h3",null,{"children":"Complete Large File Job"}]
+32:T762,@Configuration
+public class LargeFileJobConfig {
+
+    @Bean
+    public Job largeFileJob(JobRepository jobRepository, Step partitionedStep) {
+        return new JobBuilder("largeFileJob", jobRepository)
+                .start(partitionedStep)
+                .build();
+    }
+
+    @Bean
+    public Step partitionedStep(JobRepository jobRepository, Step workerStep,
+                                Partitioner partitioner) {
+        return new StepBuilder("partitionedStep", jobRepository)
+                .partitioner("workerStep", partitioner)
+                .step(workerStep)
+                .gridSize(Runtime.getRuntime().availableProcessors())
+                .taskExecutor(batchTaskExecutor())
+                .build();
+    }
+
+    @Bean
+    public Step workerStep(JobRepository jobRepository,
+                           PlatformTransactionManager transactionManager,
+                           ItemReader<Person> reader,
+                           ItemProcessor<Person, PersonDto> processor,
+                           JdbcBatchItemWriter<PersonDto> writer) {
+        return new StepBuilder("workerStep", jobRepository)
+                .<Person, PersonDto>chunk(2000, transactionManager)
+                .reader(reader)
+                .processor(processor)
+                .writer(writer)
+                .faultTolerant()
+                .skip(FlatFileParseException.class)
+                .skipLimit(1000)
+                .build();
+    }
+
+    @Bean
+    public TaskExecutor batchTaskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(Runtime.getRuntime().availableProcessors());
+        executor.setMaxPoolSize(Runtime.getRuntime().availableProcessors() * 2);
+        executor.setQueueCapacity(10);
+        executor.setThreadNamePrefix("batch-worker-");
+        executor.initialize();
+        return executor;
+    }
+}
+2a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$32"}]}]
+2b:["$","h2",null,{"children":"Exercises"}]
+2c:["$","ol",null,{"children":["\n",["$","li",null,{"children":"Set up Micrometer + Prometheus monitoring. Run a job and observe metrics in Prometheus/Grafana."}],"\n",["$","li",null,{"children":["Write a complete test suite for a multi-step job using ",["$","$L3",null,{"children":"@SpringBatchTest"}],". Test both success and failure scenarios."]}],"\n",["$","li",null,{"children":"Dockerize your batch application and run it with PostgreSQL via Docker Compose."}],"\n",["$","li",null,{"children":"Generate a CSV with 1,000,000 rows. Process it using partitioning with 8 workers. Target: complete in under 30 seconds."}],"\n",["$","li",null,{"children":"Make your job idempotent using UPSERT. Run it twice with the same parameters and verify no duplicate data."}],"\n"]}]
+2d:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-08-scaling","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+2e:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+2f:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+30:["$","$L33",null,{"children":["$","$34",null,{"name":"Next.MetadataOutlet","children":"$@35"}]}]
+35:null

@@ -1,0 +1,120 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+15:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+4:T42a,import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
+    static StringTokenizer st;
+
+    static String next() throws IOException {
+        while (st == null || !st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine());
+        return st.nextToken();
+    }
+    static int ni() throws IOException { return Integer.parseInt(next()); }
+    static long nl() throws IOException { return Long.parseLong(next()); }
+    static int[] nia(int n) throws IOException {
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) a[i] = ni();
+        return a;
+    }
+
+    static final int MOD = 1_000_000_007;
+
+    public static void main(String[] args) throws IOException {
+        int t = ni();
+        while (t-- > 0) solve();
+        out.flush();
+    }
+
+    static void solve() throws IOException {
+        int n = ni();
+        int[] a = nia(n);
+        // solution here
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/java-competitive/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 8: Contest Templates"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-07-optimization","children":"prev: JVM Optimization"}]," | ",["$","a",null,{"href":"chapter-00-overview","children":"next: Overview"}]]}],"\n",["$","h2",null,{"children":"Complete Java Contest Template"}],"\n",["$","p",null,{"children":"Copy-paste this at the start of every contest:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"Utility Methods"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"static long gcd(long a, long b) {\n    while (b != 0) { long t = b; b = a % b; a = t; }\n    return a;\n}\n\nstatic long lcm(long a, long b) { return a / gcd(a, b) * b; }\n\nstatic long modpow(long base, long exp, long mod) {\n    long res = 1;\n    base %= mod;\n    while (exp > 0) {\n        if ((exp & 1) == 1) res = res * base % mod;\n        base = base * base % mod;\n        exp >>= 1;\n    }\n    return res;\n}\n\nstatic long modinv(long a, long mod) { return modpow(a, mod - 2, mod); }\n\nstatic long[] fact, invFact;\nstatic void precomputeFactorials(int n) {\n    fact = new long[n + 1];\n    invFact = new long[n + 1];\n    fact[0] = 1;\n    for (int i = 1; i <= n; i++) fact[i] = fact[i - 1] * i % MOD;\n    invFact[n] = modpow(fact[n], MOD - 2, MOD);\n    for (int i = n - 1; i >= 0; i--) invFact[i] = invFact[i + 1] * (i + 1) % MOD;\n}\n\nstatic long nCr(int n, int r) {\n    if (r < 0 || r > n) return 0;\n    return fact[n] % MOD * invFact[r] % MOD * invFact[n - r] % MOD;\n}\n"}]}],"\n",["$","h2",null,{"children":"DSU (Disjoint Set Union) Template"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"static int[] par, rnk, sz;\n\nstatic void dsuInit(int n) {\n    par = new int[n]; rnk = new int[n]; sz = new int[n];\n    for (int i = 0; i < n; i++) { par[i] = i; sz[i] = 1; }\n}\n\nstatic int find(int x) {\n    while (par[x] != x) { par[x] = par[par[x]]; x = par[x]; }\n    return x;\n}\n\nstatic boolean unite(int a, int b) {\n    a = find(a); b = find(b);\n    if (a == b) return false;\n    if (rnk[a] < rnk[b]) { int t = a; a = b; b = t; }\n    par[b] = a; sz[a] += sz[b];\n    if (rnk[a] == rnk[b]) rnk[a]++;\n    return true;\n}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le"]}],"$Lf"]}],["$L10","$L11"],"$L12"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Segment Tree Template"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"static int[] seg;\nstatic int segN;\n\nstatic void segBuild(int[] arr) {\n    segN = arr.length;\n    seg = new int[2 * segN];\n    System.arraycopy(arr, 0, seg, segN, segN);\n    for (int i = segN - 1; i > 0; i--) seg[i] = seg[2*i] + seg[2*i+1];\n}\n\nstatic void segUpdate(int i, int val) {\n    seg[i += segN] = val;\n    for (i /= 2; i > 0; i /= 2) seg[i] = seg[2*i] + seg[2*i+1];\n}\n\nstatic int segQuery(int l, int r) { // [l, r)\n    int res = 0;\n    for (l += segN, r += segN; l < r; l /= 2, r /= 2) {\n        if ((l & 1) == 1) res += seg[l++];\n        if ((r & 1) == 1) res += seg[--r];\n    }\n    return res;\n}\n"}]}]
+7:["$","p",null,{"children":[["$","strong",null,{"children":"Lazy propagation"}]," (range update, range query):"]}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"static long[] seg2, lazy;\nstatic int segN2;\n\nstatic void seg2Build(int n) {\n    segN2 = n;\n    seg2 = new long[4 * n];\n    lazy = new long[4 * n];\n}\n\nstatic void push(int v) {\n    if (lazy[v] != 0) {\n        seg2[2*v] += lazy[v]; lazy[2*v] += lazy[v];\n        seg2[2*v+1] += lazy[v]; lazy[2*v+1] += lazy[v];\n        lazy[v] = 0;\n    }\n}\n\nstatic void seg2Update(int v, int tl, int tr, int l, int r, long val) {\n    if (l > tr || r < tl) return;\n    if (l <= tl && tr <= r) { seg2[v] += val; lazy[v] += val; return; }\n    push(v);\n    int tm = (tl + tr) / 2;\n    seg2Update(2*v, tl, tm, l, r, val);\n    seg2Update(2*v+1, tm+1, tr, l, r, val);\n    seg2[v] = Math.max(seg2[2*v], seg2[2*v+1]);\n}\n\nstatic long seg2Query(int v, int tl, int tr, int l, int r) {\n    if (l > tr || r < tl) return Long.MIN_VALUE;\n    if (l <= tl && tr <= r) return seg2[v];\n    push(v);\n    int tm = (tl + tr) / 2;\n    return Math.max(seg2Query(2*v, tl, tm, l, r), seg2Query(2*v+1, tm+1, tr, l, r));\n}\n"}]}]
+9:["$","h2",null,{"children":"Graph Template"}]
+13:T463,// Adjacency list with edge weights
+static int[] head, to, nxt, wt;
+static int edgeCnt;
+
+static void graphInit(int n, int m) {
+    head = new int[n]; Arrays.fill(head, -1);
+    to = new int[2 * m]; nxt = new int[2 * m]; wt = new int[2 * m];
+    edgeCnt = 0;
+}
+
+static void addEdge(int u, int v, int w) {
+    to[edgeCnt] = v; wt[edgeCnt] = w; nxt[edgeCnt] = head[u]; head[u] = edgeCnt++;
+    to[edgeCnt] = u; wt[edgeCnt] = w; nxt[edgeCnt] = head[v]; head[v] = edgeCnt++;
+}
+
+// Dijkstra using the graph template
+static long[] dijkstra(int src, int n) {
+    long[] dist = new long[n];
+    Arrays.fill(dist, Long.MAX_VALUE);
+    dist[src] = 0;
+    PriorityQueue<long[]> pq = new PriorityQueue<>((a, b) -> Long.compare(a[0], b[0]));
+    pq.offer(new long[]{0, src});
+    while (!pq.isEmpty()) {
+        long[] cur = pq.poll();
+        int u = (int) cur[1];
+        if (cur[0] > dist[u]) continue;
+        for (int e = head[u]; e != -1; e = nxt[e]) {
+            int v = to[e];
+            long nd = dist[u] + wt[e];
+            if (nd < dist[v]) { dist[v] = nd; pq.offer(new long[]{nd, v}); }
+        }
+    }
+    return dist;
+}
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$13"}]}]
+b:["$","h2",null,{"children":"Geometry Template"}]
+14:T441,static final double EPS = 1e-9;
+
+static double cross(double x1, double y1, double x2, double y2) {
+    return x1 * y2 - x2 * y1;
+}
+
+static double dist(double x1, double y1, double x2, double y2) {
+    double dx = x1 - x2, dy = y1 - y2;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+// Convex hull (Andrew's monotone chain) - O(n log n)
+static int[][] convexHull(int[][] pts) {
+    int n = pts.length;
+    Arrays.sort(pts, (a, b) -> a[0] != b[0] ? a[0] - b[0] : a[1] - b[1]);
+    int[][] hull = new int[2 * n][2];
+    int k = 0;
+    for (int i = 0; i < n; i++) {
+        while (k >= 2 && cross(hull[k-1][0]-hull[k-2][0], hull[k-1][1]-hull[k-2][1],
+                               pts[i][0]-hull[k-2][0], pts[i][1]-hull[k-2][1]) <= 0) k--;
+        hull[k++] = pts[i];
+    }
+    int lower = k + 1;
+    for (int i = n - 2; i >= 0; i--) {
+        while (k >= lower && cross(hull[k-1][0]-hull[k-2][0], hull[k-1][1]-hull[k-2][1],
+                                   pts[i][0]-hull[k-2][0], pts[i][1]-hull[k-2][1]) <= 0) k--;
+        hull[k++] = pts[i];
+    }
+    return Arrays.copyOf(hull, k - 1);
+}
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$14"}]}]
+d:["$","h2",null,{"children":"Tips for Contest Day"}]
+e:["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Pre-write your template"}]," — have it ready before the contest starts"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Test locally"}]," — compile with ",["$","$L3",null,{"children":"javac Main.java"}],", run with ",["$","$L3",null,{"children":"java -Xss64m Main"}]]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["Use ",["$","$L3",null,{"children":"-Xss64m"}]]}]," for deep recursion problems"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Submit as Java 17"}]," on Codeforces (better JIT than Java 8)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"If TLE in Java"}],", try these in order:","\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Fast I/O (most common fix)"}],"\n",["$","li",null,{"children":"Replace HashMap with array-based solution"}],"\n",["$","li",null,{"children":"Replace ArrayList with int[][]"}],"\n",["$","li",null,{"children":"Encode pairs as long instead of int[]"}],"\n",["$","li",null,{"children":"Shuffle before Arrays.sort on primitives"}],"\n"]}],"\n"]}],"\n"]}]
+f:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/java-competitive/chapter-07-optimization","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+12:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+17:null

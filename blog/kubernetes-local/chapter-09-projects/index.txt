@@ -1,0 +1,204 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","kubernetes-local","chapter-09-projects",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","kubernetes-local/chapter-09-projects","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/kubernetes-local/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/kubernetes-local/chapter-08-observability","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T4cc,# postgres.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-secret
+  namespace: fullstack
+type: Opaque
+data:
+  POSTGRES_PASSWORD: cG9zdGdyZXMxMjM=
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: fullstack
+spec:
+  serviceName: postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_DB
+              value: appdb
+          volumeMounts:
+            - name: pg-data
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: pg-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: fullstack
+spec:
+  clusterIP: None
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
+14:T558,# app.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+  namespace: fullstack
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: app
+          image: eclipse-temurin:21-jre
+          command: ["sh", "-c", "echo 'Replace with your Spring Boot jar'; sleep 3600"]
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/appdb"
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+            - name: SPRING_REDIS_HOST
+              value: "redis"
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-app
+  namespace: fullstack
+spec:
+  type: ClusterIP
+  selector:
+    app: spring-app
+  ports:
+    - port: 80
+      targetPort: 8080
+10:[["$","h1",null,{"children":"Chapter 9: Projects"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"../chapter-08-observability","children":"Previous: Observability"}]," | ",["$","a",null,{"href":"../chapter-00-overview","children":"Back to Overview"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Project 1: Full-Stack App (Spring Boot + PostgreSQL + Redis)"}],"\n",["$","h3",null,{"children":"Namespace"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"kubectl create namespace fullstack\nkubectl config set-context --current --namespace=fullstack\n"}]}],"\n",["$","h3",null,{"children":"PostgreSQL"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"$13"}]}],"\n",["$","h3",null,{"children":"Redis"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"# redis.yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: redis\n  namespace: fullstack\nspec:\n  replicas: 1\n  selector:\n    matchLabels:\n      app: redis\n  template:\n    metadata:\n      labels:\n        app: redis\n    spec:\n      containers:\n        - name: redis\n          image: redis:7-alpine\n          ports:\n            - containerPort: 6379\n---\napiVersion: v1\nkind: Service\nmetadata:\n  name: redis\n  namespace: fullstack\nspec:\n  selector:\n    app: redis\n  ports:\n    - port: 6379\n"}]}],"\n",["$","h3",null,{"children":"Spring Boot App"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"$14"}]}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40","\n","$L41","\n","$L42","\n","$L43","\n","$L44","\n","$L45","\n","$L46","\n","$L47","\n","$L48","\n","$L49","\n","$L4a","\n","$L4b","\n","$L4c","\n","$L4d","\n","$L4e","\n","$L4f","\n","$L50","\n","$L51"]
+15:["$","h3",null,{"children":"Deploy everything"}]
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"kubectl apply -f postgres.yaml\nkubectl apply -f redis.yaml\nkubectl apply -f app.yaml\n\nkubectl get all -n fullstack\nkubectl port-forward svc/spring-app 8080:80 -n fullstack\n"}]}]
+17:["$","hr",null,{}]
+18:["$","h2",null,{"children":"Project 2: Blue-Green Deployment"}]
+19:["$","p",null,{"children":"Blue-green deploys two versions simultaneously and switches traffic instantly."}]
+1a:["$","h3",null,{"children":"Deploy \"blue\" version"}]
+1b:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"# blue.yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: app-blue\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: myapp\n      version: blue\n  template:\n    metadata:\n      labels:\n        app: myapp\n        version: blue\n    spec:\n      containers:\n        - name: app\n          image: hashicorp/http-echo:0.2.3\n          args: [\"-text=BLUE version\"]\n          ports:\n            - containerPort: 5678\n"}]}]
+1c:["$","h3",null,{"children":"Service pointing to blue"}]
+1d:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"# service-bg.yaml\napiVersion: v1\nkind: Service\nmetadata:\n  name: myapp-service\nspec:\n  selector:\n    app: myapp\n    version: blue\n  ports:\n    - port: 80\n      targetPort: 5678\n"}]}]
+1e:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"kubectl apply -f blue.yaml\nkubectl apply -f service-bg.yaml\n\n# Verify blue is serving\nkubectl run test --image=curlimages/curl --rm -it --restart=Never -- curl http://myapp-service\n# Output: BLUE version\n"}]}]
+1f:["$","h3",null,{"children":"Deploy \"green\" version"}]
+20:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"# green.yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: app-green\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: myapp\n      version: green\n  template:\n    metadata:\n      labels:\n        app: myapp\n        version: green\n    spec:\n      containers:\n        - name: app\n          image: hashicorp/http-echo:0.2.3\n          args: [\"-text=GREEN version\"]\n          ports:\n            - containerPort: 5678\n"}]}]
+21:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"kubectl apply -f green.yaml\n\n# Both versions running, but service still points to blue\nkubectl get pods -l app=myapp\n"}]}]
+22:["$","h3",null,{"children":"Switch traffic to green"}]
+23:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"kubectl patch svc myapp-service -p '{\"spec\":{\"selector\":{\"version\":\"green\"}}}'\n\n# Verify\nkubectl run test2 --image=curlimages/curl --rm -it --restart=Never -- curl http://myapp-service\n# Output: GREEN version\n"}]}]
+24:["$","h3",null,{"children":"Rollback to blue"}]
+25:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"kubectl patch svc myapp-service -p '{\"spec\":{\"selector\":{\"version\":\"blue\"}}}'\n"}]}]
+26:["$","h3",null,{"children":"Clean up old version"}]
+27:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"kubectl delete deployment app-blue\n"}]}]
+28:["$","hr",null,{}]
+29:["$","h2",null,{"children":"Project 3: Canary Release"}]
+2a:["$","p",null,{"children":"Canary sends a small percentage of traffic to the new version."}]
+2b:["$","h3",null,{"children":"Stable deployment (90% traffic)"}]
+2c:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"# stable.yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: app-stable\nspec:\n  replicas: 9\n  selector:\n    matchLabels:\n      app: webapp\n      track: stable\n  template:\n    metadata:\n      labels:\n        app: webapp\n        track: stable\n    spec:\n      containers:\n        - name: app\n          image: hashicorp/http-echo:0.2.3\n          args: [\"-text=STABLE\"]\n          ports:\n            - containerPort: 5678\n"}]}]
+2d:["$","h3",null,{"children":"Canary deployment (10% traffic)"}]
+2e:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"# canary.yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: app-canary\nspec:\n  replicas: 1\n  selector:\n    matchLabels:\n      app: webapp\n      track: canary\n  template:\n    metadata:\n      labels:\n        app: webapp\n        track: canary\n    spec:\n      containers:\n        - name: app\n          image: hashicorp/http-echo:0.2.3\n          args: [\"-text=CANARY\"]\n          ports:\n            - containerPort: 5678\n"}]}]
+2f:["$","h3",null,{"children":"Service selects both (by shared label)"}]
+30:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"# service-canary.yaml\napiVersion: v1\nkind: Service\nmetadata:\n  name: webapp-service\nspec:\n  selector:\n    app: webapp\n  ports:\n    - port: 80\n      targetPort: 5678\n"}]}]
+31:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"kubectl apply -f stable.yaml\nkubectl apply -f canary.yaml\nkubectl apply -f service-canary.yaml\n\n# Test multiple times — roughly 1 in 10 requests hits canary\nfor i in $(seq 1 20); do\n  kubectl run \"curl-$i\" --image=curlimages/curl --rm -it --restart=Never -- curl -s http://webapp-service\ndone\n"}]}]
+32:["$","h3",null,{"children":"Promote canary"}]
+33:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"# Scale canary up, stable down\nkubectl scale deployment app-canary --replicas=10\nkubectl scale deployment app-stable --replicas=0\nkubectl delete deployment app-stable\n"}]}]
+34:["$","hr",null,{}]
+35:["$","h2",null,{"children":"Project 4: Local Dev Workflow with Skaffold"}]
+36:["$","p",null,{"children":"Skaffold automates build-deploy-test cycles for local Kubernetes development."}]
+37:["$","h3",null,{"children":"Install Skaffold"}]
+38:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"# macOS\nbrew install skaffold\n\n# Linux\ncurl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64\nsudo install skaffold /usr/local/bin/\n\n# Windows\nchoco install skaffold\n"}]}]
+39:["$","h3",null,{"children":"Project structure"}]
+3a:["$","$L11",null,{"children":["$","$L12",null,{"children":"my-app/\n  Dockerfile\n  k8s/\n    deployment.yaml\n    service.yaml\n  skaffold.yaml\n  src/\n    ...\n"}]}]
+3b:["$","h3",null,{"children":"skaffold.yaml"}]
+3c:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"apiVersion: skaffold/v4beta6\nkind: Config\nmetadata:\n  name: my-app\nbuild:\n  artifacts:\n    - image: my-app\n      docker:\n        dockerfile: Dockerfile\ndeploy:\n  kubectl:\n    manifests:\n      - k8s/*.yaml\n"}]}]
+3d:["$","h3",null,{"children":"Development loop"}]
+3e:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"# Watches for changes, rebuilds, redeploys automatically\nskaffold dev\n\n# One-time build and deploy\nskaffold run\n\n# Clean up\nskaffold delete\n"}]}]
+3f:["$","p",null,{"children":"Skaffold detects file changes, rebuilds the container, and redeploys — all in seconds."}]
+40:["$","hr",null,{}]
+41:["$","h2",null,{"children":"Alternative: Tilt"}]
+42:["$","p",null,{"children":"Tilt is another local dev tool with a web UI."}]
+43:["$","h3",null,{"children":"Install"}]
+44:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"# macOS\nbrew install tilt-dev/tap/tilt\n\n# Linux\ncurl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash\n"}]}]
+45:["$","h3",null,{"children":"Tiltfile"}]
+46:["$","p",null,{"children":["Create a ",["$","$L12",null,{"children":"Tiltfile"}]," in your project root:"]}]
+47:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"docker_build('my-app', '.')\nk8s_yaml(['k8s/deployment.yaml', 'k8s/service.yaml'])\nk8s_resource('my-app', port_forwards=8080)\n"}]}]
+48:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"tilt up\n"}]}]
+49:["$","p",null,{"children":["Open the Tilt UI at ",["$","a",null,{"href":"http://localhost:10350","children":"http://localhost:10350"}]," to see build status, logs, and resource health."]}]
+4a:["$","hr",null,{}]
+4b:["$","h2",null,{"children":"Cleaning Up All Projects"}]
+4c:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"kubectl delete namespace fullstack\nkubectl delete deployment app-blue app-green app-stable app-canary\nkubectl delete svc myapp-service webapp-service\n"}]}]
+4d:["$","hr",null,{}]
+4e:["$","h2",null,{"children":"Summary"}]
+4f:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Full-stack apps: combine StatefulSets, Deployments, Services, and Secrets"}],"\n",["$","li",null,{"children":"Blue-green: instant traffic switch by changing Service selector"}],"\n",["$","li",null,{"children":"Canary: gradual rollout using replica ratios"}],"\n",["$","li",null,{"children":"Skaffold/Tilt: fast local dev loops with automatic rebuild and redeploy"}],"\n"]}]
+50:["$","hr",null,{}]
+51:["$","p",null,{"children":[["$","a",null,{"href":"../chapter-08-observability","children":"Previous: Observability"}]," | ",["$","a",null,{"href":"../chapter-00-overview","children":"Back to Overview"}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+52:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 09 projects — kubernetes local"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L52","3",{}]]

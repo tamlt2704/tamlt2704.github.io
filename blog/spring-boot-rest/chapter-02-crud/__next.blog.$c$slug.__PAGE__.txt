@@ -1,0 +1,146 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+13:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+4:T72a,package com.example.bookstore.controller;
+
+import com.example.bookstore.dto.BookResponse;
+import com.example.bookstore.dto.CreateBookRequest;
+import com.example.bookstore.dto.UpdateBookRequest;
+import com.example.bookstore.service.BookService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/books")
+public class BookController {
+
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<BookResponse>> getAllBooks() {
+        return ResponseEntity.ok(bookService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<BookResponse> getBook(@PathVariable Long id) {
+        return ResponseEntity.ok(bookService.findById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<BookResponse> createBook(@RequestBody CreateBookRequest request) {
+        BookResponse created = bookService.create(request);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(created.id())
+                .toUri();
+        return ResponseEntity.created(location).body(created);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<BookResponse> updateBook(
+            @PathVariable Long id,
+            @RequestBody UpdateBookRequest request) {
+        return ResponseEntity.ok(bookService.update(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
+        bookService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 2: CRUD Operations"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"../chapter-01-setup","children":"Previous: Project Setup"}]," | ",["$","a",null,{"href":"../chapter-03-validation","children":"Next: Validation and Error Handling"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Overview"}],"\n",["$","p",null,{"children":["We implement full CRUD for a ",["$","$L2",null,{"children":"Book"}]," resource using ",["$","$L2",null,{"children":"@RestController"}],", proper HTTP methods, DTOs for request/response separation, and ",["$","$L2",null,{"children":"ResponseEntity"}]," for status codes."]}],"\n",["$","h2",null,{"children":"The DTO Layer"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"package com.example.bookstore.dto;\n\npublic record CreateBookRequest(\n    String title,\n    String author,\n    String isbn,\n    int pages\n) {}\n"}]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"package com.example.bookstore.dto;\n\npublic record BookResponse(\n    Long id,\n    String title,\n    String author,\n    String isbn,\n    int pages\n) {}\n"}]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"package com.example.bookstore.dto;\n\npublic record UpdateBookRequest(\n    String title,\n    String author,\n    int pages\n) {}\n"}]}],"\n",["$","h2",null,{"children":"The Controller"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld"]}],"$Le"]}],["$Lf","$L10"],"$L11"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"The Service Layer"}]
+12:T8ce,package com.example.bookstore.service;
+
+import com.example.bookstore.dto.BookResponse;
+import com.example.bookstore.dto.CreateBookRequest;
+import com.example.bookstore.dto.UpdateBookRequest;
+import com.example.bookstore.exception.ResourceNotFoundException;
+import com.example.bookstore.model.Book;
+import com.example.bookstore.repository.BookRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+public class BookService {
+
+    private final BookRepository bookRepository;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+    public List<BookResponse> findAll() {
+        return bookRepository.findAll().stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
+    public BookResponse findById(Long id) {
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Book", id));
+        return toResponse(book);
+    }
+
+    @Transactional
+    public BookResponse create(CreateBookRequest request) {
+        Book book = new Book();
+        book.setTitle(request.title());
+        book.setAuthor(request.author());
+        book.setIsbn(request.isbn());
+        book.setPages(request.pages());
+        return toResponse(bookRepository.save(book));
+    }
+
+    @Transactional
+    public BookResponse update(Long id, UpdateBookRequest request) {
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Book", id));
+        book.setTitle(request.title());
+        book.setAuthor(request.author());
+        book.setPages(request.pages());
+        return toResponse(bookRepository.save(book));
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        if (!bookRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Book", id);
+        }
+        bookRepository.deleteById(id);
+    }
+
+    private BookResponse toResponse(Book book) {
+        return new BookResponse(
+                book.getId(), book.getTitle(), book.getAuthor(),
+                book.getIsbn(), book.getPages()
+        );
+    }
+}
+6:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$12"}]}]
+7:["$","h2",null,{"children":"Key Concepts"}]
+8:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Annotation"}],["$","th",null,{"children":"HTTP Method"}],["$","th",null,{"children":"Typical Use"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"@GetMapping"}]}],["$","td",null,{"children":"GET"}],["$","td",null,{"children":"Retrieve resources"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"@PostMapping"}]}],["$","td",null,{"children":"POST"}],["$","td",null,{"children":"Create a resource"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"@PutMapping"}]}],["$","td",null,{"children":"PUT"}],["$","td",null,{"children":"Full update"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L2",null,{"children":"@DeleteMapping"}]}],["$","td",null,{"children":"DELETE"}],["$","td",null,{"children":"Remove a resource"}]]}]]}]]}]
+9:["$","p",null,{"children":["$","strong",null,{"children":"ResponseEntity status codes:"}]}]
+a:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L2",null,{"children":"200 OK"}]," — successful GET/PUT"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"201 Created"}]," — successful POST (include ",["$","$L2",null,{"children":"Location"}]," header)"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"204 No Content"}]," — successful DELETE"]}],"\n"]}]
+b:["$","p",null,{"children":[["$","strong",null,{"children":"Why DTOs?"}]," Decouple API contract from internal model, control exposed fields, allow different shapes for create vs. update vs. response."]}]
+c:["$","hr",null,{}]
+d:["$","p",null,{"children":[["$","a",null,{"href":"../chapter-01-setup","children":"Previous: Project Setup"}]," | ",["$","a",null,{"href":"../chapter-03-validation","children":"Next: Validation and Error Handling"}]]}]
+e:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-01-setup","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-boot-rest/chapter-03-validation","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+f:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+10:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+11:["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]
+15:null

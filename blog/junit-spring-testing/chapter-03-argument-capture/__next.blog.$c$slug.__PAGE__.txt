@@ -1,0 +1,118 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+12:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+13:"$Sreact.suspense"
+4:T612,package com.example.service;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
+
+@ExtendWith(MockitoExtension.class)
+class UserRegistrationServiceTest {
+
+    @Mock
+    private UserRepository userRepository;
+
+    @Mock
+    private EmailService emailService;
+
+    @InjectMocks
+    private UserRegistrationService service;
+
+    @Captor
+    private ArgumentCaptor<User> userCaptor;
+
+    @Captor
+    private ArgumentCaptor<EmailMessage> emailCaptor;
+
+    @Test
+    void register_capturesUserWithCorrectRole() {
+        service.register("Alice", "alice@test.com");
+
+        verify(userRepository).save(userCaptor.capture());
+
+        User captured = userCaptor.getValue();
+        assertEquals("Alice", captured.getName());
+        assertEquals("alice@test.com", captured.getEmail());
+        assertEquals("MEMBER", captured.getRole());
+    }
+
+    @Test
+    void register_capturesEmailMessage() {
+        service.register("Bob", "bob@test.com");
+
+        verify(emailService).sendWelcome(emailCaptor.capture());
+
+        EmailMessage captured = emailCaptor.getValue();
+        assertEquals("bob@test.com", captured.getTo());
+        assertEquals("Welcome Bob", captured.getSubject());
+        assertEquals("Your account is ready.", captured.getBody());
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Argument Capture"}],"\n",["$","p",null,{"children":"ArgumentCaptor lets you capture arguments passed to mock methods for detailed verification — useful when objects are constructed inside the method under test."}],"\n",["$","h2",null,{"children":"Class Under Test"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\npublic class UserRegistrationService {\n\n    private final UserRepository userRepository;\n    private final EmailService emailService;\n\n    public UserRegistrationService(UserRepository userRepository, EmailService emailService) {\n        this.userRepository = userRepository;\n        this.emailService = emailService;\n    }\n\n    public void register(String name, String email) {\n        User user = new User(name, email);\n        user.setRole(\"MEMBER\");\n        userRepository.save(user);\n        emailService.sendWelcome(new EmailMessage(email, \"Welcome \" + name, \"Your account is ready.\"));\n    }\n\n    public void registerBatch(java.util.List<String> emails) {\n        for (String email : emails) {\n            emailService.sendWelcome(new EmailMessage(email, \"Welcome\", \"Batch registration.\"));\n        }\n    }\n}\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\npublic class EmailMessage {\n    private final String to;\n    private final String subject;\n    private final String body;\n\n    public EmailMessage(String to, String subject, String body) {\n        this.to = to;\n        this.subject = subject;\n        this.body = body;\n    }\n\n    public String getTo() { return to; }\n    public String getSubject() { return subject; }\n    public String getBody() { return body; }\n}\n"}]}],"\n",["$","h2",null,{"children":"Capturing a Single Argument"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc"]}],"$Ld"]}],["$Le","$Lf"],"$L10"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Capturing Multiple Invocations with getAllValues"}]
+11:T4fe,package com.example.service;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
+@ExtendWith(MockitoExtension.class)
+class UserRegistrationBatchTest {
+
+    @Mock
+    private UserRepository userRepository;
+
+    @Mock
+    private EmailService emailService;
+
+    @InjectMocks
+    private UserRegistrationService service;
+
+    @Captor
+    private ArgumentCaptor<EmailMessage> emailCaptor;
+
+    @Test
+    void registerBatch_capturesAllEmails() {
+        service.registerBatch(List.of("a@test.com", "b@test.com", "c@test.com"));
+
+        verify(emailService, times(3)).sendWelcome(emailCaptor.capture());
+
+        List<EmailMessage> allMessages = emailCaptor.getAllValues();
+        assertEquals(3, allMessages.size());
+        assertEquals("a@test.com", allMessages.get(0).getTo());
+        assertEquals("b@test.com", allMessages.get(1).getTo());
+        assertEquals("c@test.com", allMessages.get(2).getTo());
+    }
+}
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$11"}]}]
+7:["$","h2",null,{"children":"Capturing in Void Methods"}]
+8:["$","p",null,{"children":["For void methods, no stubbing is needed — just ",["$","$L3",null,{"children":"verify()"}]," with the captor:"]}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Test\nvoid register_capturesUserInVoidMethod() {\n    service.register(\"Charlie\", \"charlie@test.com\");\n\n    // userRepository.save() is void — capture works directly\n    verify(userRepository).save(userCaptor.capture());\n\n    assertEquals(\"Charlie\", userCaptor.getValue().getName());\n}\n"}]}]
+a:["$","h2",null,{"children":"Key Points"}]
+b:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"@Captor"}]," annotation is cleaner than inline ",["$","$L3",null,{"children":"ArgumentCaptor.forClass(...)"}]]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"capture()"}]," is used inside ",["$","$L3",null,{"children":"verify()"}],", not inside ",["$","$L3",null,{"children":"when()"}]]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"getValue()"}]," returns the last captured value"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"getAllValues()"}]," returns all captured values across multiple invocations"]}],"\n",["$","li",null,{"children":["Works with void methods — just ",["$","$L3",null,{"children":"verify()"}]," and ",["$","$L3",null,{"children":"capture()"}]]}],"\n"]}]
+c:["$","p",null,{"children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-02-mockito","children":"prev: Mockito"}]," | ",["$","a",null,{"href":"/blog/junit-spring-testing/chapter-04-lenient","children":"next: Lenient Stubbing"}]]}]
+d:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-02-mockito","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/junit-spring-testing/chapter-04-lenient","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+e:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+f:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+10:["$","$L12",null,{"children":["$","$13",null,{"name":"Next.MetadataOutlet","children":"$@14"}]}]
+14:null

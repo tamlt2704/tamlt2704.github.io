@@ -1,0 +1,73 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1d:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/activemq/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Spring Boot + JMS"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/activemq/chapter-02-setup","children":"prev: Setup"}]," | ",["$","a",null,{"href":"/blog/activemq/chapter-04-patterns","children":"next: Messaging Patterns"}]]}],"\n",["$","h2",null,{"children":"Dependencies"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-groovy","children":"// build.gradle\nplugins {\n    id 'java'\n    id 'org.springframework.boot' version '3.2.4'\n    id 'io.spring.dependency-management' version '1.1.4'\n}\n\ndependencies {\n    // For ActiveMQ Classic\n    implementation 'org.springframework.boot:spring-boot-starter-activemq'\n\n    // For ActiveMQ Artemis (use this instead for Artemis)\n    // implementation 'org.springframework.boot:spring-boot-starter-artemis'\n\n    implementation 'org.springframework.boot:spring-boot-starter-web'\n    implementation 'com.fasterxml.jackson.core:jackson-databind'\n    testImplementation 'org.springframework.boot:spring-boot-starter-test'\n}\n"}]}],"\n",["$","h2",null,{"children":"Connection Configuration"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-properties","children":"# application.properties — Classic\nspring.activemq.broker-url=tcp://localhost:61616\nspring.activemq.user=admin\nspring.activemq.password=admin\nspring.activemq.pool.enabled=true\nspring.activemq.pool.max-connections=10\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-properties","children":"# application.properties — Artemis\nspring.artemis.mode=native\nspring.artemis.broker-url=tcp://localhost:61616\nspring.artemis.user=admin\nspring.artemis.password=admin\n"}]}],"\n",["$","h2",null,{"children":"JmsTemplate: Sending Messages"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Service\npublic class OrderProducer {\n\n    private final JmsTemplate jmsTemplate;\n\n    public OrderProducer(JmsTemplate jmsTemplate) {\n        this.jmsTemplate = jmsTemplate;\n    }\n\n    // Send raw text\n    public void sendRaw(String destination, String text) {\n        jmsTemplate.send(destination, session -> session.createTextMessage(text));\n    }\n\n    // Send with convertAndSend (uses configured MessageConverter)\n    public void sendOrder(Order order) {\n        jmsTemplate.convertAndSend(\"orders\", order);\n    }\n\n    // Send with headers/properties\n    public void sendWithProperties(Order order) {\n        jmsTemplate.convertAndSend(\"orders\", order, message -> {\n            message.setStringProperty(\"orderType\", order.type());\n            message.setIntProperty(\"priority\", order.priority());\n            return message;\n        });\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"JmsListener: Receiving Messages"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class OrderConsumer {\n\n    @JmsListener(destination = \"orders\")\n    public void handleOrder(Order order) {\n        System.out.println(\"Received order: \" + order.id());\n    }\n\n    // With headers\n    @JmsListener(destination = \"orders\", concurrency = \"3-5\")\n    public void handleWithHeaders(Order order,\n                                   @Header(\"orderType\") String type,\n                                   @Header(name = \"priority\", required = false) Integer priority) {\n        System.out.println(\"Order type: \" + type + \", priority: \" + priority);\n    }\n\n    // With selector\n    @JmsListener(destination = \"orders\", selector = \"orderType = 'PREMIUM'\")\n    public void handlePremiumOrders(Order order) {\n        System.out.println(\"Premium order: \" + order.id());\n    }\n}\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16"]}],"$L17"]}],["$L18","$L19"],"$L1a"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","h2",null,{"children":"Message Converters (Jackson JSON)"}]
+5:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\npublic class JmsConfig {\n\n    @Bean\n    public MessageConverter jacksonJmsMessageConverter() {\n        MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();\n        converter.setTargetType(MessageType.TEXT);\n        converter.setTypeIdPropertyName(\"_type\");\n        return converter;\n    }\n}\n"}]}]
+6:["$","p",null,{"children":["This allows ",["$","$L3",null,{"children":"convertAndSend"}]," and ",["$","$L3",null,{"children":"@JmsListener"}]," to automatically serialize/deserialize POJOs as JSON."]}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// Sent as TextMessage with JSON body and property _type = \"com.example.Order\"\npublic record Order(long id, String item, int quantity, String type, int priority) {}\n"}]}]
+8:["$","h2",null,{"children":"Connection Factory Configuration"}]
+9:["$","h3",null,{"children":"Classic with Caching"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\npublic class ActiveMQConfig {\n\n    @Bean\n    public ActiveMQConnectionFactory connectionFactory() {\n        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory();\n        factory.setBrokerURL(\"failover:(tcp://broker1:61616,tcp://broker2:61616)\");\n        factory.setUserName(\"admin\");\n        factory.setPassword(\"admin\");\n        factory.setTrustedPackages(List.of(\"com.example\"));\n        return factory;\n    }\n\n    @Bean\n    public CachingConnectionFactory cachingConnectionFactory(ActiveMQConnectionFactory factory) {\n        CachingConnectionFactory cachingFactory = new CachingConnectionFactory(factory);\n        cachingFactory.setSessionCacheSize(10);\n        return cachingFactory;\n    }\n}\n"}]}]
+b:["$","h2",null,{"children":"Concurrency Settings"}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@JmsListener(destination = \"orders\", concurrency = \"3-10\")\npublic void handleOrder(Order order) {\n    // 3 threads minimum, scales up to 10 under load\n}\n"}]}]
+d:["$","p",null,{"children":"Global default:"}]
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-properties","children":"spring.jms.listener.concurrency=3\nspring.jms.listener.max-concurrency=10\n"}]}]
+f:["$","h2",null,{"children":"JmsListenerContainerFactory"}]
+1b:T6ba,@Configuration
+@EnableJms
+public class JmsConfig {
+
+    @Bean
+    public DefaultJmsListenerContainerFactory defaultFactory(
+            ConnectionFactory connectionFactory,
+            MessageConverter messageConverter) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setMessageConverter(messageConverter);
+        factory.setConcurrency("3-10");
+        factory.setSessionAcknowledgeMode(Session.CLIENT_ACKNOWLEDGE);
+        return factory;
+    }
+
+    // Separate factory for topics
+    @Bean
+    public DefaultJmsListenerContainerFactory topicFactory(
+            ConnectionFactory connectionFactory,
+            MessageConverter messageConverter) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setMessageConverter(messageConverter);
+        factory.setPubSubDomain(true);
+        factory.setSubscriptionDurable(true);
+        factory.setClientId("order-service");
+        return factory;
+    }
+
+    // Factory with transactions
+    @Bean
+    public DefaultJmsListenerContainerFactory transactedFactory(
+            ConnectionFactory connectionFactory,
+            MessageConverter messageConverter) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setMessageConverter(messageConverter);
+        factory.setSessionTransacted(true);
+        factory.setErrorHandler(t -> System.err.println("JMS Error: " + t.getMessage()));
+        return factory;
+    }
+}
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1b"}]}]
+11:["$","p",null,{"children":"Using a specific factory:"}]
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@JmsListener(destination = \"order-events\", containerFactory = \"topicFactory\")\npublic void handleEvent(OrderEvent event) {\n    // receives from topic with durable subscription\n}\n\n@JmsListener(destination = \"payments\", containerFactory = \"transactedFactory\")\npublic void handlePayment(Payment payment) {\n    // transacted — auto rollback on exception\n}\n"}]}]
+13:["$","h2",null,{"children":"Complete Example"}]
+14:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@SpringBootApplication\n@EnableJms\npublic class MessagingApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(MessagingApplication.class, args);\n    }\n}\n\n@RestController\n@RequestMapping(\"/orders\")\npublic class OrderController {\n\n    private final OrderProducer producer;\n\n    public OrderController(OrderProducer producer) {\n        this.producer = producer;\n    }\n\n    @PostMapping\n    public ResponseEntity<String> createOrder(@RequestBody Order order) {\n        producer.sendOrder(order);\n        return ResponseEntity.accepted().body(\"Order queued: \" + order.id());\n    }\n}\n"}]}]
+15:["$","h2",null,{"children":"Exercises"}]
+16:["$","ol",null,{"children":["\n",["$","li",null,{"children":["\n",["$","p",null,{"children":[["$","strong",null,{"children":"Basic producer/consumer"}],": Create a Spring Boot app that sends an Order object as JSON to a queue and consumes it with ",["$","$L3",null,{"children":"@JmsListener"}],". Verify the JSON conversion works."]}],"\n"]}],"\n",["$","li",null,{"children":["\n",["$","p",null,{"children":[["$","strong",null,{"children":"Multiple factories"}],": Configure two factories — one for queues with concurrency 5, one for topics with durable subscriptions. Send messages to both and verify behavior."]}],"\n"]}],"\n",["$","li",null,{"children":["\n",["$","p",null,{"children":[["$","strong",null,{"children":"Message properties"}],": Send orders with a ",["$","$L3",null,{"children":"priority"}]," property. Create two listeners with selectors: one for high priority (> 7), one for normal."]}],"\n"]}],"\n",["$","li",null,{"children":["\n",["$","p",null,{"children":[["$","strong",null,{"children":"Error handling"}],": Configure a transacted factory. Throw an exception in the listener and observe the message being redelivered."]}],"\n"]}],"\n"]}]
+17:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/activemq/chapter-02-setup","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/activemq/chapter-04-patterns","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+18:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+19:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1a:["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]
+1e:null

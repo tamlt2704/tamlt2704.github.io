@@ -1,0 +1,185 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","llm-from-scratch","chapter-09-inference",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","llm-from-scratch/chapter-09-inference","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-08-finetuning","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T43f,import torch
+import torch.nn as nn
+
+class Int8Linear(nn.Module):
+    """Simple per-channel INT8 quantization."""
+
+    def __init__(self, weight):
+        super().__init__()
+        # weight shape: (out_features, in_features)
+        # Compute per-channel scale
+        scale = weight.abs().max(dim=1).values / 127.0  # (out_features,)
+        weight_int8 = torch.round(weight / scale.unsqueeze(1)).clamp(-128, 127).to(torch.int8)
+
+        self.register_buffer("weight_int8", weight_int8)
+        self.register_buffer("scale", scale)
+
+    def forward(self, x):
+        # x shape: (batch, seq_len, in_features)
+        # Dequantize weight
+        weight_fp = self.weight_int8.float() * self.scale.unsqueeze(1)
+        return x @ weight_fp.T
+
+def quantize_model_int8(model):
+    """Replace all Linear layers with INT8 versions."""
+    for name, module in model.named_modules():
+        for attr in dir(module):
+            layer = getattr(module, attr, None)
+            if isinstance(layer, nn.Linear):
+                setattr(module, attr, Int8Linear(layer.weight.data))
+    return model
+10:[["$","h1",null,{"children":"Chapter 9: Inference and Deployment"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-08-finetuning","children":"prev: Fine-tuning"}]," | ",["$","a",null,{"href":"chapter-00-overview","children":"next: Overview"}]]}],"\n",["$","p",null,{"children":"Deploying an LLM efficiently requires quantization to reduce memory, optimized serving for throughput, and proper API design for production use."}],"\n",["$","h2",null,{"children":"Quantization"}],"\n",["$","p",null,{"children":"Reduce model precision from fp16 (2 bytes per param) to INT8 (1 byte) or INT4 (0.5 bytes):"}],"\n",["$","h3",null,{"children":"INT8 Quantization"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"$13"}]}],"\n",["$","h3",null,{"children":"INT4 Quantization (Group-wise)"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"import torch\nimport torch.nn as nn\n\nclass Int4Linear(nn.Module):\n    \"\"\"Group-wise INT4 quantization (GPTQ-style concept).\"\"\"\n\n    def __init__(self, weight, group_size=128):\n        super().__init__()\n        out_features, in_features = weight.shape\n        assert in_features % group_size == 0\n\n        n_groups = in_features // group_size\n        w = weight.reshape(out_features, n_groups, group_size)\n\n        # Per-group scale\n        scales = w.abs().max(dim=-1).values / 7.0  # (out, n_groups)\n        w_int4 = torch.round(w / scales.unsqueeze(-1)).clamp(-8, 7).to(torch.int8)\n\n        self.register_buffer(\"weight_int4\", w_int4)\n        self.register_buffer(\"scales\", scales)\n        self.group_size = group_size\n\n    def forward(self, x):\n        # Dequantize\n        w = self.weight_int4.float() * self.scales.unsqueeze(-1)\n        w = w.reshape(w.shape[0], -1)  # (out_features, in_features)\n        return x @ w.T\n"}]}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":"GPTQ"}],": Uses second-order information (Hessian) to minimize quantization error. Quantizes one column at a time, compensating errors in remaining columns."]}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":"AWQ"}],": Activation-Aware Weight Quantization. Identifies important weights (those multiplied by large activations) and keeps them at higher precision."]}],"\n",["$","h2",null,{"children":"ONNX Export"}],"\n",["$","p",null,{"children":"Export for cross-platform inference:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"import torch\n\ndef export_to_onnx(model, output_path=\"model.onnx\", seq_len=128):\n    model.eval()\n    dummy_input = torch.randint(0, 50257, (1, seq_len))\n\n    torch.onnx.export(\n        model,\n        dummy_input,\n        output_path,\n        input_names=[\"input_ids\"],\n        output_names=[\"logits\"],\n        dynamic_axes={\n            \"input_ids\": {0: \"batch\", 1: \"seq_len\"},\n            \"logits\": {0: \"batch\", 1: \"seq_len\"},\n        },\n        opset_version=17,\n    )\n    print(f\"Exported to {output_path}\")\n"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d"]
+14:["$","h2",null,{"children":"vLLM for Serving"}]
+15:["$","p",null,{"children":"vLLM provides high-throughput serving with PagedAttention:"}]
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"# Install: pip install vllm\n# Serve a model:\n# python -m vllm.entrypoints.openai.api_server \\\n#     --model meta-llama/Llama-2-7b-chat-hf \\\n#     --dtype bfloat16 \\\n#     --max-model-len 4096\n\n# Client usage:\nfrom openai import OpenAI\n\nclient = OpenAI(base_url=\"http://localhost:8000/v1\", api_key=\"unused\")\nresponse = client.chat.completions.create(\n    model=\"meta-llama/Llama-2-7b-chat-hf\",\n    messages=[{\"role\": \"user\", \"content\": \"Hello!\"}],\n    max_tokens=100,\n)\nprint(response.choices[0].message.content)\n"}]}]
+17:["$","p",null,{"children":[["$","strong",null,{"children":"PagedAttention"}],": Manages KV-cache like virtual memory pages. Eliminates memory fragmentation and enables efficient batching of variable-length sequences."]}]
+18:["$","h2",null,{"children":"Speculative Decoding"}]
+19:["$","p",null,{"children":"Use a small \"draft\" model to propose tokens, then verify with the large model in parallel:"}]
+2e:T7e0,import torch
+
+@torch.no_grad()
+def speculative_decode(large_model, small_model, prompt_ids, n_tokens=5,
+                       max_new_tokens=100, temperature=1.0):
+    """
+    Generate faster by drafting with small model, verifying with large model.
+    n_tokens: number of speculative tokens per step.
+    """
+    ids = prompt_ids.clone()
+
+    tokens_generated = 0
+    while tokens_generated < max_new_tokens:
+        # Draft: small model generates n_tokens
+        draft_ids = ids.clone()
+        for _ in range(n_tokens):
+            logits = small_model(draft_ids)[:, -1, :] / temperature
+            next_id = torch.multinomial(torch.softmax(logits, dim=-1), 1)
+            draft_ids = torch.cat([draft_ids, next_id], dim=1)
+
+        # Verify: large model scores all draft tokens in one forward pass
+        draft_tokens = draft_ids[:, ids.shape[1]:]  # (1, n_tokens)
+        verify_input = torch.cat([ids, draft_tokens], dim=1)
+        large_logits = large_model(verify_input)  # (1, total_len, vocab_size)
+
+        # Accept tokens that match large model's distribution
+        accepted = 0
+        for i in range(n_tokens):
+            pos = ids.shape[1] + i - 1
+            large_probs = torch.softmax(large_logits[:, pos, :] / temperature, dim=-1)
+            draft_token = draft_tokens[:, i]
+
+            # Accept if large model agrees (simplified acceptance)
+            if large_probs[0, draft_token[0]] > 0.1:
+                accepted += 1
+            else:
+                break
+
+        # Keep accepted tokens + sample one from large model
+        ids = torch.cat([ids, draft_tokens[:, :accepted]], dim=1)
+
+        # Sample next token from large model at rejection point
+        pos = ids.shape[1] - 1
+        next_logits = large_logits[:, pos, :] / temperature
+        next_id = torch.multinomial(torch.softmax(next_logits, dim=-1), 1)
+        ids = torch.cat([ids, next_id], dim=1)
+
+        tokens_generated += accepted + 1
+
+    return ids
+
+# Speedup: 2-3x when draft model acceptance rate is high
+1a:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"$2e"}]}]
+1b:["$","h2",null,{"children":"Batching Strategies"}]
+1c:["$","h3",null,{"children":"Continuous Batching"}]
+1d:["$","p",null,{"children":"Instead of waiting for all sequences in a batch to finish, immediately fill empty slots:"}]
+2f:T72f,import torch
+from dataclasses import dataclass
+from typing import Optional
+
+@dataclass
+class Request:
+    id: int
+    input_ids: torch.Tensor
+    generated_ids: list
+    max_tokens: int
+    done: bool = False
+
+class ContinuousBatcher:
+    def __init__(self, model, max_batch_size=32):
+        self.model = model
+        self.max_batch_size = max_batch_size
+        self.active_requests: list[Request] = []
+        self.waiting_queue: list[Request] = []
+
+    def add_request(self, request: Request):
+        if len(self.active_requests) < self.max_batch_size:
+            self.active_requests.append(request)
+        else:
+            self.waiting_queue.append(request)
+
+    def step(self):
+        """Process one generation step for all active requests."""
+        if not self.active_requests:
+            return
+
+        # Batch all active sequences (pad to same length)
+        max_len = max(
+            r.input_ids.shape[1] + len(r.generated_ids)
+            for r in self.active_requests
+        )
+
+        # Run model on batch (simplified — real impl uses KV-cache)
+        for req in self.active_requests:
+            current_ids = torch.cat([
+                req.input_ids,
+                torch.tensor([req.generated_ids], dtype=torch.long)
+            ], dim=1) if req.generated_ids else req.input_ids
+
+            logits = self.model(current_ids)[:, -1, :]
+            next_id = logits.argmax(dim=-1).item()
+            req.generated_ids.append(next_id)
+
+            if len(req.generated_ids) >= req.max_tokens:
+                req.done = True
+
+        # Remove done requests, add waiting ones
+        self.active_requests = [r for r in self.active_requests if not r.done]
+        while self.waiting_queue and len(self.active_requests) < self.max_batch_size:
+            self.active_requests.append(self.waiting_queue.pop(0))
+1e:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"$2f"}]}]
+1f:["$","h2",null,{"children":"API Serving with FastAPI"}]
+20:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"from fastapi import FastAPI\nfrom pydantic import BaseModel\nimport torch\nimport tiktoken\n\napp = FastAPI()\n\n# Load model at startup\nmodel = None  # Load your trained model here\nenc = tiktoken.get_encoding(\"gpt2\")\n\nclass GenerateRequest(BaseModel):\n    prompt: str\n    max_tokens: int = 100\n    temperature: float = 0.8\n    top_p: float = 0.9\n\nclass GenerateResponse(BaseModel):\n    text: str\n    tokens_generated: int\n\n@app.post(\"/generate\")\nasync def generate_endpoint(req: GenerateRequest):\n    prompt_ids = torch.tensor([enc.encode(req.prompt)], device=\"cuda\")\n\n    with torch.no_grad():\n        output_ids = generate(\n            model, prompt_ids,\n            max_new_tokens=req.max_tokens,\n            temperature=req.temperature,\n            top_p=req.top_p,\n        )\n\n    generated_ids = output_ids[0, prompt_ids.shape[1]:].tolist()\n    text = enc.decode(generated_ids)\n    return GenerateResponse(text=text, tokens_generated=len(generated_ids))\n\n# Run: uvicorn serve:app --host 0.0.0.0 --port 8000\n"}]}]
+21:["$","h2",null,{"children":"Running Locally"}]
+22:["$","h3",null,{"children":"llama.cpp"}]
+23:["$","p",null,{"children":"C++ inference engine with aggressive quantization. Runs on CPU or GPU:"}]
+24:["$","$L11",null,{"children":["$","$L12",null,{"children":"# Build\ngit clone https://github.com/ggerganov/llama.cpp\ncd llama.cpp && make\n\n# Convert model to GGUF format\npython convert.py --outfile model.gguf --outtype q4_0 /path/to/model\n\n# Run inference\n./main -m model.gguf -p \"Once upon a time\" -n 100\n\n# Start API server\n./server -m model.gguf --host 0.0.0.0 --port 8080\n"}]}]
+25:["$","h3",null,{"children":"Ollama"}]
+26:["$","p",null,{"children":"User-friendly wrapper around llama.cpp:"}]
+27:["$","$L11",null,{"children":["$","$L12",null,{"children":"# Install: https://ollama.ai\n# Pull and run a model\nollama pull llama2\nollama run llama2 \"Explain transformers in one paragraph\"\n\n# Serve as API\n# Ollama automatically serves on localhost:11434\n# curl http://localhost:11434/api/generate -d '{\"model\":\"llama2\",\"prompt\":\"Hello\"}'\n"}]}]
+28:["$","h2",null,{"children":"Memory Requirements"}]
+29:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Model"}],["$","th",null,{"children":"fp16"}],["$","th",null,{"children":"INT8"}],["$","th",null,{"children":"INT4"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"7B"}],["$","td",null,{"children":"14 GB"}],["$","td",null,{"children":"7 GB"}],["$","td",null,{"children":"3.5 GB"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"13B"}],["$","td",null,{"children":"26 GB"}],["$","td",null,{"children":"13 GB"}],["$","td",null,{"children":"6.5 GB"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"70B"}],["$","td",null,{"children":"140 GB"}],["$","td",null,{"children":"70 GB"}],["$","td",null,{"children":"35 GB"}]]}]]}]]}]
+2a:["$","p",null,{"children":["Rule: ",["$","$L12",null,{"children":"memory ≈ params * bytes_per_param + KV_cache"}]]}]
+2b:["$","p",null,{"children":["KV-cache per token: ",["$","$L12",null,{"children":"2 * n_layers * embed_dim * 2 bytes"}]," (K and V, fp16)"]}]
+2c:["$","h2",null,{"children":"Key Takeaways"}]
+2d:["$","ul",null,{"children":["\n",["$","li",null,{"children":"INT4 quantization reduces memory 4x with minimal quality loss"}],"\n",["$","li",null,{"children":"vLLM with PagedAttention is the standard for high-throughput serving"}],"\n",["$","li",null,{"children":"Speculative decoding gives 2-3x speedup without quality loss"}],"\n",["$","li",null,{"children":"Continuous batching maximizes GPU utilization"}],"\n",["$","li",null,{"children":"llama.cpp and Ollama make local inference accessible on consumer hardware"}],"\n",["$","li",null,{"children":"Always profile: measure tokens/second and memory usage before deploying"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+30:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 09 inference — llm from scratch"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L30","3",{}]]

@@ -1,0 +1,119 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","llm-from-scratch","chapter-02-embeddings",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","llm-from-scratch/chapter-02-embeddings","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-01-tokenization","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/llm-from-scratch/chapter-03-attention","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+10:[["$","h1",null,{"children":"Chapter 2: Embeddings"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-01-tokenization","children":"prev: Tokenization"}]," | ",["$","a",null,{"href":"chapter-03-attention","children":"next: Attention"}]]}],"\n",["$","p",null,{"children":"Embeddings convert discrete token IDs into continuous vectors that the model can learn from. Position embeddings tell the model where each token sits in the sequence."}],"\n",["$","h2",null,{"children":"Word Embeddings Intuition (Word2Vec)"}],"\n",["$","p",null,{"children":"The core idea: words appearing in similar contexts should have similar vector representations."}],"\n",["$","p",null,{"children":["$","$L11",null,{"children":"\"king\" - \"man\" + \"woman\" ≈ \"queen\""}]}],"\n",["$","p",null,{"children":"This works because the embedding space captures semantic relationships as directions."}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"import torch\nimport torch.nn as nn\n\n# Simple demonstration: learn embeddings via context prediction\n# Skip-gram: given a word, predict surrounding words\nclass SkipGram(nn.Module):\n    def __init__(self, vocab_size, embed_dim):\n        super().__init__()\n        self.embeddings = nn.Embedding(vocab_size, embed_dim)\n        self.output = nn.Linear(embed_dim, vocab_size)\n\n    def forward(self, center_word):\n        # center_word shape: (batch_size,)\n        embed = self.embeddings(center_word)  # (batch_size, embed_dim)\n        logits = self.output(embed)           # (batch_size, vocab_size)\n        return logits\n"}]}],"\n",["$","p",null,{"children":"In modern LLMs, we don't pre-train Word2Vec separately — the token embeddings are learned end-to-end during language model training."}],"\n",["$","h2",null,{"children":"Token Embeddings"}],"\n",["$","p",null,{"children":"A lookup table that maps each token ID to a dense vector:"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"import torch\nimport torch.nn as nn\n\nclass TokenEmbedding(nn.Module):\n    def __init__(self, vocab_size, embed_dim):\n        super().__init__()\n        # Embedding matrix: (vocab_size, embed_dim)\n        self.embedding = nn.Embedding(vocab_size, embed_dim)\n\n    def forward(self, token_ids):\n        # token_ids shape: (batch_size, seq_len)\n        return self.embedding(token_ids)\n        # output shape: (batch_size, seq_len, embed_dim)\n\n# Example\nvocab_size = 50257\nembed_dim = 768\ntok_emb = TokenEmbedding(vocab_size, embed_dim)\n\nids = torch.tensor([[101, 2003, 1037]])  # (1, 3)\nvectors = tok_emb(ids)                    # (1, 3, 768)\nprint(f\"Input shape: {ids.shape}\")\nprint(f\"Output shape: {vectors.shape}\")\n"}]}],"\n",["$","p",null,{"children":"Each row of the embedding matrix is a learnable vector. Token 101 always maps to the same vector (before attention mixes context in)."}],"\n",["$","h2",null,{"children":"Why Position Matters"}],"\n",["$","p",null,{"children":["Self-attention is permutation-invariant — without positional information, ",["$","$L11",null,{"children":"\"dog bites man\""}]," and ",["$","$L11",null,{"children":"\"man bites dog\""}]," produce identical representations. We must inject position information."]}],"\n",["$","h2",null,{"children":"Positional Embeddings"}],"\n",["$","h3",null,{"children":"Sinusoidal (Fixed) — Original Transformer"}],"\n",["$","p",null,{"children":"Uses sine and cosine functions at different frequencies:"}],"\n",["$","p",null,{"children":[["$","$L11",null,{"children":"PE(pos, 2i) = sin(pos / 10000^(2i/d_model))"}],"\n",["$","$L11",null,{"children":"PE(pos, 2i+1) = cos(pos / 10000^(2i/d_model))"}]]}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"import torch\nimport math\n\ndef sinusoidal_positional_encoding(max_len, embed_dim):\n    \"\"\"Generate fixed sinusoidal positional encodings.\"\"\"\n    pe = torch.zeros(max_len, embed_dim)  # (max_len, embed_dim)\n    position = torch.arange(0, max_len).unsqueeze(1).float()  # (max_len, 1)\n    div_term = torch.exp(\n        torch.arange(0, embed_dim, 2).float() * (-math.log(10000.0) / embed_dim)\n    )  # (embed_dim/2,)\n\n    pe[:, 0::2] = torch.sin(position * div_term)  # even indices\n    pe[:, 1::2] = torch.cos(position * div_term)  # odd indices\n    return pe  # (max_len, embed_dim)\n\npe = sinusoidal_positional_encoding(1024, 768)\nprint(f\"Positional encoding shape: {pe.shape}\")  # (1024, 768)\n"}]}],"\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24"]
+13:["$","p",null,{"children":[["$","strong",null,{"children":"Properties"}],": No learnable parameters, can extrapolate to longer sequences than seen during training."]}]
+14:["$","h3",null,{"children":"Learned Positional Embeddings — GPT-2"}]
+15:["$","p",null,{"children":"Simply learn a vector for each position:"}]
+16:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"class LearnedPositionalEmbedding(nn.Module):\n    def __init__(self, max_len, embed_dim):\n        super().__init__()\n        self.pos_embedding = nn.Embedding(max_len, embed_dim)\n\n    def forward(self, seq_len):\n        positions = torch.arange(seq_len, device=self.pos_embedding.weight.device)\n        # positions shape: (seq_len,)\n        return self.pos_embedding(positions)\n        # output shape: (seq_len, embed_dim)\n"}]}]
+17:["$","p",null,{"children":[["$","strong",null,{"children":"Properties"}],": More expressive, but cannot generalize beyond ",["$","$L11",null,{"children":"max_len"}],"."]}]
+18:["$","h3",null,{"children":"Rotary Position Embeddings (RoPE) — LLaMA, Modern Models"}]
+19:["$","p",null,{"children":"RoPE encodes position by rotating the query and key vectors. It provides relative position information and extrapolates better."}]
+1a:["$","p",null,{"children":"The idea: rotate pairs of dimensions by an angle proportional to position."}]
+25:T6bd,import torch
+
+def precompute_rope_frequencies(embed_dim, max_len, base=10000.0):
+    """Precompute the rotation frequencies for RoPE."""
+    # Each pair of dimensions gets a different frequency
+    freqs = 1.0 / (base ** (torch.arange(0, embed_dim, 2).float() / embed_dim))
+    # freqs shape: (embed_dim/2,)
+
+    positions = torch.arange(max_len).float()  # (max_len,)
+    # Outer product: angle for each (position, frequency_pair)
+    angles = torch.outer(positions, freqs)  # (max_len, embed_dim/2)
+
+    # Complex representation for rotation
+    cos = torch.cos(angles)  # (max_len, embed_dim/2)
+    sin = torch.sin(angles)  # (max_len, embed_dim/2)
+    return cos, sin
+
+def apply_rope(x, cos, sin):
+    """Apply rotary embeddings to input tensor.
+
+    x shape: (batch_size, seq_len, n_heads, head_dim)
+    """
+    head_dim = x.shape[-1]
+    # Split into pairs
+    x1 = x[..., :head_dim // 2]  # (batch, seq, heads, head_dim/2)
+    x2 = x[..., head_dim // 2:]  # (batch, seq, heads, head_dim/2)
+
+    # Get cos/sin for current sequence length
+    seq_len = x.shape[1]
+    cos = cos[:seq_len].unsqueeze(0).unsqueeze(2)  # (1, seq_len, 1, head_dim/2)
+    sin = sin[:seq_len].unsqueeze(0).unsqueeze(2)  # (1, seq_len, 1, head_dim/2)
+
+    # Apply rotation: [x1, x2] -> [x1*cos - x2*sin, x1*sin + x2*cos]
+    rotated = torch.cat([
+        x1 * cos - x2 * sin,
+        x1 * sin + x2 * cos,
+    ], dim=-1)
+    return rotated  # same shape as x
+
+# Example
+batch, seq_len, n_heads, head_dim = 2, 128, 12, 64
+cos, sin = precompute_rope_frequencies(head_dim, max_len=2048)
+x = torch.randn(batch, seq_len, n_heads, head_dim)
+rotated = apply_rope(x, cos, sin)
+print(f"Input: {x.shape}, Output: {rotated.shape}")
+# Both: (2, 128, 12, 64)
+1b:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"$25"}]}]
+1c:["$","p",null,{"children":[["$","strong",null,{"children":"Why RoPE works"}],": The dot product between rotated queries and keys depends only on relative position, not absolute position. This gives the model translation-invariant attention patterns."]}]
+1d:["$","h2",null,{"children":"Complete Embedding Layer"}]
+1e:["$","p",null,{"children":"Combining token and positional embeddings (GPT-2 style with learned positions):"}]
+26:T4d7,import torch
+import torch.nn as nn
+
+class Embeddings(nn.Module):
+    def __init__(self, vocab_size, embed_dim, max_len, dropout=0.1):
+        super().__init__()
+        self.token_embedding = nn.Embedding(vocab_size, embed_dim)
+        self.position_embedding = nn.Embedding(max_len, embed_dim)
+        self.dropout = nn.Dropout(dropout)
+        self.embed_dim = embed_dim
+
+    def forward(self, token_ids):
+        # token_ids shape: (batch_size, seq_len)
+        batch_size, seq_len = token_ids.shape
+
+        # Token embeddings
+        tok_emb = self.token_embedding(token_ids)  # (batch_size, seq_len, embed_dim)
+
+        # Position embeddings
+        positions = torch.arange(seq_len, device=token_ids.device)  # (seq_len,)
+        pos_emb = self.position_embedding(positions)  # (seq_len, embed_dim)
+
+        # Combine: add token + position embeddings
+        x = tok_emb + pos_emb  # (batch_size, seq_len, embed_dim)
+        x = self.dropout(x)
+        return x  # (batch_size, seq_len, embed_dim)
+
+# Usage
+embed_layer = Embeddings(vocab_size=50257, embed_dim=768, max_len=1024)
+ids = torch.randint(0, 50257, (4, 128))  # batch of 4, seq_len 128
+output = embed_layer(ids)
+print(f"Embedding output: {output.shape}")  # (4, 128, 768)
+1f:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"$26"}]}]
+20:["$","h2",null,{"children":"Embedding Dimension Choices"}]
+21:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Model"}],["$","th",null,{"children":"Params"}],["$","th",null,{"children":"embed_dim"}],["$","th",null,{"children":"n_heads"}],["$","th",null,{"children":"head_dim"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"GPT-2 Small"}],["$","td",null,{"children":"124M"}],["$","td",null,{"children":"768"}],["$","td",null,{"children":"12"}],["$","td",null,{"children":"64"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"GPT-2 Medium"}],["$","td",null,{"children":"355M"}],["$","td",null,{"children":"1024"}],["$","td",null,{"children":"16"}],["$","td",null,{"children":"64"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"GPT-2 Large"}],["$","td",null,{"children":"774M"}],["$","td",null,{"children":"1280"}],["$","td",null,{"children":"20"}],["$","td",null,{"children":"64"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"LLaMA-7B"}],["$","td",null,{"children":"7B"}],["$","td",null,{"children":"4096"}],["$","td",null,{"children":"32"}],["$","td",null,{"children":"128"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"LLaMA-70B"}],["$","td",null,{"children":"70B"}],["$","td",null,{"children":"8192"}],["$","td",null,{"children":"64"}],["$","td",null,{"children":"128"}]]}]]}]]}]
+22:["$","p",null,{"children":["The head dimension (",["$","$L11",null,{"children":"embed_dim / n_heads"}],") is typically 64 or 128. Larger models increase ",["$","$L11",null,{"children":"embed_dim"}]," and ",["$","$L11",null,{"children":"n_heads"}]," together."]}]
+23:["$","h2",null,{"children":"Key Takeaways"}]
+24:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Token embeddings are a learnable lookup table mapping IDs to vectors"}],"\n",["$","li",null,{"children":"Position embeddings inject sequence order information"}],"\n",["$","li",null,{"children":"Learned positions are simple but limited to max training length"}],"\n",["$","li",null,{"children":"RoPE provides relative position via rotation — used in all modern LLMs"}],"\n",["$","li",null,{"children":"Token + position embeddings are summed (not concatenated) to preserve dimensionality"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+27:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 02 embeddings — llm from scratch"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L27","3",{}]]

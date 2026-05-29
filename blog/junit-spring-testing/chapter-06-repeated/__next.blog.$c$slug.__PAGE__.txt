@@ -1,0 +1,45 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+d:"$Sreact.suspense"
+4:T46c,package com.example.service;
+
+import org.junit.jupiter.api.DynamicNode;
+import org.junit.jupiter.api.DynamicContainer;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.TestFactory;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.DynamicContainer.dynamicContainer;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+
+class DynamicContainerExample {
+
+    private final StringValidator validator = new StringValidator();
+
+    @TestFactory
+    Stream<DynamicNode> groupedDynamicTests() {
+        return Stream.of(
+            dynamicContainer("Passing grades", Stream.of(
+                dynamicTest("90 is A", () -> assertEquals("A", validator.classify(90))),
+                dynamicTest("80 is B", () -> assertEquals("B", validator.classify(80)))
+            )),
+            dynamicContainer("Failing grades", Stream.of(
+                dynamicTest("50 is F", () -> assertEquals("F", validator.classify(50))),
+                dynamicTest("0 is F", () -> assertEquals("F", validator.classify(0)))
+            ))
+        );
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Repeated and Dynamic Tests"}],"\n",["$","h2",null,{"children":"@RepeatedTest"}],"\n",["$","p",null,{"children":"Run the same test multiple times to detect flaky behavior or race conditions."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\nimport org.junit.jupiter.api.RepeatedTest;\nimport org.junit.jupiter.api.RepetitionInfo;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass RepeatedTestExample {\n\n    @RepeatedTest(5)\n    void randomAlwaysPositive() {\n        double value = Math.random();\n        assertTrue(value >= 0.0 && value < 1.0);\n    }\n\n    @RepeatedTest(value = 3, name = \"Repetition {currentRepetition} of {totalRepetitions}\")\n    void withRepetitionInfo(RepetitionInfo info) {\n        assertTrue(info.getCurrentRepetition() <= info.getTotalRepetitions());\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"@TestFactory — Dynamic Tests"}],"\n",["$","p",null,{"children":"Generate tests at runtime based on data or conditions."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\nimport org.junit.jupiter.api.DynamicTest;\nimport org.junit.jupiter.api.TestFactory;\n\nimport java.util.Map;\nimport java.util.stream.Stream;\n\nimport static org.junit.jupiter.api.Assertions.*;\nimport static org.junit.jupiter.api.DynamicTest.dynamicTest;\n\nclass DynamicTestExample {\n\n    private final StringValidator validator = new StringValidator();\n\n    @TestFactory\n    Stream<DynamicTest> dynamicGradeTests() {\n        Map<Integer, String> cases = Map.of(\n            100, \"A\",\n            85, \"B\",\n            72, \"C\",\n            61, \"D\",\n            45, \"F\"\n        );\n\n        return cases.entrySet().stream()\n            .map(entry -> dynamicTest(\n                \"Score \" + entry.getKey() + \" -> \" + entry.getValue(),\n                () -> assertEquals(entry.getValue(), validator.classify(entry.getKey()))\n            ));\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Detecting Flaky Tests"}],"\n",["$","p",null,{"children":"A flaky test passes sometimes and fails other times. Common causes:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Shared mutable state between tests"}],"\n",["$","li",null,{"children":"Time-dependent logic"}],"\n",["$","li",null,{"children":"Non-deterministic ordering"}],"\n",["$","li",null,{"children":"External service dependencies"}],"\n"]}],"\n",["$","p",null,{"children":["Strategy: use ",["$","$L3",null,{"children":"@RepeatedTest"}]," during investigation to reproduce intermittent failures."]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\nimport org.junit.jupiter.api.RepeatedTest;\n\nimport java.time.LocalTime;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass FlakyDetectionTest {\n\n    // This test is intentionally flaky — demonstrates the problem\n    @RepeatedTest(10)\n    void timeBasedLogic_canBeFlaky() {\n        LocalTime now = LocalTime.of(10, 0); // Fix the time to avoid flakiness\n        assertTrue(now.getHour() < 24);\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Combining with @TestFactory for Data-Driven Suites"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7"]}],"$L8"]}],["$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Key Points"}]
+6:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"@RepeatedTest(n)"}]," runs the test n times — useful for flaky test detection"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"RepetitionInfo"}]," gives access to current/total repetition count"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"@TestFactory"}]," returns ",["$","$L3",null,{"children":"Stream<DynamicTest>"}]," — tests generated at runtime"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"DynamicContainer"}]," groups dynamic tests hierarchically"]}],"\n",["$","li",null,{"children":"Fix flaky tests by eliminating shared state and non-determinism"}],"\n"]}]
+7:["$","p",null,{"children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-05-parameterized","children":"prev: Parameterized Tests"}]," | ",["$","a",null,{"href":"/blog/junit-spring-testing/chapter-07-rest-testing","children":"next: REST Testing"}]]}]
+8:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-05-parameterized","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/junit-spring-testing/chapter-07-rest-testing","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+9:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+a:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+b:["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]
+e:null

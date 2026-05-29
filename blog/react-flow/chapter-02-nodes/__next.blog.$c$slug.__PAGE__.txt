@@ -1,0 +1,189 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+15:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+4:T591,import { ReactFlow, Handle, Position, Background } from "@xyflow/react";
+import type { Node, Edge, NodeProps, NodeTypes } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+type CustomData = { label: string; emoji: string };
+
+function EmojiNode({ data }: NodeProps<Node<CustomData>>) {
+  return (
+    <div className="rounded-lg border-2 border-indigo-500 bg-white px-4 py-2 shadow-md">
+      <Handle type="target" position={Position.Top} />
+      <div className="flex items-center gap-2">
+        <span className="text-2xl">{data.emoji}</span>
+        <span className="text-sm font-semibold">{data.label}</span>
+      </div>
+      <Handle type="source" position={Position.Bottom} />
+    </div>
+  );
+}
+
+const nodeTypes: NodeTypes = { emoji: EmojiNode };
+
+const nodes: Node[] = [
+  { id: "1", type: "emoji", position: { x: 0, y: 0 }, data: { label: "Start", emoji: "🚀" } },
+  { id: "2", type: "emoji", position: { x: 0, y: 120 }, data: { label: "Process", emoji: "⚙️" } },
+  { id: "3", type: "emoji", position: { x: 0, y: 240 }, data: { label: "Done", emoji: "✅" } },
+];
+
+const edges: Edge[] = [
+  { id: "e1-2", source: "1", target: "2" },
+  { id: "e2-3", source: "2", target: "3" },
+];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/react-flow/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"React Flow: Nodes"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-01-setup","children":"prev: Setup"}]," | ",["$","a",null,{"href":"./chapter-03-edges","children":"next: Edges"}]]}],"\n",["$","h2",null,{"children":"Built-in Node Types"}],"\n",["$","p",null,{"children":"React Flow provides three built-in node types:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"default"}]," — Has both source and target handles"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"input"}]," — Only has a source handle (starting node)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"output"}]," — Only has a target handle (ending node)"]}],"\n"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"import { ReactFlow, Background } from \"@xyflow/react\";\nimport type { Node, Edge } from \"@xyflow/react\";\nimport \"@xyflow/react/dist/style.css\";\n\nconst nodes: Node[] = [\n  { id: \"1\", type: \"input\", position: { x: 150, y: 0 }, data: { label: \"Input\" } },\n  { id: \"2\", type: \"default\", position: { x: 0, y: 100 }, data: { label: \"Default\" } },\n  { id: \"3\", type: \"default\", position: { x: 300, y: 100 }, data: { label: \"Default 2\" } },\n  { id: \"4\", type: \"output\", position: { x: 150, y: 200 }, data: { label: \"Output\" } },\n];\n\nconst edges: Edge[] = [\n  { id: \"e1-2\", source: \"1\", target: \"2\" },\n  { id: \"e1-3\", source: \"1\", target: \"3\" },\n  { id: \"e2-4\", source: \"2\", target: \"4\" },\n  { id: \"e3-4\", source: \"3\", target: \"4\" },\n];\n\nexport default function App() {\n  return (\n    <div className=\"h-screen w-screen\">\n      <ReactFlow nodes={nodes} edges={edges} fitView>\n        <Background />\n      </ReactFlow>\n    </div>\n  );\n}\n"}]}],"\n",["$","h2",null,{"children":"Custom Nodes"}],"\n",["$","p",null,{"children":["Define custom nodes as React components and register them via ",["$","$L3",null,{"children":"nodeTypes"}],":"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld"]}],"$Le"]}],["$Lf","$L10"],"$L11"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Handle Positions"}]
+6:["$","p",null,{"children":["Handles can be placed at ",["$","$L3",null,{"children":"Top"}],", ",["$","$L3",null,{"children":"Bottom"}],", ",["$","$L3",null,{"children":"Left"}],", or ",["$","$L3",null,{"children":"Right"}],":"]}]
+12:T57d,import { ReactFlow, Handle, Position, Background } from "@xyflow/react";
+import type { Node, Edge, NodeProps, NodeTypes } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+function MultiHandleNode({ data }: NodeProps) {
+  return (
+    <div className="rounded-lg border-2 border-gray-300 bg-white px-6 py-4">
+      <Handle type="target" position={Position.Left} id="left" />
+      <Handle type="target" position={Position.Top} id="top" />
+      <span className="font-medium">{data.label}</span>
+      <Handle type="source" position={Position.Right} id="right" />
+      <Handle type="source" position={Position.Bottom} id="bottom" />
+    </div>
+  );
+}
+
+const nodeTypes: NodeTypes = { multi: MultiHandleNode };
+
+const nodes: Node[] = [
+  { id: "1", type: "input", position: { x: 0, y: 100 }, data: { label: "Left Source" } },
+  { id: "2", type: "multi", position: { x: 250, y: 80 }, data: { label: "Multi Handle" } },
+  { id: "3", type: "output", position: { x: 500, y: 100 }, data: { label: "Right Target" } },
+];
+
+const edges: Edge[] = [
+  { id: "e1-2", source: "1", target: "2", targetHandle: "left" },
+  { id: "e2-3", source: "2", target: "3", sourceHandle: "right" },
+];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$12"}]}]
+8:["$","h2",null,{"children":"Dynamic Handles"}]
+9:["$","p",null,{"children":"Generate handles based on data:"}]
+13:T582,import { ReactFlow, Handle, Position, Background } from "@xyflow/react";
+import type { Node, NodeProps, NodeTypes } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+type PortData = { label: string; inputs: string[]; outputs: string[] };
+
+function DynamicPortNode({ data }: NodeProps<Node<PortData>>) {
+  return (
+    <div className="min-w-[150px] rounded-lg border-2 border-blue-500 bg-white p-3">
+      <div className="mb-2 text-center text-sm font-bold">{data.label}</div>
+      {data.inputs.map((_, i) => (
+        <Handle
+          key={`in-${i}`}
+          type="target"
+          position={Position.Left}
+          id={`in-${i}`}
+          style={{ top: 40 + i * 20 }}
+        />
+      ))}
+      {data.outputs.map((_, i) => (
+        <Handle
+          key={`out-${i}`}
+          type="source"
+          position={Position.Right}
+          id={`out-${i}`}
+          style={{ top: 40 + i * 20 }}
+        />
+      ))}
+    </div>
+  );
+}
+
+const nodeTypes: NodeTypes = { dynamic: DynamicPortNode };
+
+const nodes: Node[] = [
+  {
+    id: "1",
+    type: "dynamic",
+    position: { x: 0, y: 0 },
+    data: { label: "Transform", inputs: ["a", "b"], outputs: ["x", "y", "z"] },
+  },
+];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={[]} nodeTypes={nodeTypes} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$13"}]}]
+b:["$","h2",null,{"children":"Node Resizing"}]
+c:["$","p",null,{"children":["Use the ",["$","$L3",null,{"children":"NodeResizer"}]," component:"]}]
+14:T436,import { ReactFlow, Handle, Position, Background, NodeResizer } from "@xyflow/react";
+import type { Node, NodeProps, NodeTypes } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+function ResizableNode({ data, selected }: NodeProps) {
+  return (
+    <>
+      <NodeResizer isVisible={selected} minWidth={100} minHeight={50} />
+      <Handle type="target" position={Position.Top} />
+      <div className="flex h-full w-full items-center justify-center p-2">
+        <span className="text-sm">{data.label}</span>
+      </div>
+      <Handle type="source" position={Position.Bottom} />
+    </>
+  );
+}
+
+const nodeTypes: NodeTypes = { resizable: ResizableNode };
+
+const nodes: Node[] = [
+  {
+    id: "1",
+    type: "resizable",
+    position: { x: 100, y: 100 },
+    data: { label: "Drag corners to resize" },
+    style: { width: 200, height: 80 },
+  },
+];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={[]} nodeTypes={nodeTypes} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$14"}]}]
+e:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/react-flow/chapter-01-setup","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/react-flow/chapter-03-edges","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+f:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+10:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+11:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+17:null

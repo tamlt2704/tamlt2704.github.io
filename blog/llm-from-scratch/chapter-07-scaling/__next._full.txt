@@ -1,0 +1,126 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","llm-from-scratch","chapter-07-scaling",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","llm-from-scratch/chapter-07-scaling","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-06-generation","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/llm-from-scratch/chapter-08-finetuning","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T525,def count_parameters(vocab_size, embed_dim, n_layers, n_heads, max_len):
+    """Calculate total parameters for a GPT model."""
+    head_dim = embed_dim // n_heads
+
+    # Token embeddings
+    token_emb = vocab_size * embed_dim
+
+    # Position embeddings
+    pos_emb = max_len * embed_dim
+
+    # Per transformer block
+    attn_qkv = embed_dim * (3 * embed_dim)  # W_qkv (no bias)
+    attn_out = embed_dim * embed_dim          # W_out
+    ffn_up = embed_dim * (4 * embed_dim)      # fc1
+    ffn_down = (4 * embed_dim) * embed_dim    # fc2
+    ln_params = 2 * embed_dim * 2             # 2 LayerNorms (gamma + beta each)
+
+    per_block = attn_qkv + attn_out + ffn_up + ffn_down + ln_params
+    all_blocks = per_block * n_layers
+
+    # Final LayerNorm
+    final_ln = 2 * embed_dim
+
+    # LM head (tied with token_emb, so not counted separately)
+    total = token_emb + pos_emb + all_blocks + final_ln
+    return total
+
+# Common model sizes
+models = [
+    ("GPT-2 Small",  50257, 768,  12, 12, 1024),
+    ("GPT-2 Medium", 50257, 1024, 24, 16, 1024),
+    ("GPT-2 Large",  50257, 1280, 36, 20, 1024),
+    ("GPT-2 XL",     50257, 1600, 48, 25, 1024),
+    ("LLaMA-7B",     32000, 4096, 32, 32, 2048),
+]
+
+for name, *args in models:
+    params = count_parameters(*args)
+    print(f"{name:15s}: {params / 1e6:>8.1f}M parameters")
+10:[["$","h1",null,{"children":"Chapter 7: Scaling"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-06-generation","children":"prev: Text Generation"}]," | ",["$","a",null,{"href":"chapter-08-finetuning","children":"next: Fine-tuning"}]]}],"\n",["$","p",null,{"children":"Scaling transforms a toy model into a capable one. This chapter covers parameter counting, compute estimation, scaling laws, and distributed training techniques."}],"\n",["$","h2",null,{"children":"Model Sizes (Parameter Calculation)"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"$13"}]}],"\n",["$","h2",null,{"children":"Compute Requirements (FLOPs)"}],"\n",["$","p",null,{"children":["Rule of thumb: ",["$","$L12",null,{"children":"FLOPs per token ≈ 6 * N"}]," (where N = number of parameters)"]}],"\n",["$","p",null,{"children":["For training: ",["$","$L12",null,{"children":"Total FLOPs ≈ 6 * N * D"}]," (D = number of training tokens)"]}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"def estimate_training_flops(n_params, n_tokens):\n    \"\"\"Estimate total FLOPs for training.\"\"\"\n    flops = 6 * n_params * n_tokens\n    # Convert to GPU-hours (A100 = ~312 TFLOPS bf16)\n    a100_tflops = 312e12\n    gpu_seconds = flops / a100_tflops\n    gpu_hours = gpu_seconds / 3600\n    return flops, gpu_hours\n\n# Example: train a 7B model on 1T tokens\nflops, hours = estimate_training_flops(7e9, 1e12)\nprint(f\"FLOPs: {flops:.2e}\")\nprint(f\"A100 GPU-hours: {hours:.0f}\")\nprint(f\"A100 GPU-days: {hours/24:.0f}\")\n"}]}],"\n",["$","h2",null,{"children":"Scaling Laws (Chinchilla)"}],"\n",["$","p",null,{"children":["The Chinchilla paper found the optimal ratio: ",["$","strong",null,{"children":"train tokens ≈ 20x parameters"}],"."]}],"\n",["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Model Size"}],["$","th",null,{"children":"Optimal Tokens"}],["$","th",null,{"children":"Compute Budget"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"1B"}],["$","td",null,{"children":"20B tokens"}],["$","td",null,{"children":"~3.6e20 FLOPs"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"7B"}],["$","td",null,{"children":"140B tokens"}],["$","td",null,{"children":"~5.9e21 FLOPs"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"70B"}],["$","td",null,{"children":"1.4T tokens"}],["$","td",null,{"children":"~5.9e23 FLOPs"}]]}]]}]]}],"\n",["$","p",null,{"children":"Key insight: Many models were undertrained. A smaller model trained on more data often beats a larger model trained on less data."}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d"]
+14:["$","h2",null,{"children":"Gradient Accumulation"}]
+15:["$","p",null,{"children":"Simulate larger batch sizes without more GPU memory:"}]
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"import torch\n\ndef train_with_gradient_accumulation(model, dataloader, optimizer,\n                                     accumulation_steps=8, device=\"cuda\"):\n    \"\"\"Effective batch size = micro_batch_size * accumulation_steps.\"\"\"\n    model.train()\n\n    for step, (x, y) in enumerate(dataloader):\n        x, y = x.to(device), y.to(device)\n\n        with torch.autocast(device_type=\"cuda\", dtype=torch.bfloat16):\n            logits = model(x)\n            loss = torch.nn.functional.cross_entropy(\n                logits.view(-1, logits.size(-1)), y.view(-1)\n            )\n            # Scale loss by accumulation steps\n            loss = loss / accumulation_steps\n\n        loss.backward()\n\n        if (step + 1) % accumulation_steps == 0:\n            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)\n            optimizer.step()\n            optimizer.zero_grad()\n"}]}]
+17:["$","h2",null,{"children":"Distributed Training: DDP"}]
+18:["$","p",null,{"children":"Distributed Data Parallel — each GPU has a full model copy, data is split across GPUs:"}]
+2e:T50b,import torch
+import torch.distributed as dist
+from torch.nn.parallel import DistributedDataParallel as DDP
+from torch.utils.data.distributed import DistributedSampler
+
+def setup_ddp(rank, world_size):
+    """Initialize distributed process group."""
+    dist.init_process_group("nccl", rank=rank, world_size=world_size)
+    torch.cuda.set_device(rank)
+
+def train_ddp(rank, world_size, model, dataset):
+    setup_ddp(rank, world_size)
+
+    model = model.to(rank)
+    model = DDP(model, device_ids=[rank])
+
+    sampler = DistributedSampler(dataset, num_replicas=world_size, rank=rank)
+    dataloader = torch.utils.data.DataLoader(
+        dataset, batch_size=32, sampler=sampler
+    )
+
+    optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
+
+    for epoch in range(10):
+        sampler.set_epoch(epoch)  # Shuffle differently each epoch
+        for x, y in dataloader:
+            x, y = x.to(rank), y.to(rank)
+            logits = model(x)
+            loss = torch.nn.functional.cross_entropy(
+                logits.view(-1, logits.size(-1)), y.view(-1)
+            )
+            optimizer.zero_grad()
+            loss.backward()  # Gradients are all-reduced automatically
+            optimizer.step()
+
+    dist.destroy_process_group()
+
+# Launch: torchrun --nproc_per_node=4 train.py
+19:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"$2e"}]}]
+1a:["$","h2",null,{"children":"Distributed Training: FSDP"}]
+1b:["$","p",null,{"children":"Fully Sharded Data Parallel — shards model parameters, gradients, and optimizer states across GPUs:"}]
+1c:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"import torch\nfrom torch.distributed.fsdp import FullyShardedDataParallel as FSDP\nfrom torch.distributed.fsdp import MixedPrecision\n\n# FSDP wraps the model and shards parameters\nbfloat16_policy = MixedPrecision(\n    param_dtype=torch.bfloat16,\n    reduce_dtype=torch.bfloat16,\n    buffer_dtype=torch.bfloat16,\n)\n\nmodel = FSDP(\n    model,\n    mixed_precision=bfloat16_policy,\n    use_orig_params=True,\n)\n# Memory per GPU: ~model_size / num_gpus (vs full copy in DDP)\n"}]}]
+1d:["$","p",null,{"children":[["$","strong",null,{"children":"DDP vs FSDP"}],":"]}]
+1e:["$","ul",null,{"children":["\n",["$","li",null,{"children":"DDP: each GPU holds full model. Limited by single-GPU memory."}],"\n",["$","li",null,{"children":"FSDP: shards everything. Can train models larger than single-GPU memory."}],"\n"]}]
+1f:["$","h2",null,{"children":"Flash Attention"}]
+20:["$","p",null,{"children":["Flash Attention computes exact attention without materializing the full ",["$","$L12",null,{"children":"(seq_len, seq_len)"}]," attention matrix. Reduces memory from ",["$","$L12",null,{"children":"O(N^2)"}]," to ",["$","$L12",null,{"children":"O(N)"}],":"]}]
+21:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"import torch\nimport torch.nn.functional as F\n\n# PyTorch 2.0+ has built-in flash attention\ndef attention_with_flash(Q, K, V, is_causal=True):\n    \"\"\"\n    Q, K, V shape: (batch, n_heads, seq_len, head_dim)\n    Uses flash attention kernel automatically when available.\n    \"\"\"\n    output = F.scaled_dot_product_attention(\n        Q, K, V,\n        is_causal=is_causal,\n        dropout_p=0.0,\n    )\n    # output shape: (batch, n_heads, seq_len, head_dim)\n    return output\n\n# Drop-in replacement in CausalSelfAttention:\n# Instead of manual score computation, just call:\n# out = F.scaled_dot_product_attention(Q, K, V, is_causal=True)\n"}]}]
+22:["$","p",null,{"children":[["$","strong",null,{"children":"Benefits"}],": 2-4x faster, uses O(N) memory instead of O(N^2). Essential for long sequences."]}]
+23:["$","h2",null,{"children":"Memory Optimization"}]
+24:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-python","children":"import torch\n\n# 1. Activation checkpointing: recompute activations during backward\n#    instead of storing them (trades compute for memory)\nfrom torch.utils.checkpoint import checkpoint\n\nclass TransformerBlockCheckpointed(torch.nn.Module):\n    def __init__(self, block):\n        super().__init__()\n        self.block = block\n\n    def forward(self, x):\n        return checkpoint(self.block, x, use_reentrant=False)\n\n# 2. torch.compile: fuses operations, reduces memory overhead\nmodel = torch.compile(model)\n"}]}]
+25:["$","h2",null,{"children":"Model Parallelism"}]
+26:["$","p",null,{"children":"When a single model does not fit on one GPU even with FSDP:"}]
+27:["$","p",null,{"children":[["$","strong",null,{"children":"Tensor Parallelism"}],": Split individual layers across GPUs (e.g., split the FFN weight matrix column-wise across 2 GPUs)."]}]
+28:["$","p",null,{"children":[["$","strong",null,{"children":"Pipeline Parallelism"}],": Put different layers on different GPUs. Forward pass flows through GPUs sequentially."]}]
+29:["$","$L11",null,{"children":["$","$L12",null,{"children":"Tensor Parallel (within a layer):\n  GPU 0: first half of FFN columns\n  GPU 1: second half of FFN columns\n  -> All-reduce to combine\n\nPipeline Parallel (across layers):\n  GPU 0: layers 0-5\n  GPU 1: layers 6-11\n  -> Micro-batches overlap computation\n"}]}]
+2a:["$","h2",null,{"children":"Summary of Scaling Techniques"}]
+2b:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Technique"}],["$","th",null,{"children":"What it does"}],["$","th",null,{"children":"When to use"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Gradient Accumulation"}],["$","td",null,{"children":"Larger effective batch"}],["$","td",null,{"children":"Limited GPU memory"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"DDP"}],["$","td",null,{"children":"Data parallel across GPUs"}],["$","td",null,{"children":"Model fits on 1 GPU"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"FSDP"}],["$","td",null,{"children":"Shard model across GPUs"}],["$","td",null,{"children":"Model too large for 1 GPU"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Flash Attention"}],["$","td",null,{"children":"O(N) memory attention"}],["$","td",null,{"children":"Always (free speedup)"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Activation Checkpointing"}],["$","td",null,{"children":"Recompute vs store"}],["$","td",null,{"children":"Memory constrained"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"torch.compile"}],["$","td",null,{"children":"Kernel fusion"}],["$","td",null,{"children":"Always (PyTorch 2.0+)"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Tensor Parallelism"}],["$","td",null,{"children":"Split layers across GPUs"}],["$","td",null,{"children":"Very large models"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Pipeline Parallelism"}],["$","td",null,{"children":"Split model stages"}],["$","td",null,{"children":"Very large models"}]]}]]}]]}]
+2c:["$","h2",null,{"children":"Key Takeaways"}]
+2d:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Parameter count is dominated by attention and FFN weights (not embeddings)"}],"\n",["$","li",null,{"children":"Chinchilla scaling: use 20 tokens per parameter for optimal compute efficiency"}],"\n",["$","li",null,{"children":"Gradient accumulation is the simplest way to increase effective batch size"}],"\n",["$","li",null,{"children":"DDP for multi-GPU when model fits on one GPU; FSDP when it does not"}],"\n",["$","li",null,{"children":"Flash Attention is a free lunch — always use it"}],"\n",["$","li",null,{"children":"torch.compile gives 10-30% speedup with one line of code"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+2f:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 07 scaling — llm from scratch"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2f","3",{}]]

@@ -1,0 +1,109 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+d:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+4:T4ba,package com.example.service;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CalculatorTest {
+
+    private Calculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
+    }
+
+    @Test
+    @DisplayName("should add two numbers correctly")
+    void shouldAdd() {
+        assertEquals(5, calculator.add(2, 3));
+    }
+
+    @Test
+    @DisplayName("should throw when dividing by zero")
+    void shouldThrowOnDivideByZero() {
+        ArithmeticException ex = assertThrows(
+            ArithmeticException.class,
+            () -> calculator.divide(10, 0)
+        );
+        assertEquals("Cannot divide by zero", ex.getMessage());
+    }
+
+    @Test
+    @DisplayName("should validate multiple assertions together")
+    void shouldValidateMultipleAssertions() {
+        assertAll("calculator operations",
+            () -> assertEquals(4, calculator.add(2, 2)),
+            () -> assertEquals(5, calculator.divide(10, 2)),
+            () -> assertTrue(calculator.isPositive(1)),
+            () -> assertFalse(calculator.isPositive(-1))
+        );
+    }
+}
+5:T461,package com.example.service;
+
+import org.junit.jupiter.api.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("Calculator")
+class CalculatorNestedTest {
+
+    private Calculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
+    }
+
+    @Nested
+    @DisplayName("add")
+    class Add {
+
+        @Test
+        @DisplayName("returns sum of two positive numbers")
+        void positiveNumbers() {
+            assertEquals(7, calculator.add(3, 4));
+        }
+
+        @Test
+        @DisplayName("returns sum with negative numbers")
+        void negativeNumbers() {
+            assertEquals(-1, calculator.add(2, -3));
+        }
+    }
+
+    @Nested
+    @DisplayName("divide")
+    class Divide {
+
+        @Test
+        @DisplayName("returns quotient for valid inputs")
+        void validDivision() {
+            assertEquals(3, calculator.divide(9, 3));
+        }
+
+        @Test
+        @DisplayName("throws for zero divisor")
+        void zeroDivisor() {
+            assertThrows(ArithmeticException.class,
+                () -> calculator.divide(1, 0));
+        }
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"JUnit 5 Basics"}],"\n",["$","h2",null,{"children":"Test Lifecycle"}],"\n",["$","p",null,{"children":["JUnit 5 creates a ",["$","strong",null,{"children":"new test instance per test method"}]," by default:"]}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","$L2",null,{"children":"@BeforeAll"}]," — once before all tests (static method)"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"@BeforeEach"}]," — before each test method"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"@Test"}]," — the test itself"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"@AfterEach"}]," — after each test method"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"@AfterAll"}]," — once after all tests (static method)"]}],"\n"]}],"\n",["$","h2",null,{"children":"Class Under Test"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"package com.example.service;\n\npublic class Calculator {\n\n    public int add(int a, int b) {\n        return a + b;\n    }\n\n    public int divide(int a, int b) {\n        if (b == 0) {\n            throw new ArithmeticException(\"Cannot divide by zero\");\n        }\n        return a / b;\n    }\n\n    public boolean isPositive(int number) {\n        return number > 0;\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Basic Test with @Test and Assertions"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"@Nested Tests for Grouping"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$5"}]}],"\n","$L6","\n","$L7","\n","$L8"]}],"$L9"]}],["$La","$Lb"],"$Lc"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+6:["$","h2",null,{"children":"Key Points"}]
+7:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L2",null,{"children":"@DisplayName"}]," provides readable test names in reports"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"assertAll"}]," runs all assertions even if one fails — reports all failures"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"assertThrows"}]," returns the exception for further assertions"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"@Nested"}]," classes share the outer ",["$","$L2",null,{"children":"@BeforeEach"}]," setup"]}],"\n",["$","li",null,{"children":["Each ",["$","$L2",null,{"children":"@Nested"}]," class can have its own ",["$","$L2",null,{"children":"@BeforeEach"}]]}],"\n"]}]
+8:["$","p",null,{"children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","children":"prev: Overview"}]," | ",["$","a",null,{"href":"/blog/junit-spring-testing/chapter-02-mockito","children":"next: Mockito"}]]}]
+9:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/junit-spring-testing/chapter-02-mockito","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+a:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+b:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+c:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

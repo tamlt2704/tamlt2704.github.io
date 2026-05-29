@@ -1,0 +1,169 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+13:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+4:T51b,package com.example.bookstore.controller;
+
+import com.example.bookstore.dto.BookResponse;
+import com.example.bookstore.service.BookService;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.bean.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.List;
+
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@WebMvcTest(BookController.class)
+class BookControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private BookService bookService;
+
+    @Test
+    void shouldReturnAllBooks() throws Exception {
+        var books = List.of(
+                new BookResponse(1L, "Clean Code", "Robert Martin", "9780132350884", 464)
+        );
+        when(bookService.findAll()).thenReturn(books);
+
+        mockMvc.perform(get("/api/books"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].title").value("Clean Code"))
+                .andExpect(jsonPath("$[0].author").value("Robert Martin"));
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 6: Testing"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"../chapter-05-security","children":"Previous: Security"}]," | ",["$","a",null,{"href":"../chapter-07-docs","children":"Next: Documentation and Deployment"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Overview"}],"\n",["$","p",null,{"children":["We write unit tests for the web layer with ",["$","$L2",null,{"children":"@WebMvcTest"}],", repository tests with ",["$","$L2",null,{"children":"@DataJpaTest"}],", full integration tests with ",["$","$L2",null,{"children":"@SpringBootTest"}]," and Testcontainers, and API tests with REST Assured."]}],"\n",["$","h2",null,{"children":"Test Dependencies"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-kotlin","children":"// build.gradle.kts\ntestImplementation(\"org.springframework.boot:spring-boot-starter-test\")\ntestImplementation(\"org.springframework.security:spring-security-test\")\ntestImplementation(\"org.testcontainers:junit-jupiter\")\ntestImplementation(\"org.testcontainers:postgresql\")\ntestImplementation(\"io.rest-assured:rest-assured\")\n"}]}],"\n",["$","h2",null,{"children":"Controller Unit Test with @WebMvcTest"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"Repository Test with @DataJpaTest"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"package com.example.bookstore.repository;\n\nimport com.example.bookstore.model.Book;\nimport org.junit.jupiter.api.Test;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;\nimport org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;\n\nimport static org.assertj.core.api.Assertions.assertThat;\n\n@DataJpaTest\nclass BookRepositoryTest {\n\n    @Autowired\n    private TestEntityManager entityManager;\n\n    @Autowired\n    private BookRepository bookRepository;\n\n    @Test\n    void shouldFindBookByIsbn() {\n        Book book = new Book();\n        book.setTitle(\"Test Book\");\n        book.setAuthor(\"Author\");\n        book.setIsbn(\"1234567890\");\n        book.setPages(200);\n        entityManager.persistAndFlush(book);\n\n        var found = bookRepository.findByIsbn(\"1234567890\");\n\n        assertThat(found).isPresent();\n        assertThat(found.get().getTitle()).isEqualTo(\"Test Book\");\n    }\n}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc"]}],"$Ld"]}],["$Le","$Lf"],"$L10"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Integration Test with Testcontainers"}]
+11:T639,package com.example.bookstore;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Testcontainers
+class BookstoreIntegrationTest {
+
+    @Container
+    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16-alpine")
+            .withDatabaseName("testdb")
+            .withUsername("test")
+            .withPassword("test");
+
+    @DynamicPropertySource
+    static void configureProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        registry.add("spring.datasource.username", postgres::getUsername);
+        registry.add("spring.datasource.password", postgres::getPassword);
+    }
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @Test
+    void shouldReturnEmptyListInitially() {
+        var response = restTemplate.getForEntity("/api/books", String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+}
+6:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$11"}]}]
+7:["$","h2",null,{"children":"API Test with REST Assured"}]
+12:T91f,package com.example.bookstore;
+
+import io.restassured.RestAssured;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Testcontainers
+class BookApiTest {
+
+    @Container
+    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16-alpine")
+            .withDatabaseName("testdb")
+            .withUsername("test")
+            .withPassword("test");
+
+    @DynamicPropertySource
+    static void configureProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        registry.add("spring.datasource.username", postgres::getUsername);
+        registry.add("spring.datasource.password", postgres::getPassword);
+    }
+
+    @LocalServerPort
+    private int port;
+
+    @BeforeEach
+    void setUp() {
+        RestAssured.port = port;
+    }
+
+    @Test
+    void shouldCreateAndRetrieveBook() {
+        String bookJson = """
+                {
+                    "title": "Effective Java",
+                    "author": "Joshua Bloch",
+                    "isbn": "9780134685991",
+                    "pages": 416
+                }
+                """;
+
+        String location = given()
+                .contentType("application/json")
+                .body(bookJson)
+                .when()
+                .post("/api/books")
+                .then()
+                .statusCode(201)
+                .header("Location", containsString("/api/books/"))
+                .extract().header("Location");
+
+        given()
+                .when()
+                .get(location)
+                .then()
+                .statusCode(200)
+                .body("title", equalTo("Effective Java"))
+                .body("author", equalTo("Joshua Bloch"));
+    }
+}
+8:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$12"}]}]
+9:["$","h2",null,{"children":"Running Tests"}]
+a:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"./gradlew test\n"}]}]
+b:["$","hr",null,{}]
+c:["$","p",null,{"children":[["$","a",null,{"href":"../chapter-05-security","children":"Previous: Security"}]," | ",["$","a",null,{"href":"../chapter-07-docs","children":"Next: Documentation and Deployment"}]]}]
+d:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-05-security","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-boot-rest/chapter-07-docs","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+e:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+f:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+10:["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]
+15:null

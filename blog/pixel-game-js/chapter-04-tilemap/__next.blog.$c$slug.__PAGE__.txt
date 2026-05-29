@@ -1,0 +1,205 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+17:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+4:T518,const camera = { x: 0, y: 0 };
+const SCREEN_W = 160;
+const SCREEN_H = 144;
+
+function updateCamera(targetX: number, targetY: number) {
+  camera.x = targetX - SCREEN_W / 2;
+  camera.y = targetY - SCREEN_H / 2;
+
+  // Clamp to map bounds
+  camera.x = Math.max(0, Math.min(camera.x, MAP_W * TILE_SIZE - SCREEN_W));
+  camera.y = Math.max(0, Math.min(camera.y, MAP_H * TILE_SIZE - SCREEN_H));
+
+  camera.x = Math.floor(camera.x);
+  camera.y = Math.floor(camera.y);
+}
+
+function drawMapWithCamera() {
+  // Only draw visible tiles
+  const startCol = Math.floor(camera.x / TILE_SIZE);
+  const startRow = Math.floor(camera.y / TILE_SIZE);
+  const endCol = Math.min(startCol + Math.ceil(SCREEN_W / TILE_SIZE) + 1, MAP_W);
+  const endRow = Math.min(startRow + Math.ceil(SCREEN_H / TILE_SIZE) + 1, MAP_H);
+
+  for (let row = startRow; row < endRow; row++) {
+    for (let col = startCol; col < endCol; col++) {
+      const tileId = map[row * MAP_W + col];
+      if (tileId === 0) continue;
+
+      const destX = col * TILE_SIZE - camera.x;
+      const destY = row * TILE_SIZE - camera.y;
+      const srcX = (tileId % TILESET_COLS) * TILE_SIZE;
+      const srcY = Math.floor(tileId / TILESET_COLS) * TILE_SIZE;
+
+      ctx.drawImage(tileset, srcX, srcY, TILE_SIZE, TILE_SIZE, destX, destY, TILE_SIZE, TILE_SIZE);
+    }
+  }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Tilemaps"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-03-sprites","children":"prev: Sprites"}]," | ",["$","a",null,{"href":"./chapter-05-phaser","children":"next: Phaser 3"}]]}],"\n",["$","p",null,{"children":"Tilemaps let you build large worlds from small reusable tiles. A 16x16 tileset can create infinite variety."}],"\n",["$","h2",null,{"children":"Tile-Based World"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"Tileset (one image):        Map (array of indices):\n+---+---+---+---+           [0,0,0,0,0,0,0,0]\n| 0 | 1 | 2 | 3 |          [0,0,0,0,0,0,0,0]\n+---+---+---+---+           [0,0,0,0,0,0,0,0]\n| 4 | 5 | 6 | 7 |          [1,1,1,0,0,1,1,1]\n+---+---+---+---+           [2,2,2,0,0,2,2,2]\n                             [3,3,3,3,3,3,3,3]\n0=sky, 1=grass-top, 2=dirt, 3=stone\n"}]}],"\n",["$","h2",null,{"children":"Basic Tilemap Renderer"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"const TILE_SIZE = 16;\nconst MAP_W = 10;\nconst MAP_H = 9;\n\nconst map = [\n  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,\n  1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n];\n\nlet tileset: HTMLImageElement;\nconst TILESET_COLS = 4; // tiles per row in the tileset image\n\nfunction drawMap() {\n  for (let i = 0; i < map.length; i++) {\n    const tileId = map[i];\n    if (tileId === 0) continue;\n\n    const destX = (i % MAP_W) * TILE_SIZE;\n    const destY = Math.floor(i / MAP_W) * TILE_SIZE;\n    const srcX = (tileId % TILESET_COLS) * TILE_SIZE;\n    const srcY = Math.floor(tileId / TILESET_COLS) * TILE_SIZE;\n\n    ctx.drawImage(tileset, srcX, srcY, TILE_SIZE, TILE_SIZE, destX, destY, TILE_SIZE, TILE_SIZE);\n  }\n}\n"}]}],"\n",["$","h2",null,{"children":"Loading Tilemap Data (JSON)"}],"\n",["$","p",null,{"children":"Export from Tiled editor or define manually:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"interface TilemapData {\n  width: number;\n  height: number;\n  tileSize: number;\n  layers: { name: string; data: number[] }[];\n}\n\nasync function loadMap(url: string): Promise<TilemapData> {\n  const res = await fetch(url);\n  return res.json();\n}\n\n// map.json\n// {\n//   \"width\": 20, \"height\": 15, \"tileSize\": 16,\n//   \"layers\": [\n//     { \"name\": \"background\", \"data\": [0,0,0,...] },\n//     { \"name\": \"foreground\", \"data\": [0,0,5,...] },\n//     { \"name\": \"collision\",  \"data\": [0,0,1,...] }\n//   ]\n// }\n"}]}],"\n",["$","h2",null,{"children":"Camera / Viewport Scrolling"}],"\n",["$","p",null,{"children":"For maps larger than the screen, use a camera offset:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf"]}],"$L10"]}],["$L11","$L12"],"$L13"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Tile Collision"}]
+14:T441,function getTile(x: number, y: number, layer: number[]): number {
+  const col = Math.floor(x / TILE_SIZE);
+  const row = Math.floor(y / TILE_SIZE);
+  if (col < 0 || col >= MAP_W || row < 0 || row >= MAP_H) return 1; // solid outside
+  return layer[row * MAP_W + col];
+}
+
+function isSolid(x: number, y: number): boolean {
+  return getTile(x, y, collisionLayer) !== 0;
+}
+
+// Check player movement
+function movePlayer(dt: number) {
+  const newX = player.x + player.vx * dt;
+  const newY = player.y + player.vy * dt;
+
+  // Horizontal
+  if (
+    !isSolid(newX, player.y) &&
+    !isSolid(newX + player.width - 1, player.y) &&
+    !isSolid(newX, player.y + player.height - 1) &&
+    !isSolid(newX + player.width - 1, player.y + player.height - 1)
+  ) {
+    player.x = newX;
+  } else {
+    player.vx = 0;
+  }
+
+  // Vertical
+  if (
+    !isSolid(player.x, newY) &&
+    !isSolid(player.x + player.width - 1, newY) &&
+    !isSolid(player.x, newY + player.height - 1) &&
+    !isSolid(player.x + player.width - 1, newY + player.height - 1)
+  ) {
+    player.y = newY;
+  } else {
+    player.vy = 0;
+  }
+}
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$14"}]}]
+7:["$","h2",null,{"children":"Tiled Editor Export"}]
+8:["$","p",null,{"children":[["$","a",null,{"href":"https://www.mapeditor.org/","children":"Tiled"}]," is the standard tilemap editor. Export as JSON:"]}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"// Tiled JSON format (simplified)\ninterface TiledMap {\n  width: number;\n  height: number;\n  tilewidth: number;\n  tileheight: number;\n  layers: {\n    name: string;\n    type: string;\n    data: number[]; // 1-indexed! Subtract 1 for your tileset\n  }[];\n}\n\nasync function loadTiledMap(url: string) {\n  const data: TiledMap = await (await fetch(url)).json();\n  return {\n    width: data.width,\n    height: data.height,\n    tileSize: data.tilewidth,\n    layers: data.layers\n      .filter((l) => l.type === \"tilelayer\")\n      .map((l) => ({\n        name: l.name,\n        data: l.data.map((id) => id - 1), // Tiled uses 1-indexed, 0 = empty\n      })),\n  };\n}\n"}]}]
+a:["$","h2",null,{"children":"Layers"}]
+b:["$","p",null,{"children":"Render layers in order: background first, then player, then foreground:"}]
+15:T424,function render() {
+  ctx.fillStyle = "#87ceeb"; // sky
+  ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
+
+  drawLayer(mapData.layers[0]); // background
+  drawPlayer();
+  drawLayer(mapData.layers[1]); // foreground (trees, roofs)
+}
+
+function drawLayer(layer: { data: number[] }) {
+  const startCol = Math.floor(camera.x / TILE_SIZE);
+  const startRow = Math.floor(camera.y / TILE_SIZE);
+  const endCol = Math.min(startCol + Math.ceil(SCREEN_W / TILE_SIZE) + 1, MAP_W);
+  const endRow = Math.min(startRow + Math.ceil(SCREEN_H / TILE_SIZE) + 1, MAP_H);
+
+  for (let row = startRow; row < endRow; row++) {
+    for (let col = startCol; col < endCol; col++) {
+      const tileId = layer.data[row * MAP_W + col];
+      if (tileId < 0) continue;
+      const destX = col * TILE_SIZE - camera.x;
+      const destY = row * TILE_SIZE - camera.y;
+      const srcX = (tileId % TILESET_COLS) * TILE_SIZE;
+      const srcY = Math.floor(tileId / TILESET_COLS) * TILE_SIZE;
+      ctx.drawImage(tileset, srcX, srcY, TILE_SIZE, TILE_SIZE, destX, destY, TILE_SIZE, TILE_SIZE);
+    }
+  }
+}
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$15"}]}]
+d:["$","h2",null,{"children":"Complete Example"}]
+16:Tb42,const canvas = document.getElementById("game") as HTMLCanvasElement;
+const ctx = canvas.getContext("2d")!;
+canvas.width = 160;
+canvas.height = 144;
+ctx.imageSmoothingEnabled = false;
+
+const TILE = 16,
+  COLS = 20,
+  ROWS = 15;
+const camera = { x: 0, y: 0 };
+const player = { x: 32, y: 32, vx: 0, vy: 0, w: 12, h: 14 };
+const keys: Record<string, boolean> = {};
+window.addEventListener("keydown", (e) => {
+  keys[e.code] = true;
+});
+window.addEventListener("keyup", (e) => {
+  keys[e.code] = false;
+});
+
+const collision = [
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1,
+];
+
+function isSolid(x: number, y: number) {
+  const c = Math.floor(x / TILE),
+    r = Math.floor(y / TILE);
+  if (c < 0 || c >= COLS || r < 0 || r >= ROWS) return true;
+  return collision[r * COLS + c] !== 0;
+}
+
+let lastTime = 0;
+function loop(t: number) {
+  const dt = Math.min((t - lastTime) / 1000, 0.1);
+  lastTime = t;
+  const speed = 80;
+  player.vx = 0;
+  player.vy = 0;
+  if (keys["ArrowLeft"]) player.vx = -speed;
+  if (keys["ArrowRight"]) player.vx = speed;
+  if (keys["ArrowUp"]) player.vy = -speed;
+  if (keys["ArrowDown"]) player.vy = speed;
+
+  const nx = player.x + player.vx * dt;
+  if (!isSolid(nx, player.y) && !isSolid(nx + player.w, player.y + player.h)) player.x = nx;
+  const ny = player.y + player.vy * dt;
+  if (!isSolid(player.x, ny) && !isSolid(player.x + player.w, ny + player.h)) player.y = ny;
+
+  camera.x = Math.floor(player.x - 80);
+  camera.y = Math.floor(player.y - 72);
+
+  ctx.fillStyle = "#2d2d44";
+  ctx.fillRect(0, 0, 160, 144);
+  for (let i = 0; i < collision.length; i++) {
+    if (collision[i] === 0) continue;
+    const dx = (i % COLS) * TILE - camera.x;
+    const dy = Math.floor(i / COLS) * TILE - camera.y;
+    ctx.fillStyle = "#5a5a8a";
+    ctx.fillRect(dx, dy, TILE, TILE);
+  }
+  ctx.fillStyle = "#e94560";
+  ctx.fillRect(
+    Math.floor(player.x - camera.x),
+    Math.floor(player.y - camera.y),
+    player.w,
+    player.h,
+  );
+
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$16"}]}]
+f:["$","p",null,{"children":[["$","a",null,{"href":"./chapter-03-sprites","children":"prev: Sprites"}]," | ",["$","a",null,{"href":"./chapter-05-phaser","children":"next: Phaser 3"}]]}]
+10:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-03-sprites","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/pixel-game-js/chapter-05-phaser","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+11:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+12:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+13:["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]
+19:null

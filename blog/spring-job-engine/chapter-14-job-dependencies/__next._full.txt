@@ -1,0 +1,166 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","spring-job-engine","chapter-14-job-dependencies",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","spring-job-engine/chapter-14-job-dependencies","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-13-scheduled-jobs","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-job-engine/chapter-15-multi-tenancy","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T778,// service/WorkflowService.java
+@Service
+@RequiredArgsConstructor
+public class WorkflowService {
+
+    private final JobService jobService;
+    private final JobDependencyRepository depRepo;
+    private final WorkflowRepository workflowRepo;
+
+    @Transactional
+    public Workflow submit(WorkflowRequest request, String user) {
+        Workflow workflow = new Workflow();
+        workflow.setId("wf-" + UUID.randomUUID().toString().substring(0, 8));
+        workflow.setName(request.name());
+        workflow.setCreatedBy(user);
+        workflow.setStatus(WorkflowStatus.PENDING);
+        workflow.setCreatedAt(Instant.now());
+        workflowRepo.save(workflow);
+
+        // Create all jobs, map step IDs to real job IDs
+        Map<String, String> stepToJobId = new HashMap<>();
+        for (WorkflowStep step : request.steps()) {
+            Job job = jobService.submit(step.jobType(), JobPriority.MEDIUM, step.params(), user);
+            job.setParentWorkflowId(workflow.getId());
+            // Jobs with dependencies start as WAITING (not QUEUED)
+            if (!step.dependsOn().isEmpty()) {
+                job.setStatus(JobStatus.WAITING);
+            }
+            stepToJobId.put(step.id(), job.getId());
+        }
+
+        // Wire dependencies
+        for (WorkflowStep step : request.steps()) {
+            String jobId = stepToJobId.get(step.id());
+            for (String dep : step.dependsOn()) {
+                JobDependency dependency = new JobDependency();
+                dependency.setJobId(jobId);
+                dependency.setDependsOnJobId(stepToJobId.get(dep));
+                dependency.setSatisfied(false);
+                depRepo.save(dependency);
+            }
+        }
+
+        // Start jobs with no dependencies
+        workflow.setStatus(WorkflowStatus.RUNNING);
+        workflowRepo.save(workflow);
+        triggerReady(workflow.getId());
+
+        return workflow;
+    }
+}
+10:[["$","h1",null,{"children":"Chapter 14: Job Dependencies (DAG)"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-job-engine/chapter-13-scheduled-jobs","children":"← Chapter 13: Scheduled Jobs"}]," | ",["$","a",null,{"href":"/blog/spring-job-engine/chapter-15-multi-tenancy","children":"Chapter 15: Multi-Tenancy →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"The Story"}],"\n",["$","p",null,{"children":"The data pipeline team says: \"We can't run the Risk Report until the Market Data Import finishes. And the Final Summary needs both the Risk Report AND the Compliance Check to complete first.\" You need job dependencies — a DAG (Directed Acyclic Graph)."}],"\n",["$","h2",null,{"children":"What's a DAG?"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"children":"┌──────────────┐\n│ Market Data  │\n│   Import     │\n└──────┬───────┘\n       │ completes\n       ▼\n┌──────────────┐     ┌──────────────┐\n│ Risk Report  │     │  Compliance  │\n│              │     │    Check     │\n└──────┬───────┘     └──────┬───────┘\n       │                     │\n       └──────────┬──────────┘\n                  │ both complete\n                  ▼\n          ┌──────────────┐\n          │   Final      │\n          │   Summary    │\n          └──────────────┘\n"}]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Directed"}]," — edges have direction (A must finish before B)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Acyclic"}]," — no circular dependencies (A→B→A is invalid)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Graph"}]," — nodes (jobs) connected by edges (dependencies)"]}],"\n"]}],"\n",["$","h2",null,{"children":"Step 1: Model Dependencies"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// model/JobDependency.java\n@Entity\n@Table(name = \"job_dependencies\")\npublic class JobDependency {\n\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n\n    private String jobId;          // the job that waits\n    private String dependsOnJobId; // the job it waits for\n    private boolean satisfied;     // true when dependsOn completes\n\n    // getters, setters\n}\n"}]}],"\n",["$","p",null,{"children":"Add to the Job entity:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// In Job.java\n@OneToMany(mappedBy = \"jobId\", cascade = CascadeType.ALL)\nprivate List<JobDependency> dependencies = new ArrayList<>();\n\nprivate String parentWorkflowId;  // groups related jobs together\n"}]}],"\n",["$","h2",null,{"children":"Step 2: The Workflow (Job Group)"}],"\n",["$","p",null,{"children":"A workflow is a collection of jobs with dependencies:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// model/Workflow.java\n@Entity\n@Table(name = \"workflows\")\npublic class Workflow {\n\n    @Id\n    private String id;\n\n    private String name;           // \"Daily Pipeline\"\n    private String createdBy;\n\n    @Enumerated(EnumType.STRING)\n    private WorkflowStatus status; // PENDING, RUNNING, COMPLETED, FAILED\n\n    private Instant createdAt;\n    private Instant completedAt;\n}\n\npublic enum WorkflowStatus {\n    PENDING, RUNNING, COMPLETED, FAILED\n}\n"}]}],"\n",["$","h2",null,{"children":"Step 3: Submitting a Workflow"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"public record WorkflowRequest(\n    String name,\n    List<WorkflowStep> steps\n) {}\n\npublic record WorkflowStep(\n    String id,              // local reference: \"step-1\"\n    String jobType,\n    String params,\n    List<String> dependsOn  // [\"step-0\"] — references other steps\n) {}\n"}]}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$13"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c"]
+14:["$","h2",null,{"children":"Step 4: Triggering Downstream Jobs"}]
+15:["$","p",null,{"children":"When a job completes, check if any waiting jobs are now unblocked:"}]
+2d:T9d7,// service/DependencyResolver.java
+@Service
+@RequiredArgsConstructor
+public class DependencyResolver {
+
+    private final JobDependencyRepository depRepo;
+    private final JobService jobService;
+    private final JobGateway jobGateway;
+    private final WorkflowRepository workflowRepo;
+
+    // Called when any job completes
+    public void onJobCompleted(String completedJobId) {
+        // Mark this dependency as satisfied everywhere it appears
+        List<JobDependency> deps = depRepo.findByDependsOnJobId(completedJobId);
+        for (JobDependency dep : deps) {
+            dep.setSatisfied(true);
+            depRepo.save(dep);
+        }
+
+        // Find jobs whose ALL dependencies are now satisfied
+        List<String> unblockedJobIds = depRepo.findFullySatisfiedJobs();
+        for (String jobId : unblockedJobIds) {
+            Job job = jobService.getJob(jobId);
+            if (job.getStatus() == JobStatus.WAITING) {
+                jobService.transition(jobId, JobStatus.QUEUED);
+                jobGateway.submit(job);
+            }
+        }
+
+        // Check if workflow is complete
+        checkWorkflowCompletion(completedJobId);
+    }
+
+    public void onJobFailed(String failedJobId) {
+        // Fail all downstream jobs that depend on this one
+        List<JobDependency> downstream = depRepo.findByDependsOnJobId(failedJobId);
+        for (JobDependency dep : downstream) {
+            jobService.transition(dep.getJobId(), JobStatus.FAILED);
+            // Cascade: fail their dependents too
+            onJobFailed(dep.getJobId());
+        }
+
+        // Mark workflow as failed
+        Job failed = jobService.getJob(failedJobId);
+        if (failed.getParentWorkflowId() != null) {
+            Workflow wf = workflowRepo.findById(failed.getParentWorkflowId()).orElseThrow();
+            wf.setStatus(WorkflowStatus.FAILED);
+            workflowRepo.save(wf);
+        }
+    }
+
+    private void checkWorkflowCompletion(String jobId) {
+        Job job = jobService.getJob(jobId);
+        if (job.getParentWorkflowId() == null) return;
+
+        List<Job> workflowJobs = jobService.getByWorkflow(job.getParentWorkflowId());
+        boolean allDone = workflowJobs.stream()
+            .allMatch(j -> j.getStatus().isTerminal());
+
+        if (allDone) {
+            Workflow wf = workflowRepo.findById(job.getParentWorkflowId()).orElseThrow();
+            wf.setStatus(WorkflowStatus.COMPLETED);
+            wf.setCompletedAt(Instant.now());
+            workflowRepo.save(wf);
+        }
+    }
+}
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$2d"}]}]
+17:["$","h2",null,{"children":"Step 5: Repository Queries"}]
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// Add to service/JobService.java\npublic List<Job> getByWorkflow(String workflowId) {\n    return repo.findByParentWorkflowId(workflowId);\n}\n"}]}]
+19:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// Add to repository/JobRepository.java\nList<Job> findByParentWorkflowId(String workflowId);\n"}]}]
+1a:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"public interface JobDependencyRepository extends JpaRepository<JobDependency, Long> {\n\n    List<JobDependency> findByDependsOnJobId(String dependsOnJobId);\n\n    List<JobDependency> findByJobId(String jobId);\n\n    // Jobs where ALL dependencies are satisfied\n    @Query(\"\"\"\n        SELECT d.jobId FROM JobDependency d\n        GROUP BY d.jobId\n        HAVING COUNT(CASE WHEN d.satisfied = false THEN 1 END) = 0\n    \"\"\")\n    List<String> findFullySatisfiedJobs();\n}\n"}]}]
+1b:["$","h2",null,{"children":"Step 6: Hook into Job Completion"}]
+1c:["$","p",null,{"children":"Wire the resolver into the existing executor flow:"}]
+1d:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// In JobExecutor — after job completes\njobService.transition(job.getId(), JobStatus.COMPLETED);\ndependencyResolver.onJobCompleted(job.getId());\n\n// After job fails\njobService.transition(job.getId(), JobStatus.FAILED);\ndependencyResolver.onJobFailed(job.getId());\n"}]}]
+1e:["$","p",null,{"children":"Or via Spring Integration:"}]
+1f:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Bean\npublic IntegrationFlow completionFlow() {\n    return IntegrationFlow\n        .from(\"jobCompletionChannel\")\n        .handle(message -> {\n            Job job = (Job) message.getPayload();\n            if (job.getStatus() == JobStatus.COMPLETED) {\n                dependencyResolver.onJobCompleted(job.getId());\n            } else if (job.getStatus() == JobStatus.FAILED) {\n                dependencyResolver.onJobFailed(job.getId());\n            }\n        })\n        .get();\n}\n"}]}]
+20:["$","h2",null,{"children":"Step 7: DAG Validation (Cycle Detection)"}]
+21:["$","p",null,{"children":"Prevent circular dependencies at submission time:"}]
+22:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"public void validateNoCycles(List<WorkflowStep> steps) {\n    Map<String, List<String>> graph = new HashMap<>();\n    for (WorkflowStep step : steps) {\n        graph.put(step.id(), step.dependsOn());\n    }\n\n    Set<String> visited = new HashSet<>();\n    Set<String> inStack = new HashSet<>();\n\n    for (String node : graph.keySet()) {\n        if (hasCycle(node, graph, visited, inStack)) {\n            throw new IllegalArgumentException(\"Circular dependency detected\");\n        }\n    }\n}\n\nprivate boolean hasCycle(String node, Map<String, List<String>> graph,\n                         Set<String> visited, Set<String> inStack) {\n    if (inStack.contains(node)) return true;  // back edge = cycle\n    if (visited.contains(node)) return false;\n\n    visited.add(node);\n    inStack.add(node);\n\n    for (String dep : graph.getOrDefault(node, List.of())) {\n        if (hasCycle(dep, graph, visited, inStack)) return true;\n    }\n\n    inStack.remove(node);\n    return false;\n}\n"}]}]
+23:["$","h2",null,{"children":"Step 8: REST API"}]
+24:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@PostMapping(\"/api/workflows\")\npublic Workflow submitWorkflow(@RequestBody WorkflowRequest request) {\n    workflowService.validateNoCycles(request.steps());\n    String user = SecurityContextHolder.getContext().getAuthentication().getName();\n    return workflowService.submit(request, user);\n}\n\n@GetMapping(\"/api/workflows/{id}\")\npublic Map<String, Object> getWorkflow(@PathVariable String id) {\n    Workflow wf = workflowRepo.findById(id).orElseThrow();\n    List<Job> jobs = jobService.getByWorkflow(id);\n    return Map.of(\"workflow\", wf, \"jobs\", jobs);\n}\n"}]}]
+25:["$","h3",null,{"children":"Example Request"}]
+26:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"curl -X POST /api/workflows \\\n  -H \"Authorization: Bearer <jwt>\" \\\n  -d '{\n    \"name\": \"Daily Pipeline\",\n    \"steps\": [\n      {\"id\": \"import\", \"jobType\": \"MARKET_DATA_IMPORT\", \"params\": \"{}\", \"dependsOn\": []},\n      {\"id\": \"risk\", \"jobType\": \"RISK_REPORT\", \"params\": \"{}\", \"dependsOn\": [\"import\"]},\n      {\"id\": \"compliance\", \"jobType\": \"COMPLIANCE_CHECK\", \"params\": \"{}\", \"dependsOn\": [\"import\"]},\n      {\"id\": \"summary\", \"jobType\": \"FINAL_SUMMARY\", \"params\": \"{}\", \"dependsOn\": [\"risk\", \"compliance\"]}\n    ]\n  }'\n"}]}]
+27:["$","h2",null,{"children":"New Job Status: WAITING"}]
+28:["$","p",null,{"children":["Add to the ",["$","$L12",null,{"children":"JobStatus"}]," enum:"]}]
+29:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"public enum JobStatus {\n    WAITING,    // has unmet dependencies\n    QUEUED,     // ready to run\n    RUNNING,\n    PAUSED,\n    COMPLETED,\n    FAILED,\n    CANCELLED;\n\n    public boolean isTerminal() {\n        return this == COMPLETED || this == FAILED || this == CANCELLED;\n    }\n}\n"}]}]
+2a:["$","p",null,{"children":["Update the state machine to allow ",["$","$L12",null,{"children":"WAITING → QUEUED"}]," transition."]}]
+2b:["$","hr",null,{}]
+2c:["$","p",null,{"children":["$","a",null,{"href":"/blog/spring-job-engine/chapter-15-multi-tenancy","children":"Chapter 15: Multi-Tenancy →"}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+2e:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 14 job dependencies — spring job engine"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2e","3",{}]]

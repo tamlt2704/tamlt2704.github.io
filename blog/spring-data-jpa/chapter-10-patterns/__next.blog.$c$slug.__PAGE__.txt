@@ -1,0 +1,111 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+20:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+21:"$Sreact.suspense"
+4:T4ed,public class TenantIdentifierResolver implements CurrentTenantIdentifierResolver<String> {
+
+    @Override
+    public String resolveCurrentTenantIdentifier() {
+        return TenantContext.getCurrentTenant(); // from ThreadLocal or request header
+    }
+
+    @Override
+    public boolean validateExistingCurrentSessions() {
+        return true;
+    }
+}
+
+public class SchemaMultiTenantConnectionProvider implements MultiTenantConnectionProvider<String> {
+
+    private final DataSource dataSource;
+
+    public SchemaMultiTenantConnectionProvider(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    @Override
+    public Connection getAnyConnection() throws SQLException {
+        return dataSource.getConnection();
+    }
+
+    @Override
+    public Connection getConnection(String tenantId) throws SQLException {
+        Connection conn = dataSource.getConnection();
+        conn.setSchema(tenantId);
+        return conn;
+    }
+
+    @Override
+    public void releaseAnyConnection(Connection connection) throws SQLException {
+        connection.close();
+    }
+
+    @Override
+    public void releaseConnection(String tenantId, Connection connection) throws SQLException {
+        connection.setSchema("public");
+        connection.close();
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-data-jpa/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 10: Production Patterns"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-09-performance","children":"prev: Performance"}]," | ",["$","a",null,{"href":"chapter-00-overview","children":"Overview"}]]}],"\n",["$","h2",null,{"children":"Soft Delete"}],"\n",["$","p",null,{"children":"Never physically delete rows — mark them as deleted instead."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Entity\n@Table(name = \"customers\")\n@SQLDelete(sql = \"UPDATE customers SET deleted = true WHERE id = ?\")\n@Where(clause = \"deleted = false\")\n@Getter @Setter @NoArgsConstructor\npublic class Customer {\n\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n\n    private String name;\n    private String email;\n\n    @Column(nullable = false)\n    private boolean deleted = false;\n\n    private LocalDateTime deletedAt;\n}\n"}]}],"\n",["$","p",null,{"children":["Now ",["$","$L3",null,{"children":"customerRepository.delete(customer)"}]," executes UPDATE instead of DELETE, and all queries automatically exclude deleted rows."]}],"\n",["$","h3",null,{"children":"Querying Deleted Records"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public interface CustomerRepository extends JpaRepository<Customer, Long> {\n\n    // This respects @Where — only returns non-deleted\n    List<Customer> findByName(String name);\n\n    // Native query bypasses @Where\n    @Query(value = \"SELECT * FROM customers WHERE id = :id\", nativeQuery = true)\n    Optional<Customer> findByIdIncludingDeleted(@Param(\"id\") Long id);\n}\n"}]}],"\n",["$","h2",null,{"children":"Multi-Tenancy"}],"\n",["$","h3",null,{"children":"Schema-per-tenant"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h3",null,{"children":"Discriminator Column (shared table)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Entity\n@Table(name = \"documents\")\n@Getter @Setter @NoArgsConstructor\npublic class Document {\n\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n\n    @Column(nullable = false)\n    private String tenantId;\n\n    private String title;\n    private String content;\n}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a"]}],"$L1b"]}],["$L1c","$L1d"],"$L1e"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Aspect\n@Component\npublic class TenantFilter {\n\n    @PersistenceContext\n    private EntityManager em;\n\n    @Before(\"execution(* com.example.repository.*.*(..))\")\n    public void enableTenantFilter() {\n        Session session = em.unwrap(Session.class);\n        session.enableFilter(\"tenantFilter\")\n            .setParameter(\"tenantId\", TenantContext.getCurrentTenant());\n    }\n}\n"}]}]
+6:["$","h2",null,{"children":"DTO Projections"}]
+7:["$","h3",null,{"children":"Interface-Based Projection"}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public interface OrderSummary {\n    Long getId();\n    OrderStatus getStatus();\n    BigDecimal getTotal();\n    String getCustomerName();\n}\n\npublic interface OrderRepository extends JpaRepository<Order, Long> {\n\n    @Query(\"SELECT o.id as id, o.status as status, o.total as total, \" +\n           \"c.name as customerName FROM Order o JOIN o.customer c WHERE c.id = :customerId\")\n    List<OrderSummary> findSummariesByCustomer(@Param(\"customerId\") Long customerId);\n}\n"}]}]
+9:["$","p",null,{"children":"Spring Data creates a proxy implementing the interface. Only selected columns are fetched."}]
+a:["$","h3",null,{"children":"Class-Based Projection (Record)"}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public record OrderDetail(Long id, OrderStatus status, BigDecimal total, String customerName) {}\n\npublic interface OrderRepository extends JpaRepository<Order, Long> {\n\n    @Query(\"SELECT new com.example.dto.OrderDetail(o.id, o.status, o.total, c.name) \" +\n           \"FROM Order o JOIN o.customer c WHERE o.id = :id\")\n    Optional<OrderDetail> findDetailById(@Param(\"id\") Long id);\n}\n"}]}]
+c:["$","h3",null,{"children":"When to Use"}]
+d:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Approach"}],["$","th",null,{"children":"Use Case"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Entity"}],["$","td",null,{"children":"Need to modify data, navigate relationships"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Interface projection"}],["$","td",null,{"children":"Read-only views, subset of columns"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Record/class projection"}],["$","td",null,{"children":"Read-only, need constructor validation, immutable"}]]}]]}]]}]
+e:["$","h2",null,{"children":"Custom Repository Implementation"}]
+f:["$","p",null,{"children":"When Spring Data methods are not enough:"}]
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// 1. Define custom interface\npublic interface OrderRepositoryCustom {\n    List<Order> findWithComplexLogic(OrderFilter filter);\n}\n\n// 2. Implement it\npublic class OrderRepositoryCustomImpl implements OrderRepositoryCustom {\n\n    @PersistenceContext\n    private EntityManager em;\n\n    @Override\n    public List<Order> findWithComplexLogic(OrderFilter filter) {\n        CriteriaBuilder cb = em.getCriteriaBuilder();\n        CriteriaQuery<Order> cq = cb.createQuery(Order.class);\n        Root<Order> root = cq.from(Order.class);\n\n        List<Predicate> predicates = new ArrayList<>();\n        // build complex query...\n\n        cq.where(predicates.toArray(new Predicate[0]));\n        return em.createQuery(cq).getResultList();\n    }\n}\n\n// 3. Extend in main repository\npublic interface OrderRepository extends JpaRepository<Order, Long>, OrderRepositoryCustom {\n}\n"}]}]
+11:["$","p",null,{"children":["The implementation class ",["$","strong",null,{"children":"must"}]," be named ",["$","$L3",null,{"children":"{RepositoryInterface}Impl"}]," (convention over configuration)."]}]
+12:["$","h2",null,{"children":"Testing with @DataJpaTest + Testcontainers"}]
+13:["$","p",null,{"children":"Test against a real PostgreSQL database:"}]
+14:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-kotlin","children":"// build.gradle.kts\ndependencies {\n    testImplementation(\"org.testcontainers:junit-jupiter\")\n    testImplementation(\"org.testcontainers:postgresql\")\n    testImplementation(\"org.springframework.boot:spring-boot-testcontainers\")\n}\n"}]}]
+1f:T477,@DataJpaTest
+@Testcontainers
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+class OrderRepositoryTest {
+
+    @Container
+    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16")
+        .withDatabaseName("testdb")
+        .withUsername("test")
+        .withPassword("test");
+
+    @DynamicPropertySource
+    static void configureProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        registry.add("spring.datasource.username", postgres::getUsername);
+        registry.add("spring.datasource.password", postgres::getPassword);
+    }
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Test
+    void shouldFindOrdersByStatus() {
+        Order order = new Order();
+        order.setStatus(OrderStatus.PENDING);
+        order.setTotal(new BigDecimal("99.99"));
+        orderRepository.save(order);
+
+        List<Order> pending = orderRepository.findByStatus(OrderStatus.PENDING);
+
+        assertThat(pending).hasSize(1);
+        assertThat(pending.get(0).getTotal()).isEqualByComparingTo("99.99");
+    }
+}
+15:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1f"}]}]
+16:["$","h3",null,{"children":"Reusable Container with Spring Boot 3.1+"}]
+17:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@TestConfiguration(proxyBeanMethods = false)\npublic class TestcontainersConfig {\n\n    @Bean\n    @ServiceConnection\n    public PostgreSQLContainer<?> postgres() {\n        return new PostgreSQLContainer<>(\"postgres:16\");\n    }\n}\n"}]}]
+18:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@DataJpaTest\n@Import(TestcontainersConfig.class)\nclass ProductRepositoryTest {\n\n    @Autowired\n    private ProductRepository productRepository;\n\n    @Test\n    void shouldSaveAndRetrieve() {\n        Product product = new Product();\n        product.setName(\"Widget\");\n        product.setPrice(new BigDecimal(\"19.99\"));\n\n        Product saved = productRepository.save(product);\n\n        assertThat(saved.getId()).isNotNull();\n        assertThat(productRepository.findById(saved.getId()))\n            .isPresent()\n            .get()\n            .extracting(Product::getName)\n            .isEqualTo(\"Widget\");\n    }\n}\n"}]}]
+19:["$","h2",null,{"children":"Exercises"}]
+1a:["$","ol",null,{"children":["\n",["$","li",null,{"children":["Implement soft delete on a ",["$","$L3",null,{"children":"Post"}]," entity with ",["$","$L3",null,{"children":"@SQLDelete"}]," and ",["$","$L3",null,{"children":"@Where"}],", verify ",["$","$L3",null,{"children":"findAll()"}]," excludes deleted posts"]}],"\n",["$","li",null,{"children":["Create an interface-based projection for a ",["$","$L3",null,{"children":"UserSummary"}]," (id, name, email only) and verify only those columns are selected"]}],"\n",["$","li",null,{"children":["Implement a custom repository method using ",["$","$L3",null,{"children":"EntityManager"}]," and Criteria API"]}],"\n",["$","li",null,{"children":"Set up Testcontainers with PostgreSQL and write a test that verifies a Flyway migration runs correctly"}],"\n",["$","li",null,{"children":"Create a record-based DTO projection and compare the SQL output with loading the full entity"}],"\n"]}]
+1b:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-data-jpa/chapter-09-performance","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+1c:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1d:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1e:["$","$L20",null,{"children":["$","$21",null,{"name":"Next.MetadataOutlet","children":"$@22"}]}]
+22:null

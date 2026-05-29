@@ -1,0 +1,164 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1e:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1f:"$Sreact.suspense"
+4:T7a4,import { useForm, Controller } from "react-hook-form";
+import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
+
+type FormData = { email: string; password: string };
+
+function LoginForm() {
+  const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
+
+  const onSubmit = (data: FormData) => {
+    console.log(data);
+  };
+
+  return (
+    <View style={styles.form}>
+      <Controller
+        control={control}
+        name="email"
+        rules={{ required: "Email is required" }}
+        render={({ field: { onChange, value } }) => (
+          <TextInput
+            style={styles.input}
+            value={value}
+            onChangeText={onChange}
+            placeholder="Email"
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        )}
+      />
+      {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
+
+      <Controller
+        control={control}
+        name="password"
+        rules={{ required: "Password is required", minLength: { value: 8, message: "Min 8 chars" } }}
+        render={({ field: { onChange, value } }) => (
+          <TextInput
+            style={styles.input}
+            value={value}
+            onChangeText={onChange}
+            placeholder="Password"
+            secureTextEntry
+          />
+        )}
+      />
+      {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
+
+      <Pressable onPress={handleSubmit(onSubmit)} style={styles.btn}>
+        <Text style={styles.btnText}>Login</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  form: { padding: 16, gap: 12 },
+  input: { borderWidth: 1, borderColor: "#ccc", borderRadius: 8, padding: 12, fontSize: 16 },
+  error: { color: "red", fontSize: 12 },
+  btn: { backgroundColor: "#007AFF", padding: 14, borderRadius: 8, alignItems: "center" },
+  btnText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
+});
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/react-native/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 6: Forms & Input"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-05-apis","children":"prev: Working with APIs"}]," | ",["$","a",null,{"href":"./chapter-07-native-features","children":"next: Native Features"}]]}],"\n",["$","h2",null,{"children":"react-hook-form"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install react-hook-form\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$4"}]}],"\n",["$","h2",null,{"children":"Validation with zod"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install zod @hookform/resolvers\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { z } from \"zod\";\nimport { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useForm } from \"react-hook-form\";\n\nconst signupSchema = z\n  .object({\n    name: z.string().min(2, \"Name must be at least 2 characters\"),\n    email: z.string().email(\"Invalid email\"),\n    password: z.string().min(8, \"Min 8 characters\"),\n    confirmPassword: z.string(),\n  })\n  .refine((data) => data.password === data.confirmPassword, {\n    message: \"Passwords don't match\",\n    path: [\"confirmPassword\"],\n  });\n\ntype SignupData = z.infer<typeof signupSchema>;\n\nfunction SignupForm() {\n  const {\n    control,\n    handleSubmit,\n    formState: { errors },\n  } = useForm<SignupData>({\n    resolver: zodResolver(signupSchema),\n  });\n\n  const onSubmit = (data: SignupData) => console.log(data);\n  // ... render Controllers as above\n}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17"]}],"$L18"]}],["$L19","$L1a"],"$L1b"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Keyboard Handling"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { KeyboardAvoidingView, Platform, ScrollView } from \"react-native\";\n\nfunction FormScreen() {\n  return (\n    <KeyboardAvoidingView\n      style={{ flex: 1 }}\n      behavior={Platform.OS === \"ios\" ? \"padding\" : \"height\"}\n      keyboardVerticalOffset={Platform.OS === \"ios\" ? 64 : 0}\n    >\n      <ScrollView contentContainerStyle={{ padding: 16 }}>\n        {/* Form fields here */}\n      </ScrollView>\n    </KeyboardAvoidingView>\n  );\n}\n"}]}]
+7:["$","p",null,{"children":"Dismiss keyboard on tap outside:"}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { Keyboard, TouchableWithoutFeedback, View } from \"react-native\";\n\nfunction DismissKeyboard({ children }: { children: React.ReactNode }) {\n  return (\n    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>\n      <View style={{ flex: 1 }}>{children}</View>\n    </TouchableWithoutFeedback>\n  );\n}\n"}]}]
+9:["$","h2",null,{"children":"Pickers"}]
+a:["$","h3",null,{"children":"Dropdown Picker"}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install @react-native-picker/picker\n"}]}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import { Picker } from \"@react-native-picker/picker\";\nimport { useState } from \"react\";\nimport { View } from \"react-native\";\n\nfunction CategoryPicker() {\n  const [category, setCategory] = useState(\"general\");\n  return (\n    <View style={{ borderWidth: 1, borderColor: \"#ccc\", borderRadius: 8 }}>\n      <Picker selectedValue={category} onValueChange={setCategory}>\n        <Picker.Item label=\"General\" value=\"general\" />\n        <Picker.Item label=\"Tech\" value=\"tech\" />\n        <Picker.Item label=\"Science\" value=\"science\" />\n      </Picker>\n    </View>\n  );\n}\n"}]}]
+d:["$","h3",null,{"children":"Date Picker"}]
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install @react-native-community/datetimepicker\n"}]}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import DateTimePicker from \"@react-native-community/datetimepicker\";\nimport { useState } from \"react\";\nimport { View, Pressable, Text, Platform } from \"react-native\";\n\nfunction DateSelector() {\n  const [date, setDate] = useState(new Date());\n  const [show, setShow] = useState(false);\n\n  return (\n    <View>\n      <Pressable onPress={() => setShow(true)}>\n        <Text>{date.toLocaleDateString()}</Text>\n      </Pressable>\n      {show && (\n        <DateTimePicker\n          value={date}\n          mode=\"date\"\n          onChange={(_, selected) => {\n            setShow(Platform.OS === \"ios\");\n            if (selected) setDate(selected);\n          }}\n        />\n      )}\n    </View>\n  );\n}\n"}]}]
+10:["$","h2",null,{"children":"Image Picker"}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install expo-image-picker\n"}]}]
+1c:T41b,import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
+import { View, Image, Pressable, Text, StyleSheet } from "react-native";
+
+function AvatarPicker() {
+  const [image, setImage] = useState<string | null>(null);
+
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+    });
+    if (!result.canceled) setImage(result.assets[0].uri);
+  };
+
+  return (
+    <View style={styles.container}>
+      {image && <Image source={{ uri: image }} style={styles.avatar} />}
+      <Pressable onPress={pickImage} style={styles.btn}>
+        <Text style={styles.btnText}>Pick Photo</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { alignItems: "center", gap: 16 },
+  avatar: { width: 120, height: 120, borderRadius: 60 },
+  btn: { padding: 12, backgroundColor: "#007AFF", borderRadius: 8 },
+  btnText: { color: "#fff" },
+});
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$1c"}]}]
+13:["$","h2",null,{"children":"Camera Access"}]
+14:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install expo-camera\n"}]}]
+1d:T51c,import { CameraView, useCameraPermissions } from "expo-camera";
+import { useState, useRef } from "react";
+import { View, Pressable, Text, StyleSheet } from "react-native";
+
+function CameraScreen() {
+  const [permission, requestPermission] = useCameraPermissions();
+  const cameraRef = useRef<CameraView>(null);
+
+  if (!permission?.granted) {
+    return (
+      <View style={styles.container}>
+        <Text>Camera permission required</Text>
+        <Pressable onPress={requestPermission} style={styles.btn}>
+          <Text style={styles.btnText}>Grant Permission</Text>
+        </Pressable>
+      </View>
+    );
+  }
+
+  const takePicture = async () => {
+    const photo = await cameraRef.current?.takePictureAsync();
+    console.log(photo?.uri);
+  };
+
+  return (
+    <View style={styles.container}>
+      <CameraView ref={cameraRef} style={styles.camera} facing="back" />
+      <Pressable onPress={takePicture} style={styles.btn}>
+        <Text style={styles.btnText}>Snap</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: "center", alignItems: "center" },
+  camera: { width: "100%", height: 400 },
+  btn: { marginTop: 16, padding: 12, backgroundColor: "#007AFF", borderRadius: 8 },
+  btnText: { color: "#fff", fontWeight: "bold" },
+});
+15:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$1d"}]}]
+16:["$","h2",null,{"children":"Summary"}]
+17:["$","ul",null,{"children":["\n",["$","li",null,{"children":"react-hook-form + zod for type-safe, validated forms"}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"KeyboardAvoidingView"}]," prevents the keyboard from covering inputs"]}],"\n",["$","li",null,{"children":"Use community pickers for dropdowns and dates"}],"\n",["$","li",null,{"children":"expo-image-picker for gallery access, expo-camera for camera"}],"\n"]}]
+18:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/react-native/chapter-05-apis","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/react-native/chapter-07-native-features","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+19:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1a:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1b:["$","$L1e",null,{"children":["$","$1f",null,{"name":"Next.MetadataOutlet","children":"$@20"}]}]
+20:null

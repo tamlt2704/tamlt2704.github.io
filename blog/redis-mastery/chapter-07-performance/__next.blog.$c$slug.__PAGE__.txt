@@ -1,0 +1,60 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1e:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1f:"$Sreact.suspense"
+4:T46f,@Service
+@RequiredArgsConstructor
+public class LuaScriptService {
+
+    private final StringRedisTemplate redisTemplate;
+
+    // Atomic compare-and-delete
+    private static final RedisScript<Long> DELETE_IF_MATCH = new DefaultRedisScript<>(
+        "if redis.call('get', KEYS[1]) == ARGV[1] then " +
+        "  return redis.call('del', KEYS[1]) " +
+        "else return 0 end", Long.class);
+
+    public boolean deleteIfMatch(String key, String expectedValue) {
+        Long result = redisTemplate.execute(DELETE_IF_MATCH, List.of(key), expectedValue);
+        return result != null && result == 1;
+    }
+
+    // Atomic rate limiter
+    private static final RedisScript<Long> RATE_LIMIT = new DefaultRedisScript<>(
+        "local current = redis.call('incr', KEYS[1]) " +
+        "if current == 1 then redis.call('expire', KEYS[1], ARGV[1]) end " +
+        "return current", Long.class);
+
+    public boolean checkRateLimit(String key, int windowSeconds, int maxRequests) {
+        Long count = redisTemplate.execute(RATE_LIMIT, List.of(key), String.valueOf(windowSeconds));
+        return count != null && count <= maxRequests;
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/redis-mastery/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 7: Performance & Optimization"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-06-persistence","children":"← Persistence & HA"}]," | ",["$","a",null,{"href":"./chapter-00-overview","children":"Overview →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"7.1 Pipelining"}],"\n",["$","p",null,{"children":"Batch multiple commands in a single round trip to reduce network latency."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Service\n@RequiredArgsConstructor\npublic class PipelineService {\n\n    private final StringRedisTemplate redisTemplate;\n\n    public void batchInsert(Map<String, String> entries) {\n        redisTemplate.executePipelined((RedisCallback<Object>) connection -> {\n            StringRedisConnection stringConn = (StringRedisConnection) connection;\n            entries.forEach((key, value) -> stringConn.set(key, value));\n            return null;\n        });\n    }\n\n    public List<Object> batchGet(List<String> keys) {\n        return redisTemplate.executePipelined((RedisCallback<Object>) connection -> {\n            StringRedisConnection stringConn = (StringRedisConnection) connection;\n            keys.forEach(stringConn::get);\n            return null;\n        });\n    }\n}\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# redis-cli pipeline (using --pipe)\nprintf \"SET key1 val1\\r\\nSET key2 val2\\r\\nSET key3 val3\\r\\n\" | redis-cli --pipe\n\n# Measure latency without pipelining\nredis-cli --latency\n"}]}],"\n",["$","h2",null,{"children":"7.2 Lua Scripting"}],"\n",["$","p",null,{"children":"Execute atomic operations server-side. No race conditions between commands."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# redis-cli Lua\nredis-cli EVAL \"return redis.call('get', KEYS[1])\" 1 mykey\n\n# Atomic increment with ceiling\nredis-cli EVAL \"local val = redis.call('incr', KEYS[1]) if val > tonumber(ARGV[1]) then redis.call('set', KEYS[1], ARGV[1]) return tonumber(ARGV[1]) end return val\" 1 counter 100\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19"]}],"$L1a"]}],["$L1b","$L1c"],"$L1d"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"7.3 Memory Optimization"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# Analyze key space\nredis-cli --bigkeys\nredis-cli --memkeys\n\n# Memory usage per key\nredis-cli MEMORY USAGE user:1\n\n# Memory doctor\nredis-cli MEMORY DOCTOR\n"}]}]
+7:["$","p",null,{"children":["$","strong",null,{"children":"Optimization techniques:"}]}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"// Use hashes for small objects (ziplist encoding)\n// Redis uses ziplist for hashes with fewer than 128 fields and values under 64 bytes\nredisTemplate.opsForHash().put(\"user:1\", \"name\", \"Alice\");\n\n// Use short key names in high-volume scenarios\n// \"u:1:n\" instead of \"user:1:name\"\n\n// Use EXPIRE to auto-cleanup\nredisTemplate.expire(\"temp:data\", Duration.ofHours(1));\n\n// Use UNLINK instead of DEL for large keys (non-blocking)\nredisTemplate.unlink(\"large:key\");\n"}]}]
+9:["$","p",null,{"children":["$","strong",null,{"children":"redis.conf tuning:"}]}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"children":"# Ziplist thresholds (memory-efficient for small collections)\nhash-max-ziplist-entries 128\nhash-max-ziplist-value 64\nlist-max-ziplist-size -2\nzset-max-ziplist-entries 128\nzset-max-ziplist-value 64\n"}]}]
+b:["$","h2",null,{"children":"7.4 Monitoring"}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# Server info\nredis-cli INFO all\n\n# Key sections\nredis-cli INFO server\nredis-cli INFO memory\nredis-cli INFO stats\nredis-cli INFO clients\nredis-cli INFO keyspace\n\n# Slow log - commands exceeding threshold\nredis-cli CONFIG SET slowlog-log-slower-than 10000  # microseconds\nredis-cli CONFIG SET slowlog-max-len 128\nredis-cli SLOWLOG GET 10\nredis-cli SLOWLOG LEN\nredis-cli SLOWLOG RESET\n\n# Real-time monitoring\nredis-cli MONITOR\n\n# Client list\nredis-cli CLIENT LIST\n\n# Latency monitoring\nredis-cli --latency\nredis-cli --latency-history\nredis-cli LATENCY LATEST\n"}]}]
+d:["$","p",null,{"children":["$","strong",null,{"children":"Spring Boot Actuator integration:"}]}]
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-groovy","children":"dependencies {\n    implementation 'org.springframework.boot:spring-boot-starter-actuator'\n}\n"}]}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-yaml","children":"management:\n  endpoints:\n    web:\n      exposure:\n        include: health,metrics\n  health:\n    redis:\n      enabled: true\n"}]}]
+10:["$","h2",null,{"children":"7.5 Benchmarking"}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"# Built-in benchmark tool\nredis-benchmark -h localhost -p 6379 -c 50 -n 100000\n\n# Specific commands\nredis-benchmark -t set,get -n 100000 -q\n\n# Pipeline benchmark\nredis-benchmark -t set -n 100000 -P 16 -q\n\n# With specific data size\nredis-benchmark -t set -n 100000 -d 1024 -q\n"}]}]
+12:["$","p",null,{"children":["$","strong",null,{"children":"Sample output interpretation:"}]}]
+13:["$","$L2",null,{"children":["$","$L3",null,{"children":"SET: 125000.00 requests per second\nGET: 142857.14 requests per second\nINCR: 166666.67 requests per second\n"}]}]
+14:["$","h2",null,{"children":"7.6 Production Checklist"}]
+15:["$","ul",null,{"children":["\n",["$","li",null,{"children":["Set ",["$","$L3",null,{"children":"maxmemory"}]," and ",["$","$L3",null,{"children":"maxmemory-policy"}]]}],"\n",["$","li",null,{"children":["Enable ",["$","$L3",null,{"children":"slowlog"}]," with appropriate threshold"]}],"\n",["$","li",null,{"children":"Use connection pooling (Lettuce pool or Jedis pool)"}],"\n",["$","li",null,{"children":["Monitor with INFO stats: ",["$","$L3",null,{"children":"instantaneous_ops_per_sec"}],", ",["$","$L3",null,{"children":"used_memory"}],", ",["$","$L3",null,{"children":"connected_clients"}]]}],"\n",["$","li",null,{"children":"Avoid KEYS command in production (use SCAN)"}],"\n",["$","li",null,{"children":"Use pipelining for batch operations"}],"\n",["$","li",null,{"children":"Set appropriate timeouts on connections"}],"\n",["$","li",null,{"children":"Enable persistence (AOF everysec for durability)"}],"\n"]}]
+16:["$","h2",null,{"children":"Exercises"}]
+17:["$","ol",null,{"children":["\n",["$","li",null,{"children":"Implement a batch insert of 10,000 keys with pipelining. Compare time vs individual SETs."}],"\n",["$","li",null,{"children":"Write a Lua script for atomic transfer between two keys (decrement one, increment other)."}],"\n",["$","li",null,{"children":"Run redis-benchmark and identify throughput for SET/GET with different pipeline sizes."}],"\n",["$","li",null,{"children":"Configure SLOWLOG and identify slow commands in your application."}],"\n",["$","li",null,{"children":["Use ",["$","$L3",null,{"children":"--bigkeys"}]," to find memory-heavy keys and optimize their structure."]}],"\n"]}]
+18:["$","hr",null,{}]
+19:["$","p",null,{"children":[["$","a",null,{"href":"./chapter-06-persistence","children":"← Persistence & HA"}]," | ",["$","a",null,{"href":"./chapter-00-overview","children":"Overview →"}]]}]
+1a:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/redis-mastery/chapter-06-persistence","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+1b:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1c:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1d:["$","$L1e",null,{"children":["$","$1f",null,{"name":"Next.MetadataOutlet","children":"$@20"}]}]
+20:null

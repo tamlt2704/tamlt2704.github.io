@@ -1,0 +1,71 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+12:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+13:"$Sreact.suspense"
+4:T818,package com.example.bookstore.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.net.URI;
+import java.util.List;
+import java.util.Map;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ProblemDetail handleNotFound(ResourceNotFoundException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.NOT_FOUND, ex.getMessage());
+        problem.setTitle("Resource Not Found");
+        problem.setType(URI.create("https://api.bookstore.com/errors/not-found"));
+        problem.setProperty("resource", ex.getResource());
+        problem.setProperty("id", ex.getId());
+        return problem;
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ProblemDetail handleValidation(MethodArgumentNotValidException ex) {
+        List<Map<String, String>> errors = ex.getBindingResult()
+                .getFieldErrors().stream()
+                .map(fe -> Map.of(
+                        "field", fe.getField(),
+                        "message", fe.getDefaultMessage() != null
+                                ? fe.getDefaultMessage() : "Invalid value"
+                ))
+                .toList();
+
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.BAD_REQUEST, "Validation failed");
+        problem.setTitle("Validation Error");
+        problem.setType(URI.create("https://api.bookstore.com/errors/validation"));
+        problem.setProperty("errors", errors);
+        return problem;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ProblemDetail handleGeneric(Exception ex) {
+        return ProblemDetail.forStatusAndDetail(
+                HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred");
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 3: Validation and Error Handling"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"../chapter-02-crud","children":"Previous: CRUD Operations"}]," | ",["$","a",null,{"href":"../chapter-04-database","children":"Next: Database"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Overview"}],"\n",["$","p",null,{"children":"We add input validation using Bean Validation annotations and build a global error handler that returns RFC 7807 Problem Detail responses."}],"\n",["$","h2",null,{"children":"Adding Validation to DTOs"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.bookstore.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport jakarta.validation.constraints.Positive;\nimport jakarta.validation.constraints.Size;\n\npublic record CreateBookRequest(\n    @NotBlank(message = \"Title is required\")\n    @Size(max = 255, message = \"Title must be at most 255 characters\")\n    String title,\n\n    @NotBlank(message = \"Author is required\")\n    String author,\n\n    @NotBlank(message = \"ISBN is required\")\n    @Size(min = 10, max = 13, message = \"ISBN must be 10-13 characters\")\n    String isbn,\n\n    @Positive(message = \"Pages must be positive\")\n    int pages\n) {}\n"}]}],"\n",["$","h2",null,{"children":"Activating Validation in the Controller"}],"\n",["$","p",null,{"children":["Add ",["$","$L3",null,{"children":"@Valid"}]," to the request body parameter:"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"import jakarta.validation.Valid;\n\n@PostMapping\npublic ResponseEntity<BookResponse> createBook(@Valid @RequestBody CreateBookRequest request) {\n    BookResponse created = bookService.create(request);\n    URI location = ServletUriComponentsBuilder.fromCurrentRequest()\n            .path(\"/{id}\")\n            .buildAndExpand(created.id())\n            .toUri();\n    return ResponseEntity.created(location).body(created);\n}\n"}]}],"\n",["$","h2",null,{"children":"Custom Exception"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.bookstore.exception;\n\npublic class ResourceNotFoundException extends RuntimeException {\n\n    private final String resource;\n    private final Object id;\n\n    public ResourceNotFoundException(String resource, Object id) {\n        super(String.format(\"%s with id %s not found\", resource, id));\n        this.resource = resource;\n        this.id = id;\n    }\n\n    public String getResource() { return resource; }\n    public Object getId() { return id; }\n}\n"}]}],"\n",["$","h2",null,{"children":"Global Exception Handler with ProblemDetail"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld"]}],"$Le"]}],["$Lf","$L10"],"$L11"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Example Error Response"}]
+6:["$","p",null,{"children":"Request with invalid data:"}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"curl -X POST http://localhost:8080/api/books \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\":\"\",\"author\":\"\",\"isbn\":\"x\",\"pages\":-1}'\n"}]}]
+8:["$","p",null,{"children":"Response (HTTP 400):"}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-json","children":"{\n  \"type\": \"https://api.bookstore.com/errors/validation\",\n  \"title\": \"Validation Error\",\n  \"status\": 400,\n  \"detail\": \"Validation failed\",\n  \"errors\": [\n    { \"field\": \"title\", \"message\": \"Title is required\" },\n    { \"field\": \"author\", \"message\": \"Author is required\" },\n    { \"field\": \"isbn\", \"message\": \"ISBN must be 10-13 characters\" },\n    { \"field\": \"pages\", \"message\": \"Pages must be positive\" }\n  ]\n}\n"}]}]
+a:["$","h2",null,{"children":"Common Bean Validation Annotations"}]
+b:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Annotation"}],["$","th",null,{"children":"Purpose"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"@NotBlank"}]}],["$","td",null,{"children":"Non-null, non-empty string"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"@NotNull"}]}],["$","td",null,{"children":"Non-null value"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"@Size(min, max)"}]}],["$","td",null,{"children":"String/collection length"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"@Positive"}]}],["$","td",null,{"children":"Number greater than 0"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"@Email"}]}],["$","td",null,{"children":"Valid email format"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","$L3",null,{"children":"@Pattern(regexp)"}]}],["$","td",null,{"children":"Regex match"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":[["$","$L3",null,{"children":"@Min"}]," / ",["$","$L3",null,{"children":"@Max"}]]}],["$","td",null,{"children":"Numeric bounds"}]]}]]}]]}]
+c:["$","hr",null,{}]
+d:["$","p",null,{"children":[["$","a",null,{"href":"../chapter-02-crud","children":"Previous: CRUD Operations"}]," | ",["$","a",null,{"href":"../chapter-04-database","children":"Next: Database"}]]}]
+e:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-02-crud","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-boot-rest/chapter-04-database","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+f:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+10:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+11:["$","$L12",null,{"children":["$","$13",null,{"name":"Next.MetadataOutlet","children":"$@14"}]}]
+14:null

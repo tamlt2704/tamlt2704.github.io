@@ -1,0 +1,61 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1b:"$Sreact.suspense"
+4:T4db,package com.example.batch.config;
+
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.PlatformTransactionManager;
+
+@Configuration
+public class HelloJobConfig {
+
+    @Bean
+    public Job helloJob(JobRepository jobRepository, Step helloStep) {
+        return new JobBuilder("helloJob", jobRepository)
+                .start(helloStep)
+                .build();
+    }
+
+    @Bean
+    public Step helloStep(JobRepository jobRepository,
+                          PlatformTransactionManager transactionManager) {
+        return new StepBuilder("helloStep", jobRepository)
+                .tasklet((contribution, chunkContext) -> {
+                    System.out.println("Hello, Spring Batch!");
+                    return RepeatStatus.FINISHED;
+                }, transactionManager)
+                .build();
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 2: Project Setup"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-01-concepts","children":"prev: Concepts"}]," | ",["$","a",null,{"href":"chapter-03-readers","children":"next: Readers"}]]}],"\n",["$","h2",null,{"children":"Gradle Dependencies"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-groovy","children":"plugins {\n    id 'java'\n    id 'org.springframework.boot' version '3.3.0'\n    id 'io.spring.dependency-management' version '1.1.5'\n}\n\ngroup = 'com.example'\nversion = '1.0.0'\n\njava {\n    sourceCompatibility = JavaVersion.VERSION_17\n}\n\nrepositories {\n    mavenCentral()\n}\n\ndependencies {\n    implementation 'org.springframework.boot:spring-boot-starter-batch'\n    implementation 'org.springframework.boot:spring-boot-starter-jdbc'\n\n    runtimeOnly 'com.h2database:h2'\n    runtimeOnly 'org.postgresql:postgresql'\n\n    testImplementation 'org.springframework.boot:spring-boot-starter-test'\n    testImplementation 'org.springframework.batch:spring-batch-test'\n}\n\ntasks.named('test') {\n    useJUnitPlatform()\n}\n"}]}],"\n",["$","h2",null,{"children":"Spring Boot 3 Auto-Configuration"}],"\n",["$","p",null,{"children":["In Spring Boot 3.3 with Spring Batch 5, ",["$","$L3",null,{"children":"@EnableBatchProcessing"}]," is ",["$","strong",null,{"children":"no longer required"}],". Spring Boot auto-configures:"]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":["A ",["$","$L3",null,{"children":"JobRepository"}]," backed by your DataSource"]}],"\n",["$","li",null,{"children":["A ",["$","$L3",null,{"children":"JobLauncher"}]]}],"\n",["$","li",null,{"children":"Batch metadata tables (auto-created for embedded databases)"}],"\n"]}],"\n",["$","p",null,{"children":["If you add ",["$","$L3",null,{"children":"@EnableBatchProcessing"}],", it ",["$","strong",null,{"children":"disables"}]," Boot's auto-configuration — only use it when you need full manual control."]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@SpringBootApplication\npublic class BatchApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(BatchApplication.class, args);\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Database Configuration"}],"\n",["$","h3",null,{"children":"H2 (Development)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-properties","children":"# application.properties\nspring.datasource.url=jdbc:h2:mem:batchdb\nspring.datasource.driver-class-name=org.h2.Driver\nspring.batch.jdbc.initialize-schema=always\n"}]}],"\n",["$","h3",null,{"children":"PostgreSQL (Production)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-properties","children":"# application-prod.properties\nspring.datasource.url=jdbc:postgresql://localhost:5432/batchdb\nspring.datasource.username=batch_user\nspring.datasource.password=secret\nspring.batch.jdbc.initialize-schema=never\n"}]}],"\n",["$","p",null,{"children":["For PostgreSQL, initialize the schema manually using the DDL scripts shipped with Spring Batch (found in ",["$","$L3",null,{"children":"spring-batch-core"}]," JAR under ",["$","$L3",null,{"children":"org/springframework/batch/core/schema-postgresql.sql"}],")."]}],"\n",["$","h2",null,{"children":"First Job: Hello World"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15"]}],"$L16"]}],["$L17","$L18"],"$L19"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","p",null,{"children":"Run it:"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"./gradlew bootRun\n"}]}]
+7:["$","p",null,{"children":"Spring Boot auto-launches all defined jobs on startup by default."}]
+8:["$","h2",null,{"children":"Running Jobs"}]
+9:["$","h3",null,{"children":"Disable Auto-Launch"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-properties","children":"spring.batch.job.enabled=false\n"}]}]
+b:["$","h3",null,{"children":"Option 1: CommandLineRunner"}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class JobRunner implements CommandLineRunner {\n\n    private final JobLauncher jobLauncher;\n    private final Job helloJob;\n\n    public JobRunner(JobLauncher jobLauncher, Job helloJob) {\n        this.jobLauncher = jobLauncher;\n        this.helloJob = helloJob;\n    }\n\n    @Override\n    public void run(String... args) throws Exception {\n        JobParameters params = new JobParametersBuilder()\n                .addString(\"runId\", String.valueOf(System.currentTimeMillis()))\n                .toJobParameters();\n        jobLauncher.run(helloJob, params);\n    }\n}\n"}]}]
+d:["$","h3",null,{"children":"Option 2: REST Trigger"}]
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@RestController\n@RequestMapping(\"/api/jobs\")\npublic class JobController {\n\n    private final JobLauncher jobLauncher;\n    private final Job importJob;\n\n    public JobController(JobLauncher jobLauncher, Job importJob) {\n        this.jobLauncher = jobLauncher;\n        this.importJob = importJob;\n    }\n\n    @PostMapping(\"/import\")\n    public ResponseEntity<String> runImport(@RequestParam String inputFile)\n            throws Exception {\n        JobParameters params = new JobParametersBuilder()\n                .addString(\"inputFile\", inputFile)\n                .addLong(\"timestamp\", System.currentTimeMillis())\n                .toJobParameters();\n        JobExecution execution = jobLauncher.run(importJob, params);\n        return ResponseEntity.ok(\"Job started: \" + execution.getId());\n    }\n}\n"}]}]
+f:["$","p",null,{"children":["Add ",["$","$L3",null,{"children":"spring-boot-starter-web"}]," to dependencies for this approach."]}]
+10:["$","h3",null,{"children":"Option 3: Scheduler"}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\n@EnableScheduling\npublic class ScheduledJobConfig {\n\n    private final JobLauncher jobLauncher;\n    private final Job dailyJob;\n\n    public ScheduledJobConfig(JobLauncher jobLauncher, Job dailyJob) {\n        this.jobLauncher = jobLauncher;\n        this.dailyJob = dailyJob;\n    }\n\n    @Scheduled(cron = \"0 0 2 * * *\") // 2 AM daily\n    public void runDailyJob() throws Exception {\n        JobParameters params = new JobParametersBuilder()\n                .addLong(\"timestamp\", System.currentTimeMillis())\n                .toJobParameters();\n        jobLauncher.run(dailyJob, params);\n    }\n}\n"}]}]
+12:["$","h2",null,{"children":"Project Structure"}]
+13:["$","$L2",null,{"children":["$","$L3",null,{"children":"src/main/java/com/example/batch/\n  BatchApplication.java\n  config/\n    HelloJobConfig.java\n  model/\n    Person.java\n  reader/\n  processor/\n  writer/\nsrc/main/resources/\n  application.properties\n  application-prod.properties\n"}]}]
+14:["$","h2",null,{"children":"Exercises"}]
+15:["$","ol",null,{"children":["\n",["$","li",null,{"children":"Create the project from scratch using the Gradle config above. Run the hello job and verify the output."}],"\n",["$","li",null,{"children":"Switch to PostgreSQL, initialize the schema manually, and confirm job metadata is persisted across restarts."}],"\n",["$","li",null,{"children":["Implement the REST trigger and launch the hello job via ",["$","$L3",null,{"children":"curl -X POST http://localhost:8080/api/jobs/import?inputFile=test.csv"}],"."]}],"\n"]}]
+16:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-01-concepts","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-03-readers","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+17:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+18:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+19:["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]
+1c:null

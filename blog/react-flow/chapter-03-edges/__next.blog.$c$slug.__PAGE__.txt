@@ -1,0 +1,200 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+14:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+4:T4ce,import { ReactFlow, Background } from "@xyflow/react";
+import type { Node, Edge } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+const nodes: Node[] = [
+  { id: "1", position: { x: 0, y: 0 }, data: { label: "A" } },
+  { id: "2", position: { x: 250, y: 0 }, data: { label: "B" } },
+  { id: "3", position: { x: 0, y: 150 }, data: { label: "C" } },
+  { id: "4", position: { x: 250, y: 150 }, data: { label: "D" } },
+  { id: "5", position: { x: 0, y: 300 }, data: { label: "E" } },
+  { id: "6", position: { x: 250, y: 300 }, data: { label: "F" } },
+  { id: "7", position: { x: 0, y: 450 }, data: { label: "G" } },
+  { id: "8", position: { x: 250, y: 450 }, data: { label: "H" } },
+];
+
+const edges: Edge[] = [
+  { id: "e1", source: "1", target: "2", type: "default", label: "bezier" },
+  { id: "e2", source: "3", target: "4", type: "straight", label: "straight" },
+  { id: "e3", source: "5", target: "6", type: "step", label: "step" },
+  { id: "e4", source: "7", target: "8", type: "smoothstep", label: "smoothstep" },
+];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+5:T447,import { ReactFlow, Background, MarkerType } from "@xyflow/react";
+import type { Node, Edge } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+const nodes: Node[] = [
+  { id: "1", position: { x: 0, y: 0 }, data: { label: "Start" } },
+  { id: "2", position: { x: 250, y: 0 }, data: { label: "End" } },
+  { id: "3", position: { x: 0, y: 150 }, data: { label: "A" } },
+  { id: "4", position: { x: 250, y: 150 }, data: { label: "B" } },
+];
+
+const edges: Edge[] = [
+  {
+    id: "e1-2",
+    source: "1",
+    target: "2",
+    style: { stroke: "#ef4444", strokeWidth: 3 },
+    markerEnd: { type: MarkerType.ArrowClosed, color: "#ef4444" },
+    label: "red arrow",
+  },
+  {
+    id: "e3-4",
+    source: "3",
+    target: "4",
+    style: { stroke: "#3b82f6", strokeWidth: 2, strokeDasharray: "5 5" },
+    markerEnd: { type: MarkerType.Arrow, color: "#3b82f6" },
+    label: "dashed blue",
+  },
+];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/react-flow/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"React Flow: Edges"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-02-nodes","children":"prev: Nodes"}]," | ",["$","a",null,{"href":"./chapter-04-interaction","children":"next: Interaction"}]]}],"\n",["$","h2",null,{"children":"Built-in Edge Types"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"default"}]," (bezier) — Smooth curved line"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"straight"}]," — Direct line between nodes"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"step"}]," — Right-angle connections"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"smoothstep"}]," — Rounded right-angle connections"]}],"\n"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$4"}]}],"\n",["$","h2",null,{"children":"Animated Edges"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"import { ReactFlow, Background } from \"@xyflow/react\";\nimport type { Node, Edge } from \"@xyflow/react\";\nimport \"@xyflow/react/dist/style.css\";\n\nconst nodes: Node[] = [\n  { id: \"1\", position: { x: 0, y: 0 }, data: { label: \"Source\" }, type: \"input\" },\n  { id: \"2\", position: { x: 200, y: 150 }, data: { label: \"Target\" }, type: \"output\" },\n];\n\nconst edges: Edge[] = [{ id: \"e1-2\", source: \"1\", target: \"2\", animated: true, label: \"animated\" }];\n\nexport default function App() {\n  return (\n    <div className=\"h-screen w-screen\">\n      <ReactFlow nodes={nodes} edges={edges} fitView>\n        <Background />\n      </ReactFlow>\n    </div>\n  );\n}\n"}]}],"\n",["$","h2",null,{"children":"Edge Styles and Markers"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$5"}]}],"\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld"]}],"$Le"]}],["$Lf","$L10"],"$L11"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+6:["$","h2",null,{"children":"Custom Edges"}]
+12:T672,import {
+  ReactFlow,
+  Background,
+  BaseEdge,
+  getSmoothStepPath,
+  EdgeLabelRenderer,
+} from "@xyflow/react";
+import type { Node, Edge, EdgeProps, EdgeTypes } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+function ButtonEdge({
+  id,
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  sourcePosition,
+  targetPosition,
+  style,
+  markerEnd,
+}: EdgeProps) {
+  const [edgePath, labelX, labelY] = getSmoothStepPath({
+    sourceX,
+    sourceY,
+    sourcePosition,
+    targetX,
+    targetY,
+    targetPosition,
+  });
+  return (
+    <>
+      <BaseEdge path={edgePath} markerEnd={markerEnd} style={style} />
+      <EdgeLabelRenderer>
+        <div
+          style={{
+            position: "absolute",
+            transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
+            pointerEvents: "all",
+          }}
+          className="nodrag nopan"
+        >
+          <button
+            className="rounded bg-red-500 px-2 py-1 text-xs text-white"
+            onClick={() => alert(`Delete ${id}`)}
+          >
+            x
+          </button>
+        </div>
+      </EdgeLabelRenderer>
+    </>
+  );
+}
+
+const edgeTypes: EdgeTypes = { button: ButtonEdge };
+
+const nodes: Node[] = [
+  { id: "1", position: { x: 0, y: 0 }, data: { label: "Node A" } },
+  { id: "2", position: { x: 300, y: 150 }, data: { label: "Node B" } },
+];
+
+const edges: Edge[] = [{ id: "e1-2", source: "1", target: "2", type: "button" }];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} edgeTypes={edgeTypes} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$12"}]}]
+8:["$","h2",null,{"children":"Connection Line"}]
+9:["$","p",null,{"children":"Customize the line shown while dragging a new connection:"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"import { ReactFlow, Background, ConnectionLineType } from \"@xyflow/react\";\nimport type { Node, Edge } from \"@xyflow/react\";\nimport \"@xyflow/react/dist/style.css\";\n\nconst nodes: Node[] = [\n  { id: \"1\", type: \"input\", position: { x: 0, y: 0 }, data: { label: \"Drag from here\" } },\n  { id: \"2\", type: \"output\", position: { x: 300, y: 150 }, data: { label: \"To here\" } },\n];\n\nexport default function App() {\n  return (\n    <div className=\"h-screen w-screen\">\n      <ReactFlow\n        nodes={nodes}\n        edges={[]}\n        connectionLineType={ConnectionLineType.SmoothStep}\n        connectionLineStyle={{ stroke: \"#6366f1\", strokeWidth: 2 }}\n        fitView\n      >\n        <Background />\n      </ReactFlow>\n    </div>\n  );\n}\n"}]}]
+b:["$","h2",null,{"children":"Self-Connecting Edges"}]
+c:["$","p",null,{"children":"Nodes can connect to themselves:"}]
+13:T40a,import { ReactFlow, Handle, Position, Background } from "@xyflow/react";
+import type { Node, Edge, NodeProps, NodeTypes } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+function SelfNode({ data }: NodeProps) {
+  return (
+    <div className="rounded-lg border-2 border-purple-500 bg-white px-4 py-2">
+      <Handle type="target" position={Position.Left} />
+      <span>{data.label}</span>
+      <Handle type="source" position={Position.Right} />
+    </div>
+  );
+}
+
+const nodeTypes: NodeTypes = { self: SelfNode };
+
+const nodes: Node[] = [
+  { id: "1", type: "self", position: { x: 100, y: 100 }, data: { label: "Loop Node" } },
+];
+
+const edges: Edge[] = [
+  {
+    id: "e1-1",
+    source: "1",
+    target: "1",
+    type: "smoothstep",
+    style: { stroke: "#8b5cf6" },
+    label: "self-loop",
+  },
+];
+
+export default function App() {
+  return (
+    <div className="h-screen w-screen">
+      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
+  );
+}
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-tsx","children":"$13"}]}]
+e:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/react-flow/chapter-02-nodes","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/react-flow/chapter-04-interaction","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+f:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+10:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+11:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+16:null

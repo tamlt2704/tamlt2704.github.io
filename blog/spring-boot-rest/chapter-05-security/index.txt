@@ -1,0 +1,226 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","spring-boot-rest","chapter-05-security",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","spring-boot-rest/chapter-05-security","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-04-database","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-boot-rest/chapter-06-testing","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T5f1,package com.example.bookstore.security;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
+import java.time.Instant;
+import java.util.Date;
+
+@Component
+public class JwtUtil {
+
+    private final SecretKey key;
+    private final long expirationMs;
+
+    public JwtUtil(
+            @Value("${app.jwt.secret}") String secret,
+            @Value("${app.jwt.expiration-ms:3600000}") long expirationMs) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        this.expirationMs = expirationMs;
+    }
+
+    public String generateToken(String username, String role) {
+        return Jwts.builder()
+                .subject(username)
+                .claim("role", role)
+                .issuedAt(Date.from(Instant.now()))
+                .expiration(Date.from(Instant.now().plusMillis(expirationMs)))
+                .signWith(key)
+                .compact();
+    }
+
+    public Claims parseToken(String token) {
+        return Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+    }
+
+    public boolean isValid(String token) {
+        try {
+            parseToken(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+}
+14:T696,package com.example.bookstore.security;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+import java.util.List;
+
+@Component
+public class JwtAuthFilter extends OncePerRequestFilter {
+
+    private final JwtUtil jwtUtil;
+
+    public JwtAuthFilter(JwtUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain chain) throws ServletException, IOException {
+        String header = request.getHeader("Authorization");
+        if (header != null && header.startsWith("Bearer ")) {
+            String token = header.substring(7);
+            if (jwtUtil.isValid(token)) {
+                var claims = jwtUtil.parseToken(token);
+                var auth = new UsernamePasswordAuthenticationToken(
+                        claims.getSubject(), null,
+                        List.of(new SimpleGrantedAuthority("ROLE_" + claims.get("role")))
+                );
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
+        }
+        chain.doFilter(request, response);
+    }
+}
+10:[["$","h1",null,{"children":"Chapter 5: Security"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"../chapter-04-database","children":"Previous: Database"}]," | ",["$","a",null,{"href":"../chapter-06-testing","children":"Next: Testing"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Overview"}],"\n",["$","p",null,{"children":"We secure the API with Spring Security and JWT tokens, add role-based authorization, configure CORS, and implement rate limiting."}],"\n",["$","h2",null,{"children":"Additional Dependencies"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-kotlin","children":"// build.gradle.kts\nimplementation(\"io.jsonwebtoken:jjwt-api:0.12.5\")\nruntimeOnly(\"io.jsonwebtoken:jjwt-impl:0.12.5\")\nruntimeOnly(\"io.jsonwebtoken:jjwt-jackson:0.12.5\")\nimplementation(\"com.bucket4j:bucket4j-core:8.10.1\")\n"}]}],"\n",["$","h2",null,{"children":"JWT Utility"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$13"}]}],"\n",["$","h2",null,{"children":"JWT Authentication Filter"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$14"}]}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e"]
+15:["$","h2",null,{"children":"Security Configuration"}]
+1f:T998,package com.example.bookstore.config;
+
+import com.example.bookstore.security.JwtAuthFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
+
+@Configuration
+@EnableWebSecurity
+@EnableMethodSecurity
+public class SecurityConfig {
+
+    private final JwtAuthFilter jwtAuthFilter;
+
+    public SecurityConfig(JwtAuthFilter jwtAuthFilter) {
+        this.jwtAuthFilter = jwtAuthFilter;
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configurationSource(corsSource()))
+                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/books/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(List.of("http://localhost:3000"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+        return source;
+    }
+}
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$1f"}]}]
+17:["$","h2",null,{"children":"Role-Based Authorization"}]
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@RestController\n@RequestMapping(\"/api/admin\")\npublic class AdminController {\n\n    @PreAuthorize(\"hasRole('ADMIN')\")\n    @DeleteMapping(\"/books/{id}\")\n    public ResponseEntity<Void> forceDelete(@PathVariable Long id) {\n        bookService.delete(id);\n        return ResponseEntity.noContent().build();\n    }\n}\n"}]}]
+19:["$","h2",null,{"children":"Rate Limiting with Bucket4j"}]
+20:T595,package com.example.bookstore.config;
+
+import io.github.bucket4j.Bandwidth;
+import io.github.bucket4j.Bucket;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+@Component
+public class RateLimitFilter extends OncePerRequestFilter {
+
+    private final Map<String, Bucket> buckets = new ConcurrentHashMap<>();
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain chain) throws ServletException, IOException {
+        String ip = request.getRemoteAddr();
+        Bucket bucket = buckets.computeIfAbsent(ip, k -> createBucket());
+        if (bucket.tryConsume(1)) {
+            chain.doFilter(request, response);
+        } else {
+            response.setStatus(429);
+            response.getWriter().write("{\"error\":\"Too many requests\"}");
+        }
+    }
+
+    private Bucket createBucket() {
+        return Bucket.builder()
+                .addLimit(Bandwidth.simple(100, Duration.ofMinutes(1)))
+                .build();
+    }
+}
+1a:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$20"}]}]
+1b:["$","h2",null,{"children":"application.yml additions"}]
+1c:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"app:\n  jwt:\n    secret: your-256-bit-secret-key-here-must-be-at-least-32-chars\n    expiration-ms: 3600000\n"}]}]
+1d:["$","hr",null,{}]
+1e:["$","p",null,{"children":[["$","a",null,{"href":"../chapter-04-database","children":"Previous: Database"}]," | ",["$","a",null,{"href":"../chapter-06-testing","children":"Next: Testing"}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+21:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 05 security — spring boot rest"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L21","3",{}]]

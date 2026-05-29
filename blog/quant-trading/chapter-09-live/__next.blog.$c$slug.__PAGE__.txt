@@ -1,0 +1,262 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+29:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+2a:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/quant-trading/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 9: Going Live"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-08-execution","children":"prev: Chapter 8 - Execution"}]," | ",["$","a",null,{"href":"chapter-00-overview","children":"next: Overview"}]]}],"\n",["$","hr",null,{}],"\n",["$","p",null,{"children":"Going live is the final step — and the most dangerous. This chapter covers the infrastructure and safeguards needed to run a trading system in production."}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"Warning: Live trading with real money carries substantial risk of loss. Start with the minimum possible capital. Never trade money you cannot afford to lose."}]}],"\n",["$","h2",null,{"children":"Infrastructure"}],"\n",["$","h3",null,{"children":"VPS / Cloud Options"}],"\n",["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Provider"}],["$","th",null,{"children":"Use Case"}],["$","th",null,{"children":"Cost"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"AWS EC2 (t3.small)"}],["$","td",null,{"children":"General purpose"}],["$","td",null,{"children":["~",["$","$L2",null,{"children":"$$15"}],"/month"]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"DigitalOcean"}],["$","td",null,{"children":"Simple deployment"}],["$","td",null,{"children":["~",["$","$L2",null,{"children":"$$12"}],"/month"]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Google Cloud"}],["$","td",null,{"children":"ML-heavy strategies"}],["$","td",null,{"children":"Variable"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Dedicated VPS"}],["$","td",null,{"children":"Low-latency"}],["$","td",null,{"children":["~",["$","$L2",null,{"children":"$$30"}],"/month"]}]]}]]}]]}],"\n",["$","p",null,{"children":"Key requirements:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Low latency to broker/exchange"}],"\n",["$","li",null,{"children":"High uptime (99.9%+)"}],"\n",["$","li",null,{"children":"Automatic restart on failure"}],"\n",["$","li",null,{"children":"Sufficient RAM for data processing"}],"\n"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"# systemd service file for auto-restart: /etc/systemd/system/trading-bot.service\n# [Unit]\n# Description=Trading Bot\n# After=network.target\n#\n# [Service]\n# Type=simple\n# User=trader\n# WorkingDirectory=/home/trader/bot\n# ExecStart=/home/trader/bot/venv/bin/python main.py\n# Restart=always\n# RestartSec=10\n#\n# [Install]\n# WantedBy=multi-user.target\n"}]}],"\n",["$","h2",null,{"children":"Real-Time Data Feeds (WebSocket)"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"import asyncio\nimport websockets\nimport json\nfrom datetime import datetime\n\nclass BinanceWebSocket:\n    def __init__(self, symbol=\"btcusdt\", on_price=None):\n        self.url = f\"wss://stream.binance.com:9443/ws/{symbol}@trade\"\n        self.on_price = on_price\n\n    async def connect(self):\n        async with websockets.connect(self.url) as ws:\n            while True:\n                msg = await ws.recv()\n                data = json.loads(msg)\n                price = float(data[\"p\"])\n                timestamp = datetime.fromtimestamp(data[\"T\"] / 1000)\n\n                if self.on_price:\n                    self.on_price(price, timestamp)\n\ndef handle_price(price, timestamp):\n    print(f\"[{timestamp}] BTC/USDT: {price:.2f}\")\n\n# Usage:\n# ws = BinanceWebSocket(\"btcusdt\", on_price=handle_price)\n# asyncio.run(ws.connect())\n"}]}],"\n",["$","h3",null,{"children":"Alpaca WebSocket for US Stocks"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"import asyncio\nimport websockets\nimport json\n\nasync def alpaca_stream(api_key, secret_key, symbols):\n    url = \"wss://stream.data.alpaca.markets/v2/iex\"\n\n    async with websockets.connect(url) as ws:\n        # Authenticate\n        auth = {\"action\": \"auth\", \"key\": api_key, \"secret\": secret_key}\n        await ws.send(json.dumps(auth))\n        response = await ws.recv()\n        print(f\"Auth: {response}\")\n\n        # Subscribe to trades\n        subscribe = {\"action\": \"subscribe\", \"trades\": symbols}\n        await ws.send(json.dumps(subscribe))\n\n        while True:\n            msg = await ws.recv()\n            data = json.loads(msg)\n            for trade in data:\n                if trade.get(\"T\") == \"t\":\n                    print(f\"{trade['S']}: {trade['p']} x {trade['s']}\")\n\n# asyncio.run(alpaca_stream(\"KEY\", \"SECRET\", [\"AAPL\", \"MSFT\"]))\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f"]}],"$L20"]}],["$L21","$L22"],"$L23"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","h2",null,{"children":"Order Management System"}]
+24:T5f0,import pandas as pd
+from datetime import datetime
+from enum import Enum
+
+class OrderStatus(Enum):
+    PENDING = "pending"
+    FILLED = "filled"
+    CANCELLED = "cancelled"
+    REJECTED = "rejected"
+
+class OrderManager:
+    def __init__(self):
+        self.orders = {}
+        self.order_id = 0
+
+    def create_order(self, symbol, side, qty, order_type="market", price=None):
+        self.order_id += 1
+        order = {
+            "id": self.order_id,
+            "symbol": symbol,
+            "side": side,
+            "qty": qty,
+            "type": order_type,
+            "price": price,
+            "status": OrderStatus.PENDING,
+            "created_at": datetime.now(),
+            "filled_at": None,
+            "fill_price": None,
+        }
+        self.orders[self.order_id] = order
+        return self.order_id
+
+    def fill_order(self, order_id, fill_price):
+        order = self.orders[order_id]
+        order["status"] = OrderStatus.FILLED
+        order["filled_at"] = datetime.now()
+        order["fill_price"] = fill_price
+
+    def cancel_order(self, order_id):
+        self.orders[order_id]["status"] = OrderStatus.CANCELLED
+
+    def open_orders(self):
+        return {k: v for k, v in self.orders.items() if v["status"] == OrderStatus.PENDING}
+
+    def filled_orders(self):
+        return {k: v for k, v in self.orders.items() if v["status"] == OrderStatus.FILLED}
+
+# Usage
+om = OrderManager()
+oid = om.create_order("AAPL", "buy", 100, "limit", 150.0)
+om.fill_order(oid, 149.95)
+print(om.orders[oid])
+5:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"$24"}]}]
+6:["$","h2",null,{"children":"Risk Checks Before Execution"}]
+25:T636,class PreTradeRiskCheck:
+    def __init__(self, max_position_pct=0.20, max_daily_loss=0.02,
+                 max_order_value=50000, max_orders_per_day=50):
+        self.max_position_pct = max_position_pct
+        self.max_daily_loss = max_daily_loss
+        self.max_order_value = max_order_value
+        self.max_orders_per_day = max_orders_per_day
+        self.daily_orders = 0
+        self.daily_pnl = 0
+
+    def check(self, order, portfolio_value, current_positions):
+        """Return (approved, reason)."""
+        order_value = order["qty"] * (order["price"] or 0)
+
+        # Check max order size
+        if order_value > self.max_order_value:
+            return False, f"Order value {order_value} exceeds max {self.max_order_value}"
+
+        # Check position concentration
+        position_pct = order_value / portfolio_value
+        if position_pct > self.max_position_pct:
+            return False, f"Position {position_pct:.1%} exceeds max {self.max_position_pct:.1%}"
+
+        # Check daily loss limit
+        if self.daily_pnl / portfolio_value < -self.max_daily_loss:
+            return False, f"Daily loss limit reached"
+
+        # Check order count
+        if self.daily_orders >= self.max_orders_per_day:
+            return False, f"Max daily orders reached"
+
+        self.daily_orders += 1
+        return True, "Approved"
+
+# Usage
+risk = PreTradeRiskCheck()
+order = {"symbol": "AAPL", "side": "buy", "qty": 100, "price": 150.0}
+approved, reason = risk.check(order, portfolio_value=100000, current_positions={})
+print(f"{'APPROVED' if approved else 'REJECTED'}: {reason}")
+7:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"$25"}]}]
+8:["$","h2",null,{"children":"Position Tracking"}]
+26:T6a9,import pandas as pd
+from datetime import datetime
+
+class PositionTracker:
+    def __init__(self):
+        self.positions = {}  # symbol -> {qty, avg_cost, realized_pnl}
+
+    def update(self, symbol, side, qty, price):
+        if symbol not in self.positions:
+            self.positions[symbol] = {"qty": 0, "avg_cost": 0, "realized_pnl": 0}
+
+        pos = self.positions[symbol]
+
+        if side == "buy":
+            total_cost = pos["avg_cost"] * pos["qty"] + price * qty
+            pos["qty"] += qty
+            pos["avg_cost"] = total_cost / pos["qty"] if pos["qty"] > 0 else 0
+        elif side == "sell":
+            pnl = (price - pos["avg_cost"]) * qty
+            pos["realized_pnl"] += pnl
+            pos["qty"] -= qty
+            if pos["qty"] == 0:
+                pos["avg_cost"] = 0
+
+    def unrealized_pnl(self, current_prices):
+        total = 0
+        for symbol, pos in self.positions.items():
+            if pos["qty"] > 0 and symbol in current_prices:
+                total += (current_prices[symbol] - pos["avg_cost"]) * pos["qty"]
+        return total
+
+    def summary(self, current_prices=None):
+        for symbol, pos in self.positions.items():
+            unrealized = 0
+            if current_prices and symbol in current_prices:
+                unrealized = (current_prices[symbol] - pos["avg_cost"]) * pos["qty"]
+            print(f"{symbol}: {pos['qty']} shares @ {pos['avg_cost']:.2f}, "
+                  f"Realized: {pos['realized_pnl']:.2f}, Unrealized: {unrealized:.2f}")
+
+# Usage
+tracker = PositionTracker()
+tracker.update("AAPL", "buy", 100, 150.0)
+tracker.update("AAPL", "buy", 50, 155.0)
+tracker.update("AAPL", "sell", 75, 160.0)
+tracker.summary({"AAPL": 158.0})
+9:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"$26"}]}]
+a:["$","h2",null,{"children":"PnL Calculation"}]
+27:T528,import pandas as pd
+from datetime import datetime
+
+class PnLCalculator:
+    def __init__(self):
+        self.trades = []
+
+    def add_trade(self, symbol, side, qty, price, timestamp=None):
+        self.trades.append({
+            "timestamp": timestamp or datetime.now(),
+            "symbol": symbol, "side": side, "qty": qty, "price": price
+        })
+
+    def calculate(self):
+        df = pd.DataFrame(self.trades)
+        if df.empty:
+            return {}
+
+        results = {}
+        for symbol in df["symbol"].unique():
+            sym_trades = df[df["symbol"] == symbol].copy()
+            buys = sym_trades[sym_trades["side"] == "buy"]
+            sells = sym_trades[sym_trades["side"] == "sell"]
+
+            total_bought = (buys["qty"] * buys["price"]).sum()
+            total_sold = (sells["qty"] * sells["price"]).sum()
+            net_qty = buys["qty"].sum() - sells["qty"].sum()
+
+            results[symbol] = {
+                "realized_pnl": total_sold - total_bought * (sells["qty"].sum() / buys["qty"].sum()) if buys["qty"].sum() > 0 else 0,
+                "net_position": net_qty,
+                "num_trades": len(sym_trades),
+            }
+        return results
+
+calc = PnLCalculator()
+calc.add_trade("AAPL", "buy", 100, 150.0)
+calc.add_trade("AAPL", "sell", 50, 160.0)
+print(calc.calculate())
+b:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"$27"}]}]
+c:["$","h2",null,{"children":"Alerts (Telegram)"}]
+d:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"import requests\n\nclass TelegramAlert:\n    def __init__(self, bot_token, chat_id):\n        self.bot_token = bot_token\n        self.chat_id = chat_id\n        self.base_url = f\"https://api.telegram.org/bot{bot_token}\"\n\n    def send(self, message):\n        url = f\"{self.base_url}/sendMessage\"\n        payload = {\"chat_id\": self.chat_id, \"text\": message, \"parse_mode\": \"Markdown\"}\n        response = requests.post(url, json=payload)\n        return response.ok\n\n    def alert_trade(self, symbol, side, qty, price):\n        msg = f\"*Trade Executed*\\n{side.upper()} {qty} {symbol} @ {price:.2f}\"\n        self.send(msg)\n\n    def alert_error(self, error_msg):\n        msg = f\"*ERROR*\\n{error_msg}\"\n        self.send(msg)\n\n    def alert_daily_summary(self, pnl, positions):\n        msg = f\"*Daily Summary*\\nPnL: {pnl:.2f}\\nPositions: {positions}\"\n        self.send(msg)\n\n# Usage:\n# alert = TelegramAlert(\"BOT_TOKEN\", \"CHAT_ID\")\n# alert.alert_trade(\"AAPL\", \"buy\", 100, 150.25)\n"}]}]
+e:["$","h2",null,{"children":"Email Alerts"}]
+f:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"import smtplib\nfrom email.mime.text import MIMEText\n\ndef send_email_alert(subject, body, to_email, from_email, password):\n    msg = MIMEText(body)\n    msg[\"Subject\"] = subject\n    msg[\"From\"] = from_email\n    msg[\"To\"] = to_email\n\n    with smtplib.SMTP_SSL(\"smtp.gmail.com\", 465) as server:\n        server.login(from_email, password)\n        server.send_message(msg)\n\n# send_email_alert(\n#     \"Trading Alert: Position Opened\",\n#     \"Bought 100 AAPL @ 150.25\",\n#     \"trader@email.com\", \"bot@email.com\", \"app_password\"\n# )\n"}]}]
+10:["$","h2",null,{"children":"Disaster Recovery"}]
+28:T56e,import json
+from pathlib import Path
+from datetime import datetime
+
+class StateManager:
+    """Persist trading state for crash recovery."""
+
+    def __init__(self, state_file="state/trading_state.json"):
+        self.state_file = Path(state_file)
+        self.state_file.parent.mkdir(exist_ok=True)
+
+    def save(self, positions, pending_orders, capital):
+        state = {
+            "timestamp": datetime.now().isoformat(),
+            "positions": positions,
+            "pending_orders": pending_orders,
+            "capital": capital,
+        }
+        self.state_file.write_text(json.dumps(state, indent=2))
+
+    def load(self):
+        if self.state_file.exists():
+            return json.loads(self.state_file.read_text())
+        return None
+
+    def recover(self):
+        """Recover state after crash."""
+        state = self.load()
+        if state is None:
+            print("No saved state found. Starting fresh.")
+            return None
+
+        print(f"Recovering state from {state['timestamp']}")
+        print(f"Positions: {state['positions']}")
+        print(f"Pending Orders: {state['pending_orders']}")
+        print(f"Capital: {state['capital']}")
+        return state
+
+# Save state periodically
+sm = StateManager()
+sm.save(
+    positions={"AAPL": {"qty": 100, "avg_cost": 150.0}},
+    pending_orders=[],
+    capital=85000.0
+)
+
+# On restart
+recovered = sm.recover()
+11:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"$28"}]}]
+12:["$","h2",null,{"children":"Regulatory Considerations"}]
+13:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Pattern Day Trader (US)"}],": If you make 4+ day trades in 5 business days with a margin account, you need ",["$","$L2",null,{"children":"$$25,000"}]," minimum equity"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Tax implications"}],": Short-term capital gains are taxed as ordinary income; keep detailed records"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Wash sale rule (US)"}],": Cannot claim a loss if you repurchase the same security within 30 days"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Crypto"}],": Regulations vary by jurisdiction; many exchanges require KYC"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Algorithmic trading registration"}],": In some jurisdictions, automated trading above certain thresholds requires registration"]}],"\n"]}]
+14:["$","h2",null,{"children":"Production Checklist"}]
+15:["$","p",null,{"children":"Before going live:"}]
+16:["$","ul",null,{"className":"contains-task-list","children":["\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","Paper traded for 30+ days with consistent results"]}],"\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","Risk checks prevent catastrophic losses"]}],"\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","State persistence handles crashes gracefully"]}],"\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","Alerts notify you of errors and unusual activity"]}],"\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","Kill switch can flatten all positions immediately"]}],"\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","Logging captures every decision and execution"]}],"\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","Backtest matches paper trading results (within reason)"]}],"\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","Capital is money you can afford to lose"]}],"\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","You understand the tax implications"]}],"\n",["$","li",null,{"className":"task-list-item","children":[["$","input",null,{"type":"checkbox","disabled":true}]," ","Infrastructure has redundancy (backup server, multiple internet connections)"]}],"\n"]}]
+17:["$","h2",null,{"children":"Kill Switch"}]
+18:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-python","children":"class KillSwitch:\n    \"\"\"Emergency: close all positions and stop trading.\"\"\"\n\n    def __init__(self, api):\n        self.api = api\n        self.active = True\n\n    def trigger(self, reason=\"Manual trigger\"):\n        print(f\"KILL SWITCH ACTIVATED: {reason}\")\n        self.active = False\n\n        # Cancel all open orders\n        self.api.cancel_all_orders()\n\n        # Close all positions\n        positions = self.api.list_positions()\n        for pos in positions:\n            self.api.submit_order(\n                symbol=pos.symbol,\n                qty=abs(int(pos.qty)),\n                side=\"sell\" if int(pos.qty) > 0 else \"buy\",\n                type=\"market\",\n                time_in_force=\"day\"\n            )\n        print(\"All positions closed. Trading halted.\")\n\n# Usage:\n# kill = KillSwitch(alpaca_api)\n# kill.trigger(\"Max daily loss exceeded\")\n"}]}]
+19:["$","hr",null,{}]
+1a:["$","h2",null,{"children":"Key Takeaways"}]
+1b:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Infrastructure reliability is non-negotiable for live trading"}],"\n",["$","li",null,{"children":"WebSocket feeds provide real-time data; REST APIs for order management"}],"\n",["$","li",null,{"children":"Pre-trade risk checks prevent catastrophic errors"}],"\n",["$","li",null,{"children":"Persist state to disk for crash recovery"}],"\n",["$","li",null,{"children":"Set up alerts for trades, errors, and daily summaries"}],"\n",["$","li",null,{"children":"Always have a kill switch ready"}],"\n",["$","li",null,{"children":"Start with minimum capital and scale up only after proving consistency"}],"\n",["$","li",null,{"children":"Understand regulatory requirements in your jurisdiction"}],"\n"]}]
+1c:["$","hr",null,{}]
+1d:["$","p",null,{"children":["$","strong",null,{"children":"Final Disclaimer: Quantitative trading involves substantial risk. The strategies and code in this series are for educational purposes only. Past performance does not guarantee future results. Never trade with money you cannot afford to lose."}]}]
+1e:["$","hr",null,{}]
+1f:["$","p",null,{"children":[["$","a",null,{"href":"chapter-08-execution","children":"prev: Chapter 8 - Execution"}]," | ",["$","a",null,{"href":"chapter-00-overview","children":"next: Overview"}]]}]
+20:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/quant-trading/chapter-08-execution","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+21:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+22:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+23:["$","$L29",null,{"children":["$","$2a",null,{"name":"Next.MetadataOutlet","children":"$@2b"}]}]
+2b:null

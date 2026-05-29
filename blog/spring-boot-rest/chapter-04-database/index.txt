@@ -1,0 +1,77 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","spring-boot-rest","chapter-04-database",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","spring-boot-rest/chapter-04-database","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-boot-rest/chapter-03-validation","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-boot-rest/chapter-05-security","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T4b5,package com.example.bookstore.model;
+
+import jakarta.persistence.*;
+import java.time.Instant;
+
+@Entity
+@Table(name = "books")
+public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private String author;
+
+    @Column(nullable = false, unique = true, length = 13)
+    private String isbn;
+
+    private int pages;
+
+    @Column(name = "created_at", updatable = false)
+    private Instant createdAt;
+
+    @PrePersist
+    void onCreate() {
+        this.createdAt = Instant.now();
+    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public String getAuthor() { return author; }
+    public void setAuthor(String author) { this.author = author; }
+    public String getIsbn() { return isbn; }
+    public void setIsbn(String isbn) { this.isbn = isbn; }
+    public int getPages() { return pages; }
+    public void setPages(int pages) { this.pages = pages; }
+    public Instant getCreatedAt() { return createdAt; }
+}
+10:[["$","h1",null,{"children":"Chapter 4: Database"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"../chapter-03-validation","children":"Previous: Validation and Error Handling"}]," | ",["$","a",null,{"href":"../chapter-05-security","children":"Next: Security"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Overview"}],"\n",["$","p",null,{"children":"We set up Spring Data JPA with PostgreSQL, define entities, create repositories with pagination, use Specifications for dynamic queries, and manage schema with Flyway."}],"\n",["$","h2",null,{"children":"Entity"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$13"}]}],"\n",["$","h2",null,{"children":"Repository"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"package com.example.bookstore.repository;\n\nimport com.example.bookstore.model.Book;\nimport org.springframework.data.jpa.repository.JpaRepository;\nimport org.springframework.data.jpa.repository.JpaSpecificationExecutor;\n\nimport java.util.Optional;\n\npublic interface BookRepository extends JpaRepository<Book, Long>,\n        JpaSpecificationExecutor<Book> {\n\n    Optional<Book> findByIsbn(String isbn);\n    boolean existsByIsbn(String isbn);\n}\n"}]}],"\n",["$","h2",null,{"children":"Pagination"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// In BookController\n@GetMapping\npublic ResponseEntity<Page<BookResponse>> getAllBooks(\n        @RequestParam(defaultValue = \"0\") int page,\n        @RequestParam(defaultValue = \"20\") int size,\n        @RequestParam(defaultValue = \"title\") String sort) {\n    Pageable pageable = PageRequest.of(page, size, Sort.by(sort));\n    return ResponseEntity.ok(bookService.findAll(pageable));\n}\n"}]}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// In BookService\npublic Page<BookResponse> findAll(Pageable pageable) {\n    return bookRepository.findAll(pageable).map(this::toResponse);\n}\n"}]}],"\n",["$","h2",null,{"children":"Specifications for Dynamic Queries"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"package com.example.bookstore.repository;\n\nimport com.example.bookstore.model.Book;\nimport org.springframework.data.jpa.domain.Specification;\n\npublic class BookSpecifications {\n\n    public static Specification<Book> hasAuthor(String author) {\n        return (root, query, cb) ->\n                author == null ? null : cb.equal(root.get(\"author\"), author);\n    }\n\n    public static Specification<Book> titleContains(String keyword) {\n        return (root, query, cb) ->\n                keyword == null ? null : cb.like(\n                        cb.lower(root.get(\"title\")),\n                        \"%\" + keyword.toLowerCase() + \"%\");\n    }\n\n    public static Specification<Book> minPages(Integer min) {\n        return (root, query, cb) ->\n                min == null ? null : cb.greaterThanOrEqualTo(root.get(\"pages\"), min);\n    }\n}\n"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d"]
+14:["$","p",null,{"children":"Usage in the controller:"}]
+15:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@GetMapping(\"/search\")\npublic ResponseEntity<Page<BookResponse>> searchBooks(\n        @RequestParam(required = false) String author,\n        @RequestParam(required = false) String title,\n        @RequestParam(required = false) Integer minPages,\n        Pageable pageable) {\n    Specification<Book> spec = Specification\n            .where(BookSpecifications.hasAuthor(author))\n            .and(BookSpecifications.titleContains(title))\n            .and(BookSpecifications.minPages(minPages));\n    return ResponseEntity.ok(bookService.search(spec, pageable));\n}\n"}]}]
+16:["$","h2",null,{"children":"Flyway Migrations"}]
+17:["$","p",null,{"children":["Place SQL files in ",["$","$L12",null,{"children":"src/main/resources/db/migration/"}],":"]}]
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-sql","children":"-- V1__create_books_table.sql\nCREATE TABLE books (\n    id BIGSERIAL PRIMARY KEY,\n    title VARCHAR(255) NOT NULL,\n    author VARCHAR(255) NOT NULL,\n    isbn VARCHAR(13) NOT NULL UNIQUE,\n    pages INTEGER DEFAULT 0,\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()\n);\n\nCREATE INDEX idx_books_author ON books(author);\nCREATE INDEX idx_books_isbn ON books(isbn);\n"}]}]
+19:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-sql","children":"-- V2__add_category_column.sql\nALTER TABLE books ADD COLUMN category VARCHAR(100);\n"}]}]
+1a:["$","h2",null,{"children":"Running PostgreSQL with Docker"}]
+1b:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"docker run -d \\\n  --name bookstore-db \\\n  -e POSTGRES_DB=bookstore \\\n  -e POSTGRES_USER=postgres \\\n  -e POSTGRES_PASSWORD=postgres \\\n  -p 5432:5432 \\\n  postgres:16-alpine\n"}]}]
+1c:["$","hr",null,{}]
+1d:["$","p",null,{"children":[["$","a",null,{"href":"../chapter-03-validation","children":"Previous: Validation and Error Handling"}]," | ",["$","a",null,{"href":"../chapter-05-security","children":"Next: Security"}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1e:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 04 database — spring boot rest"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1e","3",{}]]

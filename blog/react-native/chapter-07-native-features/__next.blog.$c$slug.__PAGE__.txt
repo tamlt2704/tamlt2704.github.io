@@ -1,0 +1,118 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1b:"$Sreact.suspense"
+4:T471,import * as Notifications from "expo-notifications";
+import * as Device from "expo-device";
+import Constants from "expo-constants";
+import { Platform } from "react-native";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
+
+async function registerForPushNotifications(): Promise<string | null> {
+  if (!Device.isDevice) {
+    alert("Physical device required");
+    return null;
+  }
+
+  const { status: existing } = await Notifications.getPermissionsAsync();
+  let finalStatus = existing;
+  if (existing !== "granted") {
+    const { status } = await Notifications.requestPermissionsAsync();
+    finalStatus = status;
+  }
+  if (finalStatus !== "granted") return null;
+
+  if (Platform.OS === "android") {
+    await Notifications.setNotificationChannelAsync("default", {
+      name: "default",
+      importance: Notifications.AndroidImportance.MAX,
+    });
+  }
+
+  const projectId = Constants.expoConfig?.extra?.eas?.projectId;
+  const token = await Notifications.getExpoPushTokenAsync({ projectId });
+  return token.data;
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/react-native/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 7: Native Features"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-06-forms","children":"prev: Forms & Input"}]," | ",["$","a",null,{"href":"./chapter-08-styling","children":"next: Advanced Styling"}]]}],"\n",["$","h2",null,{"children":"Permissions"}],"\n",["$","p",null,{"children":"Expo provides a unified permissions API:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import * as Location from \"expo-location\";\n\nasync function requestLocationPermission() {\n  const { status } = await Location.requestForegroundPermissionsAsync();\n  if (status !== \"granted\") {\n    alert(\"Permission denied\");\n    return false;\n  }\n  return true;\n}\n"}]}],"\n",["$","h2",null,{"children":"Push Notifications (Expo Notifications)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install expo-notifications expo-device expo-constants\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$4"}]}],"\n",["$","p",null,{"children":"Schedule a local notification:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"async function scheduleReminder(title: string, body: string, seconds: number) {\n  await Notifications.scheduleNotificationAsync({\n    content: { title, body },\n    trigger: { seconds },\n  });\n}\n"}]}],"\n",["$","h2",null,{"children":"Location (expo-location)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install expo-location\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import * as Location from \"expo-location\";\nimport { useEffect, useState } from \"react\";\nimport { View, Text } from \"react-native\";\n\ntype Coords = { latitude: number; longitude: number };\n\nfunction LocationDisplay() {\n  const [coords, setCoords] = useState<Coords | null>(null);\n\n  useEffect(() => {\n    (async () => {\n      const { status } = await Location.requestForegroundPermissionsAsync();\n      if (status !== \"granted\") return;\n      const location = await Location.getCurrentPositionAsync({});\n      setCoords(location.coords);\n    })();\n  }, []);\n\n  if (!coords) return <Text>Getting location...</Text>;\n  return <Text>Lat: {coords.latitude.toFixed(4)}, Lon: {coords.longitude.toFixed(4)}</Text>;\n}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14"]}],"$L15"]}],["$L16","$L17"],"$L18"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"File System"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install expo-file-system\n"}]}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import * as FileSystem from \"expo-file-system\";\n\nasync function saveData(filename: string, content: string) {\n  const path = FileSystem.documentDirectory + filename;\n  await FileSystem.writeAsStringAsync(path, content);\n  return path;\n}\n\nasync function readData(filename: string): Promise<string> {\n  const path = FileSystem.documentDirectory + filename;\n  return FileSystem.readAsStringAsync(path);\n}\n\nasync function downloadFile(url: string, filename: string) {\n  const path = FileSystem.documentDirectory + filename;\n  const { uri } = await FileSystem.downloadAsync(url, path);\n  return uri;\n}\n"}]}]
+8:["$","h2",null,{"children":"Biometrics (expo-local-authentication)"}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install expo-local-authentication\n"}]}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import * as LocalAuthentication from \"expo-local-authentication\";\nimport { Alert } from \"react-native\";\n\nasync function authenticate(): Promise<boolean> {\n  const hasHardware = await LocalAuthentication.hasHardwareAsync();\n  if (!hasHardware) {\n    Alert.alert(\"Biometrics not available\");\n    return false;\n  }\n\n  const isEnrolled = await LocalAuthentication.isEnrolledAsync();\n  if (!isEnrolled) {\n    Alert.alert(\"No biometrics enrolled\");\n    return false;\n  }\n\n  const result = await LocalAuthentication.authenticateAsync({\n    promptMessage: \"Authenticate to continue\",\n    fallbackLabel: \"Use passcode\",\n  });\n\n  return result.success;\n}\n"}]}]
+b:["$","h2",null,{"children":"Haptics"}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install expo-haptics\n"}]}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import * as Haptics from \"expo-haptics\";\n\n// Light tap feedback\nfunction onButtonPress() {\n  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);\n}\n\n// Success feedback\nfunction onSuccess() {\n  Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);\n}\n"}]}]
+e:["$","h2",null,{"children":"Device Info"}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx expo install expo-device\n"}]}]
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"import * as Device from \"expo-device\";\n\nfunction getDeviceInfo() {\n  return {\n    brand: Device.brand,\n    modelName: Device.modelName,\n    osName: Device.osName,\n    osVersion: Device.osVersion,\n    isDevice: Device.isDevice, // false on simulator\n  };\n}\n"}]}]
+11:["$","h2",null,{"children":"Mini-Project: Location Tracker"}]
+19:T766,import * as Location from "expo-location";
+import { useEffect, useState } from "react";
+import { View, Text, FlatList, Pressable, StyleSheet } from "react-native";
+
+type LocationEntry = { id: number; latitude: number; longitude: number; timestamp: number };
+
+export default function LocationTracker() {
+  const [entries, setEntries] = useState<LocationEntry[]>([]);
+  const [tracking, setTracking] = useState(false);
+
+  useEffect(() => {
+    if (!tracking) return;
+    let sub: Location.LocationSubscription;
+    (async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") return;
+      sub = await Location.watchPositionAsync(
+        { accuracy: Location.Accuracy.High, distanceInterval: 10 },
+        (loc) => {
+          setEntries((prev) => [
+            { id: Date.now(), latitude: loc.coords.latitude, longitude: loc.coords.longitude, timestamp: loc.timestamp },
+            ...prev,
+          ]);
+        }
+      );
+    })();
+    return () => { sub?.remove(); };
+  }, [tracking]);
+
+  return (
+    <View style={styles.container}>
+      <Pressable onPress={() => setTracking(!tracking)} style={styles.btn}>
+        <Text style={styles.btnText}>{tracking ? "Stop" : "Start"} Tracking</Text>
+      </Pressable>
+      <FlatList
+        data={entries}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => (
+          <Text style={styles.entry}>
+            {item.latitude.toFixed(4)}, {item.longitude.toFixed(4)}
+          </Text>
+        )}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 16, paddingTop: 60 },
+  btn: { padding: 14, backgroundColor: "#007AFF", borderRadius: 8, alignItems: "center", marginBottom: 16 },
+  btnText: { color: "#fff", fontWeight: "bold" },
+  entry: { padding: 8, borderBottomWidth: 1, borderBottomColor: "#eee" },
+});
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-typescript","children":"$19"}]}]
+13:["$","h2",null,{"children":"Summary"}]
+14:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Always request permissions before accessing native features"}],"\n",["$","li",null,{"children":"Expo Notifications handles both push and local notifications"}],"\n",["$","li",null,{"children":"expo-location for GPS, expo-file-system for local storage"}],"\n",["$","li",null,{"children":"expo-local-authentication for Face ID / fingerprint"}],"\n",["$","li",null,{"children":"expo-haptics for tactile feedback"}],"\n"]}]
+15:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/react-native/chapter-06-forms","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/react-native/chapter-08-styling","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+16:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+17:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+18:["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]
+1c:null

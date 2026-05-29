@@ -1,0 +1,126 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1b:"$Sreact.suspense"
+4:T5b7,package com.example.service;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.*;
+
+@ExtendWith(MockitoExtension.class)
+class OrderServiceBDDTest {
+
+    @Mock
+    private OrderRepository orderRepository;
+
+    @Mock
+    private NotificationService notificationService;
+
+    @InjectMocks
+    private OrderService orderService;
+
+    @Test
+    void shouldReturnOrder_whenIdExists() {
+        // given
+        Order order = new Order("Laptop", 1);
+        order.setId(1L);
+        given(orderRepository.findById(1L)).willReturn(Optional.of(order));
+
+        // when
+        Order result = orderService.findById(1L);
+
+        // then
+        then(orderRepository).should().findById(1L);
+        assertThat(result.getProduct()).isEqualTo("Laptop");
+    }
+
+    @Test
+    void shouldNotify_whenOrderPlaced() {
+        // given
+        Order saved = new Order("Phone", 2);
+        saved.setId(10L);
+        given(orderRepository.save(any(Order.class))).willReturn(saved);
+        willDoNothing().given(notificationService).sendConfirmation(anyLong());
+
+        // when
+        orderService.placeOrder("Phone", 2);
+
+        // then
+        then(notificationService).should().sendConfirmation(10L);
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Advanced Topics"}],"\n",["$","h2",null,{"children":"BDDMockito — Given/When/Then Style"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"mockStatic — Mocking Static Methods"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\nimport java.util.UUID;\n\npublic class TokenGenerator {\n\n    public String generateToken(String prefix) {\n        return prefix + \"-\" + UUID.randomUUID().toString();\n    }\n}\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\nimport org.junit.jupiter.api.Test;\nimport org.mockito.MockedStatic;\n\nimport java.util.UUID;\n\nimport static org.junit.jupiter.api.Assertions.*;\nimport static org.mockito.Mockito.*;\n\nclass TokenGeneratorTest {\n\n    @Test\n    void generateToken_withMockedUUID() {\n        UUID fixedUuid = UUID.fromString(\"12345678-1234-1234-1234-123456789abc\");\n\n        try (MockedStatic<UUID> mockedUuid = mockStatic(UUID.class)) {\n            mockedUuid.when(UUID::randomUUID).thenReturn(fixedUuid);\n\n            TokenGenerator generator = new TokenGenerator();\n            String token = generator.generateToken(\"TKN\");\n\n            assertEquals(\"TKN-12345678-1234-1234-1234-123456789abc\", token);\n        }\n        // Static mock is automatically closed after try block\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"@SpyBean — Partial Mocking in Spring Context"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\nimport org.junit.jupiter.api.Test;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.boot.test.context.SpringBootTest;\nimport org.springframework.boot.test.mock.mockito.SpyBean;\n\nimport static org.mockito.Mockito.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\n@SpringBootTest\nclass OrderServiceSpyTest {\n\n    @SpyBean\n    private OrderService orderService;\n\n    @Autowired\n    private OrderRepository orderRepository;\n\n    @Test\n    void spyBean_callsRealMethodButCanVerify() {\n        Order order = new Order(\"Tablet\", 1);\n        orderRepository.save(order);\n\n        // Real method is called, but we can verify interactions\n        Order result = orderService.findById(order.getId());\n\n        assertNotNull(result);\n        verify(orderService).findById(order.getId());\n    }\n}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14"]}],"$L15"]}],["$L16","$L17"],"$L18"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"@TestConfiguration — Custom Beans for Tests"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.config;\n\nimport com.example.service.NotificationService;\nimport org.springframework.boot.test.context.TestConfiguration;\nimport org.springframework.context.annotation.Bean;\n\n@TestConfiguration\npublic class TestNotificationConfig {\n\n    @Bean\n    public NotificationService notificationService() {\n        // Return a no-op implementation for tests\n        return orderId -> { /* do nothing */ };\n    }\n}\n"}]}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"package com.example.service;\n\nimport com.example.config.TestNotificationConfig;\nimport org.junit.jupiter.api.Test;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.boot.test.context.SpringBootTest;\nimport org.springframework.context.annotation.Import;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\n@SpringBootTest\n@Import(TestNotificationConfig.class)\nclass OrderServiceWithTestConfigTest {\n\n    @Autowired\n    private OrderService orderService;\n\n    @Test\n    void placeOrder_usesTestNotificationService() {\n        Order result = orderService.placeOrder(\"Book\", 3);\n        assertNotNull(result);\n    }\n}\n"}]}]
+8:["$","h2",null,{"children":"AssertJ — Fluent Assertions"}]
+19:T405,package com.example.service;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
+
+class AssertJExampleTest {
+
+    @Test
+    void stringAssertions() {
+        String result = "Hello Spring Boot";
+
+        assertThat(result)
+            .startsWith("Hello")
+            .contains("Spring")
+            .endsWith("Boot")
+            .hasSize(17);
+    }
+
+    @Test
+    void collectionAssertions() {
+        List<Order> orders = List.of(
+            new Order("Laptop", 1),
+            new Order("Phone", 2),
+            new Order("Tablet", 1)
+        );
+
+        assertThat(orders)
+            .hasSize(3)
+            .extracting(Order::getProduct)
+            .containsExactly("Laptop", "Phone", "Tablet");
+    }
+
+    @Test
+    void exceptionAssertions() {
+        assertThatThrownBy(() -> {
+            throw new OrderNotFoundException("Not found");
+        })
+            .isInstanceOf(OrderNotFoundException.class)
+            .hasMessageContaining("Not found");
+    }
+}
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$19"}]}]
+a:["$","h2",null,{"children":"Parallel Test Execution"}]
+b:["$","p",null,{"children":["In ",["$","$L3",null,{"children":"src/test/resources/junit-platform.properties"}],":"]}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-properties","children":"junit.jupiter.execution.parallel.enabled=true\njunit.jupiter.execution.parallel.mode.default=concurrent\njunit.jupiter.execution.parallel.config.strategy=fixed\njunit.jupiter.execution.parallel.config.fixed.parallelism=4\n"}]}]
+d:["$","p",null,{"children":"Ensure tests are independent — no shared mutable state."}]
+e:["$","h2",null,{"children":"JaCoCo Coverage in build.gradle.kts"}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-kotlin","children":"plugins {\n    jacoco\n}\n\ntasks.jacocoTestReport {\n    dependsOn(tasks.test)\n    reports {\n        xml.required.set(true)\n        html.required.set(true)\n    }\n}\n\ntasks.jacocoTestCoverageVerification {\n    violationRules {\n        rule {\n            limit {\n                minimum = \"0.80\".toBigDecimal()\n            }\n        }\n    }\n}\n\ntasks.check {\n    dependsOn(tasks.jacocoTestCoverageVerification)\n}\n"}]}]
+10:["$","p",null,{"children":["Run: ",["$","$L3",null,{"children":"./gradlew test jacocoTestReport"}]]}]
+11:["$","p",null,{"children":["Report at: ",["$","$L3",null,{"children":"build/reports/jacoco/test/html/index.html"}]]}]
+12:["$","h2",null,{"children":"Key Points"}]
+13:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"BDDMockito"}]," — ",["$","$L3",null,{"children":"given()"}],"/",["$","$L3",null,{"children":"then()"}]," reads like specifications"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"mockStatic()"}]," — must be in try-with-resources to auto-close"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"@SpyBean"}]," — wraps a real bean, allows verify and selective stubbing"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"@TestConfiguration"}]," + ",["$","$L3",null,{"children":"@Import"}]," — override beans for specific tests"]}],"\n",["$","li",null,{"children":"AssertJ — fluent, readable assertions with better error messages"}],"\n",["$","li",null,{"children":["Parallel tests — enable in ",["$","$L3",null,{"children":"junit-platform.properties"}],", ensure thread safety"]}],"\n",["$","li",null,{"children":["JaCoCo — enforce minimum coverage with ",["$","$L3",null,{"children":"jacocoTestCoverageVerification"}]]}],"\n"]}]
+14:["$","p",null,{"children":["$","a",null,{"href":"/blog/junit-spring-testing/chapter-07-rest-testing","children":"prev: REST Testing"}]}]
+15:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-07-rest-testing","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+16:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+17:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+18:["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]
+1c:null

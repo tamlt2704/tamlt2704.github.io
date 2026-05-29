@@ -1,0 +1,139 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1e:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1f:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 6: Text Generation"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-05-training","children":"prev: Training"}]," | ",["$","a",null,{"href":"chapter-07-scaling","children":"next: Scaling"}]]}],"\n",["$","p",null,{"children":"Once trained, the model generates text by repeatedly predicting the next token. Different sampling strategies control the quality and diversity of output."}],"\n",["$","h2",null,{"children":"Greedy Decoding"}],"\n",["$","p",null,{"children":"Always pick the highest-probability token. Deterministic but often repetitive:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"import torch\n\n@torch.no_grad()\ndef generate_greedy(model, prompt_ids, max_new_tokens=50):\n    \"\"\"\n    model: trained GPT model\n    prompt_ids: tensor of shape (1, prompt_len)\n    \"\"\"\n    model.eval()\n    ids = prompt_ids.clone()  # (1, current_len)\n\n    for _ in range(max_new_tokens):\n        logits = model(ids)              # (1, current_len, vocab_size)\n        next_logits = logits[:, -1, :]   # (1, vocab_size)\n        next_id = next_logits.argmax(dim=-1, keepdim=True)  # (1, 1)\n        ids = torch.cat([ids, next_id], dim=1)  # (1, current_len + 1)\n\n    return ids  # (1, prompt_len + max_new_tokens)\n"}]}],"\n",["$","h2",null,{"children":"Temperature Sampling"}],"\n",["$","p",null,{"children":"Temperature controls randomness. Lower = more focused, higher = more creative:"}],"\n",["$","p",null,{"children":["$","$L3",null,{"children":"P(token) = softmax(logits / temperature)"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"import torch\n\n@torch.no_grad()\ndef generate_temperature(model, prompt_ids, max_new_tokens=50, temperature=0.8):\n    model.eval()\n    ids = prompt_ids.clone()\n\n    for _ in range(max_new_tokens):\n        logits = model(ids)[:, -1, :]  # (1, vocab_size)\n        logits = logits / temperature\n        probs = torch.softmax(logits, dim=-1)  # (1, vocab_size)\n        next_id = torch.multinomial(probs, num_samples=1)  # (1, 1)\n        ids = torch.cat([ids, next_id], dim=1)\n\n    return ids\n"}]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"temperature = 1.0"}],": original distribution"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"temperature = 0.1"}],": nearly greedy (very peaked)"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"temperature = 2.0"}],": very flat (high randomness)"]}],"\n"]}],"\n",["$","h2",null,{"children":"Top-k Sampling"}],"\n",["$","p",null,{"children":"Only sample from the k most likely tokens:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"import torch\n\ndef top_k_filter(logits, k=50):\n    \"\"\"Zero out all logits except top-k.\"\"\"\n    # logits shape: (batch, vocab_size)\n    values, indices = torch.topk(logits, k, dim=-1)\n    # values shape: (batch, k)\n    min_value = values[:, -1].unsqueeze(-1)  # (batch, 1)\n    logits = torch.where(logits >= min_value, logits, torch.full_like(logits, float('-inf')))\n    return logits\n"}]}],"\n",["$","h2",null,{"children":"Top-p (Nucleus) Sampling"}],"\n",["$","p",null,{"children":"Sample from the smallest set of tokens whose cumulative probability exceeds p:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"import torch\n\ndef top_p_filter(logits, p=0.9):\n    \"\"\"Keep smallest set of tokens with cumulative prob >= p.\"\"\"\n    # logits shape: (batch, vocab_size)\n    sorted_logits, sorted_indices = torch.sort(logits, descending=True, dim=-1)\n    cumulative_probs = torch.softmax(sorted_logits, dim=-1).cumsum(dim=-1)\n\n    # Remove tokens with cumulative prob above threshold\n    sorted_mask = cumulative_probs - torch.softmax(sorted_logits, dim=-1) >= p\n    sorted_logits[sorted_mask] = float('-inf')\n\n    # Scatter back to original positions\n    logits = logits.scatter(-1, sorted_indices, sorted_logits)\n    return logits\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16"]}],"$L17"]}],["$L18","$L19"],"$L1a"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","h2",null,{"children":"Repetition Penalty"}]
+5:["$","p",null,{"children":"Reduce probability of tokens that already appeared:"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"import torch\n\ndef apply_repetition_penalty(logits, generated_ids, penalty=1.2):\n    \"\"\"\n    logits shape: (1, vocab_size)\n    generated_ids: list of token IDs already generated\n    \"\"\"\n    for token_id in set(generated_ids):\n        if logits[0, token_id] > 0:\n            logits[0, token_id] /= penalty\n        else:\n            logits[0, token_id] *= penalty\n    return logits\n"}]}]
+7:["$","h2",null,{"children":"Beam Search"}]
+8:["$","p",null,{"children":"Maintain multiple candidate sequences and pick the best overall:"}]
+1b:T42c,import torch
+
+@torch.no_grad()
+def beam_search(model, prompt_ids, max_new_tokens=50, beam_width=5):
+    """Simple beam search implementation."""
+    model.eval()
+    device = prompt_ids.device
+
+    # Each beam: (sequence_tensor, cumulative_log_prob)
+    beams = [(prompt_ids.clone(), 0.0)]
+
+    for _ in range(max_new_tokens):
+        candidates = []
+        for seq, score in beams:
+            logits = model(seq)[:, -1, :]  # (1, vocab_size)
+            log_probs = torch.log_softmax(logits, dim=-1)  # (1, vocab_size)
+
+            # Get top-k next tokens for this beam
+            top_log_probs, top_ids = torch.topk(log_probs, beam_width, dim=-1)
+
+            for i in range(beam_width):
+                new_seq = torch.cat([seq, top_ids[:, i:i+1]], dim=1)
+                new_score = score + top_log_probs[0, i].item()
+                candidates.append((new_seq, new_score))
+
+        # Keep top beam_width candidates
+        candidates.sort(key=lambda x: x[1], reverse=True)
+        beams = candidates[:beam_width]
+
+    # Return best beam
+    return beams[0][0]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"$1b"}]}]
+a:["$","h2",null,{"children":"Complete Generate Function"}]
+b:["$","p",null,{"children":"Combining all strategies:"}]
+1c:T55c,import torch
+import torch.nn.functional as F
+
+@torch.no_grad()
+def generate(model, prompt_ids, max_new_tokens=100, temperature=0.8,
+             top_k=50, top_p=0.9, repetition_penalty=1.0):
+    """
+    Full generation with temperature, top-k, top-p, and repetition penalty.
+    prompt_ids shape: (1, prompt_len)
+    """
+    model.eval()
+    ids = prompt_ids.clone()
+    generated = prompt_ids[0].tolist()
+
+    for _ in range(max_new_tokens):
+        # Truncate to max context length if needed
+        input_ids = ids[:, -1024:]
+
+        logits = model(input_ids)[:, -1, :]  # (1, vocab_size)
+
+        # Apply repetition penalty
+        if repetition_penalty != 1.0:
+            logits = apply_repetition_penalty(logits, generated, repetition_penalty)
+
+        # Apply temperature
+        logits = logits / temperature
+
+        # Apply top-k
+        if top_k > 0:
+            logits = top_k_filter(logits, k=top_k)
+
+        # Apply top-p
+        if top_p < 1.0:
+            logits = top_p_filter(logits, p=top_p)
+
+        # Sample
+        probs = F.softmax(logits, dim=-1)  # (1, vocab_size)
+        next_id = torch.multinomial(probs, num_samples=1)  # (1, 1)
+
+        ids = torch.cat([ids, next_id], dim=1)
+        generated.append(next_id.item())
+
+        # Stop at EOS token (if defined)
+        # if next_id.item() == eos_token_id:
+        #     break
+
+    return ids
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"$1c"}]}]
+d:["$","h2",null,{"children":"KV-Cache for Fast Inference"}]
+e:["$","p",null,{"children":"Without cache, generating N tokens requires N forward passes over increasingly long sequences. With KV-cache, each step only processes the new token:"}]
+1d:T41c,import torch
+
+@torch.no_grad()
+def generate_with_cache(model, prompt_ids, max_new_tokens=100, temperature=0.8):
+    """
+    Generation with KV-cache (requires model to support cache).
+    Assumes model.forward(ids, kv_cache) returns (logits, new_cache).
+    """
+    model.eval()
+
+    # Prefill: process entire prompt
+    logits, kv_cache = model(prompt_ids, kv_cache=None)
+    # logits: (1, prompt_len, vocab_size)
+
+    next_logits = logits[:, -1, :] / temperature
+    probs = torch.softmax(next_logits, dim=-1)
+    next_id = torch.multinomial(probs, num_samples=1)  # (1, 1)
+
+    generated = [next_id.item()]
+
+    # Decode: one token at a time using cache
+    for _ in range(max_new_tokens - 1):
+        logits, kv_cache = model(next_id, kv_cache=kv_cache)
+        # logits: (1, 1, vocab_size) — only 1 new token processed
+
+        next_logits = logits[:, -1, :] / temperature
+        probs = torch.softmax(next_logits, dim=-1)
+        next_id = torch.multinomial(probs, num_samples=1)
+        generated.append(next_id.item())
+
+    return generated
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"$1d"}]}]
+10:["$","p",null,{"children":[["$","strong",null,{"children":"Speed comparison"}],": For a 1024-token generation with 768-dim model:"]}]
+11:["$","ul",null,{"children":["\n",["$","li",null,{"children":["Without cache: each step processes all previous tokens = ",["$","$L3",null,{"children":"O(N^2)"}]," total"]}],"\n",["$","li",null,{"children":["With cache: each step processes 1 token = ",["$","$L3",null,{"children":"O(N)"}]," total"]}],"\n"]}]
+12:["$","h2",null,{"children":"Streaming Output"}]
+13:["$","p",null,{"children":"Print tokens as they are generated:"}]
+14:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-python","children":"import torch\nimport tiktoken\nimport sys\n\n@torch.no_grad()\ndef generate_streaming(model, prompt_text, max_new_tokens=200, temperature=0.8):\n    \"\"\"Generate and print tokens as they are produced.\"\"\"\n    model.eval()\n    enc = tiktoken.get_encoding(\"gpt2\")\n\n    prompt_ids = torch.tensor([enc.encode(prompt_text)], device=\"cuda\")\n    ids = prompt_ids.clone()\n\n    print(prompt_text, end=\"\", flush=True)\n\n    for _ in range(max_new_tokens):\n        logits = model(ids[:, -1024:])[:, -1, :] / temperature\n        probs = torch.softmax(logits, dim=-1)\n        next_id = torch.multinomial(probs, num_samples=1)\n        ids = torch.cat([ids, next_id], dim=1)\n\n        # Decode and print the new token\n        token_text = enc.decode([next_id.item()])\n        sys.stdout.write(token_text)\n        sys.stdout.flush()\n\n    print()  # newline at end\n"}]}]
+15:["$","h2",null,{"children":"Key Takeaways"}]
+16:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Greedy decoding is fast but repetitive"}],"\n",["$","li",null,{"children":"Temperature controls the sharpness of the distribution"}],"\n",["$","li",null,{"children":"Top-k limits choices to k most likely tokens"}],"\n",["$","li",null,{"children":"Top-p adapts the cutoff based on cumulative probability"}],"\n",["$","li",null,{"children":"Combine temperature + top-p for best results (common default: temp=0.8, top_p=0.9)"}],"\n",["$","li",null,{"children":"KV-cache is essential for efficient generation (O(N) vs O(N^2))"}],"\n",["$","li",null,{"children":"Streaming gives better user experience for interactive applications"}],"\n"]}]
+17:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-05-training","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/llm-from-scratch/chapter-07-scaling","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+18:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+19:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1a:["$","$L1e",null,{"children":["$","$1f",null,{"name":"Next.MetadataOutlet","children":"$@20"}]}]
+20:null

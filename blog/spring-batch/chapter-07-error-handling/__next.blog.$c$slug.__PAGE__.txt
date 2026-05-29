@@ -1,0 +1,68 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+22:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+23:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 7: Error Handling"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-06-flow","children":"prev: Flow Control"}]," | ",["$","a",null,{"href":"chapter-08-scaling","children":"next: Scaling"}]]}],"\n",["$","h2",null,{"children":"Skip Policy"}],"\n",["$","p",null,{"children":"Skip allows a job to continue processing even when some items fail. Configure which exceptions to skip and a maximum skip count."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Step importStep(JobRepository jobRepository,\n                       PlatformTransactionManager transactionManager,\n                       ItemReader<Person> reader,\n                       ItemProcessor<Person, PersonDto> processor,\n                       ItemWriter<PersonDto> writer) {\n    return new StepBuilder(\"importStep\", jobRepository)\n            .<Person, PersonDto>chunk(500, transactionManager)\n            .reader(reader)\n            .processor(processor)\n            .writer(writer)\n            .faultTolerant()\n            .skip(FlatFileParseException.class)\n            .skip(ValidationException.class)\n            .skipLimit(100)\n            .build();\n}\n"}]}],"\n",["$","h3",null,{"children":"Custom SkipPolicy"}],"\n",["$","p",null,{"children":"For more complex skip logic:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public class FileVerificationSkipPolicy implements SkipPolicy {\n\n    @Override\n    public boolean shouldSkip(Throwable t, long skipCount) throws SkipLimitExceededException {\n        if (t instanceof FlatFileParseException) {\n            return true; // always skip parse errors\n        }\n        if (t instanceof ValidationException && skipCount < 50) {\n            return true; // skip up to 50 validation errors\n        }\n        return false; // fail on anything else\n    }\n}\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":".faultTolerant()\n.skipPolicy(new FileVerificationSkipPolicy())\n"}]}],"\n",["$","h3",null,{"children":"Skip Listener (Logging Skipped Items)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class SkipListener implements org.springframework.batch.core.SkipListener<Person, PersonDto> {\n\n    private static final Logger log = LoggerFactory.getLogger(SkipListener.class);\n\n    @Override\n    public void onSkipInRead(Throwable t) {\n        log.warn(\"Skipped item during read: {}\", t.getMessage());\n    }\n\n    @Override\n    public void onSkipInProcess(Person item, Throwable t) {\n        log.warn(\"Skipped item during process: {} - {}\", item, t.getMessage());\n    }\n\n    @Override\n    public void onSkipInWrite(PersonDto item, Throwable t) {\n        log.warn(\"Skipped item during write: {} - {}\", item, t.getMessage());\n    }\n}\n"}]}],"\n",["$","p",null,{"children":"Register it:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":".listener(skipListener)\n"}]}],"\n",["$","h2",null,{"children":"Retry Policy"}],"\n",["$","p",null,{"children":"Retry transient failures (network timeouts, deadlocks) before giving up."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Step apiWriteStep(JobRepository jobRepository,\n                         PlatformTransactionManager transactionManager,\n                         ItemReader<Person> reader,\n                         ItemWriter<Person> writer) {\n    return new StepBuilder(\"apiWriteStep\", jobRepository)\n            .<Person, Person>chunk(100, transactionManager)\n            .reader(reader)\n            .writer(writer)\n            .faultTolerant()\n            .retry(DeadlockLoserDataAccessException.class)\n            .retry(ConnectTimeoutException.class)\n            .retryLimit(3)\n            .build();\n}\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c"]}],"$L1d"]}],["$L1e","$L1f"],"$L20"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+4:["$","h3",null,{"children":"Backoff Policy"}]
+5:["$","p",null,{"children":"Add exponential backoff between retries:"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Step retryWithBackoffStep(JobRepository jobRepository,\n                                 PlatformTransactionManager transactionManager,\n                                 ItemReader<Person> reader,\n                                 ItemWriter<Person> writer) {\n    return new StepBuilder(\"retryWithBackoff\", jobRepository)\n            .<Person, Person>chunk(100, transactionManager)\n            .reader(reader)\n            .writer(writer)\n            .faultTolerant()\n            .retry(ConnectTimeoutException.class)\n            .retryLimit(5)\n            .backOffPolicy(new ExponentialBackOffPolicy() {{\n                setInitialInterval(1000);  // 1 second\n                setMultiplier(2.0);        // doubles each retry\n                setMaxInterval(30000);     // max 30 seconds\n            }})\n            .build();\n}\n"}]}]
+7:["$","h3",null,{"children":"Retry Listener"}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"public class RetryLogListener implements RetryListener {\n\n    private static final Logger log = LoggerFactory.getLogger(RetryLogListener.class);\n\n    @Override\n    public <T, E extends Throwable> void onError(RetryContext context,\n            RetryCallback<T, E> callback, Throwable throwable) {\n        log.warn(\"Retry attempt {} for: {}\", context.getRetryCount(), throwable.getMessage());\n    }\n}\n"}]}]
+9:["$","h2",null,{"children":"Combining Skip and Retry"}]
+a:["$","p",null,{"children":"Skip after retries are exhausted:"}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":".faultTolerant()\n.retry(DeadlockLoserDataAccessException.class)\n.retryLimit(3)\n.skip(DeadlockLoserDataAccessException.class)\n.skipLimit(10)\n"}]}]
+c:["$","p",null,{"children":"This means: retry up to 3 times, and if still failing, skip the item (up to 10 skipped items total)."}]
+d:["$","h2",null,{"children":"Restart and Checkpointing"}]
+e:["$","p",null,{"children":["Spring Batch persists ",["$","$L3",null,{"children":"ExecutionContext"}]," after each chunk commit. If a job fails, it can restart from the last committed chunk."]}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Job restartableJob(JobRepository jobRepository, Step importStep) {\n    return new JobBuilder(\"restartableJob\", jobRepository)\n            .start(importStep)\n            .build();\n    // Jobs are restartable by default\n}\n"}]}]
+10:["$","h3",null,{"children":"Preventing Restart"}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Job nonRestartableJob(JobRepository jobRepository, Step importStep) {\n    return new JobBuilder(\"nonRestartableJob\", jobRepository)\n            .preventRestart()\n            .start(importStep)\n            .build();\n}\n"}]}]
+12:["$","h3",null,{"children":"ExecutionContext Checkpointing"}]
+13:["$","p",null,{"children":"Store custom state for restart:"}]
+14:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\n@StepScope\npublic class CheckpointingReader implements ItemReader<Record>, ItemStream {\n\n    private int currentIndex = 0;\n\n    @Override\n    public void open(ExecutionContext executionContext) {\n        if (executionContext.containsKey(\"currentIndex\")) {\n            currentIndex = executionContext.getInt(\"currentIndex\");\n        }\n    }\n\n    @Override\n    public void update(ExecutionContext executionContext) {\n        executionContext.putInt(\"currentIndex\", currentIndex);\n    }\n\n    @Override\n    public Record read() {\n        // read from currentIndex position\n        currentIndex++;\n        return fetchRecord(currentIndex);\n    }\n\n    @Override\n    public void close() {}\n\n    private Record fetchRecord(int index) {\n        // implementation\n        return null; // null signals end\n    }\n}\n"}]}]
+15:["$","h2",null,{"children":"No-Rollback Exceptions"}]
+16:["$","p",null,{"children":"By default, any exception during write triggers a transaction rollback. Mark exceptions as no-rollback to commit the chunk anyway:"}]
+17:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Step stepWithNoRollback(JobRepository jobRepository,\n                               PlatformTransactionManager transactionManager,\n                               ItemReader<Person> reader,\n                               ItemWriter<Person> writer) {\n    return new StepBuilder(\"noRollbackStep\", jobRepository)\n            .<Person, Person>chunk(500, transactionManager)\n            .reader(reader)\n            .writer(writer)\n            .faultTolerant()\n            .noRollback(NotificationException.class)\n            .build();\n}\n"}]}]
+18:["$","p",null,{"children":"Use case: sending email notifications in the writer — if the email fails, you still want the database write to commit."}]
+19:["$","h2",null,{"children":"Complete Fault-Tolerant Step"}]
+21:T525,@Bean
+public Step faultTolerantStep(JobRepository jobRepository,
+                              PlatformTransactionManager transactionManager,
+                              ItemReader<Person> reader,
+                              ItemProcessor<Person, PersonDto> processor,
+                              ItemWriter<PersonDto> writer,
+                              SkipListener skipListener) {
+    return new StepBuilder("faultTolerantStep", jobRepository)
+            .<Person, PersonDto>chunk(500, transactionManager)
+            .reader(reader)
+            .processor(processor)
+            .writer(writer)
+            .faultTolerant()
+            // Skip configuration
+            .skip(FlatFileParseException.class)
+            .skip(ValidationException.class)
+            .skipLimit(200)
+            // Retry configuration
+            .retry(DeadlockLoserDataAccessException.class)
+            .retry(ConnectTimeoutException.class)
+            .retryLimit(3)
+            .backOffPolicy(new ExponentialBackOffPolicy() {{
+                setInitialInterval(500);
+                setMultiplier(2.0);
+                setMaxInterval(10000);
+            }})
+            // No-rollback
+            .noRollback(MailSendException.class)
+            // Listeners
+            .listener(skipListener)
+            .build();
+}
+1a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$21"}]}]
+1b:["$","h2",null,{"children":"Exercises"}]
+1c:["$","ol",null,{"children":["\n",["$","li",null,{"children":"Create a job that reads a CSV with intentionally malformed rows. Configure skip to handle up to 50 parse errors and log each skipped line."}],"\n",["$","li",null,{"children":["Simulate a flaky database writer (randomly throw ",["$","$L3",null,{"children":"DeadlockLoserDataAccessException"}],"). Configure retry with exponential backoff."]}],"\n",["$","li",null,{"children":"Build a restartable job that processes a large file. Kill it mid-way and restart — verify it resumes from the last checkpoint."}],"\n",["$","li",null,{"children":"Combine skip and retry: retry transient DB errors 3 times, then skip. Write skipped items to an error file for manual review."}],"\n"]}]
+1d:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-06-flow","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-08-scaling","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+1e:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1f:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+20:["$","$L22",null,{"children":["$","$23",null,{"name":"Next.MetadataOutlet","children":"$@24"}]}]
+24:null

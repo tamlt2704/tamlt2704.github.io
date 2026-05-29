@@ -1,0 +1,162 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","pixel-game-js","chapter-09-polish",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","pixel-game-js/chapter-09-polish","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-08-rpg","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/pixel-game-js/chapter-10-publish","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T4c6,interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  life: number;
+  maxLife: number;
+  color: string;
+  size: number;
+}
+
+const particles: Particle[] = [];
+
+function emit(x: number, y: number, count: number, color: string) {
+  for (let i = 0; i < count; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 20 + Math.random() * 60;
+    particles.push({
+      x,
+      y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 0.3 + Math.random() * 0.3,
+      maxLife: 0.5,
+      color,
+      size: 1 + Math.floor(Math.random() * 2),
+    });
+  }
+}
+
+function updateParticles(dt: number) {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.vy += 100 * dt; // gravity
+    p.life -= dt;
+    if (p.life <= 0) particles.splice(i, 1);
+  }
+}
+
+function renderParticles(ctx: CanvasRenderingContext2D) {
+  for (const p of particles) {
+    const alpha = p.life / p.maxLife;
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = p.color;
+    ctx.fillRect(Math.floor(p.x), Math.floor(p.y), p.size, p.size);
+  }
+  ctx.globalAlpha = 1;
+}
+
+// Usage: emit(enemy.x + 7, enemy.y + 7, 8, '#e94560')
+14:T600,type EaseFn = (t: number) => number;
+
+const ease = {
+  linear: (t: number) => t,
+  inQuad: (t: number) => t * t,
+  outQuad: (t: number) => t * (2 - t),
+  inOutQuad: (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
+  outBack: (t: number) => {
+    const s = 1.70158;
+    return (t -= 1) * t * ((s + 1) * t + s) + 1;
+  },
+  outBounce: (t: number) => {
+    if (t < 1 / 2.75) return 7.5625 * t * t;
+    if (t < 2 / 2.75) return 7.5625 * (t -= 1.5 / 2.75) * t + 0.75;
+    if (t < 2.5 / 2.75) return 7.5625 * (t -= 2.25 / 2.75) * t + 0.9375;
+    return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375;
+  },
+};
+
+interface Tween {
+  target: any;
+  prop: string;
+  from: number;
+  to: number;
+  duration: number;
+  elapsed: number;
+  ease: EaseFn;
+  onComplete?: () => void;
+}
+
+const tweens: Tween[] = [];
+
+function tween(
+  target: any,
+  prop: string,
+  to: number,
+  duration: number,
+  easeFn: EaseFn = ease.outQuad,
+  onComplete?: () => void,
+) {
+  tweens.push({
+    target,
+    prop,
+    from: target[prop],
+    to,
+    duration,
+    elapsed: 0,
+    ease: easeFn,
+    onComplete,
+  });
+}
+
+function updateTweens(dt: number) {
+  for (let i = tweens.length - 1; i >= 0; i--) {
+    const tw = tweens[i];
+    tw.elapsed += dt;
+    const t = Math.min(tw.elapsed / tw.duration, 1);
+    tw.target[tw.prop] = tw.from + (tw.to - tw.from) * tw.ease(t);
+    if (t >= 1) {
+      tw.onComplete?.();
+      tweens.splice(i, 1);
+    }
+  }
+}
+
+// Usage: tween(player, 'y', player.y - 4, 0.1, ease.outQuad, () => tween(player, 'y', player.y + 4, 0.1))
+10:[["$","h1",null,{"children":"Polish"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-08-rpg","children":"prev: RPG Project"}]," | ",["$","a",null,{"href":"./chapter-10-publish","children":"next: Publishing"}]]}],"\n",["$","p",null,{"children":"Polish is what makes a game feel good. Screen shake, particles, tweening, and sound design turn a functional prototype into something players love."}],"\n",["$","h2",null,{"children":"Screen Shake"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"const shake = { x: 0, y: 0, intensity: 0, duration: 0 };\n\nfunction startShake(intensity: number, duration: number) {\n  shake.intensity = intensity;\n  shake.duration = duration;\n}\n\nfunction updateShake(dt: number) {\n  if (shake.duration > 0) {\n    shake.duration -= dt;\n    shake.x = (Math.random() - 0.5) * 2 * shake.intensity;\n    shake.y = (Math.random() - 0.5) * 2 * shake.intensity;\n  } else {\n    shake.x = 0;\n    shake.y = 0;\n  }\n}\n\nfunction render() {\n  ctx.save();\n  ctx.translate(Math.round(shake.x), Math.round(shake.y));\n  // ... draw everything ...\n  ctx.restore();\n}\n\n// Usage: startShake(3, 0.2) on hit\n"}]}],"\n",["$","h2",null,{"children":"Particle Effects"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"$13"}]}],"\n",["$","h2",null,{"children":"Tweening"}],"\n",["$","p",null,{"children":"Smooth value transitions for UI, movement, and effects:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"$14"}]}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29"]
+15:["$","h2",null,{"children":"Juice: Squash and Stretch"}]
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"class JuicySprite {\n  x = 0;\n  y = 0;\n  scaleX = 1;\n  scaleY = 1;\n\n  squash() {\n    this.scaleX = 1.3;\n    this.scaleY = 0.7;\n    tween(this, \"scaleX\", 1, 0.2, ease.outBounce);\n    tween(this, \"scaleY\", 1, 0.2, ease.outBounce);\n  }\n\n  stretch() {\n    this.scaleX = 0.7;\n    this.scaleY = 1.3;\n    tween(this, \"scaleX\", 1, 0.15, ease.outQuad);\n    tween(this, \"scaleY\", 1, 0.15, ease.outQuad);\n  }\n\n  draw(ctx: CanvasRenderingContext2D, img: HTMLImageElement) {\n    ctx.save();\n    ctx.translate(Math.floor(this.x + 8), Math.floor(this.y + 16)); // pivot at feet\n    ctx.scale(this.scaleX, this.scaleY);\n    ctx.drawImage(img, -8, -16, 16, 16);\n    ctx.restore();\n  }\n}\n\n// On land: squash(). On jump: stretch().\n"}]}]
+17:["$","h2",null,{"children":"Hitstop (Freeze Frames)"}]
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"let hitstopTimer = 0;\n\nfunction hitstop(duration: number) {\n  hitstopTimer = duration;\n}\n\nfunction gameLoop(t: number) {\n  const dt = Math.min((t - lastTime) / 1000, 0.1);\n  lastTime = t;\n\n  if (hitstopTimer > 0) {\n    hitstopTimer -= dt;\n    // Still render, just don't update\n    render();\n  } else {\n    update(dt);\n    render();\n  }\n  requestAnimationFrame(gameLoop);\n}\n\n// Usage: on enemy hit, hitstop(0.05) + startShake(2, 0.1)\n"}]}]
+19:["$","h2",null,{"children":"Bitmap Fonts"}]
+1a:["$","p",null,{"children":"Pixel-perfect text using a font sprite sheet:"}]
+1b:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"const CHAR_W = 5,\n  CHAR_H = 7;\nconst CHARS = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!?:,-\";\nlet fontImg: HTMLImageElement;\n\nfunction drawText(ctx: CanvasRenderingContext2D, text: string, x: number, y: number) {\n  const upper = text.toUpperCase();\n  for (let i = 0; i < upper.length; i++) {\n    const idx = CHARS.indexOf(upper[i]);\n    if (idx === -1) continue; // space or unknown\n    ctx.drawImage(\n      fontImg,\n      idx * CHAR_W,\n      0,\n      CHAR_W,\n      CHAR_H,\n      x + i * (CHAR_W + 1),\n      y,\n      CHAR_W,\n      CHAR_H,\n    );\n  }\n}\n"}]}]
+1c:["$","h2",null,{"children":"Sound with Howler.js"}]
+1d:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"npm install howler\n"}]}]
+1e:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"import { Howl } from \"howler\";\n\nconst sounds = {\n  jump: new Howl({ src: [\"jump.wav\"], volume: 0.3 }),\n  coin: new Howl({ src: [\"coin.wav\"], volume: 0.4 }),\n  hit: new Howl({ src: [\"hit.wav\"], volume: 0.5 }),\n  music: new Howl({ src: [\"music.ogg\"], loop: true, volume: 0.2 }),\n};\n\nsounds.music.play();\n\n// On jump:\nsounds.jump.play();\n"}]}]
+1f:["$","h2",null,{"children":"Music Loops"}]
+20:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"// Seamless loop with Web Audio\nconst musicCtx = new AudioContext();\nlet musicBuffer: AudioBuffer;\n\nasync function loadMusic(url: string) {\n  const res = await fetch(url);\n  const data = await res.arrayBuffer();\n  musicBuffer = await musicCtx.decodeAudioData(data);\n}\n\nfunction playMusic() {\n  const source = musicCtx.createBufferSource();\n  source.buffer = musicBuffer;\n  source.loop = true;\n  source.loopStart = 0;\n  source.loopEnd = musicBuffer.duration;\n  source.connect(musicCtx.destination);\n  source.start();\n}\n"}]}]
+21:["$","h2",null,{"children":"Retro CRT Shader Effect"}]
+22:["$","p",null,{"children":"Apply a CRT scanline effect by drawing over the final frame:"}]
+23:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"function applyCRT(ctx: CanvasRenderingContext2D, w: number, h: number) {\n  // Scanlines\n  ctx.fillStyle = \"rgba(0,0,0,0.15)\";\n  for (let y = 0; y < h; y += 2) {\n    ctx.fillRect(0, y, w, 1);\n  }\n\n  // Vignette (darken edges)\n  const grad = ctx.createRadialGradient(w / 2, h / 2, w * 0.3, w / 2, h / 2, w * 0.7);\n  grad.addColorStop(0, \"rgba(0,0,0,0)\");\n  grad.addColorStop(1, \"rgba(0,0,0,0.4)\");\n  ctx.fillStyle = grad;\n  ctx.fillRect(0, 0, w, h);\n}\n\n// Call after all game rendering:\nfunction render() {\n  // ... draw game ...\n  applyCRT(ctx, canvas.width, canvas.height);\n}\n"}]}]
+24:["$","p",null,{"children":"For a more advanced CRT with barrel distortion, use WebGL shaders:"}]
+25:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"// Fragment shader (GLSL)\nconst crtShader = `\n  precision mediump float;\n  uniform sampler2D uTexture;\n  varying vec2 vUv;\n\n  void main() {\n    vec2 uv = vUv;\n    // Barrel distortion\n    vec2 center = uv - 0.5;\n    float dist = dot(center, center);\n    uv = uv + center * dist * 0.1;\n    // Scanlines\n    float scanline = sin(uv.y * 144.0 * 3.14159) * 0.04;\n    vec4 color = texture2D(uTexture, uv);\n    color.rgb -= scanline;\n    gl_FragColor = color;\n  }\n`;\n"}]}]
+26:["$","h2",null,{"children":"Combining Juice"}]
+27:["$","p",null,{"children":"The best game feel comes from layering multiple effects:"}]
+28:["$","$L11",null,{"children":["$","$L12",null,{"children":"Player lands:\n  1. Squash sprite (scaleX: 1.3, scaleY: 0.7)\n  2. Emit dust particles (3-5, gray, spread horizontal)\n  3. Small screen shake (intensity: 1, duration: 0.05)\n  4. Play land sound\n\nEnemy hit:\n  1. Hitstop (0.04s)\n  2. Screen shake (intensity: 3, duration: 0.1)\n  3. Flash enemy white (1 frame)\n  4. Emit particles (8, red)\n  5. Knockback tween\n  6. Play hit sound\n"}]}]
+29:["$","p",null,{"children":[["$","a",null,{"href":"./chapter-08-rpg","children":"prev: RPG Project"}]," | ",["$","a",null,{"href":"./chapter-10-publish","children":"next: Publishing"}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+2a:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 09 polish — pixel game js"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2a","3",{}]]

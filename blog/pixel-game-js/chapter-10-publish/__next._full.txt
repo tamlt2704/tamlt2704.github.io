@@ -1,0 +1,177 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","pixel-game-js","chapter-10-publish",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","pixel-game-js/chapter-10-publish","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/pixel-game-js/chapter-09-polish","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T7af,class VirtualJoystick {
+  active = false;
+  baseX = 0;
+  baseY = 0;
+  stickX = 0;
+  stickY = 0;
+  dx = 0;
+  dy = 0;
+  radius = 20;
+
+  constructor(private canvas: HTMLCanvasElement) {
+    canvas.addEventListener("touchstart", (e) => this.onStart(e));
+    canvas.addEventListener("touchmove", (e) => this.onMove(e));
+    canvas.addEventListener("touchend", () => this.onEnd());
+  }
+
+  private getPos(e: TouchEvent) {
+    const rect = this.canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    return {
+      x: (touch.clientX - rect.left) * (this.canvas.width / rect.width),
+      y: (touch.clientY - rect.top) * (this.canvas.height / rect.height),
+    };
+  }
+
+  onStart(e: TouchEvent) {
+    e.preventDefault();
+    const p = this.getPos(e);
+    this.active = true;
+    this.baseX = p.x;
+    this.baseY = p.y;
+    this.stickX = p.x;
+    this.stickY = p.y;
+    this.dx = 0;
+    this.dy = 0;
+  }
+
+  onMove(e: TouchEvent) {
+    if (!this.active) return;
+    e.preventDefault();
+    const p = this.getPos(e);
+    let ox = p.x - this.baseX;
+    let oy = p.y - this.baseY;
+    const dist = Math.hypot(ox, oy);
+    if (dist > this.radius) {
+      ox = (ox / dist) * this.radius;
+      oy = (oy / dist) * this.radius;
+    }
+    this.stickX = this.baseX + ox;
+    this.stickY = this.baseY + oy;
+    this.dx = ox / this.radius; // -1 to 1
+    this.dy = oy / this.radius;
+  }
+
+  onEnd() {
+    this.active = false;
+    this.dx = 0;
+    this.dy = 0;
+  }
+
+  render(ctx: CanvasRenderingContext2D) {
+    if (!this.active) return;
+    ctx.globalAlpha = 0.3;
+    ctx.beginPath();
+    ctx.arc(this.baseX, this.baseY, this.radius, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(this.stickX, this.stickY, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+}
+
+// Usage in update:
+const joystick = new VirtualJoystick(canvas);
+function update(dt: number) {
+  player.vx = joystick.dx * player.speed;
+  player.vy = joystick.dy * player.speed;
+}
+10:[["$","h1",null,{"children":"Publishing"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"./chapter-09-polish","children":"prev: Polish"}]," | ",["$","a",null,{"href":"./chapter-00-overview","children":"next: Overview"}]]}],"\n",["$","p",null,{"children":"Your game is done — now ship it. This chapter covers bundling, deploying to itch.io, mobile controls, PWA offline support, and performance optimization."}],"\n",["$","h2",null,{"children":"Bundling with Vite"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"npm create vite@latest my-game -- --template vanilla-ts\ncd my-game\nnpm install\n"}]}],"\n",["$","p",null,{"children":[["$","$L12",null,{"children":"vite.config.ts"}],":"]}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"import { defineConfig } from \"vite\";\n\nexport default defineConfig({\n  base: \"./\", // relative paths for itch.io\n  build: {\n    assetsInlineLimit: 0, // don't inline assets\n    outDir: \"dist\",\n  },\n});\n"}]}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-bash","children":"npm run build\n# Output in dist/ — ready to deploy\n"}]}],"\n",["$","h2",null,{"children":"Deploying to itch.io"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":["Run ",["$","$L12",null,{"children":"npm run build"}]]}],"\n",["$","li",null,{"children":["Zip the ",["$","$L12",null,{"children":"dist/"}]," folder"]}],"\n",["$","li",null,{"children":"Go to itch.io > Dashboard > Create new project"}],"\n",["$","li",null,{"children":"Set \"Kind of project\" to HTML"}],"\n",["$","li",null,{"children":"Upload the zip"}],"\n",["$","li",null,{"children":"Check \"This file will be played in the browser\""}],"\n",["$","li",null,{"children":"Set viewport dimensions (e.g., 640x576 for 4x scale)"}],"\n"]}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"children":"dist/\n  index.html\n  assets/\n    player.png\n    tileset.png\n    index-abc123.js\n"}]}],"\n",["$","h2",null,{"children":"Embedding in a Website"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-html","children":"<iframe\n  src=\"https://yourusername.itch.io/your-game\"\n  width=\"640\"\n  height=\"576\"\n  frameborder=\"0\"\n  allowfullscreen\n>\n</iframe>\n"}]}],"\n",["$","p",null,{"children":"Or self-host the dist folder:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-html","children":"<iframe src=\"/games/my-game/index.html\" width=\"640\" height=\"576\"></iframe>\n"}]}],"\n",["$","h2",null,{"children":"Mobile Controls (Virtual Joystick)"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"$13"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27"]
+14:["$","h2",null,{"children":"PWA for Offline Play"}]
+15:["$","p",null,{"children":[["$","$L12",null,{"children":"manifest.json"}],":"]}]
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-json","children":"{\n  \"name\": \"My Pixel Game\",\n  \"short_name\": \"PixelGame\",\n  \"start_url\": \"./index.html\",\n  \"display\": \"fullscreen\",\n  \"orientation\": \"landscape\",\n  \"background_color\": \"#1a1a2e\",\n  \"theme_color\": \"#1a1a2e\",\n  \"icons\": [{ \"src\": \"icon-192.png\", \"sizes\": \"192x192\", \"type\": \"image/png\" }]\n}\n"}]}]
+17:["$","p",null,{"children":[["$","$L12",null,{"children":"sw.js"}]," (service worker):"]}]
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-javascript","children":"const CACHE = \"game-v1\";\nconst ASSETS = [\"./index.html\", \"./assets/index.js\", \"./assets/player.png\", \"./assets/tileset.png\"];\n\nself.addEventListener(\"install\", (e) => {\n  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));\n});\n\nself.addEventListener(\"fetch\", (e) => {\n  e.respondWith(caches.match(e.request).then((r) => r || fetch(e.request)));\n});\n"}]}]
+19:["$","p",null,{"children":["Register in ",["$","$L12",null,{"children":"index.html"}],":"]}]
+1a:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-html","children":"<link rel=\"manifest\" href=\"manifest.json\" />\n<script>\n  if (\"serviceWorker\" in navigator) navigator.serviceWorker.register(\"sw.js\");\n</script>\n"}]}]
+1b:["$","h2",null,{"children":"Performance Tips"}]
+1c:["$","h3",null,{"children":"Object Pooling"}]
+1d:["$","p",null,{"children":"Avoid garbage collection spikes by reusing objects:"}]
+1e:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"class Pool<T> {\n  private items: T[] = [];\n  private active: T[] = [];\n\n  constructor(\n    private create: () => T,\n    private reset: (item: T) => void,\n    size: number,\n  ) {\n    for (let i = 0; i < size; i++) this.items.push(create());\n  }\n\n  get(): T | undefined {\n    const item = this.items.pop();\n    if (item) this.active.push(item);\n    return item;\n  }\n\n  release(item: T) {\n    const idx = this.active.indexOf(item);\n    if (idx !== -1) {\n      this.active.splice(idx, 1);\n      this.reset(item);\n      this.items.push(item);\n    }\n  }\n\n  getActive(): T[] {\n    return this.active;\n  }\n}\n\n// Particle pool\nconst particlePool = new Pool<Particle>(\n  () => ({ x: 0, y: 0, vx: 0, vy: 0, life: 0, maxLife: 0, color: \"\", size: 1 }),\n  (p) => {\n    p.life = 0;\n  },\n  200,\n);\n"}]}]
+1f:["$","h3",null,{"children":"Spatial Hashing"}]
+20:["$","p",null,{"children":"Fast collision detection for many objects:"}]
+28:T684,class SpatialHash {
+  private cells = new Map<string, any[]>();
+  private cellSize: number;
+
+  constructor(cellSize: number) {
+    this.cellSize = cellSize;
+  }
+
+  clear() {
+    this.cells.clear();
+  }
+
+  private key(x: number, y: number): string {
+    return `${Math.floor(x / this.cellSize)},${Math.floor(y / this.cellSize)}`;
+  }
+
+  insert(obj: { x: number; y: number; width: number; height: number }) {
+    const x1 = Math.floor(obj.x / this.cellSize);
+    const y1 = Math.floor(obj.y / this.cellSize);
+    const x2 = Math.floor((obj.x + obj.width) / this.cellSize);
+    const y2 = Math.floor((obj.y + obj.height) / this.cellSize);
+    for (let x = x1; x <= x2; x++) {
+      for (let y = y1; y <= y2; y++) {
+        const k = `${x},${y}`;
+        if (!this.cells.has(k)) this.cells.set(k, []);
+        this.cells.get(k)!.push(obj);
+      }
+    }
+  }
+
+  query(obj: { x: number; y: number; width: number; height: number }): any[] {
+    const results = new Set<any>();
+    const x1 = Math.floor(obj.x / this.cellSize);
+    const y1 = Math.floor(obj.y / this.cellSize);
+    const x2 = Math.floor((obj.x + obj.width) / this.cellSize);
+    const y2 = Math.floor((obj.y + obj.height) / this.cellSize);
+    for (let x = x1; x <= x2; x++) {
+      for (let y = y1; y <= y2; y++) {
+        const cell = this.cells.get(`${x},${y}`);
+        if (cell)
+          cell.forEach((o) => {
+            if (o !== obj) results.add(o);
+          });
+      }
+    }
+    return [...results];
+  }
+}
+
+// Usage each frame:
+const hash = new SpatialHash(32);
+hash.clear();
+entities.forEach((e) => hash.insert(e));
+const nearby = hash.query(player);
+// Only check collision with nearby entities
+21:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"$28"}]}]
+22:["$","h3",null,{"children":"Other Tips"}]
+23:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Offscreen canvas"}],": Pre-render static backgrounds to a buffer canvas"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Dirty rectangles"}],": Only redraw changed regions"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Reduce draw calls"}],": Batch similar sprites"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Avoid allocations in the loop"}],": Reuse vectors, arrays"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":["Use ",["$","$L12",null,{"children":"requestAnimationFrame"}]]}],": Never ",["$","$L12",null,{"children":"setInterval"}]," for rendering"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Profile"}],": Use Chrome DevTools Performance tab to find bottlenecks"]}],"\n"]}]
+24:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-typescript","children":"// Offscreen buffer for static background\nconst bgCanvas = document.createElement(\"canvas\");\nbgCanvas.width = mapWidth;\nbgCanvas.height = mapHeight;\nconst bgCtx = bgCanvas.getContext(\"2d\")!;\n// Draw map once to bgCanvas\nrenderMapTo(bgCtx);\n\n// In game loop, just blit the buffer:\nctx.drawImage(bgCanvas, -camera.x, -camera.y);\n"}]}]
+25:["$","h2",null,{"children":"Checklist Before Publishing"}]
+26:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Test on multiple browsers (Chrome, Firefox, Safari)"}],"\n",["$","li",null,{"children":"Test on mobile (touch controls work?)"}],"\n",["$","li",null,{"children":"Assets load correctly with relative paths"}],"\n",["$","li",null,{"children":"No console errors"}],"\n",["$","li",null,{"children":"Game pauses when tab is hidden"}],"\n",["$","li",null,{"children":"Audio starts on user interaction (browser policy)"}],"\n",["$","li",null,{"children":"Performance is smooth (60fps on target hardware)"}],"\n",["$","li",null,{"children":"Add a loading screen for large assets"}],"\n"]}]
+27:["$","p",null,{"children":[["$","a",null,{"href":"./chapter-09-polish","children":"prev: Polish"}]," | ",["$","a",null,{"href":"./chapter-00-overview","children":"next: Overview"}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+29:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 10 publish — pixel game js"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L29","3",{}]]

@@ -1,0 +1,55 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+e:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+f:"$Sreact.suspense"
+4:T437,package com.example.service;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
+class LenientClassLevelTest {
+
+    @Mock
+    private OrderRepository orderRepository;
+
+    @Mock
+    private NotificationService notificationService;
+
+    @InjectMocks
+    private OrderService orderService;
+
+    @Test
+    void allStubsAreLenient() {
+        when(orderRepository.findById(1L)).thenReturn(Optional.of(new Order("X", 1)));
+        when(orderRepository.findById(2L)).thenReturn(Optional.empty());
+
+        // Only uses one stub — no failure
+        Order result = orderService.findById(1L);
+
+        assertEquals("X", result.getProduct());
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Lenient Stubbing and Strictness"}],"\n",["$","p",null,{"children":["Mockito 5 uses ",["$","strong",null,{"children":"STRICT"}]," stubbing by default. If you stub a method but never call it, the test fails with ",["$","$L2",null,{"children":"UnnecessaryStubbingException"}],"."]}],"\n",["$","h2",null,{"children":"The Problem"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"package com.example.service;\n\nimport org.junit.jupiter.api.Test;\nimport org.junit.jupiter.api.extension.ExtendWith;\nimport org.mockito.InjectMocks;\nimport org.mockito.Mock;\nimport org.mockito.junit.jupiter.MockitoExtension;\n\nimport java.util.Optional;\n\nimport static org.mockito.Mockito.*;\n\n@ExtendWith(MockitoExtension.class)\nclass StrictStubbingProblemTest {\n\n    @Mock\n    private OrderRepository orderRepository;\n\n    @Mock\n    private NotificationService notificationService;\n\n    @InjectMocks\n    private OrderService orderService;\n\n    @Test\n    void thisTestFails_unnecessaryStubbing() {\n        // This stub is never used — cancelOrder does not call findById\n        when(orderRepository.findById(1L)).thenReturn(Optional.of(new Order(\"X\", 1)));\n\n        orderService.cancelOrder(1L);\n\n        verify(orderRepository).deleteById(1L);\n        // FAILS: UnnecessaryStubbingException\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Solution 1: lenient() Per Stub"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"package com.example.service;\n\nimport org.junit.jupiter.api.Test;\nimport org.junit.jupiter.api.extension.ExtendWith;\nimport org.mockito.InjectMocks;\nimport org.mockito.Mock;\nimport org.mockito.junit.jupiter.MockitoExtension;\n\nimport java.util.Optional;\n\nimport static org.mockito.Mockito.*;\n\n@ExtendWith(MockitoExtension.class)\nclass LenientPerStubTest {\n\n    @Mock\n    private OrderRepository orderRepository;\n\n    @Mock\n    private NotificationService notificationService;\n\n    @InjectMocks\n    private OrderService orderService;\n\n    @Test\n    void lenientStub_doesNotFailOnUnused() {\n        lenient().when(orderRepository.findById(1L))\n            .thenReturn(Optional.of(new Order(\"X\", 1)));\n\n        orderService.cancelOrder(1L);\n\n        verify(orderRepository).deleteById(1L);\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Solution 2: @MockitoSettings at Class Level"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9"]}],"$La"]}],["$Lb","$Lc"],"$Ld"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"When to Use Lenient"}]
+6:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Scenario"}],["$","th",null,{"children":"Recommendation"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["Shared setup in ",["$","$L2",null,{"children":"@BeforeEach"}]," with stubs not used by every test"]}],["$","td",null,{"children":[["$","$L2",null,{"children":"lenient()"}]," per stub"]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Parameterized tests where some params skip a code path"}],["$","td",null,{"children":[["$","$L2",null,{"children":"lenient()"}]," per stub"]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"You simply forgot to remove an old stub"}],["$","td",null,{"children":"Remove the stub instead"}]]}]]}]]}]
+7:["$","h2",null,{"children":"Best Practice"}]
+8:["$","p",null,{"children":["Prefer ",["$","strong",null,{"children":"strict"}]," stubbing. It catches dead code and copy-paste errors. Use ",["$","$L2",null,{"children":"lenient()"}]," only when shared setup genuinely requires it."]}]
+9:["$","p",null,{"children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-03-argument-capture","children":"prev: Argument Capture"}]," | ",["$","a",null,{"href":"/blog/junit-spring-testing/chapter-05-parameterized","children":"next: Parameterized Tests"}]]}]
+a:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/junit-spring-testing/chapter-03-argument-capture","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/junit-spring-testing/chapter-05-parameterized","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+b:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+c:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+d:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
+10:null

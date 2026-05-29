@@ -1,0 +1,186 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","kafka-deep-dive","chapter-05-patterns",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","kafka-deep-dive/chapter-05-patterns","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/kafka-deep-dive/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/kafka-deep-dive/chapter-04-consumer","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/kafka-deep-dive/chapter-06-streams","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T5e0,// Event types
+public sealed interface OrderEvent permits OrderCreated, OrderPaid, OrderShipped {
+    String orderId();
+}
+public record OrderCreated(String orderId, String customerId, double amount) implements OrderEvent {}
+public record OrderPaid(String orderId, String paymentId) implements OrderEvent {}
+public record OrderShipped(String orderId, String trackingNumber) implements OrderEvent {}
+
+// Producer - append events
+@Service
+public class OrderEventStore {
+
+    private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
+
+    public OrderEventStore(KafkaTemplate<String, OrderEvent> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
+    public void append(OrderEvent event) {
+        kafkaTemplate.send("order-events", event.orderId(), event);
+    }
+}
+
+// Consumer - rebuild state
+@Component
+public class OrderProjection {
+
+    private final Map<String, Order> orders = new ConcurrentHashMap<>();
+
+    @KafkaListener(topics = "order-events", groupId = "order-projection")
+    public void on(OrderEvent event) {
+        orders.compute(event.orderId(), (id, order) -> apply(order, event));
+    }
+
+    private Order apply(Order current, OrderEvent event) {
+        if (current == null) current = new Order();
+        return switch (event) {
+            case OrderCreated e -> current.withStatus("CREATED").withAmount(e.amount());
+            case OrderPaid e -> current.withStatus("PAID");
+            case OrderShipped e -> current.withStatus("SHIPPED");
+        };
+    }
+}
+10:[["$","h1",null,{"children":"Chapter 5: Patterns"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"../chapter-04-consumer","children":"← Chapter 4: Consumer"}]," | ",["$","a",null,{"href":"../chapter-06-streams","children":"Chapter 6: Kafka Streams →"}]]}],"\n",["$","hr",null,{}],"\n",["$","h2",null,{"children":"Event Sourcing"}],"\n",["$","p",null,{"children":"Store state changes as a sequence of events rather than current state."}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"children":"Traditional:  UPDATE orders SET status='shipped' WHERE id=1\nEvent Sourced: append OrderShipped{orderId=1, timestamp=...}\n\nEvent Store (Kafka topic \"order-events\"):\n┌──────────────┬───────────────┬──────────────┬───────────────┐\n│ OrderCreated │ OrderPaid     │ OrderShipped │ OrderDelivered│\n│ {id:1}       │ {id:1}        │ {id:1}       │ {id:1}        │\n└──────────────┴───────────────┴──────────────┴───────────────┘\n                                                        ▲\n                                              current state = replay all\n"}]}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$13"}]}],"\n",["$","h2",null,{"children":"CQRS (Command Query Responsibility Segregation)"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"children":"┌──────────┐     Commands      ┌──────────────┐\n│  Client  │ ────────────────→ │ Command Side │\n└──────────┘                   │ (Write Model)│\n     │                         └──────┬───────┘\n     │                                │ events\n     │                                ▼\n     │                         ┌──────────────┐\n     │         Queries         │    Kafka     │\n     │ ←────────────────────── │              │\n     │                         └──────┬───────┘\n     │                                │ consume\n     │                                ▼\n     │                         ┌──────────────┐\n     └────────────────────────→│  Query Side  │\n               reads           │ (Read Model) │\n                               └──────────────┘\n"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28"]
+14:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"// Command side - writes events to Kafka\n@RestController\npublic class OrderCommandController {\n\n    private final OrderEventStore eventStore;\n\n    @PostMapping(\"/orders\")\n    public ResponseEntity<String> createOrder(@RequestBody CreateOrderRequest req) {\n        var event = new OrderCreated(UUID.randomUUID().toString(), req.customerId(), req.amount());\n        eventStore.append(event);\n        return ResponseEntity.accepted().body(event.orderId());\n    }\n}\n\n// Query side - maintains read-optimized view\n@Component\npublic class OrderQueryService {\n\n    private final OrderRepository repository;\n\n    @KafkaListener(topics = \"order-events\", groupId = \"order-query\")\n    public void project(OrderEvent event) {\n        switch (event) {\n            case OrderCreated e -> repository.save(new OrderView(e.orderId(), e.amount(), \"CREATED\"));\n            case OrderPaid e -> repository.updateStatus(e.orderId(), \"PAID\");\n            case OrderShipped e -> repository.updateStatus(e.orderId(), \"SHIPPED\");\n        }\n    }\n}\n"}]}]
+15:["$","h2",null,{"children":"Saga Pattern"}]
+16:["$","p",null,{"children":"Coordinate distributed transactions across services using events."}]
+17:["$","$L11",null,{"children":["$","$L12",null,{"children":"Order Saga:\n┌─────────┐    OrderCreated    ┌─────────────┐\n│  Order  │ ─────────────────→ │   Payment   │\n│ Service │                    │   Service   │\n└─────────┘                    └──────┬──────┘\n     ▲                                │\n     │         PaymentCompleted       │\n     │ ←──────────────────────────────┘\n     │\n     │         OrderConfirmed         ┌───────────┐\n     └───────────────────────────────→│ Inventory │\n                                      │  Service  │\n                                      └───────────┘\n\nCompensation (on failure):\n  PaymentFailed → OrderCancelled → RefundIssued\n"}]}]
+29:T529,// Saga orchestrator
+@Component
+public class OrderSagaOrchestrator {
+
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+
+    @KafkaListener(topics = "payment-results", groupId = "order-saga")
+    public void onPaymentResult(PaymentResult result) {
+        if (result.success()) {
+            kafkaTemplate.send("inventory-commands",
+                result.orderId(),
+                new ReserveInventory(result.orderId()));
+        } else {
+            // Compensating action
+            kafkaTemplate.send("order-commands",
+                result.orderId(),
+                new CancelOrder(result.orderId(), "Payment failed"));
+        }
+    }
+
+    @KafkaListener(topics = "inventory-results", groupId = "order-saga")
+    public void onInventoryResult(InventoryResult result) {
+        if (result.success()) {
+            kafkaTemplate.send("order-commands",
+                result.orderId(),
+                new ConfirmOrder(result.orderId()));
+        } else {
+            // Compensating actions
+            kafkaTemplate.send("payment-commands",
+                result.orderId(),
+                new RefundPayment(result.orderId()));
+            kafkaTemplate.send("order-commands",
+                result.orderId(),
+                new CancelOrder(result.orderId(), "Out of stock"));
+        }
+    }
+}
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$29"}]}]
+19:["$","h2",null,{"children":"Outbox Pattern"}]
+1a:["$","p",null,{"children":"Guarantee atomicity between database write and Kafka publish."}]
+1b:["$","$L11",null,{"children":["$","$L12",null,{"children":"Problem:\n  1. Save to DB  ✓\n  2. Send to Kafka  ✗ (crash here = inconsistency)\n\nSolution - Outbox:\n  1. Save entity + outbox event in SAME DB transaction\n  2. Separate process reads outbox table and publishes to Kafka\n  3. Mark outbox entry as published\n\n┌─────────────────────────────────────────┐\n│  Database (single transaction)          │\n│  ┌────────────┐  ┌──────────────────┐  │\n│  │   orders   │  │  outbox_events   │  │\n│  │  (entity)  │  │  (to publish)    │  │\n│  └────────────┘  └──────────────────┘  │\n└─────────────────────────────────────────┘\n                          │\n                          ▼  (poll or CDC)\n                   ┌─────────────┐\n                   │    Kafka    │\n                   └─────────────┘\n"}]}]
+2a:T72c,// Outbox entity
+@Entity
+@Table(name = "outbox_events")
+public class OutboxEvent {
+    @Id
+    private String id;
+    private String aggregateType;
+    private String aggregateId;
+    private String eventType;
+    private String payload;
+    private Instant createdAt;
+    private boolean published;
+}
+
+// Service - write entity + outbox in same transaction
+@Service
+@Transactional
+public class OrderService {
+
+    private final OrderRepository orderRepo;
+    private final OutboxRepository outboxRepo;
+    private final ObjectMapper mapper;
+
+    public Order createOrder(CreateOrderRequest req) {
+        var order = new Order(UUID.randomUUID().toString(), req.customerId(), req.amount());
+        orderRepo.save(order);
+
+        var outboxEvent = new OutboxEvent();
+        outboxEvent.setId(UUID.randomUUID().toString());
+        outboxEvent.setAggregateType("Order");
+        outboxEvent.setAggregateId(order.getId());
+        outboxEvent.setEventType("OrderCreated");
+        outboxEvent.setPayload(mapper.writeValueAsString(order));
+        outboxEvent.setCreatedAt(Instant.now());
+        outboxRepo.save(outboxEvent);
+
+        return order;
+    }
+}
+
+// Outbox publisher - polls and sends to Kafka
+@Component
+public class OutboxPublisher {
+
+    private final OutboxRepository outboxRepo;
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
+    @Scheduled(fixedDelay = 1000)
+    @Transactional
+    public void publishPending() {
+        var events = outboxRepo.findByPublishedFalseOrderByCreatedAt();
+        for (var event : events) {
+            kafkaTemplate.send(
+                event.getAggregateType().toLowerCase() + "-events",
+                event.getAggregateId(),
+                event.getPayload()
+            );
+            event.setPublished(true);
+            outboxRepo.save(event);
+        }
+    }
+}
+1c:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$2a"}]}]
+1d:["$","h2",null,{"children":"Dead Letter Topics (DLT)"}]
+1e:["$","p",null,{"children":"Route failed messages to a separate topic for investigation."}]
+1f:["$","$L11",null,{"children":["$","$L12",null,{"children":"Main topic: \"orders\"\n  │\n  ├── Success → process normally\n  │\n  └── Failure (after retries) → \"orders.DLT\"\n                                    │\n                                    └── Manual inspection / reprocessing\n"}]}]
+20:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Bean\npublic ConcurrentKafkaListenerContainerFactory<String, OrderEvent> kafkaListenerContainerFactory(\n        ConsumerFactory<String, OrderEvent> consumerFactory,\n        KafkaTemplate<String, Object> kafkaTemplate) {\n    var factory = new ConcurrentKafkaListenerContainerFactory<String, OrderEvent>();\n    factory.setConsumerFactory(consumerFactory);\n\n    var recoverer = new DeadLetterPublishingRecoverer(kafkaTemplate,\n        (record, ex) -> new TopicPartition(record.topic() + \".DLT\", record.partition()));\n\n    var errorHandler = new DefaultErrorHandler(recoverer, new FixedBackOff(1000L, 3));\n    factory.setCommonErrorHandler(errorHandler);\n    return factory;\n}\n"}]}]
+21:["$","h2",null,{"children":"Retry Topics"}]
+22:["$","p",null,{"children":"More granular retry with increasing delays using separate topics."}]
+23:["$","$L11",null,{"children":["$","$L12",null,{"children":"orders → orders-retry-1 (1s) → orders-retry-2 (10s) → orders-retry-3 (60s) → orders-DLT\n"}]}]
+24:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@RetryableTopic(\n    attempts = \"4\",\n    backoff = @Backoff(delay = 1000, multiplier = 10, maxDelay = 60000),\n    dltStrategy = DltStrategy.FAIL_ON_ERROR,\n    topicSuffixingStrategy = TopicSuffixingStrategy.SUFFIX_WITH_INDEX_VALUE\n)\n@KafkaListener(topics = \"orders\", groupId = \"order-service\")\npublic void consume(OrderEvent event) {\n    processOrder(event);  // throws exception → retried on retry topics\n}\n\n@DltHandler\npublic void handleDlt(OrderEvent event, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {\n    System.err.printf(\"DLT received from %s: %s%n\", topic, event);\n    // Alert, store for manual review, etc.\n}\n"}]}]
+25:["$","h2",null,{"children":"Exercises"}]
+26:["$","ol",null,{"children":["\n",["$","li",null,{"children":["\n",["$","p",null,{"children":"Implement event sourcing for a simple bank account (events: AccountCreated, MoneyDeposited, MoneyWithdrawn). Build a projection that maintains current balance."}],"\n"]}],"\n",["$","li",null,{"children":["\n",["$","p",null,{"children":"Implement the outbox pattern: save an order to a database and publish an event atomically."}],"\n"]}],"\n",["$","li",null,{"children":["\n",["$","p",null,{"children":"Configure retry topics with 3 retry levels (1s, 5s, 30s) and a DLT. Simulate failures and observe message flow through retry topics."}],"\n"]}],"\n",["$","li",null,{"children":["\n",["$","p",null,{"children":"Implement a saga for: CreateOrder → ReserveInventory → ProcessPayment with compensation on failure."}],"\n"]}],"\n"]}]
+27:["$","hr",null,{}]
+28:["$","p",null,{"children":[["$","a",null,{"href":"../chapter-04-consumer","children":"← Chapter 4: Consumer"}]," | ",["$","a",null,{"href":"../chapter-06-streams","children":"Chapter 6: Kafka Streams →"}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+2b:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 05 patterns — kafka deep dive"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2b","3",{}]]

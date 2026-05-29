@@ -1,0 +1,131 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0c.xmdkx5r..7.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","llm-from-scratch","chapter-04-transformer",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","llm-from-scratch/chapter-04-transformer","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0c.xmdkx5r..7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Md721uU3fW2YMN7DQ0Pz9"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/llm-from-scratch/chapter-03-attention","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/llm-from-scratch/chapter-05-training","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+13:T817,import torch
+import torch.nn as nn
+import math
+
+class CausalSelfAttention(nn.Module):
+    def __init__(self, embed_dim, n_heads, max_len=1024, dropout=0.1):
+        super().__init__()
+        assert embed_dim % n_heads == 0
+        self.n_heads = n_heads
+        self.head_dim = embed_dim // n_heads
+        self.W_qkv = nn.Linear(embed_dim, 3 * embed_dim, bias=False)
+        self.W_out = nn.Linear(embed_dim, embed_dim, bias=False)
+        self.attn_dropout = nn.Dropout(dropout)
+        self.resid_dropout = nn.Dropout(dropout)
+        mask = torch.tril(torch.ones(max_len, max_len))
+        self.register_buffer("mask", mask.view(1, 1, max_len, max_len))
+
+    def forward(self, x):
+        batch, seq_len, embed_dim = x.shape
+        qkv = self.W_qkv(x).reshape(batch, seq_len, 3, self.n_heads, self.head_dim)
+        qkv = qkv.permute(2, 0, 3, 1, 4)
+        Q, K, V = qkv[0], qkv[1], qkv[2]
+        scores = Q @ K.transpose(-2, -1) / math.sqrt(self.head_dim)
+        scores = scores.masked_fill(self.mask[:,:,:seq_len,:seq_len] == 0, float('-inf'))
+        weights = self.attn_dropout(torch.softmax(scores, dim=-1))
+        out = (weights @ V).transpose(1, 2).reshape(batch, seq_len, embed_dim)
+        return self.resid_dropout(self.W_out(out))
+
+
+class TransformerBlock(nn.Module):
+    def __init__(self, embed_dim, n_heads, max_len=1024, dropout=0.1):
+        super().__init__()
+        self.ln1 = nn.LayerNorm(embed_dim)
+        self.attn = CausalSelfAttention(embed_dim, n_heads, max_len, dropout)
+        self.ln2 = nn.LayerNorm(embed_dim)
+        self.ffn = FeedForward(embed_dim, dropout=dropout)
+
+    def forward(self, x):
+        # x shape: (batch, seq_len, embed_dim)
+        # Pre-norm + residual for attention
+        x = x + self.attn(self.ln1(x))
+        # Pre-norm + residual for FFN
+        x = x + self.ffn(self.ln2(x))
+        return x  # (batch, seq_len, embed_dim)
+
+# Test
+block = TransformerBlock(embed_dim=768, n_heads=12)
+x = torch.randn(2, 128, 768)  # batch=2, seq_len=128
+out = block(x)
+print(f"Block output: {out.shape}")  # (2, 128, 768)
+10:[["$","h1",null,{"children":"Chapter 4: Transformer Block"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-03-attention","children":"prev: Attention"}]," | ",["$","a",null,{"href":"chapter-05-training","children":"next: Training"}]]}],"\n",["$","p",null,{"children":"The transformer block combines attention with a feed-forward network, connected by residual connections and layer normalization. Stack N of these blocks to build a GPT."}],"\n",["$","h2",null,{"children":"Layer Normalization"}],"\n",["$","p",null,{"children":"Normalizes across the feature dimension (not the batch dimension like BatchNorm):"}],"\n",["$","p",null,{"children":["$","$L11",null,{"children":"LayerNorm(x) = gamma * (x - mean) / sqrt(variance + eps) + beta"}]}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"import torch\nimport torch.nn as nn\n\nclass LayerNorm(nn.Module):\n    def __init__(self, embed_dim, eps=1e-5):\n        super().__init__()\n        self.eps = eps\n        self.gamma = nn.Parameter(torch.ones(embed_dim))\n        self.beta = nn.Parameter(torch.zeros(embed_dim))\n\n    def forward(self, x):\n        # x shape: (batch, seq_len, embed_dim)\n        mean = x.mean(dim=-1, keepdim=True)    # (batch, seq_len, 1)\n        var = x.var(dim=-1, keepdim=True, unbiased=False)  # (batch, seq_len, 1)\n        x_norm = (x - mean) / torch.sqrt(var + self.eps)\n        return self.gamma * x_norm + self.beta\n        # output shape: (batch, seq_len, embed_dim)\n"}]}],"\n",["$","h3",null,{"children":"Pre-Norm vs Post-Norm"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Post-Norm"}]," (original transformer): ",["$","$L11",null,{"children":"x + Sublayer(LayerNorm(x))"}]," — no, actually: ",["$","$L11",null,{"children":"LayerNorm(x + Sublayer(x))"}]]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Pre-Norm"}]," (GPT-2, modern): ",["$","$L11",null,{"children":"x + Sublayer(LayerNorm(x))"}]]}],"\n"]}],"\n",["$","p",null,{"children":"Pre-norm is more stable during training (gradients flow directly through residual path)."}],"\n",["$","h2",null,{"children":"Feed-Forward Network (MLP with GELU)"}],"\n",["$","p",null,{"children":"A two-layer MLP that expands then contracts the representation:"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"import torch\nimport torch.nn as nn\n\nclass FeedForward(nn.Module):\n    def __init__(self, embed_dim, expansion_factor=4, dropout=0.1):\n        super().__init__()\n        hidden_dim = embed_dim * expansion_factor\n        self.fc1 = nn.Linear(embed_dim, hidden_dim)\n        self.fc2 = nn.Linear(hidden_dim, embed_dim)\n        self.gelu = nn.GELU()\n        self.dropout = nn.Dropout(dropout)\n\n    def forward(self, x):\n        # x shape: (batch, seq_len, embed_dim)\n        x = self.fc1(x)      # (batch, seq_len, hidden_dim)\n        x = self.gelu(x)     # (batch, seq_len, hidden_dim)\n        x = self.fc2(x)      # (batch, seq_len, embed_dim)\n        x = self.dropout(x)\n        return x              # (batch, seq_len, embed_dim)\n"}]}],"\n",["$","p",null,{"children":[["$","strong",null,{"children":"Why GELU over ReLU?"}]," GELU is smoother — it does not have a hard zero cutoff. It slightly outperforms ReLU in practice for language models."]}],"\n",["$","h2",null,{"children":"Residual Connections"}],"\n",["$","p",null,{"children":"Residual connections let gradients flow directly through the network:"}],"\n",["$","p",null,{"children":["$","$L11",null,{"children":"output = x + Sublayer(x)"}]}],"\n",["$","p",null,{"children":"Without residuals, deep networks suffer from vanishing gradients. With residuals, even a 96-layer model trains stably."}],"\n",["$","h2",null,{"children":"Full Transformer Block"}],"\n",["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"$13"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d"]
+14:["$","h2",null,{"children":"Stacking N Blocks: The Full GPT Model"}]
+1e:T6f0,import torch
+import torch.nn as nn
+
+class GPT(nn.Module):
+    def __init__(self, vocab_size=50257, embed_dim=768, n_heads=12,
+                 n_layers=12, max_len=1024, dropout=0.1):
+        super().__init__()
+        self.token_emb = nn.Embedding(vocab_size, embed_dim)
+        self.pos_emb = nn.Embedding(max_len, embed_dim)
+        self.dropout = nn.Dropout(dropout)
+
+        self.blocks = nn.ModuleList([
+            TransformerBlock(embed_dim, n_heads, max_len, dropout)
+            for _ in range(n_layers)
+        ])
+
+        self.ln_final = nn.LayerNorm(embed_dim)
+        self.lm_head = nn.Linear(embed_dim, vocab_size, bias=False)
+
+        # Weight tying: share embedding and output weights
+        self.lm_head.weight = self.token_emb.weight
+
+    def forward(self, token_ids):
+        # token_ids shape: (batch, seq_len)
+        batch, seq_len = token_ids.shape
+
+        tok_emb = self.token_emb(token_ids)  # (batch, seq_len, embed_dim)
+        pos = torch.arange(seq_len, device=token_ids.device)
+        pos_emb = self.pos_emb(pos)          # (seq_len, embed_dim)
+
+        x = self.dropout(tok_emb + pos_emb)  # (batch, seq_len, embed_dim)
+
+        for block in self.blocks:
+            x = block(x)                     # (batch, seq_len, embed_dim)
+
+        x = self.ln_final(x)                 # (batch, seq_len, embed_dim)
+        logits = self.lm_head(x)             # (batch, seq_len, vocab_size)
+        return logits
+
+# Test
+model = GPT(vocab_size=50257, embed_dim=768, n_heads=12, n_layers=12)
+ids = torch.randint(0, 50257, (2, 128))
+logits = model(ids)
+print(f"Logits shape: {logits.shape}")  # (2, 128, 50257)
+
+# Count parameters
+total_params = sum(p.numel() for p in model.parameters())
+print(f"Total parameters: {total_params / 1e6:.1f}M")  # ~124M
+15:["$","$L12",null,{"children":["$","$L11",null,{"className":"language-python","children":"$1e"}]}]
+16:["$","h2",null,{"children":"GPT Architecture Diagram"}]
+17:["$","$L12",null,{"children":["$","$L11",null,{"children":"Input token IDs: (batch, seq_len)\n         |\n    Token Embedding + Position Embedding\n         |\n    Dropout\n         |\n    +--------------------------+\n    |   Transformer Block x N  |\n    |                          |\n    |   LayerNorm              |\n    |       |                  |\n    |   Causal Self-Attention  |\n    |       |                  |\n    |   + Residual             |\n    |       |                  |\n    |   LayerNorm              |\n    |       |                  |\n    |   Feed-Forward (MLP)     |\n    |       |                  |\n    |   + Residual             |\n    +--------------------------+\n         |\n    Final LayerNorm\n         |\n    Linear Head (embed_dim -> vocab_size)\n         |\n    Logits: (batch, seq_len, vocab_size)\n"}]}]
+18:["$","h2",null,{"children":"Dropout Placement"}]
+19:["$","p",null,{"children":"Dropout is applied at three points:"}]
+1a:["$","ol",null,{"children":["\n",["$","li",null,{"children":"After embedding sum (before first block)"}],"\n",["$","li",null,{"children":"After attention output projection"}],"\n",["$","li",null,{"children":"After FFN output"}],"\n"]}]
+1b:["$","p",null,{"children":["During inference, dropout is disabled (",["$","$L11",null,{"children":"model.eval()"}],")."]}]
+1c:["$","h2",null,{"children":"Key Takeaways"}]
+1d:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Pre-norm (LayerNorm before sublayer) is more stable than post-norm"}],"\n",["$","li",null,{"children":"FFN expands to 4x embed_dim then contracts back — this is where \"memory\" is stored"}],"\n",["$","li",null,{"children":"Residual connections are essential for training deep networks"}],"\n",["$","li",null,{"children":"Weight tying between embedding and output head reduces parameters"}],"\n",["$","li",null,{"children":"GPT-2 Small: 12 layers, 12 heads, 768 embed_dim = 124M parameters"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1f:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 04 transformer — llm from scratch"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1f","3",{}]]

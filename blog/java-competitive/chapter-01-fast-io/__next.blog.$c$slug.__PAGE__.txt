@@ -1,0 +1,75 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+13:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+4:T5ec,import java.io.*;
+
+class FastReader {
+    private final InputStream in;
+    private final byte[] buf = new byte[1 << 16];
+    private int bufPtr = 0, bytesRead = 0;
+
+    FastReader(InputStream in) { this.in = in; }
+
+    private int read() throws IOException {
+        if (bufPtr == bytesRead) {
+            bytesRead = in.read(buf);
+            bufPtr = 0;
+        }
+        return (bytesRead == -1) ? -1 : buf[bufPtr++];
+    }
+
+    int nextInt() throws IOException {
+        int c, sign = 1, x = 0;
+        do { c = read(); } while (c <= ' ');
+        if (c == '-') { sign = -1; c = read(); }
+        do { x = x * 10 + (c - '0'); c = read(); } while (c >= '0');
+        return x * sign;
+    }
+
+    long nextLong() throws IOException {
+        int c, sign = 1;
+        long x = 0;
+        do { c = read(); } while (c <= ' ');
+        if (c == '-') { sign = -1; c = read(); }
+        do { x = x * 10 + (c - '0'); c = read(); } while (c >= '0');
+        return x * sign;
+    }
+
+    String next() throws IOException {
+        int c;
+        StringBuilder sb = new StringBuilder();
+        do { c = read(); } while (c <= ' ');
+        do { sb.append((char) c); c = read(); } while (c > ' ');
+        return sb.toString();
+    }
+
+    double nextDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+
+    boolean hasNext() throws IOException {
+        int c;
+        do { c = read(); } while (c <= ' ' && c != -1);
+        if (c == -1) return false;
+        bufPtr--;
+        return true;
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/java-competitive/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 1: Fast I/O"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"chapter-00-overview","children":"prev: Overview"}]," | ",["$","a",null,{"href":"chapter-02-data-structures","children":"next: Data Structures"}]]}],"\n",["$","h2",null,{"children":"Why Scanner Is Slow"}],"\n",["$","p",null,{"children":[["$","$L2",null,{"children":"Scanner"}]," uses regex internally for parsing. For a problem reading 10^5 integers, Scanner can be 10-50x slower than BufferedReader + StringTokenizer."]}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"Benchmark (reading 10^6 integers):"}]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Scanner: ~2000ms"}],"\n",["$","li",null,{"children":"BufferedReader + StringTokenizer: ~150ms"}],"\n",["$","li",null,{"children":"Custom FastReader (byte-level): ~80ms"}],"\n"]}],"\n",["$","p",null,{"children":["In C++, ",["$","$L2",null,{"children":"scanf"}]," or ",["$","$L2",null,{"children":"cin"}]," with ",["$","$L2",null,{"children":"ios::sync_with_stdio(false)"}]," handles this natively. In Java, you must explicitly use fast I/O."]}],"\n",["$","h2",null,{"children":"BufferedReader + StringTokenizer Pattern"}],"\n",["$","p",null,{"children":"The standard competitive programming I/O pattern:"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));\n\n        StringTokenizer st = new StringTokenizer(br.readLine());\n        int n = Integer.parseInt(st.nextToken());\n        int m = Integer.parseInt(st.nextToken());\n\n        for (int i = 0; i < n; i++) {\n            st = new StringTokenizer(br.readLine());\n            int x = Integer.parseInt(st.nextToken());\n            out.println(x);\n        }\n\n        out.flush();\n        out.close();\n    }\n}\n"}]}],"\n",["$","p",null,{"children":["$","strong",null,{"children":"Key points:"}]}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L2",null,{"children":"BufferedReader"}]," reads large chunks from stdin at once"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"StringTokenizer"}]," splits by whitespace without regex"]}],"\n",["$","li",null,{"children":[["$","$L2",null,{"children":"PrintWriter"}]," with ",["$","$L2",null,{"children":"BufferedOutputStream"}]," batches output"]}],"\n",["$","li",null,{"children":["Always call ",["$","$L2",null,{"children":"out.flush()"}]," before exit"]}],"\n"]}],"\n",["$","h2",null,{"children":"Custom FastReader Class"}],"\n",["$","p",null,{"children":"For maximum speed, read bytes directly. This avoids String allocation entirely:"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le"]}],"$Lf"]}],["$L10","$L11"],"$L12"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Md721uU3fW2YMN7DQ0Pz9"}
+5:["$","h2",null,{"children":"Reading Until EOF"}]
+6:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"// With BufferedReader\nBufferedReader br = new BufferedReader(new InputStreamReader(System.in));\nString line;\nwhile ((line = br.readLine()) != null && !line.isEmpty()) {\n    StringTokenizer st = new StringTokenizer(line);\n    // process\n}\n\n// With FastReader\nFastReader fr = new FastReader(System.in);\nwhile (fr.hasNext()) {\n    int n = fr.nextInt();\n    // process\n}\n"}]}]
+7:["$","h2",null,{"children":"Fast Output"}]
+8:["$","p",null,{"children":[["$","$L2",null,{"children":"System.out.println()"}]," flushes on every call. Use PrintWriter or StringBuilder:"]}]
+9:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"// Option 1: PrintWriter (recommended)\nPrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));\nfor (int i = 0; i < n; i++) out.println(ans[i]);\nout.flush();\n\n// Option 2: StringBuilder for massive output\nStringBuilder sb = new StringBuilder();\nfor (int i = 0; i < n; i++) sb.append(ans[i]).append('\\n');\nSystem.out.print(sb);\n"}]}]
+a:["$","p",null,{"children":"For 10^6 lines of output, StringBuilder can be faster because it makes a single system call."}]
+b:["$","h2",null,{"children":"Complete Contest Template"}]
+c:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-java","children":"import java.io.*;\nimport java.util.*;\n\npublic class Main {\n    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n    static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));\n    static StringTokenizer st;\n\n    static String next() throws IOException {\n        while (st == null || !st.hasMoreTokens())\n            st = new StringTokenizer(br.readLine());\n        return st.nextToken();\n    }\n    static int nextInt() throws IOException { return Integer.parseInt(next()); }\n    static long nextLong() throws IOException { return Long.parseLong(next()); }\n\n    public static void main(String[] args) throws IOException {\n        int t = nextInt();\n        while (t-- > 0) solve();\n        out.flush();\n    }\n\n    static void solve() throws IOException {\n        int n = nextInt();\n        // your solution here\n    }\n}\n"}]}]
+d:["$","h2",null,{"children":"Relevant Problems"}]
+e:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Codeforces"}],": Any problem with n up to 10^5 or 10^6 will TLE with Scanner"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"AtCoder"}],": ABC problems often have tight time limits where fast I/O matters"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"LeetCode"}],": Less critical (function-based I/O), but custom readers help in contest mode"]}],"\n"]}]
+f:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/java-competitive/chapter-00-overview","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/java-competitive/chapter-02-data-structures","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+12:["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]
+15:null
