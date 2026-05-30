@@ -1,0 +1,240 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1e:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1f:"$Sreact.suspense"
+4:T615,@Component
+@StepScope
+public class PaginatedApiReader implements ItemReader<CustomerDto> {
+
+    private final RestClient restClient;
+    private int currentPage = 0;
+    private List<CustomerDto> currentBatch = new ArrayList<>();
+    private int currentIndex = 0;
+    private boolean exhausted = false;
+
+    public PaginatedApiReader(RestClient.Builder builder) {
+        this.restClient = builder
+                .baseUrl("https://api.crm-provider.com/v2")
+                .defaultHeader("Authorization", "Bearer " + apiKey)
+                .build();
+    }
+
+    @Override
+    public synchronized CustomerDto read() {
+        if (exhausted) return null;
+
+        if (currentIndex >= currentBatch.size()) {
+            currentBatch = fetchPage(currentPage++);
+            currentIndex = 0;
+            if (currentBatch.isEmpty()) {
+                exhausted = true;
+                return null;
+            }
+        }
+        return currentBatch.get(currentIndex++);
+    }
+
+    private List<CustomerDto> fetchPage(int page) {
+        ApiResponse<CustomerDto> response = restClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/customers")
+                        .queryParam("page", page)
+                        .queryParam("size", 100)
+                        .queryParam("updatedSince", LocalDate.now().minusDays(1))
+                        .build())
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+
+        return response != null ? response.getData() : List.of();
+    }
+}
+5:T446,@Component
+public class RateLimitedApiWriter implements ItemWriter<OrderUpdate> {
+
+    private final RestClient restClient;
+    private final RateLimiter rateLimiter; // Resilience4j
+
+    public RateLimitedApiWriter(RestClient.Builder builder) {
+        this.restClient = builder.baseUrl("https://api.shipping.com/v1").build();
+        this.rateLimiter = RateLimiter.of("shippingApi",
+                RateLimiterConfig.custom()
+                        .limitForPeriod(50)           // 50 requests
+                        .limitRefreshPeriod(Duration.ofSeconds(1)) // per second
+                        .timeoutDuration(Duration.ofSeconds(30))
+                        .build());
+    }
+
+    @Override
+    public void write(Chunk<? extends OrderUpdate> items) throws Exception {
+        for (OrderUpdate update : items) {
+            rateLimiter.acquirePermission();
+
+            restClient.put()
+                    .uri("/shipments/{id}/status", update.getShipmentId())
+                    .body(update)
+                    .retrieve()
+                    .toBodilessEntity();
+        }
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 13: API Integration Batch Jobs"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-12-file-processing","children":"prev: File Processing"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-14-reporting","children":"next: Reporting & Aggregation"}]]}],"\n",["$","h2",null,{"children":"When APIs Meet Batch"}],"\n",["$","p",null,{"children":"Products often need to:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Sync data from third-party APIs (CRM, payment providers, shipping)"}],"\n",["$","li",null,{"children":"Push bulk updates to external systems"}],"\n",["$","li",null,{"children":"Reconcile local data with remote APIs"}],"\n",["$","li",null,{"children":"Rate-limit API calls while processing millions of records"}],"\n"]}],"\n",["$","h2",null,{"children":"Paginated API Reader"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"Rate-Limited API Writer"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$5"}]}],"\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15"]}],"$L16"]}],["$L17","$L18"],"$L19"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_jZUTnSwYUf1MudAw1Pq3"}
+6:["$","h2",null,{"children":"Retry with Exponential Backoff"}]
+1a:T45c,@Bean
+public Step apiSyncStep(JobRepository jobRepository,
+                        PlatformTransactionManager txManager,
+                        ItemReader<CustomerDto> apiReader,
+                        ItemProcessor<CustomerDto, Customer> processor,
+                        ItemWriter<Customer> dbWriter) {
+    return new StepBuilder("apiSync", jobRepository)
+            .<CustomerDto, Customer>chunk(50, txManager)
+            .reader(apiReader)
+            .processor(processor)
+            .writer(dbWriter)
+            .faultTolerant()
+            .retry(HttpServerErrorException.class)
+            .retry(ResourceAccessException.class)
+            .retryLimit(3)
+            .backOffPolicy(exponentialBackOff())
+            .skip(HttpClientErrorException.NotFound.class)
+            .skipLimit(100)
+            .listener(new ApiRetryListener())
+            .build();
+}
+
+private BackOffPolicy exponentialBackOff() {
+    ExponentialBackOffPolicy policy = new ExponentialBackOffPolicy();
+    policy.setInitialInterval(1000);
+    policy.setMultiplier(2.0);
+    policy.setMaxInterval(30000);
+    return policy;
+}
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1a"}]}]
+8:["$","h2",null,{"children":"Bulk API Operations"}]
+9:["$","p",null,{"children":"Some APIs support batch endpoints:"}]
+1b:T41d,@Component
+public class BulkApiWriter implements ItemWriter<ProductUpdate> {
+
+    private final RestClient restClient;
+
+    @Override
+    public void write(Chunk<? extends ProductUpdate> items) throws Exception {
+        // Send as bulk request
+        BulkRequest request = new BulkRequest(items.getItems());
+
+        BulkResponse response = restClient.post()
+                .uri("/products/bulk-update")
+                .body(request)
+                .retrieve()
+                .body(BulkResponse.class);
+
+        // Handle partial failures
+        if (response.hasErrors()) {
+            List<BulkError> errors = response.getErrors();
+            log.warn("Bulk update had {} errors out of {} items", errors.size(), items.size());
+
+            for (BulkError error : errors) {
+                if (error.isRetryable()) {
+                    throw new RetryableApiException(error.getMessage());
+                }
+                log.error("Non-retryable error for item {}: {}", error.getItemId(), error.getMessage());
+            }
+        }
+    }
+}
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1b"}]}]
+b:["$","h2",null,{"children":"OAuth2 Token Management"}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class OAuth2TokenManager {\n\n    private final RestClient tokenClient;\n    private String accessToken;\n    private Instant tokenExpiry = Instant.EPOCH;\n\n    public synchronized String getToken() {\n        if (Instant.now().isAfter(tokenExpiry.minusSeconds(60))) {\n            refreshToken();\n        }\n        return accessToken;\n    }\n\n    private void refreshToken() {\n        TokenResponse response = tokenClient.post()\n                .uri(\"/oauth/token\")\n                .contentType(MediaType.APPLICATION_FORM_URLENCODED)\n                .body(\"grant_type=client_credentials&client_id={id}&client_secret={secret}\")\n                .retrieve()\n                .body(TokenResponse.class);\n\n        this.accessToken = response.getAccessToken();\n        this.tokenExpiry = Instant.now().plusSeconds(response.getExpiresIn());\n    }\n}\n"}]}]
+d:["$","h2",null,{"children":"API Reconciliation Job"}]
+e:["$","p",null,{"children":"Compare local data with remote API and sync differences:"}]
+1c:T709,@Configuration
+public class ReconciliationJobConfig {
+
+    @Bean
+    public Job reconciliationJob(JobRepository jobRepository,
+                                  Step fetchRemoteStep,
+                                  Step compareStep,
+                                  Step syncDifferencesStep) {
+        return new JobBuilder("reconciliationJob", jobRepository)
+                .start(fetchRemoteStep)
+                .next(compareStep)
+                .next(syncDifferencesStep)
+                .build();
+    }
+
+    @Bean
+    public Step compareStep(JobRepository jobRepository,
+                            PlatformTransactionManager txManager) {
+        return new StepBuilder("compare", jobRepository)
+                .tasklet((contribution, chunkContext) -> {
+                    // Load remote snapshot into temp table
+                    // Compare with local data
+                    jdbc.execute("""
+                        INSERT INTO reconciliation_diff (entity_id, diff_type, local_value, remote_value)
+                        SELECT
+                            COALESCE(l.id, r.id) as entity_id,
+                            CASE
+                                WHEN l.id IS NULL THEN 'MISSING_LOCAL'
+                                WHEN r.id IS NULL THEN 'MISSING_REMOTE'
+                                ELSE 'MISMATCH'
+                            END as diff_type,
+                            l.data as local_value,
+                            r.data as remote_value
+                        FROM local_entities l
+                        FULL OUTER JOIN remote_snapshot r ON l.id = r.id
+                        WHERE l.data IS DISTINCT FROM r.data
+                    """);
+                    return RepeatStatus.FINISHED;
+                }, txManager)
+                .build();
+    }
+}
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1c"}]}]
+10:["$","h2",null,{"children":"Webhook-Triggered Batch Jobs"}]
+1d:T585,@RestController
+@RequestMapping("/api/batch")
+public class BatchTriggerController {
+
+    private final JobLauncher asyncJobLauncher;
+    private final Job syncJob;
+
+    @PostMapping("/trigger/sync")
+    public ResponseEntity<Map<String, Object>> triggerSync(
+            @RequestBody WebhookPayload payload) throws Exception {
+
+        JobParameters params = new JobParametersBuilder()
+                .addString("triggeredBy", payload.getSource())
+                .addString("entityType", payload.getEntityType())
+                .addLong("timestamp", System.currentTimeMillis())
+                .toJobParameters();
+
+        JobExecution execution = asyncJobLauncher.run(syncJob, params);
+
+        return ResponseEntity.accepted().body(Map.of(
+                "jobId", execution.getJobId(),
+                "status", execution.getStatus().toString()
+        ));
+    }
+
+    @GetMapping("/status/{jobId}")
+    public ResponseEntity<Map<String, Object>> getStatus(@PathVariable Long jobId) {
+        JobExecution execution = jobExplorer.getJobExecution(jobId);
+        return ResponseEntity.ok(Map.of(
+                "status", execution.getStatus(),
+                "startTime", execution.getStartTime(),
+                "endTime", execution.getEndTime(),
+                "readCount", execution.getStepExecutions().stream()
+                        .mapToLong(StepExecution::getReadCount).sum()
+        ));
+    }
+}
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1d"}]}]
+12:["$","h2",null,{"children":"Circuit Breaker Pattern"}]
+13:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class CircuitBreakerApiReader implements ItemReader<PaymentDto> {\n\n    private final CircuitBreaker circuitBreaker;\n    private final PaginatedApiReader delegate;\n\n    public CircuitBreakerApiReader(PaginatedApiReader delegate) {\n        this.delegate = delegate;\n        this.circuitBreaker = CircuitBreaker.of(\"paymentApi\",\n                CircuitBreakerConfig.custom()\n                        .failureRateThreshold(50)\n                        .waitDurationInOpenState(Duration.ofMinutes(2))\n                        .slidingWindowSize(10)\n                        .build());\n    }\n\n    @Override\n    public PaymentDto read() throws Exception {\n        return circuitBreaker.executeSupplier(() -> {\n            try {\n                return delegate.read();\n            } catch (Exception e) {\n                throw new RuntimeException(e);\n            }\n        });\n    }\n}\n"}]}]
+14:["$","h2",null,{"children":"Key Takeaways"}]
+15:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Implement pagination in readers to handle large API result sets"}],"\n",["$","li",null,{"children":"Use rate limiters to respect API quotas (Resilience4j integrates cleanly)"}],"\n",["$","li",null,{"children":"Configure retry with exponential backoff for transient API failures"}],"\n",["$","li",null,{"children":"Prefer bulk API endpoints when available to reduce round trips"}],"\n",["$","li",null,{"children":"Circuit breakers prevent cascading failures when APIs are down"}],"\n",["$","li",null,{"children":"Webhook triggers enable event-driven batch processing"}],"\n",["$","li",null,{"children":"OAuth2 token refresh should be thread-safe and proactive"}],"\n"]}]
+16:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-12-file-processing","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-14-reporting","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+17:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+18:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+19:["$","$L1e",null,{"children":["$","$1f",null,{"name":"Next.MetadataOutlet","children":"$@20"}]}]
+20:null

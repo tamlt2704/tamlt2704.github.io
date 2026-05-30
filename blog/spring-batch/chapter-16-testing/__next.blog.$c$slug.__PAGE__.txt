@@ -1,0 +1,217 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1d:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1e:"$Sreact.suspense"
+4:T518,class CustomerTransformProcessorTest {
+
+    private CustomerTransformProcessor processor;
+
+    @BeforeEach
+    void setUp() {
+        processor = new CustomerTransformProcessor(
+                new PhoneNormalizer(),
+                mock(AddressLookupService.class)
+        );
+    }
+
+    @Test
+    void transformsLegacyCustomerToNewFormat() {
+        LegacyCustomer legacy = new LegacyCustomer();
+        legacy.setCustomerId(123L);
+        legacy.setFirstName("John");
+        legacy.setLastName("Doe");
+        legacy.setEmail("  JOHN@EXAMPLE.COM  ");
+        legacy.setPhone("(555) 123-4567");
+        legacy.setCreatedDate(LocalDate.of(2020, 1, 15));
+
+        Customer result = processor.process(legacy);
+
+        assertThat(result.getFullName()).isEqualTo("John Doe");
+        assertThat(result.getEmail()).isEqualTo("john@example.com");
+        assertThat(result.getPhone()).isEqualTo("+15551234567");
+        assertThat(result.getLegacyId()).isEqualTo(123L);
+        assertThat(result.getSource()).isEqualTo("LEGACY_MIGRATION");
+    }
+
+    @Test
+    void returnsNullForInvalidEmail() {
+        LegacyCustomer legacy = new LegacyCustomer();
+        legacy.setEmail("not-an-email");
+
+        Customer result = processor.process(legacy);
+
+        assertThat(result).isNull(); // Filtered out
+    }
+}
+5:T6c6,@SpringBatchTest
+@SpringBootTest
+@ActiveProfiles("test")
+class ImportStepIntegrationTest {
+
+    @Autowired
+    private JobLauncherTestUtils jobLauncherTestUtils;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @BeforeEach
+    void cleanDb() {
+        jdbcTemplate.execute("DELETE FROM customers");
+    }
+
+    @Test
+    void importStepReadsAndWritesCorrectly() {
+        JobExecution execution = jobLauncherTestUtils.launchStep("importStep",
+                new JobParametersBuilder()
+                        .addString("inputFile", "classpath:test-data/customers.csv")
+                        .toJobParameters());
+
+        assertThat(execution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+
+        StepExecution step = execution.getStepExecutions().iterator().next();
+        assertThat(step.getReadCount()).isEqualTo(5);
+        assertThat(step.getWriteCount()).isEqualTo(5);
+        assertThat(step.getSkipCount()).isEqualTo(0);
+
+        Long count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM customers", Long.class);
+        assertThat(count).isEqualTo(5);
+    }
+
+    @Test
+    void importStepSkipsInvalidRecords() {
+        JobExecution execution = jobLauncherTestUtils.launchStep("importStep",
+                new JobParametersBuilder()
+                        .addString("inputFile", "classpath:test-data/customers-with-errors.csv")
+                        .toJobParameters());
+
+        assertThat(execution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+
+        StepExecution step = execution.getStepExecutions().iterator().next();
+        assertThat(step.getReadCount()).isEqualTo(10);
+        assertThat(step.getWriteCount()).isEqualTo(8);
+        assertThat(step.getSkipCount()).isEqualTo(2);
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 16: Testing Strategies"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-15-event-driven","children":"prev: Event-Driven Batch"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-17-batch-platform","children":"next: Building a Batch Platform"}]]}],"\n",["$","h2",null,{"children":"Testing Pyramid for Batch Jobs"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"         /  E2E Tests  \\        ← Full job execution, real DB\n        / Integration    \\      ← Step-level, Spring context\n       / Unit Tests        \\    ← Processors, validators, mappers\n      ──────────────────────\n"}]}],"\n",["$","h2",null,{"children":"Unit Testing Processors"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"Unit Testing Validators"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"class TransactionValidatorTest {\n\n    private final TransactionValidator validator = new TransactionValidator();\n\n    @ParameterizedTest\n    @CsvSource({\n            \"100.00, USD, DEBIT, true\",\n            \"-50.00, USD, DEBIT, false\",\n            \"0.00, USD, CREDIT, false\",\n            \"100.00, '', DEBIT, false\",\n            \"100.00, USD, INVALID, false\"\n    })\n    void validatesTransactions(BigDecimal amount, String currency, String type, boolean expected) {\n        Transaction tx = new Transaction(amount, currency, type);\n        assertThat(validator.isValid(tx)).isEqualTo(expected);\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Integration Testing Steps"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$5"}]}],"\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15"]}],"$L16"]}],["$L17","$L18"],"$L19"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_jZUTnSwYUf1MudAw1Pq3"}
+6:["$","h2",null,{"children":"Full Job Integration Test"}]
+1a:T5e8,@SpringBatchTest
+@SpringBootTest
+@ActiveProfiles("test")
+class MigrationJobIntegrationTest {
+
+    @Autowired
+    private JobLauncherTestUtils jobLauncherTestUtils;
+
+    @Autowired
+    @Qualifier("legacyJdbcTemplate")
+    private JdbcTemplate legacyJdbc;
+
+    @Autowired
+    @Qualifier("targetJdbcTemplate")
+    private JdbcTemplate targetJdbc;
+
+    @Test
+    void fullMigrationJobCompletesSuccessfully() {
+        // Setup: insert test data in legacy DB
+        legacyJdbc.execute("""
+            INSERT INTO legacy_customers (customer_id, first_name, last_name, email, migrated)
+            VALUES (1, 'Alice', 'Smith', 'alice@test.com', false),
+                   (2, 'Bob', 'Jones', 'bob@test.com', false)
+        """);
+
+        JobExecution execution = jobLauncherTestUtils.launchJob(
+                new JobParametersBuilder()
+                        .addLong("timestamp", System.currentTimeMillis())
+                        .toJobParameters());
+
+        assertThat(execution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+
+        // Verify target has records
+        Long targetCount = targetJdbc.queryForObject(
+                "SELECT COUNT(*) FROM customers WHERE source = 'LEGACY_MIGRATION'", Long.class);
+        assertThat(targetCount).isEqualTo(2);
+
+        // Verify source marked as migrated
+        Long migratedCount = legacyJdbc.queryForObject(
+                "SELECT COUNT(*) FROM legacy_customers WHERE migrated = true", Long.class);
+        assertThat(migratedCount).isEqualTo(2);
+    }
+}
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1a"}]}]
+8:["$","h2",null,{"children":"Test Configuration"}]
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@TestConfiguration\npublic class BatchTestConfig {\n\n    @Bean\n    public DataSource dataSource() {\n        return new EmbeddedDatabaseBuilder()\n                .setType(EmbeddedDatabaseType.H2)\n                .addScript(\"classpath:schema.sql\")\n                .build();\n    }\n\n    @Bean\n    public JobLauncherTestUtils jobLauncherTestUtils(\n            JobRepository jobRepository, Job job, JobLauncher jobLauncher) {\n        JobLauncherTestUtils utils = new JobLauncherTestUtils();\n        utils.setJobRepository(jobRepository);\n        utils.setJob(job);\n        utils.setJobLauncher(jobLauncher);\n        return utils;\n    }\n}\n"}]}]
+a:["$","h2",null,{"children":"Testing with Testcontainers"}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@SpringBatchTest\n@SpringBootTest\n@Testcontainers\nclass PostgresMigrationTest {\n\n    @Container\n    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>(\"postgres:16\")\n            .withDatabaseName(\"testdb\")\n            .withInitScript(\"schema.sql\");\n\n    @DynamicPropertySource\n    static void configureProperties(DynamicPropertyRegistry registry) {\n        registry.add(\"spring.datasource.url\", postgres::getJdbcUrl);\n        registry.add(\"spring.datasource.username\", postgres::getUsername);\n        registry.add(\"spring.datasource.password\", postgres::getPassword);\n    }\n\n    @Autowired\n    private JobLauncherTestUtils jobLauncherTestUtils;\n\n    @Test\n    void jobWorksWithRealPostgres() {\n        JobExecution execution = jobLauncherTestUtils.launchJob();\n        assertThat(execution.getStatus()).isEqualTo(BatchStatus.COMPLETED);\n    }\n}\n"}]}]
+c:["$","h2",null,{"children":"Testing Restartability"}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Test\nvoid jobRestartsFromFailurePoint() {\n    // First run — simulate failure at record 50\n    simulateFailureAtRecord(50);\n\n    JobExecution firstRun = jobLauncherTestUtils.launchJob(params);\n    assertThat(firstRun.getStatus()).isEqualTo(BatchStatus.FAILED);\n\n    StepExecution step = firstRun.getStepExecutions().iterator().next();\n    assertThat(step.getWriteCount()).isEqualTo(49); // Processed up to failure\n\n    // Fix the issue\n    clearFailureSimulation();\n\n    // Restart — should continue from record 50\n    JobExecution restart = jobLauncherTestUtils.launchJob(params);\n    assertThat(restart.getStatus()).isEqualTo(BatchStatus.COMPLETED);\n\n    StepExecution restartStep = restart.getStepExecutions().iterator().next();\n    assertThat(restartStep.getReadCount()).isEqualTo(51); // Remaining records\n}\n"}]}]
+e:["$","h2",null,{"children":"Testing Skip and Retry Behavior"}]
+1b:T4a1,@Test
+void skipsInvalidRecordsAndContinues() {
+    // Input file has 100 records, 3 are invalid
+    JobExecution execution = jobLauncherTestUtils.launchStep("processStep",
+            new JobParametersBuilder()
+                    .addString("inputFile", "classpath:test-data/mixed-validity.csv")
+                    .toJobParameters());
+
+    assertThat(execution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+
+    StepExecution step = execution.getStepExecutions().iterator().next();
+    assertThat(step.getReadCount()).isEqualTo(100);
+    assertThat(step.getWriteCount()).isEqualTo(97);
+    assertThat(step.getReadSkipCount() + step.getProcessSkipCount()).isEqualTo(3);
+}
+
+@Test
+void retriesTransientFailuresBeforeSkipping() {
+    // Mock external service to fail twice then succeed
+    when(externalService.call(any()))
+            .thenThrow(new TimeoutException())
+            .thenThrow(new TimeoutException())
+            .thenReturn(successResponse);
+
+    JobExecution execution = jobLauncherTestUtils.launchStep("apiStep");
+
+    assertThat(execution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+    verify(externalService, times(3)).call(any()); // 2 retries + 1 success
+}
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1b"}]}]
+10:["$","h2",null,{"children":"Performance Testing"}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Test\nvoid processesOneMillionRecordsWithinSLA() {\n    // Generate 1M test records\n    generateTestData(1_000_000);\n\n    long start = System.currentTimeMillis();\n\n    JobExecution execution = jobLauncherTestUtils.launchJob(\n            new JobParametersBuilder()\n                    .addString(\"inputFile\", \"test-data/1m-records.csv\")\n                    .addLong(\"timestamp\", System.currentTimeMillis())\n                    .toJobParameters());\n\n    long duration = System.currentTimeMillis() - start;\n\n    assertThat(execution.getStatus()).isEqualTo(BatchStatus.COMPLETED);\n    assertThat(duration).isLessThan(300_000); // Under 5 minutes\n\n    StepExecution step = execution.getStepExecutions().iterator().next();\n    long throughput = step.getWriteCount() * 1000L / duration;\n    log.info(\"Throughput: {} records/second\", throughput);\n    assertThat(throughput).isGreaterThan(5000); // At least 5K/sec\n}\n"}]}]
+12:["$","h2",null,{"children":"Test Data Builders"}]
+1c:T4a8,public class TestDataBuilder {
+
+    public static LegacyCustomer aLegacyCustomer() {
+        return LegacyCustomer.builder()
+                .customerId(ThreadLocalRandom.current().nextLong(1, 1_000_000))
+                .firstName("Test")
+                .lastName("User")
+                .email("test%d@example.com".formatted(System.nanoTime()))
+                .phone("5551234567")
+                .createdDate(LocalDate.now().minusDays(30))
+                .build();
+    }
+
+    public static String generateCsvFile(int recordCount) throws IOException {
+        Path tempFile = Files.createTempFile("test-data-", ".csv");
+        try (BufferedWriter writer = Files.newBufferedWriter(tempFile)) {
+            writer.write("id,name,email,amount,date");
+            writer.newLine();
+            for (int i = 0; i < recordCount; i++) {
+                writer.write("%d,User%d,user%d@test.com,%.2f,%s".formatted(
+                        i, i, i, ThreadLocalRandom.current().nextDouble(1, 10000),
+                        LocalDate.now().minusDays(ThreadLocalRandom.current().nextInt(365))));
+                writer.newLine();
+            }
+        }
+        return tempFile.toString();
+    }
+}
+13:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1c"}]}]
+14:["$","h2",null,{"children":"Key Takeaways"}]
+15:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Unit test processors and validators in isolation — they're pure functions"}],"\n",["$","li",null,{"children":["Use ",["$","$L3",null,{"children":"@SpringBatchTest"}]," + ",["$","$L3",null,{"children":"JobLauncherTestUtils"}]," for step/job integration tests"]}],"\n",["$","li",null,{"children":"Testcontainers give you real database behavior without environment dependencies"}],"\n",["$","li",null,{"children":"Test restartability explicitly — it's a core Spring Batch feature"}],"\n",["$","li",null,{"children":"Performance tests with SLA assertions catch regressions early"}],"\n",["$","li",null,{"children":"Test data builders keep tests readable and maintainable"}],"\n"]}]
+16:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-15-event-driven","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-17-batch-platform","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+17:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+18:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+19:["$","$L1d",null,{"children":["$","$1e",null,{"name":"Next.MetadataOutlet","children":"$@1f"}]}]
+1f:null

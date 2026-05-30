@@ -1,0 +1,135 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/169p7rglrxpg-.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","spring-batch","chapter-10-data-migration",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","spring-batch/chapter-10-data-migration","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/169p7rglrxpg-.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/169p7rglrxpg-.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"_jZUTnSwYUf1MudAw1Pq3"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-09-production","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-11-etl-pipelines","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T538,@Configuration
+public class CustomerMigrationConfig {
+
+    @Bean
+    public Job customerMigrationJob(JobRepository jobRepository,
+                                     Step extractStep,
+                                     Step validateStep,
+                                     Step reportStep) {
+        return new JobBuilder("customerMigrationJob", jobRepository)
+                .start(extractStep)
+                .next(validateStep)
+                .next(reportStep)
+                .listener(new MigrationJobListener())
+                .build();
+    }
+
+    @Bean
+    public Step extractStep(JobRepository jobRepository,
+                            PlatformTransactionManager txManager,
+                            ItemReader<LegacyCustomer> reader,
+                            ItemProcessor<LegacyCustomer, Customer> processor,
+                            ItemWriter<Customer> writer) {
+        return new StepBuilder("extractStep", jobRepository)
+                .<LegacyCustomer, Customer>chunk(500, txManager)
+                .reader(reader)
+                .processor(processor)
+                .writer(writer)
+                .faultTolerant()
+                .skip(DataIntegrityViolationException.class)
+                .skipLimit(100)
+                .listener(new MigrationSkipListener())
+                .build();
+    }
+}
+10:[["$","h1",null,{"children":"Chapter 10: Data Migration"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-09-production","children":"prev: Production"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-11-etl-pipelines","children":"next: ETL Pipelines"}]]}],"\n",["$","h2",null,{"children":"Why Spring Batch for Migrations"}],"\n",["$","p",null,{"children":"Database migrations at scale (millions of rows, schema transformations, cross-system moves) need:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Restartability — resume from where it failed"}],"\n",["$","li",null,{"children":"Auditing — know exactly what was migrated"}],"\n",["$","li",null,{"children":"Validation — ensure data integrity post-migration"}],"\n",["$","li",null,{"children":"Throttling — don't overwhelm source/target systems"}],"\n"]}],"\n",["$","h2",null,{"children":"Migration Job Architecture"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"children":"Source DB ──► ItemReader ──► Transformer ──► Validator ──► Target DB\n                                                              │\n                                                              ▼\n                                                        Audit Log\n"}]}],"\n",["$","h2",null,{"children":"Full Migration Example: Legacy to New Schema"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$13"}]}],"\n",["$","h2",null,{"children":"Reading from Legacy Database"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Bean\n@StepScope\npublic JdbcPagingItemReader<LegacyCustomer> legacyReader(\n        @Qualifier(\"legacyDataSource\") DataSource legacyDs) {\n\n    Map<String, Order> sortKeys = Map.of(\"customer_id\", Order.ASCENDING);\n\n    return new JdbcPagingItemReaderBuilder<LegacyCustomer>()\n            .name(\"legacyCustomerReader\")\n            .dataSource(legacyDs)\n            .selectClause(\"SELECT customer_id, first_name, last_name, email, phone, created_date\")\n            .fromClause(\"FROM legacy_customers\")\n            .whereClause(\"WHERE migrated = false\")\n            .sortKeys(sortKeys)\n            .pageSize(500)\n            .rowMapper(new LegacyCustomerRowMapper())\n            .build();\n}\n"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27"]
+14:["$","h2",null,{"children":"Schema Transformation Processor"}]
+15:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Component\npublic class CustomerTransformProcessor\n        implements ItemProcessor<LegacyCustomer, Customer> {\n\n    private final PhoneNormalizer phoneNormalizer;\n    private final AddressLookupService addressService;\n\n    @Override\n    public Customer process(LegacyCustomer legacy) {\n        Customer customer = new Customer();\n        customer.setId(UUID.randomUUID());\n        customer.setFullName(legacy.getFirstName() + \" \" + legacy.getLastName());\n        customer.setEmail(legacy.getEmail().toLowerCase().trim());\n        customer.setPhone(phoneNormalizer.normalize(legacy.getPhone()));\n        customer.setCreatedAt(legacy.getCreatedDate().atStartOfDay(ZoneOffset.UTC).toInstant());\n        customer.setSource(\"LEGACY_MIGRATION\");\n        customer.setLegacyId(legacy.getCustomerId());\n\n        // Enrich with external data\n        addressService.findByLegacyId(legacy.getCustomerId())\n                .ifPresent(customer::setAddress);\n\n        return customer;\n    }\n}\n"}]}]
+16:["$","h2",null,{"children":"Multi-DataSource Configuration"}]
+17:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Configuration\npublic class DataSourceConfig {\n\n    @Bean\n    @ConfigurationProperties(\"spring.datasource.legacy\")\n    public DataSource legacyDataSource() {\n        return DataSourceBuilder.create().build();\n    }\n\n    @Bean\n    @Primary\n    @ConfigurationProperties(\"spring.datasource.target\")\n    public DataSource targetDataSource() {\n        return DataSourceBuilder.create().build();\n    }\n}\n"}]}]
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-yaml","children":"spring:\n  datasource:\n    legacy:\n      url: jdbc:postgresql://legacy-host:5432/legacy_db\n      username: readonly_user\n      password: ${LEGACY_DB_PASSWORD}\n    target:\n      url: jdbc:postgresql://new-host:5432/new_db\n      username: migration_user\n      password: ${TARGET_DB_PASSWORD}\n"}]}]
+19:["$","h2",null,{"children":"Validation Step"}]
+28:T4c4,@Bean
+public Step validateStep(JobRepository jobRepository,
+                         PlatformTransactionManager txManager) {
+    return new StepBuilder("validateStep", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                long sourceCount = legacyJdbc.queryForObject(
+                        "SELECT COUNT(*) FROM legacy_customers WHERE migrated = true", Long.class);
+                long targetCount = targetJdbc.queryForObject(
+                        "SELECT COUNT(*) FROM customers WHERE source = 'LEGACY_MIGRATION'", Long.class);
+
+                if (sourceCount != targetCount) {
+                    throw new MigrationValidationException(
+                            "Count mismatch: source=%d, target=%d".formatted(sourceCount, targetCount));
+                }
+
+                // Spot-check random records
+                List<Long> sampleIds = legacyJdbc.queryForList(
+                        "SELECT customer_id FROM legacy_customers ORDER BY RANDOM() LIMIT 100", Long.class);
+
+                for (Long id : sampleIds) {
+                    validateRecord(id);
+                }
+
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+1a:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$28"}]}]
+1b:["$","h2",null,{"children":"Marking Records as Migrated"}]
+1c:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Component\npublic class MigrationWriter implements ItemWriter<Customer> {\n\n    private final JdbcBatchItemWriter<Customer> targetWriter;\n    private final JdbcTemplate legacyJdbc;\n\n    @Override\n    public void write(Chunk<? extends Customer> items) throws Exception {\n        // Write to target\n        targetWriter.write(items);\n\n        // Mark as migrated in source\n        List<Long> legacyIds = items.getItems().stream()\n                .map(Customer::getLegacyId)\n                .toList();\n\n        legacyJdbc.batchUpdate(\n                \"UPDATE legacy_customers SET migrated = true, migrated_at = NOW() WHERE customer_id = ?\",\n                legacyIds.stream().map(id -> new Object[]{id}).toList()\n        );\n    }\n}\n"}]}]
+1d:["$","h2",null,{"children":"Incremental Migration with Partitioning"}]
+1e:["$","p",null,{"children":"For large datasets, partition by ID range:"}]
+29:T4e4,@Bean
+public Step partitionedMigrationStep(JobRepository jobRepository,
+                                      Step workerStep) {
+    return new StepBuilder("partitionedMigration", jobRepository)
+            .partitioner("worker", new IdRangePartitioner(legacyJdbc))
+            .step(workerStep)
+            .gridSize(10)
+            .taskExecutor(migrationExecutor())
+            .build();
+}
+
+public class IdRangePartitioner implements Partitioner {
+    private final JdbcTemplate jdbc;
+
+    @Override
+    public Map<String, ExecutionContext> partition(int gridSize) {
+        Long min = jdbc.queryForObject("SELECT MIN(customer_id) FROM legacy_customers WHERE migrated = false", Long.class);
+        Long max = jdbc.queryForObject("SELECT MAX(customer_id) FROM legacy_customers WHERE migrated = false", Long.class);
+
+        long range = (max - min) / gridSize + 1;
+        Map<String, ExecutionContext> partitions = new HashMap<>();
+
+        for (int i = 0; i < gridSize; i++) {
+            ExecutionContext ctx = new ExecutionContext();
+            ctx.putLong("minId", min + (i * range));
+            ctx.putLong("maxId", min + ((i + 1) * range) - 1);
+            partitions.put("partition" + i, ctx);
+        }
+        return partitions;
+    }
+}
+1f:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$29"}]}]
+20:["$","h2",null,{"children":"Dry Run Mode"}]
+21:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Bean\n@StepScope\npublic ItemWriter<Customer> migrationWriter(\n        @Value(\"#{jobParameters['dryRun']}\") String dryRun) {\n\n    if (\"true\".equals(dryRun)) {\n        return items -> log.info(\"DRY RUN: Would write {} records\", items.size());\n    }\n\n    return new JdbcBatchItemWriterBuilder<Customer>()\n            .sql(\"INSERT INTO customers (id, full_name, email, phone, created_at, source, legacy_id) \" +\n                 \"VALUES (:id, :fullName, :email, :phone, :createdAt, :source, :legacyId)\")\n            .beanMapped()\n            .dataSource(targetDataSource)\n            .build();\n}\n"}]}]
+22:["$","h2",null,{"children":"Rollback Strategy"}]
+23:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Bean\npublic Step rollbackStep(JobRepository jobRepository,\n                         PlatformTransactionManager txManager) {\n    return new StepBuilder(\"rollbackStep\", jobRepository)\n            .<Customer, Long>chunk(1000, txManager)\n            .reader(migratedRecordsReader())\n            .processor(Customer::getLegacyId)\n            .writer(items -> {\n                // Delete from target\n                targetJdbc.batchUpdate(\n                        \"DELETE FROM customers WHERE legacy_id = ?\",\n                        items.getItems().stream().map(id -> new Object[]{id}).toList());\n                // Unmark in source\n                legacyJdbc.batchUpdate(\n                        \"UPDATE legacy_customers SET migrated = false WHERE customer_id = ?\",\n                        items.getItems().stream().map(id -> new Object[]{id}).toList());\n            })\n            .build();\n}\n"}]}]
+24:["$","h2",null,{"children":"Migration Metrics and Reporting"}]
+25:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"public class MigrationJobListener implements JobExecutionListener {\n\n    @Override\n    public void afterJob(JobExecution jobExecution) {\n        StepExecution step = jobExecution.getStepExecutions().stream()\n                .filter(s -> s.getStepName().equals(\"extractStep\"))\n                .findFirst().orElseThrow();\n\n        log.info(\"\"\"\n                Migration Complete:\n                  Status: {}\n                  Records Read: {}\n                  Records Written: {}\n                  Records Skipped: {}\n                  Duration: {} seconds\n                \"\"\",\n                jobExecution.getStatus(),\n                step.getReadCount(),\n                step.getWriteCount(),\n                step.getSkipCount(),\n                Duration.between(jobExecution.getStartTime(), jobExecution.getEndTime()).getSeconds()\n        );\n    }\n}\n"}]}]
+26:["$","h2",null,{"children":"Key Takeaways"}]
+27:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Use multi-datasource config to read from legacy and write to target"}],"\n",["$","li",null,{"children":"Partition large migrations by ID range for parallel processing"}],"\n",["$","li",null,{"children":"Always include a validation step comparing source and target counts"}],"\n",["$","li",null,{"children":"Support dry-run mode for testing without side effects"}],"\n",["$","li",null,{"children":"Mark records as migrated to enable incremental runs and restartability"}],"\n",["$","li",null,{"children":"Build rollback steps for when things go wrong"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+2a:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 10 data migration — spring batch"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2a","3",{}]]

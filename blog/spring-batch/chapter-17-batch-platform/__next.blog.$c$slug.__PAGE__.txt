@@ -1,0 +1,314 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+23:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+24:"$Sreact.suspense"
+4:Taa3,┌─────────────────────────────────────────────────────────┐
+│                    Batch Platform                         │
+├─────────────────────────────────────────────────────────┤
+│  ┌──────────┐  ┌──────────┐  ┌──────────────────────┐  │
+│  │ REST API │  │ Dashboard│  │ Job Registry          │  │
+│  │ (manage) │  │ (monitor)│  │ (discover & configure)│  │
+│  └────┬─────┘  └────┬─────┘  └──────────┬───────────┘  │
+│       │              │                    │              │
+│  ┌────▼──────────────▼────────────────────▼───────────┐ │
+│  │              Job Orchestrator                        │ │
+│  │  (scheduling, dependencies, concurrency control)    │ │
+│  └────────────────────┬───────────────────────────────┘ │
+│                       │                                  │
+│  ┌────────────────────▼───────────────────────────────┐ │
+│  │              Job Executor Pool                       │ │
+│  │  (thread pools, partitioning, remote workers)       │ │
+│  └────────────────────┬───────────────────────────────┘ │
+│                       │                                  │
+│  ┌────────────────────▼───────────────────────────────┐ │
+│  │         Shared Infrastructure                       │ │
+│  │  (JobRepository, metrics, alerting, audit log)      │ │
+│  └────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────┘
+5:T609,@RestController
+@RequestMapping("/api/jobs")
+public class JobRegistryController {
+
+    private final JobDefinitionRepository registry;
+    private final JobLauncher jobLauncher;
+    private final JobExplorer jobExplorer;
+
+    @GetMapping
+    public List<JobDefinition> listJobs() {
+        return registry.findAll();
+    }
+
+    @PostMapping("/{jobName}/run")
+    public ResponseEntity<JobExecutionDto> triggerJob(
+            @PathVariable String jobName,
+            @RequestBody Map<String, String> parameters) {
+
+        JobDefinition def = registry.findById(jobName)
+                .orElseThrow(() -> new NotFoundException("Job not found: " + jobName));
+
+        if (!def.isEnabled()) {
+            return ResponseEntity.status(409).build();
+        }
+
+        // Check concurrency
+        long running = jobExplorer.findRunningJobExecutions(jobName).size();
+        if (running >= def.getMaxConcurrency()) {
+            return ResponseEntity.status(429).body(null);
+        }
+
+        JobParameters params = buildParameters(def, parameters);
+        JobExecution execution = jobLauncher.run(getJob(jobName), params);
+
+        return ResponseEntity.accepted().body(JobExecutionDto.from(execution));
+    }
+
+    @PostMapping("/{jobName}/stop")
+    public ResponseEntity<Void> stopJob(@PathVariable String jobName) {
+        jobExplorer.findRunningJobExecutions(jobName).forEach(exec -> {
+            exec.setStatus(BatchStatus.STOPPING);
+            jobRepository.update(exec);
+        });
+        return ResponseEntity.ok().build();
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 17: Building a Batch Platform"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-16-testing","children":"prev: Testing Strategies"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","children":"Overview"}]]}],"\n",["$","h2",null,{"children":"From Jobs to Platform"}],"\n",["$","p",null,{"children":"When you have 10+ batch jobs, you need a platform: centralized management, monitoring, self-service job creation, and operational tooling. This chapter shows how to build one."}],"\n",["$","h2",null,{"children":"Platform Architecture"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"children":"$4"}]}],"\n",["$","h2",null,{"children":"Job Registry — Self-Service Job Definition"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Entity\n@Table(name = \"job_definitions\")\npublic class JobDefinition {\n    @Id\n    private String jobName;\n    private String description;\n    private String cronExpression;\n    private String ownerTeam;\n    private boolean enabled;\n    private int maxConcurrency;\n    private int timeoutMinutes;\n    private String alertChannel; // Slack channel for failures\n\n    @ElementCollection\n    private Map<String, String> defaultParameters;\n\n    @ElementCollection\n    private List<String> dependencies; // Jobs that must complete first\n}\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$5"}]}],"\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18"]}],"$L19"]}],["$L1a","$L1b"],"$L1c"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_jZUTnSwYUf1MudAw1Pq3"}
+6:["$","h2",null,{"children":"Dynamic Job Scheduling"}]
+1d:T450,@Component
+public class DynamicScheduler {
+
+    private final ScheduledTaskRegistrar taskRegistrar;
+    private final JobDefinitionRepository registry;
+    private final Map<String, ScheduledFuture<?>> scheduledJobs = new ConcurrentHashMap<>();
+
+    @PostConstruct
+    public void scheduleAllJobs() {
+        registry.findByEnabledTrue().forEach(this::scheduleJob);
+    }
+
+    public void scheduleJob(JobDefinition def) {
+        cancelJob(def.getJobName());
+
+        if (def.getCronExpression() == null) return;
+
+        ScheduledFuture<?> future = taskScheduler.schedule(
+                () -> launchJob(def),
+                new CronTrigger(def.getCronExpression())
+        );
+        scheduledJobs.put(def.getJobName(), future);
+    }
+
+    public void cancelJob(String jobName) {
+        ScheduledFuture<?> existing = scheduledJobs.remove(jobName);
+        if (existing != null) existing.cancel(false);
+    }
+
+    // Called when job definition is updated
+    @EventListener
+    public void onJobDefinitionChanged(JobDefinitionChangedEvent event) {
+        scheduleJob(event.getDefinition());
+    }
+}
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1d"}]}]
+8:["$","h2",null,{"children":"Job Dependency Management"}]
+1e:T519,@Component
+public class DependencyAwareScheduler {
+
+    private final JobDefinitionRepository registry;
+    private final JobExplorer jobExplorer;
+
+    public boolean canRun(String jobName) {
+        JobDefinition def = registry.findById(jobName).orElseThrow();
+
+        for (String dependency : def.getDependencies()) {
+            JobExecution lastExecution = getLastExecution(dependency);
+
+            if (lastExecution == null || lastExecution.getStatus() != BatchStatus.COMPLETED) {
+                log.info("Job {} blocked: dependency {} not completed", jobName, dependency);
+                return false;
+            }
+
+            // Check if dependency ran today (for daily jobs)
+            if (lastExecution.getEndTime().isBefore(LocalDate.now().atStartOfDay().toInstant(ZoneOffset.UTC))) {
+                log.info("Job {} blocked: dependency {} hasn't run today", jobName, dependency);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private JobExecution getLastExecution(String jobName) {
+        return jobExplorer.getJobInstances(jobName, 0, 1).stream()
+                .flatMap(instance -> jobExplorer.getJobExecutions(instance).stream())
+                .max(Comparator.comparing(JobExecution::getCreateTime))
+                .orElse(null);
+    }
+}
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1e"}]}]
+a:["$","h2",null,{"children":"Monitoring Dashboard API"}]
+1f:T748,@RestController
+@RequestMapping("/api/monitoring")
+public class MonitoringController {
+
+    @GetMapping("/overview")
+    public PlatformOverview getOverview() {
+        return PlatformOverview.builder()
+                .totalJobs(registry.count())
+                .runningJobs(jobExplorer.findRunningJobExecutions("*").size())
+                .failedToday(countFailedToday())
+                .completedToday(countCompletedToday())
+                .avgDurationMs(calculateAvgDuration())
+                .build();
+    }
+
+    @GetMapping("/jobs/{jobName}/history")
+    public List<JobExecutionSummary> getJobHistory(
+            @PathVariable String jobName,
+            @RequestParam(defaultValue = "30") int days) {
+
+        return jobExplorer.getJobInstances(jobName, 0, 100).stream()
+                .flatMap(instance -> jobExplorer.getJobExecutions(instance).stream())
+                .filter(exec -> exec.getCreateTime().isAfter(Instant.now().minus(Duration.ofDays(days))))
+                .map(exec -> new JobExecutionSummary(
+                        exec.getId(),
+                        exec.getStatus(),
+                        exec.getStartTime(),
+                        exec.getEndTime(),
+                        exec.getStepExecutions().stream().mapToLong(StepExecution::getWriteCount).sum()
+                ))
+                .sorted(Comparator.comparing(JobExecutionSummary::startTime).reversed())
+                .toList();
+    }
+
+    @GetMapping("/alerts")
+    public List<Alert> getActiveAlerts() {
+        return jobExplorer.findRunningJobExecutions("*").stream()
+                .filter(this::isStuck)
+                .map(exec -> new Alert("STUCK_JOB", exec.getJobInstance().getJobName(),
+                        "Running for " + Duration.between(exec.getStartTime(), Instant.now()).toMinutes() + " minutes"))
+                .toList();
+    }
+}
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1f"}]}]
+c:["$","h2",null,{"children":"Metrics with Micrometer"}]
+20:T5ac,@Component
+public class BatchMetricsListener implements JobExecutionListener, StepExecutionListener {
+
+    private final MeterRegistry meterRegistry;
+
+    @Override
+    public void afterJob(JobExecution jobExecution) {
+        String jobName = jobExecution.getJobInstance().getJobName();
+        String status = jobExecution.getStatus().toString();
+
+        meterRegistry.counter("batch.job.completed", "job", jobName, "status", status).increment();
+
+        if (jobExecution.getEndTime() != null) {
+            long durationMs = Duration.between(jobExecution.getStartTime(), jobExecution.getEndTime()).toMillis();
+            meterRegistry.timer("batch.job.duration", "job", jobName).record(durationMs, TimeUnit.MILLISECONDS);
+        }
+    }
+
+    @Override
+    public ExitStatus afterStep(StepExecution stepExecution) {
+        String jobName = stepExecution.getJobExecution().getJobInstance().getJobName();
+        String stepName = stepExecution.getStepName();
+
+        meterRegistry.gauge("batch.step.read_count", Tags.of("job", jobName, "step", stepName),
+                stepExecution.getReadCount());
+        meterRegistry.gauge("batch.step.write_count", Tags.of("job", jobName, "step", stepName),
+                stepExecution.getWriteCount());
+        meterRegistry.gauge("batch.step.skip_count", Tags.of("job", jobName, "step", stepName),
+                stepExecution.getSkipCount());
+
+        return stepExecution.getExitStatus();
+    }
+}
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$20"}]}]
+e:["$","h2",null,{"children":"Alerting on Failures"}]
+21:T4d5,@Component
+public class BatchAlertingListener implements JobExecutionListener {
+
+    private final SlackClient slackClient;
+    private final JobDefinitionRepository registry;
+
+    @Override
+    public void afterJob(JobExecution jobExecution) {
+        if (jobExecution.getStatus() == BatchStatus.FAILED) {
+            JobDefinition def = registry.findById(jobExecution.getJobInstance().getJobName()).orElse(null);
+            String channel = def != null ? def.getAlertChannel() : "#batch-alerts";
+
+            String message = """
+                🚨 *Batch Job Failed*
+                • Job: `%s`
+                • Status: %s
+                • Started: %s
+                • Duration: %s
+                • Error: %s
+                """.formatted(
+                    jobExecution.getJobInstance().getJobName(),
+                    jobExecution.getStatus(),
+                    jobExecution.getStartTime(),
+                    Duration.between(jobExecution.getStartTime(), Instant.now()),
+                    jobExecution.getAllFailureExceptions().stream()
+                            .map(Throwable::getMessage).findFirst().orElse("Unknown")
+            );
+
+            slackClient.send(channel, message);
+        }
+    }
+}
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$21"}]}]
+10:["$","h2",null,{"children":"Multi-Tenant Batch Processing"}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class TenantAwareBatchLauncher {\n\n    private final JobLauncher jobLauncher;\n    private final TenantRepository tenantRepo;\n\n    public void runForAllTenants(Job job) {\n        List<Tenant> tenants = tenantRepo.findAllActive();\n\n        for (Tenant tenant : tenants) {\n            JobParameters params = new JobParametersBuilder()\n                    .addString(\"tenantId\", tenant.getId())\n                    .addString(\"tenantDb\", tenant.getDatabaseUrl())\n                    .addLong(\"timestamp\", System.currentTimeMillis())\n                    .toJobParameters();\n\n            try {\n                jobLauncher.run(job, params);\n            } catch (Exception e) {\n                log.error(\"Failed to run job for tenant {}\", tenant.getId(), e);\n            }\n        }\n    }\n}\n\n@Bean\n@StepScope\npublic DataSource tenantDataSource(\n        @Value(\"#{jobParameters['tenantDb']}\") String dbUrl) {\n    return DataSourceBuilder.create().url(dbUrl).build();\n}\n"}]}]
+12:["$","h2",null,{"children":"Operational Endpoints"}]
+22:T5aa,@RestController
+@RequestMapping("/api/ops")
+public class OperationsController {
+
+    @PostMapping("/jobs/{jobName}/restart/{executionId}")
+    public ResponseEntity<JobExecutionDto> restartJob(
+            @PathVariable String jobName,
+            @PathVariable Long executionId) throws Exception {
+
+        JobExecution failed = jobExplorer.getJobExecution(executionId);
+        if (failed.getStatus() != BatchStatus.FAILED) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        JobExecution restarted = jobLauncher.run(
+                getJob(jobName), failed.getJobParameters());
+        return ResponseEntity.ok(JobExecutionDto.from(restarted));
+    }
+
+    @PostMapping("/jobs/{jobName}/abandon/{executionId}")
+    public ResponseEntity<Void> abandonJob(
+            @PathVariable String jobName,
+            @PathVariable Long executionId) {
+
+        JobExecution execution = jobExplorer.getJobExecution(executionId);
+        execution.setStatus(BatchStatus.ABANDONED);
+        jobRepository.update(execution);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/jobs/{jobName}/history")
+    public ResponseEntity<Map<String, Long>> purgeHistory(
+            @PathVariable String jobName,
+            @RequestParam(defaultValue = "90") int olderThanDays) {
+
+        long deleted = purgeJobHistory(jobName, olderThanDays);
+        return ResponseEntity.ok(Map.of("deletedExecutions", deleted));
+    }
+}
+13:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$22"}]}]
+14:["$","h2",null,{"children":"Docker Deployment"}]
+15:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-dockerfile","children":"FROM eclipse-temurin:21-jre-alpine\nWORKDIR /app\nCOPY build/libs/batch-platform.jar app.jar\n\nENV JAVA_OPTS=\"-Xms512m -Xmx2g -XX:+UseG1GC\"\nENTRYPOINT [\"sh\", \"-c\", \"java $JAVA_OPTS -jar app.jar\"]\n"}]}]
+16:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-yaml","children":"# docker-compose.yml\nservices:\n  batch-platform:\n    build: .\n    environment:\n      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/batch\n      SPRING_PROFILES_ACTIVE: production\n    depends_on:\n      postgres:\n        condition: service_healthy\n    deploy:\n      resources:\n        limits:\n          memory: 2g\n          cpus: \"2\"\n\n  postgres:\n    image: postgres:16\n    environment:\n      POSTGRES_DB: batch\n      POSTGRES_PASSWORD: ${DB_PASSWORD}\n    volumes:\n      - pgdata:/var/lib/postgresql/data\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready\"]\n      interval: 5s\n\nvolumes:\n  pgdata:\n"}]}]
+17:["$","h2",null,{"children":"Key Takeaways"}]
+18:["$","ul",null,{"children":["\n",["$","li",null,{"children":"A batch platform centralizes job management, monitoring, and operations"}],"\n",["$","li",null,{"children":"Dynamic scheduling allows runtime changes without redeployment"}],"\n",["$","li",null,{"children":"Job dependencies prevent out-of-order execution in pipelines"}],"\n",["$","li",null,{"children":"Metrics + alerting give visibility into job health"}],"\n",["$","li",null,{"children":"Multi-tenancy requires tenant-aware data sources and job parameters"}],"\n",["$","li",null,{"children":"REST APIs enable self-service job management and integration with CI/CD"}],"\n",["$","li",null,{"children":"Operational endpoints (restart, abandon, purge) are essential for production"}],"\n"]}]
+19:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-16-testing","className":"text-teal-600 hover:underline","children":"← Previous"}],null]}]
+1a:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1b:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1c:["$","$L23",null,{"children":["$","$24",null,{"name":"Next.MetadataOutlet","children":"$@25"}]}]
+25:null

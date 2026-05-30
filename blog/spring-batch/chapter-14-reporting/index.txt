@@ -1,0 +1,176 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/169p7rglrxpg-.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","spring-batch","chapter-14-reporting",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","spring-batch/chapter-14-reporting","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/169p7rglrxpg-.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/169p7rglrxpg-.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"_jZUTnSwYUf1MudAw1Pq3"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-13-api-integration","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-15-event-driven","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T49e,@Bean
+public Step aggregationStep(JobRepository jobRepository,
+                            PlatformTransactionManager txManager) {
+    return new StepBuilder("aggregate", jobRepository)
+            .<Transaction, MonthlySummary>chunk(5000, txManager)
+            .reader(transactionReader())
+            .processor(new ItemProcessor<>() {
+                private final Map<String, MonthlySummary> buffer = new HashMap<>();
+
+                @Override
+                public MonthlySummary process(Transaction tx) {
+                    String key = tx.getAccountId();
+                    buffer.merge(key, MonthlySummary.from(tx), MonthlySummary::merge);
+                    return null;
+                }
+            })
+            .writer(items -> {}) // no-op, real write happens in listener
+            .listener(new StepExecutionListener() {
+                @Override
+                public ExitStatus afterStep(StepExecution stepExecution) {
+                    // Flush aggregations
+                    summaryWriter.write(new Chunk<>(new ArrayList<>(buffer.values())));
+                    return ExitStatus.COMPLETED;
+                }
+            })
+            .build();
+}
+14:T653,@Bean
+public Step sqlAggregationStep(JobRepository jobRepository,
+                               PlatformTransactionManager txManager) {
+    return new StepBuilder("sqlAggregate", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                String reportDate = chunkContext.getStepContext()
+                        .getJobParameters().get("reportDate").toString();
+
+                jdbc.execute("""
+                    INSERT INTO daily_account_summary (account_id, report_date, total_debits,
+                        total_credits, transaction_count, net_amount)
+                    SELECT
+                        account_id,
+                        ?::date as report_date,
+                        SUM(CASE WHEN type = 'DEBIT' THEN amount ELSE 0 END) as total_debits,
+                        SUM(CASE WHEN type = 'CREDIT' THEN amount ELSE 0 END) as total_credits,
+                        COUNT(*) as transaction_count,
+                        SUM(CASE WHEN type = 'CREDIT' THEN amount ELSE -amount END) as net_amount
+                    FROM transactions
+                    WHERE transaction_date = ?::date
+                    GROUP BY account_id
+                    ON CONFLICT (account_id, report_date) DO UPDATE SET
+                        total_debits = EXCLUDED.total_debits,
+                        total_credits = EXCLUDED.total_credits,
+                        transaction_count = EXCLUDED.transaction_count,
+                        net_amount = EXCLUDED.net_amount
+                """);
+
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+10:[["$","h1",null,{"children":"Chapter 14: Reporting & Aggregation"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-13-api-integration","children":"prev: API Integration"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-15-event-driven","children":"next: Event-Driven Batch"}]]}],"\n",["$","h2",null,{"children":"Batch Reporting Patterns"}],"\n",["$","p",null,{"children":"Products need scheduled reports: daily summaries, monthly invoices, compliance reports, analytics aggregations. Spring Batch handles the heavy lifting."}],"\n",["$","h2",null,{"children":"Aggregation with ItemProcessor"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Component\n@StepScope\npublic class DailyAggregationProcessor implements ItemProcessor<Transaction, DailySummary> {\n\n    private final Map<String, DailySummary> aggregations = new ConcurrentHashMap<>();\n\n    @Override\n    public DailySummary process(Transaction tx) {\n        String key = tx.getAccountId() + \"|\" + tx.getDate();\n\n        aggregations.compute(key, (k, existing) -> {\n            DailySummary summary = existing != null ? existing : new DailySummary(tx.getAccountId(), tx.getDate());\n            if (\"DEBIT\".equals(tx.getType())) {\n                summary.addDebit(tx.getAmount());\n            } else {\n                summary.addCredit(tx.getAmount());\n            }\n            summary.incrementCount();\n            return summary;\n        });\n\n        return null; // Don't pass through — flush in completion callback\n    }\n\n    public Collection<DailySummary> getAggregations() {\n        return aggregations.values();\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Group-By Aggregation with Custom Step"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$13"}]}],"\n",["$","h2",null,{"children":"SQL-Based Aggregation (Tasklet)"}],"\n",["$","p",null,{"children":"For simpler cases, let the database do the work:"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$14"}]}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20"]
+15:["$","h2",null,{"children":"PDF Report Generation"}]
+21:T585,@Component
+public class PdfReportWriter implements ItemWriter<AccountSummary> {
+
+    @Override
+    public void write(Chunk<? extends AccountSummary> items) throws Exception {
+        Document document = new Document(PageSize.A4);
+        String outputPath = "reports/monthly-%s.pdf".formatted(YearMonth.now().minusMonths(1));
+        PdfWriter.getInstance(document, new FileOutputStream(outputPath));
+        document.open();
+
+        // Header
+        document.add(new Paragraph("Monthly Account Summary", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18)));
+        document.add(new Paragraph("Period: " + YearMonth.now().minusMonths(1)));
+        document.add(Chunk.NEWLINE);
+
+        // Table
+        PdfPTable table = new PdfPTable(5);
+        table.setWidthPercentage(100);
+        Stream.of("Account", "Debits", "Credits", "Net", "Tx Count")
+                .forEach(h -> table.addCell(new PdfPCell(new Phrase(h, FontFactory.getFont(FontFactory.HELVETICA_BOLD)))));
+
+        for (AccountSummary summary : items) {
+            table.addCell(summary.getAccountId());
+            table.addCell(summary.getTotalDebits().toString());
+            table.addCell(summary.getTotalCredits().toString());
+            table.addCell(summary.getNetAmount().toString());
+            table.addCell(String.valueOf(summary.getTransactionCount()));
+        }
+
+        document.add(table);
+        document.close();
+    }
+}
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$21"}]}]
+17:["$","h2",null,{"children":"Email Report Delivery"}]
+22:T40d,@Bean
+public Step emailReportStep(JobRepository jobRepository,
+                            PlatformTransactionManager txManager) {
+    return new StepBuilder("emailReport", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                String reportPath = chunkContext.getStepContext()
+                        .getStepExecution().getJobExecution()
+                        .getExecutionContext().getString("reportPath");
+
+                MimeMessage message = mailSender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(message, true);
+                helper.setTo("finance@company.com");
+                helper.setSubject("Daily Transaction Report - " + LocalDate.now());
+                helper.setText("Please find attached the daily transaction report.");
+                helper.addAttachment("daily-report.pdf", new File(reportPath));
+
+                mailSender.send(message);
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$22"}]}]
+19:["$","h2",null,{"children":"Multi-Format Report Generation"}]
+1a:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Bean\npublic Job reportingJob(JobRepository jobRepository,\n                        Step aggregateStep,\n                        Step generateCsvStep,\n                        Step generatePdfStep,\n                        Step generateExcelStep,\n                        Step distributeStep) {\n\n    // Generate all formats in parallel\n    Flow reportFormats = new FlowBuilder<SimpleFlow>(\"reportFormats\")\n            .split(new SimpleAsyncTaskExecutor())\n            .add(\n                    new FlowBuilder<SimpleFlow>(\"csv\").start(generateCsvStep).build(),\n                    new FlowBuilder<SimpleFlow>(\"pdf\").start(generatePdfStep).build(),\n                    new FlowBuilder<SimpleFlow>(\"excel\").start(generateExcelStep).build()\n            )\n            .build();\n\n    return new JobBuilder(\"reportingJob\", jobRepository)\n            .start(aggregateStep)\n            .next(reportFormats)\n            .next(distributeStep)\n            .end()\n            .build();\n}\n"}]}]
+1b:["$","h2",null,{"children":"Rolling Window Aggregations"}]
+23:T500,@Bean
+public Step rollingAverageStep(JobRepository jobRepository,
+                               PlatformTransactionManager txManager) {
+    return new StepBuilder("rollingAverage", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                jdbc.execute("""
+                    INSERT INTO metrics_7day_rolling (metric_date, account_id, avg_daily_volume, avg_transaction_size)
+                    SELECT
+                        CURRENT_DATE as metric_date,
+                        account_id,
+                        AVG(daily_volume) as avg_daily_volume,
+                        AVG(avg_tx_size) as avg_transaction_size
+                    FROM (
+                        SELECT
+                            account_id,
+                            transaction_date,
+                            COUNT(*) as daily_volume,
+                            AVG(amount) as avg_tx_size
+                        FROM transactions
+                        WHERE transaction_date >= CURRENT_DATE - INTERVAL '7 days'
+                        GROUP BY account_id, transaction_date
+                    ) daily_stats
+                    GROUP BY account_id
+                """);
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+1c:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$23"}]}]
+1d:["$","h2",null,{"children":"Scheduled Report Pipeline"}]
+1e:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Component\npublic class ReportScheduler {\n\n    private final JobLauncher jobLauncher;\n    private final Job reportingJob;\n\n    // Daily at 6 AM\n    @Scheduled(cron = \"0 0 6 * * *\")\n    public void dailyReport() throws Exception {\n        jobLauncher.run(reportingJob, new JobParametersBuilder()\n                .addString(\"reportType\", \"daily\")\n                .addString(\"reportDate\", LocalDate.now().minusDays(1).toString())\n                .addLong(\"timestamp\", System.currentTimeMillis())\n                .toJobParameters());\n    }\n\n    // Monthly on 1st at 7 AM\n    @Scheduled(cron = \"0 0 7 1 * *\")\n    public void monthlyReport() throws Exception {\n        jobLauncher.run(reportingJob, new JobParametersBuilder()\n                .addString(\"reportType\", \"monthly\")\n                .addString(\"reportMonth\", YearMonth.now().minusMonths(1).toString())\n                .addLong(\"timestamp\", System.currentTimeMillis())\n                .toJobParameters());\n    }\n}\n"}]}]
+1f:["$","h2",null,{"children":"Key Takeaways"}]
+20:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Use SQL aggregation for simple group-by operations — let the database optimize"}],"\n",["$","li",null,{"children":"In-memory aggregation via processors works for complex business logic"}],"\n",["$","li",null,{"children":"Generate reports in parallel (CSV, PDF, Excel) using split flows"}],"\n",["$","li",null,{"children":"Rolling window aggregations are ideal for dashboards and alerting"}],"\n",["$","li",null,{"children":"Always make report generation idempotent (use ON CONFLICT / MERGE)"}],"\n",["$","li",null,{"children":"Separate aggregation from formatting — aggregate once, render many formats"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+24:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 14 reporting — spring batch"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L24","3",{}]]

@@ -1,0 +1,232 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1d:"$Sreact.suspense"
+4:T56e,@Component
+public class KafkaBatchTrigger {
+
+    private final JobLauncher jobLauncher;
+    private final Job orderProcessingJob;
+    private final List<String> buffer = Collections.synchronizedList(new ArrayList<>());
+
+    @KafkaListener(topics = "order-events", groupId = "batch-processor")
+    public void onOrderEvent(ConsumerRecord<String, String> record) {
+        buffer.add(record.value());
+
+        if (buffer.size() >= 1000) {
+            triggerBatch();
+        }
+    }
+
+    @Scheduled(fixedDelay = 60000) // Also trigger every minute if buffer has items
+    public void scheduledFlush() {
+        if (!buffer.isEmpty()) {
+            triggerBatch();
+        }
+    }
+
+    private synchronized void triggerBatch() {
+        if (buffer.isEmpty()) return;
+
+        List<String> batch = new ArrayList<>(buffer);
+        buffer.clear();
+
+        // Write batch to temp file for the job to read
+        Path tempFile = writeBatchToFile(batch);
+
+        try {
+            jobLauncher.run(orderProcessingJob, new JobParametersBuilder()
+                    .addString("inputFile", tempFile.toString())
+                    .addLong("timestamp", System.currentTimeMillis())
+                    .toJobParameters());
+        } catch (Exception e) {
+            log.error("Failed to launch batch job", e);
+            // Re-queue the events
+            buffer.addAll(batch);
+        }
+    }
+}
+5:T432,@Component
+public class S3EventListener {
+
+    private final JobLauncher jobLauncher;
+    private final Job fileIngestionJob;
+
+    @SqsListener("file-upload-notifications")
+    public void onS3Event(S3EventNotification notification) {
+        for (S3EventNotification.S3EventNotificationRecord record : notification.getRecords()) {
+            String bucket = record.getS3().getBucket().getName();
+            String key = record.getS3().getObject().getKey();
+
+            if (key.endsWith(".csv") && key.startsWith("incoming/")) {
+                launchJob(bucket, key);
+            }
+        }
+    }
+
+    private void launchJob(String bucket, String key) {
+        try {
+            jobLauncher.run(fileIngestionJob, new JobParametersBuilder()
+                    .addString("s3Bucket", bucket)
+                    .addString("s3Key", key)
+                    .addLong("timestamp", System.currentTimeMillis())
+                    .toJobParameters());
+        } catch (Exception e) {
+            log.error("Failed to process s3://{}/{}", bucket, key, e);
+        }
+    }
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 15: Event-Driven Batch"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-14-reporting","children":"prev: Reporting & Aggregation"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-16-testing","children":"next: Testing Strategies"}]]}],"\n",["$","h2",null,{"children":"Combining Events with Batch"}],"\n",["$","p",null,{"children":"Not all batch jobs run on a schedule. Many are triggered by events: a file lands in S3, a Kafka topic accumulates enough messages, or an upstream system signals completion."}],"\n",["$","h2",null,{"children":"Kafka-Triggered Batch Jobs"}],"\n",["$","p",null,{"children":"Accumulate events, then process in batch:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"S3 Event-Triggered Processing"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$5"}]}],"\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14"]}],"$L15"]}],["$L16","$L17"],"$L18"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_jZUTnSwYUf1MudAw1Pq3"}
+6:["$","h2",null,{"children":"Micro-Batching from Streams"}]
+7:["$","p",null,{"children":"Process streaming data in configurable windows:"}]
+19:T587,@Component
+public class MicroBatchAccumulator {
+
+    private final BlockingQueue<Event> queue = new LinkedBlockingQueue<>(10_000);
+    private final JobLauncher jobLauncher;
+    private final Job microBatchJob;
+
+    @KafkaListener(topics = "high-volume-events")
+    public void accumulate(Event event) {
+        if (!queue.offer(event)) {
+            log.warn("Queue full, triggering immediate batch");
+            triggerBatch();
+            queue.offer(event);
+        }
+    }
+
+    @Scheduled(fixedRate = 10000) // Every 10 seconds
+    public void windowTrigger() {
+        if (queue.size() >= 100) { // Minimum batch size
+            triggerBatch();
+        }
+    }
+
+    private void triggerBatch() {
+        List<Event> batch = new ArrayList<>();
+        queue.drainTo(batch, 5000); // Max 5000 per batch
+
+        if (batch.isEmpty()) return;
+
+        // Store batch for job to read
+        String batchId = UUID.randomUUID().toString();
+        batchStore.save(batchId, batch);
+
+        try {
+            jobLauncher.run(microBatchJob, new JobParametersBuilder()
+                    .addString("batchId", batchId)
+                    .addLong("batchSize", (long) batch.size())
+                    .addLong("timestamp", System.currentTimeMillis())
+                    .toJobParameters());
+        } catch (Exception e) {
+            log.error("Micro-batch failed for batchId={}", batchId, e);
+        }
+    }
+}
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$19"}]}]
+9:["$","h2",null,{"children":"Job Chaining via Events"}]
+a:["$","p",null,{"children":"One job completes → triggers the next:"}]
+1a:T605,@Component
+public class JobChainListener implements JobExecutionListener {
+
+    private final ApplicationEventPublisher eventPublisher;
+
+    @Override
+    public void afterJob(JobExecution jobExecution) {
+        if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
+            eventPublisher.publishEvent(new JobCompletedEvent(
+                    jobExecution.getJobInstance().getJobName(),
+                    jobExecution.getJobParameters()
+            ));
+        }
+    }
+}
+
+@Component
+public class JobChainOrchestrator {
+
+    private final JobLauncher jobLauncher;
+    private final Map<String, Job> jobs;
+
+    @EventListener
+    public void onJobCompleted(JobCompletedEvent event) {
+        String nextJob = getNextJob(event.getJobName());
+        if (nextJob == null) return;
+
+        try {
+            JobParameters params = new JobParametersBuilder(event.getParameters())
+                    .addString("triggeredBy", event.getJobName())
+                    .addLong("chainTimestamp", System.currentTimeMillis())
+                    .toJobParameters();
+
+            jobLauncher.run(jobs.get(nextJob), params);
+        } catch (Exception e) {
+            log.error("Failed to chain job {} after {}", nextJob, event.getJobName(), e);
+        }
+    }
+
+    private String getNextJob(String completedJob) {
+        return switch (completedJob) {
+            case "extractJob" -> "transformJob";
+            case "transformJob" -> "loadJob";
+            case "loadJob" -> "reportJob";
+            default -> null;
+        };
+    }
+}
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1a"}]}]
+c:["$","h2",null,{"children":"Dead Letter Queue Processing"}]
+d:["$","p",null,{"children":"Reprocess failed events from DLQ:"}]
+1b:T62a,@Configuration
+public class DlqReprocessConfig {
+
+    @Bean
+    public Job dlqReprocessJob(JobRepository jobRepository, Step reprocessStep) {
+        return new JobBuilder("dlqReprocessJob", jobRepository)
+                .start(reprocessStep)
+                .build();
+    }
+
+    @Bean
+    public Step reprocessStep(JobRepository jobRepository,
+                              PlatformTransactionManager txManager) {
+        return new StepBuilder("reprocess", jobRepository)
+                .<FailedEvent, ProcessedEvent>chunk(100, txManager)
+                .reader(dlqReader())
+                .processor(retryProcessor())
+                .writer(successWriter())
+                .faultTolerant()
+                .skip(PermanentFailureException.class)
+                .skipLimit(Integer.MAX_VALUE)
+                .listener(new DlqSkipListener()) // Log permanently failed items
+                .build();
+    }
+
+    @Bean
+    public ItemReader<FailedEvent> dlqReader() {
+        return new JdbcPagingItemReaderBuilder<FailedEvent>()
+                .name("dlqReader")
+                .dataSource(dataSource)
+                .selectClause("SELECT *")
+                .fromClause("FROM dead_letter_queue")
+                .whereClause("WHERE retry_count < 3 AND created_at > :cutoff")
+                .sortKeys(Map.of("created_at", Order.ASCENDING))
+                .parameterValues(Map.of("cutoff", Timestamp.from(Instant.now().minus(Duration.ofDays(7)))))
+                .pageSize(100)
+                .rowMapper(new FailedEventRowMapper())
+                .build();
+    }
+}
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1b"}]}]
+f:["$","h2",null,{"children":"Async Job Launcher for Event Processing"}]
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\npublic class AsyncJobConfig {\n\n    @Bean\n    public JobLauncher asyncJobLauncher(JobRepository jobRepository) {\n        TaskExecutorJobLauncher launcher = new TaskExecutorJobLauncher();\n        launcher.setJobRepository(jobRepository);\n        launcher.setTaskExecutor(new SimpleAsyncTaskExecutor(\"batch-\"));\n        return launcher;\n    }\n}\n"}]}]
+11:["$","h2",null,{"children":"Idempotency for Event-Triggered Jobs"}]
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class IdempotentJobLauncher {\n\n    private final JobLauncher jobLauncher;\n    private final JobExplorer jobExplorer;\n\n    public JobExecution launchIfNotRunning(Job job, JobParameters params) throws Exception {\n        // Check if same job with same params is already running\n        List<JobExecution> running = jobExplorer.findRunningJobExecutions(job.getName());\n\n        for (JobExecution exec : running) {\n            if (exec.getJobParameters().equals(params)) {\n                log.info(\"Job {} already running with same params, skipping\", job.getName());\n                return exec;\n            }\n        }\n\n        return jobLauncher.run(job, params);\n    }\n}\n"}]}]
+13:["$","h2",null,{"children":"Key Takeaways"}]
+14:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Kafka listeners + buffer + scheduled flush = reliable micro-batching"}],"\n",["$","li",null,{"children":"S3/SQS events trigger file processing jobs without polling"}],"\n",["$","li",null,{"children":"Job chaining via Spring events creates loosely-coupled pipelines"}],"\n",["$","li",null,{"children":"Dead letter queue reprocessing recovers from transient failures"}],"\n",["$","li",null,{"children":"Always use async job launcher for event-triggered jobs to avoid blocking"}],"\n",["$","li",null,{"children":"Idempotency checks prevent duplicate job executions from duplicate events"}],"\n"]}]
+15:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-14-reporting","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-16-testing","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+16:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+17:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+18:["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]
+1e:null

@@ -1,0 +1,164 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+19:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1a:"$Sreact.suspense"
+4:T49e,@Bean
+public Step aggregationStep(JobRepository jobRepository,
+                            PlatformTransactionManager txManager) {
+    return new StepBuilder("aggregate", jobRepository)
+            .<Transaction, MonthlySummary>chunk(5000, txManager)
+            .reader(transactionReader())
+            .processor(new ItemProcessor<>() {
+                private final Map<String, MonthlySummary> buffer = new HashMap<>();
+
+                @Override
+                public MonthlySummary process(Transaction tx) {
+                    String key = tx.getAccountId();
+                    buffer.merge(key, MonthlySummary.from(tx), MonthlySummary::merge);
+                    return null;
+                }
+            })
+            .writer(items -> {}) // no-op, real write happens in listener
+            .listener(new StepExecutionListener() {
+                @Override
+                public ExitStatus afterStep(StepExecution stepExecution) {
+                    // Flush aggregations
+                    summaryWriter.write(new Chunk<>(new ArrayList<>(buffer.values())));
+                    return ExitStatus.COMPLETED;
+                }
+            })
+            .build();
+}
+5:T653,@Bean
+public Step sqlAggregationStep(JobRepository jobRepository,
+                               PlatformTransactionManager txManager) {
+    return new StepBuilder("sqlAggregate", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                String reportDate = chunkContext.getStepContext()
+                        .getJobParameters().get("reportDate").toString();
+
+                jdbc.execute("""
+                    INSERT INTO daily_account_summary (account_id, report_date, total_debits,
+                        total_credits, transaction_count, net_amount)
+                    SELECT
+                        account_id,
+                        ?::date as report_date,
+                        SUM(CASE WHEN type = 'DEBIT' THEN amount ELSE 0 END) as total_debits,
+                        SUM(CASE WHEN type = 'CREDIT' THEN amount ELSE 0 END) as total_credits,
+                        COUNT(*) as transaction_count,
+                        SUM(CASE WHEN type = 'CREDIT' THEN amount ELSE -amount END) as net_amount
+                    FROM transactions
+                    WHERE transaction_date = ?::date
+                    GROUP BY account_id
+                    ON CONFLICT (account_id, report_date) DO UPDATE SET
+                        total_debits = EXCLUDED.total_debits,
+                        total_credits = EXCLUDED.total_credits,
+                        transaction_count = EXCLUDED.transaction_count,
+                        net_amount = EXCLUDED.net_amount
+                """);
+
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 14: Reporting & Aggregation"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-13-api-integration","children":"prev: API Integration"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-15-event-driven","children":"next: Event-Driven Batch"}]]}],"\n",["$","h2",null,{"children":"Batch Reporting Patterns"}],"\n",["$","p",null,{"children":"Products need scheduled reports: daily summaries, monthly invoices, compliance reports, analytics aggregations. Spring Batch handles the heavy lifting."}],"\n",["$","h2",null,{"children":"Aggregation with ItemProcessor"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\n@StepScope\npublic class DailyAggregationProcessor implements ItemProcessor<Transaction, DailySummary> {\n\n    private final Map<String, DailySummary> aggregations = new ConcurrentHashMap<>();\n\n    @Override\n    public DailySummary process(Transaction tx) {\n        String key = tx.getAccountId() + \"|\" + tx.getDate();\n\n        aggregations.compute(key, (k, existing) -> {\n            DailySummary summary = existing != null ? existing : new DailySummary(tx.getAccountId(), tx.getDate());\n            if (\"DEBIT\".equals(tx.getType())) {\n                summary.addDebit(tx.getAmount());\n            } else {\n                summary.addCredit(tx.getAmount());\n            }\n            summary.incrementCount();\n            return summary;\n        });\n\n        return null; // Don't pass through — flush in completion callback\n    }\n\n    public Collection<DailySummary> getAggregations() {\n        return aggregations.values();\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Group-By Aggregation with Custom Step"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$4"}]}],"\n",["$","h2",null,{"children":"SQL-Based Aggregation (Tasklet)"}],"\n",["$","p",null,{"children":"For simpler cases, let the database do the work:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$5"}]}],"\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11"]}],"$L12"]}],["$L13","$L14"],"$L15"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_jZUTnSwYUf1MudAw1Pq3"}
+6:["$","h2",null,{"children":"PDF Report Generation"}]
+16:T585,@Component
+public class PdfReportWriter implements ItemWriter<AccountSummary> {
+
+    @Override
+    public void write(Chunk<? extends AccountSummary> items) throws Exception {
+        Document document = new Document(PageSize.A4);
+        String outputPath = "reports/monthly-%s.pdf".formatted(YearMonth.now().minusMonths(1));
+        PdfWriter.getInstance(document, new FileOutputStream(outputPath));
+        document.open();
+
+        // Header
+        document.add(new Paragraph("Monthly Account Summary", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18)));
+        document.add(new Paragraph("Period: " + YearMonth.now().minusMonths(1)));
+        document.add(Chunk.NEWLINE);
+
+        // Table
+        PdfPTable table = new PdfPTable(5);
+        table.setWidthPercentage(100);
+        Stream.of("Account", "Debits", "Credits", "Net", "Tx Count")
+                .forEach(h -> table.addCell(new PdfPCell(new Phrase(h, FontFactory.getFont(FontFactory.HELVETICA_BOLD)))));
+
+        for (AccountSummary summary : items) {
+            table.addCell(summary.getAccountId());
+            table.addCell(summary.getTotalDebits().toString());
+            table.addCell(summary.getTotalCredits().toString());
+            table.addCell(summary.getNetAmount().toString());
+            table.addCell(String.valueOf(summary.getTransactionCount()));
+        }
+
+        document.add(table);
+        document.close();
+    }
+}
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$16"}]}]
+8:["$","h2",null,{"children":"Email Report Delivery"}]
+17:T40d,@Bean
+public Step emailReportStep(JobRepository jobRepository,
+                            PlatformTransactionManager txManager) {
+    return new StepBuilder("emailReport", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                String reportPath = chunkContext.getStepContext()
+                        .getStepExecution().getJobExecution()
+                        .getExecutionContext().getString("reportPath");
+
+                MimeMessage message = mailSender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(message, true);
+                helper.setTo("finance@company.com");
+                helper.setSubject("Daily Transaction Report - " + LocalDate.now());
+                helper.setText("Please find attached the daily transaction report.");
+                helper.addAttachment("daily-report.pdf", new File(reportPath));
+
+                mailSender.send(message);
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+9:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$17"}]}]
+a:["$","h2",null,{"children":"Multi-Format Report Generation"}]
+b:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Job reportingJob(JobRepository jobRepository,\n                        Step aggregateStep,\n                        Step generateCsvStep,\n                        Step generatePdfStep,\n                        Step generateExcelStep,\n                        Step distributeStep) {\n\n    // Generate all formats in parallel\n    Flow reportFormats = new FlowBuilder<SimpleFlow>(\"reportFormats\")\n            .split(new SimpleAsyncTaskExecutor())\n            .add(\n                    new FlowBuilder<SimpleFlow>(\"csv\").start(generateCsvStep).build(),\n                    new FlowBuilder<SimpleFlow>(\"pdf\").start(generatePdfStep).build(),\n                    new FlowBuilder<SimpleFlow>(\"excel\").start(generateExcelStep).build()\n            )\n            .build();\n\n    return new JobBuilder(\"reportingJob\", jobRepository)\n            .start(aggregateStep)\n            .next(reportFormats)\n            .next(distributeStep)\n            .end()\n            .build();\n}\n"}]}]
+c:["$","h2",null,{"children":"Rolling Window Aggregations"}]
+18:T500,@Bean
+public Step rollingAverageStep(JobRepository jobRepository,
+                               PlatformTransactionManager txManager) {
+    return new StepBuilder("rollingAverage", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                jdbc.execute("""
+                    INSERT INTO metrics_7day_rolling (metric_date, account_id, avg_daily_volume, avg_transaction_size)
+                    SELECT
+                        CURRENT_DATE as metric_date,
+                        account_id,
+                        AVG(daily_volume) as avg_daily_volume,
+                        AVG(avg_tx_size) as avg_transaction_size
+                    FROM (
+                        SELECT
+                            account_id,
+                            transaction_date,
+                            COUNT(*) as daily_volume,
+                            AVG(amount) as avg_tx_size
+                        FROM transactions
+                        WHERE transaction_date >= CURRENT_DATE - INTERVAL '7 days'
+                        GROUP BY account_id, transaction_date
+                    ) daily_stats
+                    GROUP BY account_id
+                """);
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$18"}]}]
+e:["$","h2",null,{"children":"Scheduled Report Pipeline"}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class ReportScheduler {\n\n    private final JobLauncher jobLauncher;\n    private final Job reportingJob;\n\n    // Daily at 6 AM\n    @Scheduled(cron = \"0 0 6 * * *\")\n    public void dailyReport() throws Exception {\n        jobLauncher.run(reportingJob, new JobParametersBuilder()\n                .addString(\"reportType\", \"daily\")\n                .addString(\"reportDate\", LocalDate.now().minusDays(1).toString())\n                .addLong(\"timestamp\", System.currentTimeMillis())\n                .toJobParameters());\n    }\n\n    // Monthly on 1st at 7 AM\n    @Scheduled(cron = \"0 0 7 1 * *\")\n    public void monthlyReport() throws Exception {\n        jobLauncher.run(reportingJob, new JobParametersBuilder()\n                .addString(\"reportType\", \"monthly\")\n                .addString(\"reportMonth\", YearMonth.now().minusMonths(1).toString())\n                .addLong(\"timestamp\", System.currentTimeMillis())\n                .toJobParameters());\n    }\n}\n"}]}]
+10:["$","h2",null,{"children":"Key Takeaways"}]
+11:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Use SQL aggregation for simple group-by operations — let the database optimize"}],"\n",["$","li",null,{"children":"In-memory aggregation via processors works for complex business logic"}],"\n",["$","li",null,{"children":"Generate reports in parallel (CSV, PDF, Excel) using split flows"}],"\n",["$","li",null,{"children":"Rolling window aggregations are ideal for dashboards and alerting"}],"\n",["$","li",null,{"children":"Always make report generation idempotent (use ON CONFLICT / MERGE)"}],"\n",["$","li",null,{"children":"Separate aggregation from formatting — aggregate once, render many formats"}],"\n"]}]
+12:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-13-api-integration","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-15-event-driven","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+13:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+14:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+15:["$","$L19",null,{"children":["$","$1a",null,{"name":"Next.MetadataOutlet","children":"$@1b"}]}]
+1b:null

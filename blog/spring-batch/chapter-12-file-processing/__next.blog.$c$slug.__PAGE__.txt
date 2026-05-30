@@ -1,0 +1,108 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+20:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+21:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 12: File Processing at Scale"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-11-etl-pipelines","children":"prev: ETL Pipelines"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-13-api-integration","children":"next: API Integration"}]]}],"\n",["$","h2",null,{"children":"File Processing Patterns"}],"\n",["$","p",null,{"children":"Real products deal with: partner data feeds, bank reconciliation files, regulatory reports, bulk imports from customers. Spring Batch excels here."}],"\n",["$","h2",null,{"children":"Multi-File Processing"}],"\n",["$","h3",null,{"children":"Watching a Directory for New Files"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\n@StepScope\npublic MultiResourceItemReader<Transaction> multiFileReader(\n        @Value(\"#{jobParameters['inputDir']}\") String inputDir) {\n\n    Resource[] resources = new PathMatchingResourcePatternResolver()\n            .getResources(\"file:\" + inputDir + \"/*.csv\");\n\n    MultiResourceItemReader<Transaction> reader = new MultiResourceItemReader<>();\n    reader.setResources(resources);\n    reader.setDelegate(singleFileReader());\n    return reader;\n}\n\nprivate FlatFileItemReader<Transaction> singleFileReader() {\n    return new FlatFileItemReaderBuilder<Transaction>()\n            .name(\"transactionReader\")\n            .delimited()\n            .names(\"txId\", \"accountId\", \"amount\", \"currency\", \"timestamp\", \"type\")\n            .targetType(Transaction.class)\n            .linesToSkip(1)\n            .build();\n}\n"}]}],"\n",["$","h3",null,{"children":"File-Per-Partition Strategy"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Partitioner filePartitioner(@Value(\"${input.dir}\") String inputDir) {\n    return gridSize -> {\n        Resource[] files = new PathMatchingResourcePatternResolver()\n                .getResources(\"file:\" + inputDir + \"/*.csv\");\n\n        Map<String, ExecutionContext> partitions = new HashMap<>();\n        for (int i = 0; i < files.length; i++) {\n            ExecutionContext ctx = new ExecutionContext();\n            ctx.putString(\"fileName\", files[i].getFilename());\n            ctx.putString(\"filePath\", files[i].getFile().getAbsolutePath());\n            partitions.put(\"file-\" + i, ctx);\n        }\n        return partitions;\n    };\n}\n"}]}],"\n",["$","h2",null,{"children":"Fixed-Width File Parsing"}],"\n",["$","p",null,{"children":"Bank files often use fixed-width format:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic FlatFileItemReader<BankStatement> fixedWidthReader() {\n    return new FlatFileItemReaderBuilder<BankStatement>()\n            .name(\"bankStatementReader\")\n            .resource(new ClassPathResource(\"statements/daily.txt\"))\n            .fixedLength()\n            .columns(new Range[]{\n                    new Range(1, 10),    // account number\n                    new Range(11, 18),   // date (YYYYMMDD)\n                    new Range(19, 30),   // amount (right-aligned, 2 decimals)\n                    new Range(31, 31),   // debit/credit flag\n                    new Range(32, 71),   // description\n                    new Range(72, 83)    // reference\n            })\n            .names(\"accountNumber\", \"date\", \"amount\", \"dcFlag\", \"description\", \"reference\")\n            .targetType(BankStatement.class)\n            .build();\n}\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19"]}],"$L1a"]}],["$L1b","$L1c"],"$L1d"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_jZUTnSwYUf1MudAw1Pq3"}
+4:["$","h2",null,{"children":"XML File Processing"}]
+5:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic StaxEventItemReader<Invoice> xmlReader() {\n    return new StaxEventItemReaderBuilder<Invoice>()\n            .name(\"invoiceXmlReader\")\n            .resource(new ClassPathResource(\"invoices/batch.xml\"))\n            .addFragmentRootElements(\"invoice\")\n            .unmarshaller(invoiceMarshaller())\n            .build();\n}\n\n@Bean\npublic Jaxb2Marshaller invoiceMarshaller() {\n    Jaxb2Marshaller marshaller = new Jaxb2Marshaller();\n    marshaller.setClassesToBeBound(Invoice.class);\n    return marshaller;\n}\n"}]}]
+6:["$","h2",null,{"children":"Excel File Processing"}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\n@StepScope\npublic class ExcelItemReader implements ItemReader<ProductImport> {\n\n    private Iterator<Row> rowIterator;\n\n    @PostConstruct\n    public void init(@Value(\"#{jobParameters['excelFile']}\") String filePath) throws Exception {\n        Workbook workbook = WorkbookFactory.create(new File(filePath));\n        Sheet sheet = workbook.getSheetAt(0);\n        rowIterator = sheet.iterator();\n        rowIterator.next(); // skip header\n    }\n\n    @Override\n    public ProductImport read() {\n        if (!rowIterator.hasNext()) return null;\n\n        Row row = rowIterator.next();\n        ProductImport product = new ProductImport();\n        product.setSku(row.getCell(0).getStringCellValue());\n        product.setName(row.getCell(1).getStringCellValue());\n        product.setPrice(BigDecimal.valueOf(row.getCell(2).getNumericCellValue()));\n        product.setCategory(row.getCell(3).getStringCellValue());\n        product.setStock((int) row.getCell(4).getNumericCellValue());\n        return product;\n    }\n}\n"}]}]
+8:["$","h2",null,{"children":"Large File Splitting"}]
+9:["$","p",null,{"children":"For files too large to process in one go:"}]
+1e:T6a3,@Bean
+public Step splitFileStep(JobRepository jobRepository,
+                          PlatformTransactionManager txManager) {
+    return new StepBuilder("splitFile", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                String inputFile = chunkContext.getStepContext()
+                        .getJobParameters().get("inputFile").toString();
+
+                Path input = Path.of(inputFile);
+                long lineCount = Files.lines(input).count();
+                int linesPerSplit = 100_000;
+                int splitCount = (int) Math.ceil((double) lineCount / linesPerSplit);
+
+                try (BufferedReader reader = Files.newBufferedReader(input)) {
+                    String header = reader.readLine();
+
+                    for (int i = 0; i < splitCount; i++) {
+                        Path splitFile = Path.of(inputFile + ".part" + i);
+                        try (BufferedWriter writer = Files.newBufferedWriter(splitFile)) {
+                            writer.write(header);
+                            writer.newLine();
+                            for (int line = 0; line < linesPerSplit; line++) {
+                                String data = reader.readLine();
+                                if (data == null) break;
+                                writer.write(data);
+                                writer.newLine();
+                            }
+                        }
+                    }
+                }
+
+                contribution.getStepExecution().getExecutionContext()
+                        .putInt("splitCount", splitCount);
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1e"}]}]
+b:["$","h2",null,{"children":"File Validation Before Processing"}]
+1f:T6e1,@Bean
+public Step fileValidationStep(JobRepository jobRepository,
+                               PlatformTransactionManager txManager) {
+    return new StepBuilder("validateFile", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                String filePath = chunkContext.getStepContext()
+                        .getJobParameters().get("inputFile").toString();
+                Path file = Path.of(filePath);
+
+                // Check file exists and is readable
+                if (!Files.isReadable(file)) {
+                    throw new FileNotFoundException("Cannot read: " + filePath);
+                }
+
+                // Check file size
+                long size = Files.size(file);
+                if (size == 0) throw new EmptyFileException(filePath);
+                if (size > 5_000_000_000L) throw new FileTooLargeException(filePath, size);
+
+                // Validate header
+                String header = Files.lines(file).findFirst().orElseThrow();
+                String expectedHeader = "txId,accountId,amount,currency,timestamp,type";
+                if (!header.equals(expectedHeader)) {
+                    throw new InvalidFileFormatException("Header mismatch: " + header);
+                }
+
+                // Check for BOM and encoding
+                byte[] bom = Files.readAllBytes(file);
+                if (bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {
+                    log.warn("File has UTF-8 BOM, will handle accordingly");
+                    contribution.getStepExecution().getExecutionContext()
+                            .putBoolean("hasBom", true);
+                }
+
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1f"}]}]
+d:["$","h2",null,{"children":"Writing Output Files"}]
+e:["$","h3",null,{"children":"CSV Output with Header/Footer"}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic FlatFileItemWriter<ReportLine> csvWriter() {\n    return new FlatFileItemWriterBuilder<ReportLine>()\n            .name(\"reportWriter\")\n            .resource(new FileSystemResource(\"output/daily-report.csv\"))\n            .delimited()\n            .delimiter(\",\")\n            .names(\"date\", \"accountId\", \"totalDebits\", \"totalCredits\", \"balance\")\n            .headerCallback(writer -> writer.write(\"Date,Account,Total Debits,Total Credits,Balance\"))\n            .footerCallback(writer -> writer.write(\"# Generated: \" + Instant.now()))\n            .build();\n}\n"}]}]
+10:["$","h3",null,{"children":"Classified Output (Route to Different Files)"}]
+11:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic ClassifierCompositeItemWriter<Transaction> classifiedWriter() {\n    ClassifierCompositeItemWriter<Transaction> writer = new ClassifierCompositeItemWriter<>();\n    writer.setClassifier(new Classifier<Transaction, ItemWriter<? super Transaction>>() {\n        @Override\n        public ItemWriter<? super Transaction> classify(Transaction tx) {\n            return switch (tx.getType()) {\n                case \"DEBIT\" -> debitFileWriter();\n                case \"CREDIT\" -> creditFileWriter();\n                case \"TRANSFER\" -> transferFileWriter();\n                default -> errorFileWriter();\n            };\n        }\n    });\n    return writer;\n}\n"}]}]
+12:["$","h2",null,{"children":"S3 Upload After Processing"}]
+13:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Step uploadToS3Step(JobRepository jobRepository,\n                           PlatformTransactionManager txManager) {\n    return new StepBuilder(\"uploadToS3\", jobRepository)\n            .tasklet((contribution, chunkContext) -> {\n                String outputFile = \"output/daily-report.csv\";\n                String s3Key = \"reports/%s/daily-report.csv\".formatted(LocalDate.now());\n\n                s3Client.putObject(\n                        PutObjectRequest.builder()\n                                .bucket(\"company-reports\")\n                                .key(s3Key)\n                                .contentType(\"text/csv\")\n                                .build(),\n                        Path.of(outputFile)\n                );\n\n                log.info(\"Uploaded to s3://company-reports/{}\", s3Key);\n                return RepeatStatus.FINISHED;\n            }, txManager)\n            .build();\n}\n"}]}]
+14:["$","h2",null,{"children":"File Archival Pattern"}]
+15:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Step archiveStep(JobRepository jobRepository,\n                        PlatformTransactionManager txManager) {\n    return new StepBuilder(\"archiveFiles\", jobRepository)\n            .tasklet((contribution, chunkContext) -> {\n                String inputDir = chunkContext.getStepContext()\n                        .getJobParameters().get(\"inputDir\").toString();\n                Path archiveDir = Path.of(inputDir, \"archive\", LocalDate.now().toString());\n                Files.createDirectories(archiveDir);\n\n                try (DirectoryStream<Path> stream = Files.newDirectoryStream(Path.of(inputDir), \"*.csv\")) {\n                    for (Path file : stream) {\n                        Files.move(file, archiveDir.resolve(file.getFileName()),\n                                StandardCopyOption.REPLACE_EXISTING);\n                    }\n                }\n                return RepeatStatus.FINISHED;\n            }, txManager)\n            .build();\n}\n"}]}]
+16:["$","h2",null,{"children":"Complete File Processing Pipeline"}]
+17:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Job fileProcessingJob(JobRepository jobRepository,\n                             Step validateFile,\n                             Step processFile,\n                             Step uploadToS3,\n                             Step archiveFiles,\n                             Step notifyComplete) {\n    return new JobBuilder(\"fileProcessingJob\", jobRepository)\n            .start(validateFile)\n            .on(\"FAILED\").to(notifyFailure)\n            .from(validateFile).on(\"*\").to(processFile)\n            .next(uploadToS3)\n            .next(archiveFiles)\n            .next(notifyComplete)\n            .end()\n            .build();\n}\n"}]}]
+18:["$","h2",null,{"children":"Key Takeaways"}]
+19:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Use MultiResourceItemReader for processing multiple files in one job"}],"\n",["$","li",null,{"children":"Partition by file for parallel processing of independent files"}],"\n",["$","li",null,{"children":"Always validate files before processing (format, encoding, size)"}],"\n",["$","li",null,{"children":"Use classified writers to route records to different output files"}],"\n",["$","li",null,{"children":"Implement archive patterns to prevent reprocessing"}],"\n",["$","li",null,{"children":"Split very large files before processing for better restartability"}],"\n"]}]
+1a:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-11-etl-pipelines","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-13-api-integration","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+1b:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1c:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1d:["$","$L20",null,{"children":["$","$21",null,{"name":"Next.MetadataOutlet","children":"$@22"}]}]
+22:null

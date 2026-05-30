@@ -1,0 +1,252 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/169p7rglrxpg-.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","spring-batch","chapter-13-api-integration",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","spring-batch/chapter-13-api-integration","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/169p7rglrxpg-.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/169p7rglrxpg-.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"_jZUTnSwYUf1MudAw1Pq3"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-12-file-processing","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-14-reporting","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T615,@Component
+@StepScope
+public class PaginatedApiReader implements ItemReader<CustomerDto> {
+
+    private final RestClient restClient;
+    private int currentPage = 0;
+    private List<CustomerDto> currentBatch = new ArrayList<>();
+    private int currentIndex = 0;
+    private boolean exhausted = false;
+
+    public PaginatedApiReader(RestClient.Builder builder) {
+        this.restClient = builder
+                .baseUrl("https://api.crm-provider.com/v2")
+                .defaultHeader("Authorization", "Bearer " + apiKey)
+                .build();
+    }
+
+    @Override
+    public synchronized CustomerDto read() {
+        if (exhausted) return null;
+
+        if (currentIndex >= currentBatch.size()) {
+            currentBatch = fetchPage(currentPage++);
+            currentIndex = 0;
+            if (currentBatch.isEmpty()) {
+                exhausted = true;
+                return null;
+            }
+        }
+        return currentBatch.get(currentIndex++);
+    }
+
+    private List<CustomerDto> fetchPage(int page) {
+        ApiResponse<CustomerDto> response = restClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/customers")
+                        .queryParam("page", page)
+                        .queryParam("size", 100)
+                        .queryParam("updatedSince", LocalDate.now().minusDays(1))
+                        .build())
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+
+        return response != null ? response.getData() : List.of();
+    }
+}
+14:T446,@Component
+public class RateLimitedApiWriter implements ItemWriter<OrderUpdate> {
+
+    private final RestClient restClient;
+    private final RateLimiter rateLimiter; // Resilience4j
+
+    public RateLimitedApiWriter(RestClient.Builder builder) {
+        this.restClient = builder.baseUrl("https://api.shipping.com/v1").build();
+        this.rateLimiter = RateLimiter.of("shippingApi",
+                RateLimiterConfig.custom()
+                        .limitForPeriod(50)           // 50 requests
+                        .limitRefreshPeriod(Duration.ofSeconds(1)) // per second
+                        .timeoutDuration(Duration.ofSeconds(30))
+                        .build());
+    }
+
+    @Override
+    public void write(Chunk<? extends OrderUpdate> items) throws Exception {
+        for (OrderUpdate update : items) {
+            rateLimiter.acquirePermission();
+
+            restClient.put()
+                    .uri("/shipments/{id}/status", update.getShipmentId())
+                    .body(update)
+                    .retrieve()
+                    .toBodilessEntity();
+        }
+    }
+}
+10:[["$","h1",null,{"children":"Chapter 13: API Integration Batch Jobs"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-12-file-processing","children":"prev: File Processing"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-14-reporting","children":"next: Reporting & Aggregation"}]]}],"\n",["$","h2",null,{"children":"When APIs Meet Batch"}],"\n",["$","p",null,{"children":"Products often need to:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":"Sync data from third-party APIs (CRM, payment providers, shipping)"}],"\n",["$","li",null,{"children":"Push bulk updates to external systems"}],"\n",["$","li",null,{"children":"Reconcile local data with remote APIs"}],"\n",["$","li",null,{"children":"Rate-limit API calls while processing millions of records"}],"\n"]}],"\n",["$","h2",null,{"children":"Paginated API Reader"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$13"}]}],"\n",["$","h2",null,{"children":"Rate-Limited API Writer"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$14"}]}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24"]
+15:["$","h2",null,{"children":"Retry with Exponential Backoff"}]
+25:T45c,@Bean
+public Step apiSyncStep(JobRepository jobRepository,
+                        PlatformTransactionManager txManager,
+                        ItemReader<CustomerDto> apiReader,
+                        ItemProcessor<CustomerDto, Customer> processor,
+                        ItemWriter<Customer> dbWriter) {
+    return new StepBuilder("apiSync", jobRepository)
+            .<CustomerDto, Customer>chunk(50, txManager)
+            .reader(apiReader)
+            .processor(processor)
+            .writer(dbWriter)
+            .faultTolerant()
+            .retry(HttpServerErrorException.class)
+            .retry(ResourceAccessException.class)
+            .retryLimit(3)
+            .backOffPolicy(exponentialBackOff())
+            .skip(HttpClientErrorException.NotFound.class)
+            .skipLimit(100)
+            .listener(new ApiRetryListener())
+            .build();
+}
+
+private BackOffPolicy exponentialBackOff() {
+    ExponentialBackOffPolicy policy = new ExponentialBackOffPolicy();
+    policy.setInitialInterval(1000);
+    policy.setMultiplier(2.0);
+    policy.setMaxInterval(30000);
+    return policy;
+}
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$25"}]}]
+17:["$","h2",null,{"children":"Bulk API Operations"}]
+18:["$","p",null,{"children":"Some APIs support batch endpoints:"}]
+26:T41d,@Component
+public class BulkApiWriter implements ItemWriter<ProductUpdate> {
+
+    private final RestClient restClient;
+
+    @Override
+    public void write(Chunk<? extends ProductUpdate> items) throws Exception {
+        // Send as bulk request
+        BulkRequest request = new BulkRequest(items.getItems());
+
+        BulkResponse response = restClient.post()
+                .uri("/products/bulk-update")
+                .body(request)
+                .retrieve()
+                .body(BulkResponse.class);
+
+        // Handle partial failures
+        if (response.hasErrors()) {
+            List<BulkError> errors = response.getErrors();
+            log.warn("Bulk update had {} errors out of {} items", errors.size(), items.size());
+
+            for (BulkError error : errors) {
+                if (error.isRetryable()) {
+                    throw new RetryableApiException(error.getMessage());
+                }
+                log.error("Non-retryable error for item {}: {}", error.getItemId(), error.getMessage());
+            }
+        }
+    }
+}
+19:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$26"}]}]
+1a:["$","h2",null,{"children":"OAuth2 Token Management"}]
+1b:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Component\npublic class OAuth2TokenManager {\n\n    private final RestClient tokenClient;\n    private String accessToken;\n    private Instant tokenExpiry = Instant.EPOCH;\n\n    public synchronized String getToken() {\n        if (Instant.now().isAfter(tokenExpiry.minusSeconds(60))) {\n            refreshToken();\n        }\n        return accessToken;\n    }\n\n    private void refreshToken() {\n        TokenResponse response = tokenClient.post()\n                .uri(\"/oauth/token\")\n                .contentType(MediaType.APPLICATION_FORM_URLENCODED)\n                .body(\"grant_type=client_credentials&client_id={id}&client_secret={secret}\")\n                .retrieve()\n                .body(TokenResponse.class);\n\n        this.accessToken = response.getAccessToken();\n        this.tokenExpiry = Instant.now().plusSeconds(response.getExpiresIn());\n    }\n}\n"}]}]
+1c:["$","h2",null,{"children":"API Reconciliation Job"}]
+1d:["$","p",null,{"children":"Compare local data with remote API and sync differences:"}]
+27:T709,@Configuration
+public class ReconciliationJobConfig {
+
+    @Bean
+    public Job reconciliationJob(JobRepository jobRepository,
+                                  Step fetchRemoteStep,
+                                  Step compareStep,
+                                  Step syncDifferencesStep) {
+        return new JobBuilder("reconciliationJob", jobRepository)
+                .start(fetchRemoteStep)
+                .next(compareStep)
+                .next(syncDifferencesStep)
+                .build();
+    }
+
+    @Bean
+    public Step compareStep(JobRepository jobRepository,
+                            PlatformTransactionManager txManager) {
+        return new StepBuilder("compare", jobRepository)
+                .tasklet((contribution, chunkContext) -> {
+                    // Load remote snapshot into temp table
+                    // Compare with local data
+                    jdbc.execute("""
+                        INSERT INTO reconciliation_diff (entity_id, diff_type, local_value, remote_value)
+                        SELECT
+                            COALESCE(l.id, r.id) as entity_id,
+                            CASE
+                                WHEN l.id IS NULL THEN 'MISSING_LOCAL'
+                                WHEN r.id IS NULL THEN 'MISSING_REMOTE'
+                                ELSE 'MISMATCH'
+                            END as diff_type,
+                            l.data as local_value,
+                            r.data as remote_value
+                        FROM local_entities l
+                        FULL OUTER JOIN remote_snapshot r ON l.id = r.id
+                        WHERE l.data IS DISTINCT FROM r.data
+                    """);
+                    return RepeatStatus.FINISHED;
+                }, txManager)
+                .build();
+    }
+}
+1e:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$27"}]}]
+1f:["$","h2",null,{"children":"Webhook-Triggered Batch Jobs"}]
+28:T585,@RestController
+@RequestMapping("/api/batch")
+public class BatchTriggerController {
+
+    private final JobLauncher asyncJobLauncher;
+    private final Job syncJob;
+
+    @PostMapping("/trigger/sync")
+    public ResponseEntity<Map<String, Object>> triggerSync(
+            @RequestBody WebhookPayload payload) throws Exception {
+
+        JobParameters params = new JobParametersBuilder()
+                .addString("triggeredBy", payload.getSource())
+                .addString("entityType", payload.getEntityType())
+                .addLong("timestamp", System.currentTimeMillis())
+                .toJobParameters();
+
+        JobExecution execution = asyncJobLauncher.run(syncJob, params);
+
+        return ResponseEntity.accepted().body(Map.of(
+                "jobId", execution.getJobId(),
+                "status", execution.getStatus().toString()
+        ));
+    }
+
+    @GetMapping("/status/{jobId}")
+    public ResponseEntity<Map<String, Object>> getStatus(@PathVariable Long jobId) {
+        JobExecution execution = jobExplorer.getJobExecution(jobId);
+        return ResponseEntity.ok(Map.of(
+                "status", execution.getStatus(),
+                "startTime", execution.getStartTime(),
+                "endTime", execution.getEndTime(),
+                "readCount", execution.getStepExecutions().stream()
+                        .mapToLong(StepExecution::getReadCount).sum()
+        ));
+    }
+}
+20:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"$28"}]}]
+21:["$","h2",null,{"children":"Circuit Breaker Pattern"}]
+22:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-java","children":"@Component\npublic class CircuitBreakerApiReader implements ItemReader<PaymentDto> {\n\n    private final CircuitBreaker circuitBreaker;\n    private final PaginatedApiReader delegate;\n\n    public CircuitBreakerApiReader(PaginatedApiReader delegate) {\n        this.delegate = delegate;\n        this.circuitBreaker = CircuitBreaker.of(\"paymentApi\",\n                CircuitBreakerConfig.custom()\n                        .failureRateThreshold(50)\n                        .waitDurationInOpenState(Duration.ofMinutes(2))\n                        .slidingWindowSize(10)\n                        .build());\n    }\n\n    @Override\n    public PaymentDto read() throws Exception {\n        return circuitBreaker.executeSupplier(() -> {\n            try {\n                return delegate.read();\n            } catch (Exception e) {\n                throw new RuntimeException(e);\n            }\n        });\n    }\n}\n"}]}]
+23:["$","h2",null,{"children":"Key Takeaways"}]
+24:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Implement pagination in readers to handle large API result sets"}],"\n",["$","li",null,{"children":"Use rate limiters to respect API quotas (Resilience4j integrates cleanly)"}],"\n",["$","li",null,{"children":"Configure retry with exponential backoff for transient API failures"}],"\n",["$","li",null,{"children":"Prefer bulk API endpoints when available to reduce round trips"}],"\n",["$","li",null,{"children":"Circuit breakers prevent cascading failures when APIs are down"}],"\n",["$","li",null,{"children":"Webhook triggers enable event-driven batch processing"}],"\n",["$","li",null,{"children":"OAuth2 token refresh should be thread-safe and proactive"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+29:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 13 api integration — spring batch"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L29","3",{}]]

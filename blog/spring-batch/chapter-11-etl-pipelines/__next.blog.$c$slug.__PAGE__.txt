@@ -1,0 +1,195 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+20:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+21:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 11: ETL Pipelines"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/spring-batch/chapter-10-data-migration","children":"prev: Data Migration"}]," | ",["$","a",null,{"href":"/blog/spring-batch/chapter-12-file-processing","children":"next: File Processing"}]]}],"\n",["$","h2",null,{"children":"ETL with Spring Batch"}],"\n",["$","p",null,{"children":"Extract-Transform-Load is the bread and butter of batch processing. Spring Batch maps perfectly:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Extract"}]," → ItemReader (pull from source systems)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Transform"}]," → ItemProcessor (clean, enrich, reshape)"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Load"}]," → ItemWriter (push to data warehouse/lake)"]}],"\n"]}],"\n",["$","h2",null,{"children":"Multi-Source ETL Job"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Configuration\npublic class SalesEtlConfig {\n\n    @Bean\n    public Job salesEtlJob(JobRepository jobRepository,\n                           Step extractOrdersStep,\n                           Step extractInventoryStep,\n                           Step transformStep,\n                           Step loadWarehouseStep) {\n        Flow extractFlow = new FlowBuilder<SimpleFlow>(\"extractFlow\")\n                .split(new SimpleAsyncTaskExecutor())\n                .add(\n                        new FlowBuilder<SimpleFlow>(\"orders\").start(extractOrdersStep).build(),\n                        new FlowBuilder<SimpleFlow>(\"inventory\").start(extractInventoryStep).build()\n                )\n                .build();\n\n        return new JobBuilder(\"salesEtlJob\", jobRepository)\n                .start(extractFlow)\n                .next(transformStep)\n                .next(loadWarehouseStep)\n                .end()\n                .build();\n    }\n}\n"}]}],"\n",["$","h2",null,{"children":"Extract: Reading from Multiple Sources"}],"\n",["$","h3",null,{"children":"From REST API"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\n@StepScope\npublic class ApiItemReader implements ItemReader<OrderDto> {\n\n    private final RestClient restClient;\n    private int page = 0;\n    private List<OrderDto> buffer = new ArrayList<>();\n    private int bufferIndex = 0;\n\n    @Override\n    public OrderDto read() {\n        if (bufferIndex >= buffer.size()) {\n            buffer = fetchNextPage();\n            bufferIndex = 0;\n            if (buffer.isEmpty()) return null;\n        }\n        return buffer.get(bufferIndex++);\n    }\n\n    private List<OrderDto> fetchNextPage() {\n        OrderPageResponse response = restClient.get()\n                .uri(\"/api/orders?page={page}&size=100&since={date}\", page, LocalDate.now().minusDays(1))\n                .retrieve()\n                .body(OrderPageResponse.class);\n        page++;\n        return response != null ? response.getContent() : List.of();\n    }\n}\n"}]}],"\n",["$","h3",null,{"children":"From Kafka Topic (Batch Consume)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\n@StepScope\npublic class KafkaBatchReader implements ItemReader<SalesEvent> {\n\n    private final KafkaConsumer<String, SalesEvent> consumer;\n    private Iterator<ConsumerRecord<String, SalesEvent>> iterator;\n\n    @Override\n    public SalesEvent read() {\n        if (iterator == null || !iterator.hasNext()) {\n            ConsumerRecords<String, SalesEvent> records = consumer.poll(Duration.ofSeconds(5));\n            if (records.isEmpty()) return null;\n            iterator = records.iterator();\n        }\n        return iterator.hasNext() ? iterator.next().value() : null;\n    }\n}\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16"]}],"$L17"]}],["$L18","$L19"],"$L1a"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_jZUTnSwYUf1MudAw1Pq3"}
+4:["$","h3",null,{"children":"From S3 Files"}]
+5:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\n@StepScope\npublic FlatFileItemReader<RawSalesRecord> s3FileReader(\n        @Value(\"#{jobParameters['s3Key']}\") String s3Key) {\n\n    Resource s3Resource = new S3Resource(s3Client, \"data-bucket\", s3Key);\n\n    return new FlatFileItemReaderBuilder<RawSalesRecord>()\n            .name(\"s3SalesReader\")\n            .resource(s3Resource)\n            .delimited()\n            .delimiter(\",\")\n            .names(\"orderId\", \"product\", \"quantity\", \"price\", \"timestamp\")\n            .targetType(RawSalesRecord.class)\n            .linesToSkip(1) // header\n            .build();\n}\n"}]}]
+6:["$","h2",null,{"children":"Transform: Data Cleaning and Enrichment"}]
+1b:T501,@Component
+public class SalesTransformProcessor implements ItemProcessor<RawSalesRecord, SalesFact> {
+
+    private final ProductCatalog catalog;
+    private final ExchangeRateService exchangeRates;
+    private final GeoLocationService geoService;
+
+    @Override
+    public SalesFact process(RawSalesRecord raw) {
+        // Skip invalid records
+        if (raw.getQuantity() <= 0 || raw.getPrice() == null) return null;
+
+        SalesFact fact = new SalesFact();
+        fact.setOrderId(raw.getOrderId());
+        fact.setProductId(raw.getProduct());
+        fact.setQuantity(raw.getQuantity());
+
+        // Currency normalization
+        BigDecimal usdPrice = exchangeRates.toUsd(raw.getPrice(), raw.getCurrency());
+        fact.setAmountUsd(usdPrice.multiply(BigDecimal.valueOf(raw.getQuantity())));
+
+        // Dimension enrichment
+        Product product = catalog.findById(raw.getProduct());
+        fact.setCategoryId(product.getCategoryId());
+        fact.setBrandId(product.getBrandId());
+
+        // Time dimension
+        Instant ts = Instant.parse(raw.getTimestamp());
+        fact.setDateKey(LocalDate.ofInstant(ts, ZoneOffset.UTC).format(DateTimeFormatter.BASIC_ISO_DATE));
+        fact.setHourOfDay(ts.atZone(ZoneOffset.UTC).getHour());
+
+        return fact;
+    }
+}
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1b"}]}]
+8:["$","h2",null,{"children":"Load: Writing to Data Warehouse"}]
+9:["$","h3",null,{"children":"Bulk Insert with Staging Table Pattern"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Component\npublic class WarehouseWriter implements ItemWriter<SalesFact> {\n\n    private final JdbcTemplate warehouseJdbc;\n\n    @Override\n    public void write(Chunk<? extends SalesFact> items) throws Exception {\n        // 1. Insert into staging table\n        warehouseJdbc.batchUpdate(\n                \"INSERT INTO staging_sales_fact (order_id, product_id, category_id, brand_id, \" +\n                \"quantity, amount_usd, date_key, hour_of_day) VALUES (?, ?, ?, ?, ?, ?, ?, ?)\",\n                items.getItems().stream().map(f -> new Object[]{\n                        f.getOrderId(), f.getProductId(), f.getCategoryId(), f.getBrandId(),\n                        f.getQuantity(), f.getAmountUsd(), f.getDateKey(), f.getHourOfDay()\n                }).toList()\n        );\n    }\n}\n"}]}]
+b:["$","h3",null,{"children":"Post-Load Merge Step"}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"@Bean\npublic Step mergeToFactTable(JobRepository jobRepository,\n                             PlatformTransactionManager txManager) {\n    return new StepBuilder(\"mergeToFactTable\", jobRepository)\n            .tasklet((contribution, chunkContext) -> {\n                warehouseJdbc.execute(\"\"\"\n                    INSERT INTO sales_fact (order_id, product_id, category_id, brand_id,\n                                           quantity, amount_usd, date_key, hour_of_day)\n                    SELECT order_id, product_id, category_id, brand_id,\n                           quantity, amount_usd, date_key, hour_of_day\n                    FROM staging_sales_fact s\n                    WHERE NOT EXISTS (\n                        SELECT 1 FROM sales_fact f WHERE f.order_id = s.order_id\n                    )\n                \"\"\");\n                warehouseJdbc.execute(\"TRUNCATE TABLE staging_sales_fact\");\n                return RepeatStatus.FINISHED;\n            }, txManager)\n            .build();\n}\n"}]}]
+d:["$","h2",null,{"children":"Slowly Changing Dimensions (SCD Type 2)"}]
+1c:T541,@Component
+public class ScdType2Writer implements ItemWriter<ProductDimension> {
+
+    private final JdbcTemplate jdbc;
+
+    @Override
+    public void write(Chunk<? extends ProductDimension> items) throws Exception {
+        for (ProductDimension incoming : items) {
+            ProductDimension current = jdbc.queryForObject(
+                    "SELECT * FROM dim_product WHERE product_id = ? AND is_current = true",
+                    new ProductDimensionRowMapper(), incoming.getProductId());
+
+            if (current == null) {
+                // New record
+                incoming.setIsCurrent(true);
+                incoming.setValidFrom(LocalDate.now());
+                incoming.setValidTo(LocalDate.of(9999, 12, 31));
+                insertDimension(incoming);
+            } else if (!current.equals(incoming)) {
+                // Close old record
+                jdbc.update("UPDATE dim_product SET is_current = false, valid_to = ? WHERE id = ?",
+                        LocalDate.now().minusDays(1), current.getId());
+                // Insert new version
+                incoming.setIsCurrent(true);
+                incoming.setValidFrom(LocalDate.now());
+                incoming.setValidTo(LocalDate.of(9999, 12, 31));
+                insertDimension(incoming);
+            }
+            // No change → skip
+        }
+    }
+}
+e:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1c"}]}]
+f:["$","h2",null,{"children":"Data Quality Checks"}]
+1d:T730,@Bean
+public Step dataQualityStep(JobRepository jobRepository,
+                            PlatformTransactionManager txManager) {
+    return new StepBuilder("dataQuality", jobRepository)
+            .tasklet((contribution, chunkContext) -> {
+                Map<String, Long> checks = new LinkedHashMap<>();
+
+                checks.put("null_amounts", warehouseJdbc.queryForObject(
+                        "SELECT COUNT(*) FROM staging_sales_fact WHERE amount_usd IS NULL", Long.class));
+                checks.put("negative_quantities", warehouseJdbc.queryForObject(
+                        "SELECT COUNT(*) FROM staging_sales_fact WHERE quantity < 0", Long.class));
+                checks.put("future_dates", warehouseJdbc.queryForObject(
+                        "SELECT COUNT(*) FROM staging_sales_fact WHERE date_key > ?", Long.class,
+                        LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE)));
+
+                long totalIssues = checks.values().stream().mapToLong(Long::longValue).sum();
+
+                if (totalIssues > 0) {
+                    log.warn("Data quality issues found: {}", checks);
+                    contribution.getStepExecution().getExecutionContext()
+                            .put("qualityIssues", checks.toString());
+                }
+
+                // Fail if issues exceed threshold
+                long totalRecords = warehouseJdbc.queryForObject(
+                        "SELECT COUNT(*) FROM staging_sales_fact", Long.class);
+                double errorRate = (double) totalIssues / totalRecords;
+
+                if (errorRate > 0.05) {
+                    throw new DataQualityException("Error rate %.2f%% exceeds 5%% threshold".formatted(errorRate * 100));
+                }
+
+                return RepeatStatus.FINISHED;
+            }, txManager)
+            .build();
+}
+10:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1d"}]}]
+11:["$","h2",null,{"children":"Incremental ETL with Watermarks"}]
+1e:T518,@Component
+@StepScope
+public class WatermarkReader implements ItemReader<RawSalesRecord> {
+
+    private final JdbcPagingItemReader<RawSalesRecord> delegate;
+
+    public WatermarkReader(@Qualifier("sourceDataSource") DataSource source,
+                           JobRepository jobRepository) {
+        // Get last successful watermark
+        Instant lastWatermark = getLastWatermark(jobRepository);
+
+        this.delegate = new JdbcPagingItemReaderBuilder<RawSalesRecord>()
+                .name("watermarkReader")
+                .dataSource(source)
+                .selectClause("SELECT *")
+                .fromClause("FROM sales_events")
+                .whereClause("WHERE event_time > :lastWatermark")
+                .sortKeys(Map.of("event_time", Order.ASCENDING))
+                .parameterValues(Map.of("lastWatermark", Timestamp.from(lastWatermark)))
+                .pageSize(1000)
+                .rowMapper(new SalesRecordRowMapper())
+                .build();
+    }
+
+    private Instant getLastWatermark(JobRepository jobRepository) {
+        // Query last successful job execution for watermark
+        // Falls back to epoch if no previous run
+        return Instant.EPOCH;
+    }
+
+    @Override
+    public RawSalesRecord read() throws Exception {
+        return delegate.read();
+    }
+}
+12:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1e"}]}]
+13:["$","h2",null,{"children":"Scheduling ETL Pipelines"}]
+1f:T45d,@Component
+public class EtlScheduler {
+
+    private final JobLauncher jobLauncher;
+    private final Job salesEtlJob;
+
+    // Hourly micro-batch
+    @Scheduled(cron = "0 5 * * * *") // 5 minutes past every hour
+    public void hourlyEtl() throws Exception {
+        JobParameters params = new JobParametersBuilder()
+                .addString("runType", "hourly")
+                .addString("hour", LocalDateTime.now().minusHours(1).format(DateTimeFormatter.ofPattern("yyyyMMddHH")))
+                .addLong("timestamp", System.currentTimeMillis())
+                .toJobParameters();
+        jobLauncher.run(salesEtlJob, params);
+    }
+
+    // Daily full reconciliation
+    @Scheduled(cron = "0 0 4 * * *") // 4 AM daily
+    public void dailyReconciliation() throws Exception {
+        JobParameters params = new JobParametersBuilder()
+                .addString("runType", "daily")
+                .addString("date", LocalDate.now().minusDays(1).toString())
+                .addLong("timestamp", System.currentTimeMillis())
+                .toJobParameters();
+        jobLauncher.run(salesEtlJob, params);
+    }
+}
+14:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-java","children":"$1f"}]}]
+15:["$","h2",null,{"children":"Key Takeaways"}]
+16:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Use parallel flows to extract from multiple sources simultaneously"}],"\n",["$","li",null,{"children":"Staging tables + merge pattern prevents duplicates and enables idempotency"}],"\n",["$","li",null,{"children":"Data quality checks should run before merging to production tables"}],"\n",["$","li",null,{"children":"Watermark-based incremental loads avoid reprocessing entire datasets"}],"\n",["$","li",null,{"children":"SCD Type 2 pattern preserves historical dimension changes"}],"\n",["$","li",null,{"children":"Schedule micro-batches hourly with daily full reconciliation as safety net"}],"\n"]}]
+17:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/spring-batch/chapter-10-data-migration","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/spring-batch/chapter-12-file-processing","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+18:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+19:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1a:["$","$L20",null,{"children":["$","$21",null,{"name":"Next.MetadataOutlet","children":"$@22"}]}]
+22:null
