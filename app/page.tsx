@@ -5,6 +5,7 @@ const GAMES = [
   { href: "/games/chinese", label: "🀄 Learn Chinese", desc: "Hanzi, pinyin & stroke practice" },
   { href: "/games/physics", label: "⚛️ Physics Lab", desc: "Matter.js simulations" },
   { href: "/games/food-order", label: "🍽️ Food Order", desc: "Order & cook SG/VN dishes!" },
+  { href: "/games/photo-booth", label: "📸 Photo Booth", desc: "Fun frames, stickers & effects!" },
 ];
 
 export default function Home() {
