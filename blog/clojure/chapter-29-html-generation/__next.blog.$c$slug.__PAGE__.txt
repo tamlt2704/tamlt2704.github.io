@@ -1,0 +1,66 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+4:T589,(ns htmlgen.core
+  (:require [clojure.string :as str]))
+
+(def void-elements #{:area :base :br :col :embed :hr :img :input
+                     :link :meta :param :source :track :wbr})
+
+(defn escape-html [s]
+  (-> (str s)
+      (str/replace "&" "&amp;")
+      (str/replace "<" "&lt;")
+      (str/replace ">" "&gt;")
+      (str/replace "\"" "&quot;")))
+
+(defn render-attrs [attrs]
+  (when (seq attrs)
+    (str " " (str/join " "
+               (map (fn [[k v]]
+                      (cond
+                        (true? v) (name k)
+                        (false? v) nil
+                        :else (str (name k) "=\"" (escape-html v) "\"")))
+                    attrs)))))
+
+(defn render
+  "Convert hiccup to HTML string."
+  [form]
+  (cond
+    (nil? form) ""
+    (string? form) (escape-html form)
+    (number? form) (str form)
+    (keyword? form) (str "<" (name form) " />")
+    (sequential? form)
+    (let [[tag & rest] form
+          [attrs children] (if (map? (first rest))
+                             [(first rest) (rest rest)]
+                             [nil rest])
+          tag-name (name tag)
+          attr-str (render-attrs attrs)]
+      (if (void-elements tag)
+        (str "<" tag-name attr-str " />")
+        (str "<" tag-name attr-str ">"
+             (str/join (map render children))
+             "</" tag-name ">")))
+    (seq? form) (str/join (map render form))
+    :else (escape-html (str form))))
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 29: Practical — An HTML Generation Library"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-28-web-app","children":"prev: A Web App"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-30-dsl","children":"next: Building a DSL"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":"Our own HTML generation library from scratch — turning Clojure data into HTML strings. This shows macro power and the \"code as data\" philosophy in action. Mirrors PCL chapters 30-31."}],"\n",["$","h2",null,{"children":"The Idea"}],"\n",["$","p",null,{"children":"Represent HTML as Clojure vectors (Hiccup syntax):"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"[:div {:class \"container\"}\n [:h1 \"Hello\"]\n [:p \"World\"]]\n"}]}],"\n",["$","p",null,{"children":"→ produces:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-html","children":"<div class=\"container\">\n  <h1>Hello</h1>\n  <p>World</p>\n</div>\n"}]}],"\n",["$","h2",null,{"children":"The Interpreter (Runtime Rendering)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"$4"}]}],"\n",["$","h2",null,{"children":"Usage"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(render [:div {:class \"card\"}\n         [:h2 \"Title\"]\n         [:p {:style \"color: red\"} \"Content\"]\n         [:img {:src \"photo.jpg\" :alt \"A photo\"}]])\n\n;=> \"<div class=\\\"card\\\"><h2>Title</h2><p style=\\\"color: red\\\">Content</p><img src=\\\"photo.jpg\\\" alt=\\\"A photo\\\" /></div>\"\n"}]}],"\n",["$","h2",null,{"children":"Handling CSS Shorthand"}],"\n",["$","p",null,{"children":["Parse ",["$","$L3",null,{"children":"[:div#main.container.flex]"}]," into ",["$","$L3",null,{"children":"{:id \"main\" :class \"container flex\"}"}],":"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn parse-tag [tag]\n  (let [s (name tag)\n        [_ tag-name id classes] (re-matches #\"([^#.]+)?(?:#([^.]+))?((?:\\.[^.]+)*)\" s)]\n    {:tag (or tag-name \"div\")\n     :attrs (cond-> {}\n              id (assoc :id id)\n              (seq classes) (assoc :class (str/replace (subs classes 1) \".\" \" \")))}))\n\n(parse-tag :div#main.container.flex)\n;=> {:tag \"div\", :attrs {:id \"main\", :class \"container flex\"}}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le"]}],"$Lf"]}],["$L10","$L11"],"$L12"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sDveLK-RRRBD1X1NCLhFA"}
+5:["$","h2",null,{"children":"The Compiler (Macro-Based, Zero Runtime Overhead)"}]
+6:["$","p",null,{"children":"For static templates, generate the HTML string at compile time:"}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defmacro html [& forms]\n  (letfn [(compile-form [form]\n            (cond\n              (string? form) form\n              (keyword? form) (str \"<\" (name form) \" />\")\n              (vector? form)\n              (let [[tag & rest] form\n                    [attrs children] (if (map? (first rest))\n                                      [(first rest) (rest rest)]\n                                      [nil rest])\n                    tag-name (name tag)]\n                `(str ~(str \"<\" tag-name (render-attrs attrs) \">\")\n                      ~@(map compile-form children)\n                      ~(str \"</\" tag-name \">\")))\n              :else `(escape-html (str ~form))))]\n    `(str ~@(map compile-form forms))))\n"}]}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":";; At compile time, this becomes a simple string concatenation:\n(html [:div {:class \"greeting\"}\n       [:h1 \"Hello!\"]])\n;; Expands to: (str \"<div class=\\\"greeting\\\"><h1>\" (escape-html (str \"Hello!\")) \"</h1></div>\")\n"}]}]
+9:["$","h2",null,{"children":"Component Pattern"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn card [{:keys [title body footer]}]\n  [:div.card\n   [:div.card-header [:h3 title]]\n   [:div.card-body body]\n   (when footer [:div.card-footer footer])])\n\n(defn page [{:keys [title content]}]\n  [:html\n   [:head [:title title]\n    [:link {:rel \"stylesheet\" :href \"/css/style.css\"}]]\n   [:body\n    [:header [:nav [:a {:href \"/\"} \"Home\"]]]\n    [:main content]\n    [:footer [:p \"© 2024\"]]]])\n\n(render (page {:title \"My Page\"\n               :content (card {:title \"Hello\" :body [:p \"World\"]})}))\n"}]}]
+b:["$","h2",null,{"children":"Streaming Output (Large Pages)"}]
+c:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn render-to-writer [form ^java.io.Writer writer]\n  (cond\n    (string? form) (.write writer (escape-html form))\n    (vector? form)\n    (let [[tag & rest] form\n          [attrs children] (if (map? (first rest)) [(first rest) (rest rest)] [nil rest])]\n      (.write writer (str \"<\" (name tag) (render-attrs attrs) \">\"))\n      (doseq [child children] (render-to-writer child writer))\n      (.write writer (str \"</\" (name tag) \">\")))\n    (seq? form) (doseq [item form] (render-to-writer item writer))\n    :else (.write writer (escape-html (str form)))))\n"}]}]
+d:["$","h2",null,{"children":"Key Takeaways"}]
+e:["$","ul",null,{"children":["\n",["$","li",null,{"children":"HTML is just data — vectors and maps render to strings"}],"\n",["$","li",null,{"children":"Interpreter: runtime flexibility, handles dynamic content"}],"\n",["$","li",null,{"children":"Compiler (macro): zero-overhead for static templates"}],"\n",["$","li",null,{"children":["CSS shorthand (",["$","$L3",null,{"children":":div#id.class"}],") parsed at render time"]}],"\n",["$","li",null,{"children":"Components are just functions returning hiccup vectors"}],"\n",["$","li",null,{"children":"Same pattern powers Reagent (ClojureScript), Hiccup, and our custom lib"}],"\n"]}]
+f:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-28-web-app","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-30-dsl","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+12:["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]
+15:null

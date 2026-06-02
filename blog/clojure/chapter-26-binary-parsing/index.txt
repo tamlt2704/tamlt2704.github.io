@@ -1,0 +1,84 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0fh6mub_7dyjx.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","clojure","chapter-26-binary-parsing",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","clojure/chapter-26-binary-parsing","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0fh6mub_7dyjx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0fh6mub_7dyjx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"sDveLK-RRRBD1X1NCLhFA"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-25-async","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-27-mp3-database","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T4e2,(defn parse-syncsafe-int [bytes]
+  (reduce (fn [acc b] (+ (bit-shift-left acc 7) (bit-and b 0x7F)))
+          0 bytes))
+
+(def id3-header-fields
+  [{:name :magic   :type :string :length 3}
+   {:name :version :type :bytes :length 2}
+   {:name :flags   :type :uint8 :length 1}
+   {:name :size    :type :bytes :length 4}])
+
+(defn parse-id3-frame [stream]
+  (let [frame-id (let [b (byte-array 4)] (.readFully stream b) (String. b))
+        size (.readInt stream)
+        _flags (byte-array 2)]
+    (.readFully stream _flags)
+    (when (pos? size)
+      (let [data (byte-array size)]
+        (.readFully stream data)
+        {:id frame-id
+         :data (String. data 1 (dec size) "UTF-8")}))))
+
+(defn parse-id3 [file]
+  (with-open [stream (DataInputStream. (FileInputStream. file))]
+    (let [header (read-struct stream id3-header-fields)
+          tag-size (parse-syncsafe-int (:size header))]
+      (assert (= (:magic header) "ID3") "No ID3 tag found")
+      (loop [frames [] bytes-read 0]
+        (if (>= bytes-read (- tag-size 10))
+          (assoc header :frames frames)
+          (if-let [frame (parse-id3-frame stream)]
+            (recur (conj frames frame) (+ bytes-read 10 (count (:data frame))))
+            (assoc header :frames frames)))))))
+10:[["$","h1",null,{"children":"Chapter 26: Practical — Parsing Binary Files"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-25-async","children":"prev: core.async Patterns"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-27-mp3-database","children":"next: An MP3 Database"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":["A binary file parser that reads structured binary formats (like PNG headers, ZIP files, ID3 tags). Mirrors ",["$","em",null,{"children":"Practical Common Lisp"}]," chapter 24."]}],"\n",["$","h2",null,{"children":"Reading Bytes"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(ns binary.core\n  (:require [clojure.java.io :as io])\n  (:import [java.io RandomAccessFile DataInputStream FileInputStream]\n           [java.nio ByteBuffer ByteOrder]))\n\n(defn read-bytes [file offset length]\n  (with-open [raf (RandomAccessFile. file \"r\")]\n    (.seek raf offset)\n    (let [buf (byte-array length)]\n      (.readFully raf buf)\n      buf)))\n\n(defn bytes->int [bytes & {:keys [order] :or {order :big}}]\n  (let [bb (ByteBuffer/wrap bytes)]\n    (when (= order :little) (.order bb ByteOrder/LITTLE_ENDIAN))\n    (case (count bytes)\n      1 (.get bb)\n      2 (.getShort bb)\n      4 (.getInt bb)\n      8 (.getLong bb))))\n\n(defn bytes->string [bytes]\n  (String. bytes \"UTF-8\"))\n"}]}],"\n",["$","h2",null,{"children":"Declarative Binary Format DSL"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(defn read-field [stream {:keys [type length]}]\n  (let [buf (byte-array length)]\n    (.readFully stream buf)\n    (case type\n      :bytes buf\n      :string (String. (byte-array (take-while #(not= % 0) buf)) \"ISO-8859-1\")\n      :uint8 (bit-and 0xFF (aget buf 0))\n      :uint16 (bytes->int buf)\n      :uint32 (bytes->int buf)\n      :uint16-le (bytes->int buf :order :little)\n      :uint32-le (bytes->int buf :order :little))))\n\n(defn read-struct [stream fields]\n  (reduce (fn [acc {:keys [name] :as field}]\n            (assoc acc name (read-field stream field)))\n          {}\n          fields))\n"}]}],"\n",["$","h2",null,{"children":"PNG Header Parser"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(def png-signature [137 80 78 71 13 10 26 10])\n\n(def ihdr-fields\n  [{:name :width    :type :uint32 :length 4}\n   {:name :height   :type :uint32 :length 4}\n   {:name :bit-depth :type :uint8 :length 1}\n   {:name :color-type :type :uint8 :length 1}\n   {:name :compression :type :uint8 :length 1}\n   {:name :filter :type :uint8 :length 1}\n   {:name :interlace :type :uint8 :length 1}])\n\n(defn parse-png [file]\n  (with-open [stream (DataInputStream. (FileInputStream. file))]\n    ;; Check signature\n    (let [sig (byte-array 8)]\n      (.readFully stream sig)\n      (assert (= (vec sig) (mapv byte png-signature)) \"Not a PNG file\"))\n    ;; Read IHDR chunk\n    (let [chunk-length (.readInt stream)\n          chunk-type (let [b (byte-array 4)] (.readFully stream b) (String. b))]\n      (assert (= chunk-type \"IHDR\") \"First chunk must be IHDR\")\n      (read-struct stream ihdr-fields))))\n\n(parse-png \"test.png\")\n;=> {:width 1920, :height 1080, :bit-depth 8, :color-type 6, ...}\n"}]}],"\n",["$","h2",null,{"children":"ID3v2 Tag Parser (MP3 Metadata)"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"$13"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17"]
+14:["$","h2",null,{"children":"ZIP File Reader"}]
+18:T4af,(def zip-local-header-fields
+  [{:name :signature :type :uint32-le :length 4}
+   {:name :version   :type :uint16-le :length 2}
+   {:name :flags     :type :uint16-le :length 2}
+   {:name :method    :type :uint16-le :length 2}
+   {:name :mod-time  :type :uint16-le :length 2}
+   {:name :mod-date  :type :uint16-le :length 2}
+   {:name :crc32     :type :uint32-le :length 4}
+   {:name :compressed-size   :type :uint32-le :length 4}
+   {:name :uncompressed-size :type :uint32-le :length 4}
+   {:name :name-length :type :uint16-le :length 2}
+   {:name :extra-length :type :uint16-le :length 2}])
+
+(defn list-zip-entries [file]
+  (with-open [stream (DataInputStream. (FileInputStream. file))]
+    (loop [entries []]
+      (let [header (read-struct stream zip-local-header-fields)]
+        (if (not= (:signature header) 0x04034b50)
+          entries
+          (let [name-buf (byte-array (:name-length header))
+                _ (.readFully stream name-buf)
+                _ (.skipBytes stream (:extra-length header))
+                _ (.skipBytes stream (:compressed-size header))
+                entry-name (String. name-buf)]
+            (recur (conj entries (assoc header :filename entry-name)))))))))
+15:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"$18"}]}]
+16:["$","h2",null,{"children":"Key Takeaways"}]
+17:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L12",null,{"children":"DataInputStream"}]," for sequential reads, ",["$","$L12",null,{"children":"RandomAccessFile"}]," for seeking"]}],"\n",["$","li",null,{"children":[["$","$L12",null,{"children":"ByteBuffer"}]," handles endianness (big-endian vs little-endian)"]}],"\n",["$","li",null,{"children":["Declarative field specs (",["$","$L12",null,{"children":"{:name :x :type :uint32 :length 4}"}],") make formats readable"]}],"\n",["$","li",null,{"children":[["$","$L12",null,{"children":"read-struct"}]," pattern: reduce over field specs, building a map"]}],"\n",["$","li",null,{"children":"Real binary formats (PNG, ID3, ZIP) are just sequences of typed fields"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+19:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 26 binary parsing — clojure"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L19","3",{}]]

@@ -1,0 +1,70 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+15:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+4:T5e4,(ns todo.api
+  (:require [reitit.ring :as ring]
+            [reitit.coercion.spec]
+            [reitit.ring.coercion :as coercion]
+            [reitit.ring.middleware.muuntaja :as muuntaja]
+            [muuntaja.core :as m]
+            [ring.adapter.jetty :as jetty]))
+
+;; In-memory "database"
+(def todos (atom {}))
+(def id-counter (atom 0))
+
+;; Handlers
+(defn list-todos [_]
+  {:status 200
+   :body (vals @todos)})
+
+(defn create-todo [{:keys [body-params]}]
+  (let [id (swap! id-counter inc)
+        todo (assoc body-params :id id :done false :created-at (str (java.time.Instant/now)))]
+    (swap! todos assoc id todo)
+    {:status 201
+     :body todo}))
+
+(defn get-todo [{{:keys [id]} :path-params}]
+  (if-let [todo (get @todos (parse-long id))]
+    {:status 200 :body todo}
+    {:status 404 :body {:error "Not found"}}))
+
+(defn update-todo [{{:keys [id]} :path-params :keys [body-params]}]
+  (let [id (parse-long id)]
+    (if (contains? @todos id)
+      (let [updated (swap! todos update id merge body-params)]
+        {:status 200 :body (get updated id)})
+      {:status 404 :body {:error "Not found"}})))
+
+(defn delete-todo [{{:keys [id]} :path-params}]
+  (let [id (parse-long id)]
+    (swap! todos dissoc id)
+    {:status 204 :body nil}))
+
+(defn toggle-todo [{{:keys [id]} :path-params}]
+  (let [id (parse-long id)]
+    (if (contains? @todos id)
+      (let [updated (swap! todos update-in [id :done] not)]
+        {:status 200 :body (get updated id)})
+      {:status 404 :body {:error "Not found"}})))
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 12: Practical — A REST API"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-11-polymorphism","children":"prev: Polymorphism"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-13-concurrency","children":"next: Concurrency"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":"A JSON REST API for a todo app using Ring (HTTP) and Reitit (routing). You'll see how Clojure's simplicity makes web services trivial."}],"\n",["$","h2",null,{"children":"Setup"}],"\n",["$","p",null,{"children":[["$","$L2",null,{"children":"deps.edn"}],":"]}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"{:deps {org.clojure/clojure {:mvn/version \"1.12.0\"}\n        ring/ring-core {:mvn/version \"1.12.1\"}\n        ring/ring-jetty-adapter {:mvn/version \"1.12.1\"}\n        metosin/reitit {:mvn/version \"0.7.2\"}\n        metosin/muuntaja {:mvn/version \"0.6.10\"}}\n :paths [\"src\"]}\n"}]}],"\n",["$","h2",null,{"children":"Ring: The Foundation"}],"\n",["$","p",null,{"children":"Ring is Clojure's HTTP abstraction. A web app is just a function:"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":";; Request → Response\n(defn handler [request]\n  {:status 200\n   :headers {\"Content-Type\" \"text/plain\"}\n   :body \"Hello, World!\"})\n"}]}],"\n",["$","p",null,{"children":"That's it. A map in, a map out."}],"\n",["$","h2",null,{"children":"Building the API"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"$4"}]}],"\n",["$","h2",null,{"children":"Routes"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"(def app\n  (ring/ring-handler\n    (ring/router\n      [[\"/api\"\n        [\"/todos\" {:get list-todos\n                   :post create-todo}]\n        [\"/todos/:id\" {:get get-todo\n                       :put update-todo\n                       :delete delete-todo}]\n        [\"/todos/:id/toggle\" {:post toggle-todo}]]]\n      {:data {:muuntaja m/instance\n              :middleware [muuntaja/format-middleware\n                          coercion/coerce-exceptions-middleware\n                          coercion/coerce-request-middleware\n                          coercion/coerce-response-middleware]}})))\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10"]}],"$L11"]}],["$L12","$L13"],"$L14"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sDveLK-RRRBD1X1NCLhFA"}
+5:["$","h2",null,{"children":"Middleware"}]
+6:["$","p",null,{"children":"Middleware wraps handlers — like decorators:"}]
+7:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"(defn wrap-logging [handler]\n  (fn [request]\n    (let [start (System/currentTimeMillis)\n          response (handler request)\n          duration (- (System/currentTimeMillis) start)]\n      (printf \"%s %s %d (%dms)%n\"\n              (:request-method request)\n              (:uri request)\n              (:status response)\n              duration)\n      response)))\n\n(defn wrap-cors [handler]\n  (fn [request]\n    (let [response (handler request)]\n      (update response :headers merge\n              {\"Access-Control-Allow-Origin\" \"*\"\n               \"Access-Control-Allow-Methods\" \"GET,POST,PUT,DELETE\"\n               \"Access-Control-Allow-Headers\" \"Content-Type\"}))))\n"}]}]
+8:["$","h2",null,{"children":"Starting the Server"}]
+9:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"(defn -main [& _]\n  (let [port 3000]\n    (jetty/run-jetty (-> app wrap-logging wrap-cors)\n                     {:port port :join? false})\n    (println (str \"Server running on http://localhost:\" port))))\n"}]}]
+a:["$","h2",null,{"children":"Testing with curl"}]
+b:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-bash","children":"# Create\ncurl -X POST http://localhost:3000/api/todos \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\": \"Learn Clojure\", \"priority\": \"high\"}'\n\n# List\ncurl http://localhost:3000/api/todos\n\n# Toggle done\ncurl -X POST http://localhost:3000/api/todos/1/toggle\n\n# Update\ncurl -X PUT http://localhost:3000/api/todos/1 \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\": \"Master Clojure\"}'\n\n# Delete\ncurl -X DELETE http://localhost:3000/api/todos/1\n"}]}]
+c:["$","h2",null,{"children":"REPL-Driven API Development"}]
+d:["$","p",null,{"children":"The killer feature: modify handlers while the server is running."}]
+e:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":";; In your REPL:\n(def server (jetty/run-jetty app {:port 3000 :join? false}))\n\n;; Edit a handler, re-evaluate it — instantly live!\n;; No restart needed.\n\n;; Stop:\n(.stop server)\n"}]}]
+f:["$","h2",null,{"children":"Key Takeaways"}]
+10:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Ring: request map → response map. That's the whole web framework."}],"\n",["$","li",null,{"children":"Reitit: data-driven routing (routes are just vectors)"}],"\n",["$","li",null,{"children":"Middleware: functions that wrap handlers (logging, CORS, auth)"}],"\n",["$","li",null,{"children":"Muuntaja: automatic JSON encoding/decoding"}],"\n",["$","li",null,{"children":"REPL-driven: change code, re-eval, instantly live — no restarts"}],"\n"]}]
+11:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-11-polymorphism","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-13-concurrency","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+12:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+13:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+14:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+17:null

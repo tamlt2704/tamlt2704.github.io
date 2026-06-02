@@ -1,0 +1,121 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0fh6mub_7dyjx.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","clojure","chapter-28-web-app",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","clojure/chapter-28-web-app","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0fh6mub_7dyjx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0fh6mub_7dyjx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"sDveLK-RRRBD1X1NCLhFA"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-27-mp3-database","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-29-html-generation","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T43c,(ns mp3web.server
+  (:require [ring.adapter.jetty :as jetty]
+            [reitit.ring :as ring]
+            [muuntaja.core :as m]
+            [reitit.ring.middleware.muuntaja :as muuntaja]
+            [mp3db.core :as db]
+            [mp3web.views :as views]))
+
+(def app
+  (ring/ring-handler
+    (ring/router
+      [["/" {:get {:handler views/home}}]
+       ["/artists" {:get {:handler views/artist-list}}]
+       ["/artists/:name" {:get {:handler views/artist-detail}}]
+       ["/albums/:name" {:get {:handler views/album-detail}}]
+       ["/search" {:get {:handler views/search}}]
+       ["/api"
+        ["/tracks" {:get {:handler api/list-tracks}}]
+        ["/search" {:get {:handler api/search-tracks}}]
+        ["/stats" {:get {:handler api/stats}}]]
+       ["/stream/:file" {:get {:handler views/stream-file}}]]
+      {:data {:muuntaja m/instance
+              :middleware [muuntaja/format-middleware]}})))
+
+(defn -main [& args]
+  (db/load-db! (or (first args) "./music"))
+  (jetty/run-jetty app {:port 8080 :join? false})
+  (println "MP3 Web running on http://localhost:8080"))
+14:T958,(ns mp3web.views
+  (:require [mp3db.core :as db]
+            [hiccup2.core :refer [html]]
+            [clojure.string :as str]))
+
+(defn layout [title & body]
+  {:status 200
+   :headers {"Content-Type" "text/html"}
+   :body (str (html
+    [:html
+     [:head [:title title]
+      [:meta {:charset "utf-8"}]
+      [:link {:rel "stylesheet" :href "https://cdn.simplecss.org/simple.min.css"}]]
+     [:body
+      [:header [:nav [:a {:href "/"} "Home"] " | "
+                     [:a {:href "/artists"} "Artists"] " | "
+                     [:a {:href "/search"} "Search"]]]
+      [:main body]]]))})
+
+(defn home [_]
+  (let [{:keys [total-tracks artists albums]} (db/stats)]
+    (layout "MP3 Library"
+      [:h1 "🎵 My Music Library"]
+      [:div.stats
+       [:p (str total-tracks " tracks • " artists " artists • " albums " albums")]]
+      [:h2 "Top Artists"]
+      [:ul (for [{:keys [artist count]} (db/top-artists 10)]
+             [:li [:a {:href (str "/artists/" (java.net.URLEncoder/encode artist "UTF-8"))}
+                   artist] (str " (" count " tracks)")])])))
+
+(defn artist-list [_]
+  (layout "Artists"
+    [:h1 "Artists"]
+    [:ul (for [artist (db/artists)]
+           [:li [:a {:href (str "/artists/" (java.net.URLEncoder/encode artist "UTF-8"))}
+                 artist]])]))
+
+(defn artist-detail [{{:keys [name]} :path-params}]
+  (let [decoded (java.net.URLDecoder/decode name "UTF-8")
+        tracks (db/by-artist decoded)
+        albums (distinct (map :album tracks))]
+    (layout decoded
+      [:h1 decoded]
+      [:p (str (count tracks) " tracks across " (count albums) " albums")]
+      (for [album albums]
+        [:div
+         [:h2 album]
+         [:ol (for [t (filter #(= (:album %) album) tracks)]
+                [:li (:title t)])]]))))
+
+(defn search [{{:keys [q]} :query-params :as req}]
+  (layout "Search"
+    [:h1 "Search"]
+    [:form {:method "get" :action "/search"}
+     [:input {:type "text" :name "q" :value (or q "") :placeholder "Artist, album, or title..."}]
+     [:button {:type "submit"} "Search"]]
+    (when q
+      (let [results (db/search q)]
+        [:div
+         [:p (str (count results) " results for \"" q "\"")]
+         [:table
+          [:thead [:tr [:th "Title"] [:th "Artist"] [:th "Album"]]]
+          [:tbody (for [{:keys [title artist album]} (take 50 results)]
+                    [:tr [:td title] [:td artist] [:td album]])]]]))))
+10:[["$","h1",null,{"children":"Chapter 28: Practical — A Web Application"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-27-mp3-database","children":"prev: An MP3 Database"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-29-html-generation","children":"next: HTML Generation"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":"A full web application combining the MP3 database (chapter 27) with a web UI: browse artists, albums, search tracks, and stream audio. Mirrors PCL chapters 26+29."}],"\n",["$","h2",null,{"children":"Server with Ring + Reitit"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"$13"}]}],"\n",["$","h2",null,{"children":"HTML Views (Server-Side Rendering)"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"$14"}]}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a"]
+15:["$","h2",null,{"children":"Audio Streaming"}]
+16:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(defn stream-file [{{:keys [file]} :path-params}]\n  (let [path (java.net.URLDecoder/decode file \"UTF-8\")\n        f (clojure.java.io/file path)]\n    (if (.exists f)\n      {:status 200\n       :headers {\"Content-Type\" \"audio/mpeg\"\n                 \"Content-Length\" (str (.length f))\n                 \"Accept-Ranges\" \"bytes\"}\n       :body f}\n      {:status 404 :body \"Not found\"})))\n"}]}]
+17:["$","h2",null,{"children":"JSON API"}]
+18:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(ns mp3web.api\n  (:require [mp3db.core :as db]))\n\n(defn list-tracks [{:keys [query-params]}]\n  (let [limit (parse-long (get query-params \"limit\" \"50\"))\n        offset (parse-long (get query-params \"offset\" \"0\"))]\n    {:status 200\n     :body {:tracks (->> (:tracks @db/db) (drop offset) (take limit))\n            :total (count (:tracks @db/db))}}))\n\n(defn search-tracks [{:keys [query-params]}]\n  {:status 200\n   :body {:results (take 50 (db/search (get query-params \"q\" \"\")))}})\n\n(defn stats [_]\n  {:status 200\n   :body (db/stats)})\n"}]}]
+19:["$","h2",null,{"children":"Key Takeaways"}]
+1a:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Ring handlers return maps; responses are data, not objects"}],"\n",["$","li",null,{"children":"Hiccup generates HTML from Clojure data structures (vectors → HTML)"}],"\n",["$","li",null,{"children":"Reitit routes are data (vectors of paths + handler maps)"}],"\n",["$","li",null,{"children":["File streaming: just return a ",["$","$L12",null,{"children":"java.io.File"}]," as the response body"]}],"\n",["$","li",null,{"children":"Same database functions serve both HTML views and JSON API"}],"\n",["$","li",null,{"children":"Server-side rendering is trivial — just functions returning strings"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1b:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 28 web app — clojure"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1b","3",{}]]

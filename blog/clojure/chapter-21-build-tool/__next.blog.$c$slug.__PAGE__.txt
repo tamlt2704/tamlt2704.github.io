@@ -1,0 +1,59 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+11:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+12:"$Sreact.suspense"
+4:T453,(ns build.core
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str]))
+
+(def tasks (atom {}))
+
+(defmacro deftask [name opts & body]
+  `(swap! tasks assoc ~(keyword name)
+     {:name ~(keyword name)
+      :deps ~(:deps opts [])
+      :doc ~(:doc opts "")
+      :fn (fn [] ~@body)}))
+
+;; Define tasks
+(deftask clean {:doc "Remove build artifacts"}
+  (let [dir (io/file "target")]
+    (when (.exists dir)
+      (doseq [f (reverse (file-seq dir))]
+        (.delete f)))
+    (println "✓ Cleaned target/")))
+
+(deftask compile {:doc "Compile source files" :deps [:clean]}
+  (println "Compiling...")
+  (.mkdirs (io/file "target/classes"))
+  (Thread/sleep 500)
+  (println "✓ Compiled"))
+
+(deftask test {:doc "Run tests" :deps [:compile]}
+  (println "Running tests...")
+  (Thread/sleep 300)
+  (println "✓ 42 tests passed"))
+
+(deftask jar {:doc "Build JAR" :deps [:compile :test]}
+  (println "Packaging JAR...")
+  (Thread/sleep 200)
+  (println "✓ target/app.jar"))
+
+(deftask deploy {:doc "Deploy to server" :deps [:jar]}
+  (println "Deploying...")
+  (println "✓ Deployed to production"))
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 21: Practical — A Build Tool"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-20-chat-server","children":"prev: A Chat Server"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-22-java-interop","children":"next: Java Interop"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":"A miniature build tool (like Make/Lein/Babashka tasks) that resolves task dependencies, runs them in correct order, and supports incremental builds. This exercises graphs, topological sort, and file system operations."}],"\n",["$","h2",null,{"children":"Task Definition"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"$4"}]}],"\n",["$","h2",null,{"children":"Dependency Resolution (Topological Sort)"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn resolve-deps [task-name all-tasks]\n  (let [visited (atom #{})\n        order (atom [])]\n    (letfn [(visit [name]\n              (when-not (@visited name)\n                (swap! visited conj name)\n                (let [task (get all-tasks name)]\n                  (when-not task\n                    (throw (ex-info (str \"Unknown task: \" name) {:task name})))\n                  (doseq [dep (:deps task)]\n                    (visit dep))\n                  (swap! order conj name))))]\n      (visit task-name)\n      @order)))\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(resolve-deps :deploy @tasks)\n;=> [:clean :compile :test :jar :deploy]\n"}]}],"\n",["$","h2",null,{"children":"Running Tasks"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn run-task! [task-name]\n  (let [execution-order (resolve-deps task-name @tasks)\n        start (System/currentTimeMillis)]\n    (printf \"Running: %s (deps: %s)%n\" task-name (str/join \" → \" execution-order))\n    (println \"─────────────────────\")\n    (doseq [t execution-order]\n      (let [task (get @tasks t)\n            t-start (System/currentTimeMillis)]\n        ((:fn task))\n        (printf \"  [%s: %dms]%n\" (name t) (- (System/currentTimeMillis) t-start))))\n    (println \"─────────────────────\")\n    (printf \"Done in %dms%n\" (- (System/currentTimeMillis) start))))\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc"]}],"$Ld"]}],["$Le","$Lf"],"$L10"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sDveLK-RRRBD1X1NCLhFA"}
+5:["$","h2",null,{"children":"Incremental Builds (File Timestamps)"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn newer-than? [source target]\n  (let [src-file (io/file source)\n        tgt-file (io/file target)]\n    (or (not (.exists tgt-file))\n        (> (.lastModified src-file) (.lastModified tgt-file)))))\n\n(defn needs-rebuild? [sources target]\n  (some #(newer-than? % target) sources))\n\n(deftask compile-incremental\n  {:doc \"Only recompile changed files\" :deps [:clean]}\n  (let [sources (filter #(str/ends-with? (.getName %) \".clj\")\n                        (file-seq (io/file \"src\")))\n        changed (filter #(newer-than? % \"target/.compiled\") sources)]\n    (if (empty? changed)\n      (println \"✓ Nothing to compile\")\n      (do\n        (printf \"Compiling %d files...%n\" (count changed))\n        (doseq [f changed] (println \"  \" (.getPath f)))\n        (spit \"target/.compiled\" (str (System/currentTimeMillis)))\n        (println \"✓ Done\")))))\n"}]}]
+7:["$","h2",null,{"children":"Parallel Task Execution"}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn parallel-tasks [task-names]\n  (let [futures (mapv #(future (run-task! %)) task-names)]\n    (mapv deref futures)))\n"}]}]
+9:["$","h2",null,{"children":"CLI Interface"}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn list-tasks []\n  (println \"Available tasks:\")\n  (doseq [[name {:keys [doc deps]}] (sort @tasks)]\n    (printf \"  %-15s %s%s%n\" (clojure.core/name name) doc\n            (if (seq deps) (str \" [deps: \" (str/join \", \" (map clojure.core/name deps)) \"]\") \"\"))))\n\n(defn -main [& args]\n  (if (empty? args)\n    (list-tasks)\n    (let [task (keyword (first args))]\n      (if (contains? @tasks task)\n        (run-task! task)\n        (println \"Unknown task:\" (first args) \"\\nRun without args to see available tasks.\")))))\n"}]}]
+b:["$","h2",null,{"children":"Key Takeaways"}]
+c:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"deftask"}]," macro turns task definition into data stored in an atom"]}],"\n",["$","li",null,{"children":"Topological sort resolves dependency order (no task runs before its deps)"}],"\n",["$","li",null,{"children":"File timestamps enable incremental builds (skip unchanged files)"}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"future"}]," + ",["$","$L3",null,{"children":"deref"}]," for parallel independent tasks"]}],"\n",["$","li",null,{"children":"The entire build system is ~80 lines — Clojure's conciseness at work"}],"\n"]}]
+d:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-20-chat-server","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-22-java-interop","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+e:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+f:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+10:["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]
+13:null

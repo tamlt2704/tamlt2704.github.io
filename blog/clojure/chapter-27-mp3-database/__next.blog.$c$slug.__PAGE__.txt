@@ -1,0 +1,45 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+f:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+4:T41c,(ns mp3db.core
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str]
+            [mp3db.id3 :refer [parse-id3]]))
+
+(defn mp3-files [dir]
+  (->> (file-seq (io/file dir))
+       (filter #(.isFile %))
+       (filter #(str/ends-with? (str/lower-case (.getName %)) ".mp3"))))
+
+(defn scan-directory [dir]
+  (let [files (mp3-files dir)]
+    (printf "Found %d MP3 files%n" (count files))
+    (mapv (fn [f]
+            (try
+              (let [tags (parse-id3 (.getPath f))
+                    frames (into {} (map (juxt :id :data) (:frames tags)))]
+                {:file (.getPath f)
+                 :size (.length f)
+                 :title (get frames "TIT2" "Unknown")
+                 :artist (get frames "TPE1" "Unknown")
+                 :album (get frames "TALB" "Unknown")
+                 :year (get frames "TDRC" "")
+                 :genre (get frames "TCON" "")
+                 :track (get frames "TRCK" "")})
+              (catch Exception e
+                {:file (.getPath f) :error (.getMessage e)})))
+          files)))
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 27: Practical — An MP3 Database"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-26-binary-parsing","children":"prev: Parsing Binary Files"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-28-web-app","children":"next: A Web App"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":"Scan a music directory, extract ID3 metadata from MP3 files, store it in an in-memory database, and provide search/filter/statistics. Mirrors PCL chapters 25+27."}],"\n",["$","h2",null,{"children":"Scanning Files"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"$4"}]}],"\n",["$","h2",null,{"children":"The Database"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(def db (atom {:tracks [] :index {}}))\n\n(defn build-index [tracks]\n  {:by-artist (group-by :artist tracks)\n   :by-album (group-by :album tracks)\n   :by-genre (group-by :genre tracks)\n   :by-year (group-by :year tracks)})\n\n(defn load-db! [dir]\n  (let [tracks (remove :error (scan-directory dir))\n        index (build-index tracks)]\n    (reset! db {:tracks tracks :index index})\n    (printf \"Loaded %d tracks%n\" (count tracks))))\n"}]}],"\n",["$","h2",null,{"children":"Querying"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn search [query]\n  (let [q (str/lower-case query)]\n    (filter (fn [{:keys [title artist album]}]\n              (or (str/includes? (str/lower-case title) q)\n                  (str/includes? (str/lower-case artist) q)\n                  (str/includes? (str/lower-case album) q)))\n            (:tracks @db))))\n\n(defn by-artist [artist]\n  (get-in @db [:index :by-artist artist] []))\n\n(defn by-album [album]\n  (get-in @db [:index :by-album album] []))\n\n(defn artists []\n  (sort (keys (get-in @db [:index :by-artist]))))\n\n(defn albums []\n  (sort (keys (get-in @db [:index :by-album]))))\n\n(defn albums-by [artist]\n  (->> (by-artist artist)\n       (map :album)\n       distinct\n       sort))\n"}]}],"\n",["$","h2",null,{"children":"Statistics"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn stats []\n  (let [tracks (:tracks @db)]\n    {:total-tracks (count tracks)\n     :total-size (reduce + (map :size tracks))\n     :artists (count (distinct (map :artist tracks)))\n     :albums (count (distinct (map :album tracks)))\n     :genres (frequencies (map :genre tracks))\n     :decades (->> tracks\n                   (map #(when (seq (:year %))\n                           (str (subs (:year %) 0 3) \"0s\")))\n                   (remove nil?)\n                   frequencies\n                   (sort-by key))}))\n\n(defn top-artists [n]\n  (->> (:tracks @db)\n       (group-by :artist)\n       (map (fn [[artist tracks]] {:artist artist :count (count tracks)}))\n       (sort-by :count >)\n       (take n)))\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La"]}],"$Lb"]}],["$Lc","$Ld"],"$Le"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sDveLK-RRRBD1X1NCLhFA"}
+5:["$","h2",null,{"children":"CLI Interface"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn print-tracks [tracks]\n  (doseq [{:keys [title artist album]} tracks]\n    (printf \"  %-30s %-25s %s%n\" title artist album)))\n\n(defn -main [& args]\n  (let [dir (or (first args) \".\")]\n    (load-db! dir)\n    (println)\n    (let [{:keys [total-tracks artists albums]} (stats)]\n      (printf \"📊 %d tracks, %d artists, %d albums%n%n\" total-tracks artists albums))\n    (println \"Top 5 Artists:\")\n    (doseq [{:keys [artist count]} (top-artists 5)]\n      (printf \"  %-30s %d tracks%n\" artist count))\n    (println \"\\nType a search query:\")\n    (loop []\n      (print \"> \") (flush)\n      (when-let [q (read-line)]\n        (if (= q \"quit\")\n          (println \"Bye!\")\n          (do (print-tracks (take 20 (search q)))\n              (recur)))))))\n"}]}]
+7:["$","h2",null,{"children":"Persistence with EDN"}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn save-db! [filename]\n  (spit filename (pr-str (:tracks @db))))\n\n(defn load-from-cache! [filename]\n  (when (.exists (io/file filename))\n    (let [tracks (read-string (slurp filename))]\n      (reset! db {:tracks tracks :index (build-index tracks)})\n      true)))\n"}]}]
+9:["$","h2",null,{"children":"Key Takeaways"}]
+a:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"file-seq"}]," for recursive directory traversal"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"group-by"}]," creates instant indexes over any field"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"frequencies"}]," for counting occurrences (genre distribution, decades)"]}],"\n",["$","li",null,{"children":"Atom holds the entire \"database\" — indexed maps in memory"}],"\n",["$","li",null,{"children":"Combine binary parsing (chapter 26) with data processing (chapter 8)"}],"\n",["$","li",null,{"children":"EDN serialization for caching parsed metadata"}],"\n"]}]
+b:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-26-binary-parsing","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-28-web-app","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+e:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+11:null

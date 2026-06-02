@@ -1,0 +1,42 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+d:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+4:T434,(defn scrape-product-page [url]
+  (let [{:keys [body error]} (fetch url)]
+    (when-not error
+      (let [parsed (parse-html body)]
+        {:url url
+         :title (first (extract-text parsed (s/class "product-title")))
+         :price (first (extract-text parsed (s/class "price")))
+         :description (first (extract-text parsed (s/tag :p)))}))))
+
+(defn crawl [seed-url max-pages]
+  (loop [visited #{}
+         queue [seed-url]
+         results []]
+    (if (or (empty? queue) (>= (count results) max-pages))
+      results
+      (let [url (first queue)]
+        (if (visited url)
+          (recur visited (rest queue) results)
+          (let [{:keys [body error] :as result} (fetch url)]
+            (Thread/sleep 500)
+            (if error
+              (recur (conj visited url) (rest queue) results)
+              (let [parsed (parse-html body)
+                    links (extract-links parsed url)]
+                (recur (conj visited url)
+                       (into (vec (rest queue)) (remove visited links))
+                       (conj results result))))))))))
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 19: Practical — A Web Scraper"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-18-spam-filter","children":"prev: A Spam Filter"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-20-chat-server","children":"next: A Chat Server"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":"A concurrent web scraper that fetches pages, extracts data, respects rate limits, and handles errors gracefully."}],"\n",["$","h2",null,{"children":"Dependencies"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"{:deps {org.clojure/clojure {:mvn/version \"1.12.0\"}\n        org.clojure/core.async {:mvn/version \"1.6.681\"}\n        clj-http/clj-http {:mvn/version \"3.13.0\"}\n        hickory/hickory {:mvn/version \"0.7.4\"}}}\n"}]}],"\n",["$","h2",null,{"children":"Fetching Pages"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(ns scraper.core\n  (:require [clj-http.client :as http]\n            [hickory.core :as h]\n            [hickory.select :as s]\n            [clojure.core.async :as async :refer [go chan <! >! <!!]]\n            [clojure.string :as str]))\n\n(defn fetch [url]\n  (try\n    {:url url\n     :body (:body (http/get url {:headers {\"User-Agent\" \"ClojureScraper/1.0\"}\n                                  :socket-timeout 10000\n                                  :connection-timeout 5000}))}\n    (catch Exception e\n      {:url url :error (.getMessage e)})))\n"}]}],"\n",["$","h2",null,{"children":"Parsing HTML"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn parse-html [html]\n  (-> html h/parse h/as-hickory))\n\n(defn extract-links [parsed base-url]\n  (->> (s/select (s/tag :a) parsed)\n       (map #(get-in % [:attrs :href]))\n       (filter some?)\n       (map #(if (str/starts-with? % \"http\") % (str base-url %)))\n       distinct))\n\n(defn extract-text [parsed selector]\n  (->> (s/select selector parsed)\n       (map (fn [el] (apply str (filter string? (tree-seq map? :content el)))))\n       (map str/trim)\n       (remove empty?)))\n"}]}],"\n",["$","h2",null,{"children":"Rate-Limited Concurrent Fetcher"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn scrape-urls [urls {:keys [concurrency delay-ms] :or {concurrency 5 delay-ms 1000}}]\n  (let [input (chan (count urls))\n        output (chan (count urls))]\n    ;; Feed URLs\n    (doseq [url urls] (async/>!! input url))\n    (async/close! input)\n\n    ;; Workers\n    (dotimes [_ concurrency]\n      (go (loop []\n            (when-let [url (<! input)]\n              (let [result (fetch url)]\n                (>! output result))\n              (async/<! (async/timeout delay-ms))\n              (recur)))))\n\n    ;; Collect results\n    (loop [results [] remaining (count urls)]\n      (if (zero? remaining)\n        results\n        (recur (conj results (<!! output)) (dec remaining))))))\n"}]}],"\n",["$","h2",null,{"children":"Full Scraping Pipeline"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8"]}],"$L9"]}],["$La","$Lb"],"$Lc"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sDveLK-RRRBD1X1NCLhFA"}
+5:["$","h2",null,{"children":"Saving Results"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defn results->csv [results filename]\n  (with-open [w (clojure.java.io/writer filename)]\n    (.write w \"url,title,price\\n\")\n    (doseq [{:keys [url title price]} results]\n      (.write w (str (pr-str url) \",\" (pr-str title) \",\" (pr-str price) \"\\n\")))))\n"}]}]
+7:["$","h2",null,{"children":"Key Takeaways"}]
+8:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L3",null,{"children":"clj-http"}]," for HTTP requests with timeouts and headers"]}],"\n",["$","li",null,{"children":"Hickory for HTML parsing with CSS selector-like queries"}],"\n",["$","li",null,{"children":"core.async channels for bounded concurrency (no thread explosion)"}],"\n",["$","li",null,{"children":["Rate limiting via ",["$","$L3",null,{"children":"async/timeout"}]," between requests"]}],"\n",["$","li",null,{"children":"Crawl loop with visited set prevents infinite cycles"}],"\n"]}]
+9:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-18-spam-filter","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-20-chat-server","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+a:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+b:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+c:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

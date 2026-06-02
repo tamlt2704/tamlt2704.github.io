@@ -1,0 +1,55 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+f:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 23: Practical — A Database Layer"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-22-java-interop","children":"prev: Java Interop"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-24-clojurescript","children":"next: ClojureScript"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":["A complete database access layer: connection pooling, queries, migrations, and transactions using ",["$","$L2",null,{"children":"next.jdbc"}]," — the standard Clojure database library."]}],"\n",["$","h2",null,{"children":"Setup"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"{:deps {org.clojure/clojure {:mvn/version \"1.12.0\"}\n        com.github.seancorfield/next.jdbc {:mvn/version \"1.3.939\"}\n        com.zaxxer/HikariCP {:mvn/version \"5.1.0\"}\n        org.postgresql/postgresql {:mvn/version \"42.7.4\"}}}\n"}]}],"\n",["$","h2",null,{"children":"Connection Pool"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"(ns myapp.db\n  (:require [next.jdbc :as jdbc]\n            [next.jdbc.result-set :as rs]\n            [next.jdbc.sql :as sql]))\n\n(def db-spec {:dbtype \"postgresql\"\n              :host \"localhost\"\n              :port 5432\n              :dbname \"myapp\"\n              :user \"dev\"\n              :password \"dev123\"})\n\n(def datasource\n  (jdbc/get-datasource\n    (assoc db-spec\n      :maximumPoolSize 10\n      :connectionTimeout 30000)))\n"}]}],"\n",["$","h2",null,{"children":"Basic Queries"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":";; Execute raw SQL\n(jdbc/execute! datasource [\"SELECT * FROM users WHERE active = ?\" true])\n;=> [{:users/id 1, :users/name \"Alice\", :users/active true} ...]\n\n;; Single result\n(jdbc/execute-one! datasource [\"SELECT * FROM users WHERE id = ?\" 42])\n;=> {:users/id 42, :users/name \"Alice\", ...}\n\n;; With custom row builder (unqualified keys)\n(jdbc/execute! datasource [\"SELECT * FROM users\"]\n  {:builder-fn rs/as-unqualified-maps})\n;=> [{:id 1, :name \"Alice\", :active true} ...]\n"}]}],"\n",["$","h2",null,{"children":"CRUD Operations"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":";; Insert\n(sql/insert! datasource :users {:name \"Bob\" :email \"bob@test.com\" :active true})\n;=> {:users/id 5}\n\n;; Insert multiple\n(sql/insert-multi! datasource :users [:name :email]\n  [[\"Alice\" \"alice@t.com\"] [\"Bob\" \"bob@t.com\"]])\n\n;; Update\n(sql/update! datasource :users {:active false} {:id 42})\n\n;; Delete\n(sql/delete! datasource :users {:id 42})\n\n;; Find by keys\n(sql/find-by-keys datasource :users {:active true})\n;=> [{:id 1, :name \"Alice\"} ...]\n"}]}],"\n",["$","h2",null,{"children":"Transactions"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"(jdbc/with-transaction [tx datasource]\n  (let [user (sql/insert! tx :users {:name \"Alice\" :email \"a@b.com\"})\n        user-id (:users/id user)]\n    (sql/insert! tx :profiles {:user_id user-id :bio \"Hello!\"})\n    (sql/insert! tx :settings {:user_id user-id :theme \"dark\"})\n    user-id))\n;; All three inserts succeed or all fail\n"}]}],"\n",["$","h2",null,{"children":"Building a Repository"}],"\n",["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"(ns myapp.repo.users\n  (:require [next.jdbc :as jdbc]\n            [next.jdbc.sql :as sql]\n            [next.jdbc.result-set :as rs]))\n\n(def opts {:builder-fn rs/as-unqualified-maps})\n\n(defn find-all [ds]\n  (sql/find-by-keys ds :users :all opts))\n\n(defn find-by-id [ds id]\n  (sql/get-by-id ds :users id opts))\n\n(defn find-by-email [ds email]\n  (first (sql/find-by-keys ds :users {:email email} opts)))\n\n(defn create! [ds user]\n  (sql/insert! ds :users user opts))\n\n(defn update! [ds id changes]\n  (sql/update! ds :users changes {:id id} opts))\n\n(defn delete! [ds id]\n  (sql/delete! ds :users {:id id}))\n\n(defn search [ds query]\n  (jdbc/execute! ds\n    [\"SELECT * FROM users WHERE name ILIKE ? OR email ILIKE ?\"\n     (str \"%\" query \"%\") (str \"%\" query \"%\")]\n    opts))\n"}]}],"\n","$L4","\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9"]}],"$La"]}],["$Lb","$Lc"],"$Ld"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sDveLK-RRRBD1X1NCLhFA"}
+4:["$","h2",null,{"children":"Migrations"}]
+e:T62b,(ns myapp.migrations
+  (:require [next.jdbc :as jdbc]))
+
+(def migrations
+  [{:id 1
+    :up "CREATE TABLE users (id SERIAL PRIMARY KEY, name TEXT NOT NULL, email TEXT UNIQUE, active BOOLEAN DEFAULT true, created_at TIMESTAMP DEFAULT NOW())"
+    :down "DROP TABLE users"}
+   {:id 2
+    :up "CREATE TABLE posts (id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users(id), title TEXT, body TEXT, created_at TIMESTAMP DEFAULT NOW())"
+    :down "DROP TABLE posts"}
+   {:id 3
+    :up "CREATE INDEX idx_posts_user_id ON posts(user_id)"
+    :down "DROP INDEX idx_posts_user_id"}])
+
+(defn ensure-migrations-table! [ds]
+  (jdbc/execute! ds ["CREATE TABLE IF NOT EXISTS schema_migrations (id INTEGER PRIMARY KEY, applied_at TIMESTAMP DEFAULT NOW())"]))
+
+(defn applied-migrations [ds]
+  (set (map :id (jdbc/execute! ds ["SELECT id FROM schema_migrations"]))))
+
+(defn migrate! [ds]
+  (ensure-migrations-table! ds)
+  (let [applied (applied-migrations ds)]
+    (doseq [{:keys [id up]} migrations
+            :when (not (applied id))]
+      (println "Applying migration" id)
+      (jdbc/with-transaction [tx ds]
+        (jdbc/execute! tx [up])
+        (jdbc/execute! tx ["INSERT INTO schema_migrations (id) VALUES (?)" id])))))
+
+(defn rollback! [ds]
+  (let [applied (applied-migrations ds)
+        last-id (apply max applied)
+        {:keys [down]} (first (filter #(= (:id %) last-id) migrations))]
+    (jdbc/with-transaction [tx ds]
+      (jdbc/execute! tx [down])
+      (jdbc/execute! tx ["DELETE FROM schema_migrations WHERE id = ?" last-id]))
+    (println "Rolled back migration" last-id)))
+5:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"$e"}]}]
+6:["$","h2",null,{"children":"Query Builder Pattern"}]
+7:["$","$L3",null,{"children":["$","$L2",null,{"className":"language-clojure","children":"(defn build-where [conditions]\n  (when (seq conditions)\n    (let [clauses (map (fn [[k v]] (str (name k) \" = ?\")) conditions)\n          values (vals conditions)]\n      {:where (str \"WHERE \" (clojure.string/join \" AND \" clauses))\n       :params (vec values)})))\n\n(defn find-users [ds & {:keys [active name limit offset] :as opts}]\n  (let [conditions (select-keys opts [:active :name])\n        {:keys [where params]} (build-where conditions)\n        sql (str \"SELECT * FROM users \" (or where \"\")\n                 (when limit (str \" LIMIT \" limit))\n                 (when offset (str \" OFFSET \" offset)))]\n    (jdbc/execute! ds (into [sql] params)\n      {:builder-fn rs/as-unqualified-maps})))\n"}]}]
+8:["$","h2",null,{"children":"Key Takeaways"}]
+9:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L2",null,{"children":"next.jdbc"}]," is minimal: execute SQL, get maps back"]}],"\n",["$","li",null,{"children":"HikariCP for connection pooling (production must-have)"}],"\n",["$","li",null,{"children":["Transactions with ",["$","$L2",null,{"children":"jdbc/with-transaction"}]," — automatic rollback on exception"]}],"\n",["$","li",null,{"children":["Migrations as data (vector of maps with ",["$","$L2",null,{"children":":up"}],"/",["$","$L2",null,{"children":":down"}]," SQL)"]}],"\n",["$","li",null,{"children":"Repository pattern: one namespace per entity with CRUD functions"}],"\n",["$","li",null,{"children":["Qualified keys (",["$","$L2",null,{"children":":users/name"}],") or unqualified (",["$","$L2",null,{"children":":name"}],") — your choice"]}],"\n"]}]
+a:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-22-java-interop","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-24-clojurescript","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+b:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+c:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+d:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+11:null

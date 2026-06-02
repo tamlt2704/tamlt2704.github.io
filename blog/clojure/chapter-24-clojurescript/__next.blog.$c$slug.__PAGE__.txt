@@ -1,0 +1,56 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+11:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+12:"$Sreact.suspense"
+4:T487,(ns app.todo
+  (:require [reagent.core :as r]))
+
+(def todos (r/atom []))
+(def input-text (r/atom ""))
+
+(defn add-todo! []
+  (when (seq @input-text)
+    (swap! todos conj {:id (random-uuid) :text @input-text :done false})
+    (reset! input-text "")))
+
+(defn toggle-todo! [id]
+  (swap! todos (fn [ts] (mapv #(if (= (:id %) id) (update % :done not) %) ts))))
+
+(defn delete-todo! [id]
+  (swap! todos (fn [ts] (vec (remove #(= (:id %) id) ts)))))
+
+(defn todo-input []
+  [:div.flex.gap-2
+   [:input {:value @input-text
+            :on-change #(reset! input-text (-> % .-target .-value))
+            :on-key-down #(when (= "Enter" (.-key %)) (add-todo!))
+            :placeholder "What needs to be done?"}]
+   [:button {:on-click add-todo!} "Add"]])
+
+(defn todo-item [{:keys [id text done]}]
+  [:li {:class (when done "line-through opacity-50")}
+   [:input {:type "checkbox" :checked done :on-change #(toggle-todo! id)}]
+   [:span text]
+   [:button {:on-click #(delete-todo! id)} "×"]])
+
+(defn todo-app []
+  [:div
+   [:h1 "Todos (" (count (remove :done @todos)) " left)"]
+   [todo-input]
+   [:ul (for [todo @todos]
+          ^{:key (:id todo)} [todo-item todo])]])
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 24: ClojureScript and the Browser"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-23-database","children":"prev: A Database Layer"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-25-async","children":"next: core.async Patterns"}]]}],"\n",["$","h2",null,{"children":"Clojure in the Browser"}],"\n",["$","p",null,{"children":"ClojureScript compiles Clojure to JavaScript. Same language, same data structures, running in browsers and Node.js. Share code between frontend and backend."}],"\n",["$","h2",null,{"children":"Setup with shadow-cljs"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx create-cljs-project my-app\ncd my-app\n"}]}],"\n",["$","p",null,{"children":[["$","$L3",null,{"children":"shadow-cljs.edn"}],":"]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"{:source-paths [\"src\"]\n :dependencies [[reagent \"1.2.0\"]]\n :builds {:app {:target :browser\n                :output-dir \"public/js\"\n                :asset-path \"/js\"\n                :modules {:main {:init-fn app.core/init}}}}}\n"}]}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-bash","children":"npx shadow-cljs watch app  ;; starts dev server with hot reload\n"}]}],"\n",["$","h2",null,{"children":"Hello World"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(ns app.core)\n\n(defn init []\n  (let [el (.getElementById js/document \"app\")]\n    (set! (.-innerHTML el) \"<h1>Hello from ClojureScript!</h1>\")))\n"}]}],"\n",["$","h2",null,{"children":"Reagent (React Wrapper)"}],"\n",["$","p",null,{"children":"Reagent lets you write React components as plain Clojure functions:"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(ns app.core\n  (:require [reagent.core :as r]\n            [reagent.dom :as rdom]))\n\n;; State\n(def counter (r/atom 0))\n\n;; Components are just functions returning hiccup\n(defn counter-component []\n  [:div.counter\n   [:h2 \"Count: \" @counter]\n   [:button {:on-click #(swap! counter inc)} \"+\"]\n   [:button {:on-click #(swap! counter dec)} \"-\"]\n   [:button {:on-click #(reset! counter 0)} \"Reset\"]])\n\n(defn app []\n  [:div.app\n   [:h1 \"My ClojureScript App\"]\n   [counter-component]])\n\n(defn init []\n  (rdom/render [app] (.getElementById js/document \"app\")))\n"}]}],"\n",["$","h2",null,{"children":"Hiccup Syntax"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":";; HTML as data structures:\n[:div {:class \"container\"}\n [:h1 \"Title\"]\n [:p \"Paragraph\"]\n [:ul\n  (for [item [\"A\" \"B\" \"C\"]]\n    ^{:key item} [:li item])]]\n\n;; CSS shorthand:\n[:div#main.container.flex \"content\"]\n;; = <div id=\"main\" class=\"container flex\">content</div>\n"}]}],"\n",["$","h2",null,{"children":"Todo App"}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"$4"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc"]}],"$Ld"]}],["$Le","$Lf"],"$L10"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sDveLK-RRRBD1X1NCLhFA"}
+5:["$","h2",null,{"children":"Calling JavaScript"}]
+6:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":";; Global objects\njs/console\njs/window\njs/document\n\n;; Methods\n(.log js/console \"hello\")\n(.getElementById js/document \"app\")\n(.fetch js/window \"/api/data\")\n\n;; Properties\n(.-innerWidth js/window)\n(.-href (.-location js/window))\n\n;; JS interop\n(js/setTimeout #(println \"delayed!\") 1000)\n(js/JSON.stringify #js {:a 1 :b 2})\n"}]}]
+7:["$","h2",null,{"children":"HTTP Requests"}]
+8:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(ns app.api\n  (:require [cljs.core.async :refer [go]]\n            [cljs.core.async.interop :refer-macros [<p!]]))\n\n(defn fetch-todos []\n  (go\n    (let [response (<p! (js/fetch \"/api/todos\"))\n          data (<p! (.json response))]\n      (js->clj data :keywordize-keys true))))\n"}]}]
+9:["$","h2",null,{"children":["Shared Code (",["$","$L3",null,{"children":".cljc"}]," files)"]}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":";; src/shared/validation.cljc — runs on both JVM and browser\n(ns shared.validation)\n\n(defn valid-email? [email]\n  (re-matches #\".+@.+\\..+\" email))\n\n(defn validate-user [{:keys [name email]}]\n  (cond-> []\n    (empty? name) (conj \"Name is required\")\n    (not (valid-email? email)) (conj \"Invalid email\")))\n"}]}]
+b:["$","h2",null,{"children":"Key Takeaways"}]
+c:["$","ul",null,{"children":["\n",["$","li",null,{"children":"ClojureScript = same language, compiles to JS instead of JVM bytecode"}],"\n",["$","li",null,{"children":"Reagent wraps React with atoms for state and hiccup for templates"}],"\n",["$","li",null,{"children":"Hot reload via shadow-cljs — instant feedback during development"}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":".cljc"}]," files share code between backend and frontend"]}],"\n",["$","li",null,{"children":["JS interop via ",["$","$L3",null,{"children":"js/"}]," prefix, ",["$","$L3",null,{"children":".-"}]," for properties, ",["$","$L3",null,{"children":"."}]," for methods"]}],"\n",["$","li",null,{"children":"Same immutable data structures, same functional patterns"}],"\n"]}]
+d:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-23-database","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-25-async","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+e:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+f:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+10:["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]
+13:null

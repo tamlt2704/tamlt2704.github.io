@@ -1,0 +1,60 @@
+1:"$Sreact.fragment"
+2:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+3:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+1c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+1d:"$Sreact.suspense"
+4:T41a,;; Creation
+{:name "Alice" :age 30 :city "Singapore"}
+(hash-map :a 1 :b 2)
+(sorted-map :b 2 :a 1 :c 3)  ;=> {:a 1, :b 2, :c 3}
+
+;; Access
+(get {:a 1 :b 2} :a)          ;=> 1
+(get {:a 1 :b 2} :c "default") ;=> "default"
+({:a 1 :b 2} :a)              ;=> 1 (maps are functions)
+(:a {:a 1 :b 2})              ;=> 1 (keywords are functions!)
+(:c {:a 1 :b 2})              ;=> nil
+
+;; Nested access
+(get-in {:a {:b {:c 42}}} [:a :b :c])  ;=> 42
+
+;; "Modification"
+(assoc {:a 1} :b 2)               ;=> {:a 1, :b 2}
+(assoc {:a 1} :a 99)              ;=> {:a 99}
+(dissoc {:a 1 :b 2} :b)           ;=> {:a 1}
+(merge {:a 1} {:b 2} {:c 3})      ;=> {:a 1, :b 2, :c 3}
+(update {:a 1} :a inc)            ;=> {:a 2}
+(update-in {:a {:b 1}} [:a :b] + 10) ;=> {:a {:b 11}}
+(assoc-in {:a {:b 1}} [:a :c] 99)    ;=> {:a {:b 1, :c 99}}
+
+;; Useful operations
+(keys {:a 1 :b 2})     ;=> (:a :b)
+(vals {:a 1 :b 2})     ;=> (1 2)
+(select-keys {:a 1 :b 2 :c 3} [:a :c])  ;=> {:a 1, :c 3}
+(contains? {:a 1} :a)  ;=> true
+(find {:a 1 :b 2} :a)  ;=> [:a 1] (returns map entry)
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":[["$","h1",null,{"children":"Chapter 6: Data Structures"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-05-functions","children":"prev: Functions"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-07-sequences","children":"next: Sequences and Laziness"}]]}],"\n",["$","h2",null,{"children":"Immutable and Persistent"}],"\n",["$","p",null,{"children":"All Clojure data structures are immutable. When you \"modify\" one, you get a new version. The old one remains unchanged. Under the hood, they share structure — creating a new version is O(log32 n), not O(n)."}],"\n",["$","h2",null,{"children":"Vectors"}],"\n",["$","p",null,{"children":"Ordered, indexed, most common collection for data."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":";; Creation\n[1 2 3 4 5]\n(vector 1 2 3)\n(vec '(1 2 3))       ; convert list to vector\n\n;; Access\n(get [10 20 30] 1)   ;=> 20\n([10 20 30] 1)       ;=> 20 (vectors are functions of their index)\n(nth [10 20 30] 1)   ;=> 20\n(first [10 20 30])   ;=> 10\n(last [10 20 30])    ;=> 30\n(peek [10 20 30])    ;=> 30 (last for vectors)\n\n;; \"Modification\" (returns new vector)\n(conj [1 2 3] 4)         ;=> [1 2 3 4] (adds to end)\n(assoc [10 20 30] 1 99)  ;=> [10 99 30]\n(subvec [10 20 30 40 50] 1 4)  ;=> [20 30 40]\n(pop [1 2 3])             ;=> [1 2] (remove last)\n\n;; Size\n(count [1 2 3])  ;=> 3\n(empty? [])      ;=> true\n"}]}],"\n",["$","h2",null,{"children":"Maps"}],"\n",["$","p",null,{"children":"Key-value pairs. The workhorse of Clojure data modeling."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"$4"}]}],"\n",["$","h2",null,{"children":"Sets"}],"\n",["$","p",null,{"children":"Unique values, fast membership testing."}],"\n",["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":";; Creation\n#{1 2 3}\n(set [1 2 2 3 3 3])       ;=> #{1 2 3}\n(sorted-set 3 1 2)        ;=> #{1 2 3}\n\n;; Membership\n(contains? #{:a :b :c} :a)  ;=> true\n(#{:a :b :c} :a)            ;=> :a (sets are functions!)\n(#{:a :b :c} :d)            ;=> nil\n\n;; Operations (clojure.set namespace)\n(require '[clojure.set :as set])\n(set/union #{1 2} #{2 3})          ;=> #{1 2 3}\n(set/intersection #{1 2 3} #{2 3 4})  ;=> #{2 3}\n(set/difference #{1 2 3} #{2 3})      ;=> #{1}\n(set/subset? #{1 2} #{1 2 3})         ;=> true\n\n;; \"Modification\"\n(conj #{1 2} 3)     ;=> #{1 2 3}\n(disj #{1 2 3} 2)   ;=> #{1 3}\n"}]}],"\n","$L5","\n","$L6","\n","$L7","\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17"]}],"$L18"]}],["$L19","$L1a"],"$L1b"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sDveLK-RRRBD1X1NCLhFA"}
+5:["$","h2",null,{"children":"Lists"}]
+6:["$","p",null,{"children":"Linked lists. Rarely used for data — mainly in macros and code-as-data."}]
+7:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"'(1 2 3)\n(list 1 2 3)\n\n(first '(1 2 3))     ;=> 1\n(rest '(1 2 3))      ;=> (2 3)\n(conj '(1 2 3) 0)    ;=> (0 1 2 3) (adds to front!)\n(cons 0 '(1 2 3))    ;=> (0 1 2 3)\n"}]}]
+8:["$","h2",null,{"children":"Keywords as Data"}]
+9:["$","p",null,{"children":"Keywords are interned strings that are fast to compare and evaluate to themselves. They're the idiomatic way to name things in maps."}]
+a:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":":name                    ; simple keyword\n:user/name               ; namespaced keyword\n::name                   ; auto-resolved to current namespace\n\n;; Keywords are functions:\n(:name {:name \"Alice\" :age 30})  ;=> \"Alice\"\n\n;; Use as enum-like values:\n(def status :active)\n(= status :active)  ;=> true\n"}]}]
+b:["$","h2",null,{"children":"Nested Data"}]
+c:["$","p",null,{"children":"Real-world data is deeply nested. Clojure handles this well:"}]
+d:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(def order\n  {:id \"ORD-001\"\n   :customer {:name \"Alice\" :email \"alice@test.com\"}\n   :items [{:product \"Widget\" :qty 3 :price 9.99}\n           {:product \"Gadget\" :qty 1 :price 24.99}]\n   :status :pending})\n\n;; Access\n(:name (:customer order))              ;=> \"Alice\"\n(get-in order [:customer :email])      ;=> \"alice@test.com\"\n(get-in order [:items 0 :product])     ;=> \"Widget\"\n\n;; Update deeply nested\n(update-in order [:items 0 :qty] inc)\n;=> {...:items [{:product \"Widget\" :qty 4 ...} ...]}\n\n(assoc-in order [:customer :phone] \"555-1234\")\n;=> {...:customer {:name \"Alice\" :email \"...\" :phone \"555-1234\"}}\n"}]}]
+e:["$","h2",null,{"children":"Structural Sharing (Why Immutability is Fast)"}]
+f:["$","$L2",null,{"children":["$","$L3",null,{"children":"Original: [a b c d e]\n\nAfter (assoc v 2 X):\n  New:      [a b X d e]\n\n  Under the hood, a and b, d and e are SHARED — not copied.\n  Only the path to the changed node is new.\n"}]}]
+10:["$","p",null,{"children":"For a vector of 1 million elements, creating a \"modified\" version copies ~6 nodes (log32 of 1M), not 1 million."}]
+11:["$","h2",null,{"children":"Records (Typed Maps)"}]
+12:["$","p",null,{"children":"When you want map semantics with better performance and explicit fields:"}]
+13:["$","$L2",null,{"children":["$","$L3",null,{"className":"language-clojure","children":"(defrecord Customer [name email phone])\n\n(def alice (->Customer \"Alice\" \"alice@test.com\" \"555-1234\"))\n;; or:\n(def bob (map->Customer {:name \"Bob\" :email \"bob@test.com\" :phone \"555-5678\"}))\n\n(:name alice)     ;=> \"Alice\"\n(assoc alice :vip true)  ;=> still works like a map\n"}]}]
+14:["$","h2",null,{"children":"Choosing the Right Collection"}]
+15:["$","table",null,{"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Need"}],["$","th",null,{"children":"Use"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Ordered, indexed access"}],["$","td",null,{"children":["Vector ",["$","$L3",null,{"children":"[]"}]]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Key-value lookup"}],["$","td",null,{"children":["Map ",["$","$L3",null,{"children":"{}"}]]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Unique values, membership test"}],["$","td",null,{"children":["Set ",["$","$L3",null,{"children":"#{}"}]]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Build code in macros"}],["$","td",null,{"children":["List ",["$","$L3",null,{"children":"'()"}]]}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"FIFO queue"}],["$","td",null,{"children":["$","$L3",null,{"children":"clojure.lang.PersistentQueue/EMPTY"}]}]]}]]}]]}]
+16:["$","h2",null,{"children":"Key Takeaways"}]
+17:["$","ul",null,{"children":["\n",["$","li",null,{"children":"All collections are immutable — \"modifications\" return new values"}],"\n",["$","li",null,{"children":"Vectors for ordered data, maps for named fields, sets for uniqueness"}],"\n",["$","li",null,{"children":["Keywords are functions: ",["$","$L3",null,{"children":"(:key map)"}]," is idiomatic"]}],"\n",["$","li",null,{"children":[["$","$L3",null,{"children":"get-in"}],", ",["$","$L3",null,{"children":"assoc-in"}],", ",["$","$L3",null,{"children":"update-in"}]," for nested data access"]}],"\n",["$","li",null,{"children":"Structural sharing makes immutability efficient (not O(n) copies)"}],"\n",["$","li",null,{"children":"Records give you typed maps with better performance"}],"\n"]}]
+18:["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-05-functions","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-07-sequences","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]
+19:["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true}]
+1a:["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true}]
+1b:["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]
+1e:null

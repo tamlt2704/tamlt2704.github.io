@@ -1,0 +1,69 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0fh6mub_7dyjx.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","clojure","chapter-21-build-tool",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","clojure/chapter-21-build-tool","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0fh6mub_7dyjx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0fh6mub_7dyjx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"sDveLK-RRRBD1X1NCLhFA"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-20-chat-server","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-22-java-interop","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T453,(ns build.core
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str]))
+
+(def tasks (atom {}))
+
+(defmacro deftask [name opts & body]
+  `(swap! tasks assoc ~(keyword name)
+     {:name ~(keyword name)
+      :deps ~(:deps opts [])
+      :doc ~(:doc opts "")
+      :fn (fn [] ~@body)}))
+
+;; Define tasks
+(deftask clean {:doc "Remove build artifacts"}
+  (let [dir (io/file "target")]
+    (when (.exists dir)
+      (doseq [f (reverse (file-seq dir))]
+        (.delete f)))
+    (println "✓ Cleaned target/")))
+
+(deftask compile {:doc "Compile source files" :deps [:clean]}
+  (println "Compiling...")
+  (.mkdirs (io/file "target/classes"))
+  (Thread/sleep 500)
+  (println "✓ Compiled"))
+
+(deftask test {:doc "Run tests" :deps [:compile]}
+  (println "Running tests...")
+  (Thread/sleep 300)
+  (println "✓ 42 tests passed"))
+
+(deftask jar {:doc "Build JAR" :deps [:compile :test]}
+  (println "Packaging JAR...")
+  (Thread/sleep 200)
+  (println "✓ target/app.jar"))
+
+(deftask deploy {:doc "Deploy to server" :deps [:jar]}
+  (println "Deploying...")
+  (println "✓ Deployed to production"))
+10:[["$","h1",null,{"children":"Chapter 21: Practical — A Build Tool"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-20-chat-server","children":"prev: A Chat Server"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-22-java-interop","children":"next: Java Interop"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":"A miniature build tool (like Make/Lein/Babashka tasks) that resolves task dependencies, runs them in correct order, and supports incremental builds. This exercises graphs, topological sort, and file system operations."}],"\n",["$","h2",null,{"children":"Task Definition"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"$13"}]}],"\n",["$","h2",null,{"children":"Dependency Resolution (Topological Sort)"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(defn resolve-deps [task-name all-tasks]\n  (let [visited (atom #{})\n        order (atom [])]\n    (letfn [(visit [name]\n              (when-not (@visited name)\n                (swap! visited conj name)\n                (let [task (get all-tasks name)]\n                  (when-not task\n                    (throw (ex-info (str \"Unknown task: \" name) {:task name})))\n                  (doseq [dep (:deps task)]\n                    (visit dep))\n                  (swap! order conj name))))]\n      (visit task-name)\n      @order)))\n"}]}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(resolve-deps :deploy @tasks)\n;=> [:clean :compile :test :jar :deploy]\n"}]}],"\n",["$","h2",null,{"children":"Running Tasks"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(defn run-task! [task-name]\n  (let [execution-order (resolve-deps task-name @tasks)\n        start (System/currentTimeMillis)]\n    (printf \"Running: %s (deps: %s)%n\" task-name (str/join \" → \" execution-order))\n    (println \"─────────────────────\")\n    (doseq [t execution-order]\n      (let [task (get @tasks t)\n            t-start (System/currentTimeMillis)]\n        ((:fn task))\n        (printf \"  [%s: %dms]%n\" (name t) (- (System/currentTimeMillis) t-start))))\n    (println \"─────────────────────\")\n    (printf \"Done in %dms%n\" (- (System/currentTimeMillis) start))))\n"}]}],"\n",["$","h2",null,{"children":"Incremental Builds (File Timestamps)"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(defn newer-than? [source target]\n  (let [src-file (io/file source)\n        tgt-file (io/file target)]\n    (or (not (.exists tgt-file))\n        (> (.lastModified src-file) (.lastModified tgt-file)))))\n\n(defn needs-rebuild? [sources target]\n  (some #(newer-than? % target) sources))\n\n(deftask compile-incremental\n  {:doc \"Only recompile changed files\" :deps [:clean]}\n  (let [sources (filter #(str/ends-with? (.getName %) \".clj\")\n                        (file-seq (io/file \"src\")))\n        changed (filter #(newer-than? % \"target/.compiled\") sources)]\n    (if (empty? changed)\n      (println \"✓ Nothing to compile\")\n      (do\n        (printf \"Compiling %d files...%n\" (count changed))\n        (doseq [f changed] (println \"  \" (.getPath f)))\n        (spit \"target/.compiled\" (str (System/currentTimeMillis)))\n        (println \"✓ Done\")))))\n"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19"]
+14:["$","h2",null,{"children":"Parallel Task Execution"}]
+15:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(defn parallel-tasks [task-names]\n  (let [futures (mapv #(future (run-task! %)) task-names)]\n    (mapv deref futures)))\n"}]}]
+16:["$","h2",null,{"children":"CLI Interface"}]
+17:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(defn list-tasks []\n  (println \"Available tasks:\")\n  (doseq [[name {:keys [doc deps]}] (sort @tasks)]\n    (printf \"  %-15s %s%s%n\" (clojure.core/name name) doc\n            (if (seq deps) (str \" [deps: \" (str/join \", \" (map clojure.core/name deps)) \"]\") \"\"))))\n\n(defn -main [& args]\n  (if (empty? args)\n    (list-tasks)\n    (let [task (keyword (first args))]\n      (if (contains? @tasks task)\n        (run-task! task)\n        (println \"Unknown task:\" (first args) \"\\nRun without args to see available tasks.\")))))\n"}]}]
+18:["$","h2",null,{"children":"Key Takeaways"}]
+19:["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","$L12",null,{"children":"deftask"}]," macro turns task definition into data stored in an atom"]}],"\n",["$","li",null,{"children":"Topological sort resolves dependency order (no task runs before its deps)"}],"\n",["$","li",null,{"children":"File timestamps enable incremental builds (skip unchanged files)"}],"\n",["$","li",null,{"children":[["$","$L12",null,{"children":"future"}]," + ",["$","$L12",null,{"children":"deref"}]," for parallel independent tasks"]}],"\n",["$","li",null,{"children":"The entire build system is ~80 lines — Clojure's conciseness at work"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1a:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 21 build tool — clojure"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1a","3",{}]]

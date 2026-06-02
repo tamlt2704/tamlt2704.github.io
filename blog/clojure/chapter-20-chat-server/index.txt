@@ -1,0 +1,73 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],""]
+3:I[39756,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+4:I[37457,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default"]
+6:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"ViewportBoundary"]
+c:I[97367,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"MetadataBoundary"]
+e:I[68027,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"default",1]
+:HL["/_next/static/chunks/0fh6mub_7dyjx.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"c":["","blog","clojure","chapter-20-chat-server",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","clojure/chapter-20-chat-server","c",null],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0fh6mub_7dyjx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/13h-0fd.p-1ga.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/06bqbmjq_bkkn.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable bg-gray-950 antialiased","children":[["$","nav",null,{"className":"sticky top-0 z-50 border-b border-gray-800 bg-gray-900/80 px-6 py-4 backdrop-blur-md","children":["$","div",null,{"className":"mx-auto flex max-w-5xl items-center justify-between","children":[["$","$L2",null,{"href":"/","className":"text-lg font-bold text-white"}],["$","div",null,{"className":"flex gap-6 text-sm","children":[["$","$L2",null,{"href":"/","className":"text-gray-400 transition hover:text-white","children":"Home"}],["$","$L2",null,{"href":"/blog","className":"text-gray-400 transition hover:text-white","children":"Blog"}]]}]]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/0jkovqgf5b-3s.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0uv-34v82sz~b.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$@9"]},null,false,"$@9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0fh6mub_7dyjx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"sDveLK-RRRBD1X1NCLhFA"}
+f:[]
+9:"$Wf"
+5:["$","article",null,{"className":"mx-auto max-w-3xl px-6 py-12","children":[["$","a",null,{"href":"/blog/clojure/chapter-00-overview","className":"mb-6 inline-block text-sm text-teal-500 hover:underline","children":"← Back to overview"}],["$","div",null,{"className":"prose prose-lg max-w-none","children":"$L10"}],["$","nav",null,{"className":"mt-12 flex justify-between border-t pt-6 text-sm","children":[["$","a",null,{"href":"/blog/clojure/chapter-19-web-scraper","className":"text-teal-600 hover:underline","children":"← Previous"}],["$","a",null,{"href":"/blog/clojure/chapter-21-build-tool","className":"ml-auto text-teal-600 hover:underline","children":"Next →"}]]}]]}]
+11:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownPre"]
+12:I[70099,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js","/_next/static/chunks/0jkovqgf5b-3s.js","/_next/static/chunks/0uv-34v82sz~b.js"],"MarkdownCode"]
+13:T7af,(defn broadcast! [room-name message]
+  (let [clients (get-in @rooms [room-name :clients])]
+    (doseq [{:keys [ws]} clients]
+      (try (jetty/send! ws (pr-str message))
+           (catch Exception _ nil)))))
+
+(defn ws-handler [upgrade-request]
+  {:on-connect (fn [ws]
+                 (println "Client connected"))
+
+   :on-text (fn [ws text]
+              (let [msg (read-string text)]
+                (case (:type msg)
+                  :join (do (join-room! (:room msg) ws (:username msg))
+                            (broadcast! (:room msg)
+                                        {:type :system
+                                         :text (str (:username msg) " joined")
+                                         :time (System/currentTimeMillis)})
+                            ;; Send history
+                            (doseq [m (get-in @rooms [(:room msg) :history])]
+                              (jetty/send! ws (pr-str m))))
+
+                  :message (let [full-msg {:type :message
+                                           :username (:username msg)
+                                           :text (:text msg)
+                                           :room (:room msg)
+                                           :time (System/currentTimeMillis)}]
+                             (add-message! (:room msg) full-msg)
+                             (broadcast! (:room msg) full-msg))
+
+                  :leave (do (leave-room! (:room msg) ws)
+                             (broadcast! (:room msg)
+                                         {:type :system
+                                          :text (str (:username msg) " left")
+                                          :time (System/currentTimeMillis)})))))
+
+   :on-close (fn [ws status-code reason]
+               ;; Remove from all rooms
+               (doseq [[room-name _] @rooms]
+                 (leave-room! room-name ws)))
+
+   :on-error (fn [ws e] (println "WebSocket error:" (.getMessage e)))})
+10:[["$","h1",null,{"children":"Chapter 20: Practical — A Chat Server"}],"\n",["$","p",null,{"children":[["$","a",null,{"href":"/blog/clojure/chapter-19-web-scraper","children":"prev: A Web Scraper"}]," | ",["$","a",null,{"href":"/blog/clojure/chapter-21-build-tool","children":"next: A Build Tool"}]]}],"\n",["$","h2",null,{"children":"What We're Building"}],"\n",["$","p",null,{"children":"A real-time chat server using WebSockets and core.async channels. Multiple clients connect, join rooms, and exchange messages — all managed with Clojure's concurrency primitives."}],"\n",["$","h2",null,{"children":"Dependencies"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"{:deps {org.clojure/clojure {:mvn/version \"1.12.0\"}\n        org.clojure/core.async {:mvn/version \"1.6.681\"}\n        ring/ring-core {:mvn/version \"1.12.1\"}\n        ring/ring-jetty-adapter {:mvn/version \"1.12.1\"}\n        info.sunng/ring-jetty9-adapter {:mvn/version \"0.33.2\"}}}\n"}]}],"\n",["$","h2",null,{"children":"Server State"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(ns chat.server\n  (:require [clojure.core.async :as async :refer [go go-loop chan <! >! mult tap close!]]\n            [ring.adapter.jetty9 :as jetty]))\n\n;; Room -> {:clients #{ws-connections}, :history [messages]}\n(def rooms (atom {}))\n\n(defn join-room! [room-name ws username]\n  (swap! rooms update room-name\n         (fn [room]\n           (-> (or room {:clients #{} :history []})\n               (update :clients conj {:ws ws :username username})))))\n\n(defn leave-room! [room-name ws]\n  (swap! rooms update-in [room-name :clients]\n         (fn [clients] (set (remove #(= (:ws %) ws) clients)))))\n\n(defn add-message! [room-name message]\n  (swap! rooms update-in [room-name :history]\n         (fn [h] (take-last 100 (conj (or h []) message)))))\n"}]}],"\n",["$","h2",null,{"children":"WebSocket Handler"}],"\n",["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"$13"}]}],"\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b"]
+14:["$","h2",null,{"children":"HTTP + WebSocket Server"}]
+15:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(defn app [request]\n  (if (jetty/ws-upgrade-request? request)\n    (jetty/ws-upgrade-response ws-handler)\n    {:status 200\n     :headers {\"Content-Type\" \"text/html\"}\n     :body (slurp (clojure.java.io/resource \"public/index.html\"))}))\n\n(defn -main [& _]\n  (jetty/run-jetty app {:port 8080 :join? false})\n  (println \"Chat server running on http://localhost:8080\"))\n"}]}]
+16:["$","h2",null,{"children":"core.async Version (Channel-Based)"}]
+17:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(def message-bus (chan 1000))\n(def message-mult (mult message-bus))\n\n(defn client-handler [ws username room]\n  (let [client-ch (chan 100)]\n    (tap message-mult client-ch)\n    ;; Send filtered messages to this client\n    (go-loop []\n      (when-let [msg (<! client-ch)]\n        (when (= (:room msg) room)\n          (jetty/send! ws (pr-str msg)))\n        (recur)))\n    ;; Return channel for cleanup\n    client-ch))\n\n(defn publish-message! [msg]\n  (async/>!! message-bus msg))\n"}]}]
+18:["$","h2",null,{"children":"CLI Chat Client"}]
+19:["$","$L11",null,{"children":["$","$L12",null,{"className":"language-clojure","children":"(ns chat.client\n  (:require [clojure.java.io :as io])\n  (:import [java.net URI]\n           [org.java_websocket.client WebSocketClient]))\n\n(defn connect! [url username room]\n  (let [client (proxy [WebSocketClient] [(URI. url)]\n                 (onOpen [handshake]\n                   (println \"Connected!\")\n                   (.send this (pr-str {:type :join :username username :room room})))\n                 (onMessage [message]\n                   (let [{:keys [type username text]} (read-string message)]\n                     (case type\n                       :message (printf \"[%s] %s%n\" username text)\n                       :system (printf \"*** %s ***%n\" text)\n                       nil)))\n                 (onClose [code reason remote]\n                   (println \"Disconnected:\" reason))\n                 (onError [ex]\n                   (println \"Error:\" (.getMessage ex))))]\n    (.connect client)\n    client))\n"}]}]
+1a:["$","h2",null,{"children":"Key Takeaways"}]
+1b:["$","ul",null,{"children":["\n",["$","li",null,{"children":"Atoms hold room state (clients + message history)"}],"\n",["$","li",null,{"children":"WebSocket handlers are just maps of callback functions"}],"\n",["$","li",null,{"children":[["$","$L12",null,{"children":"broadcast!"}]," iterates clients and sends to each"]}],"\n",["$","li",null,{"children":["core.async ",["$","$L12",null,{"children":"mult"}],"/",["$","$L12",null,{"children":"tap"}]," for pub/sub message distribution"]}],"\n",["$","li",null,{"children":["EDN (",["$","$L12",null,{"children":"pr-str"}],"/",["$","$L12",null,{"children":"read-string"}],") for message serialization — no JSON needed"]}],"\n",["$","li",null,{"children":"State is simple: maps of maps, updated atomically"}],"\n"]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1c:I[27201,["/_next/static/chunks/13h-0fd.p-1ga.js","/_next/static/chunks/06bqbmjq_bkkn.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"Ch 20 chat server — clojure"}],["$","meta","1",{"name":"description","content":"Learn by doing"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0x3dzn~oxb6tn.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L1c","3",{}]]
